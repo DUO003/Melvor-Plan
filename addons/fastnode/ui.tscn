@@ -1,0 +1,1432 @@
+[gd_scene load_steps=123 format=3 uid="uid://de8vl1w6gn63a"]
+
+[ext_resource type="Script" uid="uid://kme15ctbyu5h" path="res://addons/fastnode/ui.gd" id="1_21xru"]
+[ext_resource type="Texture2D" uid="uid://814j6hdk3d00" path="res://addons/fastnode/icons/Container.svg" id="2_p8vlq"]
+[ext_resource type="Texture2D" uid="uid://cbeca0nx4eoh6" path="res://addons/fastnode/icons/PanelContainer.svg" id="3_8wgg2"]
+[ext_resource type="Texture2D" uid="uid://dtmp5ktq62kqe" path="res://addons/fastnode/icons/TabContainer.svg" id="4_gci7p"]
+[ext_resource type="Texture2D" uid="uid://ctm58tqsicacq" path="res://addons/fastnode/icons/BoxContainer.svg" id="5_3ibb4"]
+[ext_resource type="Texture2D" uid="uid://beh1j1q5mimby" path="res://addons/fastnode/icons/HBoxContainer.svg" id="6_3ne63"]
+[ext_resource type="Texture2D" uid="uid://bl23cmdayrtaa" path="res://addons/fastnode/icons/VBoxContainer.svg" id="7_pw7lk"]
+[ext_resource type="Texture2D" uid="uid://dt5s384hx0ceu" path="res://addons/fastnode/icons/FlowContainer.svg" id="7_q2b1t"]
+[ext_resource type="Texture2D" uid="uid://dlrkjgg0jf4sy" path="res://addons/fastnode/icons/HFlowContainer.svg" id="8_rbvno"]
+[ext_resource type="Texture2D" uid="uid://bfsr36b007028" path="res://addons/fastnode/icons/VFlowContainer.svg" id="9_ckux8"]
+[ext_resource type="Texture2D" uid="uid://cb21orp16abh4" path="res://addons/fastnode/icons/SplitContainer.svg" id="10_qcaoc"]
+[ext_resource type="Texture2D" uid="uid://b4arr70yinym5" path="res://addons/fastnode/icons/HSplitContainer.svg" id="11_66fuf"]
+[ext_resource type="Texture2D" uid="uid://cm2gtncy6mfhb" path="res://addons/fastnode/icons/VSplitContainer.svg" id="12_46i08"]
+[ext_resource type="Texture2D" uid="uid://btquxl4fk5r2y" path="res://addons/fastnode/icons/GridContainer.svg" id="13_17du7"]
+[ext_resource type="Texture2D" uid="uid://b6ij4m6jvy3nb" path="res://addons/fastnode/icons/ScrollContainer.svg" id="14_hjjxj"]
+[ext_resource type="Texture2D" uid="uid://0b6gcj6te0vk" path="res://addons/fastnode/icons/MarginContainer.svg" id="15_811fn"]
+[ext_resource type="Texture2D" uid="uid://bqgcomb3dyi5q" path="res://addons/fastnode/icons/AspectRatioContainer.svg" id="16_ncsfd"]
+[ext_resource type="Texture2D" uid="uid://c4x0ge5bupbii" path="res://addons/fastnode/icons/CenterContainer.svg" id="17_v7mkh"]
+[ext_resource type="Texture2D" uid="uid://bxu4lp5mbkwiv" path="res://addons/fastnode/icons/SubViewportContainer.svg" id="18_xc3ta"]
+[ext_resource type="Texture2D" uid="uid://baxa8y5mi044a" path="res://addons/fastnode/icons/GraphElement.svg" id="19_y1wkt"]
+[ext_resource type="Texture2D" uid="uid://do4vneh7jlyed" path="res://addons/fastnode/icons/GraphFrame.svg" id="20_ixc5m"]
+[ext_resource type="Texture2D" uid="uid://b3a607phyljrv" path="res://addons/fastnode/icons/GraphNode.svg" id="21_wq0vp"]
+[ext_resource type="Texture2D" uid="uid://8cg2vpnufmow" path="res://addons/fastnode/icons/ColorPicker.svg" id="22_7rjxg"]
+[ext_resource type="Texture2D" uid="uid://bl6ycd62w81n" path="res://addons/fastnode/icons/Button.svg" id="23_66fuf"]
+[ext_resource type="Texture2D" uid="uid://co7f06uqmvvmm" path="res://addons/fastnode/icons/CheckBox.svg" id="24_46i08"]
+[ext_resource type="Texture2D" uid="uid://cc0g647kqoqtj" path="res://addons/fastnode/icons/CheckButton.svg" id="25_17du7"]
+[ext_resource type="Texture2D" uid="uid://cs3t2g8exkbsy" path="res://addons/fastnode/icons/ColorPickerButton.svg" id="26_hjjxj"]
+[ext_resource type="Texture2D" uid="uid://cikrkpaaqdoqu" path="res://addons/fastnode/icons/MenuButton.svg" id="27_811fn"]
+[ext_resource type="Texture2D" uid="uid://xixo1afe7heq" path="res://addons/fastnode/icons/OptionButton.svg" id="28_ncsfd"]
+[ext_resource type="Texture2D" uid="uid://ciks08jtdb7wr" path="res://addons/fastnode/icons/LinkButton.svg" id="29_v7mkh"]
+[ext_resource type="Texture2D" uid="uid://b20ixue5y51bh" path="res://addons/fastnode/icons/TextureButton.svg" id="30_xc3ta"]
+[ext_resource type="Texture2D" uid="uid://c4qvdjxradlmu" path="res://addons/fastnode/icons/Label.svg" id="31_v7mkh"]
+[ext_resource type="Texture2D" uid="uid://dnoj1v3r40slr" path="res://addons/fastnode/icons/RichTextLabel.svg" id="32_xc3ta"]
+[ext_resource type="Texture2D" uid="uid://iay6r7lg3kqc" path="res://addons/fastnode/icons/LineEdit.svg" id="33_y1wkt"]
+[ext_resource type="Texture2D" uid="uid://c3inlid4jvl85" path="res://addons/fastnode/icons/TextEdit.svg" id="34_ixc5m"]
+[ext_resource type="Texture2D" uid="uid://cr2ait81kwarq" path="res://addons/fastnode/icons/CodeEdit.svg" id="35_wq0vp"]
+[ext_resource type="Texture2D" uid="uid://cr1ii67mt3u7b" path="res://addons/fastnode/icons/SpinBox.svg" id="36_7rjxg"]
+[ext_resource type="Texture2D" uid="uid://buljxgut7n71x" path="res://addons/fastnode/icons/ColorRect.svg" id="37_ani2w"]
+[ext_resource type="Texture2D" uid="uid://bdrekyomvc8pq" path="res://addons/fastnode/icons/TextureRect.svg" id="38_w0h8w"]
+[ext_resource type="Texture2D" uid="uid://drngjclonq751" path="res://addons/fastnode/icons/NinePatchRect.svg" id="39_j627o"]
+[ext_resource type="Texture2D" uid="uid://m3kiw7rt4u0s" path="res://addons/fastnode/icons/GraphEdit.svg" id="40_s6ma1"]
+[ext_resource type="Texture2D" uid="uid://c0p5rkyw0wbka" path="res://addons/fastnode/icons/ProgressBar.svg" id="41_kxtrb"]
+[ext_resource type="Texture2D" uid="uid://dadehflconr7e" path="res://addons/fastnode/icons/TextureProgressBar.svg" id="42_p3ehs"]
+[ext_resource type="Texture2D" uid="uid://ce5qmi0gpm4kd" path="res://addons/fastnode/icons/HSlider.svg" id="43_uj6wd"]
+[ext_resource type="Texture2D" uid="uid://d1dww1cfb5igy" path="res://addons/fastnode/icons/VSlider.svg" id="44_vqxho"]
+[ext_resource type="Texture2D" uid="uid://dyq12pxp70t7g" path="res://addons/fastnode/icons/HScrollBar.svg" id="45_7a3no"]
+[ext_resource type="Texture2D" uid="uid://w7x7rq6s3axc" path="res://addons/fastnode/icons/VScrollBar.svg" id="46_oubdm"]
+[ext_resource type="Texture2D" uid="uid://bnmo2qjtg8kge" path="res://addons/fastnode/icons/Panel.svg" id="47_re711"]
+[ext_resource type="Texture2D" uid="uid://djm18pmt1tavx" path="res://addons/fastnode/icons/TabBar.svg" id="48_1meml"]
+[ext_resource type="Texture2D" uid="uid://c8543muqajtsj" path="res://addons/fastnode/icons/Tree.svg" id="49_1k7xv"]
+[ext_resource type="Texture2D" uid="uid://ouei21e63u56" path="res://addons/fastnode/icons/ItemList.svg" id="50_gapxo"]
+[ext_resource type="Texture2D" uid="uid://cwadxwtofnkhb" path="res://addons/fastnode/icons/HSeparator.svg" id="51_xxigf"]
+[ext_resource type="Texture2D" uid="uid://de6a0q1pcsugs" path="res://addons/fastnode/icons/VSeparator.svg" id="52_qe4ej"]
+[ext_resource type="Texture2D" uid="uid://bp7qjyd24cqko" path="res://addons/fastnode/icons/ReferenceRect.svg" id="53_8e8ux"]
+[ext_resource type="Texture2D" uid="uid://bia26orxs25sg" path="res://addons/fastnode/icons/MenuBar.svg" id="54_aqm83"]
+[ext_resource type="Texture2D" uid="uid://becf0v6cb5xu2" path="res://addons/fastnode/icons/VideoStreamPlayer.svg" id="55_bn5ma"]
+[ext_resource type="Texture2D" uid="uid://cgqou0nc3bflk" path="res://addons/fastnode/icons/Node.svg" id="56_ju8s3"]
+[ext_resource type="Texture2D" uid="uid://dnc84ns6aogur" path="res://addons/fastnode/icons/Node2D.svg" id="57_j0xal"]
+[ext_resource type="Texture2D" uid="uid://dqbr3gw07rwyi" path="res://addons/fastnode/icons/Sprite2D.svg" id="58_qtan4"]
+[ext_resource type="Texture2D" uid="uid://bjhtahxcvuu7v" path="res://addons/fastnode/icons/Polygon2D.svg" id="59_6iaqx"]
+[ext_resource type="Texture2D" uid="uid://pm5ltxvyrabl" path="res://addons/fastnode/icons/Line2D.svg" id="60_lsy5n"]
+[ext_resource type="Texture2D" uid="uid://clafx1osqpu34" path="res://addons/fastnode/icons/MeshInstance2D.svg" id="61_ugkky"]
+[ext_resource type="Texture2D" uid="uid://dek6emgl6epqj" path="res://addons/fastnode/icons/MultiMeshInstance2D.svg" id="62_xsjel"]
+[ext_resource type="Texture2D" uid="uid://cjc8i8ouwntpl" path="res://addons/fastnode/icons/Marker2D.svg" id="63_hgwqi"]
+[ext_resource type="Texture2D" uid="uid://ydbo30fkq7dy" path="res://addons/fastnode/icons/RemoteTransform2D.svg" id="64_rljwj"]
+[ext_resource type="Texture2D" uid="uid://ddm3ggke6qsdr" path="res://addons/fastnode/icons/ResourcePreloader.svg" id="65_pw7lk"]
+[ext_resource type="Texture2D" uid="uid://lvwpgghc42do" path="res://addons/fastnode/icons/ShaderGlobalsOverride.svg" id="66_6k74x"]
+[ext_resource type="Texture2D" uid="uid://8kjjc0xjxs61" path="res://addons/fastnode/icons/StaticBody2D.svg" id="67_qfbk2"]
+[ext_resource type="Texture2D" uid="uid://bke5ln8yxcn0o" path="res://addons/fastnode/icons/RigidBody2D.svg" id="68_kl7xa"]
+[ext_resource type="Texture2D" uid="uid://bt8c4dtmxyvmg" path="res://addons/fastnode/icons/AnimatableBody2D.svg" id="69_tuj8p"]
+[ext_resource type="Texture2D" uid="uid://cexry5unlod6d" path="res://addons/fastnode/icons/Area2D.svg" id="70_xcukd"]
+[ext_resource type="Texture2D" uid="uid://chxmqpxvkivk8" path="res://addons/fastnode/icons/ShapeCast2D.svg" id="71_12pls"]
+[ext_resource type="Texture2D" uid="uid://c1sq0lf5osxc" path="res://addons/fastnode/icons/RayCast2D.svg" id="72_qjfst"]
+[ext_resource type="Texture2D" uid="uid://dqf12cbwr7syl" path="res://addons/fastnode/icons/CharacterBody2D.svg" id="73_u5fgp"]
+[ext_resource type="Texture2D" uid="uid://c3eecdlugfepk" path="res://addons/fastnode/icons/CollisionShape2D.svg" id="74_uixi8"]
+[ext_resource type="Texture2D" uid="uid://23fuu54xrw57" path="res://addons/fastnode/icons/CollisionPolygon2D.svg" id="75_muno2"]
+[ext_resource type="Texture2D" uid="uid://dwv2s14yj3b52" path="res://addons/fastnode/icons/AnimatedSprite2D.svg" id="76_kholh"]
+[ext_resource type="Texture2D" uid="uid://vhoajd4rihtl" path="res://addons/fastnode/icons/AnimationPlayer.svg" id="77_qcxm6"]
+[ext_resource type="Texture2D" uid="uid://bg1om1blk5c6t" path="res://addons/fastnode/icons/AnimationTree.svg" id="78_m3py4"]
+[ext_resource type="Texture2D" uid="uid://dm2c6i3koshxw" path="res://addons/fastnode/icons/PhysicalBone2D.svg" id="79_d4wy8"]
+[ext_resource type="Texture2D" uid="uid://s3lyvyjolrig" path="res://addons/fastnode/icons/Skeleton2D.svg" id="80_rf60g"]
+[ext_resource type="Texture2D" uid="uid://du8jdtjsim5r3" path="res://addons/fastnode/icons/Bone2D.svg" id="81_x8ter"]
+[ext_resource type="Texture2D" uid="uid://bbmcmf4dgui40" path="res://addons/fastnode/icons/CPUParticles2D.svg" id="82_gagpk"]
+[ext_resource type="Texture2D" uid="uid://pi3wljswqkkq" path="res://addons/fastnode/icons/GPUParticles2D.svg" id="83_niudi"]
+[ext_resource type="Texture2D" uid="uid://b60qecf6yxf6l" path="res://addons/fastnode/icons/DirectionalLight2D.svg" id="84_gx7q8"]
+[ext_resource type="Texture2D" uid="uid://bc66kmcdpwk5b" path="res://addons/fastnode/icons/LightOccluder2D.svg" id="85_blyu3"]
+[ext_resource type="Texture2D" uid="uid://cgm1hx6c0xphq" path="res://addons/fastnode/icons/NavigationRegion2D.svg" id="86_23vvg"]
+[ext_resource type="Texture2D" uid="uid://g3ra3oc6apjd" path="res://addons/fastnode/icons/NavigationLink2D.svg" id="87_vrx3o"]
+[ext_resource type="Texture2D" uid="uid://d2h1oqxaoh80t" path="res://addons/fastnode/icons/NavigationObstacle2D.svg" id="88_0k66d"]
+[ext_resource type="Texture2D" uid="uid://bk67mnbrn5pnk" path="res://addons/fastnode/icons/NavigationAgent2D.svg" id="89_rlmyn"]
+[ext_resource type="Texture2D" uid="uid://c3hyb41rvtbvv" path="res://addons/fastnode/icons/Path2D.svg" id="90_ykian"]
+[ext_resource type="Texture2D" uid="uid://dh8y6h2xlvjv2" path="res://addons/fastnode/icons/PathFollow2D.svg" id="91_tltrc"]
+[ext_resource type="Texture2D" uid="uid://dhba0m45oxoss" path="res://addons/fastnode/icons/CanvasLayer.svg" id="92_3yesk"]
+[ext_resource type="Texture2D" uid="uid://b862mhtwo3gfy" path="res://addons/fastnode/icons/CanvasGroup.svg" id="93_tf7ct"]
+[ext_resource type="Texture2D" uid="uid://bo7yq03e4gtoq" path="res://addons/fastnode/icons/CanvasModulate.svg" id="94_w5kbo"]
+[ext_resource type="Texture2D" uid="uid://bbbv4vqlec1ey" path="res://addons/fastnode/icons/ParallaxBackground.svg" id="95_wo4vt"]
+[ext_resource type="Texture2D" uid="uid://e5dm47bmj8vb" path="res://addons/fastnode/icons/Parallax2D.svg" id="96_oj2j2"]
+[ext_resource type="Texture2D" uid="uid://cqc8ig4dk7cy7" path="res://addons/fastnode/icons/ParallaxLayer.svg" id="97_88hhx"]
+[ext_resource type="Texture2D" uid="uid://d0xhqehfvn7vi" path="res://addons/fastnode/icons/WorldEnvironment.svg" id="98_112ha"]
+[ext_resource type="Texture2D" uid="uid://da8amplardsed" path="res://addons/fastnode/icons/BackBufferCopy.svg" id="99_7u88t"]
+[ext_resource type="Texture2D" uid="uid://b3bqtks035ida" path="res://addons/fastnode/icons/VisibleOnScreenNotifier2D.svg" id="100_xt17n"]
+[ext_resource type="Texture2D" uid="uid://d1iy2nmi0itfa" path="res://addons/fastnode/icons/VisibleOnScreenEnabler2D.svg" id="101_6s0to"]
+[ext_resource type="Texture2D" uid="uid://dgq1lrgs5gpow" path="res://addons/fastnode/icons/AudioStreamPlayer.svg" id="102_bq1yf"]
+[ext_resource type="Texture2D" uid="uid://cbrr83npuw5pa" path="res://addons/fastnode/icons/AudioStreamPlayer2D.svg" id="103_vfrd1"]
+[ext_resource type="Texture2D" uid="uid://drbyq16xofejp" path="res://addons/fastnode/icons/AudioListener2D.svg" id="104_hhfff"]
+[ext_resource type="Texture2D" uid="uid://cdl7hai3rlxa5" path="res://addons/fastnode/icons/Camera2D.svg" id="105_01btv"]
+[ext_resource type="Texture2D" uid="uid://74a3ggiw4xmc" path="res://addons/fastnode/icons/Timer.svg" id="106_l5jac"]
+[ext_resource type="Texture2D" uid="uid://qqu5gtf253cr" path="res://addons/fastnode/icons/TileMapLayer.svg" id="107_vwpud"]
+[ext_resource type="Texture2D" uid="uid://b3pl7f5sbcv67" path="res://addons/fastnode/icons/TouchScreenButton.svg" id="108_fdown"]
+[ext_resource type="Texture2D" uid="uid://bb4syvckl4ts5" path="res://addons/fastnode/icons/HTTPRequest.svg" id="109_77cb1"]
+[ext_resource type="Texture2D" uid="uid://6lqn8r1diw87" path="res://addons/fastnode/icons/MultiplayerSpawner.svg" id="110_xfjc4"]
+[ext_resource type="Texture2D" uid="uid://rq34b3usfcph" path="res://addons/fastnode/icons/MultiplayerSynchronizer.svg" id="111_o6rlj"]
+[ext_resource type="Texture2D" uid="uid://dkdgqcvyv4tuy" path="res://addons/fastnode/icons/EditorPlugin.svg" id="112_4w2st"]
+[ext_resource type="Texture2D" uid="uid://caouknvcgl3y" path="res://addons/fastnode/icons/StatusIndicator.svg" id="113_thted"]
+[ext_resource type="Texture2D" uid="uid://bgolx4xt0n34m" path="res://addons/fastnode/icons/Window.svg" id="114_rljwj"]
+[ext_resource type="Texture2D" uid="uid://c01l18qpki6be" path="res://addons/fastnode/icons/AcceptDialog.svg" id="115_pw7lk"]
+[ext_resource type="Texture2D" uid="uid://ckwpjxby0lp0" path="res://addons/fastnode/icons/ConfirmationDialog.svg" id="116_6k74x"]
+[ext_resource type="Texture2D" uid="uid://cop2v18jn8huj" path="res://addons/fastnode/icons/FileDialog.svg" id="117_qfbk2"]
+[ext_resource type="Texture2D" uid="uid://bx80i8drdc8jq" path="res://addons/fastnode/icons/Popup.svg" id="118_kl7xa"]
+[ext_resource type="Texture2D" uid="uid://cuvfc3613enyf" path="res://addons/fastnode/icons/PopupMenu.svg" id="119_tuj8p"]
+[ext_resource type="Texture2D" uid="uid://d4nlc0hm2gbcs" path="res://addons/fastnode/icons/PopupPanel.svg" id="120_xcukd"]
+[ext_resource type="Texture2D" uid="uid://dbsu4nh0wdea" path="res://addons/fastnode/icons/SubViewport.svg" id="121_12pls"]
+
+[node name="diyui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_21xru")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_top = 1.0
+offset_right = 425.0
+offset_bottom = 39.0
+theme_override_constants/separation = 9
+
+[node name="刷新" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "   刷新   "
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="素材" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "素材 : "
+
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+action_mode = 0
+text = "  图片  "
+uri = "https://itch.io/game-assets/free/tag-16x16"
+
+[node name="LinkButton2" type="LinkButton" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+action_mode = 0
+text = "  字体  "
+uri = "https://itch.io/game-assets/free/tag-fonts"
+
+[node name="LinkButton3" type="LinkButton" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+action_mode = 0
+text = "  音乐  "
+uri = "https://itch.io/game-assets/free/tag-music"
+
+[node name="LinkButton4" type="LinkButton" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+action_mode = 0
+text = "  UI  "
+uri = "https://itch.io/game-assets/free/tag-gui"
+
+[node name="工具" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "工具 : "
+
+[node name="LinkButton5" type="LinkButton" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+action_mode = 0
+text = "  图片  "
+uri = "https://guobasoft.com/bigshear"
+
+[node name="LinkButton6" type="LinkButton" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+action_mode = 0
+text = "  字体  "
+uri = "https://fontforge.org/en-US/"
+
+[node name="LinkButton7" type="LinkButton" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+action_mode = 0
+text = "  音乐  "
+uri = "https://www.audacityteam.org/download/windows/"
+
+[node name="LinkButton8" type="LinkButton" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+action_mode = 0
+text = "  海报  "
+uri = "https://jimeng.jianying.com/ai-tool/home"
+
+[node name="工具2" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "助手 : "
+
+[node name="LinkButton9" type="LinkButton" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+action_mode = 0
+text = "  教程  "
+uri = "https://xk3gvpbkxh.feishu.cn/wiki/SeWewE7Wui2edHkXriCce5eUnlh?from=from_copylink"
+
+[node name="LinkButton10" type="LinkButton" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+action_mode = 0
+text = "  速览  "
+uri = "https://xk3gvpbkxh.feishu.cn/wiki/Al3dw1khNiF9MxktlDMcfty8nNc?from=from_copylink"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 115.0
+offset_right = 3.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_unselected_color = Color(1, 1, 0, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 0, 1)
+current_tab = 0
+
+[node name="UI节点" type="ScrollContainer" parent="TabContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/UI节点"]
+layout_mode = 2
+
+[node name="HSeparator7" type="HSeparator" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="容器" type="Label" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "容器 (Container) : "
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Container" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Container
+基础"
+icon = ExtResource("2_p8vlq")
+
+[node name="PanelContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Panel
+面板"
+icon = ExtResource("3_8wgg2")
+
+[node name="TabContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Tab
+选项卡"
+icon = ExtResource("4_gci7p")
+
+[node name="BoxContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Box
+自动排列"
+icon = ExtResource("5_3ibb4")
+
+[node name="HBoxContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "HBox
+水平排列"
+icon = ExtResource("6_3ne63")
+
+[node name="VBoxContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "VBox
+垂直排列"
+icon = ExtResource("7_pw7lk")
+
+[node name="FlowContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Flow
+自适应布局"
+icon = ExtResource("7_q2b1t")
+
+[node name="HFlowContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "HFlow
+水平流布局"
+icon = ExtResource("8_rbvno")
+
+[node name="VFlowContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "VFlow
+垂直流布局"
+icon = ExtResource("9_ckux8")
+
+[node name="SplitContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Split
+自适应分割"
+icon = ExtResource("10_qcaoc")
+
+[node name="HSplitContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "HSplit
+水平分割"
+icon = ExtResource("11_66fuf")
+
+[node name="VSplitContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "VSplit
+垂直分割"
+icon = ExtResource("12_46i08")
+
+[node name="GridContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Grid
+网格排列"
+icon = ExtResource("13_17du7")
+
+[node name="ScrollContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Scroll
+滚动条"
+icon = ExtResource("14_hjjxj")
+
+[node name="MarginContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Margin
+边距"
+icon = ExtResource("15_811fn")
+
+[node name="AspectRatioContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "AspectRatio
+宽高比"
+icon = ExtResource("16_ncsfd")
+
+[node name="CenterContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Center
+居中"
+icon = ExtResource("17_v7mkh")
+
+[node name="SubViewportContainer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "SubViewport
+视窗"
+icon = ExtResource("18_xc3ta")
+
+[node name="GraphElement" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "GraphElement
+图形节点"
+icon = ExtResource("19_y1wkt")
+
+[node name="GraphFrame" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "GraphFrame
+图形分组"
+icon = ExtResource("20_ixc5m")
+
+[node name="GraphNode" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "GraphNode
+图形节点"
+icon = ExtResource("21_wq0vp")
+
+[node name="ColorPicker" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Color
+取色器"
+icon = ExtResource("22_7rjxg")
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="按钮" type="Label" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "按钮 (Button):"
+
+[node name="GridContainer2" type="GridContainer" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 3
+columns = 3
+
+[node name="Button" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Button
+按钮"
+icon = ExtResource("23_66fuf")
+
+[node name="CheckBox" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "CheckBox
+复选框"
+icon = ExtResource("24_46i08")
+
+[node name="CheckButton" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Check
+开关"
+icon = ExtResource("25_17du7")
+
+[node name="ColorPickerButton" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "ColorPicker
+取色器"
+icon = ExtResource("26_hjjxj")
+
+[node name="MenuButton" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Menu
+菜单"
+icon = ExtResource("27_811fn")
+
+[node name="OptionButton" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Option
+下拉菜单"
+icon = ExtResource("28_ncsfd")
+
+[node name="LinkButton" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Link
+链接"
+icon = ExtResource("29_v7mkh")
+
+[node name="TextureButton" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Texture
+贴图按钮"
+icon = ExtResource("30_xc3ta")
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="文本" type="Label" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "文本( Label) :"
+
+[node name="GridContainer3" type="GridContainer" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Label" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer3"]
+layout_mode = 2
+text = "Label
+文本"
+icon = ExtResource("31_v7mkh")
+
+[node name="RichTextLabel" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer3"]
+layout_mode = 2
+text = "RichText
+富文本"
+icon = ExtResource("32_xc3ta")
+
+[node name="LineEdit" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer3"]
+layout_mode = 2
+text = "LineEdit
+单行输入"
+icon = ExtResource("33_y1wkt")
+
+[node name="TextEdit" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer3"]
+layout_mode = 2
+text = "TextEdit
+多行输入"
+icon = ExtResource("34_ixc5m")
+
+[node name="CodeEdit" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer3"]
+layout_mode = 2
+text = "CodeEdit
+代码输入"
+icon = ExtResource("35_wq0vp")
+
+[node name="SpinBox" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer3"]
+layout_mode = 2
+text = "SpinBox
+数字输入"
+icon = ExtResource("36_7rjxg")
+
+[node name="HSeparator3" type="HSeparator" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="图形" type="Label" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "图形(rect):"
+
+[node name="GridContainer4" type="GridContainer" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="ColorRect" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer4"]
+layout_mode = 2
+text = "ColorRect
+颜色矩形"
+icon = ExtResource("37_ani2w")
+
+[node name="TextureRect" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer4"]
+layout_mode = 2
+text = "TextureRect
+贴图矩形"
+icon = ExtResource("38_w0h8w")
+
+[node name="NinePatchRect" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer4"]
+layout_mode = 2
+text = "NinePatchRect
+九宫格矩形"
+icon = ExtResource("39_j627o")
+
+[node name="GraphEdit" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer4"]
+layout_mode = 2
+text = "GraphEdit
+图形编辑"
+icon = ExtResource("40_s6ma1")
+
+[node name="HSeparator4" type="HSeparator" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="进度条" type="Label" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "进度条"
+
+[node name="GridContainer5" type="GridContainer" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="ProgressBar" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer5"]
+layout_mode = 2
+text = "ProgressBar
+线性进度条"
+icon = ExtResource("41_kxtrb")
+
+[node name="TextureProgressBar" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer5"]
+layout_mode = 2
+text = "TextureProgressBar
+纹理进度条"
+icon = ExtResource("42_p3ehs")
+
+[node name="HSlider" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer5"]
+layout_mode = 2
+text = "HSlider
+水平滑块"
+icon = ExtResource("43_uj6wd")
+
+[node name="VSlider" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer5"]
+layout_mode = 2
+text = "VSlider
+垂直滑块"
+icon = ExtResource("44_vqxho")
+
+[node name="HScrollBar" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer5"]
+layout_mode = 2
+text = "HScrollBar
+水平滚动条"
+icon = ExtResource("45_7a3no")
+
+[node name="VScrollBar" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer5"]
+layout_mode = 2
+text = "VScrollBar
+垂直滚动条"
+icon = ExtResource("46_oubdm")
+
+[node name="HSeparator5" type="HSeparator" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="布局" type="Label" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "布局"
+
+[node name="GridContainer6" type="GridContainer" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Panel" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer6"]
+layout_mode = 2
+text = "Panel
+面板"
+icon = ExtResource("47_re711")
+
+[node name="TabBar" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer6"]
+layout_mode = 2
+text = "TabBar
+选项栏"
+icon = ExtResource("48_1meml")
+
+[node name="Tree" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer6"]
+layout_mode = 2
+text = "Tree
+树结构"
+icon = ExtResource("49_1k7xv")
+
+[node name="ItemList" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer6"]
+layout_mode = 2
+text = "ItemList
+列表"
+icon = ExtResource("50_gapxo")
+
+[node name="HSeparator" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer6"]
+layout_mode = 2
+text = "HSeparator
+水平分割"
+icon = ExtResource("51_xxigf")
+
+[node name="VSeparator" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer6"]
+layout_mode = 2
+text = "VSeparator
+垂直分割"
+icon = ExtResource("52_qe4ej")
+
+[node name="ReferenceRect" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer6"]
+layout_mode = 2
+text = "ReferenceRect
+参考区域"
+icon = ExtResource("53_8e8ux")
+
+[node name="MenuBar" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer6"]
+layout_mode = 2
+text = "MenuBar
+菜单栏"
+icon = ExtResource("54_aqm83")
+
+[node name="VideoStreamPlayer" type="Button" parent="TabContainer/UI节点/VBoxContainer/GridContainer6"]
+layout_mode = 2
+text = "Video
+StreamPlayer
+视频播放"
+icon = ExtResource("55_bn5ma")
+
+[node name="HSeparator6" type="HSeparator" parent="TabContainer/UI节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="2D节点" type="ScrollContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/2D节点"]
+layout_mode = 2
+
+[node name="基础" type="Label" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "基础"
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Node" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Node
+节点"
+icon = ExtResource("56_ju8s3")
+
+[node name="Node2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Node2D
+2d节点"
+icon = ExtResource("57_j0xal")
+
+[node name="Sprite2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Sprite2D
+图片节点"
+icon = ExtResource("58_qtan4")
+
+[node name="Polygon2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Polygon2D
+多边形节点"
+icon = ExtResource("59_6iaqx")
+
+[node name="Line2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Line2D
+线条"
+icon = ExtResource("60_lsy5n")
+
+[node name="MeshInstance2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Mesh
+nstance2D
+网格"
+icon = ExtResource("61_ugkky")
+
+[node name="MultiMeshInstance2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "MultiMesh
+Instance2D
+多重网格"
+icon = ExtResource("62_xsjel")
+
+[node name="Marker2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Marker2D
+标记"
+icon = ExtResource("63_hgwqi")
+
+[node name="RemoteTransform2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Remote
+Transform2D
+远程变换"
+icon = ExtResource("64_rljwj")
+
+[node name="ResourcePreloader" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Resource
+Preloader
+资源预加载"
+icon = ExtResource("65_pw7lk")
+
+[node name="ShaderGlobalsOverride" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Shader
+GlobalsOverride
+着色器全局变量"
+icon = ExtResource("66_6k74x")
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="物理" type="Label" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "物理"
+
+[node name="GridContainer2" type="GridContainer" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="StaticBody2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "StaticBody2D
+静态刚体"
+icon = ExtResource("67_qfbk2")
+
+[node name="RigidBody2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "RigidBody2D
+动态刚体"
+icon = ExtResource("68_kl7xa")
+
+[node name="AnimatableBody2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Animatable
+Body2D
+动画刚体"
+icon = ExtResource("69_tuj8p")
+
+[node name="Area2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Area2D
+区域检测"
+icon = ExtResource("70_xcukd")
+
+[node name="ShapeCast2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "ShapeCast2D
+形状检测"
+icon = ExtResource("71_12pls")
+
+[node name="RayCast2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "RayCast2D
+射线检测"
+icon = ExtResource("72_qjfst")
+
+[node name="CharacterBody2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Character
+Body2D
+人物控制"
+icon = ExtResource("73_u5fgp")
+
+[node name="CollisionShape2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Collision
+Shape2D
+碰撞形状"
+icon = ExtResource("74_uixi8")
+
+[node name="CollisionPolygon2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Collision
+Polygon2D
+碰撞多边形"
+icon = ExtResource("75_muno2")
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="动画" type="Label" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "动画"
+
+[node name="GridContainer3" type="GridContainer" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="AnimatedSprite2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer3"]
+layout_mode = 2
+text = "Animated
+Sprite2D
+序列动画"
+icon = ExtResource("76_kholh")
+
+[node name="AnimationPlayer" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer3"]
+layout_mode = 2
+text = "Animation
+Player
+动画制作"
+icon = ExtResource("77_qcxm6")
+
+[node name="AnimationTree" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer3"]
+layout_mode = 2
+text = "Animation
+Tree
+动画控制"
+icon = ExtResource("78_m3py4")
+
+[node name="HSeparator3" type="HSeparator" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="骨骼" type="Label" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "骨骼"
+
+[node name="GridContainer4" type="GridContainer" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="PhysicalBone2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer4"]
+layout_mode = 2
+text = "PhysicalBone2D
+物理骨骼"
+icon = ExtResource("79_d4wy8")
+
+[node name="Skeleton2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer4"]
+layout_mode = 2
+text = "Skeleton2D
+骨骼根节点"
+icon = ExtResource("80_rf60g")
+
+[node name="Bone2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer4"]
+layout_mode = 2
+text = "Bone2D
+骨骼子节点"
+icon = ExtResource("81_x8ter")
+
+[node name="HSeparator4" type="HSeparator" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="粒子" type="Label" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "粒子"
+
+[node name="GridContainer5" type="GridContainer" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="CPUParticles2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer5"]
+layout_mode = 2
+text = "CPUParticles2D
+CPU粒子系统"
+icon = ExtResource("82_gagpk")
+
+[node name="GPUParticles2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer5"]
+layout_mode = 2
+text = "GPUParticles2D
+GPU 粒子系统"
+icon = ExtResource("83_niudi")
+
+[node name="HSeparator5" type="HSeparator" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="光照" type="Label" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "光照"
+
+[node name="GridContainer6" type="GridContainer" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="DirectionalLight2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer6"]
+layout_mode = 2
+text = "Directional
+Light2D
+平行光"
+icon = ExtResource("84_gx7q8")
+
+[node name="PointLight2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer6"]
+layout_mode = 2
+text = "Point
+Light2D
+点光"
+icon = ExtResource("84_gx7q8")
+
+[node name="LightOccluder2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer6"]
+layout_mode = 2
+text = "Light
+Occluder2D
+遮挡光线"
+icon = ExtResource("85_blyu3")
+
+[node name="HSeparator6" type="HSeparator" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="导航" type="Label" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "导航"
+
+[node name="GridContainer7" type="GridContainer" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="NavigationRegion2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer7"]
+layout_mode = 2
+text = "Navigation
+Region2D
+导航区域"
+icon = ExtResource("86_23vvg")
+
+[node name="NavigationLink2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer7"]
+layout_mode = 2
+text = "Navigation
+Link2D
+导航区连接"
+icon = ExtResource("87_vrx3o")
+
+[node name="NavigationObstacle2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer7"]
+layout_mode = 2
+text = "Navigation
+Obstacle2D
+阻碍导航"
+icon = ExtResource("88_0k66d")
+
+[node name="NavigationAgent2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer7"]
+layout_mode = 2
+text = "Navigation
+Agent2D
+导航代理"
+icon = ExtResource("89_rlmyn")
+
+[node name="Path2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer7"]
+layout_mode = 2
+text = "Path2D
+路径"
+icon = ExtResource("90_ykian")
+
+[node name="PathFollow2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer7"]
+layout_mode = 2
+text = "PathFollow2D
+路径跟随"
+icon = ExtResource("91_tltrc")
+
+[node name="HSeparator7" type="HSeparator" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="视效" type="Label" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "视效"
+
+[node name="GridContainer8" type="GridContainer" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="CanvasLayer" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer8"]
+layout_mode = 2
+text = "Canvas
+Layer
+图层"
+icon = ExtResource("92_3yesk")
+
+[node name="CanvasGroup" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer8"]
+layout_mode = 2
+text = "Canvas
+Group
+图层组织"
+icon = ExtResource("93_tf7ct")
+
+[node name="CanvasModulate" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer8"]
+layout_mode = 2
+text = "Canvas
+Modulate
+图层调节"
+icon = ExtResource("94_w5kbo")
+
+[node name="ParallaxBackground" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer8"]
+layout_mode = 2
+text = "Parallax
+Background
+视差背景"
+icon = ExtResource("95_wo4vt")
+
+[node name="Parallax2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer8"]
+layout_mode = 2
+text = "Parallax
+2D
+视差 2d"
+icon = ExtResource("96_oj2j2")
+
+[node name="ParallaxLayer" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer8"]
+layout_mode = 2
+text = "Parallax
+Layer
+视差层"
+icon = ExtResource("97_88hhx")
+
+[node name="WorldEnvironment" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer8"]
+layout_mode = 2
+text = "World
+Environment
+世界环境效果"
+icon = ExtResource("98_112ha")
+
+[node name="BackBufferCopy" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer8"]
+layout_mode = 2
+text = "BackBuffer
+Copy
+后处理"
+icon = ExtResource("99_7u88t")
+
+[node name="VisibleOnScreenNotifier2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer8"]
+layout_mode = 2
+text = "VisibleOn
+Screen
+Notifier2D
+检测可见性"
+icon = ExtResource("100_xt17n")
+
+[node name="VisibleOnScreenEnabler2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer8"]
+layout_mode = 2
+text = "VisibleOn
+Screen
+Enabler2D
+检测可控性"
+icon = ExtResource("101_6s0to")
+
+[node name="HSeparator8" type="HSeparator" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="音频" type="Label" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "音频"
+
+[node name="GridContainer9" type="GridContainer" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="AudioStreamPlayer" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer9"]
+layout_mode = 2
+text = "Audio
+StreamPlayer
+音频播放"
+icon = ExtResource("102_bq1yf")
+
+[node name="AudioStreamPlayer2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer9"]
+layout_mode = 2
+text = "Audio
+StreamPlayer2D
+音频播放 2d"
+icon = ExtResource("103_vfrd1")
+
+[node name="AudioListener2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer9"]
+layout_mode = 2
+text = "Audio
+Listener2D
+音频监听"
+icon = ExtResource("104_hhfff")
+
+[node name="HSeparator9" type="HSeparator" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="特殊" type="Label" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "特殊"
+
+[node name="GridContainer10" type="GridContainer" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Camera2D" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer10"]
+layout_mode = 2
+text = "Camera2D
+相机"
+icon = ExtResource("105_01btv")
+
+[node name="Timer" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer10"]
+layout_mode = 2
+text = "Timer
+计时器"
+icon = ExtResource("106_l5jac")
+
+[node name="TileMapLayer" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer10"]
+layout_mode = 2
+text = "TileMapLayer
+瓦片层"
+icon = ExtResource("107_vwpud")
+
+[node name="TouchScreenButton" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer10"]
+layout_mode = 2
+text = "TouchScreenButton
+触控按钮"
+icon = ExtResource("108_fdown")
+
+[node name="HSeparator10" type="HSeparator" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="网络" type="Label" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "网络"
+
+[node name="GridContainer11" type="GridContainer" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="HTTPRequest" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer11"]
+layout_mode = 2
+text = "HTTPRequest
+网络请求"
+icon = ExtResource("109_77cb1")
+
+[node name="MultiplayerSpawner" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer11"]
+layout_mode = 2
+text = "Multiplayer
+Spawner
+多人游戏生成"
+icon = ExtResource("110_xfjc4")
+
+[node name="MultiplayerSynchronizer" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer11"]
+layout_mode = 2
+text = "Multiplayer
+Synchronizer
+多人游戏同步"
+icon = ExtResource("111_o6rlj")
+
+[node name="HSeparator11" type="HSeparator" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="工具" type="Label" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "工具"
+
+[node name="GridContainer12" type="GridContainer" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="EditorPlugin" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer12"]
+layout_mode = 2
+text = "EditorPlugin
+插件"
+icon = ExtResource("112_4w2st")
+
+[node name="GridMapEditorPlugin" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer12"]
+layout_mode = 2
+text = "GridMap
+EditorPlugin
+网格地图插件"
+
+[node name="StatusIndicator" type="Button" parent="TabContainer/2D节点/VBoxContainer/GridContainer12"]
+layout_mode = 2
+text = "Status
+Indicator
+显示状态"
+icon = ExtResource("113_thted")
+
+[node name="HSeparator12" type="HSeparator" parent="TabContainer/2D节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="窗口节点" type="ScrollContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/窗口节点"]
+layout_mode = 2
+
+[node name="刷新" type="Button" parent="TabContainer/窗口节点/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "刷新"
+
+[node name="窗口" type="Label" parent="TabContainer/窗口节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "窗口"
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/窗口节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Window" type="Button" parent="TabContainer/窗口节点/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Window
+窗口"
+icon = ExtResource("114_rljwj")
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/窗口节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="对话框" type="Label" parent="TabContainer/窗口节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "对话框"
+
+[node name="GridContainer2" type="GridContainer" parent="TabContainer/窗口节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="AcceptDialog" type="Button" parent="TabContainer/窗口节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Accept
+Dialog
+接受信息"
+icon = ExtResource("115_pw7lk")
+
+[node name="ConfirmationDialog" type="Button" parent="TabContainer/窗口节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Confirmation
+Dialog
+确认信息"
+icon = ExtResource("116_6k74x")
+
+[node name="FileDialog" type="Button" parent="TabContainer/窗口节点/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "File
+Dialog
+文件信息"
+icon = ExtResource("117_qfbk2")
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/窗口节点/VBoxContainer"]
+layout_mode = 2
+
+[node name="弹出框" type="Label" parent="TabContainer/窗口节点/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "弹出框"
+
+[node name="GridContainer3" type="GridContainer" parent="TabContainer/窗口节点/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Popup" type="Button" parent="TabContainer/窗口节点/VBoxContainer/GridContainer3"]
+layout_mode = 2
+text = "Popup
+基础弹窗"
+icon = ExtResource("118_kl7xa")
+
+[node name="PopupMenu" type="Button" parent="TabContainer/窗口节点/VBoxContainer/GridContainer3"]
+layout_mode = 2
+text = "Popup
+Menu
+弹出菜单"
+icon = ExtResource("119_tuj8p")
+
+[node name="PopupPanel" type="Button" parent="TabContainer/窗口节点/VBoxContainer/GridContainer3"]
+layout_mode = 2
+text = "Popup
+Panel
+弹出面板"
+icon = ExtResource("120_xcukd")
+
+[node name="SubViewport" type="Button" parent="TabContainer/窗口节点/VBoxContainer/GridContainer3"]
+layout_mode = 2
+text = "Sub
+Viewport
+子窗口"
+icon = ExtResource("121_12pls")
+
+[node name="HSeparator3" type="HSeparator" parent="TabContainer/窗口节点/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="HBoxContainer/刷新" to="." method="_on_刷新_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/Container" to="." method="_on_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/PanelContainer" to="." method="_on_panel_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/TabContainer" to="." method="_on_tab_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/BoxContainer" to="." method="_on_box_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/HBoxContainer" to="." method="_on_h_box_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/VBoxContainer" to="." method="_on_v_box_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/FlowContainer" to="." method="_on_flow_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/HFlowContainer" to="." method="_on_h_flow_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/VFlowContainer" to="." method="_on_v_flow_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/SplitContainer" to="." method="_on_split_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/HSplitContainer" to="." method="_on_h_split_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/VSplitContainer" to="." method="_on_v_split_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/GridContainer" to="." method="_on_grid_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/ScrollContainer" to="." method="_on_scroll_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/MarginContainer" to="." method="_on_margin_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/AspectRatioContainer" to="." method="_on_aspect_ratio_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/CenterContainer" to="." method="_on_center_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/SubViewportContainer" to="." method="_on_sub_viewport_container_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/GraphElement" to="." method="_on_graph_element_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/GraphFrame" to="." method="_on_graph_frame_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/GraphNode" to="." method="_on_graph_node_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer/ColorPicker" to="." method="_on_color_picker_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer2/CheckBox" to="." method="_on_check_box_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer2/CheckButton" to="." method="_on_check_button_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer2/ColorPickerButton" to="." method="_on_color_picker_button_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer2/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer2/OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer2/LinkButton" to="." method="_on_link_button_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer2/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer3/Label" to="." method="_on_label_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer3/RichTextLabel" to="." method="_on_rich_text_label_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer3/LineEdit" to="." method="_on_line_edit_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer3/TextEdit" to="." method="_on_text_edit_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer3/CodeEdit" to="." method="_on_code_edit_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer3/SpinBox" to="." method="_on_spin_box_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer4/ColorRect" to="." method="_on_color_rect_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer4/TextureRect" to="." method="_on_texture_rect_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer4/NinePatchRect" to="." method="_on_nine_patch_rect_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer4/GraphEdit" to="." method="_on_graph_edit_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer5/ProgressBar" to="." method="_on_progress_bar_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer5/TextureProgressBar" to="." method="_on_texture_progress_bar_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer5/HSlider" to="." method="_on_h_slider_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer5/VSlider" to="." method="_on_v_slider_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer5/HScrollBar" to="." method="_on_h_scroll_bar_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer5/VScrollBar" to="." method="_on_v_scroll_bar_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer6/Panel" to="." method="_on_panel_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer6/TabBar" to="." method="_on_tab_bar_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer6/Tree" to="." method="_on_tree_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer6/ItemList" to="." method="_on_item_list_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer6/HSeparator" to="." method="_on_h_separator_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer6/VSeparator" to="." method="_on_v_separator_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer6/ReferenceRect" to="." method="_on_reference_rect_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer6/MenuBar" to="." method="_on_menu_bar_pressed"]
+[connection signal="pressed" from="TabContainer/UI节点/VBoxContainer/GridContainer6/VideoStreamPlayer" to="." method="_on_video_stream_player_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer/Node" to="." method="_on_node_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer/Node2D" to="." method="_on_node_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer/Sprite2D" to="." method="_on_sprite_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer/Polygon2D" to="." method="_on_polygon_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer/Line2D" to="." method="_on_line_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer/MeshInstance2D" to="." method="_on_mesh_instance_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer/MultiMeshInstance2D" to="." method="_on_multi_mesh_instance_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer/Marker2D" to="." method="_on_marker_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer/RemoteTransform2D" to="." method="_on_remote_transform_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer/ResourcePreloader" to="." method="_on_resource_preloader_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer/ShaderGlobalsOverride" to="." method="_on_shader_globals_override_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer2/StaticBody2D" to="." method="_on_static_body_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer2/RigidBody2D" to="." method="_on_rigid_body_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer2/AnimatableBody2D" to="." method="_on_animatable_body_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer2/Area2D" to="." method="_on_area_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer2/ShapeCast2D" to="." method="_on_shape_cast_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer2/RayCast2D" to="." method="_on_ray_cast_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer2/CharacterBody2D" to="." method="_on_character_body_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer2/CollisionShape2D" to="." method="_on_collision_shape_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer2/CollisionPolygon2D" to="." method="_on_collision_polygon_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer3/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer3/AnimationPlayer" to="." method="_on_animation_player_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer3/AnimationTree" to="." method="_on_animation_tree_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer4/PhysicalBone2D" to="." method="_on_physical_bone_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer4/Skeleton2D" to="." method="_on_skeleton_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer4/Bone2D" to="." method="_on_bone_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer5/CPUParticles2D" to="." method="_on_cpu_particles_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer5/GPUParticles2D" to="." method="_on_gpu_particles_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer6/DirectionalLight2D" to="." method="_on_directional_light_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer6/PointLight2D" to="." method="_on_point_light_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer6/LightOccluder2D" to="." method="_on_light_occluder_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer7/NavigationRegion2D" to="." method="_on_navigation_region_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer7/NavigationLink2D" to="." method="_on_navigation_link_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer7/NavigationObstacle2D" to="." method="_on_navigation_obstacle_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer7/NavigationAgent2D" to="." method="_on_navigation_agent_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer7/Path2D" to="." method="_on_path_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer7/PathFollow2D" to="." method="_on_path_follow_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer8/CanvasLayer" to="." method="_on_canvas_layer_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer8/CanvasGroup" to="." method="_on_canvas_group_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer8/CanvasModulate" to="." method="_on_canvas_modulate_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer8/ParallaxBackground" to="." method="_on_parallax_background_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer8/Parallax2D" to="." method="_on_parallax_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer8/ParallaxLayer" to="." method="_on_parallax_layer_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer8/WorldEnvironment" to="." method="_on_world_environment_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer8/BackBufferCopy" to="." method="_on_back_buffer_copy_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer8/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer8/VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer9/AudioStreamPlayer" to="." method="_on_audio_stream_player_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer9/AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer9/AudioListener2D" to="." method="_on_audio_listener_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer10/Camera2D" to="." method="_on_camera_2d_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer10/Timer" to="." method="_on_timer_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer10/TileMapLayer" to="." method="_on_tile_map_layer_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer10/TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer11/HTTPRequest" to="." method="_on_http_request_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer11/MultiplayerSpawner" to="." method="_on_multiplayer_spawner_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer11/MultiplayerSynchronizer" to="." method="_on_multiplayer_synchronizer_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer12/EditorPlugin" to="." method="_on_editor_plugin_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer12/GridMapEditorPlugin" to="." method="_on_grid_map_editor_plugin_pressed"]
+[connection signal="pressed" from="TabContainer/2D节点/VBoxContainer/GridContainer12/StatusIndicator" to="." method="_on_status_indicator_pressed"]
+[connection signal="pressed" from="TabContainer/窗口节点/VBoxContainer/刷新" to="." method="_on_刷新_pressed"]
+[connection signal="pressed" from="TabContainer/窗口节点/VBoxContainer/GridContainer/Window" to="." method="_on_window_pressed"]
+[connection signal="pressed" from="TabContainer/窗口节点/VBoxContainer/GridContainer2/AcceptDialog" to="." method="_on_accept_dialog_pressed"]
+[connection signal="pressed" from="TabContainer/窗口节点/VBoxContainer/GridContainer2/ConfirmationDialog" to="." method="_on_confirmation_dialog_pressed"]
+[connection signal="pressed" from="TabContainer/窗口节点/VBoxContainer/GridContainer2/FileDialog" to="." method="_on_file_dialog_pressed"]
+[connection signal="pressed" from="TabContainer/窗口节点/VBoxContainer/GridContainer3/Popup" to="." method="_on_popup_pressed"]
+[connection signal="pressed" from="TabContainer/窗口节点/VBoxContainer/GridContainer3/PopupMenu" to="." method="_on_popup_menu_pressed"]
+[connection signal="pressed" from="TabContainer/窗口节点/VBoxContainer/GridContainer3/PopupPanel" to="." method="_on_popup_panel_pressed"]
+[connection signal="pressed" from="TabContainer/窗口节点/VBoxContainer/GridContainer3/SubViewport" to="." method="_on_sub_viewport_pressed"]

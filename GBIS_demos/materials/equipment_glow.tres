@@ -1,0 +1,56 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://du4t05r3sodcb"]
+
+[sub_resource type="Shader" id="Shader_2xye1"]
+code = "shader_type canvas_item;
+render_mode blend_mix; // 确保透明度混合正常
+
+// ===== 强化装备（常亮+流动） =====
+uniform bool enable_enhance = false;
+uniform vec4 enhance_color : source_color = vec4(0.9, 0.7, 0.3, 1.0); // 金色光效
+uniform float enhance_speed : hint_range(0.1, 5.0) = 0.5;
+uniform float enhance_width : hint_range(0.01, 1.0) = 1;
+uniform float enhance_brightness : hint_range(0.5, 5) = 1;
+
+// ===== 卓越装备（纯脉冲） =====
+uniform bool enable_excellent = false;
+uniform vec4 excellent_color : source_color = vec4(0.3, 1.0, 0.4, 1.0); // 绿色光效
+uniform float excellent_speed : hint_range(0.1, 3.0) = 2.2;
+uniform float excellent_brightness : hint_range(0.1, 0.5) = 0.2;
+
+void fragment() {
+    // 读取原始纹理（关键修正：用 TEXTURE 而不是自定义 sampler2D）
+    vec4 tex_color = texture(TEXTURE, UV);
+
+    vec3 final_color = tex_color.rgb;
+    float alpha = tex_color.a;
+
+    // ===== 强化装备效果（常亮+流动） =====
+    if (enable_enhance && alpha > 0.0) {
+        float flow = sin(TIME * enhance_speed + UV.x * 5.0) * 0.3 + 0.5;
+        float edge = smoothstep(1.0 - enhance_width, 1.0, alpha);
+        vec3 glow = enhance_color.rgb * flow * edge * enhance_brightness;
+        final_color += glow;
+    }
+
+    // ===== 卓越装备效果（纯脉冲） =====
+    if (enable_excellent && alpha > 0.0) {
+        float pulse = sin(TIME * excellent_speed) * 0.5 + 0.8;
+        vec3 glow = excellent_color.rgb * pulse * excellent_brightness * alpha;
+        final_color += glow;
+    }
+
+    COLOR = vec4(final_color, alpha);
+}
+"
+
+[resource]
+shader = SubResource("Shader_2xye1")
+shader_parameter/enable_enhance = false
+shader_parameter/enhance_color = Color(0.561911, 0.698818, 0.966835, 1)
+shader_parameter/enhance_speed = 0.5
+shader_parameter/enhance_width = 1.0
+shader_parameter/enhance_brightness = 1.0
+shader_parameter/enable_excellent = false
+shader_parameter/excellent_color = Color(0.776312, 0.756682, 0, 1)
+shader_parameter/excellent_speed = 2.2
+shader_parameter/excellent_brightness = 0.2

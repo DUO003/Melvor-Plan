@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://botw72numvpcm"]
+
+[ext_resource type="Script" path="res://模块/简易进度条模块/简易进度条模块.gd" id="1_wxsew"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyh31"]
+bg_color = Color(0, 0.923576, 0.315519, 1)
+
+[node name="进度条模块" type="ProgressBar"]
+offset_right = 435.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 33
+theme_override_styles/fill = SubResource("StyleBoxFlat_jyh31")
+value = 100.0
+script = ExtResource("1_wxsew")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqqul8xp473ig"]
+
+[ext_resource type="Script" path="res://模块/版本号模块/华为HTTP验证版本更新模块/华为HTTP验证版本更新模块.gd" id="1_x4h7q"]
+
+[node name="华为HTTP验证版本更新模块" type="Node"]
+script = ExtResource("1_x4h7q")

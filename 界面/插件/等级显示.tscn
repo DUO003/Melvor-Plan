@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://bk4u705i4hop"]
+
+[ext_resource type="Script" uid="uid://lscsq5yonm2v" path="res://代码/等级显示.gd" id="1_t1bs0"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_brtdv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brtdv"]
+bg_color = Color(0.1924, 0.557467, 0.74, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_in4vb"]
+bg_color = Color(0.74, 0.557467, 0.1924, 1)
+
+[node name="等级显示" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t1bs0")
+
+[node name="精通进度条" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 1.0
+offset_bottom = 10.0
+grow_horizontal = 2
+theme = ExtResource("2_brtdv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_brtdv")
+step = 1.0
+show_percentage = false
+
+[node name="熟练进度条" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme = ExtResource("2_brtdv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_in4vb")
+step = 1.0
+show_percentage = false
+
+[node name="文本" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 15.0
+offset_right = 301.0
+offset_bottom = 98.0
+theme = ExtResource("2_brtdv")
+theme_override_font_sizes/font_size = 60
+text = "合成 LV:99"

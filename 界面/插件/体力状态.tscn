@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://dx5oki37mgsju"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_wok3q"]
+[ext_resource type="Script" uid="uid://3qbuxr56jjr6" path="res://代码/专属代码/特殊功能/体力系统.gd" id="2_n7kj1"]
+[ext_resource type="Texture2D" uid="uid://bdg2mnes3rcs" path="res://素材/游戏素材/食品包/without background/33.png" id="3_0tcwq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxrpf"]
+bg_color = Color(0.91764706, 0.60784316, 0.24705882, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okb3m"]
+bg_color = Color(0.6901961, 0.2784314, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="体力状态" type="Control"]
+custom_minimum_size = Vector2(400, 70)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 70.0
+theme = ExtResource("1_wok3q")
+script = ExtResource("2_n7kj1")
+
+[node name="体力贴图" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 95.0
+offset_bottom = 70.0
+mouse_behavior_recursive = 1
+texture = ExtResource("3_0tcwq")
+expand_mode = 1
+
+[node name="体力值" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 96.0
+offset_right = 396.0
+offset_bottom = 70.0
+mouse_behavior_recursive = 1
+theme = ExtResource("1_wok3q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rxrpf")
+value = 50.0
+show_percentage = false
+
+[node name="体力" type="Label" parent="体力值"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_behavior_recursive = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.5529556, 0.55295557, 0.55295557, 0.4627451)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 40
+text = "120/240"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="扩展内容" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_top = 72.0
+offset_right = 392.0
+offset_bottom = 160.0
+mouse_behavior_recursive = 1
+color = Color(0.92, 0.6065867, 0.24839999, 0.8627451)
+
+[node name="体力回复条" type="ProgressBar" parent="扩展内容"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 392.0
+offset_bottom = 10.0
+mouse_behavior_recursive = 1
+theme = ExtResource("1_wok3q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_okb3m")
+value = 50.0
+show_percentage = false
+
+[node name="扩展信息" type="RichTextLabel" parent="扩展内容"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(374, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -188.0
+offset_top = 10.0
+offset_right = 186.0
+offset_bottom = 109.0
+grow_horizontal = 2
+mouse_behavior_recursive = 1
+theme = ExtResource("1_wok3q")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.5529556, 0.55295557, 0.55295557, 0.4627451)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[img=50x33]res://素材/游戏素材/食品包/without background/33.png[/img]体力恢复速度1点/6分钟
+[img=40x30]res://素材/游戏素材/货币/without background/17.png[/img]门票总库存:
+"
+fit_content = true
+scroll_active = false

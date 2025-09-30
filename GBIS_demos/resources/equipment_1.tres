@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=4 format=3 uid="uid://ce8kda8rqy6h2"]
+
+[ext_resource type="Texture2D" uid="uid://h387k1xiin2o" path="res://GBIS_demos/assets/test_item_icons/boots.png" id="1_07u3w"]
+[ext_resource type="Script" uid="uid://c81d67advvltj" path="res://addons/grid_base_inventory_system/core/model/item/equipment_data.gd" id="1_jledh"]
+[ext_resource type="Material" uid="uid://du4t05r3sodcb" path="res://GBIS_demos/materials/equipment_glow.tres" id="2_8ux6s"]
+
+[resource]
+script = ExtResource("1_jledh")
+item_name = "Test Boots"
+type = "BOOTS"
+icon = ExtResource("1_07u3w")
+columns = 2
+rows = 2
+material = ExtResource("2_8ux6s")
+shader_params = Dictionary[String, Variant]({})
+metadata/_custom_type_script = "uid://c81d67advvltj"

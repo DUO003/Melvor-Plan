@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://ooiwqu3875ea"]
+
+[ext_resource type="Script" uid="uid://biebnunh5ouau" path="res://代码/专属代码/合成主界面/动作进度条.gd" id="1_aj24r"]
+
+[node name="动作进度条" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_aj24r")
+
+[node name="进度条" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -15.0
+offset_right = 200.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+
+[node name="动作名文本" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2

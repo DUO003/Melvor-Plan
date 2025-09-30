@@ -1,0 +1,16 @@
+[gd_scene load_steps=0 format=3 uid="uid://dujompdkcu0uf"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="标签" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "字符串:"
+
+[node name="字段" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+placeholder_text = "请输入内容"

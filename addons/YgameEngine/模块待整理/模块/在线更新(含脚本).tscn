@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckguva0bbt31p"]
+
+[sub_resource type="GDScript" id="GDScript_g1wro"]
+script/source = "extends Node2D
+
+func _ready() -> void:
+	##远程文件:updata.json+资源
+	##使用说明:在data目录使用打包工具,直接在data使用打包工具,会自动生成data文件夹,里面上传到直链即可,搭配data目录
+	调试.查看文件(\"res://data\")
+	var 直链=\"https://xxx.con/update/\"
+	var 查询=await 网页.请求_GET并解析JSON(直链+\"updata.json\")
+	if 查询.网页状态码!=200:
+		调试.打印(\"查询到已停运\")
+		return
+	var 需要更新的文件 = 查询.内容
+	调试.打印(需要更新的文件)
+	var 加载进度=0
+	for 在线文件 in 需要更新的文件:#循环数组
+		var 文件名 = 在线文件[\"filename\"]
+		var 文件MD5 = 在线文件[\"md5\"]
+		var 本地路径 = \"user://\"  # 假设文件保存在项目的资源目录下
+		var 文件是否存在=文件.是否存在(文件名)
+		if 文件是否存在==true and 文件MD5==文件.获取MD5值(本地路径+文件名):
+			加载进度+=1
+		else :
+			await 网页.请求下载文件(直链+文件名,\"user://\"+文件名)
+			加载进度+=1
+		调试.打印(\"加载中 %s / %s\" %[加载进度,需要更新的文件.size()])
+		调试.注释打印(\"查看\",本地路径+文件名+\"   本地的MD5:\"+文件.获取MD5值(本地路径+文件名)+\"是否一致:\"+文件MD5==文件.获取MD5值(本地路径+文件名))
+		调试.注释打印(\"加载资源包\",文件名+\"=\"+在线文件)
+		调试.注释打印(\"加载zip成功\",项目设置.加载资源(\"user://\"+文件名))
+		调试.注释打印(\"加载数据包:\",\"user://\"+文件名)
+	
+	调试.查看文件(\"res://data\")
+	场景.切换场景(\"res://data/场景/场景.tscn\")#加载成功后的切换
+	pass # Replace with function body.
+"
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_g1wro")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 452.0
+offset_top = 88.0
+offset_right = 524.0
+offset_bottom = 119.0
+text = "开始加载"

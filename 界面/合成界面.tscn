@@ -1,0 +1,571 @@
+[gd_scene load_steps=30 format=3 uid="uid://c2ikyp8oaix5u"]
+
+[ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="1_iqbb7"]
+[ext_resource type="Script" uid="uid://v0yytth2tqx2" path="res://代码/专属代码/合成主界面/合成界面.gd" id="2_u2knn"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="3_pbgl2"]
+[ext_resource type="Texture2D" uid="uid://cngwlxm675t74" path="res://素材/AAA其他/默认按钮.svg" id="4_wbi74"]
+[ext_resource type="Texture2D" uid="uid://bwlsnmdrtqxxo" path="res://素材/游戏素材/货币/without background/36.png" id="5_u2knn"]
+[ext_resource type="Texture2D" uid="uid://c4gb58t3lxupt" path="res://素材/游戏素材/货币/without background/13.png" id="6_wbi74"]
+[ext_resource type="Texture2D" uid="uid://do0gso7k5joc4" path="res://素材/游戏素材/货币/without background/16.png" id="7_dk4n3"]
+[ext_resource type="Texture2D" uid="uid://ba8c7d431qjma" path="res://素材/游戏素材/货币/without background/11.png" id="8_1v7ey"]
+[ext_resource type="Script" uid="uid://bmlc8vpbcln8u" path="res://代码/专属代码/合成主界面/测试.gd" id="9_c6cx4"]
+[ext_resource type="Texture2D" uid="uid://bl4iykenitqq" path="res://素材/像素/所有.png" id="9_iqbb7"]
+[ext_resource type="Texture2D" uid="uid://do0nhm7b1poyf" path="res://素材/游戏素材/货币/without background/49.png" id="9_l4usl"]
+[ext_resource type="Texture2D" uid="uid://dbidx7lt8kclg" path="res://素材/游戏素材/货币/without background/50.png" id="10_kqimc"]
+[ext_resource type="Texture2D" uid="uid://conmhorhmnqpg" path="res://素材/像素/框.png" id="11_3rko8"]
+[ext_resource type="Script" uid="uid://dxqqna74h0y6o" path="res://代码/专属代码/合成主界面/配方选择器代码.gd" id="12_8sqgc"]
+[ext_resource type="Script" uid="uid://bclwdcgdi0rv7" path="res://代码/专属代码/合成主界面/筛选器.gd" id="12_b1l35"]
+[ext_resource type="Texture2D" uid="uid://cg5lbyhyg8ys3" path="res://素材/像素/标准剑.png" id="14_wt2ge"]
+[ext_resource type="Script" uid="uid://cy41kvs4h32y8" path="res://代码/专属代码/合成主界面/悬浮面板.gd" id="15_wt2ge"]
+[ext_resource type="PackedScene" uid="uid://ooiwqu3875ea" path="res://界面/插件/动作进度条.tscn" id="15_yntay"]
+[ext_resource type="PackedScene" uid="uid://byxndkdhqwumw" path="res://界面/插件/圆形进度条.tscn" id="19_1v7ey"]
+[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="19_dk4n3"]
+[ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="19_h2b3j"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="21_kqimc"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="22_h2b3j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqimc"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("22_h2b3j")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2b3j"]
+bg_color = Color(0.68235296, 0.54901963, 0.29803923, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.41, 0.28822997, 0.0779, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+expand_margin_bottom = -5.0
+script = ExtResource("22_h2b3j")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+margin_bottom = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wjp5r"]
+texture = ExtResource("14_wt2ge")
+expand_margin_left = -10.0
+expand_margin_top = -5.0
+expand_margin_right = -10.0
+expand_margin_bottom = -30.0
+script = ExtResource("19_h2b3j")
+margin_left = -10
+margin_top = -5
+margin_right = -10
+margin_bottom = -30
+metadata/_custom_type_script = "uid://dr0317kuw34um"
+
+[sub_resource type="StyleBox" id="StyleBox_wjp5r"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("21_kqimc")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kqimc"), SubResource("StyleBoxFlat_h2b3j"), SubResource("StyleBoxTexture_wjp5r")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjp5r"]
+bg_color = Color(0.51, 0.35852996, 0.09689999, 0.15686275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2xcc"]
+bg_color = Color(0.51, 0.35852996, 0.09689999, 0.28235295)
+
+[node name="合成主界面" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -220.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_pbgl2")
+script = ExtResource("2_u2knn")
+metadata/_edit_lock_ = true
+
+[node name="标题" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+color = Color(0.75, 0.67, 0.45, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="等级显示" parent="标题" instance=ExtResource("19_dk4n3")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="背景" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.004
+offset_top = 100.0
+offset_bottom = -3.99994
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.82, 0.732533, 0.492, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="测试" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -204.0
+offset_top = 24.0
+offset_right = -4.0
+offset_bottom = 94.0
+grow_horizontal = 0
+theme = ExtResource("1_iqbb7")
+texture_normal = ExtResource("4_wbi74")
+stretch_mode = 0
+script = ExtResource("9_c6cx4")
+
+[node name="文本" type="Label" parent="测试"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 192.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 40
+text = "测试"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="内容节点" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 100.0
+offset_right = 1700.0
+offset_bottom = 1000.0
+
+[node name="内容滚动区" type="ScrollContainer" parent="内容节点"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="内容区" type="VBoxContainer" parent="内容节点/内容滚动区"]
+layout_mode = 2
+
+[node name="第一内容区" type="HBoxContainer" parent="内容节点/内容滚动区/内容区"]
+layout_mode = 2
+
+[node name="资源条" type="Control" parent="内容节点/内容滚动区/内容区/第一内容区"]
+custom_minimum_size = Vector2(620, 550)
+layout_mode = 2
+
+[node name="资源管理器" type="VBoxContainer" parent="内容节点/内容滚动区/内容区/第一内容区/资源条"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 100.0
+offset_bottom = 500.0
+theme_override_constants/separation = 0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="木材贴图" type="TextureRect" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("5_u2knn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="文本" type="Label" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/木材贴图"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 50
+text = "木材"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="木材进度" type="ProgressBar" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/木材贴图"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 215.0
+offset_top = 25.0
+offset_right = 595.0
+offset_bottom = 75.0
+theme = ExtResource("3_pbgl2")
+value = 100.0
+
+[node name="矿石贴图" type="TextureRect" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("6_wbi74")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="文本" type="Label" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/矿石贴图"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 50
+text = "矿石"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="矿石进度" type="ProgressBar" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/矿石贴图"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 215.0
+offset_top = 25.0
+offset_right = 595.0
+offset_bottom = 75.0
+theme = ExtResource("3_pbgl2")
+value = 100.0
+
+[node name="皮革贴图" type="TextureRect" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("7_dk4n3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="文本" type="Label" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/皮革贴图"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 50
+text = "皮革"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="皮革进度" type="ProgressBar" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/皮革贴图"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 215.0
+offset_top = 25.0
+offset_right = 595.0
+offset_bottom = 75.0
+theme = ExtResource("3_pbgl2")
+value = 100.0
+
+[node name="药草贴图" type="TextureRect" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("8_1v7ey")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="文本" type="Label" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/药草贴图"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 50
+text = "药草"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="药草进度" type="ProgressBar" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/药草贴图"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 215.0
+offset_top = 25.0
+offset_right = 595.0
+offset_bottom = 75.0
+theme = ExtResource("3_pbgl2")
+value = 100.0
+
+[node name="零件贴图" type="TextureRect" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("9_l4usl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="文本" type="Label" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/零件贴图"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 50
+text = "零件"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="零件进度" type="ProgressBar" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/零件贴图"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 215.0
+offset_top = 25.0
+offset_right = 595.0
+offset_bottom = 75.0
+theme = ExtResource("3_pbgl2")
+value = 100.0
+
+[node name="精华贴图" type="TextureRect" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("10_kqimc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="文本" type="Label" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/精华贴图"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 50
+text = "精华"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="精华进度" type="ProgressBar" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/精华贴图"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 215.0
+offset_top = 25.0
+offset_right = 595.0
+offset_bottom = 75.0
+theme = ExtResource("3_pbgl2")
+value = 100.0
+
+[node name="动作进度条" parent="内容节点/内容滚动区/内容区/第一内容区/资源条" instance=ExtResource("15_yntay")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 304.0
+offset_top = 516.0
+offset_right = 304.0
+offset_bottom = 516.0
+scale = Vector2(1.4, 1.4)
+
+[node name="筛选器" type="Control" parent="内容节点/内容滚动区/内容区/第一内容区"]
+custom_minimum_size = Vector2(110, 550)
+layout_mode = 2
+
+[node name="筛选器" type="TextureButton" parent="内容节点/内容滚动区/内容区/第一内容区/筛选器"]
+layout_mode = 0
+offset_top = 425.0
+offset_right = 100.0
+offset_bottom = 525.0
+pivot_offset = Vector2(48, 48)
+texture_normal = ExtResource("9_iqbb7")
+stretch_mode = 0
+script = ExtResource("12_b1l35")
+metadata/gn = "本体"
+metadata/xh = "0"
+
+[node name="配方区" type="Control" parent="内容节点/内容滚动区/内容区/第一内容区"]
+custom_minimum_size = Vector2(950, 500)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="配方滚动区" type="ScrollContainer" parent="内容节点/内容滚动区/内容区/第一内容区/配方区"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 4.0
+offset_right = -2.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="配方表格" type="GridContainer" parent="内容节点/内容滚动区/内容区/第一内容区/配方区/配方滚动区"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+script = ExtResource("12_8sqgc")
+
+[node name="配方" type="Button" parent="内容节点/内容滚动区/内容区/第一内容区/配方区/配方滚动区/配方表格"]
+custom_minimum_size = Vector2(230, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBox_wjp5r")
+theme_override_styles/pressed = SubResource("StyleBox_wjp5r")
+theme_override_styles/hover = SubResource("StyleBox_wjp5r")
+theme_override_styles/focus = SubResource("StyleBox_wjp5r")
+text = "测试文本
+
+
+
+"
+clip_text = true
+
+[node name="配方名" type="Label" parent="内容节点/内容滚动区/内容区/第一内容区/配方区/配方滚动区/配方表格/配方"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 150.0
+offset_right = 218.0
+offset_bottom = 195.0
+theme = ExtResource("1_iqbb7")
+text = "道具名称"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="第二内容区" type="HBoxContainer" parent="内容节点/内容滚动区/内容区"]
+layout_mode = 2
+
+[node name="切割分区" type="VBoxContainer" parent="内容节点/内容滚动区/内容区/第二内容区"]
+layout_mode = 2
+
+[node name="制作滚动队列" type="ScrollContainer" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区"]
+custom_minimum_size = Vector2(1460, 255)
+layout_mode = 2
+
+[node name="制作队列" type="HBoxContainer" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/制作滚动队列"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1460, 255)
+layout_mode = 2
+
+[node name="圆形进度条" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/制作滚动队列/制作队列" instance=ExtResource("19_1v7ey")]
+unique_name_in_owner = true
+z_index = 1
+custom_minimum_size = Vector2(242, 242)
+layout_mode = 2
+"半径" = 105.0
+"线条宽度" = 22.0
+
+[node name="配方" type="Button" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条"]
+z_as_relative = false
+custom_minimum_size = Vector2(230, 200)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_wjp5r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wjp5r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u2xcc")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wjp5r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wjp5r")
+
+[node name="配方名" type="Label" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -61.0
+offset_right = 105.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_iqbb7")
+theme_override_colors/font_shadow_color = Color(0.5, 0.5, 0.5, 1)
+text = "道具名称"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="配方贴图" type="TextureRect" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 18.0
+offset_right = 188.0
+offset_bottom = 168.0
+scale = Vector2(1.25075, 1.25075)
+texture = ExtResource("14_wt2ge")
+
+[node name="按钮区" type="HBoxContainer" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区"]
+layout_mode = 2
+
+[node name="温馨提示" type="Label" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/按钮区"]
+custom_minimum_size = Vector2(580, 0)
+layout_mode = 2
+text = "温馨提示:左键加入合成队列"
+
+[node name="派遣队" type="Button" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/按钮区"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "派遣队"
+
+[node name="装备充能" type="Button" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/按钮区"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+text = "装备充能"
+
+[node name="抽奖机" type="Button" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/按钮区"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "抽奖机"
+
+[node name="蓝图库" type="Button" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/按钮区"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "蓝图库"
+
+[node name="提示背景" type="ColorRect" parent="内容节点/内容滚动区/内容区/第二内容区"]
+custom_minimum_size = Vector2(220, 340)
+layout_mode = 2
+color = Color(0.55, 0.498667, 0.3575, 0.784314)
+
+[node name="提示文本" type="Label" parent="内容节点/内容滚动区/内容区/第二内容区/提示背景"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "累计精通
++0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="悬浮面板" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("15_wt2ge")
+
+[node name="悬浮面板背景" type="NinePatchRect" parent="悬浮面板"]
+self_modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 0
+texture = ExtResource("11_3rko8")
+region_rect = Rect2(2, 2, 28, 28)
+
+[node name="面板文本" type="Label" parent="悬浮面板/悬浮面板背景"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 81.0
+offset_bottom = 53.0
+
+[connection signal="pressed" from="内容节点/内容滚动区/内容区/第一内容区/筛选器/筛选器" to="内容节点/内容滚动区/内容区/第一内容区/筛选器/筛选器" method="_筛选器"]

@@ -1,0 +1,149 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6545l8ijawo8"]
+
+[ext_resource type="AudioStream" uid="uid://cj6u6t8o8spy6" path="res://addons/YgameEngine/音效/按钮点击.wav" id="2_qilmc"]
+[ext_resource type="AudioStream" uid="uid://bppuuc31od7bm" path="res://addons/YgameEngine/音效/按钮焦点.wav" id="3_em3v0"]
+
+[sub_resource type="GDScript" id="GDScript_ypp1s"]
+script/source = "extends CanvasLayer
+
+@export var 标题: RichTextLabel
+@export var 文本:RichTextLabel
+@export var 确定:Button
+@export var 取消:Button
+
+@export var 点击音效:AudioStream=引擎.按钮.点击音效
+@export var 焦点音效:AudioStream=引擎.按钮.焦点音效
+
+func 按钮按下了() -> void:
+	if 点击音效!=null:
+		引擎.音乐.播放音效(点击音效)
+		
+	pass # Replace with function body.
+
+
+func 按钮离开() -> void:
+	if 焦点音效!=null:
+			引擎.音乐.播放音效(焦点音效)
+	pass # Replace with function body.
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ykis"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ypp1s"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+color = Color(0.5, 0.5, 0.5, 1)
+thickness = 3
+
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("标题", "文本", "确定", "取消")]
+script = SubResource("GDScript_ypp1s")
+"标题" = NodePath("引擎对话/标题")
+"文本" = NodePath("引擎对话/文本")
+"确定" = NodePath("引擎对话/确定")
+"取消" = NodePath("引擎对话/取消")
+"点击音效" = ExtResource("2_qilmc")
+"焦点音效" = ExtResource("3_em3v0")
+
+[node name="引擎对话" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 103.0
+offset_top = 79.0
+offset_right = -115.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ykis")
+
+[node name="文本" type="RichTextLabel" parent="引擎对话"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -165.5
+offset_bottom = 159.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 62
+bbcode_enabled = true
+text = "你想要？"
+
+[node name="HSeparator" type="HSeparator" parent="引擎对话"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 69.0
+offset_bottom = 111.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_ypp1s")
+
+[node name="标题" type="RichTextLabel" parent="引擎对话"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 82.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 52
+bbcode_enabled = true
+text = "对话"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="引擎对话"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 425.0
+offset_bottom = 467.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_ypp1s")
+
+[node name="确定" type="Button" parent="引擎对话"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -265.5
+offset_top = -91.0
+offset_right = -101.5
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "是"
+
+[node name="取消" type="Button" parent="引擎对话"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 81.5
+offset_top = -91.0
+offset_right = 245.5
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "否"
+
+[connection signal="button_down" from="引擎对话/确定" to="." method="按钮按下了"]
+[connection signal="mouse_exited" from="引擎对话/确定" to="." method="按钮离开"]
+[connection signal="button_down" from="引擎对话/取消" to="." method="按钮按下了"]
+[connection signal="mouse_exited" from="引擎对话/取消" to="." method="按钮离开"]

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="StackableData" load_steps=3 format=3 uid="uid://cuj07urfi512p"]
+
+[ext_resource type="Script" uid="uid://bm5efdrlci0qk" path="res://addons/grid_base_inventory_system/core/model/item/stackable_data.gd" id="1_beju1"]
+[ext_resource type="Texture2D" uid="uid://dee83vexb4iqj" path="res://GBIS_demos/assets/test_item_icons/jewel.png" id="1_bqe4x"]
+
+[resource]
+script = ExtResource("1_beju1")
+stack_size = 5
+current_amount = 5
+item_name = "Bless Jewel"
+type = "JEWEL"
+"标签" = ["物品"]
+"简介" = "暂无简介"
+icon = ExtResource("1_bqe4x")
+columns = 1
+rows = 1
+shader_params = Dictionary[String, Variant]({})
+metadata/_custom_type_script = "uid://bm5efdrlci0qk"

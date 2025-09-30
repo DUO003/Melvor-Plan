@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpjiuju3vghxg"]
+
+[ext_resource type="Script" path="res://模块/场景切换模块/切换模块/场景切换.gd" id="1_w5aum"]
+
+[node name="场景切换" type="Node"]
+script = ExtResource("1_w5aum")

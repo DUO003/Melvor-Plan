@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://模块/场景切换模块/按钮切换模块/场景切换模块.gd" id="1_fg42s"]
+
+[node name="场景切换模块" type="Button"]
+offset_right = 218.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 63
+text = "预览按钮"
+script = ExtResource("1_fg42s")

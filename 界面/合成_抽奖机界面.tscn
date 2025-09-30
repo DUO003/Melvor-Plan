@@ -1,0 +1,514 @@
+[gd_scene load_steps=14 format=3 uid="uid://q3a6w73vn7xj"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_o0hed"]
+[ext_resource type="Script" uid="uid://bns6tdw6v66fp" path="res://代码/专属代码/合成主界面/合成_抽奖机界面.gd" id="2_7yrbw"]
+[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="2_bt04l"]
+[ext_resource type="Texture2D" uid="uid://b2tsca6kugp1v" path="res://素材/选用素材/卷轴/scroll-blue.png" id="4_5w1o0"]
+[ext_resource type="Texture2D" uid="uid://c204evcg0gtc6" path="res://素材/选用素材/卷轴/scroll-yellow.png" id="5_avrdn"]
+[ext_resource type="PackedScene" uid="uid://byxndkdhqwumw" path="res://界面/插件/圆形进度条.tscn" id="6_7solx"]
+[ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="7_5imkx"]
+[ext_resource type="Texture2D" uid="uid://cg5lbyhyg8ys3" path="res://素材/像素/标准剑.png" id="8_yqcxx"]
+[ext_resource type="Texture2D" uid="uid://bncp3kn0a6b4y" path="res://素材/豆包AI素材/特殊图纸.png" id="9_avrdn"]
+[ext_resource type="Script" uid="uid://bbi5ojpwx5ouf" path="res://界面/蓝图图片.gd" id="11_yqcxx"]
+
+[sub_resource type="Animation" id="Animation_7solx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("蓝色图纸:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(568, 472)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("蓝色图纸:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.3824487, 2.116616)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("蓝色图纸/倾斜度控制/蓝图属性容器:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("蓝色图纸/倾斜度控制/蓝图属性容器:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("蓝色图纸:skew")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_avrdn"]
+resource_name = "研究"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("蓝色图纸:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(224.00006, 680), Vector2(864, 472), Vector2(864, 472), Vector2(568, 472), Vector2(568, 472)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("蓝色图纸:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.9160833, 0.8138671), Vector2(2.3824487, 2.116616), Vector2(2.3824487, 2.116616)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"设置动画"
+}, {
+"args": [false],
+"method": &"设置动画"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("蓝色图纸/倾斜度控制/蓝图属性容器:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("蓝色图纸/倾斜度控制/蓝图属性容器:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("蓝色图纸:skew")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.17453292519943295]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5imkx"]
+_data = {
+&"RESET": SubResource("Animation_7solx"),
+&"研究": SubResource("Animation_avrdn")
+}
+
+[node name="合成_抽奖机界面" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -220.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_o0hed")
+script = ExtResource("2_7yrbw")
+
+[node name="标题" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+color = Color(0.75, 0.67, 0.45, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="等级显示" parent="标题" instance=ExtResource("2_bt04l")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="背景" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.004
+offset_top = 100.0
+offset_bottom = -3.99994
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.82, 0.732533, 0.492, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="内容节点" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 100.0
+offset_right = 1700.0
+offset_bottom = 1000.0
+
+[node name="内容滚动区" type="ScrollContainer" parent="内容节点"]
+layout_mode = 0
+offset_right = 1700.0
+offset_bottom = 900.0
+
+[node name="内容区" type="HBoxContainer" parent="内容节点/内容滚动区"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="图纸内容区" type="VBoxContainer" parent="内容节点/内容滚动区/内容区"]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="占位节点" type="Control" parent="内容节点/内容滚动区/内容区/图纸内容区"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="图纸数量" type="VBoxContainer" parent="内容节点/内容滚动区/内容区/图纸内容区"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="蓝图纸" type="TextureRect" parent="内容节点/内容滚动区/内容区/图纸内容区/图纸数量"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+texture = ExtResource("4_5w1o0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="蓝图纸数量" type="Label" parent="内容节点/内容滚动区/内容区/图纸内容区/图纸数量/蓝图纸"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 120.0
+offset_top = -38.0
+offset_right = 462.0
+offset_bottom = 127.0
+theme_override_font_sizes/font_size = 110
+text = "08549"
+
+[node name="黄图纸" type="TextureRect" parent="内容节点/内容滚动区/内容区/图纸内容区/图纸数量"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+texture = ExtResource("5_avrdn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="黄图纸数量" type="Label" parent="内容节点/内容滚动区/内容区/图纸内容区/图纸数量/黄图纸"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 120.0
+offset_top = -22.0
+offset_right = 462.0
+offset_bottom = 143.0
+theme_override_font_sizes/font_size = 110
+text = "00979"
+
+[node name="保底文本" type="Label" parent="内容节点/内容滚动区/内容区/图纸内容区"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 60
+text = "保底:22/40"
+
+[node name="研究进度条" parent="内容节点/内容滚动区/内容区/图纸内容区" instance=ExtResource("6_7solx")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(335, 335)
+layout_mode = 2
+size_flags_horizontal = 4
+"半径" = 150.0
+"线条宽度" = 25.0
+
+[node name="配方" type="Button" parent="内容节点/内容滚动区/内容区/图纸内容区/研究进度条"]
+self_modulate = Color(1, 1, 1, 0)
+z_as_relative = false
+custom_minimum_size = Vector2(230, 200)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="研究配方名" type="Label" parent="内容节点/内容滚动区/内容区/图纸内容区/研究进度条/配方"]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -31.0
+offset_right = 105.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("7_5imkx")
+theme_override_colors/font_shadow_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "道具名称"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="研究配方贴图" type="TextureRect" parent="内容节点/内容滚动区/内容区/图纸内容区/研究进度条/配方"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 14.0
+offset_top = 16.0
+offset_right = 254.0
+offset_bottom = 236.0
+scale = Vector2(1.25075, 1.25075)
+texture = ExtResource("8_yqcxx")
+expand_mode = 1
+
+[node name="按钮位置" type="Control" parent="内容节点/内容滚动区/内容区/图纸内容区"]
+custom_minimum_size = Vector2(500, 83)
+layout_mode = 2
+
+[node name="按钮真实范围" type="Control" parent="内容节点/内容滚动区/内容区/图纸内容区/按钮位置"]
+anchors_preset = 0
+offset_left = 152.0
+offset_right = 1648.0
+offset_bottom = 88.0
+
+[node name="研究" type="Button" parent="内容节点/内容滚动区/内容区/图纸内容区/按钮位置"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -41.5
+offset_right = 100.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "研究"
+
+[node name="定向选择" type="Button" parent="内容节点/内容滚动区/内容区/图纸内容区/按钮位置"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 866.0
+offset_top = -41.5
+offset_right = 1146.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "定向选择"
+
+[node name="主菜单" type="Button" parent="内容节点/内容滚动区/内容区/图纸内容区/按钮位置"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1180.0
+offset_top = -41.5
+offset_right = 1400.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "主菜单"
+
+[node name="文本区" type="RichTextLabel" parent="内容节点/内容滚动区/内容区"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1150, 0)
+layout_mode = 2
+mouse_behavior_recursive = 1
+bbcode_enabled = true
+text = "[b]蓝图抽取说明[/b]
+70%获得残缺蓝图，制作一定数量后分解成蓝图纸
+21%获得UP类型的装备蓝图 重复累积更多经验值
+8%获得未拥有的特殊蓝图 全收集给 黄图纸*10
+特等奖 初始1%获得图纸包 （40次保底）
+研究费用随抽到物品提升（0点重置最大160）
+--------分界线--------
+当获蓝图等级T7（326/600）
+当前UP选项 斧头
+当前研究费用：0"
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="蓝色图纸" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(568, 472)
+scale = Vector2(2.3824487, 2.116616)
+texture = ExtResource("9_avrdn")
+
+[node name="蓝图图片" type="Sprite2D" parent="蓝色图纸"]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(1.1920929e-07, 15.118473)
+scale = Vector2(8.59375, 7.65625)
+skew = 0.2268928
+texture = ExtResource("8_yqcxx")
+script = ExtResource("11_yqcxx")
+"目标宽度" = 275
+"目标高度" = 245
+
+[node name="倾斜度控制" type="Node2D" parent="蓝色图纸"]
+position = Vector2(214.90494, -151.18474)
+scale = Vector2(0.5, 0.5)
+skew = -0.14835298
+
+[node name="蓝图属性容器" type="Control" parent="蓝色图纸/倾斜度控制"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -46.647327
+offset_top = 3.0517578e-05
+offset_right = 423.45724
+offset_bottom = 612.2981
+theme = ExtResource("1_o0hed")
+
+[node name="属性背景" type="ColorRect" parent="蓝色图纸/倾斜度控制/蓝图属性容器"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5394, 0.77633, 0.87, 0.84705883)
+
+[node name="蓝图属性" type="RichTextLabel" parent="蓝色图纸/倾斜度控制/蓝图属性容器"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(471.10458, 612.2981)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.43158
+offset_top = 15.118469
+offset_right = 14.43158
+offset_bottom = 15.118469
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/paragraph_separation = 0
+text = "简介:一些测试的内容
+简介:一些测试的内容
+简介:一些测试的内容
+简介:一些测试的内容
+简介:一些测试的内容
+简介:一些测试的内容"
+autowrap_mode = 2
+
+[node name="关闭蓝图展示" type="Button" parent="蓝色图纸/倾斜度控制/蓝图属性容器"]
+custom_minimum_size = Vector2(80, 60)
+layout_mode = 0
+offset_left = 376.8928
+offset_top = 553.38214
+offset_right = 456.89282
+offset_bottom = 613.38214
+theme_override_font_sizes/font_size = 20
+text = "关闭"
+
+[node name="切换按钮节点" type="Control" parent="蓝色图纸/倾斜度控制/蓝图属性容器"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="蓝图下一页" type="Button" parent="蓝色图纸/倾斜度控制/蓝图属性容器/切换按钮节点"]
+custom_minimum_size = Vector2(80, 60)
+layout_mode = 0
+offset_left = -315.88647
+offset_top = 475.8693
+offset_right = -235.88644
+offset_bottom = 535.86926
+theme_override_font_sizes/font_size = 20
+text = "下一页"
+
+[node name="蓝图上一页" type="Button" parent="蓝色图纸/倾斜度控制/蓝图属性容器/切换按钮节点"]
+custom_minimum_size = Vector2(80, 60)
+layout_mode = 0
+offset_left = -711.8726
+offset_top = 476.23187
+offset_right = -631.87256
+offset_bottom = 536.2319
+theme_override_font_sizes/font_size = 20
+text = "上一页"
+
+[node name="动画" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_5imkx")
+}
+
+[connection signal="pressed" from="蓝色图纸/倾斜度控制/蓝图属性容器/关闭蓝图展示" to="." method="_关闭蓝图展示"]
+[connection signal="pressed" from="蓝色图纸/倾斜度控制/蓝图属性容器/切换按钮节点/蓝图下一页" to="." method="_蓝图下一页"]
+[connection signal="pressed" from="蓝色图纸/倾斜度控制/蓝图属性容器/切换按钮节点/蓝图上一页" to="." method="_蓝图上一页"]

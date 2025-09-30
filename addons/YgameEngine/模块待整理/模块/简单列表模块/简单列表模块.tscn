@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwbsyc56w0870"]
+
+[ext_resource type="Script" path="res://模块/简单列表模块/简单列表模块.gd" id="1_pet24"]
+
+[node name="首页菜单" type="ItemList"]
+offset_left = 464.0
+offset_top = 465.0
+offset_right = 629.0
+offset_bottom = 552.0
+item_count = 3
+item_0/text = "开始游戏"
+item_1/text = "继续游戏"
+item_2/text = "设置选项"
+script = ExtResource("1_pet24")

@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://la0a0ymvudxu"]
+
+[ext_resource type="Script" path="res://模块/简易悬浮模块/简易悬浮窗口.gd" id="1_6oelx"]
+
+[node name="简易悬浮窗口" type="Control"]
+custom_minimum_size = Vector2(266, 280)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -886.0
+offset_bottom = -368.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6oelx")
+
+[node name="视图" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+vertical_scroll_mode = 3
+
+[node name="自动排序" type="GridContainer" parent="视图"]
+layout_mode = 2
+theme_override_constants/v_separation = 24
+
+[node name="清空计时器" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="清空计时器" to="." method="_on_清空计时器_timeout"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://o0a1frdo3wdp"]
+
+[ext_resource type="Texture2D" uid="uid://dpqcwwsve3wgm" path="res://素材/豆包AI素材/像素瓶子.png" id="1_udplu"]
+
+[sub_resource type="Gradient" id="Gradient_udplu"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tjhq3"]
+gradient = SubResource("Gradient_udplu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ks2c3"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 114.78
+initial_velocity_max = 114.78
+gravity = Vector3(0, 100, 0)
+color_ramp = SubResource("GradientTexture1D_tjhq3")
+
+[node name="瓶子碎片" type="GPUParticles2D"]
+amount = 1
+texture = ExtResource("1_udplu")
+process_material = SubResource("ParticleProcessMaterial_ks2c3")

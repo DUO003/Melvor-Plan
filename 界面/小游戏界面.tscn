@@ -1,0 +1,171 @@
+[gd_scene load_steps=14 format=3 uid="uid://vpq3x87ufk0m"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ebama"]
+[ext_resource type="Script" uid="uid://brh2tivk0ru7w" path="res://代码/专属代码/小游戏界面/小游戏界面.gd" id="2_ruvb4"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="3_l85qm"]
+[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_no1vw"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="4_ruvb4"]
+[ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="5_xc7x2"]
+[ext_resource type="Texture2D" uid="uid://dpqcwwsve3wgm" path="res://素材/豆包AI素材/像素瓶子.png" id="7_ruvb4"]
+[ext_resource type="PackedScene" uid="uid://dx5oki37mgsju" path="res://界面/插件/体力状态.tscn" id="8_xc7x2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqimc"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("4_ruvb4")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjp5r"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.41, 0.28822997, 0.0779, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+expand_margin_bottom = -5.0
+script = ExtResource("4_ruvb4")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+margin_bottom = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ebama"]
+texture = ExtResource("7_ruvb4")
+expand_margin_left = -90.0
+expand_margin_top = -15.0
+expand_margin_right = -90.0
+expand_margin_bottom = -90.0
+script = ExtResource("5_xc7x2")
+margin_left = -90
+margin_top = -15
+margin_right = -90
+margin_bottom = -90
+metadata/_custom_type_script = "uid://dr0317kuw34um"
+
+[sub_resource type="StyleBox" id="StyleBox_l85qm"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("3_l85qm")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kqimc"), SubResource("StyleBoxFlat_wjp5r"), SubResource("StyleBoxTexture_ebama")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBox" id="StyleBox_lle5q"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("3_l85qm")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kqimc"), SubResource("StyleBoxFlat_wjp5r"), SubResource("StyleBoxTexture_ebama")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[node name="小游戏界面" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -220.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ebama")
+script = ExtResource("2_ruvb4")
+
+[node name="标题" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+color = Color(0.75, 0.67, 0.45, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="等级显示" parent="标题" instance=ExtResource("3_no1vw")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+"玩法" = "小游戏"
+
+[node name="背景" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.004
+offset_top = 100.0
+offset_bottom = -3.99994
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.82, 0.732533, 0.492, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="内容节点" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 100.0
+offset_right = 1700.0
+offset_bottom = 1000.0
+
+[node name="内容滚动区" type="ScrollContainer" parent="内容节点"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 36.0
+offset_right = 1240.0
+offset_bottom = 860.0
+
+[node name="小游戏列表" type="GridContainer" parent="内容节点/内容滚动区"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 130
+theme_override_constants/v_separation = 24
+columns = 3
+
+[node name="水排序" type="Button" parent="内容节点/内容滚动区/小游戏列表"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 320)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBox_l85qm")
+theme_override_styles/pressed = SubResource("StyleBox_lle5q")
+theme_override_styles/hover = SubResource("StyleBox_lle5q")
+theme_override_styles/focus = SubResource("StyleBox_lle5q")
+text = "
+
+
+水排序"
+
+[node name="Label" type="Label" parent="内容节点"]
+layout_mode = 0
+offset_left = 1288.0
+offset_top = 116.0
+offset_right = 1681.0
+offset_bottom = 209.0
+text = "小游戏
+还没做完.这里显示一些文本"
+
+[node name="体力状态" parent="内容节点" instance=ExtResource("8_xc7x2")]
+layout_mode = 0
+offset_left = 1272.0
+offset_top = 28.0
+offset_right = 1672.0
+offset_bottom = 98.0

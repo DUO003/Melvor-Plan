@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmtorijdfu4jh"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_e6jv8"]
+[ext_resource type="Script" uid="uid://bgrb6c4tohqk8" path="res://GBIS_demos/item_info/item_info.gd" id="1_kg2dt"]
+
+[node name="ItemInfo" type="ColorRect"]
+custom_minimum_size = Vector2(100, 30)
+offset_right = 144.0
+offset_bottom = 56.0
+theme = ExtResource("1_e6jv8")
+color = Color(0.0862745, 0.0862745, 0.0862745, 0.745098)
+script = ExtResource("1_kg2dt")
+
+[node name="提示文本" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "物品提示"
+horizontal_alignment = 1
+vertical_alignment = 1

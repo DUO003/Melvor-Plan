@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://6ox1psu7q4m4"]
+
+[ext_resource type="Script" uid="uid://dcg7yaw4g6sgc" path="res://代码/专属代码/特殊功能/瓶子.gd" id="1_5qwpn"]
+[ext_resource type="Texture2D" uid="uid://dpqcwwsve3wgm" path="res://素材/豆包AI素材/像素瓶子.png" id="1_jn87q"]
+[ext_resource type="Script" uid="uid://bstynfu1d5qx4" path="res://代码/专属代码/特殊功能/排序.gd" id="2_3henv"]
+[ext_resource type="Texture2D" uid="uid://cuvq8d3jrctbs" path="res://素材/豆包AI素材/像素瓶子空.png" id="3_6ot27"]
+
+[node name="瓶子" type="Control"]
+custom_minimum_size = Vector2(60, 132)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1860.0
+offset_bottom = -948.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5qwpn")
+
+[node name="瓶子缩放" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="瓶子背景" type="TextureRect" parent="瓶子缩放"]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 132.0
+mouse_behavior_recursive = 1
+texture = ExtResource("1_jn87q")
+
+[node name="排序" type="Control" parent="瓶子缩放"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 132)
+anchors_preset = 0
+offset_right = 60.0
+offset_bottom = 330.0
+scale = Vector2(1, 0.4)
+mouse_behavior_recursive = 1
+script = ExtResource("2_3henv")
+"高度" = 260.0
+"内容长度" = 4
+"内容数组" = Array[Dictionary]([{
+Color(0, 0, 0, 1): 1
+}, {
+Color(1, 0, 0, 1): 1
+}, {
+Color(0.99116415, 0.99116427, 0.99116415, 1): 1
+}])
+"迷雾数量" = 1
+"偏移量" = Vector2(5, 275)
+
+[node name="瓶子" type="TextureRect" parent="瓶子缩放"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.8156863)
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 132.0
+mouse_behavior_recursive = 1
+texture = ExtResource("3_6ot27")
+
+[node name="选中" type="Label" parent="瓶子缩放"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_top = -23.0
+offset_right = 60.0
+text = "选中"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="迷雾" type="Label" parent="瓶子缩放"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_top = 48.0
+offset_right = 60.0
+offset_bottom = 117.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.8215499, 0.8215499, 0.8215499, 0.707)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1

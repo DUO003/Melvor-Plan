@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ConsumableData" load_steps=3 format=3 uid="uid://dpx3omowkx6ty"]
+
+[ext_resource type="Script" uid="uid://x8lw6iyk5rf5" path="res://addons/grid_base_inventory_system/core/model/item/consumable_data.gd" id="1_pauxt"]
+[ext_resource type="Texture2D" uid="uid://tlkilfmuuy0q" path="res://GBIS_demos/assets/test_item_icons/bottle.png" id="1_yk66e"]
+
+[resource]
+script = ExtResource("1_pauxt")
+destroy_if_empty = true
+stack_size = 2
+current_amount = 1
+item_name = "Item Name"
+type = "ANY"
+icon = ExtResource("1_yk66e")
+columns = 1
+rows = 1
+shader_params = Dictionary[String, Variant]({})
+metadata/_custom_type_script = "uid://x8lw6iyk5rf5"

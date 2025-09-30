@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EquipmentSlotRepository" load_steps=3 format=3 uid="uid://bfg53kph7fwf0"]
+
+[ext_resource type="Script" uid="uid://csn3cpxvpgr46" path="res://addons/grid_base_inventory_system/core/model/slot/equipment_slot_data.gd" id="1_v2ldv"]
+[ext_resource type="Script" uid="uid://bgtkqdvre4erv" path="res://addons/grid_base_inventory_system/core/repository/equipment_slot_repository.gd" id="2_fql2m"]
+
+[resource]
+script = ExtResource("2_fql2m")
+_slot_data_map = Dictionary[String, ExtResource("1_v2ldv")]({})

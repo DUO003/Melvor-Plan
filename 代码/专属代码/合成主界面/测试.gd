@@ -1,0 +1,62 @@
+extends TextureButton
+
+func _ready():
+	# Godot 4.x 信号连接语法
+	connect("pressed", Callable(self, "测试按钮"))
+var 测试={}
+
+func 测试按钮():
+	#GBIS.inventory_service.消耗指定数量物品("背包","蓝图纸",10)
+	初始化.零点检测()
+	print("测试已执行")
+	#初始化.梅存档["手工"]["熟练"]+=1000
+	#初始化.时间戳字典["手工熟练"]+=-300
+	#初始化.获得资源("木材", 100, true, false)
+	#初始化.获得资源("矿石", 100, true, false)
+	#初始化.获得资源("皮革", 100, true, false)
+	#初始化.获得资源("药草", 100, true, false)
+	#初始化.emit_signal("更新_UI")# 发送UI更新信号
+	#初始化.结算升级()
+	#print("当前场景根节点名称: ", 初始化.节点["合成界面"].name)
+
+	#初始化.调试精通()
+	#初始化.获得物品语法糖("蓝图纸",1600)
+	#初始化.获得物品语法糖("标准剑",5,"装备物品")
+	#调试物品字典()
+
+
+
+func 打印字典内容(字典:Dictionary)-> void:
+	for 键 in 字典:
+		print ("键:", 键,"，值:", 字典 [键])
+
+
+func 调试物品字典() -> void:
+	# 打印字典基本信息（使用repeat方法替代*运算符）
+	print("=".repeat(60))
+	print("初始化.物品字典 调试信息 - 共 %d 个物品" % 初始化.物品字典.size())
+	print("=".repeat(60))
+	
+	# 遍历物品字典
+	for 物品键 in 初始化.物品字典:
+		var 物品数据 = 初始化.物品字典[物品键]
+		print("\n【物品键】: %s" % 物品键)
+		print("【物品名称】: %s" % 物品数据.item_name)
+		print("-".repeat(50))
+		
+		# 获取并打印物品的所有属性
+		var 属性列表 = 物品数据.get_property_list()
+		for 属性 in 属性列表:
+			var 属性名 = 属性.name
+			# 过滤内部属性和信号
+			if 属性名.begins_with("_") or 属性.type == TYPE_SIGNAL:
+				continue
+			
+			# 打印属性名和值
+			var 属性值 = 物品数据.get(属性名)
+			print("%-20s: %s" % [属性名, 属性值])
+	
+	# 调试结束标记
+	print("\n" + "=".repeat(60))
+	print("初始化.物品字典 调试完成")
+	print("=".repeat(60))

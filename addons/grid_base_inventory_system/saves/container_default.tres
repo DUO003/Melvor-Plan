@@ -1,0 +1,629 @@
+[gd_resource type="Resource" script_class="ContainerRepository" load_steps=24 format=3 uid="uid://blsyskqdmu736"]
+
+[ext_resource type="Script" uid="uid://3a8er1gtaua3" path="res://addons/grid_base_inventory_system/core/model/container/container_data.gd" id="1_sels7"]
+[ext_resource type="Script" uid="uid://c5uqs7o5b2w68" path="res://addons/grid_base_inventory_system/core/model/item/item_data.gd" id="2_jknxf"]
+[ext_resource type="Texture2D" uid="uid://dee83vexb4iqj" path="res://GBIS_demos/assets/test_item_icons/jewel.png" id="3_vylbe"]
+[ext_resource type="Script" uid="uid://bm5efdrlci0qk" path="res://addons/grid_base_inventory_system/core/model/item/stackable_data.gd" id="4_eemdc"]
+[ext_resource type="Texture2D" uid="uid://tlkilfmuuy0q" path="res://GBIS_demos/assets/test_item_icons/bottle.png" id="5_61wgs"]
+[ext_resource type="Script" uid="uid://x8lw6iyk5rf5" path="res://addons/grid_base_inventory_system/core/model/item/consumable_data.gd" id="6_totqh"]
+[ext_resource type="Texture2D" uid="uid://h387k1xiin2o" path="res://GBIS_demos/assets/test_item_icons/boots.png" id="7_umlxg"]
+[ext_resource type="Material" uid="uid://du4t05r3sodcb" path="res://GBIS_demos/materials/equipment_glow.tres" id="8_yxmen"]
+[ext_resource type="Script" uid="uid://c81d67advvltj" path="res://addons/grid_base_inventory_system/core/model/item/equipment_data.gd" id="9_2itfv"]
+[ext_resource type="Script" uid="uid://buv85ki5jyttc" path="res://addons/grid_base_inventory_system/core/repository/container_repository.gd" id="10_fxsod"]
+
+[sub_resource type="Resource" id="Resource_sels7"]
+script = ExtResource("4_eemdc")
+stack_size = 5
+current_amount = 5
+item_name = "Bless Jewel"
+type = "JEWEL"
+"标签" = ["物品"]
+"简介" = "暂无简介"
+icon = ExtResource("3_vylbe")
+columns = 1
+rows = 1
+shader_params = Dictionary[String, Variant]({
+"enable_enhance": true
+})
+metadata/_custom_type_script = "uid://bm5efdrlci0qk"
+
+[sub_resource type="Resource" id="Resource_eemdc"]
+script = ExtResource("9_2itfv")
+item_name = "Test Boots"
+type = "BOOTS"
+"标签" = ["物品"]
+"简介" = "暂无简介"
+icon = ExtResource("7_umlxg")
+columns = 2
+rows = 2
+material = ExtResource("8_yxmen")
+shader_params = Dictionary[String, Variant]({})
+metadata/_custom_type_script = "uid://c81d67advvltj"
+
+[sub_resource type="Resource" id="Resource_jknxf"]
+script = ExtResource("6_totqh")
+destroy_if_empty = true
+stack_size = 2
+current_amount = 2
+item_name = "Item Name"
+type = "ANY"
+"标签" = ["物品"]
+"简介" = "暂无简介"
+icon = ExtResource("5_61wgs")
+columns = 1
+rows = 1
+shader_params = Dictionary[String, Variant]({
+"enable_enhance": true
+})
+metadata/_custom_type_script = "uid://x8lw6iyk5rf5"
+
+[sub_resource type="Resource" id="Resource_umlxg"]
+script = ExtResource("9_2itfv")
+item_name = "Test Boots"
+type = "BOOTS"
+"标签" = ["物品"]
+"简介" = "暂无简介"
+icon = ExtResource("7_umlxg")
+columns = 2
+rows = 2
+material = ExtResource("8_yxmen")
+shader_params = Dictionary[String, Variant]({
+"enable_enhance": true
+})
+metadata/_custom_type_script = "uid://c81d67advvltj"
+
+[sub_resource type="Resource" id="Resource_totqh"]
+script = ExtResource("6_totqh")
+destroy_if_empty = true
+stack_size = 2
+current_amount = 2
+item_name = "Item Name"
+type = "ANY"
+"标签" = ["物品"]
+"简介" = "暂无简介"
+icon = ExtResource("5_61wgs")
+columns = 1
+rows = 1
+shader_params = Dictionary[String, Variant]({})
+metadata/_custom_type_script = "uid://x8lw6iyk5rf5"
+
+[sub_resource type="Resource" id="Resource_yxmen"]
+script = ExtResource("4_eemdc")
+stack_size = 5
+current_amount = 5
+item_name = "Bless Jewel"
+type = "JEWEL"
+"标签" = ["物品"]
+"简介" = "暂无简介"
+icon = ExtResource("3_vylbe")
+columns = 1
+rows = 1
+shader_params = Dictionary[String, Variant]({})
+metadata/_custom_type_script = "uid://bm5efdrlci0qk"
+
+[sub_resource type="Resource" id="Resource_vylbe"]
+script = ExtResource("4_eemdc")
+stack_size = 5
+current_amount = 5
+item_name = "Bless Jewel"
+type = "JEWEL"
+"标签" = ["物品"]
+"简介" = "暂无简介"
+icon = ExtResource("3_vylbe")
+columns = 1
+rows = 1
+shader_params = Dictionary[String, Variant]({
+"enable_enhance": true
+})
+metadata/_custom_type_script = "uid://bm5efdrlci0qk"
+
+[sub_resource type="Resource" id="Resource_61wgs"]
+script = ExtResource("4_eemdc")
+stack_size = 5
+current_amount = 5
+item_name = "Bless Jewel"
+type = "JEWEL"
+"标签" = ["物品"]
+"简介" = "暂无简介"
+icon = ExtResource("3_vylbe")
+columns = 1
+rows = 1
+shader_params = Dictionary[String, Variant]({
+"enable_enhance": true
+})
+metadata/_custom_type_script = "uid://bm5efdrlci0qk"
+
+[sub_resource type="Resource" id="Resource_2itfv"]
+script = ExtResource("1_sels7")
+columns = 5
+rows = 5
+container_name = "demo1_inventory"
+avilable_types = Array[String](["ANY"])
+items = Array[ExtResource("2_jknxf")]([SubResource("Resource_sels7"), SubResource("Resource_vylbe"), SubResource("Resource_eemdc"), SubResource("Resource_61wgs"), SubResource("Resource_totqh"), SubResource("Resource_umlxg"), SubResource("Resource_jknxf"), SubResource("Resource_yxmen")])
+item_grids_map = Dictionary[ExtResource("2_jknxf"), Array]({
+SubResource("Resource_sels7"): Array[Vector2i]([Vector2i(0, 0)]),
+SubResource("Resource_vylbe"): Array[Vector2i]([Vector2i(4, 0)]),
+SubResource("Resource_eemdc"): Array[Vector2i]([Vector2i(0, 1), Vector2i(1, 1), Vector2i(0, 2), Vector2i(1, 2)]),
+SubResource("Resource_61wgs"): Array[Vector2i]([Vector2i(4, 1)]),
+SubResource("Resource_totqh"): Array[Vector2i]([Vector2i(2, 2)]),
+SubResource("Resource_umlxg"): Array[Vector2i]([Vector2i(1, 3), Vector2i(2, 3), Vector2i(1, 4), Vector2i(2, 4)]),
+SubResource("Resource_jknxf"): Array[Vector2i]([Vector2i(1, 0)]),
+SubResource("Resource_yxmen"): Array[Vector2i]([Vector2i(3, 3)])
+})
+grid_item_map = Dictionary[Vector2i, ExtResource("2_jknxf")]({
+Vector2i(0, 0): SubResource("Resource_sels7"),
+Vector2i(0, 1): SubResource("Resource_eemdc"),
+Vector2i(0, 2): SubResource("Resource_eemdc"),
+Vector2i(0, 3): null,
+Vector2i(0, 4): null,
+Vector2i(1, 0): SubResource("Resource_jknxf"),
+Vector2i(1, 1): SubResource("Resource_eemdc"),
+Vector2i(1, 2): SubResource("Resource_eemdc"),
+Vector2i(1, 3): SubResource("Resource_umlxg"),
+Vector2i(1, 4): SubResource("Resource_umlxg"),
+Vector2i(2, 0): null,
+Vector2i(2, 1): null,
+Vector2i(2, 2): SubResource("Resource_totqh"),
+Vector2i(2, 3): SubResource("Resource_umlxg"),
+Vector2i(2, 4): SubResource("Resource_umlxg"),
+Vector2i(3, 0): null,
+Vector2i(3, 1): null,
+Vector2i(3, 2): null,
+Vector2i(3, 3): SubResource("Resource_yxmen"),
+Vector2i(3, 4): null,
+Vector2i(4, 0): SubResource("Resource_vylbe"),
+Vector2i(4, 1): SubResource("Resource_61wgs"),
+Vector2i(4, 2): null,
+Vector2i(4, 3): null,
+Vector2i(4, 4): null
+})
+
+[sub_resource type="Resource" id="Resource_fxsod"]
+script = ExtResource("9_2itfv")
+item_name = "Test Boots"
+type = "BOOTS"
+"标签" = ["物品"]
+"简介" = "暂无简介"
+icon = ExtResource("7_umlxg")
+columns = 2
+rows = 2
+material = ExtResource("8_yxmen")
+shader_params = Dictionary[String, Variant]({
+"enable_enhance": true
+})
+metadata/_custom_type_script = "uid://c81d67advvltj"
+
+[sub_resource type="Resource" id="Resource_0u4sr"]
+script = ExtResource("1_sels7")
+columns = 16
+rows = 12
+container_name = "demo1_storage"
+avilable_types = Array[String](["ANY"])
+items = Array[ExtResource("2_jknxf")]([SubResource("Resource_fxsod")])
+item_grids_map = Dictionary[ExtResource("2_jknxf"), Array]({
+SubResource("Resource_fxsod"): Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1)])
+})
+grid_item_map = Dictionary[Vector2i, ExtResource("2_jknxf")]({
+Vector2i(0, 0): SubResource("Resource_fxsod"),
+Vector2i(0, 1): SubResource("Resource_fxsod"),
+Vector2i(0, 2): null,
+Vector2i(0, 3): null,
+Vector2i(0, 4): null,
+Vector2i(0, 5): null,
+Vector2i(0, 6): null,
+Vector2i(0, 7): null,
+Vector2i(0, 8): null,
+Vector2i(0, 9): null,
+Vector2i(0, 10): null,
+Vector2i(0, 11): null,
+Vector2i(1, 0): SubResource("Resource_fxsod"),
+Vector2i(1, 1): SubResource("Resource_fxsod"),
+Vector2i(1, 2): null,
+Vector2i(1, 3): null,
+Vector2i(1, 4): null,
+Vector2i(1, 5): null,
+Vector2i(1, 6): null,
+Vector2i(1, 7): null,
+Vector2i(1, 8): null,
+Vector2i(1, 9): null,
+Vector2i(1, 10): null,
+Vector2i(1, 11): null,
+Vector2i(2, 0): null,
+Vector2i(2, 1): null,
+Vector2i(2, 2): null,
+Vector2i(2, 3): null,
+Vector2i(2, 4): null,
+Vector2i(2, 5): null,
+Vector2i(2, 6): null,
+Vector2i(2, 7): null,
+Vector2i(2, 8): null,
+Vector2i(2, 9): null,
+Vector2i(2, 10): null,
+Vector2i(2, 11): null,
+Vector2i(3, 0): null,
+Vector2i(3, 1): null,
+Vector2i(3, 2): null,
+Vector2i(3, 3): null,
+Vector2i(3, 4): null,
+Vector2i(3, 5): null,
+Vector2i(3, 6): null,
+Vector2i(3, 7): null,
+Vector2i(3, 8): null,
+Vector2i(3, 9): null,
+Vector2i(3, 10): null,
+Vector2i(3, 11): null,
+Vector2i(4, 0): null,
+Vector2i(4, 1): null,
+Vector2i(4, 2): null,
+Vector2i(4, 3): null,
+Vector2i(4, 4): null,
+Vector2i(4, 5): null,
+Vector2i(4, 6): null,
+Vector2i(4, 7): null,
+Vector2i(4, 8): null,
+Vector2i(4, 9): null,
+Vector2i(4, 10): null,
+Vector2i(4, 11): null,
+Vector2i(5, 0): null,
+Vector2i(5, 1): null,
+Vector2i(5, 2): null,
+Vector2i(5, 3): null,
+Vector2i(5, 4): null,
+Vector2i(5, 5): null,
+Vector2i(5, 6): null,
+Vector2i(5, 7): null,
+Vector2i(5, 8): null,
+Vector2i(5, 9): null,
+Vector2i(5, 10): null,
+Vector2i(5, 11): null,
+Vector2i(6, 0): null,
+Vector2i(6, 1): null,
+Vector2i(6, 2): null,
+Vector2i(6, 3): null,
+Vector2i(6, 4): null,
+Vector2i(6, 5): null,
+Vector2i(6, 6): null,
+Vector2i(6, 7): null,
+Vector2i(6, 8): null,
+Vector2i(6, 9): null,
+Vector2i(6, 10): null,
+Vector2i(6, 11): null,
+Vector2i(7, 0): null,
+Vector2i(7, 1): null,
+Vector2i(7, 2): null,
+Vector2i(7, 3): null,
+Vector2i(7, 4): null,
+Vector2i(7, 5): null,
+Vector2i(7, 6): null,
+Vector2i(7, 7): null,
+Vector2i(7, 8): null,
+Vector2i(7, 9): null,
+Vector2i(7, 10): null,
+Vector2i(7, 11): null,
+Vector2i(8, 0): null,
+Vector2i(8, 1): null,
+Vector2i(8, 2): null,
+Vector2i(8, 3): null,
+Vector2i(8, 4): null,
+Vector2i(8, 5): null,
+Vector2i(8, 6): null,
+Vector2i(8, 7): null,
+Vector2i(8, 8): null,
+Vector2i(8, 9): null,
+Vector2i(8, 10): null,
+Vector2i(8, 11): null,
+Vector2i(9, 0): null,
+Vector2i(9, 1): null,
+Vector2i(9, 2): null,
+Vector2i(9, 3): null,
+Vector2i(9, 4): null,
+Vector2i(9, 5): null,
+Vector2i(9, 6): null,
+Vector2i(9, 7): null,
+Vector2i(9, 8): null,
+Vector2i(9, 9): null,
+Vector2i(9, 10): null,
+Vector2i(9, 11): null,
+Vector2i(10, 0): null,
+Vector2i(10, 1): null,
+Vector2i(10, 2): null,
+Vector2i(10, 3): null,
+Vector2i(10, 4): null,
+Vector2i(10, 5): null,
+Vector2i(10, 6): null,
+Vector2i(10, 7): null,
+Vector2i(10, 8): null,
+Vector2i(10, 9): null,
+Vector2i(10, 10): null,
+Vector2i(10, 11): null,
+Vector2i(11, 0): null,
+Vector2i(11, 1): null,
+Vector2i(11, 2): null,
+Vector2i(11, 3): null,
+Vector2i(11, 4): null,
+Vector2i(11, 5): null,
+Vector2i(11, 6): null,
+Vector2i(11, 7): null,
+Vector2i(11, 8): null,
+Vector2i(11, 9): null,
+Vector2i(11, 10): null,
+Vector2i(11, 11): null,
+Vector2i(12, 0): null,
+Vector2i(12, 1): null,
+Vector2i(12, 2): null,
+Vector2i(12, 3): null,
+Vector2i(12, 4): null,
+Vector2i(12, 5): null,
+Vector2i(12, 6): null,
+Vector2i(12, 7): null,
+Vector2i(12, 8): null,
+Vector2i(12, 9): null,
+Vector2i(12, 10): null,
+Vector2i(12, 11): null,
+Vector2i(13, 0): null,
+Vector2i(13, 1): null,
+Vector2i(13, 2): null,
+Vector2i(13, 3): null,
+Vector2i(13, 4): null,
+Vector2i(13, 5): null,
+Vector2i(13, 6): null,
+Vector2i(13, 7): null,
+Vector2i(13, 8): null,
+Vector2i(13, 9): null,
+Vector2i(13, 10): null,
+Vector2i(13, 11): null,
+Vector2i(14, 0): null,
+Vector2i(14, 1): null,
+Vector2i(14, 2): null,
+Vector2i(14, 3): null,
+Vector2i(14, 4): null,
+Vector2i(14, 5): null,
+Vector2i(14, 6): null,
+Vector2i(14, 7): null,
+Vector2i(14, 8): null,
+Vector2i(14, 9): null,
+Vector2i(14, 10): null,
+Vector2i(14, 11): null,
+Vector2i(15, 0): null,
+Vector2i(15, 1): null,
+Vector2i(15, 2): null,
+Vector2i(15, 3): null,
+Vector2i(15, 4): null,
+Vector2i(15, 5): null,
+Vector2i(15, 6): null,
+Vector2i(15, 7): null,
+Vector2i(15, 8): null,
+Vector2i(15, 9): null,
+Vector2i(15, 10): null,
+Vector2i(15, 11): null
+})
+
+[sub_resource type="Resource" id="Resource_3vkxh"]
+script = ExtResource("9_2itfv")
+item_name = "Test Boots"
+type = "BOOTS"
+"标签" = ["物品"]
+"简介" = "暂无简介"
+icon = ExtResource("7_umlxg")
+columns = 2
+rows = 2
+material = ExtResource("8_yxmen")
+shader_params = Dictionary[String, Variant]({})
+metadata/_custom_type_script = "uid://c81d67advvltj"
+
+[sub_resource type="Resource" id="Resource_jtr41"]
+script = ExtResource("1_sels7")
+columns = 16
+rows = 12
+container_name = "demo2_inventory"
+avilable_types = Array[String](["ANY"])
+items = Array[ExtResource("2_jknxf")]([SubResource("Resource_3vkxh")])
+item_grids_map = Dictionary[ExtResource("2_jknxf"), Array]({
+SubResource("Resource_3vkxh"): Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1)])
+})
+grid_item_map = Dictionary[Vector2i, ExtResource("2_jknxf")]({
+Vector2i(0, 0): SubResource("Resource_3vkxh"),
+Vector2i(0, 1): SubResource("Resource_3vkxh"),
+Vector2i(0, 2): null,
+Vector2i(0, 3): null,
+Vector2i(0, 4): null,
+Vector2i(0, 5): null,
+Vector2i(0, 6): null,
+Vector2i(0, 7): null,
+Vector2i(0, 8): null,
+Vector2i(0, 9): null,
+Vector2i(0, 10): null,
+Vector2i(0, 11): null,
+Vector2i(1, 0): SubResource("Resource_3vkxh"),
+Vector2i(1, 1): SubResource("Resource_3vkxh"),
+Vector2i(1, 2): null,
+Vector2i(1, 3): null,
+Vector2i(1, 4): null,
+Vector2i(1, 5): null,
+Vector2i(1, 6): null,
+Vector2i(1, 7): null,
+Vector2i(1, 8): null,
+Vector2i(1, 9): null,
+Vector2i(1, 10): null,
+Vector2i(1, 11): null,
+Vector2i(2, 0): null,
+Vector2i(2, 1): null,
+Vector2i(2, 2): null,
+Vector2i(2, 3): null,
+Vector2i(2, 4): null,
+Vector2i(2, 5): null,
+Vector2i(2, 6): null,
+Vector2i(2, 7): null,
+Vector2i(2, 8): null,
+Vector2i(2, 9): null,
+Vector2i(2, 10): null,
+Vector2i(2, 11): null,
+Vector2i(3, 0): null,
+Vector2i(3, 1): null,
+Vector2i(3, 2): null,
+Vector2i(3, 3): null,
+Vector2i(3, 4): null,
+Vector2i(3, 5): null,
+Vector2i(3, 6): null,
+Vector2i(3, 7): null,
+Vector2i(3, 8): null,
+Vector2i(3, 9): null,
+Vector2i(3, 10): null,
+Vector2i(3, 11): null,
+Vector2i(4, 0): null,
+Vector2i(4, 1): null,
+Vector2i(4, 2): null,
+Vector2i(4, 3): null,
+Vector2i(4, 4): null,
+Vector2i(4, 5): null,
+Vector2i(4, 6): null,
+Vector2i(4, 7): null,
+Vector2i(4, 8): null,
+Vector2i(4, 9): null,
+Vector2i(4, 10): null,
+Vector2i(4, 11): null,
+Vector2i(5, 0): null,
+Vector2i(5, 1): null,
+Vector2i(5, 2): null,
+Vector2i(5, 3): null,
+Vector2i(5, 4): null,
+Vector2i(5, 5): null,
+Vector2i(5, 6): null,
+Vector2i(5, 7): null,
+Vector2i(5, 8): null,
+Vector2i(5, 9): null,
+Vector2i(5, 10): null,
+Vector2i(5, 11): null,
+Vector2i(6, 0): null,
+Vector2i(6, 1): null,
+Vector2i(6, 2): null,
+Vector2i(6, 3): null,
+Vector2i(6, 4): null,
+Vector2i(6, 5): null,
+Vector2i(6, 6): null,
+Vector2i(6, 7): null,
+Vector2i(6, 8): null,
+Vector2i(6, 9): null,
+Vector2i(6, 10): null,
+Vector2i(6, 11): null,
+Vector2i(7, 0): null,
+Vector2i(7, 1): null,
+Vector2i(7, 2): null,
+Vector2i(7, 3): null,
+Vector2i(7, 4): null,
+Vector2i(7, 5): null,
+Vector2i(7, 6): null,
+Vector2i(7, 7): null,
+Vector2i(7, 8): null,
+Vector2i(7, 9): null,
+Vector2i(7, 10): null,
+Vector2i(7, 11): null,
+Vector2i(8, 0): null,
+Vector2i(8, 1): null,
+Vector2i(8, 2): null,
+Vector2i(8, 3): null,
+Vector2i(8, 4): null,
+Vector2i(8, 5): null,
+Vector2i(8, 6): null,
+Vector2i(8, 7): null,
+Vector2i(8, 8): null,
+Vector2i(8, 9): null,
+Vector2i(8, 10): null,
+Vector2i(8, 11): null,
+Vector2i(9, 0): null,
+Vector2i(9, 1): null,
+Vector2i(9, 2): null,
+Vector2i(9, 3): null,
+Vector2i(9, 4): null,
+Vector2i(9, 5): null,
+Vector2i(9, 6): null,
+Vector2i(9, 7): null,
+Vector2i(9, 8): null,
+Vector2i(9, 9): null,
+Vector2i(9, 10): null,
+Vector2i(9, 11): null,
+Vector2i(10, 0): null,
+Vector2i(10, 1): null,
+Vector2i(10, 2): null,
+Vector2i(10, 3): null,
+Vector2i(10, 4): null,
+Vector2i(10, 5): null,
+Vector2i(10, 6): null,
+Vector2i(10, 7): null,
+Vector2i(10, 8): null,
+Vector2i(10, 9): null,
+Vector2i(10, 10): null,
+Vector2i(10, 11): null,
+Vector2i(11, 0): null,
+Vector2i(11, 1): null,
+Vector2i(11, 2): null,
+Vector2i(11, 3): null,
+Vector2i(11, 4): null,
+Vector2i(11, 5): null,
+Vector2i(11, 6): null,
+Vector2i(11, 7): null,
+Vector2i(11, 8): null,
+Vector2i(11, 9): null,
+Vector2i(11, 10): null,
+Vector2i(11, 11): null,
+Vector2i(12, 0): null,
+Vector2i(12, 1): null,
+Vector2i(12, 2): null,
+Vector2i(12, 3): null,
+Vector2i(12, 4): null,
+Vector2i(12, 5): null,
+Vector2i(12, 6): null,
+Vector2i(12, 7): null,
+Vector2i(12, 8): null,
+Vector2i(12, 9): null,
+Vector2i(12, 10): null,
+Vector2i(12, 11): null,
+Vector2i(13, 0): null,
+Vector2i(13, 1): null,
+Vector2i(13, 2): null,
+Vector2i(13, 3): null,
+Vector2i(13, 4): null,
+Vector2i(13, 5): null,
+Vector2i(13, 6): null,
+Vector2i(13, 7): null,
+Vector2i(13, 8): null,
+Vector2i(13, 9): null,
+Vector2i(13, 10): null,
+Vector2i(13, 11): null,
+Vector2i(14, 0): null,
+Vector2i(14, 1): null,
+Vector2i(14, 2): null,
+Vector2i(14, 3): null,
+Vector2i(14, 4): null,
+Vector2i(14, 5): null,
+Vector2i(14, 6): null,
+Vector2i(14, 7): null,
+Vector2i(14, 8): null,
+Vector2i(14, 9): null,
+Vector2i(14, 10): null,
+Vector2i(14, 11): null,
+Vector2i(15, 0): null,
+Vector2i(15, 1): null,
+Vector2i(15, 2): null,
+Vector2i(15, 3): null,
+Vector2i(15, 4): null,
+Vector2i(15, 5): null,
+Vector2i(15, 6): null,
+Vector2i(15, 7): null,
+Vector2i(15, 8): null,
+Vector2i(15, 9): null,
+Vector2i(15, 10): null,
+Vector2i(15, 11): null
+})
+
+[resource]
+script = ExtResource("10_fxsod")
+_container_data_map = Dictionary[String, ExtResource("1_sels7")]({
+"demo1_inventory": SubResource("Resource_2itfv"),
+"demo1_storage": SubResource("Resource_0u4sr"),
+"demo2_inventory": SubResource("Resource_jtr41")
+})
+_quick_move_relations_map = Dictionary[String, Array]({
+"demo1_inventory": Array[String](["demo1_storage"]),
+"demo1_storage": Array[String](["demo1_inventory"])
+})

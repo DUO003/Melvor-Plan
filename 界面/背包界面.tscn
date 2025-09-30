@@ -1,0 +1,205 @@
+[gd_scene load_steps=8 format=3 uid="uid://dr3p3f8wbo87d"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_loe2l"]
+[ext_resource type="Script" uid="uid://mkdbh1ljjonw" path="res://代码/专属代码/背包界面/背包界面.gd" id="2_tb4we"]
+[ext_resource type="Texture2D" uid="uid://bgapac8xq358f" path="res://素材/游戏素材/货币/without background/2.png" id="3_1hlae"]
+[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_4r775"]
+[ext_resource type="PackedScene" uid="uid://bmtorijdfu4jh" path="res://GBIS_demos/item_info/ItemInfo.tscn" id="3_ox21q"]
+[ext_resource type="Script" uid="uid://b3x4mwtjmm4tp" path="res://addons/grid_base_inventory_system/core/view/container/inventory/inventory_view.gd" id="5_tb4we"]
+[ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="6_ggjuy"]
+
+[node name="合成主界面" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -220.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_loe2l")
+script = ExtResource("2_tb4we")
+metadata/_edit_lock_ = true
+
+[node name="标题" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+color = Color(0.75, 0.67, 0.45, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="等级显示" parent="标题" instance=ExtResource("3_4r775")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+"系统" = "挂机"
+"玩法" = "背包"
+
+[node name="背景" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.004
+offset_top = 100.0
+offset_bottom = -3.99994
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.82, 0.732533, 0.492, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="内容节点" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 100.0
+offset_right = 1700.0
+offset_bottom = 1000.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="内容节点"]
+custom_minimum_size = Vector2(1700, 900)
+layout_mode = 0
+offset_right = 1700.0
+offset_bottom = 900.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="内容节点/HBoxContainer"]
+custom_minimum_size = Vector2(1100, 900)
+layout_mode = 2
+
+[node name="物品栏选项卡" type="TabContainer" parent="内容节点/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+current_tab = 0
+
+[node name="物品栏" type="ScrollContainer" parent="内容节点/HBoxContainer/VBoxContainer/物品栏选项卡"]
+custom_minimum_size = Vector2(1100, 750)
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="背包" type="Control" parent="内容节点/HBoxContainer/VBoxContainer/物品栏选项卡/物品栏"]
+custom_minimum_size = Vector2(1089, 1210)
+layout_mode = 2
+script = ExtResource("5_tb4we")
+container_name = "背包"
+container_columns = 9
+container_rows = 10
+base_size = 121
+grid_border_size = 2
+grid_border_color = Color(0.75, 0.75, 0.75, 0)
+gird_background_color_empty = Color(0.49, 0.444267, 0.3185, 0.784314)
+gird_background_color_taken = Color(0.49, 0.444267, 0.3185, 0.862745)
+gird_background_color_conflict = Color(0.94, 0.68103, 0.6674, 0.784314)
+grid_background_color_avilable = Color(0.4, 0.362667, 0.26, 0.784314)
+stack_num_font_size = 32
+stack_num_margin = 0
+stack_num_color = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
+
+[node name="Control" type="Control" parent="内容节点/HBoxContainer/VBoxContainer/物品栏选项卡"]
+visible = false
+custom_minimum_size = Vector2(1100, 750)
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="金币节点" type="Control" parent="内容节点/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="金币贴图" type="TextureRect" parent="内容节点/HBoxContainer/VBoxContainer/金币节点"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 66.0
+offset_bottom = 62.0
+texture = ExtResource("3_1hlae")
+expand_mode = 1
+
+[node name="金币文本" type="Label" parent="内容节点/HBoxContainer/VBoxContainer/金币节点"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 0
+offset_left = 64.0
+offset_top = -4.0
+offset_right = 1072.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 50
+text = "金币:100"
+
+[node name="TabContainer" type="TabContainer" parent="内容节点/HBoxContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+current_tab = 0
+
+[node name="物品介绍" type="Control" parent="内容节点/HBoxContainer/TabContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="物品详情贴图" type="TextureRect" parent="内容节点/HBoxContainer/TabContainer/物品介绍"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 0
+offset_left = 91.0
+offset_top = 28.0
+offset_right = 275.0
+offset_bottom = 212.0
+texture = ExtResource("3_1hlae")
+expand_mode = 1
+
+[node name="物品详情名称" type="Label" parent="内容节点/HBoxContainer/TabContainer/物品介绍"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 228.0
+offset_right = 371.0
+offset_bottom = 298.0
+theme_override_font_sizes/font_size = 50
+text = "金币"
+horizontal_alignment = 1
+
+[node name="物品详情文本" type="RichTextLabel" parent="内容节点/HBoxContainer/TabContainer/物品介绍"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 0
+offset_left = 19.0
+offset_top = 300.0
+offset_right = 568.0
+offset_bottom = 796.0
+text = "金币:交易的基础货币"
+
+[node name="使用" type="Button" parent="内容节点/HBoxContainer/TabContainer/物品介绍"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 0
+offset_left = 387.0
+offset_top = 20.0
+offset_right = 587.0
+offset_bottom = 100.0
+theme = ExtResource("6_ggjuy")
+text = "使用"
+
+[node name="丢弃" type="Button" parent="内容节点/HBoxContainer/TabContainer/物品介绍"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 0
+offset_left = 387.0
+offset_top = 110.0
+offset_right = 587.0
+offset_bottom = 190.0
+theme = ExtResource("6_ggjuy")
+text = "丢弃"
+
+[node name="分享" type="Button" parent="内容节点/HBoxContainer/TabContainer/物品介绍"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 0
+offset_left = 387.0
+offset_top = 200.0
+offset_right = 587.0
+offset_bottom = 280.0
+theme = ExtResource("6_ggjuy")
+text = "分享"
+
+[node name="物品提示" parent="." instance=ExtResource("3_ox21q")]
+layout_mode = 0
+offset_left = -208.0
+offset_top = 944.0
+offset_right = -11.0
+offset_bottom = 998.0

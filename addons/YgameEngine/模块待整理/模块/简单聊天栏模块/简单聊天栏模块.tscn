@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1q5n0f7y62bg"]
+
+[ext_resource type="Script" uid="uid://d1elhga51hqb" path="res://addons/YgameEngine/模块待整理/模块/简单聊天栏模块/简单聊天栏模块.gd" id="1_ek1uc"]
+
+[node name="简单聊天栏模块" type="Panel"]
+custom_minimum_size = Vector2(400, 200)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -648.0
+offset_right = -25.0
+offset_bottom = -449.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_ek1uc")
+
+[node name="文本" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "系统:预览效果"
+scroll_following = true

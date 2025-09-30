@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://botesl0hb50h7"
+
+[deps]
+
+files=["res://测试/蓝图.阶级.translation", "res://测试/蓝图.价值.translation", "res://测试/蓝图.简介.translation", "res://测试/蓝图.分类.translation", "res://测试/蓝图.类型.translation", "res://测试/蓝图.职业.translation", "res://测试/蓝图.图纸集.translation", "res://测试/蓝图.icon.translation", "res://测试/蓝图.堆叠.translation", "res://测试/蓝图.列.translation", "res://测试/蓝图.行.translation", "res://测试/蓝图.矿石.translation", "res://测试/蓝图.木材.translation", "res://测试/蓝图.皮革.translation", "res://测试/蓝图.药草.translation", "res://测试/蓝图.零件.translation", "res://测试/蓝图.精魄.translation", "res://测试/蓝图.攻击.translation", "res://测试/蓝图.血量.translation", "res://测试/蓝图.耐久.translation"]
+
+source_file="res://测试/蓝图.csv"
+dest_files=["res://测试/蓝图.阶级.translation", "res://测试/蓝图.价值.translation", "res://测试/蓝图.简介.translation", "res://测试/蓝图.分类.translation", "res://测试/蓝图.类型.translation", "res://测试/蓝图.职业.translation", "res://测试/蓝图.图纸集.translation", "res://测试/蓝图.icon.translation", "res://测试/蓝图.堆叠.translation", "res://测试/蓝图.列.translation", "res://测试/蓝图.行.translation", "res://测试/蓝图.矿石.translation", "res://测试/蓝图.木材.translation", "res://测试/蓝图.皮革.translation", "res://测试/蓝图.药草.translation", "res://测试/蓝图.零件.translation", "res://测试/蓝图.精魄.translation", "res://测试/蓝图.攻击.translation", "res://测试/蓝图.血量.translation", "res://测试/蓝图.耐久.translation"]
+
+[params]
+
+compress=true
+delimiter=0

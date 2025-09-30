@@ -1,0 +1,198 @@
+[gd_scene load_steps=2 format=3 uid="uid://de6d1ssr8jynh"]
+
+[ext_resource type="Script" path="res://模块/高级服务器模块/例子/服务器ui.gd" id="1_lur0b"]
+
+[node name="服务器UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lur0b")
+
+[node name="标签" type="Label" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 63.0
+offset_right = 343.0
+offset_bottom = 153.0
+theme_override_font_sizes/font_size = 32
+text = "服务器IP
+"
+
+[node name="IP编辑器" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 51.0
+offset_right = 707.0
+offset_bottom = 146.0
+theme_override_font_sizes/font_size = 32
+text = "127.0.0.1"
+
+[node name="创建服务器按钮" type="Button" parent="."]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 172.0
+offset_right = 358.0
+offset_bottom = 267.0
+theme_override_font_sizes/font_size = 32
+text = "创建服务器"
+
+[node name="连接服务器按钮" type="Button" parent="."]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 173.0
+offset_right = 708.0
+offset_bottom = 268.0
+theme_override_font_sizes/font_size = 32
+text = "连接"
+
+[node name="登入界面" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 63.0
+offset_top = 565.0
+offset_right = 63.0
+offset_bottom = 565.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="标签" type="Label" parent="登入界面"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -163.0
+offset_right = 148.0
+offset_bottom = -73.0
+theme_override_font_sizes/font_size = 63
+text = "账号:"
+
+[node name="标签2" type="Label" parent="登入界面"]
+layout_mode = 0
+offset_left = -33.0
+offset_top = -45.0
+offset_right = 214.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 63
+text = "密码:"
+
+[node name="账号编辑器" type="LineEdit" parent="登入界面"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = -175.0
+offset_right = 617.0
+offset_bottom = -80.0
+theme_override_font_sizes/font_size = 63
+placeholder_text = "请输入你的账号"
+
+[node name="密码编辑器" type="LineEdit" parent="登入界面"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = -51.0
+offset_right = 617.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 63
+placeholder_text = "请输入你的密码"
+
+[node name="CheckBox" type="CheckBox" parent="登入界面"]
+layout_mode = 0
+offset_left = -53.0
+offset_top = 65.0
+offset_right = 39.0
+offset_bottom = 96.0
+scale = Vector2(3, 3)
+text = "保存账号"
+expand_icon = true
+
+[node name="登入按钮" type="Button" parent="登入界面"]
+layout_mode = 0
+offset_left = 422.0
+offset_top = 183.0
+offset_right = 556.0
+offset_bottom = 278.0
+theme_override_font_sizes/font_size = 63
+text = "登入"
+
+[node name="注册按钮" type="Button" parent="登入界面"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 177.0
+offset_right = 200.0
+offset_bottom = 272.0
+theme_override_font_sizes/font_size = 63
+text = "注册"
+
+[node name="注册界面" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -22.0
+offset_top = 426.0
+offset_right = 18.0
+offset_bottom = 466.0
+
+[node name="账号编辑器" type="LineEdit" parent="注册界面"]
+layout_mode = 0
+offset_left = 246.0
+offset_top = 135.0
+offset_right = 710.0
+offset_bottom = 230.0
+theme_override_font_sizes/font_size = 63
+placeholder_text = "请输入你的账号"
+
+[node name="密码编辑器" type="LineEdit" parent="注册界面"]
+layout_mode = 0
+offset_left = 246.0
+offset_top = 257.0
+offset_right = 710.0
+offset_bottom = 352.0
+theme_override_font_sizes/font_size = 63
+placeholder_text = "请输入你的密码"
+
+[node name="重复的密码编辑器" type="LineEdit" parent="注册界面"]
+layout_mode = 0
+offset_left = 241.0
+offset_top = 380.0
+offset_right = 705.0
+offset_bottom = 475.0
+theme_override_font_sizes/font_size = 63
+placeholder_text = "请输入你的密码"
+
+[node name="确认账号注册按钮" type="Button" parent="注册界面"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 543.0
+offset_right = 487.0
+offset_bottom = 638.0
+theme_override_font_sizes/font_size = 63
+text = "注册"
+
+[node name="标签" type="Label" parent="注册界面"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 130.0
+offset_right = 242.0
+offset_bottom = 220.0
+theme_override_font_sizes/font_size = 63
+text = "账号:"
+
+[node name="标签2" type="Label" parent="注册界面"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 368.0
+offset_right = 239.0
+offset_bottom = 458.0
+theme_override_font_sizes/font_size = 63
+text = "密码:"
+
+[node name="标签3" type="Label" parent="注册界面"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 251.0
+offset_right = 236.0
+offset_bottom = 341.0
+theme_override_font_sizes/font_size = 63
+text = "密码:"

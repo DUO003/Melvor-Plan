@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://btsgbqm2kx3s1"]
+
+[ext_resource type="Script" uid="uid://5fy5axsca6i2" path="res://界面/用户界面.gd" id="1_1xcs4"]
+[ext_resource type="Texture2D" uid="uid://2x8n06xoxbpu" path="res://素材/AAA其他/bg_0.jpg" id="1_alo0w"]
+[ext_resource type="PackedScene" uid="uid://c2ikyp8oaix5u" path="res://界面/合成界面.tscn" id="2_7nen4"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="4_kiae7"]
+[ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="4_xpqlo"]
+
+[node name="空节点" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_kiae7")
+script = ExtResource("1_1xcs4")
+metadata/_edit_lock_ = true
+
+[node name="背景" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_alo0w")
+metadata/_edit_lock_ = true
+
+[node name="场景容器" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="合成主界面" parent="场景容器" instance=ExtResource("2_7nen4")]
+
+[node name="任务栏" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1700.0
+offset_top = 10.0
+offset_right = 1920.0
+offset_bottom = 990.0
+theme = ExtResource("4_kiae7")
+theme_override_constants/separation = 25
+
+[node name="任务" type="Button" parent="任务栏"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme = ExtResource("4_xpqlo")
+text = "合成"
+
+[node name="提示容器" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+z_index = 10
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_behavior_recursive = 1

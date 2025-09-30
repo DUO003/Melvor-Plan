@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://djx83pntb26a6"]
+
+[ext_resource type="Script" path="res://模块/简单列表模块/选项设置/事件处理.gd" id="1_ntrtn"]
+[ext_resource type="Script" path="res://模块/简单列表模块/简单列表模块.gd" id="2_5jc68"]
+
+[node name="封面设置事件处理" type="Node"]
+script = ExtResource("1_ntrtn")
+
+[node name="首页菜单" type="ItemList" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -130.0
+offset_right = 68.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+item_count = 3
+item_0/text = "开始游戏"
+item_1/text = "继续游戏"
+item_2/text = "设置选项"
+script = ExtResource("2_5jc68")
+"默认焦点" = true
+
+[node name="选项设置" type="ItemList" parent="."]
+top_level = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -264.0
+offset_right = 112.0
+offset_bottom = -139.0
+grow_horizontal = 2
+grow_vertical = 0
+item_count = 4
+item_0/text = "背景音乐音量"
+item_1/text = "背景声设置"
+item_2/text = "音效设置"
+item_3/text = "声效设置"
+script = ExtResource("2_5jc68")
+
+[node name="返回按钮" type="Button" parent="选项设置"]
+top_level = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -45.0
+offset_bottom = 45.0
+grow_horizontal = 0
+text = "返回"

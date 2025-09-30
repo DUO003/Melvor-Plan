@@ -1,0 +1,236 @@
+[gd_resource type="Theme" load_steps=22 format=3 uid="uid://cigh0v88yomed"]
+
+[ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="1_csmyg"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="1_kb01l"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_csmyg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gq0t6"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqimc"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("2_csmyg")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjp5r"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.41, 0.28822997, 0.0779, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+expand_margin_bottom = -5.0
+script = ExtResource("2_csmyg")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+margin_bottom = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_cgrsc"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("1_kb01l")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kqimc"), SubResource("StyleBoxFlat_wjp5r")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBox" id="StyleBox_ly6fy"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("1_kb01l")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kqimc"), SubResource("StyleBoxFlat_wjp5r")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBox" id="StyleBox_o32f2"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("1_kb01l")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kqimc"), SubResource("StyleBoxFlat_wjp5r")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBox" id="StyleBox_h4m5x"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("1_kb01l")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kqimc"), SubResource("StyleBoxFlat_wjp5r")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rko8"]
+bg_color = Color(0.524333, 0.65, 0.52, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbgl2"]
+bg_color = Color(0.203922, 0.65098, 0.196078, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_csmyg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgrsc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ly6fy"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_color = Color(0, 0, 0, 1)
+script = ExtResource("2_csmyg")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o32f2"]
+bg_color = Color(0.53, 0.41339996, 0.21199998, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.40784314, 0.2901961, 0.078431375, 1)
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+script = ExtResource("2_csmyg")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_lif0j"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 20.0
+content_margin_top = 2.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+script = ExtResource("1_kb01l")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_ly6fy"), SubResource("StyleBoxFlat_o32f2")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv7pg"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_color = Color(0, 0, 0, 1)
+script = ExtResource("2_csmyg")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bn4b"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.40784314, 0.2901961, 0.078431375, 1)
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+script = ExtResource("2_csmyg")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_ar6tj"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 20.0
+content_margin_top = 2.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+script = ExtResource("1_kb01l")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_fv7pg"), SubResource("StyleBoxFlat_1bn4b")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBox" id="StyleBox_gvlpa"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 20.0
+content_margin_top = 2.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+script = ExtResource("1_kb01l")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_ly6fy"), SubResource("StyleBoxFlat_o32f2")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[resource]
+Button/constants/outline_size = 10
+Button/font_sizes/font_size = 60
+Button/fonts/font = ExtResource("1_csmyg")
+Button/styles/disabled = SubResource("StyleBoxFlat_gq0t6")
+Button/styles/focus = SubResource("StyleBox_cgrsc")
+Button/styles/hover = SubResource("StyleBox_ly6fy")
+Button/styles/normal = SubResource("StyleBox_o32f2")
+Button/styles/pressed = SubResource("StyleBox_h4m5x")
+CheckBox/fonts/font = ExtResource("1_csmyg")
+CheckButton/font_sizes/font_size = 40
+CheckButton/fonts/font = ExtResource("1_csmyg")
+ColorPickerButton/fonts/font = ExtResource("1_csmyg")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_csmyg")
+LineEdit/fonts/font = ExtResource("1_csmyg")
+MenuButton/fonts/font = ExtResource("1_csmyg")
+OptionButton/fonts/font = ExtResource("1_csmyg")
+ProgressBar/constants/outline_size = 1
+ProgressBar/font_sizes/font_size = 28
+ProgressBar/fonts/font = ExtResource("1_csmyg")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_3rko8")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_pbgl2")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/paragraph_separation = 12
+RichTextLabel/font_sizes/bold_font_size = 80
+RichTextLabel/font_sizes/bold_italics_font_size = 80
+RichTextLabel/font_sizes/italics_font_size = 40
+RichTextLabel/font_sizes/mono_font_size = 40
+RichTextLabel/font_sizes/normal_font_size = 40
+RichTextLabel/fonts/bold_font = ExtResource("1_csmyg")
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_csmyg")
+RichTextLabel/fonts/italics_font = ExtResource("1_csmyg")
+RichTextLabel/fonts/mono_font = ExtResource("1_csmyg")
+RichTextLabel/fonts/normal_font = ExtResource("1_csmyg")
+TabContainer/font_sizes/font_size = 50
+TabContainer/fonts/font = ExtResource("1_csmyg")
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_csmyg")
+TabContainer/styles/tab_disabled = SubResource("StyleBoxEmpty_cgrsc")
+TabContainer/styles/tab_hovered = SubResource("StyleBox_lif0j")
+TabContainer/styles/tab_selected = SubResource("StyleBox_ar6tj")
+TabContainer/styles/tab_unselected = SubResource("StyleBox_gvlpa")
+TextEdit/fonts/font = ExtResource("1_csmyg")
+Tree/fonts/font = ExtResource("1_csmyg")
+Tree/fonts/title_button_font = ExtResource("1_csmyg")

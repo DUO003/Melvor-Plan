@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://bblkg58wiga48"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_15vvr"]
+
+[sub_resource type="Gradient" id="Gradient_62e2m"]
+offsets = PackedFloat32Array(0.245847, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qtu10"]
+gradient = SubResource("Gradient_62e2m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ee4bf"]
+texture = SubResource("GradientTexture2D_qtu10")
+modulate_color = Color(1, 1, 1, 0.5882353)
+
+[sub_resource type="GDScript" id="GDScript_egv8v"]
+script/source = "extends RichTextLabel
+
+
+@export var duration:float=4
+@export var 标签=\"\"
+
+func _ready() -> void:
+	# 从配置文件读取对齐方式，默认靠右
+	var 对齐 = 初始化.配置文件.get(\"通知位置\", \"右\")
+	
+	# 根据SizeFlags特性设置水平对齐（收缩模式，不拉伸填充）
+	match 对齐:
+		\"左\":
+			# 与左侧对齐（等价于不设置标志，值为0）
+			size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		\"中\":
+			# 在可用空间中心对齐（值为4）
+			size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		_:
+			# 与右侧对齐（值为8）
+			size_flags_horizontal = Control.SIZE_SHRINK_END
+
+	await get_tree().create_timer(duration).timeout
+	var tween=create_tween()
+	tween.set_parallel()
+	tween.tween_property(self,\"modulate:a\",0,0.5)
+	tween.tween_property(self,\"custom_minimum_size:y\",0,0.5)
+	await tween.finished
+	queue_free()
+"
+
+[node name="Control" type="RichTextLabel"]
+size_flags_horizontal = 0
+theme = ExtResource("1_15vvr")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_ee4bf")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = SubResource("GDScript_egv8v")

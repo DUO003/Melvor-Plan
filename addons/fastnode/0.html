@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Godot 节点参考</title>
+    <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap-icons/1.8.1/font/bootstrap-icons.css" type="text/css" rel="stylesheet" />
+    <!-- Vue 3 -->
+    <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/3.2.31/vue.global.min.js" type="application/javascript"></script>
+    <style>
+        .node-card {
+            transition: all 0.3s ease;
+            height: 320px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .node-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .node-card:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 16px;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            height: 30px;
+        }
+        .card-text {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            height: 40px;
+            overflow: hidden;
+        }
+        .example-container {
+            background-color: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            height: 200px;
+            overflow: auto;
+        }
+        .category-title {
+            border-bottom: 2px solid #0d6efd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .example-title {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 8px;
+        }
+        .row {
+            margin-bottom: 2rem;
+        }
+        /* 新增侧边栏样式 */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .sidebar .nav-link {
+            color: #495057;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+        }
+        .sidebar .nav-link:hover {
+            color: #0d6efd;
+            transform: translateX(5px);
+        }
+        .sidebar .category-title {
+            cursor: pointer;
+            padding: 8px 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sidebar .category-title i {
+            transition: transform 0.3s ease;
+        }
+        .sidebar .category-title.collapsed i {
+            transform: rotate(-90deg);
+        }
+        .sidebar .category-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .sidebar .category-content.expanded {
+            max-height: 1000px;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .category-section {
+            scroll-margin-top: 20px;
+        }
+        /* 新增复制提示样式 */
+        .copy-tooltip {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #0d6efd;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .copy-tooltip.show {
+            opacity: 1;
+        }
+        /* 新增标签页样式 */
+        .nav-tabs {
+            border-bottom: 2px solid #dee2e6;
+            margin-bottom: 2rem;
+        }
+        .nav-tabs .nav-link {
+            color: #495057;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin-right: 1rem;
+            font-weight: 500;
+        }
+        .nav-tabs .nav-link:hover {
+            border: none;
+            color: #0d6efd;
+        }
+        .nav-tabs .nav-link.active {
+            color: #0d6efd;
+            border: none;
+            border-bottom: 2px solid #0d6efd;
+            margin-bottom: -2px;
+        }
+        .tab-content {
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 复制提示 -->
+    <div class="copy-tooltip">已复制到剪贴板</div>
+
+    <div id="app" class="main-content">
+        <h1 class="text-center mb-4">Godot 节点参考</h1>
+        
+        <!-- 侧边栏目录 -->
+        <div class="sidebar">
+            <h4 class="mb-4">目录</h4>
+            <nav class="nav flex-column">
+                <div class="category">
+                    <h5 class="category-title" @click="toggleCategory('ui')">
+                        UI 节点
+                        <i class="bi bi-chevron-down"></i>
+                    </h5>
+                    <div class="category-content" :class="{ expanded: expandedCategories.ui }">
+                        <a class="nav-link" href="#container-section">容器 <span class="badge bg-primary rounded-pill">22</span></a>
+                        <a class="nav-link" href="#button-section">按钮 <span class="badge bg-primary rounded-pill">8</span></a>
+                        <a class="nav-link" href="#text-section">文本 <span class="badge bg-primary rounded-pill">6</span></a>
+                        <a class="nav-link" href="#graphics-section">图形 <span class="badge bg-primary rounded-pill">4</span></a>
+                        <a class="nav-link" href="#progress-section">进度 <span class="badge bg-primary rounded-pill">6</span></a>
+                        <a class="nav-link" href="#layout-section">布局 <span class="badge bg-primary rounded-pill">9</span></a>
+                        
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h5 class="category-title" @click="toggleCategory('node2d')">
+                        2D 节点
+                        <i class="bi bi-chevron-down"></i>
+                    </h5>
+                    <div class="category-content" :class="{ expanded: expandedCategories.node2d }">
+                        <a class="nav-link" href="#node2d-basic">基础 <span class="badge bg-primary rounded-pill">11</span></a>
+                        <a class="nav-link" href="#node2d-physics">物理<span class="badge bg-primary rounded-pill">9</span></a>
+                        <a class="nav-link" href="#node2d-animation">动画 <span class="badge bg-primary rounded-pill">3</span></a>
+                        <a class="nav-link" href="#node2d-bone">骨骼 <span class="badge bg-primary rounded-pill">3</span></a>
+                        <a class="nav-link" href="#node2d-particles">粒子 <span class="badge bg-primary rounded-pill">2</span></a>
+                        <a class="nav-link" href="#node2d-lighting">光照 <span class="badge bg-primary rounded-pill">3</span></a>
+                        <a class="nav-link" href="#node2d-navigation">导航 <span class="badge bg-primary rounded-pill">6</span></a>
+                        <a class="nav-link" href="#node2d-visual">视效 <span class="badge bg-primary rounded-pill">10</span></a>
+                        <a class="nav-link" href="#node2d-audio">音频 <span class="badge bg-primary rounded-pill">3</span></a>
+                        <a class="nav-link" href="#node2d-special">特殊 <span class="badge bg-primary rounded-pill">4</span></a>
+                        <a class="nav-link" href="#network-system">网络 <span class="badge bg-primary rounded-pill">3</span></a>
+                        <a class="nav-link" href="#editor-system">工具 <span class="badge bg-primary rounded-pill">3</span></a>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h5 class="category-title" @click="toggleCategory('window')">
+                        窗口节点
+                        <i class="bi bi-chevron-down"></i>
+                    </h5>
+                    <div class="category-content" :class="{ expanded: expandedCategories.window }">
+                        <a class="nav-link" href="#window-basic">基础窗口 <span class="badge bg-primary rounded-pill">1</span></a>
+                        <a class="nav-link" href="#window-dialog">对话框 <span class="badge bg-primary rounded-pill">3</span></a>
+                        <a class="nav-link" href="#window-popup">弹出窗口 <span class="badge bg-primary rounded-pill">4</span></a>
+                    </div>
+                </div>
+
+               
+            </nav>
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="content">
+            <!-- UI 节点内容 -->
+            <div class="mb-5 category-section" id="container-section">
+                <h2 class="category-title">一、容器类控件</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allContainers" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 按钮大类 -->
+            <div class="mb-5 category-section" id="button-section">
+                <h2 class="category-title">二、按钮类控件</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allButtons" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 文本控件 -->
+            <div class="mb-5 category-section" id="text-section">
+                <h2 class="category-title">三、文本控件</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allTextControls" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 图形显示控件 -->
+            <div class="mb-5 category-section" id="graphics-section">
+                <h2 class="category-title">四、图形显示控件</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allGraphicsControls" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 进度与范围控件 -->
+            <div class="mb-5 category-section" id="progress-section">
+                <h2 class="category-title">五、进度与范围控件</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allProgressControls" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 容器与布局控件 -->
+            <div class="mb-5 category-section" id="layout-section">
+                <h2 class="category-title">六、布局控件</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allLayoutControls" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+      
+
+            <!-- Node2D 节点内容 -->
+            <div class="mb-5 category-section" id="node2d-basic">
+                <h2 class="category-title">一、基础节点</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allBasicNodes" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 物理节点 -->
+            <div class="mb-5 category-section" id="node2d-physics">
+                <h2 class="category-title">二、物理节点</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allPhysicsNodes" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 动画节点 -->
+            <div class="mb-5 category-section" id="node2d-animation">
+                <h2 class="category-title">三、动画节点</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allAnimationNodes" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- 动画节点 -->
+             <div class="mb-5 category-section" id="node2d-bone">
+                <h2 class="category-title">三、骨骼节点</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allbonenode" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 粒子节点 -->
+            <div class="mb-5 category-section" id="node2d-particles">
+                <h2 class="category-title">四、粒子节点</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allParticleNodes" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 光照节点 -->
+            <div class="mb-5 category-section" id="node2d-lighting">
+                <h2 class="category-title">五、光照节点</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allLightingNodes" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 导航节点 -->
+            <div class="mb-5 category-section" id="node2d-navigation">
+                <h2 class="category-title">六、导航节点</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allNavigationNodes" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 视效节点 -->
+            <div class="mb-5 category-section" id="node2d-visual">
+                <h2 class="category-title">七、视效节点</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allVisualNodes" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 音频节点 -->
+            <div class="mb-5 category-section" id="node2d-audio">
+                <h2 class="category-title">九、音频节点</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allAudioNodes" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 特殊节点 -->
+            <div class="mb-5 category-section" id="node2d-special">
+                <h2 class="category-title">十、特殊节点</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allSpecialNodes" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 网络系统节点 -->
+            <div class="mb-5 category-section" id="network-system">
+                <h2 class="category-title">网络</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allNetworkSystemNodes" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 编辑器扩展节点 -->
+            <div class="mb-5 category-section" id="editor-system">
+                <h2 class="category-title">工具 </h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allEditorSystemNodes" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- 基础窗口 -->
+            <div class="mb-5 category-section" id="window-basic">
+                <h2 class="category-title">一、基础窗口</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allBasicWindows" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 对话框 -->
+            <div class="mb-5 category-section" id="window-dialog">
+                <h2 class="category-title">二、对话框</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allDialogWindows" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 弹出窗口 -->
+            <div class="mb-5 category-section" id="window-popup">
+                <h2 class="category-title">三、弹出窗口</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="node in allPopupWindows" :key="node.name">
+                        <div class="card node-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ node.name }}</h5>
+                                <p class="card-text">{{ node.description }}</p>
+                                <div class="example-container">
+                                    <div v-html="node.example"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.bundle.min.js" type="application/javascript"></script>
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    expandedCategories: {
+                        ui: false,
+                        node2d: false,
+                        window: false,
+                        other: false
+                    },
+                    allContainers: [
+                        // 基础容器
+                        { 
+                            name: 'Container', 
+                            description: '基础容器',
+                            example: `
+                                <div class="border p-3">
+                                    <p>基础容器内容</p>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'PanelContainer', 
+                            description: '面板容器',
+                            example: `
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">面板标题</h5>
+                                        <p class="card-text">面板内容</p>
+                                    </div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'TabContainer', 
+                            description: '标签页容器',
+                            example: `
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#">标签1</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">标签2</a>
+                                    </li>
+                                </ul>
+                                <div class="border p-3">
+                                    <p>标签页内容</p>
+                                </div>
+                            `
+                        },
+                        // 布局容器
+                        { 
+                            name: 'BoxContainer', 
+                            description: '自动排列',
+                            example: `
+                                <div class="row g-2">
+                                    <div class="col-4">
+                                        <button class="btn btn-primary w-100">1</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary w-100">2</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary w-100">3</button>
+                                    </div>
+                                     <div class="col-4">
+                                        <button class="btn btn-primary w-100">1</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary w-100">2</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary w-100">3</button>
+                                    </div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'HBoxContainer', 
+                            description: '水平容器',
+                            example: `
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-primary">按钮1</button>
+                                    <button class="btn btn-primary">按钮2</button>
+                                    <button class="btn btn-primary">按钮3</button>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'VBoxContainer', 
+                            description: '垂直容器',
+                            example: `
+                                <div class="d-flex flex-column gap-2">
+                                    <button class="btn btn-primary">按钮1</button>
+                                    <button class="btn btn-primary">按钮2</button>
+                                    <button class="btn btn-primary">按钮3</button>
+                                </div>
+                            `
+                        },
+                        // 流式布局容器
+                        { 
+                            name: 'FlowContainer', 
+                            description: '自适应流布局',
+                            example: `
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button class="btn btn-primary">按钮1</button>
+                                    <button class="btn btn-primary">按钮2</button>
+                                    <button class="btn btn-primary">按钮3</button>
+                                    <button class="btn btn-primary">按钮4</button>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'HFlowContainer', 
+                            description: '水平流布局',
+                            example: `
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button class="btn btn-primary">按钮1</button>
+                                    <button class="btn btn-primary">按钮2</button>
+                                    <button class="btn btn-primary">按钮3</button>
+                                    <button class="btn btn-primary">按钮4</button>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'VFlowContainer', 
+                            description: '垂直流布局',
+                            example: `
+                                <div class="d-flex flex-column flex-wrap" style="height: 150px;">
+                                    <button class="btn btn-primary mb-2">按钮1</button>
+                                    <button class="btn btn-primary mb-2">按钮2</button>
+                                    <button class="btn btn-primary mb-2">按钮3</button>
+                                    <button class="btn btn-primary mb-2">按钮4</button>
+                                </div>
+                            `
+                        },
+                        // 分割容器
+                        { 
+                            name: 'SplitContainer', 
+                            description: '自适应分割容器',
+                            example: `
+                                <div class="alert alert-info">
+                                    这是一个抽象基类，不能直接使用
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'HSplitContainer', 
+                            description: '水平分割容器',
+                            example: `
+                                <div class="d-flex">
+                                    <div class="border p-2" style="flex: 1;">左侧面板</div>
+                                    <div class="border" style="width: 4px; background-color: #dee2e6;"></div>
+                                    <div class="border p-2" style="flex: 1;">右侧面板</div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'VSplitContainer', 
+                            description: '垂直分割容器',
+                            example: `
+                                <div class="d-flex flex-column" style="height: 150px;">
+                                    <div class="border p-2" style="flex: 1;">上方面板</div>
+                                    <div class="border" style="height: 4px; background-color: #dee2e6;"></div>
+                                    <div class="border p-2" style="flex: 1;">下方面板</div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'GridContainer', 
+                            description: '网格容器',
+                            example: `
+                                <div class="row g-2">
+                                    <div class="col-4">
+                                        <button class="btn btn-primary w-100">1</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary w-100">2</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary w-100">3</button>
+                                    </div>
+                                </div>
+                            `
+                        },
+                        // 功能容器
+                        { 
+                            name: 'ScrollContainer', 
+                            description: '滚动条容器',
+                            example: `
+                                <div style="height: 100px; overflow-y: auto; border: 1px solid #dee2e6; padding: 10px;">
+                                    <p>可滚动内容1</p>
+                                    <p>可滚动内容2</p>
+                                    <p>可滚动内容3</p>
+                                    <p>可滚动内容4</p>
+                                    <p>可滚动内容5</p>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'MarginContainer', 
+                            description: '边距容器',
+                            example: `
+                                <div class="border p-4">
+                                    <button class="btn btn-primary">带边距的内容</button>
+                                </div>
+                            `
+                        },
+                        
+                        // 特殊容器
+                        { 
+                            name: 'AspectRatioContainer', 
+                            description: '宽高比容器',
+                            example: `
+                                <div class="ratio ratio-16x9">
+                                    <div class="bg-primary d-flex align-items-center justify-content-center">
+                                        <span class="text-white">16:9 比例</span>
+                                    </div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'CenterContainer', 
+                            description: '居中显示的容器',
+                            example: `
+                                <div class="d-flex justify-content-center align-items-center" style="height: 100px; border: 1px solid #dee2e6;">
+                                    <button class="btn btn-primary">居中按钮</button>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'SubViewportContainer', 
+                            description: '小地图视窗容器',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>Viewport 容器</span>
+                                </div>
+                            `
+                        },
+                        // 图形容器
+                        { 
+                            name: 'GraphElement', 
+                            description: '图形节点',
+                            example: `
+                                <div class="border p-3" style="background-color: #f8f9fa;">
+                                    <div class="d-flex justify-content-center">
+                                        <div style="width: 50px; height: 50px; background-color: #0d6efd; border-radius: 50%;"></div>
+                                    </div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'GraphFrame', 
+                            description: '图形分组',
+                            example: `
+                                <div class="border p-3" style="background-color: #f8f9fa;">
+                                    <div class="border p-2">
+                                        <p class="mb-0">图形分组内容</p>
+                                    </div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'GraphNode', 
+                            description: '图形节点',
+                            example: `
+                                <div class="border p-3" style="background-color: #f8f9fa;">
+                                    <div class="d-flex justify-content-center">
+                                        <div style="width: 50px; height: 50px; background-color: #0d6efd; border-radius: 4px;"></div>
+                                    </div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'ColorPicker', 
+                            description: '选择颜色的容器',
+                            example: `
+                                <div class="d-flex align-items-center gap-2">
+                                    <input type="color" class="form-control form-control-color" value="#0d6efd">
+                                    <div style="width: 30px; height: 30px; background-color: #0d6efd; border: 1px solid #dee2e6;"></div>
+                                </div>
+                            `
+                        }
+                    ],
+                    allButtons: [
+                        { 
+                            name: 'Button', 
+                            description: '基础按钮',
+                            example: `
+                                <button class="btn btn-primary">基础按钮</button>
+                            `
+                        },
+                        { 
+                            name: 'CheckBox', 
+                            description: '复选框',
+                            example: `
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="checkbox1">
+                                    <label class="form-check-label" for="checkbox1">复选框</label>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'CheckButton', 
+                            description: '可切换的按钮',
+                            example: `
+                                <button class="btn btn-outline-primary" type="button" data-bs-toggle="button">可切换按钮</button>
+                            `
+                        },
+                        { 
+                            name: 'ColorPickerButton', 
+                            description: '颜色选择按钮',
+                            example: `
+                                <div class="d-flex align-items-center gap-2">
+                                    <input type="color" class="form-control form-control-color" value="#0d6efd">
+                                    <button class="btn btn-primary">选择颜色</button>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'MenuButton', 
+                            description: '菜单按钮',
+                            example: `
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        菜单按钮
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">选项1</a></li>
+                                        <li><a class="dropdown-item" href="#">选项2</a></li>
+                                        <li><a class="dropdown-item" href="#">选项3</a></li>
+                                    </ul>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'OptionButton', 
+                            description: '选项按钮',
+                            example: `
+                                <select class="form-select">
+                                    <option selected>选项1</option>
+                                    <option>选项2</option>
+                                    <option>选项3</option>
+                                </select>
+                            `
+                        },
+                        { 
+                            name: 'LinkButton', 
+                            description: '链接按钮',
+                            example: `
+                                <a href="#" class="btn btn-link">链接按钮</a>
+                            `
+                        },
+                        { 
+                            name: 'TextureButton', 
+                            description: '纹理按钮',
+                            example: `
+                                <button class="btn btn-primary">
+                                   ⚡️ 带图技能按钮
+                                </button>
+                            `
+                        }
+                    ],
+                    allTextControls: [
+                        { 
+                            name: 'Label', 
+                            description: '静态文本标签',
+                            example: `
+                                <p class="mb-0">这是一个静态文本标签</p>
+                            `
+                        },
+                        { 
+                            name: 'RichTextLabel', 
+                            description: '复杂富文本渲染',
+                            example: `
+                                <div class="border p-3" style="background-color: #f8f9fa;">
+                                    <p class="mb-0"><strong>粗体文本</strong> <em>斜体文本</em> <span style="color: #0d6efd;">蓝色文本</span></p>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'LineEdit', 
+                            description: '单行文本输入框',
+                            example: `
+                                <input type="text" class="form-control" placeholder="请输入文本">
+                            `
+                        },
+                        { 
+                            name: 'TextEdit', 
+                            description: '多行富文本编辑器',
+                            example: `
+                                <textarea class="form-control" rows="3" placeholder="多行文本输入"></textarea>
+                            `
+                        },
+                        { 
+                            name: 'CodeEdit', 
+                            description: '带语法高亮的代码编辑器',
+                            example: `
+                                <div class="border p-2" style="background-color: #f8f9fa;">
+                                    <pre class="mb-0"><code>function hello() {
+    console.log("Hello World!");
+}</code></pre>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'SpinBox', 
+                            description: '数字增减输入框',
+                            example: `
+                                <div class="input-group">
+                                    <button class="btn btn-outline-secondary" type="button">-</button>
+                                    <input type="number" class="form-control text-center" value="0">
+                                    <button class="btn btn-outline-secondary" type="button">+</button>
+                                </div>
+                            `
+                        }
+                    ],
+                    allGraphicsControls: [
+                        { 
+                            name: 'ColorRect', 
+                            description: '纯色填充矩形',
+                            example: `
+                                <div style="width: 100%; height: 50px; background-color: #0d6efd;"></div>
+                            `
+                        },
+                        { 
+                            name: 'TextureRect', 
+                            description: '纹理贴图容器',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>纹理贴图</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'NinePatchRect', 
+                            description: '九宫格拉伸纹理',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>九宫格纹理</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'GraphEdit', 
+                            description: '节点式图形编辑器',
+                            example: `
+                                <div style="width: 100%; height: 150px; background-color: #f8f9fa; border: 1px solid #dee2e6; position: relative;">
+                                    <div style="position: absolute; top: 20px; left: 20px; width: 50px; height: 50px; background-color: #0d6efd; border-radius: 4px;"></div>
+                                    <div style="position: absolute; top: 20px; right: 20px; width: 50px; height: 50px; background-color: #0d6efd; border-radius: 4px;"></div>
+                                    <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 50px; height: 50px; background-color: #0d6efd; border-radius: 4px;"></div>
+                                </div>
+                            `
+                        }
+                    ],
+                    allProgressControls: [
+                        { 
+                            name: 'ProgressBar', 
+                            description: '线性进度条',
+                            example: `
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 75%">75%</div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'TextureProgressBar', 
+                            description: '自定义纹理进度条',
+                            example: `
+                                <div class="progress" style="height: 20px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 60%">60%</div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'HSlider', 
+                            description: '水平滑块',
+                            example: `
+                                <input type="range" class="form-range" min="0" max="100" value="50">
+                            `
+                        },
+                        { 
+                            name: 'VSlider', 
+                            description: '垂直滑块',
+                            example: `
+                                <div style="height: 100px; display: flex; align-items: center;">
+                                    <input type="range" class="form-range" min="0" max="100" value="50" style="transform: rotate(-90deg);">
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'HScrollBar', 
+                            description: '水平滚动条',
+                            example: `
+                                <div style="width: 100%; height: 20px; background-color: #f8f9fa; border: 1px solid #dee2e6; position: relative;">
+                                    <div style="position: absolute; left: 0; width: 30%; height: 100%; background-color: #0d6efd;"></div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'VScrollBar', 
+                            description: '垂直滚动条',
+                            example: `
+                                <div style="width: 20px; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; position: relative;">
+                                    <div style="position: absolute; top: 0; width: 100%; height: 30%; background-color: #0d6efd;"></div>
+                                </div>
+                            `
+                        }
+                    ],
+                    allLayoutControls: [
+                        { 
+                            name: 'Panel', 
+                            description: '通用容器面板',
+                            example: `
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">面板标题</h5>
+                                        <p class="card-text">面板内容</p>
+                                    </div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'TabBar', 
+                            description: '多标签页容器',
+                            example: `
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#">标签1</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">标签2</a>
+                                    </li>
+                                </ul>
+                            `
+                        },
+                        { 
+                            name: 'Tree', 
+                            description: '树形结构容器',
+                            example: `
+                                <div class="border p-2" style="background-color: #f8f9fa;">
+                                    <div class="mb-2">
+                                        <i class="bi bi-folder"></i> 文件夹1
+                                        <div class="ms-4">
+                                            <div><i class="bi bi-file"></i> 文件1</div>
+                                            <div><i class="bi bi-file"></i> 文件2</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'ItemList', 
+                            description: '列表式容器',
+                            example: `
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action">项目1</a>
+                                    <a href="#" class="list-group-item list-group-item-action">项目2</a>
+                                    <a href="#" class="list-group-item list-group-item-action">项目3</a>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'HSeparator', 
+                            description: '水平分割线',
+                            example: `
+                                <hr>
+                            `
+                        },
+                        { 
+                            name: 'VSeparator', 
+                            description: '垂直分割线',
+                            example: `
+                                <div style="height: 100px; display: flex; align-items: center;">
+                                    <div style="width: 1px; height: 100%; background-color: #dee2e6;"></div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'ReferenceRect', 
+                            description: '布局参考框（调试用）',
+                            example: `
+                                <div style="width: 100%; height: 100px; border: 2px dashed #0d6efd; background-color: rgba(13, 110, 253, 0.1);"></div>
+                            `
+                        },
+                        { 
+                            name: 'MenuBar', 
+                            description: '主菜单栏控件',
+                            example: `
+                                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                                    <div class="container-fluid">
+                                        <div class="navbar-nav">
+                                            <a class="nav-link" href="#">文件</a>
+                                            <a class="nav-link" href="#">编辑</a>
+                                            <a class="nav-link" href="#">视图</a>
+                                            <a class="nav-link" href="#">帮助</a>
+                                        </div>
+                                    </div>
+                                </nav>
+                            `
+                        },
+                        { 
+                            name: 'VideoStreamPlayer', 
+                            description: '视频播放器组件',
+                            example: `
+                                <div style="width: 100%; height: 150px; background-color: #000; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-play-circle-fill text-white" style="font-size: 2rem;"></i>
+                                </div>
+                            `
+                        }
+                    ],
+                   
+                    allBasicNodes: [
+                        { 
+                            name: 'Node', 
+                            description: '基础节点，节点的基类',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>基础节点</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'Node2D', 
+                            description: '基础2D节点，所有2D节点的基类',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>基础2D节点</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'Sprite2D', 
+                            description: '2D精灵节点，用于显示2D图像',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    😄
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'Polygon2D', 
+                            description: '2D多边形节点，用于绘制自定义形状',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <svg width="100" height="100">
+                                        <polygon points="50,0 100,100 0,100" fill="#0d6efd"/>
+                                    </svg>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'Line2D', 
+                            description: '2D线条节点，用于绘制线条',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <svg width="100" height="100">
+                                        <line x1="0" y1="50" x2="100" y2="50" stroke="#0d6efd" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'MeshInstance2D', 
+                            description: '2D网格实例节点，用于显示2D网格',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>2D网格实例</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'MultiMeshInstance2D', 
+                            description: '2D多重网格实例节点，用于高效显示多个相同网格',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>多重网格实例</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'Marker2D', 
+                            description: '2D标记点节点，用于标记位置',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-geo-alt-fill" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'RemoteTransform2D', 
+                            description: '远程变换2D节点，用于控制其他节点的变换',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>远程变换</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'ResourcePreloader', 
+                            description: '资源预加载器节点，用于预加载游戏资源',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-box" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'ShaderGlobalsOverride', 
+                            description: '着色器全局变量覆盖节点，用于覆盖全局着色器变量',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-palette" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                    ],
+                    allPhysicsNodes: [
+                        { 
+                            name: 'StaticBody2D', 
+                            description: '静态刚体2D节点，用于静态碰撞',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>静态刚体</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'RigidBody2D', 
+                            description: '动态刚体2D节点，用于物理模拟',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>动态刚体</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'AnimatableBody2D', 
+                            description: '可动画刚体2D节点，用于可动画的物理对象',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>可动画刚体</span>
+                                </div>
+                            `
+                        },
+                        
+                        { 
+                            name: 'Area2D', 
+                            description: '区域检测2D节点，用于检测区域内的物体',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>区域检测</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'ShapeCast2D', 
+                            description: '形状检测2D节点，用于形状检测',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <div style="width: 50px; height: 50px; background-color: #0d6efd; opacity: 0.2; border: 2px solid #0d6efd;"></div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'RayCast2D', 
+                            description: '射线检测2D节点，用于射线检测',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <svg width="100" height="100">
+                                        <line x1="0" y1="50" x2="100" y2="50" stroke="#0d6efd" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'CharacterBody2D', 
+                            description: '角色刚体2D节点，用于角色移动',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>角色刚体</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'CollisionShape2D', 
+                            description: '碰撞形状2D节点，用于定义碰撞形状',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <div style="width: 50px; height: 50px; background-color: #0d6efd; opacity: 0.2; border: 2px solid #0d6efd;"></div>
+                                </div>
+                            `
+                        },
+
+                        { 
+                            name: 'CollisionPolygon2D', 
+                            description: '碰撞多边形2D节点，用于定义碰撞形状',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <svg width="100" height="100">
+                                        <polygon points="50,0 100,100 0,100" fill="#0d6efd" fill-opacity="0.2" stroke="#0d6efd"/>
+                                    </svg>
+                                </div>
+                            `
+                        }
+                        
+                        
+                      
+                    ],
+                    allAnimationNodes: [
+                        { 
+                            name: 'AnimatedSprite2D', 
+                            description: '动画精灵2D节点，用于播放精灵动画',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>动画精灵</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'AnimationPlayer', 
+                            description: '动画播放器节点，用于播放和管理动画',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-play-circle" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'AnimationTree', 
+                            description: '动画树节点，用于管理复杂的动画状态机',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-diagram-3" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        }
+                       
+                    ],
+                    allbonenode: [
+                         
+                    { 
+                            name: 'PhysicalBone2D', 
+                            description: '物理骨骼2D节点，用于物理骨骼系统',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>物理骨骼</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'Skeleton2D', 
+                            description: '骨骼2D节点，用于2D骨骼动画',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>骨骼系统</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'Bone2D', 
+                            description: '骨骼2D节点，用于定义骨骼',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>骨骼节点</span>
+                                </div>
+                            `
+                        }
+                    ],
+                    allParticleNodes: [
+                        { 
+                            name: 'CPUParticles2D', 
+                            description: 'CPU粒子2D节点，用于CPU粒子效果',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>CPU粒子</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'GPUParticles2D', 
+                            description: 'GPU粒子2D节点，用于GPU粒子效果',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>GPU粒子</span>
+                                </div>
+                            `
+                        }
+                    ],
+                    allLightingNodes: [
+                        { 
+                            name: 'DirectionalLight2D', 
+                            description: '方向光2D节点，用于2D方向光',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-sun" style="font-size: 2rem; color: #ffd700;"></i>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'PointLight2D', 
+                            description: '点光源2D节点，用于2D点光源',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-lightbulb" style="font-size: 2rem; color: #ffd700;"></i>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'LightOccluder2D', 
+                            description: '光遮挡器2D节点，用于遮挡光线',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>光遮挡器</span>
+                                </div>
+                            `
+                        }
+                    ],
+                    allNavigationNodes: [
+                        { 
+                            name: 'NavigationRegion2D', 
+                            description: '导航区域2D节点，用于定义可导航区域',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>导航区域</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'NavigationLink2D', 
+                            description: '导航链接2D节点，用于连接导航区域',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>导航链接</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'NavigationObstacle2D', 
+                            description: '导航障碍物2D节点，用于定义导航障碍物',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>导航障碍物</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'NavigationAgent2D', 
+                            description: '2D导航代理节点，用于2D导航系统',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-compass" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'Path2D', 
+                            description: '路径2D节点，用于定义路径',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <svg width="100" height="100">
+                                        <path d="M0,50 Q50,0 100,50" stroke="#0d6efd" fill="none"/>
+                                    </svg>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'PathFollow2D', 
+                            description: '路径跟随2D节点，用于沿路径移动',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>路径跟随</span>
+                                </div>
+                            `
+                        }
+                    ],
+                    allVisualNodes: [
+                    { 
+                            name: 'CanvasLayer', 
+                            description: '画布层节点，用于管理渲染层级',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-layers" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'CanvasGroup', 
+                            description: '画布组节点，用于控制子节点的渲染',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>画布组</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'CanvasModulate', 
+                            description: '画布调制节点，用于调制画布颜色',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>画布调制</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'ParallaxBackground', 
+                            description: '视差背景节点，用于创建视差滚动背景',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-image" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'Parallax2D', 
+                            description: '视差2D节点，用于创建视差效果',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>视差效果</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'ParallaxLayer', 
+                            description: '视差层节点，用于定义视差层',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>视差层</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'WorldEnvironment', 
+                            description: '世界环境节点，用于设置全局环境效果',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-globe" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                        
+                        { 
+                            name: 'BackBufferCopy', 
+                            description: '后缓冲复制节点，用于后处理效果',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>后缓冲复制</span>
+                                </div>
+                            `
+                        },
+                        
+                        { 
+                            name: 'VisibleOnScreenNotifier2D', 
+                            description: '屏幕可见通知器2D节点，用于检测可见性',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>可见性检测</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'VisibleOnScreenEnabler2D', 
+                            description: '屏幕可见启用器2D节点，用于控制可见性',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>可见性控制</span>
+                                </div>
+                            `
+                        }
+                    ],
+
+                    allAudioNodes: [
+                        { 
+                            name: 'AudioListener2D', 
+                            description: '音频监听器2D节点，用于2D音频监听',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-ear" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'AudioStreamPlayer2D', 
+                            description: '音频流播放器2D节点，用于播放2D音频',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-music-note" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'AudioStreamPlayer', 
+                            description: '音频流播放器节点，用于播放音频',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-music-note" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        }
+                    ],
+                    allSpecialNodes: [
+                        { 
+                            name: 'Camera2D', 
+                            description: '摄像机2D节点，用于2D视角控制',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-camera" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'Timer', 
+                            description: '计时器节点，用于定时触发事件',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-clock" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'TileMapLayer', 
+                            description: '瓦片图层节点，用于瓦片地图的图层',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <span>瓦片图层</span>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'TouchScreenButton', 
+                            description: '触摸屏按钮节点，用于触摸屏输入',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <button class="btn btn-primary">触摸按钮</button>
+                                </div>
+                            `
+                        }
+                    ],
+                    allBasicWindows: [
+                        { 
+                            name: 'Window', 
+                            description: '基础窗口节点，所有窗口的基类',
+                            example: `
+                                <div class="border p-3" style="background-color: #f8f9fa;">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="mb-0">窗口标题</h5>
+                                        <button class="btn btn-sm btn-outline-secondary">关闭</button>
+                                    </div>
+                                    <p class="mb-0">窗口内容区域</p>
+                                </div>
+                            `
+                        }
+                    ],
+                    allDialogWindows: [
+                        { 
+                            name: 'AcceptDialog', 
+                            description: '接受对话框，用于显示确认信息',
+                            example: `
+                                <div class="border p-3" style="background-color: #f8f9fa;">
+                                    <h5 class="mb-3">确认对话框</h5>
+                                    <p class="mb-3">您确定要执行此操作吗？</p>
+                                    <div class="d-flex justify-content-end gap-2">
+                                        <button class="btn btn-sm btn-outline-secondary">取消</button>
+                                        <button class="btn btn-sm btn-primary">确定</button>
+                                    </div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'ConfirmationDialog', 
+                            description: '确认对话框，用于需要用户确认的操作',
+                            example: `
+                                <div class="border p-3" style="background-color: #f8f9fa;">
+                                    <h5 class="mb-3">确认操作</h5>
+                                    <p class="mb-3">此操作不可撤销，是否继续？</p>
+                                    <div class="d-flex justify-content-end gap-2">
+                                        <button class="btn btn-sm btn-outline-secondary">取消</button>
+                                        <button class="btn btn-sm btn-danger">确认</button>
+                                    </div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'FileDialog', 
+                            description: '文件对话框，用于文件选择',
+                            example: `
+                                <div class="border p-3" style="background-color: #f8f9fa;">
+                                    <h5 class="mb-3">选择文件</h5>
+                                    <div class="mb-3">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <i class="bi bi-folder"></i> 文件夹1
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <i class="bi bi-folder"></i> 文件夹2
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <i class="bi bi-file"></i> 文件1.txt
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end gap-2">
+                                        <button class="btn btn-sm btn-outline-secondary">取消</button>
+                                        <button class="btn btn-sm btn-primary">选择</button>
+                                    </div>
+                                </div>
+                            `
+                        }
+                    ],
+                    allPopupWindows: [
+                        { 
+                            name: 'Popup', 
+                            description: '基础弹出窗口，用于显示临时内容',
+                            example: `
+                                <div class="border p-3" style="background-color: #f8f9fa;">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="mb-0">弹出窗口</h5>
+                                        <button class="btn btn-sm btn-outline-secondary">×</button>
+                                    </div>
+                                    <p class="mb-0">弹出窗口内容</p>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'PopupMenu', 
+                            description: '弹出菜单，用于显示选项列表',
+                            example: `
+                                <div class="border p-3" style="background-color: #f8f9fa;">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <i class="bi bi-pencil"></i> 编辑
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <i class="bi bi-trash"></i> 删除
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <i class="bi bi-share"></i> 分享
+                                        </a>
+                                    </div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'PopupPanel', 
+                            description: '弹出面板，用于显示复杂内容',
+                            example: `
+                                <div class="border p-3" style="background-color: #f8f9fa;">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="mb-0">弹出面板</h5>
+                                        <button class="btn btn-sm btn-outline-secondary">×</button>
+                                    </div>
+                                    <div class="mb-3">
+                                        <p>面板内容区域</p>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="check1">
+                                            <label class="form-check-label" for="check1">选项1</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="check2">
+                                            <label class="form-check-label" for="check2">选项2</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end gap-2">
+                                        <button class="btn btn-sm btn-outline-secondary">取消</button>
+                                        <button class="btn btn-sm btn-primary">确定</button>
+                                    </div>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'SubViewport', 
+                            description: '子视口，用于显示独立渲染区域',
+                            example: `
+                                <div class="border p-3" style="background-color: #f8f9fa;">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="mb-0">子视口</h5>
+                                        <button class="btn btn-sm btn-outline-secondary">×</button>
+                                    </div>
+                                    <div style="height: 100px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center;">
+                                        <span>独立渲染区域</span>
+                                    </div>
+                                </div>
+                            `
+                        }
+                    ],
+
+                    allNetworkSystemNodes: [
+                        { 
+                            name: 'HTTPRequest', 
+                            description: 'HTTP请求节点，用于发送HTTP请求',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-globe" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'MultiplayerSpawner', 
+                            description: '多人游戏生成器节点，用于管理多人游戏中的对象生成',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-people" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'MultiplayerSynchronizer', 
+                            description: '多人游戏同步器节点，用于同步多人游戏中的对象状态',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-arrow-repeat" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        }
+                    ],
+   
+                    allEditorSystemNodes: [
+                        { 
+                            name: 'EditorPlugin', 
+                            description: '编辑器插件节点，用于扩展编辑器功能',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-puzzle" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                        { 
+                            name: 'GridMapEditorPlugin', 
+                            description: '网格地图编辑器插件节点，用于编辑网格地图',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-grid" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        },
+                        
+                        { 
+                            name: 'StatusIndicator', 
+                            description: '状态指示器节点，用于显示状态信息',
+                            example: `
+                                <div style="width: 100%; height: 100px; background-color: #f8f9fa; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-info-circle" style="font-size: 2rem; color: #0d6efd;"></i>
+                                </div>
+                            `
+                        }
+                        
+                    ]
+                }
+            },
+            methods: {
+                copyNodeName(name) {
+                    navigator.clipboard.writeText(name).then(() => {
+                        const tooltip = document.querySelector('.copy-tooltip');
+                        tooltip.style.opacity = '1';
+                        setTimeout(() => {
+                            tooltip.style.opacity = '0';
+                        }, 2000);
+                    });
+                },
+                toggleCategory(category) {
+                    this.expandedCategories[category] = !this.expandedCategories[category];
+                }
+            },
+            mounted() {
+                // 默认展开第一个分类
+                this.expandedCategories.ui = true;
+                
+                // 添加点击事件监听器
+                document.addEventListener('click', (e) => {
+                    const card = e.target.closest('.node-card');
+                    if (card) {
+                        const nodeName = card.querySelector('.card-title').textContent;
+                        const tooltip = document.querySelector('.copy-tooltip');
+                        
+                        // 复制节点名称
+                        navigator.clipboard.writeText(nodeName).then(() => {
+                            tooltip.textContent = `已复制: ${nodeName}`;
+                            tooltip.style.opacity = '1';
+                            
+                            // 2秒后隐藏提示
+                            setTimeout(() => {
+                                tooltip.style.opacity = '0';
+                            }, 2000);
+                        }).catch(err => {
+                            console.error('复制失败:', err);
+                            tooltip.textContent = '复制失败';
+                            tooltip.style.opacity = '1';
+                            setTimeout(() => {
+                                tooltip.style.opacity = '0';
+                            }, 2000);
+                        });
+                    }
+                });
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

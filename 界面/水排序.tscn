@@ -1,0 +1,241 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6khag236gkd7"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_32eot"]
+[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="2_jxl5q"]
+[ext_resource type="Script" uid="uid://bott32ggqrtjf" path="res://代码/专属代码/特殊功能/水排序.gd" id="2_xvq0g"]
+[ext_resource type="PackedScene" uid="uid://dx5oki37mgsju" path="res://界面/插件/体力状态.tscn" id="4_qnor1"]
+
+[node name="小游戏界面" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -220.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_32eot")
+script = ExtResource("2_xvq0g")
+
+[node name="标题" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+color = Color(0.75, 0.67, 0.45, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="等级显示" parent="标题" instance=ExtResource("2_jxl5q")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+"系统" = "挂机"
+"玩法" = "小游戏-水排序"
+
+[node name="背景" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.004
+offset_top = 100.0
+offset_bottom = -3.99994
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.82, 0.732533, 0.492, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="内容节点" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 100.0
+offset_right = 1700.0
+offset_bottom = 1000.0
+
+[node name="关卡" type="Label" parent="内容节点"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 64
+text = "第一关"
+
+[node name="关卡滚动区" type="ScrollContainer" parent="内容节点"]
+layout_mode = 0
+offset_left = 1440.0
+offset_top = 228.0
+offset_right = 1670.0
+offset_bottom = 756.0
+
+[node name="关卡容器" type="VBoxContainer" parent="内容节点/关卡滚动区"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="测试按钮1" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "第一关"
+
+[node name="测试按钮2" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "第二关"
+
+[node name="测试按钮3" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "第三关"
+
+[node name="测试按钮4" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "第四关"
+
+[node name="测试按钮5" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "第五关"
+
+[node name="测试按钮6" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "挑战一"
+
+[node name="测试按钮7" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "挑战二"
+
+[node name="测试按钮8" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "挑战三"
+
+[node name="主菜单" type="Button" parent="内容节点"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 590.0
+offset_top = 338.0
+offset_right = 810.0
+offset_bottom = 421.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "主菜单"
+
+[node name="帮助" type="Button" parent="内容节点"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 590.0
+offset_top = -334.0
+offset_right = 810.0
+offset_bottom = -251.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "帮助"
+
+[node name="滚动游戏区" type="ScrollContainer" parent="内容节点"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 108.0
+offset_right = 1420.0
+offset_bottom = 858.0
+
+[node name="游戏内容" type="VBoxContainer" parent="内容节点/滚动游戏区"]
+custom_minimum_size = Vector2(1400, 750)
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="箱子父节点" type="HBoxContainer" parent="内容节点/滚动游戏区/游戏内容"]
+layout_mode = 2
+
+[node name="隐藏瓶子数量" type="Label" parent="内容节点/滚动游戏区/游戏内容/箱子父节点"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "消除指定颜色
+显示隐藏瓶子
+瓶子数量:0"
+
+[node name="箱子位置" type="GridContainer" parent="内容节点/滚动游戏区/游戏内容/箱子父节点"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 10
+
+[node name="瓶子位置" type="GridContainer" parent="内容节点/滚动游戏区/游戏内容"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 80
+theme_override_constants/v_separation = 15
+columns = 10
+
+[node name="粒子容器" type="Control" parent="内容节点/滚动游戏区/游戏内容"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="关卡内容" type="RichTextLabel" parent="内容节点"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 32.0
+offset_top = 92.0
+offset_right = 1424.0
+offset_bottom = 868.0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "消耗12体力开启关卡挑战,难度越大奖励越丰富
+[img=40x30]res://素材/游戏素材/货币/without background/17.png[/img]本关卡门票0点过期
+难度0:[url=1]颜料罐[/url]*4
+难度1:[url=2]颜料罐[/url]*8,新增更多颜色.
+难度2:[url=3]颜料罐[/url]*12,颜料罐扩容.
+难度3:[url=4]颜料罐[/url]*16+8,隐藏颜料罐箱.
+难度4:[url=5]颜料罐[/url]*21+9,颜料迷雾机制.
+难度2_挑战1:超级扩容[url=6]颜料罐[/url]*8.
+难度3_挑战2:[url=7]颜料罐[/url]*25+100,超级颜料罐箱.
+难度4_挑战3:迷雾[url=8]颜料罐[/url]*24"
+
+[node name="体力状态" parent="内容节点" instance=ExtResource("4_qnor1")]
+layout_mode = 0
+offset_left = 1272.0
+offset_top = 28.0
+offset_right = 1672.0
+offset_bottom = 98.0

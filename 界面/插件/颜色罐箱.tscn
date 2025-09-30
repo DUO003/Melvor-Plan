@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnqeyl6qd8uft"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_eoivw"]
+[ext_resource type="Script" uid="uid://bgxwue84wysda" path="res://代码/专属代码/小游戏界面/颜色罐箱.gd" id="2_sy4i0"]
+
+[node name="颜色罐箱" type="Control"]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eoivw")
+script = ExtResource("2_sy4i0")
+
+[node name="箱子" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="文本" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1

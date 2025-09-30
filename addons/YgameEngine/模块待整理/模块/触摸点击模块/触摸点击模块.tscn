@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cij77kb2il5bq"]
+
+[sub_resource type="GDScript" id="GDScript_no86j"]
+script/source = "extends ReferenceRect
+
+##测试一下
+#测试一下
+signal 点击;
+
+func _gui_input(event: InputEvent) -> void:
+	if !event is InputEventScreenTouch:return
+	if event.is_pressed():
+		emit_signal(\"点击\");
+	pass # Replace with function body.
+"
+
+[node name="触摸点击模块" type="ReferenceRect"]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_no86j")

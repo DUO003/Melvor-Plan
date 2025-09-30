@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ykkwb07ixthm"]
+
+[node name="更新后才有的场景" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 99.0
+offset_top = 73.0
+offset_right = 180.0
+offset_bottom = 120.0
+text = "已更新"

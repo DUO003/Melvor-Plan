@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdw243kmjb33p"]
+
+[ext_resource type="Script" path="res://模块/渐隐剧情模块/渐隐剧情模块.gd" id="1_1tjkk"]
+[ext_resource type="PackedScene" uid="uid://cij77kb2il5bq" path="res://模块/触摸点击模块/触摸点击模块.tscn" id="2_fbpb8"]
+
+[node name="渐隐剧情模块" type="CanvasLayer"]
+script = ExtResource("1_1tjkk")
+"丰富剧情文本" = "身为主角的你,被龙之领主[小白龙]抢走了你的财富，请夺回来吧"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.286275, 0.286275, 0.286275, 1)
+
+[node name="丰富文本" type="RichTextLabel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 91.0
+offset_bottom = -395.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 64
+text = "测试剧情摸索"
+
+[node name="触摸点击模块" parent="." instance=ExtResource("2_fbpb8")]
+offset_left = -3.0
+offset_top = 8.0
+offset_right = 1156.0
+offset_bottom = 636.0
+
+[connection signal="点击" from="触摸点击模块" to="." method="_on__Touch"]

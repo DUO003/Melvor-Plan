@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="标准物品" load_steps=3 format=3 uid="uid://yvsqevh6d1if"]
+
+[ext_resource type="Texture2D" uid="uid://cg5lbyhyg8ys3" path="res://素材/像素/标准剑.png" id="1_hpr7r"]
+[ext_resource type="Script" uid="uid://fcwto8ogpj0n" path="res://道具/标准物品.gd" id="1_wakm8"]
+
+[resource]
+script = ExtResource("1_wakm8")
+"标签" = ["物品"]
+"简介" = "暂无简介"
+"价值" = 0
+stack_size = 25
+current_amount = 1
+item_name = "标准物品"
+type = "物品"
+icon = ExtResource("1_hpr7r")
+columns = 1
+rows = 1
+shader_params = Dictionary[String, Variant]({})
+metadata/_custom_type_script = "uid://bm5efdrlci0qk"
