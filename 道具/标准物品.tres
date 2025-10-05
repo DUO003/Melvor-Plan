@@ -5,15 +5,8 @@
 
 [resource]
 script = ExtResource("1_wakm8")
-"标签" = ["物品"]
-"简介" = "暂无简介"
-"价值" = 0
 stack_size = 25
-current_amount = 1
 item_name = "标准物品"
 type = "物品"
 icon = ExtResource("1_hpr7r")
-columns = 1
-rows = 1
-shader_params = Dictionary[String, Variant]({})
 metadata/_custom_type_script = "uid://bm5efdrlci0qk"

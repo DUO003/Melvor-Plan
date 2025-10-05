@@ -35,7 +35,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/YgameEngine/plugin.cfg", "res://addons/block_code/plugin.cfg", "res://addons/net.yarvis.pixel_pen/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/YgameEngine/plugin.cfg", "res://addons/block_code/plugin.cfg", "res://addons/net.yarvis.pixel_pen/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/tab_saver/plugin.cfg")
 
 [input]
 

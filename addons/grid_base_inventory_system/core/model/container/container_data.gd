@@ -72,6 +72,8 @@ func remove_item(item: ItemData) -> bool:
 
 ## 检查物品是否可以被放入当前库存
 func is_item_avilable(item_data: ItemData) -> bool:
+	if item_data is 物品装备:
+		return avilable_types.has(item_data.type)
 	return avilable_types.has("ANY") or avilable_types.has(item_data.type)
 
 ## 根据物品数据查找其占用的网格坐标列表

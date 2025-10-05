@@ -55,7 +55,13 @@ func use_item(inv_name: String, grid_id: Vector2i) -> bool:
 	var item_data = find_item_data_by_grid(inv_name, grid_id)
 	if not item_data:
 		return false
-	if item_data is EquipmentData:
+	if item_data is 标准物品:
+		if item_data.物品使用():
+			remove_item_by_data(inv_name, item_data)
+		else:
+			GBIS.sig_inv_item_updated.emit(inv_name, grid_id)
+		return true
+	elif item_data is EquipmentData:
 		if GBIS.equipment_slot_service.try_equip(item_data):
 			remove_item_by_data(inv_name, item_data)
 			return true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dr3p3f8wbo87d"]
+[gd_scene load_steps=16 format=3 uid="uid://dr3p3f8wbo87d"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_loe2l"]
 [ext_resource type="Script" uid="uid://mkdbh1ljjonw" path="res://代码/专属代码/背包界面/背包界面.gd" id="2_tb4we"]
@@ -7,8 +7,26 @@
 [ext_resource type="PackedScene" uid="uid://bmtorijdfu4jh" path="res://GBIS_demos/item_info/ItemInfo.tscn" id="3_ox21q"]
 [ext_resource type="Script" uid="uid://b3x4mwtjmm4tp" path="res://addons/grid_base_inventory_system/core/view/container/inventory/inventory_view.gd" id="5_tb4we"]
 [ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="6_ggjuy"]
+[ext_resource type="Script" uid="uid://dg6xjko3rdcta" path="res://addons/grid_base_inventory_system/core/view/slot/equipment_slot_view.gd" id="7_ggjuy"]
+[ext_resource type="Texture2D" uid="uid://conmhorhmnqpg" path="res://素材/像素/框.png" id="8_sso0e"]
+[ext_resource type="Script" uid="uid://gqt6pq4lt0gw" path="res://addons/grid_base_inventory_system/core/view/container/shop/shop_view.gd" id="9_sxijb"]
+[ext_resource type="PackedScene" uid="uid://cjsi35bpmr7oo" path="res://界面/插件/玩家.tscn" id="9_wurb6"]
+[ext_resource type="Script" uid="uid://c5uqs7o5b2w68" path="res://addons/grid_base_inventory_system/core/model/item/item_data.gd" id="10_wurb6"]
+[ext_resource type="Texture2D" uid="uid://bwu2nuu7uosf4" path="res://素材/豆包AI素材/像素瓶子前.png" id="11_yejur"]
+[ext_resource type="Script" uid="uid://fcwto8ogpj0n" path="res://道具/标准物品.gd" id="12_ijs6s"]
 
-[node name="合成主界面" type="Control"]
+[sub_resource type="Resource" id="Resource_loe2l"]
+script = ExtResource("12_ijs6s")
+"简介" = "普通的瓶子"
+"价值" = 100
+"商店剩余数量" = 100
+stack_size = 100
+item_name = "测试瓶子"
+type = "物品"
+icon = ExtResource("11_yejur")
+metadata/_custom_type_script = "uid://fcwto8ogpj0n"
+
+[node name="背包主界面" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,6 +78,7 @@ custom_minimum_size = Vector2(1700, 900)
 layout_mode = 0
 offset_right = 1700.0
 offset_bottom = 900.0
+theme_override_constants/separation = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="内容节点/HBoxContainer"]
 custom_minimum_size = Vector2(1100, 900)
@@ -71,6 +90,7 @@ layout_mode = 2
 current_tab = 0
 
 [node name="物品栏" type="ScrollContainer" parent="内容节点/HBoxContainer/VBoxContainer/物品栏选项卡"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(1100, 750)
 layout_mode = 2
 metadata/_tab_index = 0
@@ -94,11 +114,32 @@ stack_num_margin = 0
 stack_num_color = Color(0, 0, 0, 1)
 metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
 
-[node name="Control" type="Control" parent="内容节点/HBoxContainer/VBoxContainer/物品栏选项卡"]
+[node name="装备栏" type="ScrollContainer" parent="内容节点/HBoxContainer/VBoxContainer/物品栏选项卡"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(1100, 750)
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="装备" type="Control" parent="内容节点/HBoxContainer/VBoxContainer/物品栏选项卡/装备栏"]
+custom_minimum_size = Vector2(1080, 540)
+layout_mode = 2
+script = ExtResource("5_tb4we")
+avilable_types = Array[String](["长剑", "斧头", "匕首", "战锤", "矛", "弓", "法杖", "魔杖", "手弩", "火枪", "盾牌", "乐器", "卷轴", "箭袋", "护手", "手套", "头盔", "盗贼帽", "法师帽", "重甲", "轻甲", "法袍", "腿甲", "法裤", "裤子", "靴子", "鞋子", "法鞋", "项链", "光环", "披风", "宠物", "戒指"])
+container_name = "装备"
+container_columns = 8
+container_rows = 4
+base_size = 135
+grid_border_size = 2
+grid_border_color = Color(0.75, 0.75, 0.75, 0)
+gird_background_color_empty = Color(0.49, 0.444267, 0.3185, 0.784314)
+gird_background_color_taken = Color(0.49, 0.444267, 0.3185, 0.862745)
+gird_background_color_conflict = Color(0.94, 0.68103, 0.6674, 0.784314)
+grid_background_color_avilable = Color(0.4, 0.362667, 0.26, 0.784314)
+stack_num_font_size = 32
+stack_num_margin = 0
+stack_num_color = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
 
 [node name="金币节点" type="Control" parent="内容节点/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -131,12 +172,36 @@ custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 current_tab = 0
 
-[node name="物品介绍" type="Control" parent="内容节点/HBoxContainer/TabContainer"]
-custom_minimum_size = Vector2(600, 0)
+[node name="物品" type="Control" parent="内容节点/HBoxContainer/TabContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 828)
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="物品详情贴图" type="TextureRect" parent="内容节点/HBoxContainer/TabContainer/物品介绍"]
+[node name="无选中" type="Control" parent="内容节点/HBoxContainer/TabContainer/物品"]
+unique_name_in_owner = true
+anchors_preset = 0
+
+[node name="物品详情名称" type="Label" parent="内容节点/HBoxContainer/TabContainer/物品/无选中"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 148.0
+offset_right = 548.0
+offset_bottom = 300.0
+theme_override_font_sizes/font_size = 50
+text = "右键物品栏内物品
+查看详情"
+horizontal_alignment = 1
+
+[node name="选中" type="Control" parent="内容节点/HBoxContainer/TabContainer/物品"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+
+[node name="物品详情贴图" type="TextureRect" parent="内容节点/HBoxContainer/TabContainer/物品/选中"]
+unique_name_in_owner = true
+texture_filter = 1
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
 offset_left = 91.0
@@ -145,8 +210,10 @@ offset_right = 275.0
 offset_bottom = 212.0
 texture = ExtResource("3_1hlae")
 expand_mode = 1
+stretch_mode = 5
 
-[node name="物品详情名称" type="Label" parent="内容节点/HBoxContainer/TabContainer/物品介绍"]
+[node name="物品详情名称" type="Label" parent="内容节点/HBoxContainer/TabContainer/物品/选中"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 0
 offset_left = 35.0
@@ -157,7 +224,7 @@ theme_override_font_sizes/font_size = 50
 text = "金币"
 horizontal_alignment = 1
 
-[node name="物品详情文本" type="RichTextLabel" parent="内容节点/HBoxContainer/TabContainer/物品介绍"]
+[node name="物品详情文本" type="RichTextLabel" parent="内容节点/HBoxContainer/TabContainer/物品/选中"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 0
@@ -165,9 +232,12 @@ offset_left = 19.0
 offset_top = 300.0
 offset_right = 568.0
 offset_bottom = 796.0
-text = "金币:交易的基础货币"
+text = "金币
+堆叠上限:100
+简介:交易的基础货币"
 
-[node name="使用" type="Button" parent="内容节点/HBoxContainer/TabContainer/物品介绍"]
+[node name="使用" type="Button" parent="内容节点/HBoxContainer/TabContainer/物品/选中"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 0
 offset_left = 387.0
@@ -177,7 +247,8 @@ offset_bottom = 100.0
 theme = ExtResource("6_ggjuy")
 text = "使用"
 
-[node name="丢弃" type="Button" parent="内容节点/HBoxContainer/TabContainer/物品介绍"]
+[node name="丢弃" type="Button" parent="内容节点/HBoxContainer/TabContainer/物品/选中"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 0
 offset_left = 387.0
@@ -187,7 +258,8 @@ offset_bottom = 190.0
 theme = ExtResource("6_ggjuy")
 text = "丢弃"
 
-[node name="分享" type="Button" parent="内容节点/HBoxContainer/TabContainer/物品介绍"]
+[node name="分享" type="Button" parent="内容节点/HBoxContainer/TabContainer/物品/选中"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 0
 offset_left = 387.0
@@ -197,7 +269,239 @@ offset_bottom = 280.0
 theme = ExtResource("6_ggjuy")
 text = "分享"
 
+[node name="装备" type="Control" parent="内容节点/HBoxContainer/TabContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(600, 828)
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="项链" type="Control" parent="内容节点/HBoxContainer/TabContainer/装备"]
+anchors_preset = 0
+offset_right = 145.0
+offset_bottom = 145.0
+script = ExtResource("7_ggjuy")
+slot_name = "项链"
+base_size = 145
+columns = 1
+rows = 1
+background = ExtResource("8_sso0e")
+avilable_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
+avilable_types = Array[String](["项链", "光环"])
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="披挂" type="Control" parent="内容节点/HBoxContainer/TabContainer/装备"]
+anchors_preset = 0
+offset_top = 150.0
+offset_right = 145.0
+offset_bottom = 295.0
+script = ExtResource("7_ggjuy")
+slot_name = "披挂"
+base_size = 145
+columns = 1
+rows = 1
+background = ExtResource("8_sso0e")
+avilable_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
+avilable_types = Array[String](["披风", "宠物"])
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="戒指A" type="Control" parent="内容节点/HBoxContainer/TabContainer/装备"]
+anchors_preset = 0
+offset_top = 300.0
+offset_right = 145.0
+offset_bottom = 445.0
+script = ExtResource("7_ggjuy")
+slot_name = "戒指A"
+base_size = 145
+columns = 1
+rows = 1
+background = ExtResource("8_sso0e")
+avilable_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
+avilable_types = Array[String](["戒指"])
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="戒指B" type="Control" parent="内容节点/HBoxContainer/TabContainer/装备"]
+anchors_preset = 0
+offset_top = 450.0
+offset_right = 145.0
+offset_bottom = 595.0
+script = ExtResource("7_ggjuy")
+slot_name = "戒指B"
+base_size = 145
+columns = 1
+rows = 1
+background = ExtResource("8_sso0e")
+avilable_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
+avilable_types = Array[String](["戒指"])
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="主手" type="Control" parent="内容节点/HBoxContainer/TabContainer/装备"]
+anchors_preset = 0
+offset_left = 150.0
+offset_top = 450.0
+offset_right = 295.0
+offset_bottom = 595.0
+script = ExtResource("7_ggjuy")
+slot_name = "主手"
+base_size = 145
+columns = 1
+rows = 1
+background = ExtResource("8_sso0e")
+avilable_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
+avilable_types = Array[String](["长剑", "斧头", "匕首", "战锤", "矛", "弓", "法杖", "魔杖", "手弩", "火枪"])
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="副手" type="Control" parent="内容节点/HBoxContainer/TabContainer/装备"]
+anchors_preset = 0
+offset_left = 300.0
+offset_top = 450.0
+offset_right = 445.0
+offset_bottom = 595.0
+script = ExtResource("7_ggjuy")
+slot_name = "副手"
+base_size = 145
+columns = 1
+rows = 1
+background = ExtResource("8_sso0e")
+avilable_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
+avilable_types = Array[String](["盾牌", "乐器", "卷轴", "箭袋", "护手", "手套"])
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="头盔" type="Control" parent="内容节点/HBoxContainer/TabContainer/装备"]
+anchors_preset = 0
+offset_left = 450.0
+offset_right = 595.0
+offset_bottom = 145.0
+script = ExtResource("7_ggjuy")
+slot_name = "头盔"
+base_size = 145
+columns = 1
+rows = 1
+background = ExtResource("8_sso0e")
+avilable_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
+avilable_types = Array[String](["头盔", "盗贼帽", "法师帽"])
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="衣服" type="Control" parent="内容节点/HBoxContainer/TabContainer/装备"]
+anchors_preset = 0
+offset_left = 450.0
+offset_top = 150.0
+offset_right = 595.0
+offset_bottom = 295.0
+script = ExtResource("7_ggjuy")
+slot_name = "衣服"
+base_size = 145
+columns = 1
+rows = 1
+background = ExtResource("8_sso0e")
+avilable_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
+avilable_types = Array[String](["重甲", "轻甲", "法袍"])
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="裤子" type="Control" parent="内容节点/HBoxContainer/TabContainer/装备"]
+anchors_preset = 0
+offset_left = 450.0
+offset_top = 300.0
+offset_right = 595.0
+offset_bottom = 445.0
+script = ExtResource("7_ggjuy")
+slot_name = "裤子"
+base_size = 145
+columns = 1
+rows = 1
+background = ExtResource("8_sso0e")
+avilable_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
+avilable_types = Array[String](["裤子", "腿甲", "法裤"])
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="鞋子" type="Control" parent="内容节点/HBoxContainer/TabContainer/装备"]
+anchors_preset = 0
+offset_left = 450.0
+offset_top = 450.0
+offset_right = 595.0
+offset_bottom = 595.0
+script = ExtResource("7_ggjuy")
+slot_name = "鞋子"
+base_size = 145
+columns = 1
+rows = 1
+background = ExtResource("8_sso0e")
+avilable_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
+avilable_types = Array[String](["靴子", "鞋子", "法鞋"])
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="玩家属性" type="RichTextLabel" parent="内容节点/HBoxContainer/TabContainer/装备"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 596.0
+offset_right = 588.0
+offset_bottom = 828.0
+theme_override_constants/paragraph_separation = -10
+theme_override_font_sizes/normal_font_size = 38
+text = "游历 LV:0		熟练:0/100"
+
+[node name="玩家" parent="内容节点/HBoxContainer/TabContainer/装备" instance=ExtResource("9_wurb6")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 196.0
+offset_top = 52.0
+offset_right = -196.0
+offset_bottom = -416.0
+
+[node name="随身商店" type="ScrollContainer" parent="内容节点/HBoxContainer/TabContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(600, 828)
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="商店" type="Control" parent="内容节点/HBoxContainer/TabContainer/随身商店"]
+layout_mode = 2
+script = ExtResource("9_sxijb")
+goods = Array[ExtResource("10_wurb6")]([SubResource("Resource_loe2l")])
+container_name = "随身商店"
+container_columns = 5
+container_rows = 10
+base_size = 117
+grid_border_size = 2
+grid_border_color = Color(0.75, 0.75, 0.75, 0)
+gird_background_color_empty = Color(0.91, 0.862225, 0.7735, 0.54901963)
+gird_background_color_taken = Color(0.468, 0.53400004, 0.6, 0.88235295)
+gird_background_color_conflict = Color(0.8, 0.35999998, 0.35999998, 0.93333334)
+grid_background_color_avilable = Color(0.2769, 0.51510507, 0.71, 0.9411765)
+stack_num_font_size = 32
+stack_num_margin = 0
+stack_num_color = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://gqt6pq4lt0gw"
+
+[node name="删除确认弹窗" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "确认要删除物品吗?"
+position = Vector2i(475, 80)
+size = Vector2i(800, 300)
+unresizable = true
+popup_window = true
+theme = ExtResource("1_loe2l")
+ok_button_text = " 确认 "
+dialog_text = "删除物品后该格子内所有物品将一起移除
+如果仅删除一个可以尝试鼠标中间分组后删除"
+dialog_autowrap = true
+cancel_button_text = " 取消 "
+
 [node name="物品提示" parent="." instance=ExtResource("3_ox21q")]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = -208.0
 offset_top = 944.0

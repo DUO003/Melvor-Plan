@@ -5,7 +5,6 @@ class_name InventoryView
 
 ## 允许存放的物品类型，如果背包名字重复，可存放的物品类型需要一样
 @export var avilable_types: Array[String] = ["ANY"]
-
 func grid_hover(grid_id: Vector2i) -> void:
 	_handle_grid_hover(grid_id, true)
  

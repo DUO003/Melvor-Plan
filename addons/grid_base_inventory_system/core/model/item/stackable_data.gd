@@ -1,8 +1,9 @@
 extends ItemData
 ## 可堆叠物品数据基类，你的可堆叠物品数据类应继承此类（如：可堆叠的宝石）。注意：消耗品应继承 ConsumableData
 class_name StackableData
-
+#堆叠上限
 @export var stack_size: int = 2
+#数量
 @export var current_amount: int = 1
 
 ## 是否堆叠满了

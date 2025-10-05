@@ -1,8 +1,25 @@
-[gd_resource type="Theme" load_steps=22 format=3 uid="uid://cigh0v88yomed"]
+[gd_resource type="Theme" load_steps=32 format=3 uid="uid://cigh0v88yomed"]
 
 [ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="1_csmyg"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="1_kb01l"]
+[ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="2_cgrsc"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_csmyg"]
+
+[sub_resource type="Gradient" id="Gradient_ly6fy"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.6666667, 0.6039216, 0.43529412, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o32f2"]
+gradient = SubResource("Gradient_ly6fy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h4m5x"]
+content_margin_left = 60.0
+content_margin_top = 40.0
+content_margin_right = 60.0
+content_margin_bottom = 20.0
+texture = SubResource("GradientTexture1D_o32f2")
+script = ExtResource("2_cgrsc")
+metadata/_custom_type_script = "uid://dr0317kuw34um"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gq0t6"]
 bg_color = Color(0, 0, 0, 1)
@@ -85,6 +102,54 @@ content_margin_right = -1.0
 content_margin_bottom = -1.0
 script = ExtResource("1_kb01l")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kqimc"), SubResource("StyleBoxFlat_wjp5r")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgrsc"]
+bg_color = Color(0.52, 0.3848, 0.114400014, 0.78431374)
+script = ExtResource("2_csmyg")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_fv7pg"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("1_kb01l")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_cgrsc")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4m5x"]
+bg_color = Color(0.52, 0.3848, 0.114400014, 0.8235294)
+script = ExtResource("2_csmyg")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_1bn4b"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("1_kb01l")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_h4m5x")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ar6tj"]
+bg_color = Color(0.56285995, 0.59, 0.45429996, 0.8235294)
+script = ExtResource("2_csmyg")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_qj2bx"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("1_kb01l")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_ar6tj")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rko8"]
@@ -189,6 +254,9 @@ script = ExtResource("1_kb01l")
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [resource]
+AcceptDialog/font_sizes/title_font_size = 30
+AcceptDialog/fonts/title_font = ExtResource("1_csmyg")
+AcceptDialog/styles/panel = SubResource("StyleBoxTexture_h4m5x")
 Button/constants/outline_size = 10
 Button/font_sizes/font_size = 60
 Button/fonts/font = ExtResource("1_csmyg")
@@ -197,6 +265,7 @@ Button/styles/focus = SubResource("StyleBox_cgrsc")
 Button/styles/hover = SubResource("StyleBox_ly6fy")
 Button/styles/normal = SubResource("StyleBox_o32f2")
 Button/styles/pressed = SubResource("StyleBox_h4m5x")
+CheckBox/font_sizes/font_size = 30
 CheckBox/fonts/font = ExtResource("1_csmyg")
 CheckButton/font_sizes/font_size = 40
 CheckButton/fonts/font = ExtResource("1_csmyg")
@@ -206,7 +275,27 @@ Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_csmyg")
 LineEdit/fonts/font = ExtResource("1_csmyg")
 MenuButton/fonts/font = ExtResource("1_csmyg")
+OptionButton/colors/font_color = Color(0, 0, 0, 1)
+OptionButton/constants/outline_size = 1
+OptionButton/font_sizes/font_size = 16
 OptionButton/fonts/font = ExtResource("1_csmyg")
+OptionButton/styles/disabled = SubResource("StyleBox_fv7pg")
+OptionButton/styles/disabled_mirrored = SubResource("StyleBox_fv7pg")
+OptionButton/styles/focus = SubResource("StyleBox_fv7pg")
+OptionButton/styles/hover = SubResource("StyleBox_fv7pg")
+OptionButton/styles/hover_mirrored = SubResource("StyleBox_fv7pg")
+OptionButton/styles/hover_pressed = SubResource("StyleBox_fv7pg")
+OptionButton/styles/hover_pressed_mirrored = SubResource("StyleBox_fv7pg")
+OptionButton/styles/normal = SubResource("StyleBox_fv7pg")
+OptionButton/styles/normal_mirrored = SubResource("StyleBox_fv7pg")
+OptionButton/styles/pressed = SubResource("StyleBox_fv7pg")
+OptionButton/styles/pressed_mirrored = SubResource("StyleBox_fv7pg")
+PopupMenu/font_sizes/font_size = 30
+PopupMenu/fonts/font = ExtResource("1_csmyg")
+PopupMenu/fonts/font_separator = ExtResource("1_csmyg")
+PopupMenu/fonts/title_font = ExtResource("1_csmyg")
+PopupMenu/styles/hover = SubResource("StyleBox_1bn4b")
+PopupMenu/styles/panel = SubResource("StyleBox_qj2bx")
 ProgressBar/constants/outline_size = 1
 ProgressBar/font_sizes/font_size = 28
 ProgressBar/fonts/font = ExtResource("1_csmyg")

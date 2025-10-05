@@ -4,7 +4,8 @@ class_name EquipmentData
 
 ## 检测装备是否可用，需重写
 func test_need(slot_name: String) -> bool:
-	push_warning("[Override this function] [%s] test passed." % slot_name)
+	# 标记_可用装备
+	#push_warning("[Override this function] [%s] test passed." % slot_name)
 	return true
 
 ## 装备时调用，需重写；也可以使用 GBIS.sig_slot_item_equipped 信号行处理

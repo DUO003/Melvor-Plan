@@ -1,9 +1,9 @@
 extends Node
 #region 变量与信号声明
 # 定义用户数据存储路径
-const 存档路径 = "user://存档.json"
-var 背包路径: String = "user://"
-var 背包名称: String = "物品存档.tres"
+#const 存档路径 = "user://存档.json"
+var 存档路径: String = "user://"
+var 存档名称: String = "存档.tres"
 # 用于存储玩家数据的字典
 var 提示容器
 var 梅存档 = {}
@@ -23,6 +23,7 @@ var 零件上限: float
 var 精华上限: float
 var 体力恢复速度: int = 360
 var 恢复量: int = 1
+var 玩家单例: 玩家功能 = 玩家功能.new()
 
 var 材料对照 = {# 定义材料和属性的对照字典
 		"矿石": "矿石",
@@ -31,7 +32,6 @@ var 材料对照 = {# 定义材料和属性的对照字典
 		"药草": "药草",
 		"零件": "零件",
 		"精魄": "精魄"}
-
 var 物品字典: Dictionary[String, ItemData] = {}
 #所有物品在游戏运行时会存到字典中,充能装备除外
 var 时间戳字典:Dictionary[String,int] = {}#单独存档
@@ -39,7 +39,13 @@ var 时间戳字典:Dictionary[String,int] = {}#单独存档
 var 节点={}
 # 缓存节点 方便跨场景调用,不保证有效
 var 今日零点:int
+var 商店刷新计时器: Timer = null
+var 装备序号=0
 signal 更新_UI()
+@warning_ignore("unused_signal")
+signal 购买物品(物品: ItemData, 容器名: String)
+@warning_ignore("unused_signal")
+signal 更新_背包物品信息(物品:标准物品)
 #endregion
 #region 节点就绪
 # 节点初始化完成时自动调用
@@ -53,12 +59,16 @@ func _ready() -> void:
 		初始化资源上限()
 		await 保存存档()
 		#调试精通()
+		
+	玩家单例.更新属性()
 	创建计时器(1.0, Callable(self, "体力检查"))# 封装计时器方法每秒 检查体力恢复 
 	今日零点=获取零点时间戳()
+	#print("测试0",Time.get_unix_time_from_system())
 	#print("测试1",获取零点时间戳(99,1759334300))
 	#print("测试2",获取零点时间戳(100,1759334300))
 	#print("测试3",获取零点时间戳(0,1759420800))
-	创建计时器((获取零点时间戳()-Time.get_unix_time_from_system()), Callable(self, "零点检测"),true,true)# 封装计时器方法每5秒 1.检查门票过期,研究费用重置
+	创建计时器((获取零点时间戳()-Time.get_unix_time_from_system()), Callable(self, "零点检测"),false,true)# 封装计时器方法每5秒 1.检查门票过期,研究费用重置
+	创建或更新商店刷新计时器()
 #endregion
 #region 废弃代码(纪念用,不使用)
 # 增加或减少物品数量#废弃方法添加物品
@@ -96,9 +106,11 @@ func 读取物品(物品名称, 默认值 = 0):
 #endregion
 #region 内部实现(通常不在其他代码使用)
 func _配置背包() -> void:
-	GBIS.current_save_path = 背包路径# 设置保存路径
-	GBIS.current_save_name = 背包名称# 设置存档名称
+	GBIS.current_save_path = 存档路径# 设置保存路径
+	GBIS.current_save_name = 存档名称# 设置存档名称
 	GBIS.inventory_service.regist("背包", 9, 10, false, ["ANY"])
+	GBIS.inventory_service.regist("装备", 8, 4, false, ["装备"])
+	GBIS.inventory_service.regist("随身商店", 5, 10, true, ["ANY"])
 func 初始化资源上限():
 	var 等级=梅存档.get("手工", {}).get("等级", 1)# 计算基础资源的基础数值公式
 	var 基础数值 = floor((120 + 等级 * 10) * (1 + 0.01 * 等级))
@@ -139,7 +151,8 @@ func 初始化存档数据(原始存档数据):
 			"零件": 100,
 			"精华": 0,
 			"标准剑":1
-		}
+		},
+		"游历":{},
 	}
 	var 处理后存档 = {}
 	if 原始存档数据 is Dictionary:
@@ -162,19 +175,17 @@ func 检查物品是否存在(目标名称: String) -> bool:
 	return false# 未找到匹配的物品
 # 填充物品到物品字典
 # 参数: 物品名称 - 作为物品字典的键; 数据字典 - 包含物品属性的字典
-func 填充物品(物品名称: String, 数据字典: Dictionary) -> void:
-	# 定义属性转译映射(数据字典键: 道具属性名)
-	var 转译映射: Dictionary = {
+func 填充物品(物品名称: String, 数据字典: Dictionary={}):
+	if 检查物品是否存在(物品名称):
+		return 物品字典[物品名称].duplicate()
+	if 数据字典=={}:
+		数据字典=梅表格.获取表格字典(梅表格.装备蓝图,0,物品名称)
+	var 转译映射: Dictionary = {# 定义属性转译映射(数据字典键: 道具属性名)
 		"名称": "item_name",
-		"堆叠": "stack_size",
-		"列": "columns",
-		"行": "rows"
-	}
-	# 构建道具资源路径并加载
-	var 道具路径 = "res://道具/标准物品.tres"
-	var 道具 = load(道具路径)
+		"堆叠": "stack_size",}
+	var 道具 = load("res://道具/标准物品.tres")# 构建道具资源路径并加载
 	if not 道具:
-		print("无法加载道具资源: ", 道具路径)
+		print("无法加载道具资源: ", 道具)
 		return
 	# 获取道具所有属性列表并转换为字典(键:属性名, 值:属性类型)
 	var 属性列表 = 道具.get_property_list()
@@ -183,6 +194,8 @@ func 填充物品(物品名称: String, 数据字典: Dictionary) -> void:
 		属性类型字典[属性.name] = 属性.type  # 存储属性名与类型的映射关系
 	# 设置物品名称(优先使用传入的物品名称参数)
 	道具.item_name = 物品名称
+	道具.columns=1#物品不在应用尺寸属性,该属性为装备专属
+	道具.rows=1
 	# 遍历数据字典处理属性
 	for 数据键 in 数据字典:
 		# 获取转译后的属性名,如果没有转译规则则使用原键
@@ -203,8 +216,31 @@ func 填充物品(物品名称: String, 数据字典: Dictionary) -> void:
 		else:
 			pass# 忽略多余的属性
 	物品字典[物品名称] = 道具# 将处理好的道具存入物品字典(以物品名称为键)
-# 辅助函数：检查对象是否存在指定属性
-func 属性是否存在(对象: Object, 属性名: String) -> bool:
+	return 道具.duplicate()
+# 填充物品到物品字典
+# 参数: 物品名称 - 作为物品字典的键; 数据字典 - 包含物品属性的字典
+func 初始化装备(物品蓝图名: String):
+	# 构建道具资源路径并加载
+	var 蓝图信息=梅表格.获取表格字典(梅表格.装备蓝图,0,物品蓝图名)
+	#print("蓝图信息: ", 蓝图信息)
+	var 装备路径 = "res://道具/装备物品.tres"
+	var 装备 = load(装备路径)
+	if not 装备:
+		print("无法加载装备资源: ", 装备路径)
+		return
+	装备.item_name = 生成装备名(物品蓝图名)
+	装备.icon=load(蓝图信息["icon"])
+	装备.蓝图名称=物品蓝图名
+	装备.columns=int(蓝图信息["列"])
+	装备.rows=int(蓝图信息["行"])
+	装备.覆盖更新(蓝图信息["分类"],蓝图信息["类型"],蓝图信息["职业"],int(蓝图信息["阶级"]))
+	return 装备
+# 生成唯一装备名称的工具函数
+func 生成装备名(蓝图名: String) -> String:
+	var 当前时间戳: int = int(Time.get_unix_time_from_system())# 1. 获取当前时间戳（浮点转整数，取整到秒，去掉小数）
+	装备序号 += 1# 2. 当前序号+1
+	return "%s_%d_%d" % [蓝图名, 当前时间戳, 装备序号]# 3. 组合名称：蓝图名_整数时间戳_序号
+func 属性是否存在(对象: Object, 属性名: String) -> bool:# 辅助函数：检查对象是否存在指定属性
 	# 获取对象所有属性列表
 	var 属性列表 = 对象.get_property_list()
 	for 属性 in 属性列表:
@@ -273,29 +309,137 @@ func 保存存档():
 	#var file = FileAccess.open(存档路径, FileAccess.WRITE)
 	#file.store_string(JSON.stringify(梅存档))
 	print("存档已保存")
+# 计算剩余倒计时秒数（确保非负）
+func 获取剩余秒数(目标时间戳: int) -> int:#用于计时器,不可小于1
+	return max(int(目标时间戳 - Time.get_unix_time_from_system()), 1)
+func 格式化时间(总秒数: int) -> String:
+	if 总秒数 < 0:
+		return "00:00:00"  # 确保非负
+	@warning_ignore("integer_division")
+	var _小时: int = 总秒数 / 3600  # 1小时=3600秒
+	var 剩余秒数 = 总秒数 % 3600  # 除去小时后的剩余秒数
+	@warning_ignore("integer_division")
+	var _分钟 = 剩余秒数 / 60  # 1分钟=60秒
+	var _秒 = 剩余秒数 % 60  # 最终剩余秒数
+	# 用字符串格式化补零（确保每位都是两位数）
+	return "%02d:%02d:%02d" % [_小时, _分钟, _秒]
+func 创建或更新商店刷新计时器():
+	var 缓存时间戳=int(时间戳字典.get("商店刷新", Time.get_unix_time_from_system()))
+	var 剩余秒数=获取剩余秒数(缓存时间戳)
+	print("商店刷新计时器剩余秒数:",剩余秒数)
+	if 商店刷新计时器 == null or 商店刷新计时器.wait_time<=1:
+		商店刷新计时器 = 创建计时器(剩余秒数, Callable(self, "商店刷新"),false)
+	else:
+		print("计时器剩余秒数:",商店刷新计时器.wait_time)
+		商店刷新计时器.wait_time = 剩余秒数
+func 商店刷新():
+	var 缓存零点时间戳=获取零点时间戳()
+	var 缓存当前时间=Time.get_unix_time_from_system()
+	if "商店刷新" in 时间戳字典:
+		print("时间戳字典中存在'商店刷新'键，值为:", 时间戳字典["商店刷新"])
+	else:
+		print("时间戳字典中不存在'商店刷新'键")
+	if 缓存零点时间戳-缓存当前时间 > 7200:
+		时间戳字典["商店刷新"]=int(缓存当前时间+7200)
+	else :
+		时间戳字典["商店刷新"]=int(获取零点时间戳())
+	print("商店下次刷新时间戳:",时间戳字典["商店刷新"])
+	var 货物数组: Array[ItemData]=商店补货()
+	GBIS.shop_service.get_container("随身商店").clear()
+	GBIS.shop_service.load_goods("随身商店", 货物数组)
+	GBIS.sig_inv_refresh.emit()#更新商店
+	创建或更新商店刷新计时器()
+func 商店补货():
+	var 货物数组: Array[ItemData]=[]
+	var 允许货物字典={
+	"商店补货总数": 10,
+	"货物清单": {
+		"蓝图纸": {
+			"商店货量": 10,
+			"购买数量": 5,
+			"价格": 1600,
+			"随机_商店货量": 16,
+			"随机_购买数量": 10,
+			"随机_价格": 8000,
+			"最大次数":1
+		},
+		"铁锭": {
+			"商店货量": 3,
+			"购买数量": 1,
+			"价格": 800,
+			"随机_商店货量": 5,
+			"随机_购买数量": 5,
+			"随机_价格": 1800,
+			"最大次数":-1
+		},
+		"随机礼盒": {
+			"商店货量": 1,
+			"购买数量": 1,
+			"价格": 2000,
+			"随机_商店货量": 1,
+			"随机_购买数量": 1,
+			"随机_价格": 2000,
+			"最大次数":-1
+		},
+		"绿色电路板": {
+			"商店货量": 1,
+			"购买数量": 1,
+			"价格": 1500,
+			"随机_商店货量": 5,
+			"随机_购买数量": 1,
+			"随机_价格": 2500,
+			"最大次数":2
+		}}}
+	var 补货次数 = 允许货物字典["商店补货总数"]
+	for i in range(补货次数):
+		# 筛选可用货物（最大次数为-1或>0）
+		var 可用货物列表 = []
+		for 物品名称 in 允许货物字典["货物清单"]:
+			var 物品数据 = 允许货物字典["货物清单"][物品名称]
+			if 物品数据["最大次数"] == -1 or 物品数据["最大次数"] > 0:
+				可用货物列表.append(物品名称)
+		if 可用货物列表.size() == 0:
+			break
+		# 随机抽取物品
+		var 选中物品名称 = 可用货物列表[randi() % 可用货物列表.size()]
+		var 选中物品数据 = 允许货物字典["货物清单"][选中物品名称]
+		# 更新最大抽取次数
+		if 选中物品数据["最大次数"] != -1:
+			选中物品数据["最大次数"] -= 1
+			if 选中物品数据["最大次数"] == 0:
+				允许货物字典["货物清单"].erase(选中物品名称)
+		# 获取物品实例
+		var 当前货物 = 填充物品(选中物品名称)
+		print("填充物品:",选中物品名称)
+		# 因随机值 ≥ 普通值，直接用普通值作为下限、随机值作为上限
+		当前货物.商店剩余数量 = randi_range(选中物品数据["商店货量"], 选中物品数据["随机_商店货量"])
+		当前货物.价值 = randi_range(选中物品数据["价格"], 选中物品数据["随机_价格"])
+		当前货物.current_amount = randi_range(选中物品数据["购买数量"], 选中物品数据["随机_购买数量"])
+		货物数组.append(当前货物)
+	return 货物数组
 func 获得物品语法糖(物品名称, 数量=1,  类型="标准物品",_参数 = null):
-	if not 检查物品是否存在(物品名称):
-		if 类型=="装备物品"or 类型=="标准物品":#暂无实际区别原先分为不同数据表格需要加载不同数据
-			#print("打印字典:",梅表格.获取表格字典(梅表格.装备蓝图, 0, 物品名称))
-			填充物品(物品名称, 梅表格.获取表格字典(梅表格.装备蓝图,0,物品名称))
-		else:
-			填充物品(物品名称, {"简介":"数据错误"})
-	var 道具 = 物品字典[物品名称]
+	var 道具
+	var 背包类型 = "背包"
+	if 类型=="标准物品":
+		道具 = 填充物品(物品名称, 梅表格.获取表格字典(梅表格.装备蓝图,0,物品名称))#print("打印字典:",梅表格.获取表格字典(梅表格.装备蓝图, 0, 物品名称))
+	elif 类型=="装备物品":
+		道具 = 初始化装备(物品名称)
+		背包类型 = "装备"
+	else:
+		道具 = 填充物品(物品名称, {"简介":"数据错误"})
 	var 是可堆叠物品 = false# 判断是否为可堆叠物品
-	#检查是否继承自StackableData
+	#检查是否继承自StackableData(可堆叠物品)
 	if 道具 is StackableData:
 		是可堆叠物品 = true
 	# 处理可堆叠物品
 	if 是可堆叠物品:
 		道具.current_amount = 数量
-		GBIS.add_item("背包", 道具)
-		#await print("物品生成成功" if GBIS.add_item("背包", 道具) else "物品生成失败")
-	# 处理不可堆叠物品
-	else:
+		GBIS.add_item(背包类型, 道具)
+	else:# 处理不可堆叠物品
 		for i in range(数量):
 			# 每次添加都创建新实例，避免引用同一对象
 			var 道具实例 = 道具.duplicate()
-			GBIS.add_item("背包", 道具实例)
+			GBIS.add_item(背包类型, 道具实例)
 func 检查背包物品数量(物品名称)->int:
 	# 获取背包中指定名称的物品列表，背包名称写死为"背包"
 	var 物品列表 = GBIS.inventory_service.find_item_data_by_item_name("背包", 物品名称)

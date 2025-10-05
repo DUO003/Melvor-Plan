@@ -47,7 +47,7 @@ var DEFAULT_SAVE_FOLDER: String = "res://addons/grid_base_inventory_system/saves
 
 ## 背包业务类全局引用，如有需要可以使用，不要自己new
 var inventory_service: InventoryService = InventoryService.new()
-## 背包业务类全局引用，如有需要可以使用，不要自己new
+## 商店业务类全局引用，如有需要可以使用，不要自己new
 var shop_service: ShopService = ShopService.new()
 ## 装备槽业务类全局引用，如有需要可以使用，不要自己new
 var equipment_slot_service: EquipmentSlotService = EquipmentSlotService.new()

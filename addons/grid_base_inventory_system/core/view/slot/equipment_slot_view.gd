@@ -8,8 +8,12 @@ enum State{
 	NORMAL, AVILABLE, INVILABLE
 }
 
-## 装备槽名称，如果重复则展示同意来源的数据
-@export var slot_name: String = GBIS.DEFAULT_SLOT_NAME
+## 装备槽名称，如果重复则展示相同来源的数据
+@export var slot_name: String = GBIS.DEFAULT_SLOT_NAME:
+	set(value):
+		slot_name = value
+		_recalculate_size()
+
 ## 基础大小（格子大小）
 @export var base_size: int = 32:
 	set(value):
@@ -167,13 +171,27 @@ func _draw() -> void:
 				draw_rect(Rect2(0, 0, columns * base_size, rows * base_size), INVILABLE_color)
 	else:
 		draw_rect(Rect2(0, 0, columns * base_size, rows * base_size), INVILABLE_color * 10)
+	if is_empty():
+		var 加载字体=load("res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf")
+		var 字号=32
+		var 文本宽度 = 加载字体.get_string_size(slot_name, 字号).x
+		var 水平居中=(columns * base_size - 文本宽度*2) / 2
+		draw_string(
+			加载字体,  # 默认字体
+			Vector2(水平居中, rows * base_size-10),         # 文本位置（左上角内边距）
+			slot_name,             # 装备部位名称
+			HORIZONTAL_ALIGNMENT_LEFT,
+			-1,                    # 不限制宽度
+			字号,                    # 默认字号
+			Color(0, 0, 0))         # 默认白色
+	
 
 ## 重新计算大小
 func _recalculate_size() -> void:
 	var new_size = Vector2(columns * base_size, rows * base_size)
 	if size != new_size:
 		size = new_size
-		queue_redraw()
+	queue_redraw()
 
 func _gui_input(event: InputEvent) -> void:
 	# 点击动作处理

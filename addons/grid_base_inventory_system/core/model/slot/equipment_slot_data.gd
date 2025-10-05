@@ -29,8 +29,14 @@ func unequip() -> ItemData:
 
 ## 检查是否可装备这个物品
 func is_item_avilable(item_data: ItemData) -> bool:
-	if avilable_types.has("ANY") or avilable_types.has(item_data.type):
-		return item_data.test_need(slot_name)
+	# 新逻辑：如果是物品装备类，使用类型属性判断
+	if item_data is 物品装备:
+		if avilable_types.has("ANY") or avilable_types.has(item_data.类型):
+			return item_data.test_need(slot_name)
+	else:
+		# 原逻辑：其他类使用type属性判断
+		if avilable_types.has("ANY") or avilable_types.has(item_data.type):
+			return item_data.test_need(slot_name)
 	return false
 
 ## 构造函数

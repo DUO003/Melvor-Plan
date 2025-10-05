@@ -44,8 +44,8 @@ func _ready() -> void:
 	container_rows = ret.rows
 	
 	# 加载货物
-	GBIS.shop_service.get_container(container_name).clear()
-	GBIS.shop_service.load_goods(container_name, goods)
+	GBIS.shop_service.get_container(container_name)#.clear()
+	#GBIS.shop_service.load_goods(container_name, goods)
 	
 	mouse_filter = Control.MOUSE_FILTER_PASS
 	_init_grid_container()

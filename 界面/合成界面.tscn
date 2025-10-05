@@ -1,14 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://c2ikyp8oaix5u"]
+[gd_scene load_steps=28 format=3 uid="uid://c2ikyp8oaix5u"]
 
 [ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="1_iqbb7"]
 [ext_resource type="Script" uid="uid://v0yytth2tqx2" path="res://代码/专属代码/合成主界面/合成界面.gd" id="2_u2knn"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="3_pbgl2"]
-[ext_resource type="Texture2D" uid="uid://cngwlxm675t74" path="res://素材/AAA其他/默认按钮.svg" id="4_wbi74"]
 [ext_resource type="Texture2D" uid="uid://bwlsnmdrtqxxo" path="res://素材/游戏素材/货币/without background/36.png" id="5_u2knn"]
 [ext_resource type="Texture2D" uid="uid://c4gb58t3lxupt" path="res://素材/游戏素材/货币/without background/13.png" id="6_wbi74"]
 [ext_resource type="Texture2D" uid="uid://do0gso7k5joc4" path="res://素材/游戏素材/货币/without background/16.png" id="7_dk4n3"]
 [ext_resource type="Texture2D" uid="uid://ba8c7d431qjma" path="res://素材/游戏素材/货币/without background/11.png" id="8_1v7ey"]
-[ext_resource type="Script" uid="uid://bmlc8vpbcln8u" path="res://代码/专属代码/合成主界面/测试.gd" id="9_c6cx4"]
 [ext_resource type="Texture2D" uid="uid://bl4iykenitqq" path="res://素材/像素/所有.png" id="9_iqbb7"]
 [ext_resource type="Texture2D" uid="uid://do0nhm7b1poyf" path="res://素材/游戏素材/货币/without background/49.png" id="9_l4usl"]
 [ext_resource type="Texture2D" uid="uid://dbidx7lt8kclg" path="res://素材/游戏素材/货币/without background/50.png" id="10_kqimc"]
@@ -128,31 +126,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.82, 0.732533, 0.492, 0.705882)
 metadata/_edit_lock_ = true
-
-[node name="测试" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -204.0
-offset_top = 24.0
-offset_right = -4.0
-offset_bottom = 94.0
-grow_horizontal = 0
-theme = ExtResource("1_iqbb7")
-texture_normal = ExtResource("4_wbi74")
-stretch_mode = 0
-script = ExtResource("9_c6cx4")
-
-[node name="文本" type="Label" parent="测试"]
-layout_mode = 0
-offset_left = 8.0
-offset_right = 192.0
-offset_bottom = 64.0
-theme_override_font_sizes/font_size = 40
-text = "测试"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="内容节点" type="Control" parent="."]
 anchors_preset = 0

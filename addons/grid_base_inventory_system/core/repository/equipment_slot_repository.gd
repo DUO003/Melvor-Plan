@@ -3,7 +3,7 @@ extends Resource
 class_name EquipmentSlotRepository
 
 ## 保存时的前缀
-const PREFIX: String = "equipment_slot_"
+const PREFIX: String = "GBIS_装备槽_"
 
 ## 系统中所有的装备槽
 @export_storage var _slot_data_map: Dictionary[String, EquipmentSlotData]

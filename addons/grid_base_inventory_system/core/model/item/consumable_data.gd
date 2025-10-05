@@ -8,9 +8,9 @@ class_name ConsumableData
 ## 物品被使用时调用
 func use() -> bool:
 	if current_amount > 0:
-		var consumed_amount = consume()
-		if consumed_amount > 0:
-			current_amount -= consumed_amount
+		var 消耗量 = consume()
+		if 消耗量 > 0:
+			current_amount -= 消耗量
 			if current_amount <= 0:
 				return destroy_if_empty
 	return false
@@ -18,4 +18,5 @@ func use() -> bool:
 ## 消耗方法，需重写，返回消耗数量（>=0）
 func consume() -> int:
 	push_warning("[Override this function] consumable item [%s] has been consumed" % item_name)
+	print("消耗测试:",item_name)
 	return 1

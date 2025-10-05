@@ -7,6 +7,7 @@
 custom_minimum_size = Vector2(100, 30)
 offset_right = 144.0
 offset_bottom = 56.0
+mouse_behavior_recursive = 1
 theme = ExtResource("1_e6jv8")
 color = Color(0.0862745, 0.0862745, 0.0862745, 0.745098)
 script = ExtResource("1_kg2dt")
@@ -21,5 +22,4 @@ offset_bottom = 53.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "物品提示"
-horizontal_alignment = 1
 vertical_alignment = 1

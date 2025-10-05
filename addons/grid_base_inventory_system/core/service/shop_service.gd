@@ -8,7 +8,7 @@ func load_goods(shop_name: String, goods: Array[ItemData]) -> void:
 
 ## 购买物品
 func buy(shop_name: String, item: ItemData) -> bool:
-	return item.buy()
+	return item.buy(shop_name)
 
 ## 出售物品
 func sell(item: ItemData) -> bool:

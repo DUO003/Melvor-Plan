@@ -3,7 +3,7 @@ extends Resource
 class_name ContainerRepository
 
 ## 保存时的前缀
-const PREFIX: String = "GBIS_"
+const PREFIX: String = "GBIS_物品_"
 
 ## 单例
 static var instance: ContainerRepository:

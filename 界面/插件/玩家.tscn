@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjsi35bpmr7oo"]
+
+[ext_resource type="Texture2D" uid="uid://vxjb37d82tme" path="res://素材/豆包AI素材/绘制简笔画小人.png" id="1_5p087"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_hje0u"]
+
+[node name="玩家" type="Control"]
+custom_minimum_size = Vector2(208, 360)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1712.0
+offset_bottom = -720.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hje0u")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 360.0
+texture = ExtResource("1_5p087")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 64.0
+offset_right = 168.0
+offset_bottom = 109.0
+text = "测试小人"
