@@ -1,0 +1,919 @@
+[gd_resource type="SpriteFrames" load_steps=208 format=3 uid="uid://cv7pm8ioskbb2"]
+
+[ext_resource type="Texture2D" uid="uid://capiglreyrb6" path="res://素材/游戏素材/僵尸C/Hurt_受伤/0_Orc_Hurt_000.png" id="1_flosm"]
+[ext_resource type="Texture2D" uid="uid://ncsg6cio876o" path="res://素材/游戏素材/僵尸C/Hurt_受伤/0_Orc_Hurt_001.png" id="2_0md7q"]
+[ext_resource type="Texture2D" uid="uid://bqolojejhmt6o" path="res://素材/游戏素材/僵尸C/Hurt_受伤/0_Orc_Hurt_002.png" id="3_xrrsp"]
+[ext_resource type="Texture2D" uid="uid://bus8pco2gupxo" path="res://素材/游戏素材/僵尸C/Hurt_受伤/0_Orc_Hurt_003.png" id="4_rbkrh"]
+[ext_resource type="Texture2D" uid="uid://csr1nbd665ayh" path="res://素材/游戏素材/僵尸C/Hurt_受伤/0_Orc_Hurt_004.png" id="5_lpiue"]
+[ext_resource type="Texture2D" uid="uid://udqfgghl0yid" path="res://素材/游戏素材/僵尸C/Hurt_受伤/0_Orc_Hurt_005.png" id="6_8p873"]
+[ext_resource type="Texture2D" uid="uid://bwn7dmijskao2" path="res://素材/游戏素材/僵尸C/Hurt_受伤/0_Orc_Hurt_006.png" id="7_f1qi6"]
+[ext_resource type="Texture2D" uid="uid://c2epheief50as" path="res://素材/游戏素材/僵尸C/Hurt_受伤/0_Orc_Hurt_007.png" id="8_ajghj"]
+[ext_resource type="Texture2D" uid="uid://dyywpkmff4bqr" path="res://素材/游戏素材/僵尸C/Hurt_受伤/0_Orc_Hurt_008.png" id="9_ec6m7"]
+[ext_resource type="Texture2D" uid="uid://6odelhvd7vvd" path="res://素材/游戏素材/僵尸C/Hurt_受伤/0_Orc_Hurt_009.png" id="10_gxe6v"]
+[ext_resource type="Texture2D" uid="uid://bchga0ynuhrpp" path="res://素材/游戏素材/僵尸C/Hurt_受伤/0_Orc_Hurt_010.png" id="11_afjm8"]
+[ext_resource type="Texture2D" uid="uid://byhgm6chr05iy" path="res://素材/游戏素材/僵尸C/Hurt_受伤/0_Orc_Hurt_011.png" id="12_rp5pr"]
+[ext_resource type="Texture2D" uid="uid://dkcbq4s2034j7" path="res://素材/游戏素材/僵尸C/FallingDown_摔倒/0_Orc_Falling Down_000.png" id="13_ye12o"]
+[ext_resource type="Texture2D" uid="uid://c0ve8wb4a4vrn" path="res://素材/游戏素材/僵尸C/FallingDown_摔倒/0_Orc_Falling Down_001.png" id="14_myisl"]
+[ext_resource type="Texture2D" uid="uid://c8vokww3043bp" path="res://素材/游戏素材/僵尸C/FallingDown_摔倒/0_Orc_Falling Down_002.png" id="15_m1nff"]
+[ext_resource type="Texture2D" uid="uid://45j8mjur33i3" path="res://素材/游戏素材/僵尸C/FallingDown_摔倒/0_Orc_Falling Down_003.png" id="16_42oa3"]
+[ext_resource type="Texture2D" uid="uid://bclw7pa3pbi6m" path="res://素材/游戏素材/僵尸C/FallingDown_摔倒/0_Orc_Falling Down_004.png" id="17_86pl4"]
+[ext_resource type="Texture2D" uid="uid://crgwruxjdr6h7" path="res://素材/游戏素材/僵尸C/FallingDown_摔倒/0_Orc_Falling Down_005.png" id="18_gvh3r"]
+[ext_resource type="Texture2D" uid="uid://lichejr6ll6s" path="res://素材/游戏素材/僵尸C/Running_奔跑/0_Orc_Running_000.png" id="19_4vms5"]
+[ext_resource type="Texture2D" uid="uid://fuh5n7byv6n0" path="res://素材/游戏素材/僵尸C/Running_奔跑/0_Orc_Running_001.png" id="20_q7dcw"]
+[ext_resource type="Texture2D" uid="uid://b5xbptxd4iyg7" path="res://素材/游戏素材/僵尸C/Running_奔跑/0_Orc_Running_002.png" id="21_querr"]
+[ext_resource type="Texture2D" uid="uid://bn7v4eplxsugq" path="res://素材/游戏素材/僵尸C/Running_奔跑/0_Orc_Running_003.png" id="22_cy06k"]
+[ext_resource type="Texture2D" uid="uid://kxpuwr5du14r" path="res://素材/游戏素材/僵尸C/Running_奔跑/0_Orc_Running_004.png" id="23_plav1"]
+[ext_resource type="Texture2D" uid="uid://dy8jwfch6fvkk" path="res://素材/游戏素材/僵尸C/Running_奔跑/0_Orc_Running_005.png" id="24_uira5"]
+[ext_resource type="Texture2D" uid="uid://c5t8rv0ynq2lg" path="res://素材/游戏素材/僵尸C/Running_奔跑/0_Orc_Running_006.png" id="25_sq17y"]
+[ext_resource type="Texture2D" uid="uid://qdxwghsdbywn" path="res://素材/游戏素材/僵尸C/Running_奔跑/0_Orc_Running_007.png" id="26_du7le"]
+[ext_resource type="Texture2D" uid="uid://cyl766xpqr4kg" path="res://素材/游戏素材/僵尸C/Running_奔跑/0_Orc_Running_008.png" id="27_ggoen"]
+[ext_resource type="Texture2D" uid="uid://5ma57umcwqxy" path="res://素材/游戏素材/僵尸C/Running_奔跑/0_Orc_Running_009.png" id="28_uuqb3"]
+[ext_resource type="Texture2D" uid="uid://qqs4gb7bwmnd" path="res://素材/游戏素材/僵尸C/Running_奔跑/0_Orc_Running_010.png" id="29_cs16x"]
+[ext_resource type="Texture2D" uid="uid://by7a3r7klq48i" path="res://素材/游戏素材/僵尸C/Running_奔跑/0_Orc_Running_011.png" id="30_oauf7"]
+[ext_resource type="Texture2D" uid="uid://u8wl854bfi4p" path="res://素材/游戏素材/僵尸C/RunThrowing_奔跑投掷/0_Orc_Run Throwing_000.png" id="31_sjpv7"]
+[ext_resource type="Texture2D" uid="uid://d0btumo8igmjr" path="res://素材/游戏素材/僵尸C/RunThrowing_奔跑投掷/0_Orc_Run Throwing_001.png" id="32_5n4yh"]
+[ext_resource type="Texture2D" uid="uid://iicdnnoth8wb" path="res://素材/游戏素材/僵尸C/RunThrowing_奔跑投掷/0_Orc_Run Throwing_002.png" id="33_2pud2"]
+[ext_resource type="Texture2D" uid="uid://bbd0ajdkumbvi" path="res://素材/游戏素材/僵尸C/RunThrowing_奔跑投掷/0_Orc_Run Throwing_003.png" id="34_aq326"]
+[ext_resource type="Texture2D" uid="uid://c3n4ivq112qxf" path="res://素材/游戏素材/僵尸C/RunThrowing_奔跑投掷/0_Orc_Run Throwing_004.png" id="35_nwrxx"]
+[ext_resource type="Texture2D" uid="uid://pd8rurnywgb4" path="res://素材/游戏素材/僵尸C/RunThrowing_奔跑投掷/0_Orc_Run Throwing_005.png" id="36_lqyqu"]
+[ext_resource type="Texture2D" uid="uid://23msb1qiykaw" path="res://素材/游戏素材/僵尸C/RunThrowing_奔跑投掷/0_Orc_Run Throwing_006.png" id="37_sclg2"]
+[ext_resource type="Texture2D" uid="uid://t135b274muu4" path="res://素材/游戏素材/僵尸C/RunThrowing_奔跑投掷/0_Orc_Run Throwing_007.png" id="38_bcefe"]
+[ext_resource type="Texture2D" uid="uid://cpb4hmy2qbjfv" path="res://素材/游戏素材/僵尸C/RunThrowing_奔跑投掷/0_Orc_Run Throwing_008.png" id="39_6o3we"]
+[ext_resource type="Texture2D" uid="uid://4ixghtifdvma" path="res://素材/游戏素材/僵尸C/RunThrowing_奔跑投掷/0_Orc_Run Throwing_009.png" id="40_y3jvd"]
+[ext_resource type="Texture2D" uid="uid://bqqg8q42wxli0" path="res://素材/游戏素材/僵尸C/RunThrowing_奔跑投掷/0_Orc_Run Throwing_010.png" id="41_h2uy7"]
+[ext_resource type="Texture2D" uid="uid://m8smnxqs34fe" path="res://素材/游戏素材/僵尸C/RunThrowing_奔跑投掷/0_Orc_Run Throwing_011.png" id="42_qsyif"]
+[ext_resource type="Texture2D" uid="uid://b33o1kq083u5q" path="res://素材/游戏素材/僵尸C/RunSlashing_奔跑挥砍/0_Orc_Run Slashing_000.png" id="43_b71a5"]
+[ext_resource type="Texture2D" uid="uid://bgy3mjpsq7nr3" path="res://素材/游戏素材/僵尸C/RunSlashing_奔跑挥砍/0_Orc_Run Slashing_001.png" id="44_fi631"]
+[ext_resource type="Texture2D" uid="uid://b11r22t2maya0" path="res://素材/游戏素材/僵尸C/RunSlashing_奔跑挥砍/0_Orc_Run Slashing_002.png" id="45_7jov4"]
+[ext_resource type="Texture2D" uid="uid://b0u2uxw4mn2iq" path="res://素材/游戏素材/僵尸C/RunSlashing_奔跑挥砍/0_Orc_Run Slashing_003.png" id="46_o37c5"]
+[ext_resource type="Texture2D" uid="uid://vr7oy0h23lgh" path="res://素材/游戏素材/僵尸C/RunSlashing_奔跑挥砍/0_Orc_Run Slashing_004.png" id="47_y1fgh"]
+[ext_resource type="Texture2D" uid="uid://b5juxc32otd1u" path="res://素材/游戏素材/僵尸C/RunSlashing_奔跑挥砍/0_Orc_Run Slashing_005.png" id="48_rhj6l"]
+[ext_resource type="Texture2D" uid="uid://cn3ggf64invd" path="res://素材/游戏素材/僵尸C/RunSlashing_奔跑挥砍/0_Orc_Run Slashing_006.png" id="49_g70eq"]
+[ext_resource type="Texture2D" uid="uid://623i8fwkpocy" path="res://素材/游戏素材/僵尸C/RunSlashing_奔跑挥砍/0_Orc_Run Slashing_007.png" id="50_fjsba"]
+[ext_resource type="Texture2D" uid="uid://bq54d3kyrguba" path="res://素材/游戏素材/僵尸C/RunSlashing_奔跑挥砍/0_Orc_Run Slashing_008.png" id="51_0lkvo"]
+[ext_resource type="Texture2D" uid="uid://dnscbnimvfb5n" path="res://素材/游戏素材/僵尸C/RunSlashing_奔跑挥砍/0_Orc_Run Slashing_009.png" id="52_fujgp"]
+[ext_resource type="Texture2D" uid="uid://d4e80kgdpgl78" path="res://素材/游戏素材/僵尸C/RunSlashing_奔跑挥砍/0_Orc_Run Slashing_010.png" id="53_khhu5"]
+[ext_resource type="Texture2D" uid="uid://bdkqadjkdw0c2" path="res://素材/游戏素材/僵尸C/RunSlashing_奔跑挥砍/0_Orc_Run Slashing_011.png" id="54_p0mj2"]
+[ext_resource type="Texture2D" uid="uid://b63h2d35jtnpo" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_000.png" id="55_gtbyi"]
+[ext_resource type="Texture2D" uid="uid://dnirvs8okcgrm" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_001.png" id="56_cahq3"]
+[ext_resource type="Texture2D" uid="uid://dlg3nb4lbgurj" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_002.png" id="57_7w4g0"]
+[ext_resource type="Texture2D" uid="uid://di01witjugmq" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_003.png" id="58_rahtv"]
+[ext_resource type="Texture2D" uid="uid://c24bmn2ditjtt" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_004.png" id="59_wgcjr"]
+[ext_resource type="Texture2D" uid="uid://dq0kxyl7pmao5" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_005.png" id="60_i18bq"]
+[ext_resource type="Texture2D" uid="uid://b621it4jeab08" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_006.png" id="61_7tneb"]
+[ext_resource type="Texture2D" uid="uid://bkwpw71pf0m0k" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_007.png" id="62_0mo1l"]
+[ext_resource type="Texture2D" uid="uid://c8d5k6bkbpxse" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_008.png" id="63_w28nx"]
+[ext_resource type="Texture2D" uid="uid://cme3iggeio7j0" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_009.png" id="64_oxb4y"]
+[ext_resource type="Texture2D" uid="uid://c3umfpbnwxjs" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_010.png" id="65_b8hsj"]
+[ext_resource type="Texture2D" uid="uid://bhokx3exoeek4" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_011.png" id="66_tmu3x"]
+[ext_resource type="Texture2D" uid="uid://docko3jgpds5y" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_012.png" id="67_uk3ed"]
+[ext_resource type="Texture2D" uid="uid://bmxr5s0kdmbvb" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_013.png" id="68_jgvkp"]
+[ext_resource type="Texture2D" uid="uid://dstpih8q2rnbn" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_014.png" id="69_3fhnv"]
+[ext_resource type="Texture2D" uid="uid://bf66ofwrmd3vn" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_015.png" id="70_crd7x"]
+[ext_resource type="Texture2D" uid="uid://d2x3opabhua0j" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_016.png" id="71_s5xkm"]
+[ext_resource type="Texture2D" uid="uid://ce1ewsmj2a4xl" path="res://素材/游戏素材/僵尸C/Idle_待机/0_Orc_Idle_017.png" id="72_kp6py"]
+[ext_resource type="Texture2D" uid="uid://b0aqiqiq1j040" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_000.png" id="73_1utgb"]
+[ext_resource type="Texture2D" uid="uid://d23umb0wbsi5t" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_001.png" id="74_pbjhi"]
+[ext_resource type="Texture2D" uid="uid://x5qrsr580qmh" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_002.png" id="75_8xalq"]
+[ext_resource type="Texture2D" uid="uid://cv8krkbsk2hdu" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_003.png" id="76_cbjg4"]
+[ext_resource type="Texture2D" uid="uid://dxtinfj8dd2sq" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_004.png" id="77_4gukn"]
+[ext_resource type="Texture2D" uid="uid://yc5kieijjvs5" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_005.png" id="78_acq87"]
+[ext_resource type="Texture2D" uid="uid://dd13gb266p33r" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_006.png" id="79_6hbx4"]
+[ext_resource type="Texture2D" uid="uid://dsciu43jqbhjv" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_007.png" id="80_fpchj"]
+[ext_resource type="Texture2D" uid="uid://dwo3kw4gb5js" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_008.png" id="81_2i86g"]
+[ext_resource type="Texture2D" uid="uid://c2t5wfn73otld" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_009.png" id="82_c2djm"]
+[ext_resource type="Texture2D" uid="uid://bwvymr1b4u3n2" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_010.png" id="83_5ainp"]
+[ext_resource type="Texture2D" uid="uid://bb5hiw3u8wkmk" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_011.png" id="84_4uasm"]
+[ext_resource type="Texture2D" uid="uid://0at1h60uj0w8" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_012.png" id="85_5f61j"]
+[ext_resource type="Texture2D" uid="uid://64rvjas7vrjm" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_013.png" id="86_fyhrr"]
+[ext_resource type="Texture2D" uid="uid://cnuhk0xkftiyb" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_014.png" id="87_yj8fq"]
+[ext_resource type="Texture2D" uid="uid://bd1sjjm8jy24w" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_015.png" id="88_ldxti"]
+[ext_resource type="Texture2D" uid="uid://bu06u12k00t4m" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_016.png" id="89_5btee"]
+[ext_resource type="Texture2D" uid="uid://di03hstbe866n" path="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_017.png" id="90_ariju"]
+[ext_resource type="Texture2D" uid="uid://cocxj05ipkbk3" path="res://素材/游戏素材/僵尸C/Throwing_投掷/0_Orc_Throwing_000.png" id="91_o7r6y"]
+[ext_resource type="Texture2D" uid="uid://cbpmoiv78euds" path="res://素材/游戏素材/僵尸C/Throwing_投掷/0_Orc_Throwing_001.png" id="92_quiu0"]
+[ext_resource type="Texture2D" uid="uid://dfamqpxp7yrm2" path="res://素材/游戏素材/僵尸C/Throwing_投掷/0_Orc_Throwing_002.png" id="93_4xqjt"]
+[ext_resource type="Texture2D" uid="uid://cgpyv8cpf0uan" path="res://素材/游戏素材/僵尸C/Throwing_投掷/0_Orc_Throwing_003.png" id="94_bgyoh"]
+[ext_resource type="Texture2D" uid="uid://2gul0qiwyqdk" path="res://素材/游戏素材/僵尸C/Throwing_投掷/0_Orc_Throwing_004.png" id="95_k4rby"]
+[ext_resource type="Texture2D" uid="uid://dfnf24yg5tlhw" path="res://素材/游戏素材/僵尸C/Throwing_投掷/0_Orc_Throwing_005.png" id="96_4buj8"]
+[ext_resource type="Texture2D" uid="uid://cqqh3owt5ja02" path="res://素材/游戏素材/僵尸C/Throwing_投掷/0_Orc_Throwing_006.png" id="97_lm8lq"]
+[ext_resource type="Texture2D" uid="uid://bxmgvi3d1n6dw" path="res://素材/游戏素材/僵尸C/Throwing_投掷/0_Orc_Throwing_007.png" id="98_rpgr6"]
+[ext_resource type="Texture2D" uid="uid://cc4pevojn2u2a" path="res://素材/游戏素材/僵尸C/Throwing_投掷/0_Orc_Throwing_008.png" id="99_dbrmr"]
+[ext_resource type="Texture2D" uid="uid://dlaimhbls3a0y" path="res://素材/游戏素材/僵尸C/Throwing_投掷/0_Orc_Throwing_009.png" id="100_axpp2"]
+[ext_resource type="Texture2D" uid="uid://c6462r6aohps6" path="res://素材/游戏素材/僵尸C/Throwing_投掷/0_Orc_Throwing_010.png" id="101_4j6gb"]
+[ext_resource type="Texture2D" uid="uid://jt0l32ufbwsq" path="res://素材/游戏素材/僵尸C/Throwing_投掷/0_Orc_Throwing_011.png" id="102_evrhy"]
+[ext_resource type="Texture2D" uid="uid://dx4b0v3t4dign" path="res://素材/游戏素材/僵尸C/Slashing_挥砍/0_Orc_Slashing_000.png" id="103_8mjxt"]
+[ext_resource type="Texture2D" uid="uid://cmn0s1yxyvju" path="res://素材/游戏素材/僵尸C/Slashing_挥砍/0_Orc_Slashing_001.png" id="104_8odej"]
+[ext_resource type="Texture2D" uid="uid://bora7ki38kmo" path="res://素材/游戏素材/僵尸C/Slashing_挥砍/0_Orc_Slashing_002.png" id="105_ugpi1"]
+[ext_resource type="Texture2D" uid="uid://cl330y7s1oiwq" path="res://素材/游戏素材/僵尸C/Slashing_挥砍/0_Orc_Slashing_003.png" id="106_je17h"]
+[ext_resource type="Texture2D" uid="uid://bag8mrxl40o70" path="res://素材/游戏素材/僵尸C/Slashing_挥砍/0_Orc_Slashing_004.png" id="107_2ccdu"]
+[ext_resource type="Texture2D" uid="uid://cbnkb037yn1si" path="res://素材/游戏素材/僵尸C/Slashing_挥砍/0_Orc_Slashing_005.png" id="108_fo1qp"]
+[ext_resource type="Texture2D" uid="uid://bqkj8wrlt658c" path="res://素材/游戏素材/僵尸C/Slashing_挥砍/0_Orc_Slashing_006.png" id="109_nr41j"]
+[ext_resource type="Texture2D" uid="uid://cp10aowsy33u" path="res://素材/游戏素材/僵尸C/Slashing_挥砍/0_Orc_Slashing_007.png" id="110_08id6"]
+[ext_resource type="Texture2D" uid="uid://cbjuk0mxcoxpe" path="res://素材/游戏素材/僵尸C/Slashing_挥砍/0_Orc_Slashing_008.png" id="111_hpi4b"]
+[ext_resource type="Texture2D" uid="uid://g32geg1m7udx" path="res://素材/游戏素材/僵尸C/Slashing_挥砍/0_Orc_Slashing_009.png" id="112_xpp54"]
+[ext_resource type="Texture2D" uid="uid://l241b210prth" path="res://素材/游戏素材/僵尸C/Slashing_挥砍/0_Orc_Slashing_010.png" id="113_axp03"]
+[ext_resource type="Texture2D" uid="uid://ckw3478dmw681" path="res://素材/游戏素材/僵尸C/Slashing_挥砍/0_Orc_Slashing_011.png" id="114_wdogu"]
+[ext_resource type="Texture2D" uid="uid://bvc3forfxm1kf" path="res://素材/游戏素材/僵尸C/Dying_死亡/0_Orc_Dying_000.png" id="115_245fq"]
+[ext_resource type="Texture2D" uid="uid://cj3f3t2os5khq" path="res://素材/游戏素材/僵尸C/Dying_死亡/0_Orc_Dying_001.png" id="116_nufjv"]
+[ext_resource type="Texture2D" uid="uid://lst5w1kwsaao" path="res://素材/游戏素材/僵尸C/Dying_死亡/0_Orc_Dying_002.png" id="117_xkjxw"]
+[ext_resource type="Texture2D" uid="uid://icumlwxaq4qb" path="res://素材/游戏素材/僵尸C/Dying_死亡/0_Orc_Dying_003.png" id="118_74soo"]
+[ext_resource type="Texture2D" uid="uid://c5lf581ih846l" path="res://素材/游戏素材/僵尸C/Dying_死亡/0_Orc_Dying_004.png" id="119_vor8u"]
+[ext_resource type="Texture2D" uid="uid://boih8bmx5nmm3" path="res://素材/游戏素材/僵尸C/Dying_死亡/0_Orc_Dying_005.png" id="120_mx3k2"]
+[ext_resource type="Texture2D" uid="uid://dcpxtqhik0dpa" path="res://素材/游戏素材/僵尸C/Dying_死亡/0_Orc_Dying_006.png" id="121_aashk"]
+[ext_resource type="Texture2D" uid="uid://doebg0rr4rcly" path="res://素材/游戏素材/僵尸C/Dying_死亡/0_Orc_Dying_007.png" id="122_jyni7"]
+[ext_resource type="Texture2D" uid="uid://c3gdmcicnypc" path="res://素材/游戏素材/僵尸C/Dying_死亡/0_Orc_Dying_008.png" id="123_5frmd"]
+[ext_resource type="Texture2D" uid="uid://bl3anrsdfm0ms" path="res://素材/游戏素材/僵尸C/Dying_死亡/0_Orc_Dying_009.png" id="124_ucpsq"]
+[ext_resource type="Texture2D" uid="uid://dsmc0bhr0fk2g" path="res://素材/游戏素材/僵尸C/Dying_死亡/0_Orc_Dying_010.png" id="125_oappu"]
+[ext_resource type="Texture2D" uid="uid://c6gej12tsub4y" path="res://素材/游戏素材/僵尸C/Dying_死亡/0_Orc_Dying_011.png" id="126_5gnw2"]
+[ext_resource type="Texture2D" uid="uid://t7jcwp223tgt" path="res://素材/游戏素材/僵尸C/Dying_死亡/0_Orc_Dying_012.png" id="127_1j8f4"]
+[ext_resource type="Texture2D" uid="uid://b4emmmpfsjmkn" path="res://素材/游戏素材/僵尸C/Dying_死亡/0_Orc_Dying_013.png" id="128_oskjm"]
+[ext_resource type="Texture2D" uid="uid://c46fxg1sufw1" path="res://素材/游戏素材/僵尸C/Dying_死亡/0_Orc_Dying_014.png" id="129_i3jsx"]
+[ext_resource type="Texture2D" uid="uid://fr5ionk82wpk" path="res://素材/游戏素材/僵尸C/Sliding_滑行/0_Orc_Sliding_000.png" id="130_hm04e"]
+[ext_resource type="Texture2D" uid="uid://w56ibnc0tmxw" path="res://素材/游戏素材/僵尸C/Sliding_滑行/0_Orc_Sliding_001.png" id="131_de1o4"]
+[ext_resource type="Texture2D" uid="uid://do7tekjvau3hs" path="res://素材/游戏素材/僵尸C/Sliding_滑行/0_Orc_Sliding_002.png" id="132_f3nc0"]
+[ext_resource type="Texture2D" uid="uid://ck33dw28gcc6g" path="res://素材/游戏素材/僵尸C/Sliding_滑行/0_Orc_Sliding_003.png" id="133_7jqru"]
+[ext_resource type="Texture2D" uid="uid://ckmpcxhpbyiuw" path="res://素材/游戏素材/僵尸C/Sliding_滑行/0_Orc_Sliding_004.png" id="134_skjww"]
+[ext_resource type="Texture2D" uid="uid://dt83p3lmmxur4" path="res://素材/游戏素材/僵尸C/Sliding_滑行/0_Orc_Sliding_005.png" id="135_gtcha"]
+[ext_resource type="Texture2D" uid="uid://cykm81fjfw1s5" path="res://素材/游戏素材/僵尸C/ThrowinginTheAir_空中投掷/0_Orc_Throwing in The Air_000.png" id="136_rrj35"]
+[ext_resource type="Texture2D" uid="uid://3n1a4y1dp063" path="res://素材/游戏素材/僵尸C/ThrowinginTheAir_空中投掷/0_Orc_Throwing in The Air_001.png" id="137_guvys"]
+[ext_resource type="Texture2D" uid="uid://dqpx8j82dlrx6" path="res://素材/游戏素材/僵尸C/ThrowinginTheAir_空中投掷/0_Orc_Throwing in The Air_002.png" id="138_856ss"]
+[ext_resource type="Texture2D" uid="uid://b2rmtr731mboc" path="res://素材/游戏素材/僵尸C/ThrowinginTheAir_空中投掷/0_Orc_Throwing in The Air_003.png" id="139_dqr70"]
+[ext_resource type="Texture2D" uid="uid://bbqem8sjod303" path="res://素材/游戏素材/僵尸C/ThrowinginTheAir_空中投掷/0_Orc_Throwing in The Air_004.png" id="140_f6bxm"]
+[ext_resource type="Texture2D" uid="uid://b8vcmvj1ol0th" path="res://素材/游戏素材/僵尸C/ThrowinginTheAir_空中投掷/0_Orc_Throwing in The Air_005.png" id="141_utdqr"]
+[ext_resource type="Texture2D" uid="uid://b8qhf2051kyj0" path="res://素材/游戏素材/僵尸C/ThrowinginTheAir_空中投掷/0_Orc_Throwing in The Air_006.png" id="142_xw8yh"]
+[ext_resource type="Texture2D" uid="uid://clgc7b1bafleu" path="res://素材/游戏素材/僵尸C/ThrowinginTheAir_空中投掷/0_Orc_Throwing in The Air_007.png" id="143_mbfeg"]
+[ext_resource type="Texture2D" uid="uid://dgltlm5qi38r4" path="res://素材/游戏素材/僵尸C/ThrowinginTheAir_空中投掷/0_Orc_Throwing in The Air_008.png" id="144_sgbuh"]
+[ext_resource type="Texture2D" uid="uid://domjw36335w87" path="res://素材/游戏素材/僵尸C/ThrowinginTheAir_空中投掷/0_Orc_Throwing in The Air_009.png" id="145_ndhs4"]
+[ext_resource type="Texture2D" uid="uid://d2tyv0u2nqmyl" path="res://素材/游戏素材/僵尸C/ThrowinginTheAir_空中投掷/0_Orc_Throwing in The Air_010.png" id="146_clno8"]
+[ext_resource type="Texture2D" uid="uid://cja38e4u56v3h" path="res://素材/游戏素材/僵尸C/ThrowinginTheAir_空中投掷/0_Orc_Throwing in The Air_011.png" id="147_xe34a"]
+[ext_resource type="Texture2D" uid="uid://d3gevgf088cdy" path="res://素材/游戏素材/僵尸C/SlashinginTheAir_空中挥砍/0_Orc_Slashing in The Air_000.png" id="148_6lali"]
+[ext_resource type="Texture2D" uid="uid://cjdra2qapvs8a" path="res://素材/游戏素材/僵尸C/SlashinginTheAir_空中挥砍/0_Orc_Slashing in The Air_001.png" id="149_l00dn"]
+[ext_resource type="Texture2D" uid="uid://bcgehyhkk6pta" path="res://素材/游戏素材/僵尸C/SlashinginTheAir_空中挥砍/0_Orc_Slashing in The Air_002.png" id="150_4ntro"]
+[ext_resource type="Texture2D" uid="uid://c1orn7o2dsawu" path="res://素材/游戏素材/僵尸C/SlashinginTheAir_空中挥砍/0_Orc_Slashing in The Air_003.png" id="151_vis6j"]
+[ext_resource type="Texture2D" uid="uid://pflrwomcovja" path="res://素材/游戏素材/僵尸C/SlashinginTheAir_空中挥砍/0_Orc_Slashing in The Air_004.png" id="152_dy37t"]
+[ext_resource type="Texture2D" uid="uid://c4qmxswic463s" path="res://素材/游戏素材/僵尸C/SlashinginTheAir_空中挥砍/0_Orc_Slashing in The Air_005.png" id="153_tj0o4"]
+[ext_resource type="Texture2D" uid="uid://d1ca3t7uj7ri3" path="res://素材/游戏素材/僵尸C/SlashinginTheAir_空中挥砍/0_Orc_Slashing in The Air_006.png" id="154_52i0m"]
+[ext_resource type="Texture2D" uid="uid://csn5gkamqo713" path="res://素材/游戏素材/僵尸C/SlashinginTheAir_空中挥砍/0_Orc_Slashing in The Air_007.png" id="155_8bllg"]
+[ext_resource type="Texture2D" uid="uid://b4lqlgx08coem" path="res://素材/游戏素材/僵尸C/SlashinginTheAir_空中挥砍/0_Orc_Slashing in The Air_008.png" id="156_1hjpu"]
+[ext_resource type="Texture2D" uid="uid://c620i06l8yj84" path="res://素材/游戏素材/僵尸C/SlashinginTheAir_空中挥砍/0_Orc_Slashing in The Air_009.png" id="157_53t0v"]
+[ext_resource type="Texture2D" uid="uid://d0k5c6taxveqi" path="res://素材/游戏素材/僵尸C/SlashinginTheAir_空中挥砍/0_Orc_Slashing in The Air_010.png" id="158_keptw"]
+[ext_resource type="Texture2D" uid="uid://jerdmgq3b1n7" path="res://素材/游戏素材/僵尸C/SlashinginTheAir_空中挥砍/0_Orc_Slashing in The Air_011.png" id="159_6gbwt"]
+[ext_resource type="Texture2D" uid="uid://c7arc4spotxe3" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_000.png" id="160_p0nax"]
+[ext_resource type="Texture2D" uid="uid://cgsct4704pn6d" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_001.png" id="161_q8ra4"]
+[ext_resource type="Texture2D" uid="uid://daterj1leeu5u" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_002.png" id="162_n5jvj"]
+[ext_resource type="Texture2D" uid="uid://cdvdwkna1466k" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_003.png" id="163_t4fkn"]
+[ext_resource type="Texture2D" uid="uid://dyg2ppggk2e8a" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_004.png" id="164_ejbrs"]
+[ext_resource type="Texture2D" uid="uid://b3tdu2lqhmja5" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_005.png" id="165_xkpao"]
+[ext_resource type="Texture2D" uid="uid://te84yri3m64x" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_006.png" id="166_50ybx"]
+[ext_resource type="Texture2D" uid="uid://dd4me6dym8rxr" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_007.png" id="167_yfxf5"]
+[ext_resource type="Texture2D" uid="uid://bxd1wffd65kuo" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_008.png" id="168_go0ym"]
+[ext_resource type="Texture2D" uid="uid://buglun248v1si" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_009.png" id="169_g400b"]
+[ext_resource type="Texture2D" uid="uid://dj2cr5bgrjgb8" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_010.png" id="170_37knb"]
+[ext_resource type="Texture2D" uid="uid://bl2neocy3sk8i" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_011.png" id="171_yvvqm"]
+[ext_resource type="Texture2D" uid="uid://d6tapsc8h337" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_012.png" id="172_ijv1y"]
+[ext_resource type="Texture2D" uid="uid://c7pkb28see5bd" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_013.png" id="173_sj6xq"]
+[ext_resource type="Texture2D" uid="uid://ceqrw5225860g" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_014.png" id="174_v8wwq"]
+[ext_resource type="Texture2D" uid="uid://c647wpdbkqcli" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_015.png" id="175_sj2ej"]
+[ext_resource type="Texture2D" uid="uid://ipr5fpbl1xe1" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_016.png" id="176_r03yg"]
+[ext_resource type="Texture2D" uid="uid://l5lo2ybnpmyi" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_017.png" id="177_betxc"]
+[ext_resource type="Texture2D" uid="uid://byysp0k2kjkix" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_018.png" id="178_r3ow1"]
+[ext_resource type="Texture2D" uid="uid://dkfap0bdthf7b" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_019.png" id="179_3gp8h"]
+[ext_resource type="Texture2D" uid="uid://d0ahiccp1gji6" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_020.png" id="180_mo8e7"]
+[ext_resource type="Texture2D" uid="uid://c47kfj80sb2t6" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_021.png" id="181_ivuux"]
+[ext_resource type="Texture2D" uid="uid://ws0hidfnuavv" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_022.png" id="182_u3u7s"]
+[ext_resource type="Texture2D" uid="uid://c5jmm1d7536le" path="res://素材/游戏素材/僵尸C/Walking_行走/0_Orc_Walking_023.png" id="183_tv5c0"]
+[ext_resource type="Texture2D" uid="uid://cl5e3nmliwymh" path="res://素材/游戏素材/僵尸C/JumpStart_跳跃启动/0_Orc_Jump Start_000.png" id="184_0fae5"]
+[ext_resource type="Texture2D" uid="uid://ca6yhdqcretsw" path="res://素材/游戏素材/僵尸C/JumpStart_跳跃启动/0_Orc_Jump Start_001.png" id="185_r18xn"]
+[ext_resource type="Texture2D" uid="uid://2xp2fuolfsu3" path="res://素材/游戏素材/僵尸C/JumpStart_跳跃启动/0_Orc_Jump Start_002.png" id="186_7g7xd"]
+[ext_resource type="Texture2D" uid="uid://kfudpxb2hu3b" path="res://素材/游戏素材/僵尸C/JumpStart_跳跃启动/0_Orc_Jump Start_003.png" id="187_y8ixs"]
+[ext_resource type="Texture2D" uid="uid://k38pi6q5pv58" path="res://素材/游戏素材/僵尸C/JumpStart_跳跃启动/0_Orc_Jump Start_004.png" id="188_wck8m"]
+[ext_resource type="Texture2D" uid="uid://bhr4n4hu3ueo6" path="res://素材/游戏素材/僵尸C/JumpStart_跳跃启动/0_Orc_Jump Start_005.png" id="189_dp00x"]
+[ext_resource type="Texture2D" uid="uid://w22a8qvmxc1e" path="res://素材/游戏素材/僵尸C/JumpLoop_跳跃循环/0_Orc_Jump Loop_000.png" id="190_xhv53"]
+[ext_resource type="Texture2D" uid="uid://djd5sjygbm7qd" path="res://素材/游戏素材/僵尸C/JumpLoop_跳跃循环/0_Orc_Jump Loop_001.png" id="191_ujafp"]
+[ext_resource type="Texture2D" uid="uid://blhy072vas1ae" path="res://素材/游戏素材/僵尸C/JumpLoop_跳跃循环/0_Orc_Jump Loop_002.png" id="192_5wkep"]
+[ext_resource type="Texture2D" uid="uid://bc4xawmpv5ff2" path="res://素材/游戏素材/僵尸C/JumpLoop_跳跃循环/0_Orc_Jump Loop_003.png" id="193_62lbt"]
+[ext_resource type="Texture2D" uid="uid://bc3jakmkq3hxc" path="res://素材/游戏素材/僵尸C/JumpLoop_跳跃循环/0_Orc_Jump Loop_004.png" id="194_5rrpf"]
+[ext_resource type="Texture2D" uid="uid://341i2hh1i5k6" path="res://素材/游戏素材/僵尸C/JumpLoop_跳跃循环/0_Orc_Jump Loop_005.png" id="195_pcjjq"]
+[ext_resource type="Texture2D" uid="uid://bwj6im3mfopat" path="res://素材/游戏素材/僵尸C/Kicking_踢击/0_Orc_Kicking_000.png" id="196_bdgu2"]
+[ext_resource type="Texture2D" uid="uid://bupxf3vk8t28g" path="res://素材/游戏素材/僵尸C/Kicking_踢击/0_Orc_Kicking_001.png" id="197_w1sf2"]
+[ext_resource type="Texture2D" uid="uid://dt8fljng532jc" path="res://素材/游戏素材/僵尸C/Kicking_踢击/0_Orc_Kicking_002.png" id="198_wo0g3"]
+[ext_resource type="Texture2D" uid="uid://mydiu1pd1jj3" path="res://素材/游戏素材/僵尸C/Kicking_踢击/0_Orc_Kicking_003.png" id="199_df41x"]
+[ext_resource type="Texture2D" uid="uid://dx6eq3m0wxybl" path="res://素材/游戏素材/僵尸C/Kicking_踢击/0_Orc_Kicking_004.png" id="200_104rq"]
+[ext_resource type="Texture2D" uid="uid://btnto34avc8fn" path="res://素材/游戏素材/僵尸C/Kicking_踢击/0_Orc_Kicking_005.png" id="201_4f5uw"]
+[ext_resource type="Texture2D" uid="uid://ca343561yf8ag" path="res://素材/游戏素材/僵尸C/Kicking_踢击/0_Orc_Kicking_006.png" id="202_1epfa"]
+[ext_resource type="Texture2D" uid="uid://40kaxbcqq8ya" path="res://素材/游戏素材/僵尸C/Kicking_踢击/0_Orc_Kicking_007.png" id="203_23x0j"]
+[ext_resource type="Texture2D" uid="uid://bv4sgcfmegv1a" path="res://素材/游戏素材/僵尸C/Kicking_踢击/0_Orc_Kicking_008.png" id="204_g37m6"]
+[ext_resource type="Texture2D" uid="uid://dbq0vs6r8p4o7" path="res://素材/游戏素材/僵尸C/Kicking_踢击/0_Orc_Kicking_009.png" id="205_0goef"]
+[ext_resource type="Texture2D" uid="uid://b7nvgd1v4jifg" path="res://素材/游戏素材/僵尸C/Kicking_踢击/0_Orc_Kicking_010.png" id="206_hkwfw"]
+[ext_resource type="Texture2D" uid="uid://byx7gp71jree8" path="res://素材/游戏素材/僵尸C/Kicking_踢击/0_Orc_Kicking_011.png" id="207_yj6xa"]
+
+[resource]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_flosm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0md7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xrrsp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rbkrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lpiue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8p873")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f1qi6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ajghj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ec6m7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gxe6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_afjm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rp5pr")
+}],
+"loop": false,
+"name": &"受伤",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_ye12o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_myisl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_m1nff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_42oa3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_86pl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_gvh3r")
+}],
+"loop": true,
+"name": &"坠落",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_4vms5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_q7dcw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_querr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_cy06k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_plav1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_uira5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_sq17y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_du7le")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ggoen")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_uuqb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_cs16x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_oauf7")
+}],
+"loop": true,
+"name": &"奔跑",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_sjpv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_5n4yh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_2pud2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_aq326")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_nwrxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_lqyqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_sclg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_bcefe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_6o3we")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_y3jvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_h2uy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_qsyif")
+}],
+"loop": false,
+"name": &"奔跑投掷",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("43_b71a5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_fi631")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_7jov4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_o37c5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_y1fgh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_rhj6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_g70eq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_fjsba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_0lkvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_fujgp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_khhu5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_p0mj2")
+}],
+"loop": true,
+"name": &"奔跑挥砍",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("55_gtbyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_cahq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_7w4g0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_rahtv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_wgcjr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_i18bq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_7tneb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_0mo1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_w28nx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_oxb4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_b8hsj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_tmu3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_uk3ed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_jgvkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_3fhnv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_crd7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_s5xkm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_kp6py")
+}],
+"loop": true,
+"name": &"待机",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("73_1utgb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_pbjhi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_8xalq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_cbjg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_4gukn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_acq87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_6hbx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_fpchj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_2i86g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_c2djm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_5ainp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_4uasm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_5f61j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_fyhrr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_yj8fq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_ldxti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_5btee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_ariju")
+}],
+"loop": true,
+"name": &"待机眨眼",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("91_o7r6y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_quiu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_4xqjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_bgyoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_k4rby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_4buj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_lm8lq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_rpgr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_dbrmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_axpp2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_4j6gb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_evrhy")
+}],
+"loop": false,
+"name": &"投掷",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("103_8mjxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_8odej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_ugpi1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_je17h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_2ccdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_fo1qp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_nr41j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_08id6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_hpi4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_xpp54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_axp03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_wdogu")
+}],
+"loop": false,
+"name": &"挥砍",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("115_245fq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_nufjv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_xkjxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_74soo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_vor8u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_mx3k2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_aashk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_jyni7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_5frmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_ucpsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_oappu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_5gnw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_1j8f4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_oskjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_i3jsx")
+}],
+"loop": false,
+"name": &"死亡",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("130_hm04e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_de1o4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_f3nc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_7jqru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_skjww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_gtcha")
+}],
+"loop": true,
+"name": &"滑行",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("136_rrj35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_guvys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_856ss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("139_dqr70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_f6bxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_utdqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_xw8yh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_mbfeg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_sgbuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_ndhs4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_clno8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_xe34a")
+}],
+"loop": false,
+"name": &"空中投掷",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("148_6lali")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_l00dn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_4ntro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("151_vis6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_dy37t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_tj0o4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_52i0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_8bllg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_1hjpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_53t0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_keptw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_6gbwt")
+}],
+"loop": false,
+"name": &"空中挥砍",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("160_p0nax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("161_q8ra4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("162_n5jvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("163_t4fkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("164_ejbrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("165_xkpao")
+}, {
+"duration": 1.0,
+"texture": ExtResource("166_50ybx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("167_yfxf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("168_go0ym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("169_g400b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("170_37knb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("171_yvvqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("172_ijv1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_sj6xq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_v8wwq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_sj2ej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_r03yg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_betxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_r3ow1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("179_3gp8h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("180_mo8e7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("181_ivuux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("182_u3u7s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("183_tv5c0")
+}],
+"loop": true,
+"name": &"行走",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("184_0fae5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("185_r18xn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("186_7g7xd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("187_y8ixs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("188_wck8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("189_dp00x")
+}],
+"loop": false,
+"name": &"跳跃",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("190_xhv53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("191_ujafp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("192_5wkep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("193_62lbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("194_5rrpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("195_pcjjq")
+}],
+"loop": true,
+"name": &"跳跃中",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("196_bdgu2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("197_w1sf2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("198_wo0g3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("199_df41x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("200_104rq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("201_4f5uw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("202_1epfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("203_23x0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("204_g37m6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("205_0goef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("206_hkwfw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("207_yj6xa")
+}],
+"loop": false,
+"name": &"踢击",
+"speed": 24.0
+}]

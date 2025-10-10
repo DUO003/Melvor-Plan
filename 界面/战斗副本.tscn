@@ -1,0 +1,131 @@
+[gd_scene load_steps=5 format=3 uid="uid://coia1jg6bu4og"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_0xnmj"]
+[ext_resource type="Script" uid="uid://bh4gmdfpus150" path="res://代码/战斗副本.gd" id="1_6hw1w"]
+[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="2_0xnmj"]
+[ext_resource type="PackedScene" uid="uid://c6cchk6o37m7f" path="res://界面/玩家模板.tscn" id="5_867q1"]
+
+[node name="副本窗口" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1700.0
+offset_bottom = 1000.0
+theme = ExtResource("1_0xnmj")
+script = ExtResource("1_6hw1w")
+
+[node name="标题" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+color = Color(0.75, 0.67, 0.45, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="等级显示" parent="标题" instance=ExtResource("2_0xnmj")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+"系统" = "游历"
+"玩法" = "副本"
+
+[node name="背景" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.004
+offset_top = 100.0
+offset_bottom = -3.99994
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.82, 0.732533, 0.492, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="内容区域" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_top = 100.0
+offset_right = 1700.0
+offset_bottom = 1000.0
+
+[node name="2D场景" type="Node2D" parent="内容区域"]
+
+[node name="地图" type="Node2D" parent="内容区域/2D场景"]
+unique_name_in_owner = true
+
+[node name="玩家" parent="内容区域/2D场景" instance=ExtResource("5_867q1")]
+unique_name_in_owner = true
+position = Vector2(320, 380)
+
+[node name="敌人节点" type="Node2D" parent="内容区域/2D场景"]
+unique_name_in_owner = true
+
+[node name="TabContainer" type="TabContainer" parent="内容区域"]
+layout_mode = 0
+offset_right = 1700.0
+offset_bottom = 420.0
+current_tab = 0
+
+[node name="副本探索" type="Control" parent="内容区域/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="背景" type="ColorRect" parent="内容区域/TabContainer/副本探索"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8, 0.8, 0.8, 0.1882353)
+metadata/_edit_lock_ = true
+
+[node name="小地图网格" type="GridContainer" parent="内容区域/TabContainer/副本探索"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 20
+
+[node name="探索标准块" type="ColorRect" parent="内容区域/TabContainer/副本探索/小地图网格"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="文本" type="Label" parent="内容区域/TabContainer/副本探索/小地图网格/探索标准块"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="内容区域/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="背景" type="ColorRect" parent="内容区域/TabContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.57633334, 0.91, 0, 0.30980393)
+metadata/_edit_lock_ = true

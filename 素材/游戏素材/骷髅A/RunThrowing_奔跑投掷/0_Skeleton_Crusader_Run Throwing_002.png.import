@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://dlsp6iebchayx"
+path="res://.godot/imported/0_Skeleton_Crusader_Run Throwing_002.png-5b5ed4de2d0928da8bc861f6dbc7f984.res"
+group_file="res://角色/骷髅A.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅A/RunThrowing_奔跑投掷/0_Skeleton_Crusader_Run Throwing_002.png"
+dest_files=["res://.godot/imported/0_Skeleton_Crusader_Run Throwing_002.png-5b5ed4de2d0928da8bc861f6dbc7f984.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅A.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

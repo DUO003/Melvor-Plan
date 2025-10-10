@@ -6,11 +6,9 @@ func _ready() -> void:
 	hide()
 	GBIS.sig_item_focused.connect(func(物品: ItemData, 容器名称: String):
 		show()
-		更新文本(物品, 容器名称)
-		print("焦点物品信号",物品))
+		更新文本(物品, 容器名称))
 	初始化.购买物品.connect(func(物品: ItemData, 容器名称: String):
-		更新文本(物品, 容器名称)
-		print("购买物品信号",物品))
+		更新文本(物品, 容器名称))
 	GBIS.sig_item_focus_lost.connect(func(_物品: ItemData): hide())
 func 更新文本(物品: ItemData, 容器名称: String):
 	文本标签.text=文本预处理(物品,容器名称)
@@ -23,7 +21,7 @@ func 更新文本(物品: ItemData, 容器名称: String):
 	var 视口右边界 = 视口矩形.position.x + 视口矩形.size.x
 	var 节点宽度 = size.x
 	位置偏移X = 视口右边界 - 节点宽度  # 赋值X轴最大偏移值
-	print("更新物品简介")
+	#print("更新物品简介")
 func _process(_delta: float) -> void:
 	var 目标全局位置: Vector2 = get_global_mouse_position() + Vector2(5, 5)
 	if 目标全局位置.x > 位置偏移X:

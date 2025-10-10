@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://bbqem8sjod303"
+path="res://.godot/imported/0_Orc_Throwing in The Air_004.png-5098eb87de12d7ba1cc7253424b2d6ea.res"
+group_file="res://角色/僵尸C.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/僵尸C/ThrowinginTheAir_空中投掷/0_Orc_Throwing in The Air_004.png"
+dest_files=["res://.godot/imported/0_Orc_Throwing in The Air_004.png-5098eb87de12d7ba1cc7253424b2d6ea.res"]
+
+[params]
+
+atlas_file="res://角色/僵尸C.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

@@ -1,0 +1,919 @@
+[gd_resource type="SpriteFrames" load_steps=208 format=3 uid="uid://dx5b8838oatck"]
+
+[ext_resource type="Texture2D" uid="uid://dacfewmwp1p0m" path="res://素材/游戏素材/僵尸B/Hurt_受伤/0_Ogre_Hurt_000.png" id="1_brhhb"]
+[ext_resource type="Texture2D" uid="uid://d4gfua4m3nxb3" path="res://素材/游戏素材/僵尸B/Hurt_受伤/0_Ogre_Hurt_001.png" id="2_h2rix"]
+[ext_resource type="Texture2D" uid="uid://bqfei7cmypktt" path="res://素材/游戏素材/僵尸B/Hurt_受伤/0_Ogre_Hurt_002.png" id="3_u4acr"]
+[ext_resource type="Texture2D" uid="uid://cnhsnsxvb1bvb" path="res://素材/游戏素材/僵尸B/Hurt_受伤/0_Ogre_Hurt_003.png" id="4_28emv"]
+[ext_resource type="Texture2D" uid="uid://bv5c65vltlun4" path="res://素材/游戏素材/僵尸B/Hurt_受伤/0_Ogre_Hurt_004.png" id="5_hp4xm"]
+[ext_resource type="Texture2D" uid="uid://ccgg12t4jb3b0" path="res://素材/游戏素材/僵尸B/Hurt_受伤/0_Ogre_Hurt_005.png" id="6_djfdn"]
+[ext_resource type="Texture2D" uid="uid://besw7vpw7pusb" path="res://素材/游戏素材/僵尸B/Hurt_受伤/0_Ogre_Hurt_006.png" id="7_clqbf"]
+[ext_resource type="Texture2D" uid="uid://thrdq3di85f2" path="res://素材/游戏素材/僵尸B/Hurt_受伤/0_Ogre_Hurt_007.png" id="8_81gga"]
+[ext_resource type="Texture2D" uid="uid://dik8ycu87nmlx" path="res://素材/游戏素材/僵尸B/Hurt_受伤/0_Ogre_Hurt_008.png" id="9_r62nc"]
+[ext_resource type="Texture2D" uid="uid://cdq4fyhigdk2b" path="res://素材/游戏素材/僵尸B/Hurt_受伤/0_Ogre_Hurt_009.png" id="10_6b8le"]
+[ext_resource type="Texture2D" uid="uid://dhfwpn088ofgt" path="res://素材/游戏素材/僵尸B/Hurt_受伤/0_Ogre_Hurt_010.png" id="11_cqscv"]
+[ext_resource type="Texture2D" uid="uid://mqgdwlka5ch6" path="res://素材/游戏素材/僵尸B/Hurt_受伤/0_Ogre_Hurt_011.png" id="12_8jwfm"]
+[ext_resource type="Texture2D" uid="uid://bmxtgjpqcqkxu" path="res://素材/游戏素材/僵尸B/FallingDown_摔倒/0_Ogre_Falling Down_000.png" id="13_wn8f8"]
+[ext_resource type="Texture2D" uid="uid://d0l5r7qhwrxer" path="res://素材/游戏素材/僵尸B/FallingDown_摔倒/0_Ogre_Falling Down_001.png" id="14_6lf17"]
+[ext_resource type="Texture2D" uid="uid://cxlomwpui7t5l" path="res://素材/游戏素材/僵尸B/FallingDown_摔倒/0_Ogre_Falling Down_002.png" id="15_ofxcm"]
+[ext_resource type="Texture2D" uid="uid://23t5tpqwhe71" path="res://素材/游戏素材/僵尸B/FallingDown_摔倒/0_Ogre_Falling Down_003.png" id="16_bf0ro"]
+[ext_resource type="Texture2D" uid="uid://cg8bp1j8swqfo" path="res://素材/游戏素材/僵尸B/FallingDown_摔倒/0_Ogre_Falling Down_004.png" id="17_pn7kd"]
+[ext_resource type="Texture2D" uid="uid://cahf2hd4xhjh5" path="res://素材/游戏素材/僵尸B/FallingDown_摔倒/0_Ogre_Falling Down_005.png" id="18_mf8eb"]
+[ext_resource type="Texture2D" uid="uid://ryxm7hl73ngo" path="res://素材/游戏素材/僵尸B/Running_奔跑/0_Ogre_Running_000.png" id="19_xgvum"]
+[ext_resource type="Texture2D" uid="uid://8mdl38p6qd1o" path="res://素材/游戏素材/僵尸B/Running_奔跑/0_Ogre_Running_001.png" id="20_3gvkw"]
+[ext_resource type="Texture2D" uid="uid://bgsl18mhfxsil" path="res://素材/游戏素材/僵尸B/Running_奔跑/0_Ogre_Running_002.png" id="21_loix2"]
+[ext_resource type="Texture2D" uid="uid://cnxa6kwik8e1u" path="res://素材/游戏素材/僵尸B/Running_奔跑/0_Ogre_Running_003.png" id="22_05t5o"]
+[ext_resource type="Texture2D" uid="uid://djeyc4x0pkjgo" path="res://素材/游戏素材/僵尸B/Running_奔跑/0_Ogre_Running_004.png" id="23_u35iy"]
+[ext_resource type="Texture2D" uid="uid://dmspjckpsqwq6" path="res://素材/游戏素材/僵尸B/Running_奔跑/0_Ogre_Running_005.png" id="24_enh1m"]
+[ext_resource type="Texture2D" uid="uid://ddbw8xcrjqfet" path="res://素材/游戏素材/僵尸B/Running_奔跑/0_Ogre_Running_006.png" id="25_1q50h"]
+[ext_resource type="Texture2D" uid="uid://hgo1j0dop2qr" path="res://素材/游戏素材/僵尸B/Running_奔跑/0_Ogre_Running_007.png" id="26_8lbqo"]
+[ext_resource type="Texture2D" uid="uid://77ulyoq53g3m" path="res://素材/游戏素材/僵尸B/Running_奔跑/0_Ogre_Running_008.png" id="27_h0gbs"]
+[ext_resource type="Texture2D" uid="uid://ctmmbjfb5klng" path="res://素材/游戏素材/僵尸B/Running_奔跑/0_Ogre_Running_009.png" id="28_mf3l6"]
+[ext_resource type="Texture2D" uid="uid://dggkpf5r1i3a2" path="res://素材/游戏素材/僵尸B/Running_奔跑/0_Ogre_Running_010.png" id="29_5xl6e"]
+[ext_resource type="Texture2D" uid="uid://ch3d4oapvwke" path="res://素材/游戏素材/僵尸B/Running_奔跑/0_Ogre_Running_011.png" id="30_5ikln"]
+[ext_resource type="Texture2D" uid="uid://c6cum82edy0mv" path="res://素材/游戏素材/僵尸B/RunThrowing_奔跑投掷/0_Ogre_Run Throwing_000.png" id="31_t52tu"]
+[ext_resource type="Texture2D" uid="uid://dnxmqtjeknntg" path="res://素材/游戏素材/僵尸B/RunThrowing_奔跑投掷/0_Ogre_Run Throwing_001.png" id="32_5gwkm"]
+[ext_resource type="Texture2D" uid="uid://badnigxdr8boi" path="res://素材/游戏素材/僵尸B/RunThrowing_奔跑投掷/0_Ogre_Run Throwing_002.png" id="33_b5unu"]
+[ext_resource type="Texture2D" uid="uid://bj7m8mg870ggl" path="res://素材/游戏素材/僵尸B/RunThrowing_奔跑投掷/0_Ogre_Run Throwing_003.png" id="34_wmxom"]
+[ext_resource type="Texture2D" uid="uid://bljse63qioe8o" path="res://素材/游戏素材/僵尸B/RunThrowing_奔跑投掷/0_Ogre_Run Throwing_004.png" id="35_gt1tq"]
+[ext_resource type="Texture2D" uid="uid://btn04gdc2xao0" path="res://素材/游戏素材/僵尸B/RunThrowing_奔跑投掷/0_Ogre_Run Throwing_005.png" id="36_f55g0"]
+[ext_resource type="Texture2D" uid="uid://cidj5cirbibu2" path="res://素材/游戏素材/僵尸B/RunThrowing_奔跑投掷/0_Ogre_Run Throwing_006.png" id="37_buq0p"]
+[ext_resource type="Texture2D" uid="uid://csawxj3bnv7bt" path="res://素材/游戏素材/僵尸B/RunThrowing_奔跑投掷/0_Ogre_Run Throwing_007.png" id="38_77dx4"]
+[ext_resource type="Texture2D" uid="uid://epjfs1juwvvq" path="res://素材/游戏素材/僵尸B/RunThrowing_奔跑投掷/0_Ogre_Run Throwing_008.png" id="39_7bwem"]
+[ext_resource type="Texture2D" uid="uid://bvp4vyk8wxc03" path="res://素材/游戏素材/僵尸B/RunThrowing_奔跑投掷/0_Ogre_Run Throwing_009.png" id="40_wnrbe"]
+[ext_resource type="Texture2D" uid="uid://bw6nnfdwqjm4n" path="res://素材/游戏素材/僵尸B/RunThrowing_奔跑投掷/0_Ogre_Run Throwing_010.png" id="41_kuf4e"]
+[ext_resource type="Texture2D" uid="uid://k77gdtr42b1c" path="res://素材/游戏素材/僵尸B/RunThrowing_奔跑投掷/0_Ogre_Run Throwing_011.png" id="42_kb0wo"]
+[ext_resource type="Texture2D" uid="uid://dqdacv42s7jbp" path="res://素材/游戏素材/僵尸B/RunSlashing_奔跑挥砍/0_Ogre_Run Slashing_000.png" id="43_mjkun"]
+[ext_resource type="Texture2D" uid="uid://cjbosernqtfty" path="res://素材/游戏素材/僵尸B/RunSlashing_奔跑挥砍/0_Ogre_Run Slashing_001.png" id="44_uqgdg"]
+[ext_resource type="Texture2D" uid="uid://p41vnjccojnj" path="res://素材/游戏素材/僵尸B/RunSlashing_奔跑挥砍/0_Ogre_Run Slashing_002.png" id="45_k567f"]
+[ext_resource type="Texture2D" uid="uid://ou1dw5qjp3j5" path="res://素材/游戏素材/僵尸B/RunSlashing_奔跑挥砍/0_Ogre_Run Slashing_003.png" id="46_kmi6w"]
+[ext_resource type="Texture2D" uid="uid://de1yevs6hiaoa" path="res://素材/游戏素材/僵尸B/RunSlashing_奔跑挥砍/0_Ogre_Run Slashing_004.png" id="47_fuxfa"]
+[ext_resource type="Texture2D" uid="uid://dktv6du3vqco8" path="res://素材/游戏素材/僵尸B/RunSlashing_奔跑挥砍/0_Ogre_Run Slashing_005.png" id="48_a3kyt"]
+[ext_resource type="Texture2D" uid="uid://cfqv4wlwb1hek" path="res://素材/游戏素材/僵尸B/RunSlashing_奔跑挥砍/0_Ogre_Run Slashing_006.png" id="49_345dd"]
+[ext_resource type="Texture2D" uid="uid://budsrmialemb0" path="res://素材/游戏素材/僵尸B/RunSlashing_奔跑挥砍/0_Ogre_Run Slashing_007.png" id="50_m50es"]
+[ext_resource type="Texture2D" uid="uid://chghps0sa6guq" path="res://素材/游戏素材/僵尸B/RunSlashing_奔跑挥砍/0_Ogre_Run Slashing_008.png" id="51_1p23w"]
+[ext_resource type="Texture2D" uid="uid://smqrqy283t2a" path="res://素材/游戏素材/僵尸B/RunSlashing_奔跑挥砍/0_Ogre_Run Slashing_009.png" id="52_k3aav"]
+[ext_resource type="Texture2D" uid="uid://cpcojtpsoqo48" path="res://素材/游戏素材/僵尸B/RunSlashing_奔跑挥砍/0_Ogre_Run Slashing_010.png" id="53_wop1a"]
+[ext_resource type="Texture2D" uid="uid://38082lhvadoa" path="res://素材/游戏素材/僵尸B/RunSlashing_奔跑挥砍/0_Ogre_Run Slashing_011.png" id="54_fpq57"]
+[ext_resource type="Texture2D" uid="uid://c5px25n4t2axl" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_000.png" id="55_n1led"]
+[ext_resource type="Texture2D" uid="uid://dduuula2xi5yk" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_001.png" id="56_qpwk6"]
+[ext_resource type="Texture2D" uid="uid://cdi4qllcokfmh" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_002.png" id="57_2sgka"]
+[ext_resource type="Texture2D" uid="uid://dw6qyoowkm337" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_003.png" id="58_cx72a"]
+[ext_resource type="Texture2D" uid="uid://cf5dgpxjegv2j" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_004.png" id="59_6j7yj"]
+[ext_resource type="Texture2D" uid="uid://dhnjnihx47y1s" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_005.png" id="60_6hvc4"]
+[ext_resource type="Texture2D" uid="uid://b6a3wy23cw4p2" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_006.png" id="61_ucv73"]
+[ext_resource type="Texture2D" uid="uid://u3lbaybdxhrf" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_007.png" id="62_ami6i"]
+[ext_resource type="Texture2D" uid="uid://cyktuj01q2vgu" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_008.png" id="63_j6ry5"]
+[ext_resource type="Texture2D" uid="uid://ca07mlwi06ey6" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_009.png" id="64_6yawm"]
+[ext_resource type="Texture2D" uid="uid://dybx22uabl8oj" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_010.png" id="65_5mnin"]
+[ext_resource type="Texture2D" uid="uid://bdfmnt6b74v5t" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_011.png" id="66_cxvky"]
+[ext_resource type="Texture2D" uid="uid://bgh5cm7xghgww" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_012.png" id="67_tgqld"]
+[ext_resource type="Texture2D" uid="uid://cmkygi3aym5o0" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_013.png" id="68_xmwry"]
+[ext_resource type="Texture2D" uid="uid://rv0uv244hmbb" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_014.png" id="69_o6osn"]
+[ext_resource type="Texture2D" uid="uid://d41rd4rbpj0p" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_015.png" id="70_b484j"]
+[ext_resource type="Texture2D" uid="uid://bh14mcs8rv5w8" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_016.png" id="71_q4bpu"]
+[ext_resource type="Texture2D" uid="uid://dsufwqy374e8" path="res://素材/游戏素材/僵尸B/Idle_待机/0_Ogre_Idle_017.png" id="72_dytbc"]
+[ext_resource type="Texture2D" uid="uid://c2rdh2is85l5o" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_000.png" id="73_s38wn"]
+[ext_resource type="Texture2D" uid="uid://dmwx8xieklyxn" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_001.png" id="74_mk3qv"]
+[ext_resource type="Texture2D" uid="uid://cbos5g6yoeq4x" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_002.png" id="75_00d2j"]
+[ext_resource type="Texture2D" uid="uid://drbvxdmxm7meo" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_003.png" id="76_sdcrt"]
+[ext_resource type="Texture2D" uid="uid://fm6kmev7uv2d" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_004.png" id="77_53rg7"]
+[ext_resource type="Texture2D" uid="uid://b0rtp5ecrv4u" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_005.png" id="78_h2ruy"]
+[ext_resource type="Texture2D" uid="uid://c5rpes7sxd4fo" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_006.png" id="79_nwgw2"]
+[ext_resource type="Texture2D" uid="uid://c561p8tjmgfmc" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_007.png" id="80_b6lcb"]
+[ext_resource type="Texture2D" uid="uid://d3gd7fw4yyp7y" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_008.png" id="81_jlotm"]
+[ext_resource type="Texture2D" uid="uid://dap7q1xw08qva" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_009.png" id="82_vxm3o"]
+[ext_resource type="Texture2D" uid="uid://pvit1bb7mems" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_010.png" id="83_agtt7"]
+[ext_resource type="Texture2D" uid="uid://daaw0oeyi5w0y" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_011.png" id="84_e4r6g"]
+[ext_resource type="Texture2D" uid="uid://cscy6mc830kl" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_012.png" id="85_mp0mw"]
+[ext_resource type="Texture2D" uid="uid://b6nhnj7gfr812" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_013.png" id="86_pokih"]
+[ext_resource type="Texture2D" uid="uid://ujd02m0v6n14" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_014.png" id="87_tw185"]
+[ext_resource type="Texture2D" uid="uid://dmvn6x5kh0jwg" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_015.png" id="88_hj15u"]
+[ext_resource type="Texture2D" uid="uid://byrmnbqu7ye5i" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_016.png" id="89_w0rj4"]
+[ext_resource type="Texture2D" uid="uid://wdyiqw0e1lbi" path="res://素材/游戏素材/僵尸B/IdleBlinking_待机眨眼/0_Ogre_Idle Blinking_017.png" id="90_3y6sr"]
+[ext_resource type="Texture2D" uid="uid://cvkpx631iouap" path="res://素材/游戏素材/僵尸B/Throwing_投掷/0_Ogre_Throwing_000.png" id="91_tbc6c"]
+[ext_resource type="Texture2D" uid="uid://o4jnm6uhav0w" path="res://素材/游戏素材/僵尸B/Throwing_投掷/0_Ogre_Throwing_001.png" id="92_ttnaj"]
+[ext_resource type="Texture2D" uid="uid://crt71b7knvctn" path="res://素材/游戏素材/僵尸B/Throwing_投掷/0_Ogre_Throwing_002.png" id="93_1capy"]
+[ext_resource type="Texture2D" uid="uid://dh25mqhaqi54o" path="res://素材/游戏素材/僵尸B/Throwing_投掷/0_Ogre_Throwing_003.png" id="94_s6c47"]
+[ext_resource type="Texture2D" uid="uid://d3c3q8328t4o" path="res://素材/游戏素材/僵尸B/Throwing_投掷/0_Ogre_Throwing_004.png" id="95_wxmb8"]
+[ext_resource type="Texture2D" uid="uid://dp0kynel4t075" path="res://素材/游戏素材/僵尸B/Throwing_投掷/0_Ogre_Throwing_005.png" id="96_g3hxc"]
+[ext_resource type="Texture2D" uid="uid://p2vg83qc1vg6" path="res://素材/游戏素材/僵尸B/Throwing_投掷/0_Ogre_Throwing_006.png" id="97_8x7t4"]
+[ext_resource type="Texture2D" uid="uid://7ut6mat3rix3" path="res://素材/游戏素材/僵尸B/Throwing_投掷/0_Ogre_Throwing_007.png" id="98_btn5p"]
+[ext_resource type="Texture2D" uid="uid://bakfygp2eicgl" path="res://素材/游戏素材/僵尸B/Throwing_投掷/0_Ogre_Throwing_008.png" id="99_4l708"]
+[ext_resource type="Texture2D" uid="uid://35xr4got4vp4" path="res://素材/游戏素材/僵尸B/Throwing_投掷/0_Ogre_Throwing_009.png" id="100_id1cg"]
+[ext_resource type="Texture2D" uid="uid://df804xssgy7na" path="res://素材/游戏素材/僵尸B/Throwing_投掷/0_Ogre_Throwing_010.png" id="101_kswkh"]
+[ext_resource type="Texture2D" uid="uid://s3135jjbrhuw" path="res://素材/游戏素材/僵尸B/Throwing_投掷/0_Ogre_Throwing_011.png" id="102_75rp7"]
+[ext_resource type="Texture2D" uid="uid://8unc8uq4tfm6" path="res://素材/游戏素材/僵尸B/Slashing_挥砍/0_Ogre_Slashing_000.png" id="103_6gu1x"]
+[ext_resource type="Texture2D" uid="uid://bois1kngumirb" path="res://素材/游戏素材/僵尸B/Slashing_挥砍/0_Ogre_Slashing_001.png" id="104_6l1kk"]
+[ext_resource type="Texture2D" uid="uid://dlqbrp75qhjit" path="res://素材/游戏素材/僵尸B/Slashing_挥砍/0_Ogre_Slashing_002.png" id="105_50byc"]
+[ext_resource type="Texture2D" uid="uid://cwoygyp2sabye" path="res://素材/游戏素材/僵尸B/Slashing_挥砍/0_Ogre_Slashing_003.png" id="106_rqfq8"]
+[ext_resource type="Texture2D" uid="uid://cs7dg08h2r48g" path="res://素材/游戏素材/僵尸B/Slashing_挥砍/0_Ogre_Slashing_004.png" id="107_l6dh0"]
+[ext_resource type="Texture2D" uid="uid://quv1pbowplhe" path="res://素材/游戏素材/僵尸B/Slashing_挥砍/0_Ogre_Slashing_005.png" id="108_phx7k"]
+[ext_resource type="Texture2D" uid="uid://vmpvj15tjfaq" path="res://素材/游戏素材/僵尸B/Slashing_挥砍/0_Ogre_Slashing_006.png" id="109_v84u7"]
+[ext_resource type="Texture2D" uid="uid://cdnpcbt4rt13w" path="res://素材/游戏素材/僵尸B/Slashing_挥砍/0_Ogre_Slashing_007.png" id="110_we7ik"]
+[ext_resource type="Texture2D" uid="uid://6vhvcbq8hpem" path="res://素材/游戏素材/僵尸B/Slashing_挥砍/0_Ogre_Slashing_008.png" id="111_ft3i8"]
+[ext_resource type="Texture2D" uid="uid://6w1s5vq8wj6i" path="res://素材/游戏素材/僵尸B/Slashing_挥砍/0_Ogre_Slashing_009.png" id="112_comee"]
+[ext_resource type="Texture2D" uid="uid://d300efr58bdfb" path="res://素材/游戏素材/僵尸B/Slashing_挥砍/0_Ogre_Slashing_010.png" id="113_wfb7k"]
+[ext_resource type="Texture2D" uid="uid://e8xnkhx6bp62" path="res://素材/游戏素材/僵尸B/Slashing_挥砍/0_Ogre_Slashing_011.png" id="114_r4udh"]
+[ext_resource type="Texture2D" uid="uid://dd0250npoqguo" path="res://素材/游戏素材/僵尸B/Dying_死亡/0_Ogre_Dying_000.png" id="115_fqdhh"]
+[ext_resource type="Texture2D" uid="uid://bwt2lysrdqw5m" path="res://素材/游戏素材/僵尸B/Dying_死亡/0_Ogre_Dying_001.png" id="116_rgk23"]
+[ext_resource type="Texture2D" uid="uid://bauswtemodght" path="res://素材/游戏素材/僵尸B/Dying_死亡/0_Ogre_Dying_002.png" id="117_qa4n1"]
+[ext_resource type="Texture2D" uid="uid://dvep1rsxf6n8b" path="res://素材/游戏素材/僵尸B/Dying_死亡/0_Ogre_Dying_003.png" id="118_33mic"]
+[ext_resource type="Texture2D" uid="uid://cjurp282ju6l7" path="res://素材/游戏素材/僵尸B/Dying_死亡/0_Ogre_Dying_004.png" id="119_ag6nt"]
+[ext_resource type="Texture2D" uid="uid://tmaenuglddlg" path="res://素材/游戏素材/僵尸B/Dying_死亡/0_Ogre_Dying_005.png" id="120_cygm6"]
+[ext_resource type="Texture2D" uid="uid://pihyn31vg1pu" path="res://素材/游戏素材/僵尸B/Dying_死亡/0_Ogre_Dying_006.png" id="121_5nh2s"]
+[ext_resource type="Texture2D" uid="uid://d4g2hseou8wqc" path="res://素材/游戏素材/僵尸B/Dying_死亡/0_Ogre_Dying_007.png" id="122_13tdi"]
+[ext_resource type="Texture2D" uid="uid://c0fo16iwx0k00" path="res://素材/游戏素材/僵尸B/Dying_死亡/0_Ogre_Dying_008.png" id="123_tu7fi"]
+[ext_resource type="Texture2D" uid="uid://c6ucmcykyb62n" path="res://素材/游戏素材/僵尸B/Dying_死亡/0_Ogre_Dying_009.png" id="124_dukih"]
+[ext_resource type="Texture2D" uid="uid://bt2dkehhjnolc" path="res://素材/游戏素材/僵尸B/Dying_死亡/0_Ogre_Dying_010.png" id="125_mccef"]
+[ext_resource type="Texture2D" uid="uid://gx025ojmwkee" path="res://素材/游戏素材/僵尸B/Dying_死亡/0_Ogre_Dying_011.png" id="126_cv72i"]
+[ext_resource type="Texture2D" uid="uid://bmo6r687kcq6p" path="res://素材/游戏素材/僵尸B/Dying_死亡/0_Ogre_Dying_012.png" id="127_fkiyu"]
+[ext_resource type="Texture2D" uid="uid://djf01bfaqkr0w" path="res://素材/游戏素材/僵尸B/Dying_死亡/0_Ogre_Dying_013.png" id="128_lsoie"]
+[ext_resource type="Texture2D" uid="uid://bsydfdgu002ej" path="res://素材/游戏素材/僵尸B/Dying_死亡/0_Ogre_Dying_014.png" id="129_k20bd"]
+[ext_resource type="Texture2D" uid="uid://d3hsiapqfepn" path="res://素材/游戏素材/僵尸B/Sliding_滑行/0_Ogre_Sliding_000.png" id="130_ue5ms"]
+[ext_resource type="Texture2D" uid="uid://hjchmginc4a2" path="res://素材/游戏素材/僵尸B/Sliding_滑行/0_Ogre_Sliding_001.png" id="131_gheoq"]
+[ext_resource type="Texture2D" uid="uid://cxrmskj15fvok" path="res://素材/游戏素材/僵尸B/Sliding_滑行/0_Ogre_Sliding_002.png" id="132_mndkq"]
+[ext_resource type="Texture2D" uid="uid://cxbqvqs8qut7t" path="res://素材/游戏素材/僵尸B/Sliding_滑行/0_Ogre_Sliding_003.png" id="133_0cqy6"]
+[ext_resource type="Texture2D" uid="uid://dos8oupjm4olv" path="res://素材/游戏素材/僵尸B/Sliding_滑行/0_Ogre_Sliding_004.png" id="134_rt4gr"]
+[ext_resource type="Texture2D" uid="uid://chohs0q7v8d3e" path="res://素材/游戏素材/僵尸B/Sliding_滑行/0_Ogre_Sliding_005.png" id="135_0ved5"]
+[ext_resource type="Texture2D" uid="uid://0jgty1frb0h0" path="res://素材/游戏素材/僵尸B/ThrowinginTheAir_空中投掷/0_Ogre_Throwing in The Air_000.png" id="136_igq5m"]
+[ext_resource type="Texture2D" uid="uid://ikgoc1xrl12s" path="res://素材/游戏素材/僵尸B/ThrowinginTheAir_空中投掷/0_Ogre_Throwing in The Air_001.png" id="137_vgufi"]
+[ext_resource type="Texture2D" uid="uid://c0myjprrfjkj0" path="res://素材/游戏素材/僵尸B/ThrowinginTheAir_空中投掷/0_Ogre_Throwing in The Air_002.png" id="138_ucamu"]
+[ext_resource type="Texture2D" uid="uid://yo5lgg8kn1q7" path="res://素材/游戏素材/僵尸B/ThrowinginTheAir_空中投掷/0_Ogre_Throwing in The Air_003.png" id="139_316pt"]
+[ext_resource type="Texture2D" uid="uid://bao2qqm8hrs7h" path="res://素材/游戏素材/僵尸B/ThrowinginTheAir_空中投掷/0_Ogre_Throwing in The Air_004.png" id="140_igm3j"]
+[ext_resource type="Texture2D" uid="uid://dl4vgisultj1e" path="res://素材/游戏素材/僵尸B/ThrowinginTheAir_空中投掷/0_Ogre_Throwing in The Air_005.png" id="141_j5nt6"]
+[ext_resource type="Texture2D" uid="uid://ctcqf02uaqb8t" path="res://素材/游戏素材/僵尸B/ThrowinginTheAir_空中投掷/0_Ogre_Throwing in The Air_006.png" id="142_crwnd"]
+[ext_resource type="Texture2D" uid="uid://c27jycq8msks2" path="res://素材/游戏素材/僵尸B/ThrowinginTheAir_空中投掷/0_Ogre_Throwing in The Air_007.png" id="143_mif71"]
+[ext_resource type="Texture2D" uid="uid://sd45t6ysru4v" path="res://素材/游戏素材/僵尸B/ThrowinginTheAir_空中投掷/0_Ogre_Throwing in The Air_008.png" id="144_qn2o1"]
+[ext_resource type="Texture2D" uid="uid://daw5aps6vmvda" path="res://素材/游戏素材/僵尸B/ThrowinginTheAir_空中投掷/0_Ogre_Throwing in The Air_009.png" id="145_jiljd"]
+[ext_resource type="Texture2D" uid="uid://dgijb6dxc2rsx" path="res://素材/游戏素材/僵尸B/ThrowinginTheAir_空中投掷/0_Ogre_Throwing in The Air_010.png" id="146_1k6d7"]
+[ext_resource type="Texture2D" uid="uid://bjmboxuew18dh" path="res://素材/游戏素材/僵尸B/ThrowinginTheAir_空中投掷/0_Ogre_Throwing in The Air_011.png" id="147_208hj"]
+[ext_resource type="Texture2D" uid="uid://v0iufrjc2euw" path="res://素材/游戏素材/僵尸B/SlashinginTheAir_空中挥砍/0_Ogre_Slashing in The Air_000.png" id="148_vp1fm"]
+[ext_resource type="Texture2D" uid="uid://2e68gt3f2o1t" path="res://素材/游戏素材/僵尸B/SlashinginTheAir_空中挥砍/0_Ogre_Slashing in The Air_001.png" id="149_47ici"]
+[ext_resource type="Texture2D" uid="uid://0kf4q41me851" path="res://素材/游戏素材/僵尸B/SlashinginTheAir_空中挥砍/0_Ogre_Slashing in The Air_002.png" id="150_f5yr1"]
+[ext_resource type="Texture2D" uid="uid://18pcnoxlkryf" path="res://素材/游戏素材/僵尸B/SlashinginTheAir_空中挥砍/0_Ogre_Slashing in The Air_003.png" id="151_8psur"]
+[ext_resource type="Texture2D" uid="uid://di65toatc0yge" path="res://素材/游戏素材/僵尸B/SlashinginTheAir_空中挥砍/0_Ogre_Slashing in The Air_004.png" id="152_cc6j4"]
+[ext_resource type="Texture2D" uid="uid://28m42xhdam3c" path="res://素材/游戏素材/僵尸B/SlashinginTheAir_空中挥砍/0_Ogre_Slashing in The Air_005.png" id="153_tlbvy"]
+[ext_resource type="Texture2D" uid="uid://dcu4m5cex7jve" path="res://素材/游戏素材/僵尸B/SlashinginTheAir_空中挥砍/0_Ogre_Slashing in The Air_006.png" id="154_2tqkv"]
+[ext_resource type="Texture2D" uid="uid://7qjc2kdcmy35" path="res://素材/游戏素材/僵尸B/SlashinginTheAir_空中挥砍/0_Ogre_Slashing in The Air_007.png" id="155_mnyqk"]
+[ext_resource type="Texture2D" uid="uid://b5m40wratysyc" path="res://素材/游戏素材/僵尸B/SlashinginTheAir_空中挥砍/0_Ogre_Slashing in The Air_008.png" id="156_82fnv"]
+[ext_resource type="Texture2D" uid="uid://dr7dnpo1p3yef" path="res://素材/游戏素材/僵尸B/SlashinginTheAir_空中挥砍/0_Ogre_Slashing in The Air_009.png" id="157_503ft"]
+[ext_resource type="Texture2D" uid="uid://cu5fjnnwyc8rt" path="res://素材/游戏素材/僵尸B/SlashinginTheAir_空中挥砍/0_Ogre_Slashing in The Air_010.png" id="158_mc6i0"]
+[ext_resource type="Texture2D" uid="uid://df0ucm05l38og" path="res://素材/游戏素材/僵尸B/SlashinginTheAir_空中挥砍/0_Ogre_Slashing in The Air_011.png" id="159_bfoqe"]
+[ext_resource type="Texture2D" uid="uid://csw4dys1p8t6a" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_000.png" id="160_owsxq"]
+[ext_resource type="Texture2D" uid="uid://chm08t3pw03il" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_001.png" id="161_pvq71"]
+[ext_resource type="Texture2D" uid="uid://otw26j2qvha3" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_002.png" id="162_1fjjf"]
+[ext_resource type="Texture2D" uid="uid://orsxhasmb01o" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_003.png" id="163_vykds"]
+[ext_resource type="Texture2D" uid="uid://dg6n1bsdt1u2w" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_004.png" id="164_te36t"]
+[ext_resource type="Texture2D" uid="uid://cgt7y5vul028e" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_005.png" id="165_ymgy7"]
+[ext_resource type="Texture2D" uid="uid://owsv3jb0t4vo" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_006.png" id="166_pouxi"]
+[ext_resource type="Texture2D" uid="uid://cjjjaq0di32ny" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_007.png" id="167_5ilqf"]
+[ext_resource type="Texture2D" uid="uid://dououchkd36if" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_008.png" id="168_i4jxr"]
+[ext_resource type="Texture2D" uid="uid://bu3581hnq5ql2" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_009.png" id="169_m5hb4"]
+[ext_resource type="Texture2D" uid="uid://nppqjqxira01" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_010.png" id="170_6b70o"]
+[ext_resource type="Texture2D" uid="uid://b4t3oycarr5ha" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_011.png" id="171_75njm"]
+[ext_resource type="Texture2D" uid="uid://cvkgdqlsn032y" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_012.png" id="172_1y6er"]
+[ext_resource type="Texture2D" uid="uid://bmp5shg8pe1bv" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_013.png" id="173_birsu"]
+[ext_resource type="Texture2D" uid="uid://des1bicijnrn6" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_014.png" id="174_jul28"]
+[ext_resource type="Texture2D" uid="uid://vciv36qaxm3y" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_015.png" id="175_msyli"]
+[ext_resource type="Texture2D" uid="uid://bdh4utg0o6dw0" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_016.png" id="176_ipb4k"]
+[ext_resource type="Texture2D" uid="uid://cdsfnbngnysrv" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_017.png" id="177_521nj"]
+[ext_resource type="Texture2D" uid="uid://080kp2v3303j" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_018.png" id="178_3a7ch"]
+[ext_resource type="Texture2D" uid="uid://bxe6hulqka4e5" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_019.png" id="179_0sfer"]
+[ext_resource type="Texture2D" uid="uid://bkcuydr6f6a3u" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_020.png" id="180_a2fc3"]
+[ext_resource type="Texture2D" uid="uid://dhg7nnuljlbaa" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_021.png" id="181_qbhrd"]
+[ext_resource type="Texture2D" uid="uid://c4kpsehm2vt08" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_022.png" id="182_2evuf"]
+[ext_resource type="Texture2D" uid="uid://d0c4lynl74i32" path="res://素材/游戏素材/僵尸B/Walking_行走/0_Ogre_Walking_023.png" id="183_uspo3"]
+[ext_resource type="Texture2D" uid="uid://clpbh0ny7rg6g" path="res://素材/游戏素材/僵尸B/JumpStart_跳跃启动/0_Ogre_Jump Start_000.png" id="184_x5jyk"]
+[ext_resource type="Texture2D" uid="uid://btsey51kvtkhv" path="res://素材/游戏素材/僵尸B/JumpStart_跳跃启动/0_Ogre_Jump Start_001.png" id="185_xfq0w"]
+[ext_resource type="Texture2D" uid="uid://bn4rgnvdhqm10" path="res://素材/游戏素材/僵尸B/JumpStart_跳跃启动/0_Ogre_Jump Start_002.png" id="186_5n6dc"]
+[ext_resource type="Texture2D" uid="uid://bliyywr3rw7nm" path="res://素材/游戏素材/僵尸B/JumpStart_跳跃启动/0_Ogre_Jump Start_003.png" id="187_6dsby"]
+[ext_resource type="Texture2D" uid="uid://ddfg6mh0j0jwi" path="res://素材/游戏素材/僵尸B/JumpStart_跳跃启动/0_Ogre_Jump Start_004.png" id="188_gxbe5"]
+[ext_resource type="Texture2D" uid="uid://ddmty7dpc170v" path="res://素材/游戏素材/僵尸B/JumpStart_跳跃启动/0_Ogre_Jump Start_005.png" id="189_kffkf"]
+[ext_resource type="Texture2D" uid="uid://cpk272g0l7ob0" path="res://素材/游戏素材/僵尸B/JumpLoop_跳跃循环/0_Ogre_Jump Loop_000.png" id="190_uswjx"]
+[ext_resource type="Texture2D" uid="uid://brbpi10r8f2go" path="res://素材/游戏素材/僵尸B/JumpLoop_跳跃循环/0_Ogre_Jump Loop_001.png" id="191_4q7e2"]
+[ext_resource type="Texture2D" uid="uid://ci5rxyivm5e5x" path="res://素材/游戏素材/僵尸B/JumpLoop_跳跃循环/0_Ogre_Jump Loop_002.png" id="192_75vvo"]
+[ext_resource type="Texture2D" uid="uid://crqld5sy27nsa" path="res://素材/游戏素材/僵尸B/JumpLoop_跳跃循环/0_Ogre_Jump Loop_003.png" id="193_4t4m1"]
+[ext_resource type="Texture2D" uid="uid://c6fgd6u1biemr" path="res://素材/游戏素材/僵尸B/JumpLoop_跳跃循环/0_Ogre_Jump Loop_004.png" id="194_measg"]
+[ext_resource type="Texture2D" uid="uid://4783x4lgbx7n" path="res://素材/游戏素材/僵尸B/JumpLoop_跳跃循环/0_Ogre_Jump Loop_005.png" id="195_jduig"]
+[ext_resource type="Texture2D" uid="uid://fw2v8nej66qt" path="res://素材/游戏素材/僵尸B/Kicking_踢击/0_Ogre_Kicking_000.png" id="196_kp6bb"]
+[ext_resource type="Texture2D" uid="uid://871sj2aj1jhs" path="res://素材/游戏素材/僵尸B/Kicking_踢击/0_Ogre_Kicking_001.png" id="197_j5d0b"]
+[ext_resource type="Texture2D" uid="uid://cghwak64lu0bg" path="res://素材/游戏素材/僵尸B/Kicking_踢击/0_Ogre_Kicking_002.png" id="198_kqr16"]
+[ext_resource type="Texture2D" uid="uid://b6duk1d5xfyx8" path="res://素材/游戏素材/僵尸B/Kicking_踢击/0_Ogre_Kicking_003.png" id="199_jurft"]
+[ext_resource type="Texture2D" uid="uid://dvvdlsnwk6g3c" path="res://素材/游戏素材/僵尸B/Kicking_踢击/0_Ogre_Kicking_004.png" id="200_mhjtl"]
+[ext_resource type="Texture2D" uid="uid://3ry7ea2ri1fr" path="res://素材/游戏素材/僵尸B/Kicking_踢击/0_Ogre_Kicking_005.png" id="201_43s07"]
+[ext_resource type="Texture2D" uid="uid://c847aqpgb034w" path="res://素材/游戏素材/僵尸B/Kicking_踢击/0_Ogre_Kicking_006.png" id="202_bfehj"]
+[ext_resource type="Texture2D" uid="uid://bgow3flf637n8" path="res://素材/游戏素材/僵尸B/Kicking_踢击/0_Ogre_Kicking_007.png" id="203_cr8ox"]
+[ext_resource type="Texture2D" uid="uid://btwfx51nctkpk" path="res://素材/游戏素材/僵尸B/Kicking_踢击/0_Ogre_Kicking_008.png" id="204_tcv4q"]
+[ext_resource type="Texture2D" uid="uid://tw6sga13jpkq" path="res://素材/游戏素材/僵尸B/Kicking_踢击/0_Ogre_Kicking_009.png" id="205_cd4wv"]
+[ext_resource type="Texture2D" uid="uid://v18l3lrdvcit" path="res://素材/游戏素材/僵尸B/Kicking_踢击/0_Ogre_Kicking_010.png" id="206_fgoio"]
+[ext_resource type="Texture2D" uid="uid://b7impbss17fos" path="res://素材/游戏素材/僵尸B/Kicking_踢击/0_Ogre_Kicking_011.png" id="207_1aeg2"]
+
+[resource]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_brhhb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_h2rix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u4acr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_28emv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hp4xm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_djfdn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_clqbf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_81gga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_r62nc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6b8le")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cqscv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8jwfm")
+}],
+"loop": false,
+"name": &"受伤",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_wn8f8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_6lf17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ofxcm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_bf0ro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_pn7kd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_mf8eb")
+}],
+"loop": true,
+"name": &"坠落",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_xgvum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_3gvkw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_loix2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_05t5o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_u35iy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_enh1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_1q50h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_8lbqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_h0gbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_mf3l6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_5xl6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_5ikln")
+}],
+"loop": true,
+"name": &"奔跑",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_t52tu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_5gwkm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_b5unu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_wmxom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_gt1tq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_f55g0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_buq0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_77dx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_7bwem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_wnrbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_kuf4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_kb0wo")
+}],
+"loop": false,
+"name": &"奔跑投掷",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("43_mjkun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_uqgdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_k567f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_kmi6w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_fuxfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_a3kyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_345dd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_m50es")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_1p23w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_k3aav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_wop1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_fpq57")
+}],
+"loop": true,
+"name": &"奔跑挥砍",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("55_n1led")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_qpwk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_2sgka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_cx72a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_6j7yj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_6hvc4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_ucv73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_ami6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_j6ry5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_6yawm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_5mnin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_cxvky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_tgqld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_xmwry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_o6osn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_b484j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_q4bpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_dytbc")
+}],
+"loop": true,
+"name": &"待机",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("73_s38wn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_mk3qv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_00d2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_sdcrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_53rg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_h2ruy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_nwgw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_b6lcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_jlotm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_vxm3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_agtt7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_e4r6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_mp0mw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_pokih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_tw185")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_hj15u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_w0rj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_3y6sr")
+}],
+"loop": true,
+"name": &"待机眨眼",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("91_tbc6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_ttnaj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_1capy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_s6c47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_wxmb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_g3hxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_8x7t4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_btn5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_4l708")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_id1cg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_kswkh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_75rp7")
+}],
+"loop": false,
+"name": &"投掷",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("103_6gu1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_6l1kk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_50byc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_rqfq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_l6dh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_phx7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_v84u7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_we7ik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_ft3i8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_comee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_wfb7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_r4udh")
+}],
+"loop": false,
+"name": &"挥砍",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("115_fqdhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_rgk23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_qa4n1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_33mic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_ag6nt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_cygm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_5nh2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_13tdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_tu7fi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_dukih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_mccef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_cv72i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_fkiyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_lsoie")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_k20bd")
+}],
+"loop": false,
+"name": &"死亡",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("130_ue5ms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_gheoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_mndkq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_0cqy6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_rt4gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_0ved5")
+}],
+"loop": true,
+"name": &"滑行",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("136_igq5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_vgufi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_ucamu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("139_316pt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_igm3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_j5nt6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_crwnd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_mif71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_qn2o1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_jiljd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_1k6d7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_208hj")
+}],
+"loop": false,
+"name": &"空中投掷",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("148_vp1fm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_47ici")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_f5yr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("151_8psur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_cc6j4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_tlbvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_2tqkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_mnyqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_82fnv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_503ft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_mc6i0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_bfoqe")
+}],
+"loop": false,
+"name": &"空中挥砍",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("160_owsxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("161_pvq71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("162_1fjjf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("163_vykds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("164_te36t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("165_ymgy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("166_pouxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("167_5ilqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("168_i4jxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("169_m5hb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("170_6b70o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("171_75njm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("172_1y6er")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_birsu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_jul28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_msyli")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_ipb4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_521nj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_3a7ch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("179_0sfer")
+}, {
+"duration": 1.0,
+"texture": ExtResource("180_a2fc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("181_qbhrd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("182_2evuf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("183_uspo3")
+}],
+"loop": true,
+"name": &"行走",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("184_x5jyk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("185_xfq0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("186_5n6dc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("187_6dsby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("188_gxbe5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("189_kffkf")
+}],
+"loop": false,
+"name": &"跳跃",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("190_uswjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("191_4q7e2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("192_75vvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("193_4t4m1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("194_measg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("195_jduig")
+}],
+"loop": true,
+"name": &"跳跃中",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("196_kp6bb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("197_j5d0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("198_kqr16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("199_jurft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("200_mhjtl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("201_43s07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("202_bfehj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("203_cr8ox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("204_tcv4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("205_cd4wv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("206_fgoio")
+}, {
+"duration": 1.0,
+"texture": ExtResource("207_1aeg2")
+}],
+"loop": false,
+"name": &"踢击",
+"speed": 24.0
+}]

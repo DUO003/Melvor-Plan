@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://bwone3c27na2i"
+path="res://.godot/imported/Wraith_01_Moving Forward_008.png-abb388b71f8b598065cb55db9dd51a2b.res"
+group_file="res://角色/幽灵人.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/幽灵人/Walking_行走/Wraith_01_Moving Forward_008.png"
+dest_files=["res://.godot/imported/Wraith_01_Moving Forward_008.png-abb388b71f8b598065cb55db9dd51a2b.res"]
+
+[params]
+
+atlas_file="res://角色/幽灵人.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

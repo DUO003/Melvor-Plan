@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://d4e6qp3ybx0w5"
+path="res://.godot/imported/0_Skeleton_Crusader_Throwing in The Air_008.png-3b8de4dab72470501b55d8233cad4e06.res"
+group_file="res://角色/骷髅A.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅A/ThrowinginTheAir_空中投掷/0_Skeleton_Crusader_Throwing in The Air_008.png"
+dest_files=["res://.godot/imported/0_Skeleton_Crusader_Throwing in The Air_008.png-3b8de4dab72470501b55d8233cad4e06.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅A.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

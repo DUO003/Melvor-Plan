@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://chp3c8xfstjtd"
+path="res://.godot/imported/Wraith_01_Casting Spells_010.png-666cc91afb1afe431e4599a32d0328ca.res"
+group_file="res://角色/幽灵人.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/幽灵人/CastingSpells_施法/Wraith_01_Casting Spells_010.png"
+dest_files=["res://.godot/imported/Wraith_01_Casting Spells_010.png-666cc91afb1afe431e4599a32d0328ca.res"]
+
+[params]
+
+atlas_file="res://角色/幽灵人.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

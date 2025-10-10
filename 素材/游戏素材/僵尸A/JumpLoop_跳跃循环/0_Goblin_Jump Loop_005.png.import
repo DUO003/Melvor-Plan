@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://c200b3bwpv3vg"
+path="res://.godot/imported/0_Goblin_Jump Loop_005.png-7cd46d835bfb70c8b7193a2cf799276e.res"
+group_file="res://角色/僵尸A.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/僵尸A/JumpLoop_跳跃循环/0_Goblin_Jump Loop_005.png"
+dest_files=["res://.godot/imported/0_Goblin_Jump Loop_005.png-7cd46d835bfb70c8b7193a2cf799276e.res"]
+
+[params]
+
+atlas_file="res://角色/僵尸A.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

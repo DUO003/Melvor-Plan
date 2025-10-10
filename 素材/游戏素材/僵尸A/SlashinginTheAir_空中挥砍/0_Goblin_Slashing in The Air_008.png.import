@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://de771vn4wdx7i"
+path="res://.godot/imported/0_Goblin_Slashing in The Air_008.png-1b8d53ae266a3718281b3f116b706978.res"
+group_file="res://角色/僵尸A.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/僵尸A/SlashinginTheAir_空中挥砍/0_Goblin_Slashing in The Air_008.png"
+dest_files=["res://.godot/imported/0_Goblin_Slashing in The Air_008.png-1b8d53ae266a3718281b3f116b706978.res"]
+
+[params]
+
+atlas_file="res://角色/僵尸A.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

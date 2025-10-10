@@ -1,0 +1,267 @@
+[gd_scene load_steps=20 format=3 uid="uid://c6cchk6o37m7f"]
+
+[ext_resource type="Texture2D" uid="uid://drl3b4ixps46r" path="res://素材/MIT素材/robot.webp" id="1_6d0go"]
+[ext_resource type="Script" uid="uid://bo6t0vrjk00cr" path="res://代码/专属代码/特殊功能/副本玩家.gd" id="1_ix7mf"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="3_6w31l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cy4f"]
+size = Vector2(120.00001, 232)
+
+[sub_resource type="Animation" id="Animation_ef5gk"]
+resource_name = "falling"
+length = 0.01
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("玩家/图片:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [48]
+}
+
+[sub_resource type="Animation" id="Animation_6p3ib"]
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("玩家/图片:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06003, 0.12006, 0.18009, 0.24012, 0.30015, 0.36018, 0.42021, 0.48024, 0.54027),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_7cy4f"]
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("玩家/图片:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33]
+}
+
+[sub_resource type="Animation" id="Animation_4tjat"]
+resource_name = "falling_weapon"
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("玩家/图片:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [26]
+}
+
+[sub_resource type="Animation" id="Animation_0i0a6"]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("玩家/图片:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42, 0.48, 0.54),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_vair2"]
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("玩家/图片:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [34, 35, 36, 37]
+}
+
+[sub_resource type="Animation" id="Animation_p2eyx"]
+length = 1.25
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("玩家/图片:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [34, 35, 36, 37]
+}
+
+[sub_resource type="Animation" id="Animation_c04o1"]
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("玩家/图片:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [46]
+}
+
+[sub_resource type="Animation" id="Animation_eme62"]
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("玩家/图片:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [45]
+}
+
+[sub_resource type="Animation" id="Animation_2sb1s"]
+resource_name = "crouch"
+length = 0.01
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("玩家/图片:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [42]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jpk1h"]
+_data = {
+&"下落": SubResource("Animation_ef5gk"),
+&"奔跑": SubResource("Animation_6p3ib"),
+&"待机": SubResource("Animation_7cy4f"),
+&"持武器下落": SubResource("Animation_4tjat"),
+&"持武器奔跑": SubResource("Animation_0i0a6"),
+&"持武器待机": SubResource("Animation_vair2"),
+&"持武器站立就绪": SubResource("Animation_p2eyx"),
+&"持武器跳跃": SubResource("Animation_c04o1"),
+&"跳跃": SubResource("Animation_eme62"),
+&"蹲下": SubResource("Animation_2sb1s")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q22ga"]
+bg_color = Color(0.5243333, 0.65, 0.52, 0.39215687)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qq2ex"]
+bg_color = Color(0.76, 0.1444, 0.1444, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ix7mf"]
+bg_color = Color(0.5243333, 0.65, 0.52, 0.39215687)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6w31l"]
+bg_color = Color(0.76, 0.1444, 0.1444, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="玩家" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 8
+safe_margin = 5.0
+script = ExtResource("1_ix7mf")
+
+[node name="图片" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(4.1874995, 4.1874995)
+texture = ExtResource("1_6d0go")
+hframes = 8
+vframes = 8
+frame = 42
+
+[node name="碰撞范围" type="CollisionShape2D" parent="."]
+position = Vector2(12, 4)
+shape = SubResource("RectangleShape2D_7cy4f")
+
+[node name="攻击范围" type="RayCast2D" parent="."]
+position = Vector2(-48, 40)
+target_position = Vector2(220, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="动画" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_jpk1h")
+}
+
+[node name="血条" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(150, 20)
+offset_left = -77.0
+offset_top = -160.0
+offset_right = 73.0
+offset_bottom = -140.0
+theme = ExtResource("3_6w31l")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/background = SubResource("StyleBoxFlat_q22ga")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qq2ex")
+value = 50.0
+
+[node name="行动条" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(150, 10)
+offset_left = -76.0
+offset_top = -139.0
+offset_right = 74.0
+offset_bottom = -129.0
+theme = ExtResource("3_6w31l")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/background = SubResource("StyleBoxFlat_ix7mf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6w31l")
+value = 50.0
+show_percentage = false

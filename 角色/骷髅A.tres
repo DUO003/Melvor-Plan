@@ -1,0 +1,919 @@
+[gd_resource type="SpriteFrames" load_steps=208 format=3 uid="uid://b37vyrnkg3fxg"]
+
+[ext_resource type="Texture2D" uid="uid://c68qdggyuvvrj" path="res://素材/游戏素材/骷髅A/Hurt_受伤/0_Skeleton_Crusader_Hurt_000.png" id="1_qjr5h"]
+[ext_resource type="Texture2D" uid="uid://cl8yjuq8q48tk" path="res://素材/游戏素材/骷髅A/Hurt_受伤/0_Skeleton_Crusader_Hurt_001.png" id="2_i65eb"]
+[ext_resource type="Texture2D" uid="uid://u2cc36dqd2rk" path="res://素材/游戏素材/骷髅A/Hurt_受伤/0_Skeleton_Crusader_Hurt_002.png" id="3_i6cm4"]
+[ext_resource type="Texture2D" uid="uid://d02psib2w5b1n" path="res://素材/游戏素材/骷髅A/Hurt_受伤/0_Skeleton_Crusader_Hurt_003.png" id="4_3dukf"]
+[ext_resource type="Texture2D" uid="uid://cc3uf3r2t1r8y" path="res://素材/游戏素材/骷髅A/Hurt_受伤/0_Skeleton_Crusader_Hurt_004.png" id="5_ta4vy"]
+[ext_resource type="Texture2D" uid="uid://milq4mgqdjyp" path="res://素材/游戏素材/骷髅A/Hurt_受伤/0_Skeleton_Crusader_Hurt_005.png" id="6_nrif5"]
+[ext_resource type="Texture2D" uid="uid://e3foo0q7y5fw" path="res://素材/游戏素材/骷髅A/Hurt_受伤/0_Skeleton_Crusader_Hurt_006.png" id="7_njkxt"]
+[ext_resource type="Texture2D" uid="uid://dtcrd8ion508h" path="res://素材/游戏素材/骷髅A/Hurt_受伤/0_Skeleton_Crusader_Hurt_007.png" id="8_tdah8"]
+[ext_resource type="Texture2D" uid="uid://cfbore8kwqhnf" path="res://素材/游戏素材/骷髅A/Hurt_受伤/0_Skeleton_Crusader_Hurt_008.png" id="9_ele4g"]
+[ext_resource type="Texture2D" uid="uid://c4qbfnilohq8i" path="res://素材/游戏素材/骷髅A/Hurt_受伤/0_Skeleton_Crusader_Hurt_009.png" id="10_qugb1"]
+[ext_resource type="Texture2D" uid="uid://beubnmve56rly" path="res://素材/游戏素材/骷髅A/Hurt_受伤/0_Skeleton_Crusader_Hurt_010.png" id="11_3toer"]
+[ext_resource type="Texture2D" uid="uid://b58bo440o100t" path="res://素材/游戏素材/骷髅A/Hurt_受伤/0_Skeleton_Crusader_Hurt_011.png" id="12_e2y60"]
+[ext_resource type="Texture2D" uid="uid://dddatv0343nti" path="res://素材/游戏素材/骷髅A/FallingDown_摔倒/0_Skeleton_Crusader_Falling Down_000.png" id="13_fp30t"]
+[ext_resource type="Texture2D" uid="uid://55g54ymhjgkk" path="res://素材/游戏素材/骷髅A/FallingDown_摔倒/0_Skeleton_Crusader_Falling Down_001.png" id="14_gue1q"]
+[ext_resource type="Texture2D" uid="uid://s0ktsx5tnb01" path="res://素材/游戏素材/骷髅A/FallingDown_摔倒/0_Skeleton_Crusader_Falling Down_002.png" id="15_lwee8"]
+[ext_resource type="Texture2D" uid="uid://bl4khjlmk0onb" path="res://素材/游戏素材/骷髅A/FallingDown_摔倒/0_Skeleton_Crusader_Falling Down_003.png" id="16_apups"]
+[ext_resource type="Texture2D" uid="uid://dfb6j3bcgtej7" path="res://素材/游戏素材/骷髅A/FallingDown_摔倒/0_Skeleton_Crusader_Falling Down_004.png" id="17_nb0kx"]
+[ext_resource type="Texture2D" uid="uid://cfeivcafhg34h" path="res://素材/游戏素材/骷髅A/FallingDown_摔倒/0_Skeleton_Crusader_Falling Down_005.png" id="18_hyfux"]
+[ext_resource type="Texture2D" uid="uid://2r7pib70au4k" path="res://素材/游戏素材/骷髅A/Running_奔跑/0_Skeleton_Crusader_Running_000.png" id="19_un6tg"]
+[ext_resource type="Texture2D" uid="uid://bxgcy6i5f1rcd" path="res://素材/游戏素材/骷髅A/Running_奔跑/0_Skeleton_Crusader_Running_001.png" id="20_o2ync"]
+[ext_resource type="Texture2D" uid="uid://bmu500afdnwva" path="res://素材/游戏素材/骷髅A/Running_奔跑/0_Skeleton_Crusader_Running_002.png" id="21_7e7l6"]
+[ext_resource type="Texture2D" uid="uid://b7qt02otwwm36" path="res://素材/游戏素材/骷髅A/Running_奔跑/0_Skeleton_Crusader_Running_003.png" id="22_d00qy"]
+[ext_resource type="Texture2D" uid="uid://biurk85w8flww" path="res://素材/游戏素材/骷髅A/Running_奔跑/0_Skeleton_Crusader_Running_004.png" id="23_k004l"]
+[ext_resource type="Texture2D" uid="uid://jqwict385152" path="res://素材/游戏素材/骷髅A/Running_奔跑/0_Skeleton_Crusader_Running_005.png" id="24_88tr2"]
+[ext_resource type="Texture2D" uid="uid://bltecjt5kr448" path="res://素材/游戏素材/骷髅A/Running_奔跑/0_Skeleton_Crusader_Running_006.png" id="25_p8k4k"]
+[ext_resource type="Texture2D" uid="uid://cjbjj5q8k1qvg" path="res://素材/游戏素材/骷髅A/Running_奔跑/0_Skeleton_Crusader_Running_007.png" id="26_lhyh4"]
+[ext_resource type="Texture2D" uid="uid://c62yfj25en8hl" path="res://素材/游戏素材/骷髅A/Running_奔跑/0_Skeleton_Crusader_Running_008.png" id="27_eeqj0"]
+[ext_resource type="Texture2D" uid="uid://blpcwi2fg31yd" path="res://素材/游戏素材/骷髅A/Running_奔跑/0_Skeleton_Crusader_Running_009.png" id="28_72dy0"]
+[ext_resource type="Texture2D" uid="uid://8crqp821auxk" path="res://素材/游戏素材/骷髅A/Running_奔跑/0_Skeleton_Crusader_Running_010.png" id="29_fjrjq"]
+[ext_resource type="Texture2D" uid="uid://dbetsalj3bd8l" path="res://素材/游戏素材/骷髅A/Running_奔跑/0_Skeleton_Crusader_Running_011.png" id="30_fysxs"]
+[ext_resource type="Texture2D" uid="uid://p11fcu2hkb3b" path="res://素材/游戏素材/骷髅A/RunThrowing_奔跑投掷/0_Skeleton_Crusader_Run Throwing_000.png" id="31_nmhyp"]
+[ext_resource type="Texture2D" uid="uid://fxyrlfsjb4kw" path="res://素材/游戏素材/骷髅A/RunThrowing_奔跑投掷/0_Skeleton_Crusader_Run Throwing_001.png" id="32_034ut"]
+[ext_resource type="Texture2D" uid="uid://dlsp6iebchayx" path="res://素材/游戏素材/骷髅A/RunThrowing_奔跑投掷/0_Skeleton_Crusader_Run Throwing_002.png" id="33_busty"]
+[ext_resource type="Texture2D" uid="uid://cytjq22bmp1d4" path="res://素材/游戏素材/骷髅A/RunThrowing_奔跑投掷/0_Skeleton_Crusader_Run Throwing_003.png" id="34_x7ajb"]
+[ext_resource type="Texture2D" uid="uid://bbefwjd4cd0vv" path="res://素材/游戏素材/骷髅A/RunThrowing_奔跑投掷/0_Skeleton_Crusader_Run Throwing_004.png" id="35_3ednr"]
+[ext_resource type="Texture2D" uid="uid://cov67l8mwbrxx" path="res://素材/游戏素材/骷髅A/RunThrowing_奔跑投掷/0_Skeleton_Crusader_Run Throwing_005.png" id="36_opk2n"]
+[ext_resource type="Texture2D" uid="uid://btk0fqjucls1n" path="res://素材/游戏素材/骷髅A/RunThrowing_奔跑投掷/0_Skeleton_Crusader_Run Throwing_006.png" id="37_juv73"]
+[ext_resource type="Texture2D" uid="uid://ckpkoc1qb3d23" path="res://素材/游戏素材/骷髅A/RunThrowing_奔跑投掷/0_Skeleton_Crusader_Run Throwing_007.png" id="38_hha54"]
+[ext_resource type="Texture2D" uid="uid://btm4w1h8gcpjf" path="res://素材/游戏素材/骷髅A/RunThrowing_奔跑投掷/0_Skeleton_Crusader_Run Throwing_008.png" id="39_vxwp3"]
+[ext_resource type="Texture2D" uid="uid://dk8fjj2r28ejr" path="res://素材/游戏素材/骷髅A/RunThrowing_奔跑投掷/0_Skeleton_Crusader_Run Throwing_009.png" id="40_q558e"]
+[ext_resource type="Texture2D" uid="uid://c01th2h347c1s" path="res://素材/游戏素材/骷髅A/RunThrowing_奔跑投掷/0_Skeleton_Crusader_Run Throwing_010.png" id="41_4dy3s"]
+[ext_resource type="Texture2D" uid="uid://cs3ehca4uef5h" path="res://素材/游戏素材/骷髅A/RunThrowing_奔跑投掷/0_Skeleton_Crusader_Run Throwing_011.png" id="42_gnm41"]
+[ext_resource type="Texture2D" uid="uid://crq3yvd6oqfyr" path="res://素材/游戏素材/骷髅A/RunSlashing_奔跑挥砍/0_Skeleton_Crusader_Run Slashing_000.png" id="43_obg6i"]
+[ext_resource type="Texture2D" uid="uid://dt5jgyxkmface" path="res://素材/游戏素材/骷髅A/RunSlashing_奔跑挥砍/0_Skeleton_Crusader_Run Slashing_001.png" id="44_nru8a"]
+[ext_resource type="Texture2D" uid="uid://ds5lrty6fsihp" path="res://素材/游戏素材/骷髅A/RunSlashing_奔跑挥砍/0_Skeleton_Crusader_Run Slashing_002.png" id="45_a0wob"]
+[ext_resource type="Texture2D" uid="uid://dw7h07t6sn8pt" path="res://素材/游戏素材/骷髅A/RunSlashing_奔跑挥砍/0_Skeleton_Crusader_Run Slashing_003.png" id="46_xexpk"]
+[ext_resource type="Texture2D" uid="uid://by2ftjsqedrna" path="res://素材/游戏素材/骷髅A/RunSlashing_奔跑挥砍/0_Skeleton_Crusader_Run Slashing_004.png" id="47_gq17l"]
+[ext_resource type="Texture2D" uid="uid://b8n0hk7t3yvm5" path="res://素材/游戏素材/骷髅A/RunSlashing_奔跑挥砍/0_Skeleton_Crusader_Run Slashing_005.png" id="48_mssg1"]
+[ext_resource type="Texture2D" uid="uid://clsmpt1hebvld" path="res://素材/游戏素材/骷髅A/RunSlashing_奔跑挥砍/0_Skeleton_Crusader_Run Slashing_006.png" id="49_3phy4"]
+[ext_resource type="Texture2D" uid="uid://dfi6kd3n262ns" path="res://素材/游戏素材/骷髅A/RunSlashing_奔跑挥砍/0_Skeleton_Crusader_Run Slashing_007.png" id="50_2pjv8"]
+[ext_resource type="Texture2D" uid="uid://dipn82uji7obn" path="res://素材/游戏素材/骷髅A/RunSlashing_奔跑挥砍/0_Skeleton_Crusader_Run Slashing_008.png" id="51_43srt"]
+[ext_resource type="Texture2D" uid="uid://bjmda4ra66jln" path="res://素材/游戏素材/骷髅A/RunSlashing_奔跑挥砍/0_Skeleton_Crusader_Run Slashing_009.png" id="52_13rxp"]
+[ext_resource type="Texture2D" uid="uid://bv532chq26orf" path="res://素材/游戏素材/骷髅A/RunSlashing_奔跑挥砍/0_Skeleton_Crusader_Run Slashing_010.png" id="53_3evcq"]
+[ext_resource type="Texture2D" uid="uid://irup4y20txsl" path="res://素材/游戏素材/骷髅A/RunSlashing_奔跑挥砍/0_Skeleton_Crusader_Run Slashing_011.png" id="54_2wdxr"]
+[ext_resource type="Texture2D" uid="uid://dcb2hyd2io6pq" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_000.png" id="55_4tmrl"]
+[ext_resource type="Texture2D" uid="uid://rdlqcmbckj15" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_001.png" id="56_80kip"]
+[ext_resource type="Texture2D" uid="uid://ci0lqis4fw0nu" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_002.png" id="57_b5gs3"]
+[ext_resource type="Texture2D" uid="uid://bc63ixncdm3re" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_003.png" id="58_d7vp4"]
+[ext_resource type="Texture2D" uid="uid://bw7aqged51xyc" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_004.png" id="59_ffqvh"]
+[ext_resource type="Texture2D" uid="uid://cy0mi8i4ff4m7" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_005.png" id="60_mlx8d"]
+[ext_resource type="Texture2D" uid="uid://vgokeqwl753w" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_006.png" id="61_jgjix"]
+[ext_resource type="Texture2D" uid="uid://d3xxosjrjttgy" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_007.png" id="62_32fuk"]
+[ext_resource type="Texture2D" uid="uid://c62wxx16x12sq" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_008.png" id="63_amobq"]
+[ext_resource type="Texture2D" uid="uid://cu8mtov4tf561" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_009.png" id="64_imvxw"]
+[ext_resource type="Texture2D" uid="uid://7g65lqje7g1p" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_010.png" id="65_ny3xq"]
+[ext_resource type="Texture2D" uid="uid://vgufgn2y0dln" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_011.png" id="66_uysvy"]
+[ext_resource type="Texture2D" uid="uid://dt4qmh4p05v2j" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_012.png" id="67_cjb46"]
+[ext_resource type="Texture2D" uid="uid://din3cyblro7ur" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_013.png" id="68_po1ml"]
+[ext_resource type="Texture2D" uid="uid://uudkjgbl5mdi" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_014.png" id="69_5xjni"]
+[ext_resource type="Texture2D" uid="uid://bnsqfom570a83" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_015.png" id="70_ha7je"]
+[ext_resource type="Texture2D" uid="uid://dvh3yxx86biy" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_016.png" id="71_7q8cs"]
+[ext_resource type="Texture2D" uid="uid://ds8fvyjhnqyha" path="res://素材/游戏素材/骷髅A/Idle_待机/0_Skeleton_Crusader_Idle_017.png" id="72_r2b18"]
+[ext_resource type="Texture2D" uid="uid://b86e5gnwvwyuh" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_000.png" id="73_dyson"]
+[ext_resource type="Texture2D" uid="uid://cepwwdrjybxfu" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_001.png" id="74_ub76j"]
+[ext_resource type="Texture2D" uid="uid://cmf17dftt841j" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_002.png" id="75_koxco"]
+[ext_resource type="Texture2D" uid="uid://beob0fokmcbc7" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_003.png" id="76_hbvdx"]
+[ext_resource type="Texture2D" uid="uid://biaehxv5dxsi0" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_004.png" id="77_yg8jt"]
+[ext_resource type="Texture2D" uid="uid://bfsuldskqcxdv" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_005.png" id="78_u0kgp"]
+[ext_resource type="Texture2D" uid="uid://dgxklxdnphu4u" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_006.png" id="79_rw47t"]
+[ext_resource type="Texture2D" uid="uid://b3hv04cqeta2y" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_007.png" id="80_ia0oc"]
+[ext_resource type="Texture2D" uid="uid://dj1wpv7j2gnac" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_008.png" id="81_m10lg"]
+[ext_resource type="Texture2D" uid="uid://b4h6hwqh6eae5" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_009.png" id="82_0j0pm"]
+[ext_resource type="Texture2D" uid="uid://71yd0kb2p343" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_010.png" id="83_mihyx"]
+[ext_resource type="Texture2D" uid="uid://cdhde7jwsp5nf" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_011.png" id="84_3sr1n"]
+[ext_resource type="Texture2D" uid="uid://bap0fxgwpj5sp" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_012.png" id="85_b7mvt"]
+[ext_resource type="Texture2D" uid="uid://bklktdxhp1iyv" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_013.png" id="86_kqagm"]
+[ext_resource type="Texture2D" uid="uid://casltfadyrxt5" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_014.png" id="87_dva3k"]
+[ext_resource type="Texture2D" uid="uid://cgerne76ur42t" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_015.png" id="88_cq6r7"]
+[ext_resource type="Texture2D" uid="uid://ba1r0iypkta56" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_016.png" id="89_p4pjy"]
+[ext_resource type="Texture2D" uid="uid://7q2h40l8jknv" path="res://素材/游戏素材/骷髅A/IdleBlinking_待机眨眼/0_Skeleton_Crusader_Idle Blinking_017.png" id="90_vjgs6"]
+[ext_resource type="Texture2D" uid="uid://upeop5y2vyfa" path="res://素材/游戏素材/骷髅A/Throwing_投掷/0_Skeleton_Crusader_Throwing_000.png" id="91_0mm0o"]
+[ext_resource type="Texture2D" uid="uid://brs7vtkr52xe3" path="res://素材/游戏素材/骷髅A/Throwing_投掷/0_Skeleton_Crusader_Throwing_001.png" id="92_2j260"]
+[ext_resource type="Texture2D" uid="uid://bo2gil547pttw" path="res://素材/游戏素材/骷髅A/Throwing_投掷/0_Skeleton_Crusader_Throwing_002.png" id="93_8aca1"]
+[ext_resource type="Texture2D" uid="uid://bmb6iga5ig4ww" path="res://素材/游戏素材/骷髅A/Throwing_投掷/0_Skeleton_Crusader_Throwing_003.png" id="94_ksvqd"]
+[ext_resource type="Texture2D" uid="uid://bl2hp0ucf7ru6" path="res://素材/游戏素材/骷髅A/Throwing_投掷/0_Skeleton_Crusader_Throwing_004.png" id="95_ivghq"]
+[ext_resource type="Texture2D" uid="uid://r6d5sawe1e0d" path="res://素材/游戏素材/骷髅A/Throwing_投掷/0_Skeleton_Crusader_Throwing_005.png" id="96_gv3v6"]
+[ext_resource type="Texture2D" uid="uid://0hskldm4fdee" path="res://素材/游戏素材/骷髅A/Throwing_投掷/0_Skeleton_Crusader_Throwing_006.png" id="97_a4dj2"]
+[ext_resource type="Texture2D" uid="uid://cuba5fk2srooe" path="res://素材/游戏素材/骷髅A/Throwing_投掷/0_Skeleton_Crusader_Throwing_007.png" id="98_u8dcu"]
+[ext_resource type="Texture2D" uid="uid://dn0mmaiv2s3w8" path="res://素材/游戏素材/骷髅A/Throwing_投掷/0_Skeleton_Crusader_Throwing_008.png" id="99_nkwcl"]
+[ext_resource type="Texture2D" uid="uid://diwxr1qfajfuv" path="res://素材/游戏素材/骷髅A/Throwing_投掷/0_Skeleton_Crusader_Throwing_009.png" id="100_maawn"]
+[ext_resource type="Texture2D" uid="uid://wv85lvkysr2f" path="res://素材/游戏素材/骷髅A/Throwing_投掷/0_Skeleton_Crusader_Throwing_010.png" id="101_g0yxd"]
+[ext_resource type="Texture2D" uid="uid://rwkoqwrg70o5" path="res://素材/游戏素材/骷髅A/Throwing_投掷/0_Skeleton_Crusader_Throwing_011.png" id="102_hls3j"]
+[ext_resource type="Texture2D" uid="uid://olfo4wfa7rpd" path="res://素材/游戏素材/骷髅A/Slashing_挥砍/0_Skeleton_Crusader_Slashing_000.png" id="103_dkihx"]
+[ext_resource type="Texture2D" uid="uid://dvwrw6vs2diy6" path="res://素材/游戏素材/骷髅A/Slashing_挥砍/0_Skeleton_Crusader_Slashing_001.png" id="104_m12mv"]
+[ext_resource type="Texture2D" uid="uid://bogf4t248ck2n" path="res://素材/游戏素材/骷髅A/Slashing_挥砍/0_Skeleton_Crusader_Slashing_002.png" id="105_h20ty"]
+[ext_resource type="Texture2D" uid="uid://bj457wt224jjk" path="res://素材/游戏素材/骷髅A/Slashing_挥砍/0_Skeleton_Crusader_Slashing_003.png" id="106_xn4tc"]
+[ext_resource type="Texture2D" uid="uid://oxukrikvy3ei" path="res://素材/游戏素材/骷髅A/Slashing_挥砍/0_Skeleton_Crusader_Slashing_004.png" id="107_cls6f"]
+[ext_resource type="Texture2D" uid="uid://b8qxnjtj6kwit" path="res://素材/游戏素材/骷髅A/Slashing_挥砍/0_Skeleton_Crusader_Slashing_005.png" id="108_jf1tx"]
+[ext_resource type="Texture2D" uid="uid://dtcgckkdp85qx" path="res://素材/游戏素材/骷髅A/Slashing_挥砍/0_Skeleton_Crusader_Slashing_006.png" id="109_bnbow"]
+[ext_resource type="Texture2D" uid="uid://b2u7srley2n15" path="res://素材/游戏素材/骷髅A/Slashing_挥砍/0_Skeleton_Crusader_Slashing_007.png" id="110_k340t"]
+[ext_resource type="Texture2D" uid="uid://e65qbmp55cem" path="res://素材/游戏素材/骷髅A/Slashing_挥砍/0_Skeleton_Crusader_Slashing_008.png" id="111_3ig4o"]
+[ext_resource type="Texture2D" uid="uid://b1e3gaajnxqda" path="res://素材/游戏素材/骷髅A/Slashing_挥砍/0_Skeleton_Crusader_Slashing_009.png" id="112_6hqxo"]
+[ext_resource type="Texture2D" uid="uid://dnsatykiyrvrn" path="res://素材/游戏素材/骷髅A/Slashing_挥砍/0_Skeleton_Crusader_Slashing_010.png" id="113_tg7yb"]
+[ext_resource type="Texture2D" uid="uid://dsidw2c4rwfx4" path="res://素材/游戏素材/骷髅A/Slashing_挥砍/0_Skeleton_Crusader_Slashing_011.png" id="114_ijmkm"]
+[ext_resource type="Texture2D" uid="uid://cm53o62xwrlsw" path="res://素材/游戏素材/骷髅A/Dying_死亡/0_Skeleton_Crusader_Dying_000.png" id="115_piub0"]
+[ext_resource type="Texture2D" uid="uid://cctctdxwpmw73" path="res://素材/游戏素材/骷髅A/Dying_死亡/0_Skeleton_Crusader_Dying_001.png" id="116_m0wuq"]
+[ext_resource type="Texture2D" uid="uid://c5h5tct0v3ttd" path="res://素材/游戏素材/骷髅A/Dying_死亡/0_Skeleton_Crusader_Dying_002.png" id="117_tcfba"]
+[ext_resource type="Texture2D" uid="uid://p81jigj7hflo" path="res://素材/游戏素材/骷髅A/Dying_死亡/0_Skeleton_Crusader_Dying_003.png" id="118_a4yyi"]
+[ext_resource type="Texture2D" uid="uid://dtrntdld7ka03" path="res://素材/游戏素材/骷髅A/Dying_死亡/0_Skeleton_Crusader_Dying_004.png" id="119_2n7yy"]
+[ext_resource type="Texture2D" uid="uid://cmtogdf04lql2" path="res://素材/游戏素材/骷髅A/Dying_死亡/0_Skeleton_Crusader_Dying_005.png" id="120_et5nr"]
+[ext_resource type="Texture2D" uid="uid://co65cd7cskm8y" path="res://素材/游戏素材/骷髅A/Dying_死亡/0_Skeleton_Crusader_Dying_006.png" id="121_xoehd"]
+[ext_resource type="Texture2D" uid="uid://c5slvn1uj1j8v" path="res://素材/游戏素材/骷髅A/Dying_死亡/0_Skeleton_Crusader_Dying_007.png" id="122_qn0be"]
+[ext_resource type="Texture2D" uid="uid://ddq4nwmh2mq0l" path="res://素材/游戏素材/骷髅A/Dying_死亡/0_Skeleton_Crusader_Dying_008.png" id="123_83b12"]
+[ext_resource type="Texture2D" uid="uid://b7muounparh02" path="res://素材/游戏素材/骷髅A/Dying_死亡/0_Skeleton_Crusader_Dying_009.png" id="124_ku4hq"]
+[ext_resource type="Texture2D" uid="uid://2x3p1lxgpgsb" path="res://素材/游戏素材/骷髅A/Dying_死亡/0_Skeleton_Crusader_Dying_010.png" id="125_rsvpw"]
+[ext_resource type="Texture2D" uid="uid://dx6b5m4d0xmj" path="res://素材/游戏素材/骷髅A/Dying_死亡/0_Skeleton_Crusader_Dying_011.png" id="126_e5ngs"]
+[ext_resource type="Texture2D" uid="uid://cs0j3wfxvkbwc" path="res://素材/游戏素材/骷髅A/Dying_死亡/0_Skeleton_Crusader_Dying_012.png" id="127_vkmgk"]
+[ext_resource type="Texture2D" uid="uid://dol7brho8m4ax" path="res://素材/游戏素材/骷髅A/Dying_死亡/0_Skeleton_Crusader_Dying_013.png" id="128_v5d0j"]
+[ext_resource type="Texture2D" uid="uid://cdqg8h0408v4" path="res://素材/游戏素材/骷髅A/Dying_死亡/0_Skeleton_Crusader_Dying_014.png" id="129_fmq07"]
+[ext_resource type="Texture2D" uid="uid://dsp2falt4x33f" path="res://素材/游戏素材/骷髅A/Sliding_滑行/0_Skeleton_Crusader_Sliding_000.png" id="130_1rmph"]
+[ext_resource type="Texture2D" uid="uid://j0pfnq8eyscn" path="res://素材/游戏素材/骷髅A/Sliding_滑行/0_Skeleton_Crusader_Sliding_001.png" id="131_n1fn3"]
+[ext_resource type="Texture2D" uid="uid://bcu3g74ut55qd" path="res://素材/游戏素材/骷髅A/Sliding_滑行/0_Skeleton_Crusader_Sliding_002.png" id="132_8f5s3"]
+[ext_resource type="Texture2D" uid="uid://drycqgh2k1ugj" path="res://素材/游戏素材/骷髅A/Sliding_滑行/0_Skeleton_Crusader_Sliding_003.png" id="133_mup6p"]
+[ext_resource type="Texture2D" uid="uid://dhdtq3sqyx6nq" path="res://素材/游戏素材/骷髅A/Sliding_滑行/0_Skeleton_Crusader_Sliding_004.png" id="134_qu8be"]
+[ext_resource type="Texture2D" uid="uid://co3ntnqopjrw7" path="res://素材/游戏素材/骷髅A/Sliding_滑行/0_Skeleton_Crusader_Sliding_005.png" id="135_w0ihq"]
+[ext_resource type="Texture2D" uid="uid://vfnr164k2p5v" path="res://素材/游戏素材/骷髅A/ThrowinginTheAir_空中投掷/0_Skeleton_Crusader_Throwing in The Air_000.png" id="136_yw0bv"]
+[ext_resource type="Texture2D" uid="uid://dq7v0ljw7ikbw" path="res://素材/游戏素材/骷髅A/ThrowinginTheAir_空中投掷/0_Skeleton_Crusader_Throwing in The Air_001.png" id="137_8pqna"]
+[ext_resource type="Texture2D" uid="uid://b7yf2nmhstknw" path="res://素材/游戏素材/骷髅A/ThrowinginTheAir_空中投掷/0_Skeleton_Crusader_Throwing in The Air_002.png" id="138_d380f"]
+[ext_resource type="Texture2D" uid="uid://bk0l2vu5o7pse" path="res://素材/游戏素材/骷髅A/ThrowinginTheAir_空中投掷/0_Skeleton_Crusader_Throwing in The Air_003.png" id="139_l45xk"]
+[ext_resource type="Texture2D" uid="uid://dbw216kxtwidw" path="res://素材/游戏素材/骷髅A/ThrowinginTheAir_空中投掷/0_Skeleton_Crusader_Throwing in The Air_004.png" id="140_8eo4o"]
+[ext_resource type="Texture2D" uid="uid://cxbjyfswimd7o" path="res://素材/游戏素材/骷髅A/ThrowinginTheAir_空中投掷/0_Skeleton_Crusader_Throwing in The Air_005.png" id="141_rymcp"]
+[ext_resource type="Texture2D" uid="uid://dylxo3iit6dgq" path="res://素材/游戏素材/骷髅A/ThrowinginTheAir_空中投掷/0_Skeleton_Crusader_Throwing in The Air_006.png" id="142_xc200"]
+[ext_resource type="Texture2D" uid="uid://beygxd4u26y5u" path="res://素材/游戏素材/骷髅A/ThrowinginTheAir_空中投掷/0_Skeleton_Crusader_Throwing in The Air_007.png" id="143_u3526"]
+[ext_resource type="Texture2D" uid="uid://d4e6qp3ybx0w5" path="res://素材/游戏素材/骷髅A/ThrowinginTheAir_空中投掷/0_Skeleton_Crusader_Throwing in The Air_008.png" id="144_fwfr4"]
+[ext_resource type="Texture2D" uid="uid://dx4ynt3066b5x" path="res://素材/游戏素材/骷髅A/ThrowinginTheAir_空中投掷/0_Skeleton_Crusader_Throwing in The Air_009.png" id="145_rpwpr"]
+[ext_resource type="Texture2D" uid="uid://xufpxvn0h2qh" path="res://素材/游戏素材/骷髅A/ThrowinginTheAir_空中投掷/0_Skeleton_Crusader_Throwing in The Air_010.png" id="146_8b3qs"]
+[ext_resource type="Texture2D" uid="uid://bb0l8enorpbkf" path="res://素材/游戏素材/骷髅A/ThrowinginTheAir_空中投掷/0_Skeleton_Crusader_Throwing in The Air_011.png" id="147_ckg7u"]
+[ext_resource type="Texture2D" uid="uid://de1q1fshosjfh" path="res://素材/游戏素材/骷髅A/SlashinginTheAir_空中挥砍/0_Skeleton_Crusader_Slashing in The Air_000.png" id="148_maeld"]
+[ext_resource type="Texture2D" uid="uid://jkhxeiveskt6" path="res://素材/游戏素材/骷髅A/SlashinginTheAir_空中挥砍/0_Skeleton_Crusader_Slashing in The Air_001.png" id="149_ded10"]
+[ext_resource type="Texture2D" uid="uid://dhg4yp8pxakhk" path="res://素材/游戏素材/骷髅A/SlashinginTheAir_空中挥砍/0_Skeleton_Crusader_Slashing in The Air_002.png" id="150_neho8"]
+[ext_resource type="Texture2D" uid="uid://bo2225cl13c4k" path="res://素材/游戏素材/骷髅A/SlashinginTheAir_空中挥砍/0_Skeleton_Crusader_Slashing in The Air_003.png" id="151_74hw3"]
+[ext_resource type="Texture2D" uid="uid://c3pe44sfl3ulk" path="res://素材/游戏素材/骷髅A/SlashinginTheAir_空中挥砍/0_Skeleton_Crusader_Slashing in The Air_004.png" id="152_m62dk"]
+[ext_resource type="Texture2D" uid="uid://1v2wttbg8pen" path="res://素材/游戏素材/骷髅A/SlashinginTheAir_空中挥砍/0_Skeleton_Crusader_Slashing in The Air_005.png" id="153_3dnmc"]
+[ext_resource type="Texture2D" uid="uid://oh5tav318x81" path="res://素材/游戏素材/骷髅A/SlashinginTheAir_空中挥砍/0_Skeleton_Crusader_Slashing in The Air_006.png" id="154_og0uj"]
+[ext_resource type="Texture2D" uid="uid://dqiovu3npxcix" path="res://素材/游戏素材/骷髅A/SlashinginTheAir_空中挥砍/0_Skeleton_Crusader_Slashing in The Air_007.png" id="155_jvawd"]
+[ext_resource type="Texture2D" uid="uid://28h3ynxfgw8c" path="res://素材/游戏素材/骷髅A/SlashinginTheAir_空中挥砍/0_Skeleton_Crusader_Slashing in The Air_008.png" id="156_uwwar"]
+[ext_resource type="Texture2D" uid="uid://c6lil82eu22l0" path="res://素材/游戏素材/骷髅A/SlashinginTheAir_空中挥砍/0_Skeleton_Crusader_Slashing in The Air_009.png" id="157_iq513"]
+[ext_resource type="Texture2D" uid="uid://c74bbmgpwtxif" path="res://素材/游戏素材/骷髅A/SlashinginTheAir_空中挥砍/0_Skeleton_Crusader_Slashing in The Air_010.png" id="158_oynvd"]
+[ext_resource type="Texture2D" uid="uid://d3pjp7o4jqgdh" path="res://素材/游戏素材/骷髅A/SlashinginTheAir_空中挥砍/0_Skeleton_Crusader_Slashing in The Air_011.png" id="159_uo1u6"]
+[ext_resource type="Texture2D" uid="uid://c8c480o5i2jcm" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_000.png" id="160_4c0ep"]
+[ext_resource type="Texture2D" uid="uid://driq6qgrmrxnq" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_001.png" id="161_ltrdd"]
+[ext_resource type="Texture2D" uid="uid://buk6gvgvqyy7h" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_002.png" id="162_ad3um"]
+[ext_resource type="Texture2D" uid="uid://c6awqrjwbug44" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_003.png" id="163_1kr7n"]
+[ext_resource type="Texture2D" uid="uid://bxen2lfqdu2xl" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_004.png" id="164_2aqtv"]
+[ext_resource type="Texture2D" uid="uid://w1sktct2km4v" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_005.png" id="165_gk2ov"]
+[ext_resource type="Texture2D" uid="uid://cc1uro5ofn8vy" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_006.png" id="166_wni2e"]
+[ext_resource type="Texture2D" uid="uid://c0e8yeduwiuff" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_007.png" id="167_8orpp"]
+[ext_resource type="Texture2D" uid="uid://bwo77418swdo" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_008.png" id="168_dd0uj"]
+[ext_resource type="Texture2D" uid="uid://73aq82stj0fr" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_009.png" id="169_ebkrh"]
+[ext_resource type="Texture2D" uid="uid://dp5ce00ch6pat" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_010.png" id="170_cnldb"]
+[ext_resource type="Texture2D" uid="uid://d2amxmjco5pq1" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_011.png" id="171_5t7u5"]
+[ext_resource type="Texture2D" uid="uid://cngf3bvibk6hb" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_012.png" id="172_ehcgv"]
+[ext_resource type="Texture2D" uid="uid://bfc2dd1jdl2gq" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_013.png" id="173_kgqxp"]
+[ext_resource type="Texture2D" uid="uid://m2g0ww8alq66" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_014.png" id="174_mxce5"]
+[ext_resource type="Texture2D" uid="uid://c0bmjl6b2r1fr" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_015.png" id="175_pc2rg"]
+[ext_resource type="Texture2D" uid="uid://dajswarowjrcs" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_016.png" id="176_gor8i"]
+[ext_resource type="Texture2D" uid="uid://bcnue7uf72osg" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_017.png" id="177_qc3kc"]
+[ext_resource type="Texture2D" uid="uid://bnhjwnvmcqcgs" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_018.png" id="178_2pllh"]
+[ext_resource type="Texture2D" uid="uid://dnrsm7vaw4gl2" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_019.png" id="179_3keg4"]
+[ext_resource type="Texture2D" uid="uid://4sfca461ql3q" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_020.png" id="180_he3my"]
+[ext_resource type="Texture2D" uid="uid://bfcnc752aqpt7" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_021.png" id="181_skakx"]
+[ext_resource type="Texture2D" uid="uid://dkaifhcjohykv" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_022.png" id="182_itl3v"]
+[ext_resource type="Texture2D" uid="uid://dxcdyp5tm57yd" path="res://素材/游戏素材/骷髅A/Walking_行走/0_Skeleton_Crusader_Walking_023.png" id="183_hk8af"]
+[ext_resource type="Texture2D" uid="uid://d0pj7ialje45y" path="res://素材/游戏素材/骷髅A/JumpStart_跳跃启动/0_Skeleton_Crusader_Jump Start_000.png" id="184_njr8n"]
+[ext_resource type="Texture2D" uid="uid://dqo748yvtiyku" path="res://素材/游戏素材/骷髅A/JumpStart_跳跃启动/0_Skeleton_Crusader_Jump Start_001.png" id="185_6vayd"]
+[ext_resource type="Texture2D" uid="uid://ry2ya7g6p38r" path="res://素材/游戏素材/骷髅A/JumpStart_跳跃启动/0_Skeleton_Crusader_Jump Start_002.png" id="186_sah0r"]
+[ext_resource type="Texture2D" uid="uid://c7h8d3uibl1n6" path="res://素材/游戏素材/骷髅A/JumpStart_跳跃启动/0_Skeleton_Crusader_Jump Start_003.png" id="187_er45f"]
+[ext_resource type="Texture2D" uid="uid://b5u8407rudeb4" path="res://素材/游戏素材/骷髅A/JumpStart_跳跃启动/0_Skeleton_Crusader_Jump Start_004.png" id="188_5tsyb"]
+[ext_resource type="Texture2D" uid="uid://dy1hhve2otg2c" path="res://素材/游戏素材/骷髅A/JumpStart_跳跃启动/0_Skeleton_Crusader_Jump Start_005.png" id="189_3otxp"]
+[ext_resource type="Texture2D" uid="uid://63qmnf6dbs4" path="res://素材/游戏素材/骷髅A/JumpLoop_跳跃循环/0_Skeleton_Crusader_Jump Loop_000.png" id="190_6wbe8"]
+[ext_resource type="Texture2D" uid="uid://bbmucb4toxtm3" path="res://素材/游戏素材/骷髅A/JumpLoop_跳跃循环/0_Skeleton_Crusader_Jump Loop_001.png" id="191_4xg4l"]
+[ext_resource type="Texture2D" uid="uid://clnn2fwe8htsu" path="res://素材/游戏素材/骷髅A/JumpLoop_跳跃循环/0_Skeleton_Crusader_Jump Loop_002.png" id="192_1anux"]
+[ext_resource type="Texture2D" uid="uid://cpeuq2j2g3sef" path="res://素材/游戏素材/骷髅A/JumpLoop_跳跃循环/0_Skeleton_Crusader_Jump Loop_003.png" id="193_t7x5i"]
+[ext_resource type="Texture2D" uid="uid://ddqicrma53a1w" path="res://素材/游戏素材/骷髅A/JumpLoop_跳跃循环/0_Skeleton_Crusader_Jump Loop_004.png" id="194_od2bp"]
+[ext_resource type="Texture2D" uid="uid://djoyhnxcrrveb" path="res://素材/游戏素材/骷髅A/JumpLoop_跳跃循环/0_Skeleton_Crusader_Jump Loop_005.png" id="195_lh6mg"]
+[ext_resource type="Texture2D" uid="uid://b73ckp6x5m7lm" path="res://素材/游戏素材/骷髅A/Kicking_踢击/0_Skeleton_Crusader_Kicking_000.png" id="196_m502r"]
+[ext_resource type="Texture2D" uid="uid://c0mpvngo6jlme" path="res://素材/游戏素材/骷髅A/Kicking_踢击/0_Skeleton_Crusader_Kicking_001.png" id="197_nb81c"]
+[ext_resource type="Texture2D" uid="uid://crilmq1g4ps70" path="res://素材/游戏素材/骷髅A/Kicking_踢击/0_Skeleton_Crusader_Kicking_002.png" id="198_qpj43"]
+[ext_resource type="Texture2D" uid="uid://d2jls1irtejnd" path="res://素材/游戏素材/骷髅A/Kicking_踢击/0_Skeleton_Crusader_Kicking_003.png" id="199_7sc5u"]
+[ext_resource type="Texture2D" uid="uid://bb28v7ie0cdf5" path="res://素材/游戏素材/骷髅A/Kicking_踢击/0_Skeleton_Crusader_Kicking_004.png" id="200_880tk"]
+[ext_resource type="Texture2D" uid="uid://dm7ilge3lkndq" path="res://素材/游戏素材/骷髅A/Kicking_踢击/0_Skeleton_Crusader_Kicking_005.png" id="201_ja6vp"]
+[ext_resource type="Texture2D" uid="uid://mmbmf3w7g4g0" path="res://素材/游戏素材/骷髅A/Kicking_踢击/0_Skeleton_Crusader_Kicking_006.png" id="202_xpfac"]
+[ext_resource type="Texture2D" uid="uid://fw0n8ky2puup" path="res://素材/游戏素材/骷髅A/Kicking_踢击/0_Skeleton_Crusader_Kicking_007.png" id="203_hsuor"]
+[ext_resource type="Texture2D" uid="uid://qehk7wn6cw8n" path="res://素材/游戏素材/骷髅A/Kicking_踢击/0_Skeleton_Crusader_Kicking_008.png" id="204_wau3i"]
+[ext_resource type="Texture2D" uid="uid://hkmjs0ntr4ba" path="res://素材/游戏素材/骷髅A/Kicking_踢击/0_Skeleton_Crusader_Kicking_009.png" id="205_l10ai"]
+[ext_resource type="Texture2D" uid="uid://bb86nxq55pona" path="res://素材/游戏素材/骷髅A/Kicking_踢击/0_Skeleton_Crusader_Kicking_010.png" id="206_uns5p"]
+[ext_resource type="Texture2D" uid="uid://vus80xi7amtj" path="res://素材/游戏素材/骷髅A/Kicking_踢击/0_Skeleton_Crusader_Kicking_011.png" id="207_sg7mo"]
+
+[resource]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qjr5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_i65eb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i6cm4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3dukf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ta4vy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nrif5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_njkxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tdah8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ele4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qugb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3toer")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_e2y60")
+}],
+"loop": false,
+"name": &"受伤",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_fp30t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gue1q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_lwee8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_apups")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_nb0kx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_hyfux")
+}],
+"loop": true,
+"name": &"坠落",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_un6tg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_o2ync")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_7e7l6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_d00qy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_k004l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_88tr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_p8k4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_lhyh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_eeqj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_72dy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_fjrjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_fysxs")
+}],
+"loop": true,
+"name": &"奔跑",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_nmhyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_034ut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_busty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_x7ajb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_3ednr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_opk2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_juv73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_hha54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_vxwp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_q558e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_4dy3s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_gnm41")
+}],
+"loop": false,
+"name": &"奔跑投掷",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("43_obg6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_nru8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_a0wob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_xexpk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_gq17l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_mssg1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_3phy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_2pjv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_43srt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_13rxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_3evcq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_2wdxr")
+}],
+"loop": true,
+"name": &"奔跑挥砍",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("55_4tmrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_80kip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_b5gs3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_d7vp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_ffqvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_mlx8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_jgjix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_32fuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_amobq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_imvxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_ny3xq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_uysvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_cjb46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_po1ml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_5xjni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_ha7je")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_7q8cs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_r2b18")
+}],
+"loop": true,
+"name": &"待机",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("73_dyson")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_ub76j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_koxco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_hbvdx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_yg8jt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_u0kgp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_rw47t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_ia0oc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_m10lg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_0j0pm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_mihyx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_3sr1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_b7mvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_kqagm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_dva3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_cq6r7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_p4pjy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_vjgs6")
+}],
+"loop": true,
+"name": &"待机眨眼",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("91_0mm0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_2j260")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_8aca1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_ksvqd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_ivghq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_gv3v6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_a4dj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_u8dcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_nkwcl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_maawn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_g0yxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_hls3j")
+}],
+"loop": false,
+"name": &"投掷",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("103_dkihx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_m12mv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_h20ty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_xn4tc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_cls6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_jf1tx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_bnbow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_k340t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_3ig4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_6hqxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_tg7yb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_ijmkm")
+}],
+"loop": false,
+"name": &"挥砍",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("115_piub0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_m0wuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_tcfba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_a4yyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_2n7yy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_et5nr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_xoehd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_qn0be")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_83b12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_ku4hq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_rsvpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_e5ngs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_vkmgk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_v5d0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_fmq07")
+}],
+"loop": false,
+"name": &"死亡",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("130_1rmph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_n1fn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_8f5s3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_mup6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_qu8be")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_w0ihq")
+}],
+"loop": true,
+"name": &"滑行",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("136_yw0bv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_8pqna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_d380f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("139_l45xk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_8eo4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_rymcp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_xc200")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_u3526")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_fwfr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_rpwpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_8b3qs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_ckg7u")
+}],
+"loop": false,
+"name": &"空中投掷",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("148_maeld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_ded10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_neho8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("151_74hw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_m62dk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_3dnmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_og0uj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_jvawd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_uwwar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_iq513")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_oynvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_uo1u6")
+}],
+"loop": false,
+"name": &"空中挥砍",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("160_4c0ep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("161_ltrdd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("162_ad3um")
+}, {
+"duration": 1.0,
+"texture": ExtResource("163_1kr7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("164_2aqtv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("165_gk2ov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("166_wni2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("167_8orpp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("168_dd0uj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("169_ebkrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("170_cnldb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("171_5t7u5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("172_ehcgv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_kgqxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_mxce5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_pc2rg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_gor8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_qc3kc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_2pllh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("179_3keg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("180_he3my")
+}, {
+"duration": 1.0,
+"texture": ExtResource("181_skakx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("182_itl3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("183_hk8af")
+}],
+"loop": true,
+"name": &"行走",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("184_njr8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("185_6vayd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("186_sah0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("187_er45f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("188_5tsyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("189_3otxp")
+}],
+"loop": false,
+"name": &"跳跃",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("190_6wbe8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("191_4xg4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("192_1anux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("193_t7x5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("194_od2bp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("195_lh6mg")
+}],
+"loop": true,
+"name": &"跳跃中",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("196_m502r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("197_nb81c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("198_qpj43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("199_7sc5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("200_880tk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("201_ja6vp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("202_xpfac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("203_hsuor")
+}, {
+"duration": 1.0,
+"texture": ExtResource("204_wau3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("205_l10ai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("206_uns5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("207_sg7mo")
+}],
+"loop": false,
+"name": &"踢击",
+"speed": 24.0
+}]

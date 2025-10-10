@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://c4qmxswic463s"
+path="res://.godot/imported/0_Orc_Slashing in The Air_005.png-8c6998bfd6e43b0a8bb8c0b2bf057a5d.res"
+group_file="res://角色/僵尸C.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/僵尸C/SlashinginTheAir_空中挥砍/0_Orc_Slashing in The Air_005.png"
+dest_files=["res://.godot/imported/0_Orc_Slashing in The Air_005.png-8c6998bfd6e43b0a8bb8c0b2bf057a5d.res"]
+
+[params]
+
+atlas_file="res://角色/僵尸C.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

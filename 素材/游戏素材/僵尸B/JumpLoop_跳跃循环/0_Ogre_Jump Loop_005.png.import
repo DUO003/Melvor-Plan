@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://4783x4lgbx7n"
+path="res://.godot/imported/0_Ogre_Jump Loop_005.png-0a2b5183847bd475ea5b5c414c68be44.res"
+group_file="res://角色/僵尸B.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/僵尸B/JumpLoop_跳跃循环/0_Ogre_Jump Loop_005.png"
+dest_files=["res://.godot/imported/0_Ogre_Jump Loop_005.png-0a2b5183847bd475ea5b5c414c68be44.res"]
+
+[params]
+
+atlas_file="res://角色/僵尸B.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

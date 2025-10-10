@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://b0ogrkgjn37pe"
+path="res://.godot/imported/0_Skeleton_Warrior_Throwing in The Air_003.png-c2cd12e6c699eb9364c248f3dfc41b9d.res"
+group_file="res://角色/骷髅B.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅B/ThrowinginTheAir_空中投掷/0_Skeleton_Warrior_Throwing in The Air_003.png"
+dest_files=["res://.godot/imported/0_Skeleton_Warrior_Throwing in The Air_003.png-c2cd12e6c699eb9364c248f3dfc41b9d.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅B.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

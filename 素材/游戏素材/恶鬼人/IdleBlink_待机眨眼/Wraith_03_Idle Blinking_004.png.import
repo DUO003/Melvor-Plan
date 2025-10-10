@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://bwrkm2yewn6iw"
+path="res://.godot/imported/Wraith_03_Idle Blinking_004.png-8464f4dde1a86377c0615fdd8ae910ae.res"
+group_file="res://角色/恶鬼人.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/恶鬼人/IdleBlink_待机眨眼/Wraith_03_Idle Blinking_004.png"
+dest_files=["res://.godot/imported/Wraith_03_Idle Blinking_004.png-8464f4dde1a86377c0615fdd8ae910ae.res"]
+
+[params]
+
+atlas_file="res://角色/恶鬼人.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

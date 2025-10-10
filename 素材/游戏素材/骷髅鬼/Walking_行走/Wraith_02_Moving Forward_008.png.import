@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://bmjw4wrwujwvk"
+path="res://.godot/imported/Wraith_02_Moving Forward_008.png-4977fb573ecda2abc15da4c69604d188.res"
+group_file="res://角色/骷髅鬼.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅鬼/Walking_行走/Wraith_02_Moving Forward_008.png"
+dest_files=["res://.godot/imported/Wraith_02_Moving Forward_008.png-4977fb573ecda2abc15da4c69604d188.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅鬼.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

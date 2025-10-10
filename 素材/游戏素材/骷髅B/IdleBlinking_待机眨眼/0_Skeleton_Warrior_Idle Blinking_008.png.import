@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://bkjuyq8murs55"
+path="res://.godot/imported/0_Skeleton_Warrior_Idle Blinking_008.png-007a28ae3ed351d8d5626e5b2b50117a.res"
+group_file="res://角色/骷髅B.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_008.png"
+dest_files=["res://.godot/imported/0_Skeleton_Warrior_Idle Blinking_008.png-007a28ae3ed351d8d5626e5b2b50117a.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅B.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://cxlomwpui7t5l"
+path="res://.godot/imported/0_Ogre_Falling Down_002.png-474c36cdbb144c6e4d141ed453c609ff.res"
+group_file="res://角色/僵尸B.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/僵尸B/FallingDown_摔倒/0_Ogre_Falling Down_002.png"
+dest_files=["res://.godot/imported/0_Ogre_Falling Down_002.png-474c36cdbb144c6e4d141ed453c609ff.res"]
+
+[params]
+
+atlas_file="res://角色/僵尸B.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

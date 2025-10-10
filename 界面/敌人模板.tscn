@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://cg4pvbdp5w5v6"]
+
+[ext_resource type="Script" uid="uid://f7px3e8ifgnd" path="res://代码/专属代码/特殊功能/敌人模板.gd" id="1_m7whs"]
+[ext_resource type="SpriteFrames" uid="uid://3untrme47r30" path="res://角色/僵尸A.tres" id="2_xaglb"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="3_xaglb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i0a6"]
+size = Vector2(800, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tjat"]
+size = Vector2(90, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmmmq"]
+size = Vector2(220, 128)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bmmmq"]
+bg_color = Color(0.5243333, 0.65, 0.52, 0.39215687)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xaglb"]
+bg_color = Color(0.76, 0.57531995, 0.1444, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxulp"]
+bg_color = Color(0.76, 0.1444, 0.1444, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="敌人" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 8
+platform_floor_layers = 8
+platform_wall_layers = 8
+safe_margin = 5.0
+script = ExtResource("1_m7whs")
+
+[node name="警戒范围" type="Area2D" parent="."]
+position = Vector2(0.5, 8.5)
+collision_layer = 0
+collision_mask = 4
+
+[node name="区域" type="CollisionShape2D" parent="警戒范围"]
+position = Vector2(0, -72)
+shape = SubResource("RectangleShape2D_0i0a6")
+debug_color = Color(0.47, 0.47, 0.47, 0.15294118)
+
+[node name="碰撞范围" type="CollisionShape2D" parent="."]
+position = Vector2(-4.5, -63.5)
+shape = SubResource("RectangleShape2D_4tjat")
+debug_color = Color(0.5508886, 0.5638745, 0, 0.41960785)
+
+[node name="攻击范围" type="Area2D" parent="."]
+position = Vector2(0.5, 8.5)
+collision_layer = 0
+collision_mask = 4
+
+[node name="区域" type="CollisionShape2D" parent="攻击范围"]
+position = Vector2(0, -72)
+shape = SubResource("RectangleShape2D_bmmmq")
+debug_color = Color(0.97, 0.17783335, 0, 0.1254902)
+
+[node name="图片" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -75)
+sprite_frames = ExtResource("2_xaglb")
+animation = &"死亡"
+
+[node name="行动条" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(150, 8)
+offset_left = -72.0
+offset_top = -140.0
+offset_right = 78.0
+offset_bottom = -132.0
+theme = ExtResource("3_xaglb")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/background = SubResource("StyleBoxFlat_bmmmq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xaglb")
+value = 50.0
+show_percentage = false
+
+[node name="血条" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(150, 20)
+offset_left = -72.0
+offset_top = -165.0
+offset_right = 78.0
+offset_bottom = -145.0
+theme = ExtResource("3_xaglb")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/background = SubResource("StyleBoxFlat_bmmmq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nxulp")
+step = 1.0
+value = 50.0

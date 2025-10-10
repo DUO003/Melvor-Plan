@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://ubh3waughcs4"
+path="res://.godot/imported/0_Skeleton_Warrior_Slashing in The Air_005.png-2eb5c41a2139b2ca41e4487770e3e487.res"
+group_file="res://角色/骷髅D.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅D/SlashinginTheAir_空中挥砍/0_Skeleton_Warrior_Slashing in The Air_005.png"
+dest_files=["res://.godot/imported/0_Skeleton_Warrior_Slashing in The Air_005.png-2eb5c41a2139b2ca41e4487770e3e487.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅D.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

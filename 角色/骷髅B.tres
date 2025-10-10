@@ -1,0 +1,919 @@
+[gd_resource type="SpriteFrames" load_steps=208 format=3 uid="uid://cpbpt82gmt2em"]
+
+[ext_resource type="Texture2D" uid="uid://bbay85p3aooc1" path="res://素材/游戏素材/骷髅B/Hurt_受伤/0_Skeleton_Warrior_Hurt_000.png" id="1_bb8y8"]
+[ext_resource type="Texture2D" uid="uid://dit6amh4vxt14" path="res://素材/游戏素材/骷髅B/Hurt_受伤/0_Skeleton_Warrior_Hurt_001.png" id="2_fay77"]
+[ext_resource type="Texture2D" uid="uid://dimos7kgn62tg" path="res://素材/游戏素材/骷髅B/Hurt_受伤/0_Skeleton_Warrior_Hurt_002.png" id="3_wo7xe"]
+[ext_resource type="Texture2D" uid="uid://bgoaqn2uoy72d" path="res://素材/游戏素材/骷髅B/Hurt_受伤/0_Skeleton_Warrior_Hurt_003.png" id="4_6q8ua"]
+[ext_resource type="Texture2D" uid="uid://c8smbnffha4bf" path="res://素材/游戏素材/骷髅B/Hurt_受伤/0_Skeleton_Warrior_Hurt_004.png" id="5_mo7q3"]
+[ext_resource type="Texture2D" uid="uid://c5r7g18yylewg" path="res://素材/游戏素材/骷髅B/Hurt_受伤/0_Skeleton_Warrior_Hurt_005.png" id="6_8xein"]
+[ext_resource type="Texture2D" uid="uid://4cl76k4fvcf8" path="res://素材/游戏素材/骷髅B/Hurt_受伤/0_Skeleton_Warrior_Hurt_006.png" id="7_swh2t"]
+[ext_resource type="Texture2D" uid="uid://f032gikqd2cm" path="res://素材/游戏素材/骷髅B/Hurt_受伤/0_Skeleton_Warrior_Hurt_007.png" id="8_c2ix8"]
+[ext_resource type="Texture2D" uid="uid://dy2bdvqsygh46" path="res://素材/游戏素材/骷髅B/Hurt_受伤/0_Skeleton_Warrior_Hurt_008.png" id="9_ipsjb"]
+[ext_resource type="Texture2D" uid="uid://bs8186senr6hk" path="res://素材/游戏素材/骷髅B/Hurt_受伤/0_Skeleton_Warrior_Hurt_009.png" id="10_oid0e"]
+[ext_resource type="Texture2D" uid="uid://cnwtnr8silsn0" path="res://素材/游戏素材/骷髅B/Hurt_受伤/0_Skeleton_Warrior_Hurt_010.png" id="11_3rhe8"]
+[ext_resource type="Texture2D" uid="uid://cmihfispgpfx1" path="res://素材/游戏素材/骷髅B/Hurt_受伤/0_Skeleton_Warrior_Hurt_011.png" id="12_6unvm"]
+[ext_resource type="Texture2D" uid="uid://dovkunru5pyld" path="res://素材/游戏素材/骷髅B/FallingDown_摔倒/0_Skeleton_Warrior_Falling Down_000.png" id="13_n8cpb"]
+[ext_resource type="Texture2D" uid="uid://ds56eff4at2c3" path="res://素材/游戏素材/骷髅B/FallingDown_摔倒/0_Skeleton_Warrior_Falling Down_001.png" id="14_8wpfd"]
+[ext_resource type="Texture2D" uid="uid://cd3tx1mfwe4b6" path="res://素材/游戏素材/骷髅B/FallingDown_摔倒/0_Skeleton_Warrior_Falling Down_002.png" id="15_6lr4i"]
+[ext_resource type="Texture2D" uid="uid://drx1xl3t3npc1" path="res://素材/游戏素材/骷髅B/FallingDown_摔倒/0_Skeleton_Warrior_Falling Down_003.png" id="16_k2br8"]
+[ext_resource type="Texture2D" uid="uid://dskwpadvu1bpb" path="res://素材/游戏素材/骷髅B/FallingDown_摔倒/0_Skeleton_Warrior_Falling Down_004.png" id="17_roh5b"]
+[ext_resource type="Texture2D" uid="uid://ceoa3rb32hxl0" path="res://素材/游戏素材/骷髅B/FallingDown_摔倒/0_Skeleton_Warrior_Falling Down_005.png" id="18_u6oix"]
+[ext_resource type="Texture2D" uid="uid://cnfcu5onu523m" path="res://素材/游戏素材/骷髅B/Running_奔跑/0_Skeleton_Warrior_Running_000.png" id="19_t31p8"]
+[ext_resource type="Texture2D" uid="uid://couxe5m2542im" path="res://素材/游戏素材/骷髅B/Running_奔跑/0_Skeleton_Warrior_Running_001.png" id="20_3v5o1"]
+[ext_resource type="Texture2D" uid="uid://bwt2iyp7s4sia" path="res://素材/游戏素材/骷髅B/Running_奔跑/0_Skeleton_Warrior_Running_002.png" id="21_480rn"]
+[ext_resource type="Texture2D" uid="uid://cvcxjc6xndgem" path="res://素材/游戏素材/骷髅B/Running_奔跑/0_Skeleton_Warrior_Running_003.png" id="22_go3rb"]
+[ext_resource type="Texture2D" uid="uid://fbfbwn1wyw88" path="res://素材/游戏素材/骷髅B/Running_奔跑/0_Skeleton_Warrior_Running_004.png" id="23_nm06r"]
+[ext_resource type="Texture2D" uid="uid://bvmtw3jbadqhb" path="res://素材/游戏素材/骷髅B/Running_奔跑/0_Skeleton_Warrior_Running_005.png" id="24_cjkwj"]
+[ext_resource type="Texture2D" uid="uid://4cxxtae7hahw" path="res://素材/游戏素材/骷髅B/Running_奔跑/0_Skeleton_Warrior_Running_006.png" id="25_ddeov"]
+[ext_resource type="Texture2D" uid="uid://c7gfrnuqshpvp" path="res://素材/游戏素材/骷髅B/Running_奔跑/0_Skeleton_Warrior_Running_007.png" id="26_ag55u"]
+[ext_resource type="Texture2D" uid="uid://3lfv4fbpn7w8" path="res://素材/游戏素材/骷髅B/Running_奔跑/0_Skeleton_Warrior_Running_008.png" id="27_g1ynu"]
+[ext_resource type="Texture2D" uid="uid://cxqnucqdh44xf" path="res://素材/游戏素材/骷髅B/Running_奔跑/0_Skeleton_Warrior_Running_009.png" id="28_7dwn8"]
+[ext_resource type="Texture2D" uid="uid://x3aqklhreswl" path="res://素材/游戏素材/骷髅B/Running_奔跑/0_Skeleton_Warrior_Running_010.png" id="29_r13kn"]
+[ext_resource type="Texture2D" uid="uid://oudjptbn3urx" path="res://素材/游戏素材/骷髅B/Running_奔跑/0_Skeleton_Warrior_Running_011.png" id="30_73jss"]
+[ext_resource type="Texture2D" uid="uid://dqdr561x84yqk" path="res://素材/游戏素材/骷髅B/RunThrowing_奔跑投掷/0_Skeleton_Warrior_Run Throwing_000.png" id="31_7nnai"]
+[ext_resource type="Texture2D" uid="uid://dqhhmecraqq3l" path="res://素材/游戏素材/骷髅B/RunThrowing_奔跑投掷/0_Skeleton_Warrior_Run Throwing_001.png" id="32_v74qp"]
+[ext_resource type="Texture2D" uid="uid://cd4h1muwqp85t" path="res://素材/游戏素材/骷髅B/RunThrowing_奔跑投掷/0_Skeleton_Warrior_Run Throwing_002.png" id="33_noptt"]
+[ext_resource type="Texture2D" uid="uid://bi133qboset0j" path="res://素材/游戏素材/骷髅B/RunThrowing_奔跑投掷/0_Skeleton_Warrior_Run Throwing_003.png" id="34_0a746"]
+[ext_resource type="Texture2D" uid="uid://g4e0ynrq43b7" path="res://素材/游戏素材/骷髅B/RunThrowing_奔跑投掷/0_Skeleton_Warrior_Run Throwing_004.png" id="35_1p4np"]
+[ext_resource type="Texture2D" uid="uid://bpev10veab5nk" path="res://素材/游戏素材/骷髅B/RunThrowing_奔跑投掷/0_Skeleton_Warrior_Run Throwing_005.png" id="36_dxrhs"]
+[ext_resource type="Texture2D" uid="uid://djesjioanmhds" path="res://素材/游戏素材/骷髅B/RunThrowing_奔跑投掷/0_Skeleton_Warrior_Run Throwing_006.png" id="37_pr0o6"]
+[ext_resource type="Texture2D" uid="uid://u2sdwj7yi8sc" path="res://素材/游戏素材/骷髅B/RunThrowing_奔跑投掷/0_Skeleton_Warrior_Run Throwing_007.png" id="38_5edgw"]
+[ext_resource type="Texture2D" uid="uid://d08sn0c44o1gn" path="res://素材/游戏素材/骷髅B/RunThrowing_奔跑投掷/0_Skeleton_Warrior_Run Throwing_008.png" id="39_86sr4"]
+[ext_resource type="Texture2D" uid="uid://dcps2coyyhhfy" path="res://素材/游戏素材/骷髅B/RunThrowing_奔跑投掷/0_Skeleton_Warrior_Run Throwing_009.png" id="40_myrqa"]
+[ext_resource type="Texture2D" uid="uid://bruqeot8yws56" path="res://素材/游戏素材/骷髅B/RunThrowing_奔跑投掷/0_Skeleton_Warrior_Run Throwing_010.png" id="41_wkn80"]
+[ext_resource type="Texture2D" uid="uid://cegg0glvo8ja7" path="res://素材/游戏素材/骷髅B/RunThrowing_奔跑投掷/0_Skeleton_Warrior_Run Throwing_011.png" id="42_u00wf"]
+[ext_resource type="Texture2D" uid="uid://b0qndbj8djtty" path="res://素材/游戏素材/骷髅B/RunSlashing_奔跑挥砍/0_Skeleton_Warrior_Run Slashing_000.png" id="43_n2wq7"]
+[ext_resource type="Texture2D" uid="uid://djdtngri0p6hw" path="res://素材/游戏素材/骷髅B/RunSlashing_奔跑挥砍/0_Skeleton_Warrior_Run Slashing_001.png" id="44_fxeq7"]
+[ext_resource type="Texture2D" uid="uid://4mhvubn652tt" path="res://素材/游戏素材/骷髅B/RunSlashing_奔跑挥砍/0_Skeleton_Warrior_Run Slashing_002.png" id="45_0vf1s"]
+[ext_resource type="Texture2D" uid="uid://do676rri5lmrs" path="res://素材/游戏素材/骷髅B/RunSlashing_奔跑挥砍/0_Skeleton_Warrior_Run Slashing_003.png" id="46_rdf4q"]
+[ext_resource type="Texture2D" uid="uid://dm8bjgmsgwsmm" path="res://素材/游戏素材/骷髅B/RunSlashing_奔跑挥砍/0_Skeleton_Warrior_Run Slashing_004.png" id="47_e6dmq"]
+[ext_resource type="Texture2D" uid="uid://bpw6sfcs56ebh" path="res://素材/游戏素材/骷髅B/RunSlashing_奔跑挥砍/0_Skeleton_Warrior_Run Slashing_005.png" id="48_xdfx1"]
+[ext_resource type="Texture2D" uid="uid://uyw2a5mitcwn" path="res://素材/游戏素材/骷髅B/RunSlashing_奔跑挥砍/0_Skeleton_Warrior_Run Slashing_006.png" id="49_v50iu"]
+[ext_resource type="Texture2D" uid="uid://wrof1dahwru4" path="res://素材/游戏素材/骷髅B/RunSlashing_奔跑挥砍/0_Skeleton_Warrior_Run Slashing_007.png" id="50_rltfp"]
+[ext_resource type="Texture2D" uid="uid://dmh7gc8u6a4ht" path="res://素材/游戏素材/骷髅B/RunSlashing_奔跑挥砍/0_Skeleton_Warrior_Run Slashing_008.png" id="51_vccc7"]
+[ext_resource type="Texture2D" uid="uid://buvyr5y7l3wk3" path="res://素材/游戏素材/骷髅B/RunSlashing_奔跑挥砍/0_Skeleton_Warrior_Run Slashing_009.png" id="52_y2wlr"]
+[ext_resource type="Texture2D" uid="uid://csfg2qp86i5yb" path="res://素材/游戏素材/骷髅B/RunSlashing_奔跑挥砍/0_Skeleton_Warrior_Run Slashing_010.png" id="53_hunua"]
+[ext_resource type="Texture2D" uid="uid://b081qky2cc1rb" path="res://素材/游戏素材/骷髅B/RunSlashing_奔跑挥砍/0_Skeleton_Warrior_Run Slashing_011.png" id="54_l8mau"]
+[ext_resource type="Texture2D" uid="uid://bardjwijoh70w" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_000.png" id="55_54yyi"]
+[ext_resource type="Texture2D" uid="uid://dv56o4a5sfefy" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_001.png" id="56_pyq6i"]
+[ext_resource type="Texture2D" uid="uid://dtf7u50sxrni5" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_002.png" id="57_wxi67"]
+[ext_resource type="Texture2D" uid="uid://cggocbvnsxjrn" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_003.png" id="58_voajr"]
+[ext_resource type="Texture2D" uid="uid://c8ikeum56w1d" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_004.png" id="59_geja3"]
+[ext_resource type="Texture2D" uid="uid://km6crekc64i3" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_005.png" id="60_ugptk"]
+[ext_resource type="Texture2D" uid="uid://dk1ui65vrqol6" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_006.png" id="61_e54o4"]
+[ext_resource type="Texture2D" uid="uid://0rldsrgpkmc3" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_007.png" id="62_186r6"]
+[ext_resource type="Texture2D" uid="uid://b0fy5csq8m3r1" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_008.png" id="63_q33l0"]
+[ext_resource type="Texture2D" uid="uid://oweu8dkc2jxm" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_009.png" id="64_q85i5"]
+[ext_resource type="Texture2D" uid="uid://li5dla4jhmpg" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_010.png" id="65_d73pk"]
+[ext_resource type="Texture2D" uid="uid://cdxl775gkpmro" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_011.png" id="66_85tr5"]
+[ext_resource type="Texture2D" uid="uid://dh6vk5ihc7mac" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_012.png" id="67_i5qrc"]
+[ext_resource type="Texture2D" uid="uid://dml60243qkrdb" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_013.png" id="68_f47x3"]
+[ext_resource type="Texture2D" uid="uid://82qcu45inpa2" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_014.png" id="69_wrbq7"]
+[ext_resource type="Texture2D" uid="uid://bhjqsr2y57y88" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_015.png" id="70_gaowk"]
+[ext_resource type="Texture2D" uid="uid://w2edm08sulso" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_016.png" id="71_rvb7j"]
+[ext_resource type="Texture2D" uid="uid://bbp6j0otvuigq" path="res://素材/游戏素材/骷髅B/Idle_待机/0_Skeleton_Warrior_Idle_017.png" id="72_giesu"]
+[ext_resource type="Texture2D" uid="uid://reyplkhco613" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_000.png" id="73_7t70n"]
+[ext_resource type="Texture2D" uid="uid://l74gsccqg6iq" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_001.png" id="74_3i6qx"]
+[ext_resource type="Texture2D" uid="uid://dq2qoqshk2vjr" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_002.png" id="75_gdmye"]
+[ext_resource type="Texture2D" uid="uid://n8o8rm4vxxw" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_003.png" id="76_umwfh"]
+[ext_resource type="Texture2D" uid="uid://cjnnq4xh2cgs" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_004.png" id="77_w8tyd"]
+[ext_resource type="Texture2D" uid="uid://cl0sqyjwif0li" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_005.png" id="78_vwua1"]
+[ext_resource type="Texture2D" uid="uid://bvuaxwj5oipes" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_006.png" id="79_37dhc"]
+[ext_resource type="Texture2D" uid="uid://b6wrarmc5yy1f" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_007.png" id="80_idqwp"]
+[ext_resource type="Texture2D" uid="uid://bkjuyq8murs55" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_008.png" id="81_3o5n5"]
+[ext_resource type="Texture2D" uid="uid://mx7l0l3os0u3" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_009.png" id="82_ivk2u"]
+[ext_resource type="Texture2D" uid="uid://ddio7kr4i0fk4" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_010.png" id="83_g0hm5"]
+[ext_resource type="Texture2D" uid="uid://nxjinvwlx3qi" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_011.png" id="84_alou2"]
+[ext_resource type="Texture2D" uid="uid://62gc7m7tolg5" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_012.png" id="85_6plf4"]
+[ext_resource type="Texture2D" uid="uid://bp7mjdd0tlcse" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_013.png" id="86_6001s"]
+[ext_resource type="Texture2D" uid="uid://c25pw2xa1iwh7" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_014.png" id="87_esmly"]
+[ext_resource type="Texture2D" uid="uid://cb72l8lbycthl" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_015.png" id="88_gtphj"]
+[ext_resource type="Texture2D" uid="uid://c1au7kvl6kwtr" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_016.png" id="89_lrsa0"]
+[ext_resource type="Texture2D" uid="uid://bwceso7nu0b14" path="res://素材/游戏素材/骷髅B/IdleBlinking_待机眨眼/0_Skeleton_Warrior_Idle Blinking_017.png" id="90_0kkcm"]
+[ext_resource type="Texture2D" uid="uid://bjgr2ykn7ytr" path="res://素材/游戏素材/骷髅B/Throwing_投掷/0_Skeleton_Warrior_Throwing_000.png" id="91_ehsvh"]
+[ext_resource type="Texture2D" uid="uid://bsmbeqr2t5pm1" path="res://素材/游戏素材/骷髅B/Throwing_投掷/0_Skeleton_Warrior_Throwing_001.png" id="92_48t6h"]
+[ext_resource type="Texture2D" uid="uid://dshl124p6k2dn" path="res://素材/游戏素材/骷髅B/Throwing_投掷/0_Skeleton_Warrior_Throwing_002.png" id="93_bwusb"]
+[ext_resource type="Texture2D" uid="uid://ct4x08pw6makf" path="res://素材/游戏素材/骷髅B/Throwing_投掷/0_Skeleton_Warrior_Throwing_003.png" id="94_ad0wd"]
+[ext_resource type="Texture2D" uid="uid://b8lyo2wsmtovd" path="res://素材/游戏素材/骷髅B/Throwing_投掷/0_Skeleton_Warrior_Throwing_004.png" id="95_v0yyt"]
+[ext_resource type="Texture2D" uid="uid://c788jjkoacrth" path="res://素材/游戏素材/骷髅B/Throwing_投掷/0_Skeleton_Warrior_Throwing_005.png" id="96_5vhto"]
+[ext_resource type="Texture2D" uid="uid://dgcxa2ha623ok" path="res://素材/游戏素材/骷髅B/Throwing_投掷/0_Skeleton_Warrior_Throwing_006.png" id="97_4j6vs"]
+[ext_resource type="Texture2D" uid="uid://cmvvtahmfnufn" path="res://素材/游戏素材/骷髅B/Throwing_投掷/0_Skeleton_Warrior_Throwing_007.png" id="98_soq66"]
+[ext_resource type="Texture2D" uid="uid://cn257kwar2if2" path="res://素材/游戏素材/骷髅B/Throwing_投掷/0_Skeleton_Warrior_Throwing_008.png" id="99_quf7b"]
+[ext_resource type="Texture2D" uid="uid://w1g468u5trcg" path="res://素材/游戏素材/骷髅B/Throwing_投掷/0_Skeleton_Warrior_Throwing_009.png" id="100_38fc3"]
+[ext_resource type="Texture2D" uid="uid://b74sjrfu7t2kv" path="res://素材/游戏素材/骷髅B/Throwing_投掷/0_Skeleton_Warrior_Throwing_010.png" id="101_48mn7"]
+[ext_resource type="Texture2D" uid="uid://c15oevvs3s8j4" path="res://素材/游戏素材/骷髅B/Throwing_投掷/0_Skeleton_Warrior_Throwing_011.png" id="102_p3nyv"]
+[ext_resource type="Texture2D" uid="uid://d1nimr1oplqf" path="res://素材/游戏素材/骷髅B/Slashing_挥砍/0_Skeleton_Warrior_Slashing_000.png" id="103_50lcv"]
+[ext_resource type="Texture2D" uid="uid://b06y241vnuvb" path="res://素材/游戏素材/骷髅B/Slashing_挥砍/0_Skeleton_Warrior_Slashing_001.png" id="104_56qm1"]
+[ext_resource type="Texture2D" uid="uid://slk5ni8agnud" path="res://素材/游戏素材/骷髅B/Slashing_挥砍/0_Skeleton_Warrior_Slashing_002.png" id="105_nynyo"]
+[ext_resource type="Texture2D" uid="uid://ugdad1pbu3u1" path="res://素材/游戏素材/骷髅B/Slashing_挥砍/0_Skeleton_Warrior_Slashing_003.png" id="106_j5l1p"]
+[ext_resource type="Texture2D" uid="uid://bkj7yigkou6l8" path="res://素材/游戏素材/骷髅B/Slashing_挥砍/0_Skeleton_Warrior_Slashing_004.png" id="107_00xiv"]
+[ext_resource type="Texture2D" uid="uid://cg0dl2l4hvogl" path="res://素材/游戏素材/骷髅B/Slashing_挥砍/0_Skeleton_Warrior_Slashing_005.png" id="108_3ojwk"]
+[ext_resource type="Texture2D" uid="uid://chkhm32icgvd" path="res://素材/游戏素材/骷髅B/Slashing_挥砍/0_Skeleton_Warrior_Slashing_006.png" id="109_qh4wh"]
+[ext_resource type="Texture2D" uid="uid://surrgxm01blr" path="res://素材/游戏素材/骷髅B/Slashing_挥砍/0_Skeleton_Warrior_Slashing_007.png" id="110_55ecs"]
+[ext_resource type="Texture2D" uid="uid://bffoi6hm3wy80" path="res://素材/游戏素材/骷髅B/Slashing_挥砍/0_Skeleton_Warrior_Slashing_008.png" id="111_25nju"]
+[ext_resource type="Texture2D" uid="uid://dxeousn6e682x" path="res://素材/游戏素材/骷髅B/Slashing_挥砍/0_Skeleton_Warrior_Slashing_009.png" id="112_jbk5h"]
+[ext_resource type="Texture2D" uid="uid://b57b48alwnoov" path="res://素材/游戏素材/骷髅B/Slashing_挥砍/0_Skeleton_Warrior_Slashing_010.png" id="113_f6rjk"]
+[ext_resource type="Texture2D" uid="uid://chsmwyb6d2i1" path="res://素材/游戏素材/骷髅B/Slashing_挥砍/0_Skeleton_Warrior_Slashing_011.png" id="114_v0r56"]
+[ext_resource type="Texture2D" uid="uid://dlreapx15i3br" path="res://素材/游戏素材/骷髅B/Dying_死亡/0_Skeleton_Warrior_Dying_000.png" id="115_5ohvr"]
+[ext_resource type="Texture2D" uid="uid://d4bx6d1fooi6" path="res://素材/游戏素材/骷髅B/Dying_死亡/0_Skeleton_Warrior_Dying_001.png" id="116_f6wcu"]
+[ext_resource type="Texture2D" uid="uid://bofjt4j41oaxp" path="res://素材/游戏素材/骷髅B/Dying_死亡/0_Skeleton_Warrior_Dying_002.png" id="117_00prp"]
+[ext_resource type="Texture2D" uid="uid://n86sjq0mjj71" path="res://素材/游戏素材/骷髅B/Dying_死亡/0_Skeleton_Warrior_Dying_003.png" id="118_4la52"]
+[ext_resource type="Texture2D" uid="uid://cxjmycbxikprg" path="res://素材/游戏素材/骷髅B/Dying_死亡/0_Skeleton_Warrior_Dying_004.png" id="119_ytnfx"]
+[ext_resource type="Texture2D" uid="uid://3lugxx3e8qf1" path="res://素材/游戏素材/骷髅B/Dying_死亡/0_Skeleton_Warrior_Dying_005.png" id="120_3hca0"]
+[ext_resource type="Texture2D" uid="uid://dk6neokaaicmd" path="res://素材/游戏素材/骷髅B/Dying_死亡/0_Skeleton_Warrior_Dying_006.png" id="121_rdf14"]
+[ext_resource type="Texture2D" uid="uid://y7hrhv8lric5" path="res://素材/游戏素材/骷髅B/Dying_死亡/0_Skeleton_Warrior_Dying_007.png" id="122_yjlek"]
+[ext_resource type="Texture2D" uid="uid://bp41fkv6j2cp7" path="res://素材/游戏素材/骷髅B/Dying_死亡/0_Skeleton_Warrior_Dying_008.png" id="123_dv8r8"]
+[ext_resource type="Texture2D" uid="uid://byqx78p4qaetu" path="res://素材/游戏素材/骷髅B/Dying_死亡/0_Skeleton_Warrior_Dying_009.png" id="124_eeu5r"]
+[ext_resource type="Texture2D" uid="uid://dm13ygjrpgu0h" path="res://素材/游戏素材/骷髅B/Dying_死亡/0_Skeleton_Warrior_Dying_010.png" id="125_t7ue1"]
+[ext_resource type="Texture2D" uid="uid://c6ttqhvogan42" path="res://素材/游戏素材/骷髅B/Dying_死亡/0_Skeleton_Warrior_Dying_011.png" id="126_axga7"]
+[ext_resource type="Texture2D" uid="uid://cg3m3h15blq8g" path="res://素材/游戏素材/骷髅B/Dying_死亡/0_Skeleton_Warrior_Dying_012.png" id="127_7g3mm"]
+[ext_resource type="Texture2D" uid="uid://c7840atja6ha6" path="res://素材/游戏素材/骷髅B/Dying_死亡/0_Skeleton_Warrior_Dying_013.png" id="128_gbnyv"]
+[ext_resource type="Texture2D" uid="uid://dssmfx0dj4yq8" path="res://素材/游戏素材/骷髅B/Dying_死亡/0_Skeleton_Warrior_Dying_014.png" id="129_6a2ox"]
+[ext_resource type="Texture2D" uid="uid://dih4aumnkyvvw" path="res://素材/游戏素材/骷髅B/Sliding_滑行/0_Skeleton_Warrior_Sliding_000.png" id="130_dh24g"]
+[ext_resource type="Texture2D" uid="uid://chogy5aljpqcr" path="res://素材/游戏素材/骷髅B/Sliding_滑行/0_Skeleton_Warrior_Sliding_001.png" id="131_7xttx"]
+[ext_resource type="Texture2D" uid="uid://rfj3peyx2553" path="res://素材/游戏素材/骷髅B/Sliding_滑行/0_Skeleton_Warrior_Sliding_002.png" id="132_sdecl"]
+[ext_resource type="Texture2D" uid="uid://8fysuxfmvx5j" path="res://素材/游戏素材/骷髅B/Sliding_滑行/0_Skeleton_Warrior_Sliding_003.png" id="133_wcl0v"]
+[ext_resource type="Texture2D" uid="uid://b7pre80h61ynp" path="res://素材/游戏素材/骷髅B/Sliding_滑行/0_Skeleton_Warrior_Sliding_004.png" id="134_6obd5"]
+[ext_resource type="Texture2D" uid="uid://djehwxmvijllt" path="res://素材/游戏素材/骷髅B/Sliding_滑行/0_Skeleton_Warrior_Sliding_005.png" id="135_o1url"]
+[ext_resource type="Texture2D" uid="uid://bqr33edgvu8ab" path="res://素材/游戏素材/骷髅B/ThrowinginTheAir_空中投掷/0_Skeleton_Warrior_Throwing in The Air_000.png" id="136_qwqfs"]
+[ext_resource type="Texture2D" uid="uid://b1rvggqset5w5" path="res://素材/游戏素材/骷髅B/ThrowinginTheAir_空中投掷/0_Skeleton_Warrior_Throwing in The Air_001.png" id="137_6g8dj"]
+[ext_resource type="Texture2D" uid="uid://13ekaq74m0yx" path="res://素材/游戏素材/骷髅B/ThrowinginTheAir_空中投掷/0_Skeleton_Warrior_Throwing in The Air_002.png" id="138_758v4"]
+[ext_resource type="Texture2D" uid="uid://b0ogrkgjn37pe" path="res://素材/游戏素材/骷髅B/ThrowinginTheAir_空中投掷/0_Skeleton_Warrior_Throwing in The Air_003.png" id="139_uymso"]
+[ext_resource type="Texture2D" uid="uid://c8d6y0lu4s11s" path="res://素材/游戏素材/骷髅B/ThrowinginTheAir_空中投掷/0_Skeleton_Warrior_Throwing in The Air_004.png" id="140_yvwod"]
+[ext_resource type="Texture2D" uid="uid://dp5pc1sfrbme2" path="res://素材/游戏素材/骷髅B/ThrowinginTheAir_空中投掷/0_Skeleton_Warrior_Throwing in The Air_005.png" id="141_oxfn8"]
+[ext_resource type="Texture2D" uid="uid://bm5f2noxovsqx" path="res://素材/游戏素材/骷髅B/ThrowinginTheAir_空中投掷/0_Skeleton_Warrior_Throwing in The Air_006.png" id="142_jpg3w"]
+[ext_resource type="Texture2D" uid="uid://dh0iq8bu1xuee" path="res://素材/游戏素材/骷髅B/ThrowinginTheAir_空中投掷/0_Skeleton_Warrior_Throwing in The Air_007.png" id="143_rciva"]
+[ext_resource type="Texture2D" uid="uid://bjgnapjwspbps" path="res://素材/游戏素材/骷髅B/ThrowinginTheAir_空中投掷/0_Skeleton_Warrior_Throwing in The Air_008.png" id="144_wg7lu"]
+[ext_resource type="Texture2D" uid="uid://bavyvbqwtm02w" path="res://素材/游戏素材/骷髅B/ThrowinginTheAir_空中投掷/0_Skeleton_Warrior_Throwing in The Air_009.png" id="145_lrkg6"]
+[ext_resource type="Texture2D" uid="uid://dplcmhlhhyofx" path="res://素材/游戏素材/骷髅B/ThrowinginTheAir_空中投掷/0_Skeleton_Warrior_Throwing in The Air_010.png" id="146_hwyfd"]
+[ext_resource type="Texture2D" uid="uid://dwsknc11a5hfm" path="res://素材/游戏素材/骷髅B/ThrowinginTheAir_空中投掷/0_Skeleton_Warrior_Throwing in The Air_011.png" id="147_qjo4p"]
+[ext_resource type="Texture2D" uid="uid://csmm4jvto7h33" path="res://素材/游戏素材/骷髅B/SlashinginTheAir_空中挥砍/0_Skeleton_Warrior_Slashing in The Air_000.png" id="148_fsdc1"]
+[ext_resource type="Texture2D" uid="uid://u6j70l7vg1vg" path="res://素材/游戏素材/骷髅B/SlashinginTheAir_空中挥砍/0_Skeleton_Warrior_Slashing in The Air_001.png" id="149_isxke"]
+[ext_resource type="Texture2D" uid="uid://dicdahpcwxjhk" path="res://素材/游戏素材/骷髅B/SlashinginTheAir_空中挥砍/0_Skeleton_Warrior_Slashing in The Air_002.png" id="150_o8poh"]
+[ext_resource type="Texture2D" uid="uid://decknrmhaeeiw" path="res://素材/游戏素材/骷髅B/SlashinginTheAir_空中挥砍/0_Skeleton_Warrior_Slashing in The Air_003.png" id="151_lcucf"]
+[ext_resource type="Texture2D" uid="uid://1pt1nnfnatgs" path="res://素材/游戏素材/骷髅B/SlashinginTheAir_空中挥砍/0_Skeleton_Warrior_Slashing in The Air_004.png" id="152_6eaef"]
+[ext_resource type="Texture2D" uid="uid://bq8tjblgkonyp" path="res://素材/游戏素材/骷髅B/SlashinginTheAir_空中挥砍/0_Skeleton_Warrior_Slashing in The Air_005.png" id="153_p2yvx"]
+[ext_resource type="Texture2D" uid="uid://p7eq1ub83p5" path="res://素材/游戏素材/骷髅B/SlashinginTheAir_空中挥砍/0_Skeleton_Warrior_Slashing in The Air_006.png" id="154_0m13r"]
+[ext_resource type="Texture2D" uid="uid://si4bhubtun4y" path="res://素材/游戏素材/骷髅B/SlashinginTheAir_空中挥砍/0_Skeleton_Warrior_Slashing in The Air_007.png" id="155_2shgg"]
+[ext_resource type="Texture2D" uid="uid://dxiet0p50jqce" path="res://素材/游戏素材/骷髅B/SlashinginTheAir_空中挥砍/0_Skeleton_Warrior_Slashing in The Air_008.png" id="156_novh4"]
+[ext_resource type="Texture2D" uid="uid://dkx3x1xd1hasg" path="res://素材/游戏素材/骷髅B/SlashinginTheAir_空中挥砍/0_Skeleton_Warrior_Slashing in The Air_009.png" id="157_oqk47"]
+[ext_resource type="Texture2D" uid="uid://w8f5sqh517a1" path="res://素材/游戏素材/骷髅B/SlashinginTheAir_空中挥砍/0_Skeleton_Warrior_Slashing in The Air_010.png" id="158_kgjye"]
+[ext_resource type="Texture2D" uid="uid://c0oawmqaadju1" path="res://素材/游戏素材/骷髅B/SlashinginTheAir_空中挥砍/0_Skeleton_Warrior_Slashing in The Air_011.png" id="159_8jkiv"]
+[ext_resource type="Texture2D" uid="uid://2damuc1v2p5e" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_000.png" id="160_0btla"]
+[ext_resource type="Texture2D" uid="uid://bnb3uqmr75cki" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_001.png" id="161_urble"]
+[ext_resource type="Texture2D" uid="uid://c25embo8d813e" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_002.png" id="162_l57xq"]
+[ext_resource type="Texture2D" uid="uid://cpctn0rdktrs8" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_003.png" id="163_upwkf"]
+[ext_resource type="Texture2D" uid="uid://b6rqb7te2am3w" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_004.png" id="164_2q1h1"]
+[ext_resource type="Texture2D" uid="uid://cb86vvs1vr5og" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_005.png" id="165_7456v"]
+[ext_resource type="Texture2D" uid="uid://c87poo6jhekir" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_006.png" id="166_cmoq4"]
+[ext_resource type="Texture2D" uid="uid://p4du8q7lub5g" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_007.png" id="167_srqm8"]
+[ext_resource type="Texture2D" uid="uid://dcptc4gofg5b0" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_008.png" id="168_qsdkd"]
+[ext_resource type="Texture2D" uid="uid://da0kg7mq01si" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_009.png" id="169_o016o"]
+[ext_resource type="Texture2D" uid="uid://c2jmy562co4l0" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_010.png" id="170_e0rcl"]
+[ext_resource type="Texture2D" uid="uid://3w5taqctq62f" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_011.png" id="171_7hlxk"]
+[ext_resource type="Texture2D" uid="uid://ba1u4q2favocr" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_012.png" id="172_8td05"]
+[ext_resource type="Texture2D" uid="uid://bfrnpoirxpdth" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_013.png" id="173_p28hu"]
+[ext_resource type="Texture2D" uid="uid://qqqgj0eo6bmr" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_014.png" id="174_kuup0"]
+[ext_resource type="Texture2D" uid="uid://bmd375aex6wb7" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_015.png" id="175_ojqbj"]
+[ext_resource type="Texture2D" uid="uid://dgoio4hfxojq0" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_016.png" id="176_yh0wf"]
+[ext_resource type="Texture2D" uid="uid://dhnffyb2si0o0" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_017.png" id="177_lvau0"]
+[ext_resource type="Texture2D" uid="uid://dicxaqv5t5rt8" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_018.png" id="178_tvcan"]
+[ext_resource type="Texture2D" uid="uid://cgs3cgkx47lab" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_019.png" id="179_cmq03"]
+[ext_resource type="Texture2D" uid="uid://b8anmf3trv05x" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_020.png" id="180_x5gjk"]
+[ext_resource type="Texture2D" uid="uid://ba1nkpp20140c" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_021.png" id="181_pb0ck"]
+[ext_resource type="Texture2D" uid="uid://dceirfmmj1u7g" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_022.png" id="182_regxx"]
+[ext_resource type="Texture2D" uid="uid://kytpoo8npg5d" path="res://素材/游戏素材/骷髅B/Walking_行走/0_Skeleton_Warrior_Walking_023.png" id="183_y8mts"]
+[ext_resource type="Texture2D" uid="uid://dsl2j42ebm4s0" path="res://素材/游戏素材/骷髅B/JumpStart_跳跃启动/0_Skeleton_Warrior_Jump Start_000.png" id="184_ss1m8"]
+[ext_resource type="Texture2D" uid="uid://dnfexk1h2mtot" path="res://素材/游戏素材/骷髅B/JumpStart_跳跃启动/0_Skeleton_Warrior_Jump Start_001.png" id="185_p1tbl"]
+[ext_resource type="Texture2D" uid="uid://c272grijq553w" path="res://素材/游戏素材/骷髅B/JumpStart_跳跃启动/0_Skeleton_Warrior_Jump Start_002.png" id="186_pscfe"]
+[ext_resource type="Texture2D" uid="uid://eve3n302uhpx" path="res://素材/游戏素材/骷髅B/JumpStart_跳跃启动/0_Skeleton_Warrior_Jump Start_003.png" id="187_rjj47"]
+[ext_resource type="Texture2D" uid="uid://brmos23sg4hkn" path="res://素材/游戏素材/骷髅B/JumpStart_跳跃启动/0_Skeleton_Warrior_Jump Start_004.png" id="188_3q16h"]
+[ext_resource type="Texture2D" uid="uid://c3uvcmxuvj61f" path="res://素材/游戏素材/骷髅B/JumpStart_跳跃启动/0_Skeleton_Warrior_Jump Start_005.png" id="189_rlppt"]
+[ext_resource type="Texture2D" uid="uid://dcne73eqewn5q" path="res://素材/游戏素材/骷髅B/JumpLoop_跳跃循环/0_Skeleton_Warrior_Jump Loop_000.png" id="190_0h6sp"]
+[ext_resource type="Texture2D" uid="uid://b7tm6dsrbmm6x" path="res://素材/游戏素材/骷髅B/JumpLoop_跳跃循环/0_Skeleton_Warrior_Jump Loop_001.png" id="191_ew26q"]
+[ext_resource type="Texture2D" uid="uid://bet6f3qnuu4yc" path="res://素材/游戏素材/骷髅B/JumpLoop_跳跃循环/0_Skeleton_Warrior_Jump Loop_002.png" id="192_sxnec"]
+[ext_resource type="Texture2D" uid="uid://cugbpxykm8v5p" path="res://素材/游戏素材/骷髅B/JumpLoop_跳跃循环/0_Skeleton_Warrior_Jump Loop_003.png" id="193_kv0xl"]
+[ext_resource type="Texture2D" uid="uid://cf5acr2pgm0xm" path="res://素材/游戏素材/骷髅B/JumpLoop_跳跃循环/0_Skeleton_Warrior_Jump Loop_004.png" id="194_v2g3c"]
+[ext_resource type="Texture2D" uid="uid://cntunl7fg8bj4" path="res://素材/游戏素材/骷髅B/JumpLoop_跳跃循环/0_Skeleton_Warrior_Jump Loop_005.png" id="195_vw8p4"]
+[ext_resource type="Texture2D" uid="uid://dmahd1c4xn236" path="res://素材/游戏素材/骷髅B/Kicking_踢击/0_Skeleton_Warrior_Kicking_000.png" id="196_ygw4i"]
+[ext_resource type="Texture2D" uid="uid://bwt1154oqy7kv" path="res://素材/游戏素材/骷髅B/Kicking_踢击/0_Skeleton_Warrior_Kicking_001.png" id="197_pkkm1"]
+[ext_resource type="Texture2D" uid="uid://bie223geimvdv" path="res://素材/游戏素材/骷髅B/Kicking_踢击/0_Skeleton_Warrior_Kicking_002.png" id="198_mxc7x"]
+[ext_resource type="Texture2D" uid="uid://6m8lw738i1hh" path="res://素材/游戏素材/骷髅B/Kicking_踢击/0_Skeleton_Warrior_Kicking_003.png" id="199_ibhh8"]
+[ext_resource type="Texture2D" uid="uid://dnesn7q5vhhvm" path="res://素材/游戏素材/骷髅B/Kicking_踢击/0_Skeleton_Warrior_Kicking_004.png" id="200_pkqco"]
+[ext_resource type="Texture2D" uid="uid://4qh2dx51h0rx" path="res://素材/游戏素材/骷髅B/Kicking_踢击/0_Skeleton_Warrior_Kicking_005.png" id="201_86btw"]
+[ext_resource type="Texture2D" uid="uid://bhi1hgtcg6j5q" path="res://素材/游戏素材/骷髅B/Kicking_踢击/0_Skeleton_Warrior_Kicking_006.png" id="202_pwr41"]
+[ext_resource type="Texture2D" uid="uid://br74uf0i85b3b" path="res://素材/游戏素材/骷髅B/Kicking_踢击/0_Skeleton_Warrior_Kicking_007.png" id="203_m063j"]
+[ext_resource type="Texture2D" uid="uid://cb8nsxqs0d614" path="res://素材/游戏素材/骷髅B/Kicking_踢击/0_Skeleton_Warrior_Kicking_008.png" id="204_rw6ur"]
+[ext_resource type="Texture2D" uid="uid://dc1viwr286vvg" path="res://素材/游戏素材/骷髅B/Kicking_踢击/0_Skeleton_Warrior_Kicking_009.png" id="205_3rflm"]
+[ext_resource type="Texture2D" uid="uid://bvpwhgvvv655k" path="res://素材/游戏素材/骷髅B/Kicking_踢击/0_Skeleton_Warrior_Kicking_010.png" id="206_emjod"]
+[ext_resource type="Texture2D" uid="uid://dk6ctey5uq4qv" path="res://素材/游戏素材/骷髅B/Kicking_踢击/0_Skeleton_Warrior_Kicking_011.png" id="207_mci44"]
+
+[resource]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bb8y8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fay77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wo7xe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6q8ua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mo7q3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8xein")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_swh2t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_c2ix8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ipsjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_oid0e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3rhe8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6unvm")
+}],
+"loop": false,
+"name": &"受伤",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_n8cpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8wpfd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_6lr4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_k2br8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_roh5b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_u6oix")
+}],
+"loop": true,
+"name": &"坠落",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_t31p8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_3v5o1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_480rn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_go3rb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_nm06r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_cjkwj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ddeov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ag55u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_g1ynu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_7dwn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_r13kn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_73jss")
+}],
+"loop": true,
+"name": &"奔跑",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_7nnai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_v74qp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_noptt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_0a746")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_1p4np")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_dxrhs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_pr0o6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_5edgw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_86sr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_myrqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_wkn80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_u00wf")
+}],
+"loop": false,
+"name": &"奔跑投掷",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("43_n2wq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_fxeq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_0vf1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_rdf4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_e6dmq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_xdfx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_v50iu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_rltfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_vccc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_y2wlr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_hunua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_l8mau")
+}],
+"loop": true,
+"name": &"奔跑挥砍",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("55_54yyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_pyq6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_wxi67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_voajr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_geja3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_ugptk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_e54o4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_186r6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_q33l0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_q85i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_d73pk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_85tr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_i5qrc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_f47x3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_wrbq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_gaowk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_rvb7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_giesu")
+}],
+"loop": true,
+"name": &"待机",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("73_7t70n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_3i6qx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_gdmye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_umwfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_w8tyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_vwua1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_37dhc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_idqwp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_3o5n5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_ivk2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_g0hm5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_alou2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_6plf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_6001s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_esmly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_gtphj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_lrsa0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_0kkcm")
+}],
+"loop": true,
+"name": &"待机眨眼",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("91_ehsvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_48t6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_bwusb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_ad0wd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_v0yyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_5vhto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_4j6vs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_soq66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_quf7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_38fc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_48mn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_p3nyv")
+}],
+"loop": false,
+"name": &"投掷",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("103_50lcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_56qm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_nynyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_j5l1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_00xiv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_3ojwk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_qh4wh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_55ecs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_25nju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_jbk5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_f6rjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_v0r56")
+}],
+"loop": false,
+"name": &"挥砍",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("115_5ohvr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_f6wcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_00prp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_4la52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_ytnfx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_3hca0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_rdf14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_yjlek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_dv8r8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_eeu5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_t7ue1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_axga7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_7g3mm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_gbnyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_6a2ox")
+}],
+"loop": false,
+"name": &"死亡",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("130_dh24g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_7xttx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_sdecl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_wcl0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_6obd5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_o1url")
+}],
+"loop": true,
+"name": &"滑行",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("136_qwqfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_6g8dj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_758v4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("139_uymso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_yvwod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_oxfn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_jpg3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_rciva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_wg7lu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_lrkg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_hwyfd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_qjo4p")
+}],
+"loop": false,
+"name": &"空中投掷",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("148_fsdc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_isxke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_o8poh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("151_lcucf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_6eaef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_p2yvx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_0m13r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_2shgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_novh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_oqk47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_kgjye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_8jkiv")
+}],
+"loop": false,
+"name": &"空中挥砍",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("160_0btla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("161_urble")
+}, {
+"duration": 1.0,
+"texture": ExtResource("162_l57xq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("163_upwkf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("164_2q1h1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("165_7456v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("166_cmoq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("167_srqm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("168_qsdkd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("169_o016o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("170_e0rcl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("171_7hlxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("172_8td05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_p28hu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_kuup0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_ojqbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_yh0wf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_lvau0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_tvcan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("179_cmq03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("180_x5gjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("181_pb0ck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("182_regxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("183_y8mts")
+}],
+"loop": true,
+"name": &"行走",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("184_ss1m8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("185_p1tbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("186_pscfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("187_rjj47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("188_3q16h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("189_rlppt")
+}],
+"loop": false,
+"name": &"跳跃",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("190_0h6sp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("191_ew26q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("192_sxnec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("193_kv0xl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("194_v2g3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("195_vw8p4")
+}],
+"loop": true,
+"name": &"跳跃中",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("196_ygw4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("197_pkkm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("198_mxc7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("199_ibhh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("200_pkqco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("201_86btw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("202_pwr41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("203_m063j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("204_rw6ur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("205_3rflm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("206_emjod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("207_mci44")
+}],
+"loop": false,
+"name": &"踢击",
+"speed": 24.0
+}]

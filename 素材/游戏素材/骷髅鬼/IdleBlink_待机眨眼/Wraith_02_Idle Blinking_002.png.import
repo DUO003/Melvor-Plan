@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://d28to0bwwjwl8"
+path="res://.godot/imported/Wraith_02_Idle Blinking_002.png-658d21dcd5c2c9ee2f1c0a8cf6e92485.res"
+group_file="res://角色/骷髅鬼.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅鬼/IdleBlink_待机眨眼/Wraith_02_Idle Blinking_002.png"
+dest_files=["res://.godot/imported/Wraith_02_Idle Blinking_002.png-658d21dcd5c2c9ee2f1c0a8cf6e92485.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅鬼.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

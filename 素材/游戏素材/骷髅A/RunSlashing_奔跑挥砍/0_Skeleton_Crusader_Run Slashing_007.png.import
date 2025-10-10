@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://dfi6kd3n262ns"
+path="res://.godot/imported/0_Skeleton_Crusader_Run Slashing_007.png-b260c6d2d6aabf1fb8d772ac4c2f443c.res"
+group_file="res://角色/骷髅A.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅A/RunSlashing_奔跑挥砍/0_Skeleton_Crusader_Run Slashing_007.png"
+dest_files=["res://.godot/imported/0_Skeleton_Crusader_Run Slashing_007.png-b260c6d2d6aabf1fb8d772ac4c2f443c.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅A.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

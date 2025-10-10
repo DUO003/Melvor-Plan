@@ -35,7 +35,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/YgameEngine/plugin.cfg", "res://addons/block_code/plugin.cfg", "res://addons/net.yarvis.pixel_pen/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/tab_saver/plugin.cfg")
+enabled=PackedStringArray("res://addons/YgameEngine/plugin.cfg", "res://addons/block_code/plugin.cfg", "res://addons/fastnode/plugin.cfg", "res://addons/net.yarvis.pixel_pen/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/tab_saver/plugin.cfg")
 
 [input]
 
@@ -63,6 +63,17 @@ inv_split={
 [internationalization]
 
 locale/fallback="zh"
+
+[layer_names]
+
+2d_physics/layer_1="禁用默认"
+2d_physics/layer_2="敌人"
+2d_physics/layer_3="玩家"
+2d_physics/layer_4="地图"
+
+[physics]
+
+common/physics_ticks_per_second=30
 
 [rendering]
 

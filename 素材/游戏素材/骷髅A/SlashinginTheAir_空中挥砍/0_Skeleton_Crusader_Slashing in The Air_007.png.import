@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://dqiovu3npxcix"
+path="res://.godot/imported/0_Skeleton_Crusader_Slashing in The Air_007.png-66d048b80c41c9dd370d7c343294dbd2.res"
+group_file="res://角色/骷髅A.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅A/SlashinginTheAir_空中挥砍/0_Skeleton_Crusader_Slashing in The Air_007.png"
+dest_files=["res://.godot/imported/0_Skeleton_Crusader_Slashing in The Air_007.png-66d048b80c41c9dd370d7c343294dbd2.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅A.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

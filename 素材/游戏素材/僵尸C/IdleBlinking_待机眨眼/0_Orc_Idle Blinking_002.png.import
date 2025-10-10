@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://x5qrsr580qmh"
+path="res://.godot/imported/0_Orc_Idle Blinking_002.png-9912eec34f049b9d5b92e2bf89ef8d1b.res"
+group_file="res://角色/僵尸C.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/僵尸C/IdleBlinking_待机眨眼/0_Orc_Idle Blinking_002.png"
+dest_files=["res://.godot/imported/0_Orc_Idle Blinking_002.png-9912eec34f049b9d5b92e2bf89ef8d1b.res"]
+
+[params]
+
+atlas_file="res://角色/僵尸C.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://bhgk7x72fjjex"
+path="res://.godot/imported/0_Skeleton_Warrior_Jump Loop_002.png-36e9977dc9490ee7c7cec67b84a4036f.res"
+group_file="res://角色/骷髅C.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅C/JumpLoop_跳跃循环/0_Skeleton_Warrior_Jump Loop_002.png"
+dest_files=["res://.godot/imported/0_Skeleton_Warrior_Jump Loop_002.png-36e9977dc9490ee7c7cec67b84a4036f.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅C.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

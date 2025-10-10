@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://bc4xawmpv5ff2"
+path="res://.godot/imported/0_Orc_Jump Loop_003.png-fb611f1363eef7ba47db350f32168e97.res"
+group_file="res://角色/僵尸C.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/僵尸C/JumpLoop_跳跃循环/0_Orc_Jump Loop_003.png"
+dest_files=["res://.godot/imported/0_Orc_Jump Loop_003.png-fb611f1363eef7ba47db350f32168e97.res"]
+
+[params]
+
+atlas_file="res://角色/僵尸C.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

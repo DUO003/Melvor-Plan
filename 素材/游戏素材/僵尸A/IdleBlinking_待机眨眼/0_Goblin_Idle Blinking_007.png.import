@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://djty6st0p44b0"
+path="res://.godot/imported/0_Goblin_Idle Blinking_007.png-b784c2bd31890f7f5f83c3e7fa00cd64.res"
+group_file="res://角色/僵尸A.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/僵尸A/IdleBlinking_待机眨眼/0_Goblin_Idle Blinking_007.png"
+dest_files=["res://.godot/imported/0_Goblin_Idle Blinking_007.png-b784c2bd31890f7f5f83c3e7fa00cd64.res"]
+
+[params]
+
+atlas_file="res://角色/僵尸A.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

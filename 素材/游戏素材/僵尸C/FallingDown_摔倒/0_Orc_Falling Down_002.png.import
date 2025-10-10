@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://c8vokww3043bp"
+path="res://.godot/imported/0_Orc_Falling Down_002.png-aa6f6fdabee91267e85191d1575ca784.res"
+group_file="res://角色/僵尸C.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/僵尸C/FallingDown_摔倒/0_Orc_Falling Down_002.png"
+dest_files=["res://.godot/imported/0_Orc_Falling Down_002.png-aa6f6fdabee91267e85191d1575ca784.res"]
+
+[params]
+
+atlas_file="res://角色/僵尸C.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

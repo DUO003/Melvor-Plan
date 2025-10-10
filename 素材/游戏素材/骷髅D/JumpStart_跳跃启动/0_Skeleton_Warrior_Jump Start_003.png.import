@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://d1d1qd23t68dy"
+path="res://.godot/imported/0_Skeleton_Warrior_Jump Start_003.png-dd03288ab35a4138e045acef9d26463f.res"
+group_file="res://角色/骷髅D.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅D/JumpStart_跳跃启动/0_Skeleton_Warrior_Jump Start_003.png"
+dest_files=["res://.godot/imported/0_Skeleton_Warrior_Jump Start_003.png-dd03288ab35a4138e045acef9d26463f.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅D.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

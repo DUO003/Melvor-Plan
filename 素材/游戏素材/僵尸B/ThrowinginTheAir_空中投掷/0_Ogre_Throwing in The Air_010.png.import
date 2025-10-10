@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://dgijb6dxc2rsx"
+path="res://.godot/imported/0_Ogre_Throwing in The Air_010.png-cc31e56185be13f016ba5d984c63bd12.res"
+group_file="res://角色/僵尸B.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/僵尸B/ThrowinginTheAir_空中投掷/0_Ogre_Throwing in The Air_010.png"
+dest_files=["res://.godot/imported/0_Ogre_Throwing in The Air_010.png-cc31e56185be13f016ba5d984c63bd12.res"]
+
+[params]
+
+atlas_file="res://角色/僵尸B.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://byumos4heyjxi"
+path="res://.godot/imported/Wraith_02_Casting Spells_007.png-a49afa70ffc64cdc4393aef47b022e25.res"
+group_file="res://角色/骷髅鬼.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅鬼/CastingSpells_施法/Wraith_02_Casting Spells_007.png"
+dest_files=["res://.godot/imported/Wraith_02_Casting Spells_007.png-a49afa70ffc64cdc4393aef47b022e25.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅鬼.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://lw6jyldpmtgq"
+path="res://.godot/imported/0_Goblin_Throwing in The Air_005.png-e099f7e1a4a85c28ed09c10a65782724.res"
+group_file="res://角色/僵尸A.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/僵尸A/ThrowinginTheAir_空中投掷/0_Goblin_Throwing in The Air_005.png"
+dest_files=["res://.godot/imported/0_Goblin_Throwing in The Air_005.png-e099f7e1a4a85c28ed09c10a65782724.res"]
+
+[params]
+
+atlas_file="res://角色/僵尸A.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

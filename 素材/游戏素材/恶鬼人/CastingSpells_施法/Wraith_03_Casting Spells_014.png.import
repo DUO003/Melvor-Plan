@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://byai1fow455p2"
+path="res://.godot/imported/Wraith_03_Casting Spells_014.png-9e67b91b6a4a4ab86acf3e9122c087cf.res"
+group_file="res://角色/恶鬼人.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_014.png"
+dest_files=["res://.godot/imported/Wraith_03_Casting Spells_014.png-9e67b91b6a4a4ab86acf3e9122c087cf.res"]
+
+[params]
+
+atlas_file="res://角色/恶鬼人.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

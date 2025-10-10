@@ -1,0 +1,489 @@
+[gd_resource type="SpriteFrames" load_steps=112 format=3 uid="uid://bvevy2nrmg0mo"]
+
+[ext_resource type="Texture2D" uid="uid://bdvjxmfpqykdy" path="res://素材/游戏素材/恶鬼人/Hurt_受伤/Wraith_03_Hurt_000.png" id="1_b3afw"]
+[ext_resource type="Texture2D" uid="uid://cnxece2hlbqfj" path="res://素材/游戏素材/恶鬼人/Hurt_受伤/Wraith_03_Hurt_001.png" id="2_8sxit"]
+[ext_resource type="Texture2D" uid="uid://u6iucoperv5d" path="res://素材/游戏素材/恶鬼人/Hurt_受伤/Wraith_03_Hurt_002.png" id="3_defnw"]
+[ext_resource type="Texture2D" uid="uid://ch13eaqi15rtc" path="res://素材/游戏素材/恶鬼人/Hurt_受伤/Wraith_03_Hurt_003.png" id="4_nrjjt"]
+[ext_resource type="Texture2D" uid="uid://p06urj7c01ug" path="res://素材/游戏素材/恶鬼人/Hurt_受伤/Wraith_03_Hurt_004.png" id="5_gomm5"]
+[ext_resource type="Texture2D" uid="uid://vwmyksg3dged" path="res://素材/游戏素材/恶鬼人/Hurt_受伤/Wraith_03_Hurt_005.png" id="6_8ygb7"]
+[ext_resource type="Texture2D" uid="uid://6y437gku02h6" path="res://素材/游戏素材/恶鬼人/Hurt_受伤/Wraith_03_Hurt_006.png" id="7_2n0yb"]
+[ext_resource type="Texture2D" uid="uid://1stdxcjsja35" path="res://素材/游戏素材/恶鬼人/Hurt_受伤/Wraith_03_Hurt_007.png" id="8_p0ikq"]
+[ext_resource type="Texture2D" uid="uid://qsb38ysl5sm2" path="res://素材/游戏素材/恶鬼人/Hurt_受伤/Wraith_03_Hurt_008.png" id="9_3bh6t"]
+[ext_resource type="Texture2D" uid="uid://b67wqyjdgg6b8" path="res://素材/游戏素材/恶鬼人/Hurt_受伤/Wraith_03_Hurt_009.png" id="10_da3a8"]
+[ext_resource type="Texture2D" uid="uid://s1mg85omqcsl" path="res://素材/游戏素材/恶鬼人/Hurt_受伤/Wraith_03_Hurt_010.png" id="11_w6nuf"]
+[ext_resource type="Texture2D" uid="uid://c4yjxftp5rhas" path="res://素材/游戏素材/恶鬼人/Hurt_受伤/Wraith_03_Hurt_011.png" id="12_se5qa"]
+[ext_resource type="Texture2D" uid="uid://c58730sgvki84" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_000.png" id="13_2g3sc"]
+[ext_resource type="Texture2D" uid="uid://jxkwmigujupn" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_001.png" id="14_83b21"]
+[ext_resource type="Texture2D" uid="uid://cr3y28gevd4n6" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_002.png" id="15_q3nf0"]
+[ext_resource type="Texture2D" uid="uid://bdd1of3sairj6" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_003.png" id="16_dx6ri"]
+[ext_resource type="Texture2D" uid="uid://b8frs7jkgeou" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_004.png" id="17_iqnoh"]
+[ext_resource type="Texture2D" uid="uid://fxja6auduf3w" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_005.png" id="18_nuvmw"]
+[ext_resource type="Texture2D" uid="uid://cl2x7exvact4a" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_006.png" id="19_ajals"]
+[ext_resource type="Texture2D" uid="uid://yntel7xd6a1r" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_007.png" id="20_ran4n"]
+[ext_resource type="Texture2D" uid="uid://csditx6bn2c1i" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_008.png" id="21_o6xgi"]
+[ext_resource type="Texture2D" uid="uid://chun6qabaaciw" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_009.png" id="22_clqfo"]
+[ext_resource type="Texture2D" uid="uid://c4e3n68aruv1d" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_010.png" id="23_tqaa5"]
+[ext_resource type="Texture2D" uid="uid://bp4p2fsyq0oj2" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_011.png" id="24_ue8pg"]
+[ext_resource type="Texture2D" uid="uid://dhlsf7fy352lq" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_012.png" id="25_cwseb"]
+[ext_resource type="Texture2D" uid="uid://5rsfb5b1btae" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_013.png" id="26_41j6k"]
+[ext_resource type="Texture2D" uid="uid://ba606tyw1ni3w" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_014.png" id="27_tshwv"]
+[ext_resource type="Texture2D" uid="uid://cewijhla5553p" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_015.png" id="28_6lhjb"]
+[ext_resource type="Texture2D" uid="uid://cregfrqb27tvj" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_016.png" id="29_4ua0t"]
+[ext_resource type="Texture2D" uid="uid://epj0xne3rc4n" path="res://素材/游戏素材/恶鬼人/Taunt_嘲讽/Wraith_03_Taunt_017.png" id="30_7snfu"]
+[ext_resource type="Texture2D" uid="uid://d8i0jvc31kv8" path="res://素材/游戏素材/恶鬼人/Idle_待机/Wraith_03_Idle_000.png" id="31_n6jef"]
+[ext_resource type="Texture2D" uid="uid://bu0dhw38prgj4" path="res://素材/游戏素材/恶鬼人/Idle_待机/Wraith_03_Idle_001.png" id="32_087gk"]
+[ext_resource type="Texture2D" uid="uid://cdvh2gr22ync2" path="res://素材/游戏素材/恶鬼人/Idle_待机/Wraith_03_Idle_002.png" id="33_yrj3q"]
+[ext_resource type="Texture2D" uid="uid://bwxe1mf0aaoai" path="res://素材/游戏素材/恶鬼人/Idle_待机/Wraith_03_Idle_003.png" id="34_gsmi3"]
+[ext_resource type="Texture2D" uid="uid://cyv7eby23kq6q" path="res://素材/游戏素材/恶鬼人/Idle_待机/Wraith_03_Idle_004.png" id="35_u5kve"]
+[ext_resource type="Texture2D" uid="uid://by3odqlom4xgc" path="res://素材/游戏素材/恶鬼人/Idle_待机/Wraith_03_Idle_005.png" id="36_gn4od"]
+[ext_resource type="Texture2D" uid="uid://c7s13qn05majs" path="res://素材/游戏素材/恶鬼人/Idle_待机/Wraith_03_Idle_006.png" id="37_pe0wo"]
+[ext_resource type="Texture2D" uid="uid://cwk8alyysgnc" path="res://素材/游戏素材/恶鬼人/Idle_待机/Wraith_03_Idle_007.png" id="38_86pn0"]
+[ext_resource type="Texture2D" uid="uid://cv0jfts3w50ew" path="res://素材/游戏素材/恶鬼人/Idle_待机/Wraith_03_Idle_008.png" id="39_js1sn"]
+[ext_resource type="Texture2D" uid="uid://bde88nx45ofq5" path="res://素材/游戏素材/恶鬼人/Idle_待机/Wraith_03_Idle_009.png" id="40_i4syn"]
+[ext_resource type="Texture2D" uid="uid://kjx12xvae4dl" path="res://素材/游戏素材/恶鬼人/Idle_待机/Wraith_03_Idle_010.png" id="41_bu8k1"]
+[ext_resource type="Texture2D" uid="uid://jor30j38010i" path="res://素材/游戏素材/恶鬼人/Idle_待机/Wraith_03_Idle_011.png" id="42_n8jn2"]
+[ext_resource type="Texture2D" uid="uid://bbh6eto2qxxt5" path="res://素材/游戏素材/恶鬼人/IdleBlink_待机眨眼/Wraith_03_Idle Blinking_000.png" id="43_blq70"]
+[ext_resource type="Texture2D" uid="uid://bcpisst82eafx" path="res://素材/游戏素材/恶鬼人/IdleBlink_待机眨眼/Wraith_03_Idle Blinking_001.png" id="44_2m0ci"]
+[ext_resource type="Texture2D" uid="uid://dlrt1tm1yoayr" path="res://素材/游戏素材/恶鬼人/IdleBlink_待机眨眼/Wraith_03_Idle Blinking_002.png" id="45_plfvy"]
+[ext_resource type="Texture2D" uid="uid://boll4kfnnonka" path="res://素材/游戏素材/恶鬼人/IdleBlink_待机眨眼/Wraith_03_Idle Blinking_003.png" id="46_iun88"]
+[ext_resource type="Texture2D" uid="uid://bwrkm2yewn6iw" path="res://素材/游戏素材/恶鬼人/IdleBlink_待机眨眼/Wraith_03_Idle Blinking_004.png" id="47_v8xe7"]
+[ext_resource type="Texture2D" uid="uid://bfgdaodkdtq2f" path="res://素材/游戏素材/恶鬼人/IdleBlink_待机眨眼/Wraith_03_Idle Blinking_005.png" id="48_fqm62"]
+[ext_resource type="Texture2D" uid="uid://dwfq4m0qnhx50" path="res://素材/游戏素材/恶鬼人/IdleBlink_待机眨眼/Wraith_03_Idle Blinking_006.png" id="49_3xm0n"]
+[ext_resource type="Texture2D" uid="uid://cmgg4d85bwkcj" path="res://素材/游戏素材/恶鬼人/IdleBlink_待机眨眼/Wraith_03_Idle Blinking_007.png" id="50_a61vk"]
+[ext_resource type="Texture2D" uid="uid://bc7cfhvb27eaa" path="res://素材/游戏素材/恶鬼人/IdleBlink_待机眨眼/Wraith_03_Idle Blinking_008.png" id="51_82tfl"]
+[ext_resource type="Texture2D" uid="uid://dulujhqthvtqd" path="res://素材/游戏素材/恶鬼人/IdleBlink_待机眨眼/Wraith_03_Idle Blinking_009.png" id="52_4v0lp"]
+[ext_resource type="Texture2D" uid="uid://bma3j848qdy45" path="res://素材/游戏素材/恶鬼人/IdleBlink_待机眨眼/Wraith_03_Idle Blinking_010.png" id="53_ie3uy"]
+[ext_resource type="Texture2D" uid="uid://btoqeay8epj2l" path="res://素材/游戏素材/恶鬼人/IdleBlink_待机眨眼/Wraith_03_Idle Blinking_011.png" id="54_e18cm"]
+[ext_resource type="Texture2D" uid="uid://dggwiu87x0tcl" path="res://素材/游戏素材/恶鬼人/Attacking_攻击/Wraith_03_Attack_000.png" id="55_d1jt4"]
+[ext_resource type="Texture2D" uid="uid://deo7cvjajpbf1" path="res://素材/游戏素材/恶鬼人/Attacking_攻击/Wraith_03_Attack_001.png" id="56_87t3m"]
+[ext_resource type="Texture2D" uid="uid://b2qdp77heeqp2" path="res://素材/游戏素材/恶鬼人/Attacking_攻击/Wraith_03_Attack_002.png" id="57_xphsp"]
+[ext_resource type="Texture2D" uid="uid://nxptddfw8dox" path="res://素材/游戏素材/恶鬼人/Attacking_攻击/Wraith_03_Attack_003.png" id="58_2stbr"]
+[ext_resource type="Texture2D" uid="uid://cjn6xhprv58be" path="res://素材/游戏素材/恶鬼人/Attacking_攻击/Wraith_03_Attack_004.png" id="59_7msst"]
+[ext_resource type="Texture2D" uid="uid://cxyhbvswdphaa" path="res://素材/游戏素材/恶鬼人/Attacking_攻击/Wraith_03_Attack_005.png" id="60_lop48"]
+[ext_resource type="Texture2D" uid="uid://t83ibnqayamy" path="res://素材/游戏素材/恶鬼人/Attacking_攻击/Wraith_03_Attack_006.png" id="61_oag8b"]
+[ext_resource type="Texture2D" uid="uid://dwb4y1nf0vs3h" path="res://素材/游戏素材/恶鬼人/Attacking_攻击/Wraith_03_Attack_007.png" id="62_j2yb8"]
+[ext_resource type="Texture2D" uid="uid://5cela6f73w7l" path="res://素材/游戏素材/恶鬼人/Attacking_攻击/Wraith_03_Attack_008.png" id="63_44t8m"]
+[ext_resource type="Texture2D" uid="uid://c2cj0va0tdm36" path="res://素材/游戏素材/恶鬼人/Attacking_攻击/Wraith_03_Attack_009.png" id="64_712b5"]
+[ext_resource type="Texture2D" uid="uid://6xy73flw5vrw" path="res://素材/游戏素材/恶鬼人/Attacking_攻击/Wraith_03_Attack_010.png" id="65_0tji3"]
+[ext_resource type="Texture2D" uid="uid://c4hc3w25xxbj2" path="res://素材/游戏素材/恶鬼人/Attacking_攻击/Wraith_03_Attack_011.png" id="66_x6qk2"]
+[ext_resource type="Texture2D" uid="uid://bggbfdx31sna7" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_000.png" id="67_fqsye"]
+[ext_resource type="Texture2D" uid="uid://c0y5uohd3iptf" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_001.png" id="68_4o7ip"]
+[ext_resource type="Texture2D" uid="uid://cs84ymnv354wq" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_002.png" id="69_wjq2j"]
+[ext_resource type="Texture2D" uid="uid://di28ui13htuqp" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_003.png" id="70_1vvi5"]
+[ext_resource type="Texture2D" uid="uid://6vvwmrhk0mum" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_004.png" id="71_syehq"]
+[ext_resource type="Texture2D" uid="uid://c64dg4bpy7sln" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_005.png" id="72_257nx"]
+[ext_resource type="Texture2D" uid="uid://d1u2r2ngxyect" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_006.png" id="73_rdil2"]
+[ext_resource type="Texture2D" uid="uid://b73ip7k8b352g" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_007.png" id="74_hwwe2"]
+[ext_resource type="Texture2D" uid="uid://dgdgov6un2jyd" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_008.png" id="75_580sr"]
+[ext_resource type="Texture2D" uid="uid://gy0pghj15v6g" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_009.png" id="76_ahrkp"]
+[ext_resource type="Texture2D" uid="uid://kilphr2rkv4i" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_010.png" id="77_pskcl"]
+[ext_resource type="Texture2D" uid="uid://tyrtlwh3deom" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_011.png" id="78_borpt"]
+[ext_resource type="Texture2D" uid="uid://crx6e4ly6wpd" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_012.png" id="79_2ro0e"]
+[ext_resource type="Texture2D" uid="uid://b8dxi7owav8d0" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_013.png" id="80_aev2j"]
+[ext_resource type="Texture2D" uid="uid://byai1fow455p2" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_014.png" id="81_38rwp"]
+[ext_resource type="Texture2D" uid="uid://o3ydefj5cxdv" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_015.png" id="82_13tlp"]
+[ext_resource type="Texture2D" uid="uid://br3rmd7fci6ki" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_016.png" id="83_vffmw"]
+[ext_resource type="Texture2D" uid="uid://bdkwtkmtayund" path="res://素材/游戏素材/恶鬼人/CastingSpells_施法/Wraith_03_Casting Spells_017.png" id="84_ichoj"]
+[ext_resource type="Texture2D" uid="uid://c4yingt01ootm" path="res://素材/游戏素材/恶鬼人/Dying_死亡/Wraith_03_Dying_000.png" id="85_of1vg"]
+[ext_resource type="Texture2D" uid="uid://egs572tluioi" path="res://素材/游戏素材/恶鬼人/Dying_死亡/Wraith_03_Dying_001.png" id="86_38pvu"]
+[ext_resource type="Texture2D" uid="uid://bxypqsr5gj416" path="res://素材/游戏素材/恶鬼人/Dying_死亡/Wraith_03_Dying_002.png" id="87_rwecy"]
+[ext_resource type="Texture2D" uid="uid://b7jth6dthistr" path="res://素材/游戏素材/恶鬼人/Dying_死亡/Wraith_03_Dying_003.png" id="88_gwwl6"]
+[ext_resource type="Texture2D" uid="uid://b15iqdsjh1q7n" path="res://素材/游戏素材/恶鬼人/Dying_死亡/Wraith_03_Dying_004.png" id="89_x185b"]
+[ext_resource type="Texture2D" uid="uid://dbr655wpc5aba" path="res://素材/游戏素材/恶鬼人/Dying_死亡/Wraith_03_Dying_005.png" id="90_40ba0"]
+[ext_resource type="Texture2D" uid="uid://dm3kyahh8lm6c" path="res://素材/游戏素材/恶鬼人/Dying_死亡/Wraith_03_Dying_006.png" id="91_v0874"]
+[ext_resource type="Texture2D" uid="uid://0qchu4f0s5ij" path="res://素材/游戏素材/恶鬼人/Dying_死亡/Wraith_03_Dying_007.png" id="92_2qn33"]
+[ext_resource type="Texture2D" uid="uid://csdqunhkox5ue" path="res://素材/游戏素材/恶鬼人/Dying_死亡/Wraith_03_Dying_008.png" id="93_h58dd"]
+[ext_resource type="Texture2D" uid="uid://dylvxp614ujhr" path="res://素材/游戏素材/恶鬼人/Dying_死亡/Wraith_03_Dying_009.png" id="94_2nc7f"]
+[ext_resource type="Texture2D" uid="uid://bhrijtni6ehxk" path="res://素材/游戏素材/恶鬼人/Dying_死亡/Wraith_03_Dying_010.png" id="95_c6qjk"]
+[ext_resource type="Texture2D" uid="uid://docq5n74sk2ba" path="res://素材/游戏素材/恶鬼人/Dying_死亡/Wraith_03_Dying_011.png" id="96_iisi3"]
+[ext_resource type="Texture2D" uid="uid://c2wqbqrk3c407" path="res://素材/游戏素材/恶鬼人/Dying_死亡/Wraith_03_Dying_012.png" id="97_obnrp"]
+[ext_resource type="Texture2D" uid="uid://b143iw5o3qqnn" path="res://素材/游戏素材/恶鬼人/Dying_死亡/Wraith_03_Dying_013.png" id="98_m4dh7"]
+[ext_resource type="Texture2D" uid="uid://cd5e6l8wl6drv" path="res://素材/游戏素材/恶鬼人/Dying_死亡/Wraith_03_Dying_014.png" id="99_em1at"]
+[ext_resource type="Texture2D" uid="uid://b4sg42348adax" path="res://素材/游戏素材/恶鬼人/Walking_行走/Wraith_03_Moving Forward_000.png" id="100_idbtk"]
+[ext_resource type="Texture2D" uid="uid://wlj1s0cs885y" path="res://素材/游戏素材/恶鬼人/Walking_行走/Wraith_03_Moving Forward_001.png" id="101_xkbb7"]
+[ext_resource type="Texture2D" uid="uid://bmxbflnvxyo2h" path="res://素材/游戏素材/恶鬼人/Walking_行走/Wraith_03_Moving Forward_002.png" id="102_7m8t5"]
+[ext_resource type="Texture2D" uid="uid://belssxa6yxp2a" path="res://素材/游戏素材/恶鬼人/Walking_行走/Wraith_03_Moving Forward_003.png" id="103_hgxth"]
+[ext_resource type="Texture2D" uid="uid://qrghdd7kkix3" path="res://素材/游戏素材/恶鬼人/Walking_行走/Wraith_03_Moving Forward_004.png" id="104_fvm3w"]
+[ext_resource type="Texture2D" uid="uid://bawmhqusxuxpb" path="res://素材/游戏素材/恶鬼人/Walking_行走/Wraith_03_Moving Forward_005.png" id="105_1t1mk"]
+[ext_resource type="Texture2D" uid="uid://dskf50f8hnnk0" path="res://素材/游戏素材/恶鬼人/Walking_行走/Wraith_03_Moving Forward_006.png" id="106_tl382"]
+[ext_resource type="Texture2D" uid="uid://dw7gohbth4ryx" path="res://素材/游戏素材/恶鬼人/Walking_行走/Wraith_03_Moving Forward_007.png" id="107_hvq77"]
+[ext_resource type="Texture2D" uid="uid://dq56wgacwguby" path="res://素材/游戏素材/恶鬼人/Walking_行走/Wraith_03_Moving Forward_008.png" id="108_1nvva"]
+[ext_resource type="Texture2D" uid="uid://bifsvu5w12rxw" path="res://素材/游戏素材/恶鬼人/Walking_行走/Wraith_03_Moving Forward_009.png" id="109_g7lh5"]
+[ext_resource type="Texture2D" uid="uid://ucarxx02nggb" path="res://素材/游戏素材/恶鬼人/Walking_行走/Wraith_03_Moving Forward_010.png" id="110_rfgm2"]
+[ext_resource type="Texture2D" uid="uid://q353hpanguqn" path="res://素材/游戏素材/恶鬼人/Walking_行走/Wraith_03_Moving Forward_011.png" id="111_s70tw"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b3afw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8sxit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_defnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nrjjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gomm5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8ygb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2n0yb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_p0ikq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3bh6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_da3a8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_w6nuf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_se5qa")
+}],
+"loop": false,
+"name": &"受伤",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_2g3sc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_83b21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_q3nf0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_dx6ri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_iqnoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_nuvmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ajals")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ran4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_o6xgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_clqfo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_tqaa5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ue8pg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_cwseb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_41j6k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_tshwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_6lhjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_4ua0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_7snfu")
+}],
+"loop": false,
+"name": &"嘲讽",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_n6jef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_087gk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_yrj3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_gsmi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_u5kve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_gn4od")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_pe0wo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_86pn0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_js1sn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_i4syn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_bu8k1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_n8jn2")
+}],
+"loop": true,
+"name": &"待机",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("43_blq70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_2m0ci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_plfvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_iun88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_v8xe7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_fqm62")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_3xm0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_a61vk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_82tfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_4v0lp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_ie3uy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_e18cm")
+}],
+"loop": true,
+"name": &"待机眨眼",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("55_d1jt4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_87t3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_xphsp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_2stbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_7msst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_lop48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_oag8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_j2yb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_44t8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_712b5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_0tji3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_x6qk2")
+}],
+"loop": false,
+"name": &"攻击",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("67_fqsye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_4o7ip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_wjq2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_1vvi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_syehq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_257nx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_rdil2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_hwwe2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_580sr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_ahrkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_pskcl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_borpt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_2ro0e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_aev2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_38rwp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_13tlp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_vffmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_ichoj")
+}],
+"loop": false,
+"name": &"施法",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("85_of1vg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_38pvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_rwecy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_gwwl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_x185b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_40ba0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_v0874")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_2qn33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_h58dd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_2nc7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_c6qjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_iisi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_obnrp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_m4dh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_em1at")
+}],
+"loop": false,
+"name": &"死亡",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("100_idbtk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_xkbb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_7m8t5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_hgxth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_fvm3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_1t1mk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_tl382")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_hvq77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_1nvva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_g7lh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_rfgm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_s70tw")
+}],
+"loop": true,
+"name": &"行走",
+"speed": 24.0
+}]

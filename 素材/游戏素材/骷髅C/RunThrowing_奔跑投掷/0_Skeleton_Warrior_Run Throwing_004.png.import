@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://cdtj28jpcmffr"
+path="res://.godot/imported/0_Skeleton_Warrior_Run Throwing_004.png-c54438bb4ece9f618155ff23b66d044d.res"
+group_file="res://角色/骷髅C.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅C/RunThrowing_奔跑投掷/0_Skeleton_Warrior_Run Throwing_004.png"
+dest_files=["res://.godot/imported/0_Skeleton_Warrior_Run Throwing_004.png-c54438bb4ece9f618155ff23b66d044d.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅C.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

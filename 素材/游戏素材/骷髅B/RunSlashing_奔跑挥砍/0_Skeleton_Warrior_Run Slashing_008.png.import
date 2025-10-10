@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://dmh7gc8u6a4ht"
+path="res://.godot/imported/0_Skeleton_Warrior_Run Slashing_008.png-98133532575d7862a27ed7fba66f5889.res"
+group_file="res://角色/骷髅B.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅B/RunSlashing_奔跑挥砍/0_Skeleton_Warrior_Run Slashing_008.png"
+dest_files=["res://.godot/imported/0_Skeleton_Warrior_Run Slashing_008.png-98133532575d7862a27ed7fba66f5889.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅B.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

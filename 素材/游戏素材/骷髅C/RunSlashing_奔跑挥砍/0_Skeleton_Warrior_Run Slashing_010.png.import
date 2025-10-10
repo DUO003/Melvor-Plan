@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://clqfb0ylgf6qq"
+path="res://.godot/imported/0_Skeleton_Warrior_Run Slashing_010.png-6015943a57f2d9df9ca1d78c6a761b71.res"
+group_file="res://角色/骷髅C.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅C/RunSlashing_奔跑挥砍/0_Skeleton_Warrior_Run Slashing_010.png"
+dest_files=["res://.godot/imported/0_Skeleton_Warrior_Run Slashing_010.png-6015943a57f2d9df9ca1d78c6a761b71.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅C.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

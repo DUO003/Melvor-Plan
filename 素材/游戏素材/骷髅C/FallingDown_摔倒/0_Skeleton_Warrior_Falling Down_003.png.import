@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://ci64ro6pgoef4"
+path="res://.godot/imported/0_Skeleton_Warrior_Falling Down_003.png-a69dbb0ff6ff73a1093aa3bf4ce70658.res"
+group_file="res://角色/骷髅C.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅C/FallingDown_摔倒/0_Skeleton_Warrior_Falling Down_003.png"
+dest_files=["res://.godot/imported/0_Skeleton_Warrior_Falling Down_003.png-a69dbb0ff6ff73a1093aa3bf4ce70658.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅C.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

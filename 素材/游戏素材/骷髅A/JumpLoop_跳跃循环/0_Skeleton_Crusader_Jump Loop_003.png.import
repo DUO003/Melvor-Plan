@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://cpeuq2j2g3sef"
+path="res://.godot/imported/0_Skeleton_Crusader_Jump Loop_003.png-399af2bdf77d3fb8dc278eeec1d3bddc.res"
+group_file="res://角色/骷髅A.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅A/JumpLoop_跳跃循环/0_Skeleton_Crusader_Jump Loop_003.png"
+dest_files=["res://.godot/imported/0_Skeleton_Crusader_Jump Loop_003.png-399af2bdf77d3fb8dc278eeec1d3bddc.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅A.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

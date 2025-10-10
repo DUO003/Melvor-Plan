@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://dv7s6gv6pkspr"
+path="res://.godot/imported/0_Goblin_Run Throwing_000.png-a7e9c56a08ad802caee651c10915d1e1.res"
+group_file="res://角色/僵尸A.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/僵尸A/RunThrowing_奔跑投掷/0_Goblin_Run Throwing_000.png"
+dest_files=["res://.godot/imported/0_Goblin_Run Throwing_000.png-a7e9c56a08ad802caee651c10915d1e1.res"]
+
+[params]
+
+atlas_file="res://角色/僵尸A.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

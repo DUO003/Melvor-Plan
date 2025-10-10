@@ -510,8 +510,8 @@ func 切换场景(子场景=null,主场景="合成界面"):
 		get_tree().change_scene_to_file("res://界面/空界面.tscn")
 		print("空节点不存在，已切换到空界面")
 func 结算升级(系统="手工",项目="null",跳过检查=false)-> int:
-	var 数据 = 梅存档.get(系统,{})
-	if 数据.size() == 0:
+	var 数据 = 梅存档.get(系统,{"数据错误":0})
+	if 数据 == {"数据错误":0}:
 		print("未找到存档数据")
 		return -1
 	var 等级

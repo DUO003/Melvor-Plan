@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://dqdacv42s7jbp"
+path="res://.godot/imported/0_Ogre_Run Slashing_000.png-1bf0c9e61e073a52f7c6e86e8f380472.res"
+group_file="res://角色/僵尸B.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/僵尸B/RunSlashing_奔跑挥砍/0_Ogre_Run Slashing_000.png"
+dest_files=["res://.godot/imported/0_Ogre_Run Slashing_000.png-1bf0c9e61e073a52f7c6e86e8f380472.res"]
+
+[params]
+
+atlas_file="res://角色/僵尸B.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

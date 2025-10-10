@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://55g54ymhjgkk"
+path="res://.godot/imported/0_Skeleton_Crusader_Falling Down_001.png-818349ea1094dfa2ae5eaf476c63dd3f.res"
+group_file="res://角色/骷髅A.png"
+valid=true
+[deps]
+
+
+source_file="res://素材/游戏素材/骷髅A/FallingDown_摔倒/0_Skeleton_Crusader_Falling Down_001.png"
+dest_files=["res://.godot/imported/0_Skeleton_Crusader_Falling Down_001.png-818349ea1094dfa2ae5eaf476c63dd3f.res"]
+
+[params]
+
+atlas_file="res://角色/骷髅A.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true
