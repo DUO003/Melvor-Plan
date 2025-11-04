@@ -167,7 +167,6 @@ func _init_grids() -> void:
 			_grid_container.add_child(grid)
 			_grid_map[grid_id] = grid
 			
-
 #region 中文调用方法
 # 新增的中文方法，不影响原有方法调用
 func 梅背包_格子悬停(格子ID: Vector2i) -> void:

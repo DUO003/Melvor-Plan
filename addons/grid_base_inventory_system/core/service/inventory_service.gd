@@ -45,7 +45,7 @@ func stack_moving_item(inv_name: String, grid_id: Vector2i) -> void:
 func place_moving_item(inv_name: String, grid_id: Vector2i) -> bool:
 	if place_to(inv_name, GBIS.moving_item_service.moving_item, grid_id):
 		GBIS.moving_item_service.clear_moving_item()
-		初始化.保存存档()
+		初始化.保存存档("背包:物品格子移动")
 		
 		return true
 	return false
@@ -74,7 +74,7 @@ func use_item(inv_name: String, grid_id: Vector2i) -> bool:
 	return false
 
 ## 分割物品
-func split_item(inv_name: String, grid_id: Vector2i, offset: Vector2i, base_size: int) -> ItemData:
+func split_item(inv_name: String, grid_id: Vector2i, offset: Vector2i, base_size: int,背包本体=null) -> ItemData:
 	var inv = _container_repository.get_container(inv_name)
 	if inv:
 		var item = inv.find_item_data_by_grid(grid_id)
@@ -87,7 +87,7 @@ func split_item(inv_name: String, grid_id: Vector2i, offset: Vector2i, base_size
 			
 			var new_item = item.duplicate()
 			new_item.current_amount = new_amount_2
-			GBIS.moving_item_service.move_item_by_data(new_item, offset, base_size)
+			GBIS.moving_item_service.move_item_by_data(new_item, offset, base_size,背包本体)
 			return new_item
 	return null
 

@@ -22,7 +22,7 @@ func _input(event: InputEvent) -> void:
 						场景节点.change_scene_to_packed(_切换的场景);	
 
 func 计时器触发() -> void:
-	if 地图类.取玩家当前所在地图的怪物数量()==0:
-		清空怪物=true
-		show()#显示
+	#if 地图类.取玩家当前所在地图的怪物数量()==0:
+		#清空怪物=true
+		#show()#显示
 	pass # Replace with function body.

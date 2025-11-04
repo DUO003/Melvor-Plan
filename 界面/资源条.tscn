@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://fhiod2yd4lhv"]
+
+[ext_resource type="Script" uid="uid://c1ef0ysqkbne2" path="res://代码/资源条.gd" id="1_5i305"]
+[ext_resource type="Texture2D" uid="uid://bwlsnmdrtqxxo" path="res://素材/游戏素材/货币/without background/36.png" id="1_5uhmg"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_5i305"]
+
+[node name="资源" type="Control"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_5i305")
+
+[node name="贴图" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+texture = ExtResource("1_5uhmg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="文本" type="Label" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_right = 180.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 50
+text = "木材"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="进度" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 16.0
+offset_right = 534.0
+offset_bottom = 66.0
+theme = ExtResource("2_5i305")
+value = 100.0
+
+[node name="回复" type="Label" parent="."]
+layout_mode = 1
+offset_left = 480.0
+offset_top = 16.0
+offset_right = 580.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 35
+text = "+1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

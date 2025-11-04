@@ -4,8 +4,11 @@ var 场景位置="res://界面/敌人模板.tscn"#用于跳转到场景
 # 配置参数（可根据需求调整）
 var 攻击检测
 var 警戒检测
+var 名称="僵尸"
+var 属性已更新=false
 func _ready():
-	怪物属性赋值()
+	if not 属性已更新:
+		怪物属性赋值()
 	攻击检测 = get_node("攻击范围")
 	警戒检测 = get_node("警戒范围")
 	警戒检测.body_entered.connect(玩家进入)
@@ -14,6 +17,7 @@ func _ready():
 	播放动画("待机")
 	
 func 怪物属性赋值():
+	属性已更新=true
 	血量=100
 	攻击=10
 	魔法=0
@@ -37,6 +41,11 @@ func _physics_process(帧时: float) -> void:
 		move_and_slide()
 		return
 	AI逻辑(帧时)
+	if 击退>0:
+		velocity.x +=击退
+		velocity.y -= 100
+		击退=0
+		print("击退结束")
 	move_and_slide()
 func AI逻辑(帧时):
 	if 当前目标 == null:

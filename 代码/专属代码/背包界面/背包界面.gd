@@ -27,6 +27,12 @@ func _ready():
 	%"使用".pressed.connect(func(): 引擎.屏幕.滚动提示("使用功能未开发完成敬请期待","背包信息"))
 	%"丢弃".pressed.connect(func(): %"删除确认弹窗".visible = true)
 	%"分享".pressed.connect(func():分享物品())
+	%"图钉".pressed.connect(func():初始化.全局图钉(物品.item_name,%"图钉".button_pressed))
+	%"金币贴图".gui_input.connect(func(按键信号):
+		if (按键信号 is InputEventMouseButton and 按键信号.pressed and
+		按键信号.button_index == MOUSE_BUTTON_LEFT):
+			var 按钮状态=not 初始化.梅存档["挂机"].get("全局图钉",[]).has("金币")
+			初始化.全局图钉("金币",按钮状态))
 	%"删除确认弹窗".confirmed.connect(func():删除物品())
 	#%"玩家".mouse_entered.connect(func(): %"玩家属性".text=战力文本)
 	#%"玩家".mouse_exited.connect(func():%"玩家属性".text=属性文本)
@@ -37,8 +43,6 @@ func 分享物品():
 		引擎.屏幕.滚动提示("物品信息已粘贴到剪切板","背包信息")
 	else :
 		引擎.屏幕.滚动提示("错误物品异常","背包信息")
-
-
 func 删除物品():
 	if not 物品==null:
 		GBIS.inventory_service.remove_item_by_data("背包", 物品)
@@ -60,4 +64,6 @@ func _背包物品信息(传入物品:标准物品):
 	%"物品详情文本".text=物品.item_name+"\n数量:"+str(物品.current_amount)+"\n堆叠上限:"+str(物品.stack_size)+"\n"+物品.简介
 	%"物品详情名称".text=物品.item_name
 	%"物品详情贴图".texture=物品.icon
+	if 初始化.节点.has("空节点"):
+		%"图钉".button_pressed=初始化.节点["空节点"].全局图钉.has(str(物品.item_name))
 	print("收到物品更新：", 物品.简介)

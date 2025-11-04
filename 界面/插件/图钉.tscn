@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg8c6vs7hkjpv"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_rs2ep"]
+[ext_resource type="Script" uid="uid://wijw3s8smtg1" path="res://代码/专属代码/特殊功能/图钉.gd" id="2_nlils"]
+[ext_resource type="Texture2D" uid="uid://dpqcwwsve3wgm" path="res://素材/豆包AI素材/像素瓶子.png" id="2_qamfg"]
+
+[node name="图钉" type="HBoxContainer"]
+offset_right = 59.0
+offset_bottom = 80.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_rs2ep")
+theme_override_constants/separation = -1
+script = ExtResource("2_nlils")
+
+[node name="图片背景" type="Panel" parent="."]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="贴图" type="TextureRect" parent="图片背景"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(55, 75)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -37.5
+offset_right = 27.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qamfg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="点击" type="Button" parent="图片背景"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="物品信息" type="Panel" parent="."]
+custom_minimum_size = Vector2(59, 43)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="物品名称" type="Label" parent="物品信息"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 59.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 30
+text = "名称"
+
+[node name="物品数量" type="Label" parent="物品信息"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 35.0
+offset_right = 1.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 30

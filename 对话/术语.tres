@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DialogicGlossary" load_steps=2 format=3 uid="uid://denvdcpnkjx7d"]
+
+[ext_resource type="Script" uid="uid://80elcodyqohb" path="res://addons/dialogic/Modules/Glossary/glossary_resource.gd" id="1_7ji3g"]
+
+[resource]
+script = ExtResource("1_7ji3g")
+entries = {
+"熟练": {
+"alternatives": ["熟练"],
+"case_sensitive": false,
+"color": Color(0.6901961, 0.8784314, 0.9019608, 1),
+"name": "熟练",
+"text": "\"系统\"本身等级升级所需的经验",
+"title": "熟练"
+},
+"精通": {
+"alternatives": ["精通"],
+"case_sensitive": false,
+"color": Color(0.6901961, 0.8784314, 0.9019608, 1),
+"name": "精通",
+"text": "系统内的\"技能\"等级提升所需的经验值",
+"title": "精通"
+}
+}

@@ -10,6 +10,6 @@ func _gui_input(event: InputEvent) -> void:
 				var item = GBIS.shop_service.find_item_data_by_grid(_container_view.container_name, grid_id)
 				GBIS.shop_service.buy(_container_view.container_name, item)
 				GBIS.emit_signal("sig_inv_refresh")
-				初始化.保存存档()
+				初始化.保存存档("购买商品")
 		elif GBIS.has_moving_item():
 				GBIS.shop_service.sell(GBIS.moving_item_service.moving_item)

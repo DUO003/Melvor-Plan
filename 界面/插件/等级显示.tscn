@@ -32,6 +32,7 @@ grow_horizontal = 2
 theme = ExtResource("2_brtdv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_brtdv")
 step = 1.0
+value = 33.0
 show_percentage = false
 
 [node name="熟练进度条" type="ProgressBar" parent="."]
@@ -46,6 +47,7 @@ grow_horizontal = 2
 theme = ExtResource("2_brtdv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_in4vb")
 step = 1.0
+value = 66.0
 show_percentage = false
 
 [node name="文本" type="Label" parent="."]
@@ -57,4 +59,4 @@ offset_right = 301.0
 offset_bottom = 98.0
 theme = ExtResource("2_brtdv")
 theme_override_font_sizes/font_size = 60
-text = "合成 LV:99"
+text = "合成 LV:1"

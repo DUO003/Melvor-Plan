@@ -26,9 +26,10 @@ func _input(event: InputEvent) -> void:
 			if event.is_pressed():
 				if ("keycode" in event)==true:
 					if event.keycode==4194322:
-						if 背包类.减少物品(需求道具ID,需求道具数量):
-							OS.alert("机关已开启")
-							已获得=true
-						else:
-							OS.alert("未拥有道具钥匙")
+						#if 背包类.减少物品(需求道具ID,需求道具数量):
+						#	OS.alert("机关已开启")
+						#	已获得=true
+						#else:
+						#	OS.alert("未拥有道具钥匙")
+						pass
 					#if 背包类

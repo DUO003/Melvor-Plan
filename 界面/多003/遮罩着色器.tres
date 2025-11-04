@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=4 uid="uid://db3wq4hxwe21"]
+
+[ext_resource type="Shader" uid="uid://dhj3t4qqyps2e" path="res://界面/多003/遮罩着色器.gdshader" id="1_oqcu3"]
+
+[resource]
+shader = ExtResource("1_oqcu3")
+shader_parameter/u_rects = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/u_rect_count = 0
+shader_parameter/u_container_size = Vector2(0, 0)
