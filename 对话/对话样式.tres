@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=21 format=3 uid="uid://b1nrruivvt07b"]
+
+[ext_resource type="PackedScene" uid="uid://cqpb3ie51rwl5" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.tscn" id="1_q5qm0"]
+[ext_resource type="Script" uid="uid://bwg6yncmh2cml" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_3ndi7"]
+[ext_resource type="PackedScene" uid="uid://c1k5m0w3r40xf" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_FullBackground/full_background_layer.tscn" id="3_iu47x"]
+[ext_resource type="PackedScene" uid="uid://cy1y14inwkplb" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Portraits/vn_portrait_layer.tscn" id="4_evtch"]
+[ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="5_erf78"]
+[ext_resource type="PackedScene" uid="uid://bquja8jyk8kbr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_layer.tscn" id="6_a8k1l"]
+[ext_resource type="PackedScene" uid="uid://dsbwnp5hegnu3" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.tscn" id="7_ncyq0"]
+[ext_resource type="PackedScene" uid="uid://dhk6j6eb6e3q" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn" id="8_r2jki"]
+[ext_resource type="PackedScene" uid="uid://cvgf4c6gg0tsy" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/text_input_layer.tscn" id="9_2jrnf"]
+[ext_resource type="PackedScene" uid="uid://lx24i8fl6uo" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_History/history_layer.tscn" id="10_25jx4"]
+[ext_resource type="Script" uid="uid://dv08k6ljua6fm" path="res://addons/dialogic/Resources/dialogic_style.gd" id="11_8hpqm"]
+
+[sub_resource type="Resource" id="Resource_3iuvx"]
+script = ExtResource("2_3ndi7")
+scene = ExtResource("1_q5qm0")
+overrides = {
+"global_bg_color": "Color(0.5294118, 0.37254903, 0.101960786, 0.7058824)",
+"global_font_size": "30.0"
+}
+
+[sub_resource type="Resource" id="Resource_quw8s"]
+script = ExtResource("2_3ndi7")
+scene = ExtResource("3_iu47x")
+
+[sub_resource type="Resource" id="Resource_6nggf"]
+script = ExtResource("2_3ndi7")
+scene = ExtResource("4_evtch")
+
+[sub_resource type="Resource" id="Resource_gjok7"]
+script = ExtResource("2_3ndi7")
+scene = ExtResource("5_erf78")
+
+[sub_resource type="Resource" id="Resource_qxkei"]
+script = ExtResource("2_3ndi7")
+scene = ExtResource("6_a8k1l")
+overrides = {
+"box_margin_bottom": "24.0",
+"box_size": "Vector2(1000, 200)",
+"name_label_box_offset": "Vector2(0, -30)",
+"name_label_custom_font_size": "35.0",
+"name_label_use_global_font_size": "false",
+"text_size": "24.0"
+}
+
+[sub_resource type="Resource" id="Resource_guajm"]
+script = ExtResource("2_3ndi7")
+scene = ExtResource("7_ncyq0")
+
+[sub_resource type="Resource" id="Resource_14lua"]
+script = ExtResource("2_3ndi7")
+scene = ExtResource("8_r2jki")
+overrides = {
+"boxes_offset": "Vector2(400, 200)",
+"font_size_custom": "40.0",
+"font_size_use_global": "false",
+"maximum_choices": "3.0"
+}
+
+[sub_resource type="Resource" id="Resource_np1rc"]
+script = ExtResource("2_3ndi7")
+scene = ExtResource("9_2jrnf")
+
+[sub_resource type="Resource" id="Resource_fblaa"]
+script = ExtResource("2_3ndi7")
+scene = ExtResource("10_25jx4")
+
+[resource]
+script = ExtResource("11_8hpqm")
+name = "对话样式"
+layer_list = Array[String](["10", "11", "12", "13", "14", "15", "16", "17"])
+layer_info = {
+"": SubResource("Resource_3iuvx"),
+"10": SubResource("Resource_quw8s"),
+"11": SubResource("Resource_6nggf"),
+"12": SubResource("Resource_gjok7"),
+"13": SubResource("Resource_qxkei"),
+"14": SubResource("Resource_guajm"),
+"15": SubResource("Resource_14lua"),
+"16": SubResource("Resource_np1rc"),
+"17": SubResource("Resource_fblaa")
+}
+metadata/_latest_layer = "15"

@@ -1,0 +1,81 @@
+[background arg="res://素材/豆包AI素材/生成二次元图书馆场景图.png" fade="0.1" transition="Push Down"]
+join 多003 leftmost
+多003: 欢迎来到我的游戏
+- 你是谁
+	leave --All-- [animation="Instant Out" length="0.1" wait="true"]
+	join 玩家 leftmost [animation="Fade In" length="0.1"]
+	玩家: 你是谁
+	leave --All-- [animation="Instant Out" length="0.1" wait="true"]
+	join 多003 leftmost
+	多003: 我叫多003,是这个游戏的作者.
+	- 该走的流程
+		leave --All-- [animation="Instant Out" length="0.1" wait="true"]
+		join 玩家 leftmost [animation="Fade In" length="0.1"]
+		玩家: 直接说接下来要做什么吧
+		leave --All-- [animation="Instant Out" length="0.1" wait="true"]
+		join 多003 leftmost
+		多003: 既然你这么着急,那就简单介绍一下吧
+		多003: 我设计的游戏有6个玩法系统\
+		理论上你可以选择任意一个系统开局
+		多003: 但现在工作进度有些落后...\
+		所以你只能选择手工系统开局
+	- 这游戏的剧情
+		leave --All-- [animation="Instant Out" length="0.1" wait="true"]
+		join 玩家 leftmost [animation="Fade In" length="0.1"]
+		玩家: 这游戏的剧情是啥
+		leave --All-- [animation="Instant Out" length="0.1" wait="true"]
+		join 多003 leftmost
+		多003: 其实都是一些老套的内容
+		多003: 从前有一种神秘的现象叫做深渊\
+		在这个信息构成的现实中所有靠近的信息\
+		都会被深渊巨大吸引力留在深渊视界内无法回来
+		多003: 此处省略一段剧情后,然后事情发生了转机\
+		他们发现在信息世界之外\
+		我们所处的另一个现实\
+		被证明对这种信息黑洞存在天然免疫
+		多003: 然后恰好我想要做一款游戏\
+		这正是建立信息关联最佳的方式\
+		于是你的目标是通过升级完善6个\
+		被封装成玩法系统信息连接核心\
+		顺带帮助他们从深渊打捞一些未知的信息
+		- 挺好
+			leave --All-- [animation="Instant Out" length="0.1" wait="true"]
+			join 玩家 leftmost [animation="Fade In" length="0.1"]
+			玩家: 不错听起来我们还算好人
+			leave --All-- [animation="Instant Out" length="0.1" wait="true"]
+			join 多003 leftmost
+			多003: 你开心就好,我们聊的够多了.直接进入正题吧.
+		- 警惕
+			leave --All-- [animation="Instant Out" length="0.1" wait="true"]
+			join 玩家 leftmost [animation="Fade In" length="0.1"]
+			玩家: 深渊,黑洞听起来就不安全,你是不是要坑我.\
+			我现在要马上关掉游戏.
+			leave --All-- [animation="Instant Out" length="0.1" wait="true"]
+			join 多003 leftmost
+			多003: 等等冤枉啊,我只是一个普通的游戏作者根本没有\
+			顺着网线诅咒人的本事
+	- 演都不演了
+		leave --All-- [animation="Instant Out" length="0.1" wait="true"]
+		join 玩家 leftmost [animation="Fade In" length="0.1"]
+		玩家: 第四面墙还有没有啊,为啥自称"作者"
+		leave --All-- [animation="Instant Out" length="0.1" wait="true"]
+		join 多003 leftmost
+		多003: 这只是一个视角问题.\
+		在你看来这是一个游戏!\
+		所以我当然是游戏的作者
+		多003: 另一个视角,比如从我的角度看\
+		这是一个发生在另一个可能性纠缠里的故事
+		多003: 或者对于故事里的人而已这就是现实
+- 快进到结束吧
+	leave --All-- [animation="Instant Out" length="0.1" wait="true"]
+	join 玩家 leftmost [animation="Fade In" length="0.1"]
+	玩家: 快进到结束吧
+	leave --All-- [animation="Instant Out" length="0.1" wait="true"]
+	join 多003 leftmost
+if {SCJQ} == true:
+	多003: 那么选择你开始游戏的第一个系统吧.
+	- 手工系统
+		do 初始化.任务完成处理("新手任务", "解锁手工")
+else:
+	多003: 你已经选择过初始系统.\
+	那么欢迎你再次回来和我聊天.

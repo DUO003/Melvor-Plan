@@ -1,62 +1,85 @@
 extends Control
-# 界面路径映射字典，维护界面名称与对应路径的关系
-var 界面路径映射: Dictionary = {
-	"合成界面": "res://界面/合成界面.tscn",
-	"合成_抽奖机界面": "res://界面/合成_抽奖机界面.tscn",
-	"背包界面": "res://界面/背包界面.tscn",
-	"小游戏界面": "res://界面/小游戏界面.tscn",
-	"小游戏_水排序":"res://界面/水排序.tscn",
-	"战斗界面":"res://界面/战斗界面.tscn",
-	"战斗_副本":"res://界面/战斗副本.tscn"
-	# 可以在这里继续添加其他界面
-}
-# 界面父子关系字典，键为主界面名称，值为子界面名称数组
-var 界面父子关系: Dictionary = {
-	"合成界面": ["合成_抽奖机界面"],
-	"背包界面": [],
-	"战斗界面": ["战斗_副本"],
-	"小游戏界面": ["小游戏_水排序"]
-}
-var 打开界面: Dictionary ={
-	"合成界面":null,
-	"背包界面":null,
-	"小游戏界面":null,
-	"战斗界面":null
-}# 记录当前打开的界面状态：键为主界面名称，值为当前显示的子界面名称（null表示显示主界面）
-var 初始界面=0#表示任务栏数组第几个元素 从0计数
-# 任务栏需要显示的界面名称数组
-var 任务栏数组: Array = ["合成界面", "背包界面","战斗界面","小游戏界面"]  # 可以添加更多界面
-@onready var 任务栏节点: VBoxContainer = $"任务栏"
-@onready var 任务按钮本体: Button = $"任务栏/任务"  # 明确为Button节点
-# 加载场景到场景容器的方法
+#真实字典位于"梅窗口"此处运行时会覆盖
+var 界面路径映射: Dictionary = {}#数组参数1.场景路径,参数2.场景对应的系统
+var 界面父子关系: Dictionary = {}#界面父子关系字典，键为主界面名称，值为子界面名称数组
+var 打开界面: Dictionary ={}#键为主界面名称，值为当前显示的子界面名称（null表示显示主界面）
+var 初始界面="初始"#缓存当前窗口名称
+var 任务栏数组: Array = []# 任务栏需要显示的界面名称数组,从存档加载
+var 全局图钉=["金币"]
+var 界面图钉={}
+var 滚动计时器
+var 图钉区光标=false
+@onready var 任务栏节点: VBoxContainer = %"任务栏"
+@onready var 任务按钮本体: Button = %"任务"  # 明确为Button节点
+signal 场景更新(当前场景)# 场景变化时会发出信号,首次加载也会发出
 func _ready():
-	#注册
-	初始化.提示容器=%"提示容器"
+	场景更新.connect(func(场景名称):初始化.emit_signal("场景更新",场景名称))
+	%"图钉".mouse_entered.connect(func(): 图钉区光标=true)
+	%"图钉".mouse_exited.connect(func(): 图钉区光标=false)
+	滚动计时器=初始化.创建计时器(2,func():
+		if not 图钉区光标 and %"图钉容器".size.x>1920 :
+			移动节点到最后(%"图钉容器"))
+	界面路径映射=初始化.梅窗口单例.界面路径映射#加载
+	界面父子关系=初始化.梅窗口单例.界面父子关系
+	界面图钉=初始化.梅窗口单例.界面图钉
+	打开界面={}
+	for key in 界面父子关系.keys():
+		打开界面[key] = null
+	初始化.提示容器=%"提示容器"#注册
 	初始化.节点["空节点"]=self
-	print("空节点")
-	# 在节点加载完成后生成任务栏按钮
-	生成任务栏按钮()
-
-# 生成任务栏所有按钮
-func 生成任务栏按钮() -> void:
+	生成任务栏按钮()# 在节点加载完成后生成任务栏按钮
+	if 初始界面=="初始":
+		print("初始界面:",任务栏数组[0])
+		重载场景(任务栏数组[0])
+func 重载图钉():
+	for 节点 in %"图钉容器".get_children():
+		%"图钉容器".remove_child(节点)
+		节点.queue_free()
+	var 图钉场景 = preload("res://界面/插件/图钉.tscn").instantiate()
+	全局图钉=初始化.梅存档["挂机"].get("全局图钉",[])
+	for 图钉 in 全局图钉:
+		var 新图钉=图钉场景.duplicate()
+		新图钉.物品名称=图钉
+		%"图钉容器".add_child(新图钉)
+	var 当前界面图钉=[]
+	if 打开界面[初始界面]==null:
+		当前界面图钉=界面图钉.get(初始界面,[])
+	else :
+		当前界面图钉=界面图钉.get(打开界面[初始界面],[])
+	for 图钉 in 当前界面图钉:
+		if 图钉 not in 全局图钉:
+			var 新图钉=图钉场景.duplicate()
+			新图钉.物品名称=图钉
+			%"图钉容器".add_child(新图钉)
+func 生成任务栏按钮() -> void:# 生成任务栏所有按钮
+	for 节点 in 任务栏节点.get_children():
+		if 节点!=任务按钮本体:
+			节点.queue_free()
+	var 窗口解锁数组 = 初始化.梅存档["挂机"].get("窗口解锁",[])
+	var 窗口禁用数组 = 初始化.梅存档["挂机"].get("窗口禁用",[])
+	if not 窗口解锁数组.has("任务窗口"):
+		窗口解锁数组.append("任务窗口")
+	任务栏数组 = []
+	for 窗口 in 窗口解锁数组:
+		if not 窗口禁用数组.has(窗口):# 其他窗口：必须不在禁用数组中才保留
+			任务栏数组.append(窗口)
+	if not 任务栏数组.has("任务窗口"):
+		任务栏数组.append("任务窗口")
 	for 界面名称 in 任务栏数组:
 		var 任务按钮: Button = 任务按钮本体.duplicate()
-		任务按钮.text = 界面名称.replace("界面", "")
-		任务按钮.name = 界面名称
+		任务按钮.show()#防止节点为隐藏
+		任务按钮.text = 界面名称.replace("界面", "").replace("窗口", "")
 		任务按钮.pressed.connect(func(): _任务栏(界面名称))
+		var 红点提示 = 任务按钮.get_node("红点提示")
+		红点提示.红点条目=界面名称
 		任务栏节点.add_child(任务按钮)
-	var 按钮: Button = 任务栏节点.find_child(任务栏数组[初始界面], true, false)
-	if 按钮:
-		print("测试:",str(按钮))
-		按钮.emit_signal("pressed")
-		#按钮.set_pressed_no_signal(true)# 设置按钮视觉效果为按下状态,但未实现
 	任务按钮本体.hide()# 按钮本体初始隐藏
 
 # 参数: 场景名称(例如 "背包界面")
-func 重载场景(场景名称: String, 子场景名称 = null) -> void:
+func 重载场景(场景名称: String, 子场景名称 = null,强制重载=false) -> void:
 	if GBIS.has_moving_item():
-		GBIS.moving_item_service.clear_moving_item()
-	if 任务栏数组[初始界面]==场景名称 and 打开界面[场景名称] == 子场景名称:
+		GBIS.moving_item_service.安全清除移动物品()
+	if not 强制重载 and 初始界面!="初始" and 初始界面==场景名称 and 打开界面[场景名称] == 子场景名称:
 		print("当前场景已经为",str(场景名称))
 		return
 	if 子场景名称 != null:#验证子场景有效性
@@ -72,11 +95,14 @@ func 重载场景(场景名称: String, 子场景名称 = null) -> void:
 	if not 界面路径映射.has(场景字典名):
 		print("错误: 场景名称 '", 场景字典名, "' 不存在于路径映射中")
 		return
+	var 玩法=界面路径映射[场景字典名][1]
+	if 玩法 !="挂机" and 初始化.梅存档.get(玩法,{}).get("等级",-1)==-1:
+		return
 	var 场景容器: Node = %场景容器
 	for 子节点 in 场景容器.get_children():# 清空场景容器下的所有节点
 		场景容器.remove_child(子节点)
 		子节点.queue_free()  # 释放节点资源
-	var 场景路径: String = 界面路径映射[场景字典名]# 从字典中获取场景路径
+	var 场景路径: String = 界面路径映射[场景字典名][0]# 从字典中获取场景路径
 	var 场景加载器: PackedScene = load(场景路径)
 	if 场景加载器 == null:
 		print("无法加载场景: ", 场景路径)
@@ -84,13 +110,26 @@ func 重载场景(场景名称: String, 子场景名称 = null) -> void:
 	# 实例化场景并添加到容器
 	var 场景实例: Node = 场景加载器.instantiate()
 	场景容器.add_child(场景实例)
-	初始界面=任务栏数组.find(场景名称)
+	初始界面=场景名称
 	打开界面[场景名称] = 子场景名称
-
+	重载图钉()
+	emit_signal("场景更新",场景名称)
 
 func _任务栏(界面名称) -> void:
 	重载场景(界面名称,打开界面[界面名称])
+	初始化.梅红点单例.消除红点(界面名称,"",-1)
 	pass # Replace with function body.
-
+# 传入容器节点，检查是否有2个以上子节点，如果是则将第一个节点移到最后
+func 移动节点到最后(容器节点: Node) -> void:
+	if 容器节点 == null:
+		print("错误：容器节点为空")
+		return
+	var 子节点数量 = 容器节点.get_child_count()
+	if 子节点数量 > 2:
+		var 节点 = 容器节点.get_child(0)
+		容器节点.move_child(节点, 子节点数量 - 1)
+	else:
+		print("子节点数量不足，不执行移动")
+	
 #快捷方法
 	#初始化.节点["空节点"].重载场景("合成界面",null)

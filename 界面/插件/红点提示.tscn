@@ -1,0 +1,144 @@
+[gd_scene load_steps=11 format=3 uid="uid://c51gx8des8nv1"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_vnjqi"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_7pjvl"]
+[ext_resource type="Script" uid="uid://h8y1q47lfqas" path="res://界面/插件/红点提示.gd" id="2_bdvs8"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_bdvs8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pjvl"]
+bg_color = Color(0, 0, 0, 0.49803922)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("3_bdvs8")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdvs8"]
+bg_color = Color(1, 0.23137255, 0.1882353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = -2.0
+expand_margin_top = -2.0
+expand_margin_right = -2.0
+expand_margin_bottom = -2.0
+script = ExtResource("3_bdvs8")
+margin_left = -2
+margin_top = -2
+margin_right = -2
+margin_bottom = -2
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_w4fr0"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("2_7pjvl")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_7pjvl"), SubResource("StyleBoxFlat_bdvs8")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="Animation" id="Animation_gq4nm"]
+resource_name = "红点"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("红点:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6333333, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 5), Vector2(0, -5), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nd4ma"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("红点:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_055p1"]
+_data = {
+&"RESET": SubResource("Animation_nd4ma"),
+&"红点": SubResource("Animation_gq4nm")
+}
+
+[node name="红点提示" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1880.0
+offset_bottom = -1040.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vnjqi")
+script = ExtResource("2_bdvs8")
+
+[node name="红点" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 30.0009
+rotation = 0.7853982
+pivot_offset = Vector2(20, 20)
+theme_override_styles/panel = SubResource("StyleBox_w4fr0")
+
+[node name="感叹号" type="Label" parent="红点"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.972294
+offset_top = 10.054833
+offset_right = -10.972294
+offset_bottom = 25.054832
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.7853982
+theme_override_colors/font_color = Color(1, 1, 1, 0.78431374)
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="数量" type="Label" parent="红点"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.1138744
+offset_top = -4.031335
+offset_right = -14.886126
+offset_bottom = -5.0321045
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.7853982
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="动画" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_055p1")
+}
+autoplay = "红点"

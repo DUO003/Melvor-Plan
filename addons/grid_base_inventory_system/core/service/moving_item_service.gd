@@ -22,7 +22,14 @@ func get_moving_item_layer() -> CanvasLayer:
 		GBIS.get_root().add_child(_moving_item_layer)
 	return _moving_item_layer
 
-## 清除正在移动的物品
+## 清除正在移动的物品(不会删除版)
+func 安全清除移动物品() -> void:
+	if moving_item != null:
+		var 背包类型 = "背包"
+		if moving_item is 物品装备:
+			背包类型 = "装备"
+		GBIS.add_item(背包类型, moving_item)
+		clear_moving_item()
 func clear_moving_item() -> void:
 	for o in _moving_item_layer.get_children():
 		o.queue_free()
@@ -31,10 +38,16 @@ func clear_moving_item() -> void:
 	if drop_area_view:
 		drop_area_view.hide()
 
-func move_item_by_data(item_data: ItemData, offset: Vector2i, base_size: int) -> void:
+func move_item_by_data(item_data: ItemData, offset: Vector2i, base_size: int,背包本体=null) -> void:
 	self.moving_item = item_data
 	self.moving_item_offset = offset
 	self.moving_item_view = ItemView.new(item_data, base_size)
+	if 背包本体!=null and 背包本体 is BaseContainerView:
+		moving_item_view.base_size = 背包本体.base_size  # 假设背包本体有base_size属性
+		moving_item_view.stack_num_color = 背包本体.stack_num_color
+		moving_item_view.stack_num_font = 背包本体.stack_num_font
+		moving_item_view.stack_num_font_size = 背包本体.stack_num_font_size
+		moving_item_view.stack_num_margin = 背包本体.stack_num_margin
 	get_moving_item_layer().add_child(moving_item_view)
 	moving_item_view.move(offset)
 	if drop_area_view:

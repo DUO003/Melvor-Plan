@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=3 uid="uid://c14u5pgdtet8q"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_23m16"]
+
+[node name="主题预览" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1120.0
+offset_bottom = -580.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_23m16")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="选项卡" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="主要功能" type="VBoxContainer" parent="选项卡"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="空" type="Control" parent="选项卡/主要功能"]
+layout_mode = 2
+
+[node name="按钮1" type="Control" parent="选项卡/主要功能"]
+custom_minimum_size = Vector2(236, 85)
+layout_mode = 2
+
+[node name="默认按钮" type="Button" parent="选项卡/主要功能/按钮1"]
+layout_mode = 0
+offset_right = 236.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "默认按钮"
+
+[node name="按钮2" type="Control" parent="选项卡/主要功能"]
+custom_minimum_size = Vector2(236, 85)
+layout_mode = 2
+
+[node name="切换按钮" type="CheckButton" parent="选项卡/主要功能/按钮2"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 24.0
+text = "切换按钮"
+
+[node name="默认文本" type="Label" parent="选项卡/主要功能"]
+layout_mode = 2
+text = "默认文本"
+
+[node name="其他功能" type="VBoxContainer" parent="选项卡"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="空" type="Control" parent="选项卡/其他功能"]
+layout_mode = 2
+
+[node name="默认文本" type="Label" parent="选项卡/其他功能"]
+layout_mode = 2
+text = "没有写"

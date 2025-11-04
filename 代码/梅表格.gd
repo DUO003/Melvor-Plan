@@ -72,25 +72,19 @@ func 获取表格(表格: String) -> Array:
 		if 文件 == null:
 			print("错误：无法打开文件 ", 文件路径)
 			return []
-		#else :
-			#print("加载成功", 文件路径)
 	var 结果数组 = []
 	while !文件.eof_reached():
 		var 一行内容 = 文件.get_line().strip_edges()
 		var 子数组 = []
 		# 先判断是否包含双引号，决定解析方式
-		if 一行内容.find("\"") == -1:
-			# 无引号，直接用split快速处理
-			子数组 = 一行内容.split(",")
-		else:
-			# 有引号，使用逐字解析
+		if 一行内容.find("\"") == -1:# 无引号，直接用split快速处理,需要转换会普通数组
+			子数组 = Array(一行内容.split(","))
+		else:# 当前单行行存在引号无法直接解析，需要使用逐字解析
 			var 当前单元格 = ""
 			var 在引号内 = false
 			var 上一个字符是引号 = false
-			
 			for i in range(一行内容.length()):
 				var 字符 = 一行内容[i]
-				
 				if 字符 == "\"":
 					if 上一个字符是引号:
 						当前单元格 += "\""  # 连续两个引号转为一个
@@ -101,19 +95,14 @@ func 获取表格(表格: String) -> Array:
 					continue
 				else:
 					上一个字符是引号 = false
-				
 				if 字符 == "," and !在引号内:
 					子数组.append(当前单元格)
 					当前单元格 = ""
 				else:
 					当前单元格 += 字符
-			
 			子数组.append(当前单元格)  # 添加最后一个单元格
-		
 		结果数组.append(子数组)
-	
 	文件.close()
-	#print("文件内容\r", 结果数组)
 	return 结果数组
 
 func 获取表格信息(表格数组: Array, 检索名称: String, 读取表值: String) -> Variant:
@@ -138,23 +127,22 @@ func 获取表格信息数组(表格数组: Array, 检索名称数组: Array, �
 	if 项目索引 == -1:
 		print("获取表格信息失败：未找到读取项目 '", 读取表值, "'")
 		return []
-	
 	var 结果数组 = []
 	for 首项名称 in 检索名称数组:
 		var 找到的值 = ""
 		var 编号 = 0  # 定义编号变量并初始化为0
 		for 数据行 in 表格数组:
-			if 数据行 == 表格数组[0]:
+			if 编号 == 0:
+				编号 += 1
 				continue
-			编号 += 1  # 每次循环+1
 			if 数据行[0] == 首项名称:
 				if 项目索引 == 0:
 					找到的值 = 编号
 				else:
 					找到的值 = 数据行[项目索引]
 				break
+			编号 += 1  # 每次循环+1
 		结果数组.append(找到的值)
-	
 	return 结果数组
 
 func _表头检索(表头: Array, 读取项目: String):
@@ -195,9 +183,9 @@ func 获取表格字典(表格数据,表格行号:int, 首项名称 = null) -> D
 			continue
 		var 键 = 表头[i]
 		var 原始值 = 行数据[i].strip_edges()  # 去除值的前后空格
-		# 尝试转换为整数，无法转换则保留字符串
-		if 原始值.is_valid_int():
-			结果字典[键] = int(原始值)
+		# 尝试转换为浮点，无法转换则保留字符串
+		if 原始值.is_valid_float():
+			结果字典[键] = float(原始值)
 		else:
 			结果字典[键] = 原始值
 	

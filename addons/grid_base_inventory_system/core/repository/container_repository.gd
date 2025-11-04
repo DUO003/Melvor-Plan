@@ -18,14 +18,15 @@ static var instance: ContainerRepository:
 @export_storage var _quick_move_relations_map: Dictionary[String, Array]
 @export_storage var 梅存档={}
 @export_storage var 时间戳字典:Dictionary[String,int] = {}
+@export_storage var 红点存档: Array=[]
 @export_storage var 版本号=1
-
 
 
 ## 保存所有背包数据
 func save() -> void:
 	梅存档=初始化.梅存档.duplicate(true)
 	时间戳字典=初始化.时间戳字典.duplicate(true)
+	红点存档=初始化.梅红点单例.红点存档.duplicate(true)
 	ResourceSaver.save(self, GBIS.current_save_path + PREFIX + GBIS.current_save_name)
 
 ## 读取所有背包数据
@@ -36,6 +37,10 @@ func load() -> void:
 	缓存存档=堆叠上限更新(缓存存档,初始化.堆叠上限修改)
 	初始化.梅存档=缓存存档.梅存档.duplicate(true)
 	初始化.时间戳字典=缓存存档.时间戳字典.duplicate(true)
+	var 红点存档数据 = 缓存存档.get("红点存档")
+	print("红点存档数据:",红点存档数据)
+	if 红点存档数据 != null and 红点存档数据 is Array:
+		初始化.梅红点单例.红点存档 = 红点存档数据.duplicate(true)
 	for inv_name in 缓存存档._container_data_map.keys():
 		_container_data_map[inv_name] = 缓存存档._container_data_map[inv_name].deep_duplicate()
 	_quick_move_relations_map = 缓存存档._quick_move_relations_map.duplicate(true)

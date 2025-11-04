@@ -1,0 +1,21 @@
+extends HBoxContainer
+@export var 物品名称="测试文本"
+func _ready() -> void:
+	%"物品名称".text=物品名称
+	%"物品名称".update_minimum_size()# 更新尺寸
+	%"物品名称".set_size(%"物品名称".get_combined_minimum_size())
+	if 物品名称=="金币":
+		%"物品数量".text=str(初始化.梅存档["金币"])
+	else :
+		%"物品数量".text=str(初始化.检查背包物品数量(物品名称))
+	%"物品数量".update_minimum_size()# 更新尺寸
+	%"物品数量".set_size(%"物品数量".get_combined_minimum_size())
+	var 最大X尺寸=max(%"物品名称".size.x,%"物品数量".size.x)
+	$"物品信息".custom_minimum_size=Vector2(最大X尺寸, 80)
+	$"物品信息".size=Vector2(最大X尺寸, 80)
+	position=Vector2(0,0)
+	var 图片路径 = 梅表格.获取表格信息(梅表格.装备蓝图,物品名称,"icon")
+	if 图片路径 != "":
+		%"贴图".texture=load(图片路径)
+	$"图片背景/点击".pressed.connect(func():
+		初始化.全局图钉(物品名称,false))

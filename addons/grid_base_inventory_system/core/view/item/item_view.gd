@@ -122,13 +122,6 @@ func _draw() -> void:
 var 测试
 ## 跟随鼠标
 func _process(_delta: float) -> void:
-	#var 目标尺寸: Rect2
-	#if _is_moving:
-		#目标尺寸 = Rect2(Vector2.ZERO, size)
-	#else:
-		#目标尺寸 = 矩形原尺寸
-	#if not 目标尺寸 == 矩形新尺寸:
-		#调整尺寸动画(目标尺寸)
 	if _is_moving:
 		@warning_ignore("integer_division")
 		global_position = get_global_mouse_position() - Vector2(base_size * _moving_offset) - Vector2(base_size / 2, base_size / 2)

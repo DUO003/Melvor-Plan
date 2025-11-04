@@ -1,15 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://c2ikyp8oaix5u"]
+[gd_scene load_steps=23 format=3 uid="uid://c2ikyp8oaix5u"]
 
 [ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="1_iqbb7"]
 [ext_resource type="Script" uid="uid://v0yytth2tqx2" path="res://代码/专属代码/合成主界面/合成界面.gd" id="2_u2knn"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="3_pbgl2"]
-[ext_resource type="Texture2D" uid="uid://bwlsnmdrtqxxo" path="res://素材/游戏素材/货币/without background/36.png" id="5_u2knn"]
-[ext_resource type="Texture2D" uid="uid://c4gb58t3lxupt" path="res://素材/游戏素材/货币/without background/13.png" id="6_wbi74"]
-[ext_resource type="Texture2D" uid="uid://do0gso7k5joc4" path="res://素材/游戏素材/货币/without background/16.png" id="7_dk4n3"]
-[ext_resource type="Texture2D" uid="uid://ba8c7d431qjma" path="res://素材/游戏素材/货币/without background/11.png" id="8_1v7ey"]
+[ext_resource type="PackedScene" uid="uid://fhiod2yd4lhv" path="res://界面/资源条.tscn" id="4_l4usl"]
 [ext_resource type="Texture2D" uid="uid://bl4iykenitqq" path="res://素材/像素/所有.png" id="9_iqbb7"]
-[ext_resource type="Texture2D" uid="uid://do0nhm7b1poyf" path="res://素材/游戏素材/货币/without background/49.png" id="9_l4usl"]
-[ext_resource type="Texture2D" uid="uid://dbidx7lt8kclg" path="res://素材/游戏素材/货币/without background/50.png" id="10_kqimc"]
 [ext_resource type="Texture2D" uid="uid://conmhorhmnqpg" path="res://素材/像素/框.png" id="11_3rko8"]
 [ext_resource type="Script" uid="uid://dxqqna74h0y6o" path="res://代码/专属代码/合成主界面/配方选择器代码.gd" id="12_8sqgc"]
 [ext_resource type="Script" uid="uid://bclwdcgdi0rv7" path="res://代码/专属代码/合成主界面/筛选器.gd" id="12_b1l35"]
@@ -124,7 +119,7 @@ offset_top = 100.0
 offset_bottom = -3.99994
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.82, 0.732533, 0.492, 0.705882)
+color = Color(0.82, 0.73253334, 0.492, 0.7058824)
 metadata/_edit_lock_ = true
 
 [node name="内容节点" type="Control" parent="."]
@@ -147,195 +142,58 @@ layout_mode = 2
 [node name="第一内容区" type="HBoxContainer" parent="内容节点/内容滚动区/内容区"]
 layout_mode = 2
 
-[node name="资源条" type="Control" parent="内容节点/内容滚动区/内容区/第一内容区"]
+[node name="资源条" type="ScrollContainer" parent="内容节点/内容滚动区/内容区/第一内容区"]
 custom_minimum_size = Vector2(620, 550)
 layout_mode = 2
 
 [node name="资源管理器" type="VBoxContainer" parent="内容节点/内容滚动区/内容区/第一内容区/资源条"]
-layout_mode = 0
-offset_left = 4.0
-offset_right = 100.0
-offset_bottom = 500.0
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 0
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="木材贴图" type="TextureRect" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器"]
-custom_minimum_size = Vector2(80, 80)
+[node name="木材" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
-texture = ExtResource("5_u2knn")
-expand_mode = 1
-stretch_mode = 5
 
-[node name="文本" type="Label" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/木材贴图"]
-layout_mode = 0
-offset_left = 110.0
-offset_top = 10.0
-offset_right = 210.0
-offset_bottom = 90.0
-theme_override_font_sizes/font_size = 50
-text = "木材"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="木材进度" type="ProgressBar" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/木材贴图"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 215.0
-offset_top = 25.0
-offset_right = 595.0
-offset_bottom = 75.0
-theme = ExtResource("3_pbgl2")
-value = 100.0
-
-[node name="矿石贴图" type="TextureRect" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器"]
-custom_minimum_size = Vector2(80, 80)
+[node name="矿石" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
-texture = ExtResource("6_wbi74")
-expand_mode = 1
-stretch_mode = 5
+"资源名称" = "矿石"
 
-[node name="文本" type="Label" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/矿石贴图"]
-layout_mode = 0
-offset_left = 110.0
-offset_top = 10.0
-offset_right = 210.0
-offset_bottom = 90.0
-theme_override_font_sizes/font_size = 50
-text = "矿石"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="矿石进度" type="ProgressBar" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/矿石贴图"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 215.0
-offset_top = 25.0
-offset_right = 595.0
-offset_bottom = 75.0
-theme = ExtResource("3_pbgl2")
-value = 100.0
-
-[node name="皮革贴图" type="TextureRect" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器"]
-custom_minimum_size = Vector2(80, 80)
+[node name="皮革" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
-texture = ExtResource("7_dk4n3")
-expand_mode = 1
-stretch_mode = 5
+"资源名称" = "皮革"
 
-[node name="文本" type="Label" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/皮革贴图"]
-layout_mode = 0
-offset_left = 110.0
-offset_top = 10.0
-offset_right = 210.0
-offset_bottom = 90.0
-theme_override_font_sizes/font_size = 50
-text = "皮革"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="皮革进度" type="ProgressBar" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/皮革贴图"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 215.0
-offset_top = 25.0
-offset_right = 595.0
-offset_bottom = 75.0
-theme = ExtResource("3_pbgl2")
-value = 100.0
-
-[node name="药草贴图" type="TextureRect" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器"]
-custom_minimum_size = Vector2(80, 80)
+[node name="药草" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
-texture = ExtResource("8_1v7ey")
-expand_mode = 1
-stretch_mode = 5
+"资源名称" = "药草"
 
-[node name="文本" type="Label" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/药草贴图"]
-layout_mode = 0
-offset_left = 110.0
-offset_top = 10.0
-offset_right = 210.0
-offset_bottom = 90.0
-theme_override_font_sizes/font_size = 50
-text = "药草"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="药草进度" type="ProgressBar" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/药草贴图"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 215.0
-offset_top = 25.0
-offset_right = 595.0
-offset_bottom = 75.0
-theme = ExtResource("3_pbgl2")
-value = 100.0
-
-[node name="零件贴图" type="TextureRect" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器"]
-custom_minimum_size = Vector2(80, 80)
+[node name="零件" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
-texture = ExtResource("9_l4usl")
-expand_mode = 1
-stretch_mode = 5
+"资源名称" = "零件"
 
-[node name="文本" type="Label" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/零件贴图"]
-layout_mode = 0
-offset_left = 110.0
-offset_top = 10.0
-offset_right = 210.0
-offset_bottom = 90.0
-theme_override_font_sizes/font_size = 50
-text = "零件"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="零件进度" type="ProgressBar" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/零件贴图"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 215.0
-offset_top = 25.0
-offset_right = 595.0
-offset_bottom = 75.0
-theme = ExtResource("3_pbgl2")
-value = 100.0
-
-[node name="精华贴图" type="TextureRect" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器"]
-custom_minimum_size = Vector2(80, 80)
+[node name="精华" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
-texture = ExtResource("10_kqimc")
-expand_mode = 1
-stretch_mode = 5
+"资源名称" = "精华"
 
-[node name="文本" type="Label" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/精华贴图"]
-layout_mode = 0
-offset_left = 110.0
-offset_top = 10.0
-offset_right = 210.0
-offset_bottom = 90.0
-theme_override_font_sizes/font_size = 50
-text = "精华"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="进度条" type="Control" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器"]
+layout_mode = 2
 
-[node name="精华进度" type="ProgressBar" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/精华贴图"]
+[node name="动作进度条" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/进度条" instance=ExtResource("15_yntay")]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 215.0
-offset_top = 25.0
-offset_right = 595.0
-offset_bottom = 75.0
-theme = ExtResource("3_pbgl2")
-value = 100.0
-
-[node name="动作进度条" parent="内容节点/内容滚动区/内容区/第一内容区/资源条" instance=ExtResource("15_yntay")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 304.0
-offset_top = 516.0
-offset_right = 304.0
-offset_bottom = 516.0
-scale = Vector2(1.4, 1.4)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 30.0
+offset_right = 40.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="筛选器" type="Control" parent="内容节点/内容滚动区/内容区/第一内容区"]
 custom_minimum_size = Vector2(110, 550)
@@ -469,6 +327,8 @@ offset_right = 188.0
 offset_bottom = 168.0
 scale = Vector2(1.25075, 1.25075)
 texture = ExtResource("14_wt2ge")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="按钮区" type="HBoxContainer" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区"]
 layout_mode = 2
