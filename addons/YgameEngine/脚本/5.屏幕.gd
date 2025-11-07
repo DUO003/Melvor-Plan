@@ -53,14 +53,13 @@ func 屏幕震动(相机: Camera2D = null, 震动持续时长: float = 0.1, 震�
 	相机.offset = 原始偏移
 
 func 滚动提示(文本:String,替换标签="",组件位置:Container=初始化.提示容器):
-		# 如果指定了替换标签，则先删除相同标签的已有提示
-	if 替换标签 != "":
-		# 遍历组件位置的所有子节点
-		for 子节点 in 组件位置.get_children():
-			# 检查子节点是否有标签属性且与替换标签一致
-			if 子节点.标签 == 替换标签:
-				子节点.queue_free()
-	var 对象=引擎.对象.创建并添加子对象(组件位置,"res://addons/YgameEngine/场景/滚动提示/control.tscn")
-	对象.text=文本+" "
-	对象.标签=替换标签
-	pass
+	if 组件位置 is Container:
+		if 替换标签 != "":# 如果指定了替换标签，则先删除相同标签的已有提示
+			# 遍历组件位置的所有子节点
+			for 子节点 in 组件位置.get_children():
+				# 检查子节点是否有标签属性且与替换标签一致
+				if 子节点.标签 == 替换标签:
+					子节点.queue_free()
+		var 对象=引擎.对象.创建并添加子对象(组件位置,"res://addons/YgameEngine/场景/滚动提示/control.tscn")
+		对象.text=文本+" "
+		对象.标签=替换标签

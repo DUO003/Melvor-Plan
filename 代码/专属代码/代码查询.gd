@@ -1,4 +1,18 @@
 extends Node
+@export_multiline var 多行文本: String = "支持换行\n可展开大文本编辑"
+@export_range(0, 100) var 浮点范围: float = 50.0 # 浮点范围0-100 @export_range(1, 10, 1) var 整数范围: int = 5 # 整数范围1-10，步长1
+@export_file var 任意文件路径: String = ""
+@export_file("*.txt","*.md") var 文本文件路径: String = ""
+@export_dir var 目录路径: String = ""
+@export_enum("红色", "绿色", "蓝色") var 枚举选项: int = 0 # 0=红色，1=绿色...
+@export_flags("飞行", "游泳", "奔跑") var 能力: int = 0 # 0=无，1=飞行，2=游泳，3=飞行+游泳...
+@export var 带透明度颜色: Color = Color(1, 0, 0, 1) #（含alpha）
+@export_color_no_alpha var 无透明度颜色: Color = Color(0, 1, 0) # 绿色（alpha固定为1）
+@export var 任意纹理: Texture2D = null
+@export_node_path("Button", "TouchScreenButton") var 任意节点路径
+@export_group("分组")
+@export_subgroup("小组")
+
 ##不具备任何功能,仅展示常用语法.
 func 语法备忘录(真: bool=true,假: bool=false,
 整数: int = 1,浮点数: float = 1.0,文本:String = "",
@@ -37,7 +51,7 @@ func 语法备忘录(真: bool=true,假: bool=false,
 		#var _四维向量整数: Vector4i = Vector4i(1, 2, 3, 4) # 4D整数向量，适用于4D整数运算场景
 		#var _平面: Plane = Plane(Vector3(0,1,0), 0) # 3D平面类型，由法向量和原点距离定义，常用于碰撞检测
 	var 参数:Variant=""
-	方法.call(参数)#执行方法
+	方法.call(参数)#执行方法.call()
 	return[真,假,整数,浮点数,文本,数组,字典,节点引用,颜色,空值,二维向量,二维向量整数,三维向量,三维向量整数]
 #func _exit_tree() -> void:#节点退出节点树时执行（生命周期结束）
 #func _tree_entered() -> void:#节点进入场景树时执行（早于_ready）

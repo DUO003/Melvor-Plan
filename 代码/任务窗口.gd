@@ -188,8 +188,18 @@ func 任务栏初始化():
 				)
 		任务按钮.mouse_entered.connect(func():
 			%"窗口名".text="窗口名称:"+界面名称
+			处理样式(%"展示按钮",界面名称)
 			var 加载简介=初始化.梅窗口单例.界面简介.get(界面名称,"当前窗口简介丢失")
 			%"窗口介绍".text="简介:\r"+ "\r".join(加载简介) +"\r管理任务栏中显示的按钮"
 			)
 		%"任务栏盒子".add_child(任务按钮)
 	窗口.hide()# 按钮本体初始隐藏
+func 处理样式(节点: Button, 界面名称: String) -> void:
+	var 纹理地址=初始化.梅窗口单例.界面路径映射[界面名称]
+	if 纹理地址.size()>=1:
+		var 纹理 = load(纹理地址[1])# 1. 加载图片
+		var 样式 = 节点.get_theme_stylebox("disabled")
+		if 纹理:
+			样式.样式数组[2].texture = 纹理
+		else :
+			样式.样式数组[2].texture = null

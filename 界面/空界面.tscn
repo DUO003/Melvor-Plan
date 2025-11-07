@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://btsgbqm2kx3s1"]
+[gd_scene load_steps=7 format=3 uid="uid://btsgbqm2kx3s1"]
 
 [ext_resource type="Script" uid="uid://5fy5axsca6i2" path="res://界面/用户界面.gd" id="1_1xcs4"]
 [ext_resource type="Texture2D" uid="uid://b6q0o46fjedne" path="res://素材/游戏素材/背景/3.png" id="3_kiae7"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="4_kiae7"]
-[ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="4_xpqlo"]
 [ext_resource type="PackedScene" uid="uid://c51gx8des8nv1" path="res://界面/插件/红点提示.tscn" id="5_5a7ci"]
 [ext_resource type="Script" uid="uid://dbhilkborreev" path="res://代码/专属代码/特殊功能/手动存档.gd" id="7_5a7ci"]
 [ext_resource type="Script" uid="uid://bmlc8vpbcln8u" path="res://代码/专属代码/合成主界面/测试.gd" id="7_etcdq"]
@@ -122,18 +121,22 @@ theme_override_constants/separation = 25
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-theme = ExtResource("4_xpqlo")
+theme = ExtResource("4_kiae7")
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 60
+theme_override_constants/align_to_largest_stylebox = 1
 text = "合成"
+expand_icon = true
 
 [node name="红点提示" parent="任务栏/任务" instance=ExtResource("5_5a7ci")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_bottom = 0.0
-offset_left = -56.0
-offset_top = 6.0
-offset_right = -16.0
-offset_bottom = 6.0
+offset_left = -43.0
+offset_top = 7.0
+offset_right = -3.0
+offset_bottom = 7.0
 grow_horizontal = 0
 grow_vertical = 1
 
