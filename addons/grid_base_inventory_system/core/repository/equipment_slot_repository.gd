@@ -19,6 +19,8 @@ static var instance: EquipmentSlotRepository:
 func save() -> void:
 	ResourceSaver.save(self, GBIS.current_save_path + PREFIX + GBIS.current_save_name)
 
+
+
 ## 读取所有装备槽，会重新穿戴所有装备
 func load() -> void:
 	for slot_name in _slot_data_map.keys():

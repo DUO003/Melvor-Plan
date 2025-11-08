@@ -1,4 +1,4 @@
-extends Control
+extends 基类梅窗口
 var 资源每秒 = {"木材":1, "矿石":1, "皮革":1, "药草":1}
 var 制作队列节点=[]
 var 制作指针=0
@@ -10,7 +10,7 @@ var 总时间: float = 0.0
 var 平均帧率: float = 0.0
 
 func _ready() -> void:
-	初始化.节点["合成界面"]=self#注册
+	super._ready()#注册
 	#资源回复逻辑
 	注册进度条()#加载后会更新一次UI,无需重复
 	处理资源回复()

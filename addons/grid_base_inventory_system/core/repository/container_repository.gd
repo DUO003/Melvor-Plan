@@ -29,6 +29,22 @@ func save() -> void:
 	红点存档=初始化.梅红点单例.红点存档.duplicate(true)
 	ResourceSaver.save(self, GBIS.current_save_path + PREFIX + GBIS.current_save_name)
 
+func 删除存档():
+	var 文件路径 = GBIS.current_save_path + PREFIX + GBIS.current_save_name
+	# 创建 DirAccess 实例
+	var dir = DirAccess.open(GBIS.current_save_path)
+	if dir:
+		# 检查文件是否存在然后删除
+		if dir.file_exists(PREFIX + GBIS.current_save_name):
+			var error = dir.remove(PREFIX + GBIS.current_save_name)
+			if error == OK:
+				print("存档删除成功")
+			else:
+				print("删除失败，错误代码: ", error)
+	else:
+		print("无法访问目录")
+
+
 ## 读取所有背包数据
 func load() -> void:
 	var 缓存存档: ContainerRepository = load(GBIS.current_save_path + PREFIX + GBIS.current_save_name)

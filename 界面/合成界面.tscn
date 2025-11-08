@@ -94,6 +94,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_pbgl2")
 script = ExtResource("2_u2knn")
+"基类窗口名称" = "合成界面"
 metadata/_edit_lock_ = true
 
 [node name="标题" type="ColorRect" parent="."]

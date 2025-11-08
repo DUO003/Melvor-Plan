@@ -18,6 +18,7 @@ func 语法备忘录(真: bool=true,假: bool=false,
 整数: int = 1,浮点数: float = 1.0,文本:String = "",
 数组: Array = [],字典: Dictionary = {},节点引用: Control = $Control,
 颜色: Color = Color(1, 0, 0),空值 = null,方法:Callable=func(_参数名):pass,
+纹理:Texture2D=Texture2D.new(),
 二维向量: Vector2 = Vector2(0,0),二维向量整数: Vector2i = Vector2i(0,0),
 三维向量: Vector3 = Vector3(0,0,0),三维向量整数: Vector3i = Vector3i(0,0,0)):
 	#基础类型（备注）
@@ -52,7 +53,9 @@ func 语法备忘录(真: bool=true,假: bool=false,
 		#var _平面: Plane = Plane(Vector3(0,1,0), 0) # 3D平面类型，由法向量和原点距离定义，常用于碰撞检测
 	var 参数:Variant=""
 	方法.call(参数)#执行方法.call()
-	return[真,假,整数,浮点数,文本,数组,字典,节点引用,颜色,空值,二维向量,二维向量整数,三维向量,三维向量整数]
+	return[真,假,整数,浮点数,文本,数组,字典,节点引用,颜色,空值,纹理,二维向量,二维向量整数,三维向量,三维向量整数]
+#func _ready() -> void:#节点进入节点树
+#super._ready()#运行上级节点的方法
 #func _exit_tree() -> void:#节点退出节点树时执行（生命周期结束）
 #func _tree_entered() -> void:#节点进入场景树时执行（早于_ready）
 #func _tree_exiting() -> void:#节点即将退出场景树时执行（退出前回调）
@@ -87,4 +90,5 @@ func 语法备忘录(真: bool=true,假: bool=false,
 #func _notification(what: int) -> void:#处理节点通用通知（如场景切换、资源加载等，需配合NOTIFICATION_*常量）
 	#print()
 	#signal#声明信号
+	#.queue_free()#删除节点
 	#初始化.emit_signal("更新_UI")#发出信号示例

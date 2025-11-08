@@ -55,23 +55,24 @@ func 生成任务栏按钮() -> void:# 生成任务栏所有按钮
 	for 节点 in 任务栏节点.get_children():
 		if 节点!=任务按钮本体:
 			节点.queue_free()
-	var 窗口解锁数组 = 初始化.梅存档["挂机"].get("窗口解锁",[])
-	var 窗口禁用数组 = 初始化.梅存档["挂机"].get("窗口禁用",[])
+	var 窗口解锁数组: Array = 初始化.梅存档["挂机"].get("窗口解锁",[])
+	var 窗口禁用数组: Array = 初始化.梅存档["挂机"].get("窗口禁用",[])
 	if not 窗口解锁数组.has("任务窗口"):
 		窗口解锁数组.append("任务窗口")
-	#if not 窗口解锁数组.has("默认窗口"):
-		#窗口解锁数组.append("默认窗口")
+	if 窗口解锁数组.has("默认窗口"):
+		窗口解锁数组.erase("默认窗口")
 	任务栏数组 = []
 	for 窗口 in 窗口解锁数组:
 		if not 窗口禁用数组.has(窗口):# 其他窗口：必须不在禁用数组中才保留
 			任务栏数组.append(窗口)
 	if not 任务栏数组.has("任务窗口"):
-		任务栏数组.append("任务窗口")
+		任务栏数组.insert(0, "任务窗口")
 	for 界面名称 in 任务栏数组:
 		var 任务按钮: Button = 任务按钮本体.duplicate()
 		任务按钮.show()#防止节点为隐藏
 		任务按钮.text = 界面名称.replace("界面", "").replace("窗口", "")
-		var 纹理=load(界面路径映射[界面名称][1])
+		var 路径=界面路径映射[界面名称][1]
+		var 纹理=load(路径) if 路径!="" else null
 		if 纹理:
 			任务按钮.icon=纹理
 			var 文本字数:int=任务按钮.text.length()#获取长度

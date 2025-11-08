@@ -389,10 +389,30 @@ func 保存存档(保存原因=""):
 	#var file = FileAccess.open(存档路径, FileAccess.WRITE)
 	#file.store_string(JSON.stringify(梅存档))
 	print("存档已保存:",保存原因)
-# 计算剩余倒计时秒数（确保非负）
+func 删除存档():
+	var 主存档标识 = GBIS.inventory_service._container_repository.PREFIX
+	var 装备栏存档标识=GBIS.equipment_slot_service._equipment_slot_repository.PREFIX
+	var dir = DirAccess.open(存档路径)# 创建 DirAccess 实例
+	if dir:
+		if dir.file_exists(主存档标识 + GBIS.current_save_name):# 检查文件是否存在然后删除
+			var 删除结果 = dir.remove(主存档标识 + GBIS.current_save_name)
+			if 删除结果 == OK:
+				print("主存档删除成功")
+			else:
+				print("主存档删除失败，错误代码: ", 删除结果)
+		if dir.file_exists(装备栏存档标识 + GBIS.current_save_name):# 检查文件是否存在然后删除
+			var 删除结果 = dir.remove(装备栏存档标识 + GBIS.current_save_name)
+			if 删除结果 == OK:
+				print("装备栏存档删除成功")
+			else:
+				print("装备栏存档删除失败，错误代码: ", 删除结果)
+	else:
+		print("无法访问目录")
+	get_tree().quit()#不考虑苹果端的实现
+## 计算剩余倒计时秒数（确保非负）
 func 获取剩余秒数(目标时间戳: int) -> int:#用于计时器,不可小于1
 	return max(int(目标时间戳 - Time.get_unix_time_from_system()), 1)
-func 格式化时间(总秒数: int) -> String:
+func 格式化时间(总秒数: int,限制:int=0) -> String:
 	if 总秒数 < 0:
 		return "00"  # 确保非负
 	@warning_ignore("integer_division")
@@ -405,8 +425,16 @@ func 格式化时间(总秒数: int) -> String:
 	if _小时>=1:
 		return "%02d:%02d:%02d" % [_小时, _分钟, _秒]
 	elif _分钟>=1:
+		if 限制>=3:
+			return "%02d:%02d:%02d" % [_小时, _分钟, _秒]
+		else :
+			return "%02d:%02d" % [_分钟, _秒]
+	if 限制>=3:
+		return "%02d:%02d:%02d" % [_小时, _分钟, _秒]
+	elif 限制>=2:
 		return "%02d:%02d" % [_分钟, _秒]
-	return "%02d"%_秒
+	else :
+		return "%02d"%_秒
 func 当前在线时间() -> int:
 	if not 梅存档["挂机"].has("在线时间"):
 		return -1
@@ -725,8 +753,8 @@ func 创建计时器(时间间隔: float, 回调方法: Callable, 是否循环: 
 	else:# 单次模式：触发一次后销毁计时器
 		计时器.one_shot = true  # 仅触发一次
 		计时器.timeout.connect(func():
-			回调方法.call()  # 执行用户传入的回调
-			计时器.queue_free())  # 销毁计时器（安全释放节点）
+			计时器.queue_free()# 销毁计时器（安全释放节点,并让使用者可以检查计时器状态）
+			回调方法.call())  # 执行用户传入的回调
 	add_child(计时器)  # 添加到节点树
 	计时器.start()  # 启动计时器
 	return 计时器
@@ -765,6 +793,13 @@ func 全局图钉(物品名称,按钮状态):
 		梅存档["挂机"]["全局图钉"].erase(str(物品名称))
 	if 节点.has("空节点") and 节点["空节点"] != null:
 		节点["空节点"].重载图钉()
+func 唯一ID(序号=0):
+	var 时间戳 = str(Time.get_unix_time_from_system())
+	var 时间戳最后6位 = 时间戳.substr(max(0, 时间戳.length() - 6))
+	var 随机值 = str(randi() % 100).pad_zeros(2)  # 确保2位数
+	return str(序号) + "#" + 时间戳最后6位 + "#" + 随机值
+func 节点有效性检查(节点名称:String)->bool:
+	return 节点名称 in 初始化.节点 and 初始化.节点[节点名称] != null
 #endregion 便利引用
 #region 语法糖
 func 语法糖获得物品(物品名称, 数量=1,  类型="标准物品",_参数 = null):

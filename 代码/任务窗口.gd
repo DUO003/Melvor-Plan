@@ -1,8 +1,8 @@
 extends Control
 var 任务字典:Dictionary={}
 var 默认展开容器="作者"
-var 窗口解锁数组
-var 窗口禁用数组
+var 窗口解锁数组: Array
+var 窗口禁用数组: Array
 var 任务文本字典
 func _ready() -> void:
 	任务字典=初始化.梅任务单例.任务字典

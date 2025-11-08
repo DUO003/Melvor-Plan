@@ -12,7 +12,7 @@ config_version=5
 
 config/name="梅尔沃计划"
 config/description="无法正常游玩版本,建议不要保留存档,否则后果自负."
-config/version="0.0.2"
+config/version="0.0.2.1"
 config/tags=PackedStringArray("梅计划")
 run/main_scene="res://界面/空界面.tscn"
 config/features=PackedStringArray("4.5", "Mobile")
@@ -97,7 +97,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/YgameEngine/plugin.cfg", "res://addons/block_code/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/fastnode/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/tab_saver/plugin.cfg")
+enabled=PackedStringArray("res://addons/YgameEngine/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/fastnode/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/tab_saver/plugin.cfg")
 
 [file_customization]
 

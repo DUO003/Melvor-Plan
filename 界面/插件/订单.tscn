@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://wk8j61u2rm2u"]
+[gd_scene load_steps=16 format=3 uid="uid://wk8j61u2rm2u"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_0blbr"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_skso8"]
@@ -118,6 +118,39 @@ script = ExtResource("2_skso8")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
+[sub_resource type="StyleBox" id="StyleBox_q5aig"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 10.0
+content_margin_top = 2.0
+content_margin_right = 10.0
+content_margin_bottom = 2.0
+script = ExtResource("2_skso8")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBox" id="StyleBox_kucxn"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 10.0
+content_margin_top = 2.0
+content_margin_right = 10.0
+content_margin_bottom = 2.0
+script = ExtResource("2_skso8")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBox" id="StyleBox_drq84"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 10.0
+content_margin_top = 2.0
+content_margin_right = 10.0
+content_margin_bottom = 2.0
+script = ExtResource("2_skso8")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
 [node name="订单" type="Panel"]
 custom_minimum_size = Vector2(400, 420)
 anchors_preset = 15
@@ -191,7 +224,6 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "剩余：01:23:45"
-horizontal_alignment = 1
 
 [node name="提交" type="Button" parent="."]
 layout_mode = 0
@@ -210,6 +242,9 @@ offset_right = 343.0
 offset_bottom = 407.0
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBox_cfh7r")
+theme_override_styles/pressed = SubResource("StyleBox_q5aig")
+theme_override_styles/hover = SubResource("StyleBox_kucxn")
+theme_override_styles/focus = SubResource("StyleBox_drq84")
 text = "放弃"
 
 [node name="报酬" type="RichTextLabel" parent="."]
@@ -248,3 +283,6 @@ grow_vertical = 2
 text = "50/100"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="计时器" type="Timer" parent="."]
+autostart = true

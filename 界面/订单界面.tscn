@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpp3irqubytup"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_6nhiy"]
+[ext_resource type="Script" uid="uid://ckjj46h1awyqm" path="res://代码/专属代码/订单界面/订单界面.gd" id="2_vuds4"]
 [ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_syeus"]
-[ext_resource type="PackedScene" uid="uid://wk8j61u2rm2u" path="res://界面/插件/订单.tscn" id="4_bbrii"]
 
-[node name="合成主界面" type="Control"]
+[node name="订单界面" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,8 @@ offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_6nhiy")
+script = ExtResource("2_vuds4")
+"基类窗口名称" = "订单界面"
 metadata/_edit_lock_ = true
 
 [node name="标题" type="ColorRect" parent="."]
@@ -61,98 +63,23 @@ custom_minimum_size = Vector2(1250, 828)
 layout_mode = 2
 
 [node name="网格容器" type="GridContainer" parent="内容节点/订单/订单"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(1250, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = -2
 columns = 3
 
-[node name="Control" parent="内容节点/订单/订单/网格容器" instance=ExtResource("4_bbrii")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Control2" parent="内容节点/订单/订单/网格容器" instance=ExtResource("4_bbrii")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Control3" parent="内容节点/订单/订单/网格容器" instance=ExtResource("4_bbrii")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Control4" parent="内容节点/订单/订单/网格容器" instance=ExtResource("4_bbrii")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Control5" parent="内容节点/订单/订单/网格容器" instance=ExtResource("4_bbrii")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Control6" parent="内容节点/订单/订单/网格容器" instance=ExtResource("4_bbrii")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Control7" parent="内容节点/订单/订单/网格容器" instance=ExtResource("4_bbrii")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Control8" parent="内容节点/订单/订单/网格容器" instance=ExtResource("4_bbrii")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Control9" parent="内容节点/订单/订单/网格容器" instance=ExtResource("4_bbrii")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Control10" parent="内容节点/订单/订单/网格容器" instance=ExtResource("4_bbrii")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Control11" parent="内容节点/订单/订单/网格容器" instance=ExtResource("4_bbrii")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Control12" parent="内容节点/订单/订单/网格容器" instance=ExtResource("4_bbrii")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Control13" parent="内容节点/订单/订单/网格容器" instance=ExtResource("4_bbrii")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Control14" parent="内容节点/订单/订单/网格容器" instance=ExtResource("4_bbrii")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Control15" parent="内容节点/订单/订单/网格容器" instance=ExtResource("4_bbrii")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Control" type="Control" parent="内容节点/订单"]
+[node name="控制区" type="Control" parent="内容节点/订单"]
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="内容节点/订单/Control"]
+[node name="订单信息" type="Label" parent="内容节点/订单/控制区"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 45.0
-text = "这里会写订单刷新时间
-比如 下个订单剩余2小时
-当前订单15/15
-以及扩容和新订单设置的按钮"
+text = "订单上限:3/3
+刷新倒计时:"

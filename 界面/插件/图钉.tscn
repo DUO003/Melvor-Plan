@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dpqcwwsve3wgm" path="res://素材/豆包AI素材/像素瓶子.png" id="2_qamfg"]
 
 [node name="图钉" type="HBoxContainer"]
-offset_right = 59.0
+offset_right = 118.0
 offset_bottom = 80.0
 grow_horizontal = 2
 size_flags_horizontal = 0
