@@ -1,13 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://c2ikyp8oaix5u"]
+[gd_scene load_steps=21 format=3 uid="uid://c2ikyp8oaix5u"]
 
 [ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="1_iqbb7"]
 [ext_resource type="Script" uid="uid://v0yytth2tqx2" path="res://代码/专属代码/合成主界面/合成界面.gd" id="2_u2knn"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="3_pbgl2"]
 [ext_resource type="PackedScene" uid="uid://fhiod2yd4lhv" path="res://界面/资源条.tscn" id="4_l4usl"]
-[ext_resource type="Texture2D" uid="uid://bl4iykenitqq" path="res://素材/像素/所有.png" id="9_iqbb7"]
 [ext_resource type="Texture2D" uid="uid://conmhorhmnqpg" path="res://素材/像素/框.png" id="11_3rko8"]
 [ext_resource type="Script" uid="uid://dxqqna74h0y6o" path="res://代码/专属代码/合成主界面/配方选择器代码.gd" id="12_8sqgc"]
-[ext_resource type="Script" uid="uid://bclwdcgdi0rv7" path="res://代码/专属代码/合成主界面/筛选器.gd" id="12_b1l35"]
 [ext_resource type="Texture2D" uid="uid://cg5lbyhyg8ys3" path="res://素材/像素/标准剑.png" id="14_wt2ge"]
 [ext_resource type="Script" uid="uid://cy41kvs4h32y8" path="res://代码/专属代码/合成主界面/悬浮面板.gd" id="15_wt2ge"]
 [ext_resource type="PackedScene" uid="uid://ooiwqu3875ea" path="res://界面/插件/动作进度条.tscn" id="15_yntay"]
@@ -129,25 +127,22 @@ offset_top = 100.0
 offset_right = 1700.0
 offset_bottom = 1000.0
 
-[node name="内容滚动区" type="ScrollContainer" parent="内容节点"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="内容区" type="VBoxContainer" parent="内容节点"]
+custom_minimum_size = Vector2(1700, 0)
+layout_mode = 0
+offset_right = 1700.0
+offset_bottom = 902.0
 
-[node name="内容区" type="VBoxContainer" parent="内容节点/内容滚动区"]
+[node name="第一内容区" type="HBoxContainer" parent="内容节点/内容区"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="第一内容区" type="HBoxContainer" parent="内容节点/内容滚动区/内容区"]
+[node name="资源条" type="ScrollContainer" parent="内容节点/内容区/第一内容区"]
+custom_minimum_size = Vector2(590, 550)
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="资源条" type="ScrollContainer" parent="内容节点/内容滚动区/内容区/第一内容区"]
-custom_minimum_size = Vector2(620, 550)
-layout_mode = 2
-
-[node name="资源管理器" type="VBoxContainer" parent="内容节点/内容滚动区/内容区/第一内容区/资源条"]
+[node name="资源管理器" type="VBoxContainer" parent="内容节点/内容区/第一内容区/资源条"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -155,33 +150,33 @@ theme_override_constants/separation = 0
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="木材" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
+[node name="木材" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 
-[node name="矿石" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
+[node name="矿石" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "矿石"
 
-[node name="皮革" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
+[node name="皮革" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "皮革"
 
-[node name="药草" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
+[node name="药草" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "药草"
 
-[node name="零件" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
+[node name="零件" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "零件"
 
-[node name="精华" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
+[node name="精华" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "精华"
 
-[node name="进度条" type="Control" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器"]
+[node name="进度条" type="Control" parent="内容节点/内容区/第一内容区/资源条/资源管理器"]
 layout_mode = 2
 
-[node name="动作进度条" parent="内容节点/内容滚动区/内容区/第一内容区/资源条/资源管理器/进度条" instance=ExtResource("15_yntay")]
+[node name="动作进度条" parent="内容节点/内容区/第一内容区/资源条/资源管理器/进度条" instance=ExtResource("15_yntay")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -196,47 +191,38 @@ offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="筛选器" type="Control" parent="内容节点/内容滚动区/内容区/第一内容区"]
-custom_minimum_size = Vector2(110, 550)
-layout_mode = 2
-
-[node name="筛选器" type="TextureButton" parent="内容节点/内容滚动区/内容区/第一内容区/筛选器"]
-layout_mode = 0
-offset_top = 425.0
-offset_right = 100.0
-offset_bottom = 525.0
-pivot_offset = Vector2(48, 48)
-texture_normal = ExtResource("9_iqbb7")
-stretch_mode = 0
-script = ExtResource("12_b1l35")
-metadata/gn = "本体"
-metadata/xh = "0"
-
-[node name="配方区" type="Control" parent="内容节点/内容滚动区/内容区/第一内容区"]
-custom_minimum_size = Vector2(950, 500)
+[node name="ScrollContainer" type="ScrollContainer" parent="内容节点/内容区/第一内容区"]
+custom_minimum_size = Vector2(100, 550)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="配方滚动区" type="ScrollContainer" parent="内容节点/内容滚动区/内容区/第一内容区/配方区"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = 4.0
-offset_right = -2.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="配方表格" type="GridContainer" parent="内容节点/内容滚动区/内容区/第一内容区/配方区/配方滚动区"]
+[node name="筛选器容器" type="VBoxContainer" parent="内容节点/内容区/第一内容区/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="筛选类型" type="Button" parent="内容节点/内容区/第一内容区/ScrollContainer/筛选器容器"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "基础素材"
+
+[node name="配方滚动区" type="ScrollContainer" parent="内容节点/内容区/第一内容区"]
+custom_minimum_size = Vector2(915, 500)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="配方表格" type="GridContainer" parent="内容节点/内容区/第一内容区/配方滚动区"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = -3
+theme_override_constants/v_separation = -3
 columns = 4
 script = ExtResource("12_8sqgc")
 
-[node name="配方" type="Button" parent="内容节点/内容滚动区/内容区/第一内容区/配方区/配方滚动区/配方表格"]
+[node name="配方" type="Button" parent="内容节点/内容区/第一内容区/配方滚动区/配方表格"]
 custom_minimum_size = Vector2(230, 200)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -251,7 +237,7 @@ text = "测试文本
 "
 clip_text = true
 
-[node name="配方名" type="Label" parent="内容节点/内容滚动区/内容区/第一内容区/配方区/配方滚动区/配方表格/配方"]
+[node name="配方名" type="Label" parent="内容节点/内容区/第一内容区/配方滚动区/配方表格/配方"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 150.0
@@ -262,22 +248,22 @@ text = "道具名称"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="第二内容区" type="HBoxContainer" parent="内容节点/内容滚动区/内容区"]
+[node name="第二内容区" type="HBoxContainer" parent="内容节点/内容区"]
 layout_mode = 2
 
-[node name="切割分区" type="VBoxContainer" parent="内容节点/内容滚动区/内容区/第二内容区"]
+[node name="切割分区" type="VBoxContainer" parent="内容节点/内容区/第二内容区"]
 layout_mode = 2
 
-[node name="制作滚动队列" type="ScrollContainer" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区"]
+[node name="制作滚动队列" type="ScrollContainer" parent="内容节点/内容区/第二内容区/切割分区"]
 custom_minimum_size = Vector2(1460, 255)
 layout_mode = 2
 
-[node name="制作队列" type="HBoxContainer" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/制作滚动队列"]
+[node name="制作队列" type="HBoxContainer" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1460, 255)
 layout_mode = 2
 
-[node name="圆形进度条" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/制作滚动队列/制作队列" instance=ExtResource("19_1v7ey")]
+[node name="圆形进度条" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列" instance=ExtResource("19_1v7ey")]
 unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(242, 242)
@@ -285,7 +271,7 @@ layout_mode = 2
 "半径" = 105.0
 "线条宽度" = 22.0
 
-[node name="配方" type="Button" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条"]
+[node name="配方" type="Button" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条"]
 z_as_relative = false
 custom_minimum_size = Vector2(230, 200)
 layout_mode = 1
@@ -300,7 +286,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_u2xcc")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_wjp5r")
 theme_override_styles/focus = SubResource("StyleBoxFlat_wjp5r")
 
-[node name="配方名" type="Label" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方"]
+[node name="配方名" type="Label" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方"]
 z_index = 1
 layout_mode = 1
 anchors_preset = 7
@@ -320,7 +306,7 @@ text = "道具名称"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="配方贴图" type="TextureRect" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方"]
+[node name="配方贴图" type="TextureRect" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 18.0
@@ -331,44 +317,44 @@ texture = ExtResource("14_wt2ge")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="按钮区" type="HBoxContainer" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区"]
+[node name="按钮区" type="HBoxContainer" parent="内容节点/内容区/第二内容区/切割分区"]
 layout_mode = 2
 
-[node name="温馨提示" type="Label" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/按钮区"]
+[node name="温馨提示" type="Label" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 custom_minimum_size = Vector2(580, 0)
 layout_mode = 2
 text = "温馨提示:左键加入合成队列"
 
-[node name="派遣队" type="Button" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/按钮区"]
+[node name="派遣队" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "派遣队"
 
-[node name="装备充能" type="Button" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/按钮区"]
+[node name="装备充能" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 text = "装备充能"
 
-[node name="抽奖机" type="Button" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/按钮区"]
+[node name="抽奖机" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "抽奖机"
 
-[node name="蓝图库" type="Button" parent="内容节点/内容滚动区/内容区/第二内容区/切割分区/按钮区"]
+[node name="蓝图库" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "蓝图库"
 
-[node name="提示背景" type="ColorRect" parent="内容节点/内容滚动区/内容区/第二内容区"]
+[node name="提示背景" type="ColorRect" parent="内容节点/内容区/第二内容区"]
 custom_minimum_size = Vector2(220, 340)
 layout_mode = 2
 color = Color(0.55, 0.498667, 0.3575, 0.784314)
 
-[node name="提示文本" type="Label" parent="内容节点/内容滚动区/内容区/第二内容区/提示背景"]
+[node name="提示文本" type="Label" parent="内容节点/内容区/第二内容区/提示背景"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -401,5 +387,3 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 81.0
 offset_bottom = 53.0
-
-[connection signal="pressed" from="内容节点/内容滚动区/内容区/第一内容区/筛选器/筛选器" to="内容节点/内容滚动区/内容区/第一内容区/筛选器/筛选器" method="_筛选器"]

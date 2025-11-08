@@ -10,7 +10,7 @@ func _exit_tree() -> void:
 func 清除子节点(节点容器,保留节点=null):
 	print("清除节点执行")
 	for 节点 in 节点容器.get_children():
-		if 保留节点!=null or 节点!=保留节点:
+		if 保留节点==null or 节点!=保留节点:
 			节点容器.remove_child(节点)
 			节点.queue_free()
 			print("清除节点成功")

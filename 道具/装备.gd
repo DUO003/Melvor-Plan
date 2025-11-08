@@ -437,3 +437,5 @@ func equipped(_装备栏: String) -> void:
 func unequipped(_装备栏: String) -> void:
 	if 初始化.玩家单例.装备来源属性.has(self):
 		初始化.玩家单例.装备来源属性.erase(self)
+func 基础检查()->bool:
+	return 基础数值.has(类型)

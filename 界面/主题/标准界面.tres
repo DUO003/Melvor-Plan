@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=59 format=3 uid="uid://cigh0v88yomed"]
+[gd_resource type="Theme" load_steps=60 format=3 uid="uid://cigh0v88yomed"]
 
 [ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="1_csmyg"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="1_kb01l"]
@@ -297,6 +297,11 @@ script = ExtResource("1_kb01l")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_gvlpa"), SubResource("StyleBoxFlat_qj2bx")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
+[sub_resource type="DPITexture" id="DPITexture_gklb8"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"12\"><path fill=\"none\" stroke=\"#b2b2b2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-opacity=\".85\" stroke-width=\"2\" d=\"m2 4 4 4 4-4\"/></svg>
+"
+base_scale = 4.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgrsc"]
 bg_color = Color(0.52, 0.3848, 0.114400014, 0.78431374)
 script = ExtResource("2_csmyg")
@@ -314,7 +319,7 @@ script = ExtResource("1_kb01l")
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ff5e4"]
-bg_color = Color(0.6666667, 0.6039216, 0.43529412, 1)
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -433,7 +438,6 @@ bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
-border_width_bottom = 2
 border_color = Color(0.40784314, 0.2901961, 0.078431375, 1)
 expand_margin_left = -5.0
 expand_margin_top = -5.0
@@ -521,8 +525,9 @@ LineEdit/fonts/font = ExtResource("1_csmyg")
 MenuButton/fonts/font = ExtResource("1_csmyg")
 OptionButton/colors/font_color = Color(0, 0, 0, 1)
 OptionButton/constants/outline_size = 1
-OptionButton/font_sizes/font_size = 16
+OptionButton/font_sizes/font_size = 60
 OptionButton/fonts/font = ExtResource("1_csmyg")
+OptionButton/icons/arrow = SubResource("DPITexture_gklb8")
 OptionButton/styles/disabled = SubResource("StyleBox_fv7pg")
 OptionButton/styles/disabled_mirrored = SubResource("StyleBox_fv7pg")
 OptionButton/styles/focus = SubResource("StyleBox_fv7pg")

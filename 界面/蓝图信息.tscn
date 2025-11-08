@@ -1,0 +1,133 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbce6ney4ilyo"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_2cx0i"]
+[ext_resource type="Script" uid="uid://m48ei7gqp6lc" path="res://代码/专属代码/合成主界面/蓝图信息.gd" id="1_bgqgx"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_jx5cv"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_0s5mh"]
+[ext_resource type="Texture2D" uid="uid://dd02xf54eyo4l" path="res://素材/全息图片AI素材/元素/冰.png" id="3_pimn1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5jsc"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.70021564, 0.5527891, 0.25613704, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+script = ExtResource("3_0s5mh")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_mdm2x"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("2_jx5cv")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_y5jsc")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[node name="蓝图信息" type="Panel"]
+custom_minimum_size = Vector2(350, 400)
+offset_right = 350.0
+offset_bottom = 100.0
+theme = ExtResource("1_2cx0i")
+theme_override_styles/panel = SubResource("StyleBox_mdm2x")
+script = ExtResource("1_bgqgx")
+
+[node name="图片" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(95, 95)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 105.0
+offset_bottom = 100.0
+texture = ExtResource("3_pimn1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="蓝图名称" type="Label" parent="."]
+custom_minimum_size = Vector2(230, 60)
+layout_mode = 0
+offset_left = 105.0
+offset_right = 335.0
+offset_bottom = 71.0
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = -15
+theme_override_font_sizes/font_size = 30
+text = "比方说五字
+精通等级LV:100"
+
+[node name="精通条" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(240, 30)
+layout_mode = 0
+offset_left = 100.0
+offset_top = 70.0
+offset_right = 340.0
+offset_bottom = 100.0
+step = 1.0
+show_percentage = false
+
+[node name="精通" type="Label" parent="精通条"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_constants/line_spacing = -15
+theme_override_font_sizes/font_size = 28
+text = "100000/1000000"
+vertical_alignment = 1
+
+[node name="标签" type="TabContainer" parent="."]
+custom_minimum_size = Vector2(340, 290)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 100.0
+offset_right = 345.0
+offset_bottom = 290.0
+theme_override_font_sizes/font_size = 34
+current_tab = 0
+
+[node name="简介" type="RichTextLabel" parent="标签"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_override_constants/line_separation = -10
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "简介:赤红火纹缠绕符身，触之有跃动光粒，随气息明灭闪烁。"
+metadata/_tab_index = 0
+
+[node name="材料" type="RichTextLabel" parent="标签"]
+visible = false
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_override_constants/paragraph_separation = -15
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "耗时:100秒
+[img=33x33]res://素材/游戏素材/货币/without background/36.png[/img]:100
+[img=33x33]res://素材/游戏素材/货币/without background/36.png[/img]:100
+[img=33x33]res://素材/游戏素材/货币/without background/36.png[/img]:100"
+metadata/_tab_index = 1
+
+[node name="属性" type="RichTextLabel" parent="标签"]
+visible = false
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_override_constants/paragraph_separation = -15
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "攻击:100
+耐久:100
+"
+metadata/_tab_index = 2
