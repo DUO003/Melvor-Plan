@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpp3irqubytup"]
+[gd_scene load_steps=5 format=3 uid="uid://cpp3irqubytup"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_6nhiy"]
 [ext_resource type="Script" uid="uid://ckjj46h1awyqm" path="res://代码/专属代码/订单界面/订单界面.gd" id="2_vuds4"]
 [ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_syeus"]
+[ext_resource type="PackedScene" uid="uid://dx5oki37mgsju" path="res://界面/插件/体力状态.tscn" id="4_bbrii"]
 
 [node name="订单界面" type="Control"]
 layout_mode = 3
@@ -52,17 +53,13 @@ offset_top = 100.0
 offset_right = 1700.0
 offset_bottom = 1000.0
 
-[node name="订单" type="HBoxContainer" parent="内容节点"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_constants/separation = 0
-
-[node name="订单" type="ScrollContainer" parent="内容节点/订单"]
+[node name="订单2" type="ScrollContainer" parent="内容节点"]
 custom_minimum_size = Vector2(1250, 828)
-layout_mode = 2
+layout_mode = 0
+offset_right = 1250.0
+offset_bottom = 900.0
 
-[node name="网格容器" type="GridContainer" parent="内容节点/订单/订单"]
+[node name="网格容器" type="GridContainer" parent="内容节点/订单2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1250, 0)
 layout_mode = 2
@@ -73,13 +70,104 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = -2
 columns = 3
 
-[node name="控制区" type="Control" parent="内容节点/订单"]
+[node name="控制区" type="Control" parent="内容节点"]
 custom_minimum_size = Vector2(450, 0)
+anchors_preset = 0
+offset_left = 1250.0
+offset_top = 10.0
+offset_right = 1700.0
+offset_bottom = 890.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="内容节点/控制区"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="体力状态" parent="内容节点/控制区/VBoxContainer" instance=ExtResource("4_bbrii")]
+custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
 
-[node name="订单信息" type="Label" parent="内容节点/订单/控制区"]
+[node name="手动刷新" type="Button" parent="内容节点/控制区/VBoxContainer/体力状态"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 75)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 45.0
-text = "订单上限:3/3
-刷新倒计时:"
+offset_left = 200.0
+offset_top = 100.0
+offset_right = 420.0
+offset_bottom = 175.0
+theme_override_font_sizes/font_size = 50
+text = "手动刷新"
+
+[node name="文本" type="Label" parent="内容节点/控制区/VBoxContainer/体力状态/手动刷新"]
+layout_mode = 0
+offset_left = -198.0
+offset_top = -7.0
+offset_right = -9.0
+offset_bottom = 73.0
+theme_override_constants/line_spacing = -10
+text = "消耗:5体力
+不可超过上限"
+
+[node name="订单信息容器" type="VBoxContainer" parent="内容节点/控制区/VBoxContainer"]
+layout_mode = 2
+
+[node name="刷新倒计时" type="Label" parent="内容节点/控制区/VBoxContainer/订单信息容器"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "刷新倒计时:"
+
+[node name="订单上限" type="Label" parent="内容节点/控制区/VBoxContainer/订单信息容器"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "订单上限:3/3"
+
+[node name="升级" type="Button" parent="内容节点/控制区/VBoxContainer/订单信息容器/订单上限"]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 55.0
+offset_right = 422.0
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 50
+text = "升级"
+
+[node name="文本" type="Label" parent="内容节点/控制区/VBoxContainer/订单信息容器/订单上限"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 53.0
+offset_right = 254.0
+offset_bottom = 133.0
+theme_override_constants/line_spacing = -10
+text = "200金币
+增加栏位"
+
+[node name="课题订单" type="Label" parent="内容节点/控制区/VBoxContainer/订单信息容器"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "课题订单:3/3"
+
+[node name="升级" type="Button" parent="内容节点/控制区/VBoxContainer/订单信息容器/课题订单"]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 55.0
+offset_right = 422.0
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 50
+text = "升级"
+
+[node name="文本" type="Label" parent="内容节点/控制区/VBoxContainer/订单信息容器/课题订单"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 53.0
+offset_right = 254.0
+offset_bottom = 133.0
+theme_override_constants/line_spacing = -10
+text = "200金币
+增加课题订单栏位"

@@ -1,14 +1,14 @@
-extends Control
+extends 基类梅窗口
 var 任务字典:Dictionary={}
 var 默认展开容器="作者"
 var 窗口解锁数组: Array
 var 窗口禁用数组: Array
 var 任务文本字典
 func _ready() -> void:
+	super._ready()
 	任务字典=初始化.梅任务单例.任务字典
-	初始化.节点["任务界面"]=self#注册
-	$"内容区域/标签/主线任务".visible=true
-	初始化主线任务容器()
+	$"内容区域/标签/支线任务/介绍".visible=true
+	初始化所有任务容器()
 	任务栏初始化()
 	初始化.任务更新.connect(加载任务说明)
 func 加载任务说明(任务数组=null):
@@ -22,70 +22,81 @@ func 加载任务说明(任务数组=null):
 				var 字典=任务文本字典[任务名称]["字典"]
 				var 文本节点=任务文本字典[任务名称]["节点"]
 				解析文本(字典,文本节点,任务名称)
-
-func 初始化主线任务容器():
+func 加载任务完成统计():
+	%"当前完成任务数量".text="当前完成数量:"+str(初始化.梅任务单例.完成任务计数("手工"))
+func 初始化所有任务容器():
+	var 配置={%"任务盒子":["作者","挂机"],%"手工盒子":["手工"]}
+	for 容器 in 配置:
+		清除子节点(容器)
 	任务文本字典={}
 	默认展开容器=初始化.梅存档["挂机"].get("默认展开容器",默认展开容器)
-	var 场景容器: Node = %"任务盒子"
-	for 子节点 in 场景容器.get_children():# 清空场景容器下的所有节点
-		场景容器.remove_child(子节点)
-		子节点.queue_free()  # 释放节点资源
-	for 主容器名 in 任务字典:
-		var 折叠主容器=FoldableContainer.new()
-		var 垂直任务容器 = VBoxContainer.new()
-		垂直任务容器.name = "垂直任务容器"
-		if 默认展开容器==主容器名:
-			折叠主容器.folded=false
-		else :
-			折叠主容器.folded=true
-		折叠主容器.title=主容器名
-		折叠主容器.add_theme_font_size_override("font_size", 60)
-		折叠主容器.folding_changed.connect(func(折叠):
-			if not 折叠:
-				初始化.梅存档["挂机"]["默认展开容器"]=主容器名
-				print("更新默认折叠容器"))
-		var 序号=1
-		var 展开=true
-		for 子容器名 in 任务字典[主容器名]:
-			var 前置任务=任务字典[主容器名][子容器名].get("前置任务",[])
-			var 任务数量=前置任务.size()
-			var 任务完成量=0
-			var 第一个未完成任务=""
-			for 条件 in 前置任务:
-				var 前置剧情进度=初始化.梅存档["挂机"].get("任务进度",{}).get(条件,0)
-				if 前置剧情进度==1:
-					任务完成量+=1
-				elif 第一个未完成任务=="":
-					第一个未完成任务=条件
-			#创建折叠容器,如果任务无法显示显示进度条
-			var 折叠子容器=FoldableContainer.new()
-			if 任务完成量==任务数量:
-				折叠子容器=任务节点组合(任务字典[主容器名][子容器名],折叠子容器,子容器名)
+	if 默认展开容器=="作者" or 默认展开容器=="挂机":
+		$"内容区域/标签/主线任务".visible=true
+	else :
+		$"内容区域/标签/支线任务".visible=true
+		if 默认展开容器=="手工":
+			$"内容区域/标签/支线任务/手工".visible=true
+	加载任务完成统计()
+	for 容器 in 配置:
+		var 场景容器: Node = 容器
+		for 主容器名 in 任务字典:
+			if not 主容器名 in 配置[容器]:
+				continue
+			var 折叠主容器=FoldableContainer.new()
+			var 垂直任务容器 = VBoxContainer.new()
+			垂直任务容器.name = "垂直任务容器"
+			if 默认展开容器==主容器名:
+				折叠主容器.folded=false
 			else :
-				var 垂直进度条容器 = VBoxContainer.new()
-				var 进度条 = ProgressBar.new()
-				var 文本节点 = Label.new()
-				进度条.min_value = 0  # 最小值
-				进度条.max_value = 任务数量  # 最大值
-				进度条.step = 1  # 步长
-				进度条.value = 任务完成量  # 当前值
-				进度条.custom_minimum_size=Vector2(500,50)
-				文本节点.text = "前置任务未解锁"+str(任务完成量)+"/"+str(任务数量)+"\n下一个前置任务:"+str(第一个未完成任务)
-				垂直进度条容器.add_child(文本节点)  # 加入垂直容器
-				垂直进度条容器.add_child(进度条)
-				折叠子容器.add_child(垂直进度条容器)
-			var 剧情进度=初始化.梅存档["挂机"].get("任务进度",{}).get(子容器名,0)#初始=0,完成=1,进行中0到1之间
-			if 展开 and not 剧情进度==1:
-				展开=false
-				折叠子容器.folded=false
-			else :
-				折叠子容器.folded=true
-			var 后缀="(已完成)"if 剧情进度==1 else "(进行中)"
-			折叠子容器.title=str(序号)+"."+子容器名+后缀
-			垂直任务容器.add_child(折叠子容器)
-			序号+=1
-		折叠主容器.add_child(垂直任务容器)
-		%"任务盒子".add_child(折叠主容器)
+				折叠主容器.folded=true
+			折叠主容器.title=主容器名
+			折叠主容器.add_theme_font_size_override("font_size", 60)
+			折叠主容器.folding_changed.connect(func(折叠):
+				if not 折叠:
+					初始化.梅存档["挂机"]["默认展开容器"]=主容器名
+					print("更新默认折叠容器"))
+			var 序号=1
+			var 展开=true
+			for 子容器名 in 任务字典[主容器名]:
+				var 前置任务=任务字典[主容器名][子容器名].get("前置任务",[])
+				var 任务数量=前置任务.size()
+				var 任务完成量=0
+				var 第一个未完成任务=""
+				for 条件 in 前置任务:
+					var 前置剧情进度=初始化.梅存档["挂机"].get("任务进度",{}).get(条件,0)
+					if 前置剧情进度==1:
+						任务完成量+=1
+					elif 第一个未完成任务=="":
+						第一个未完成任务=条件
+				#创建折叠容器,如果任务无法显示显示进度条
+				var 折叠子容器=FoldableContainer.new()
+				if 任务完成量==任务数量:
+					折叠子容器=任务节点组合(任务字典[主容器名][子容器名],折叠子容器,子容器名)
+				else :
+					var 垂直进度条容器 = VBoxContainer.new()
+					var 进度条 = ProgressBar.new()
+					var 文本节点 = Label.new()
+					进度条.min_value = 0  # 最小值
+					进度条.max_value = 任务数量  # 最大值
+					进度条.step = 1  # 步长
+					进度条.value = 任务完成量  # 当前值
+					进度条.custom_minimum_size=Vector2(500,50)
+					文本节点.text = "前置任务未解锁"+str(任务完成量)+"/"+str(任务数量)+"\n下一个前置任务:"+str(第一个未完成任务)
+					垂直进度条容器.add_child(文本节点)  # 加入垂直容器
+					垂直进度条容器.add_child(进度条)
+					折叠子容器.add_child(垂直进度条容器)
+				var 剧情进度=初始化.梅存档["挂机"].get("任务进度",{}).get(子容器名,0)#初始=0,完成=1,进行中0到1之间
+				if 展开 and not 剧情进度==1:
+					展开=false
+					折叠子容器.folded=false
+				else :
+					折叠子容器.folded=true
+				var 后缀="(已完成)"if 剧情进度==1 else "(进行中)"
+				折叠子容器.title=str(序号)+"."+子容器名+后缀
+				垂直任务容器.add_child(折叠子容器)
+				序号+=1
+			折叠主容器.add_child(垂直任务容器)
+			场景容器.add_child(折叠主容器)
 func 任务节点组合(字典,容器,任务名称):
 	var 水平容器=HBoxContainer.new()
 	var 文本节点=RichTextLabel.new()

@@ -93,6 +93,7 @@ grow_vertical = 2
 theme = ExtResource("3_pbgl2")
 script = ExtResource("2_u2knn")
 "基类窗口名称" = "合成界面"
+"提示文本" = Array[String](["温馨提示:左键蓝图加入合成队列", "温馨提示:长按资源加快回复", "温馨提示:物品在背包窗口查看"])
 metadata/_edit_lock_ = true
 
 [node name="标题" type="ColorRect" parent="."]
@@ -108,6 +109,7 @@ metadata/_edit_lock_ = true
 layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
+"精通池显示" = null
 
 [node name="背景" type="ColorRect" parent="."]
 layout_mode = 1
@@ -152,26 +154,32 @@ metadata/_edit_use_anchors_ = true
 
 [node name="木材" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
+"基础量" = 1
 
 [node name="矿石" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "矿石"
+"基础量" = 1
 
 [node name="皮革" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "皮革"
+"基础量" = 1
 
 [node name="药草" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "药草"
+"基础量" = 1
 
 [node name="零件" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "零件"
+"基础量" = 1
 
 [node name="精华" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "精华"
+"基础量" = 1
 
 [node name="进度条" type="Control" parent="内容节点/内容区/第一内容区/资源条/资源管理器"]
 layout_mode = 2
@@ -255,7 +263,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="制作滚动队列" type="ScrollContainer" parent="内容节点/内容区/第二内容区/切割分区"]
-custom_minimum_size = Vector2(1460, 255)
+custom_minimum_size = Vector2(1470, 255)
 layout_mode = 2
 
 [node name="制作队列" type="HBoxContainer" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列"]
@@ -321,32 +329,30 @@ stretch_mode = 5
 layout_mode = 2
 
 [node name="温馨提示" type="Label" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
-custom_minimum_size = Vector2(580, 0)
-layout_mode = 2
-text = "温馨提示:左键加入合成队列"
-
-[node name="派遣队" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-text = "派遣队"
+size_flags_horizontal = 3
+text = "温馨提示:左键加入合成队列"
 
 [node name="装备充能" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
+size_flags_horizontal = 8
 text = "装备充能"
 
 [node name="抽奖机" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 8
 text = "抽奖机"
 
 [node name="蓝图库" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 8
 text = "蓝图库"
 
 [node name="提示背景" type="ColorRect" parent="内容节点/内容区/第二内容区"]

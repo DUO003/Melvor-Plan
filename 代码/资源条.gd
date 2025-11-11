@@ -15,6 +15,9 @@ var 材料贴图: Dictionary = {# 资源名称与贴图路径的映射
 	"零件": "res://素材/游戏素材/货币/without background/49.png",
 	"精华": "res://素材/游戏素材/货币/without background/50.png"
 }
+@export var 基础量: int = 1       # 基础回复量（外部传入）
+var 是否长按: bool = false        # 标记是否处于长按状态
+var 长按计时器: Timer            # 用于长按周期性回复的计时器
 func 更新UI(资源回复速度={}):
 	var 当前数量 = 初始化.查看资源(资源名称)
 	var 上限变量名 = 资源名称 + "上限"
@@ -37,6 +40,22 @@ func _ready():
 	else :
 		材料贴图=初始化.材料贴图
 		更新UI()
+	if is_inside_tree():# 编辑器内安全检查：确保节点已加入场景树，避免空引用错误
+		长按计时器 = Timer.new()
+		长按计时器.wait_time = 0.5    # 长按间隔0.5秒
+		长按计时器.one_shot = false   # 循环触发
+		长按计时器.timeout.connect(长按超时处理)
+	add_child(长按计时器)
+	$"点击范围".gui_input.connect(点击逻辑)
+func 点击逻辑(event: InputEvent):
+	if is_inside_tree():
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:# 仅响应鼠标左键事件
+			if event.pressed:
+				# 鼠标按下时处理
+				处理按下()
+			else:
+				# 鼠标释放时处理
+				处理释放()
 func 更新贴图():
 	if not is_inside_tree():# 编辑器内安全检查：确保节点已加入场景树，避免空引用错误
 		print("节点未加入节点树")
@@ -52,3 +71,15 @@ func 更新贴图():
 		贴图节点.texture = 纹理
 	else:
 		print("警告：编辑器内无法加载贴图 -> ", 贴图路径, "（可能资源未导入）")
+func 处理按下():
+	# 立即回复5倍基础量资源
+	初始化.获得资源(资源名称, 基础量 * 5, true, true)
+	是否长按 = true# 标记为长按状态并启动计时器
+	长按计时器.start()
+func 处理释放():
+	# 结束长按状态并停止计时器
+	是否长按 = false
+	长按计时器.stop()
+func 长按超时处理():
+	if 是否长按:# 长按期间每0.5秒回复1倍基础量资源
+		初始化.获得资源(资源名称, 基础量, true, true)

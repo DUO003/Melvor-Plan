@@ -1,11 +1,43 @@
-[gd_scene load_steps=7 format=3 uid="uid://btsgbqm2kx3s1"]
+[gd_scene load_steps=14 format=3 uid="uid://btsgbqm2kx3s1"]
 
 [ext_resource type="Script" uid="uid://5fy5axsca6i2" path="res://界面/用户界面.gd" id="1_1xcs4"]
 [ext_resource type="Texture2D" uid="uid://b6q0o46fjedne" path="res://素材/游戏素材/背景/3.png" id="3_kiae7"]
+[ext_resource type="Script" uid="uid://qw0gp35xq72b" path="res://代码/专属代码/特殊功能/展开按钮.gd" id="4_4h1no"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="4_kiae7"]
 [ext_resource type="PackedScene" uid="uid://c51gx8des8nv1" path="res://界面/插件/红点提示.tscn" id="5_5a7ci"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="7_4h1no"]
 [ext_resource type="Script" uid="uid://dbhilkborreev" path="res://代码/专属代码/特殊功能/手动存档.gd" id="7_5a7ci"]
 [ext_resource type="Script" uid="uid://bmlc8vpbcln8u" path="res://代码/专属代码/合成主界面/测试.gd" id="7_etcdq"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="8_0p14m"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_0p14m"]
+device = -1
+pressed = true
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_s3egw"]
+events = [SubResource("InputEventKey_0p14m")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3egw"]
+bg_color = Color(0.55, 0.42716667, 0.18149999, 0.78431374)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("8_0p14m")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_q2fph"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("7_4h1no")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_s3egw")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [node name="空节点" type="Control"]
 layout_mode = 3
@@ -16,6 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_kiae7")
 script = ExtResource("1_1xcs4")
+"基类窗口名称" = "空节点"
 metadata/_edit_lock_ = true
 
 [node name="背景" type="NinePatchRect" parent="."]
@@ -33,22 +66,34 @@ unique_name_in_owner = true
 
 [node name="测试" type="Node" parent="."]
 
-[node name="测试" type="Button" parent="测试"]
+[node name="展开按钮" type="Button" parent="测试"]
+offset_left = 1649.0
+offset_top = 24.0
+offset_right = 1697.0
+offset_bottom = 98.0
+theme = ExtResource("4_kiae7")
+theme_override_font_sizes/font_size = 50
+shortcut = SubResource("Shortcut_s3egw")
+shortcut_in_tooltip = false
+text = ">"
+script = ExtResource("4_4h1no")
+
+[node name="测试" type="Button" parent="测试/展开按钮"]
 z_index = 1
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -880.0
-offset_top = 24.0
-offset_right = -680.0
-offset_bottom = 94.0
+offset_left = -720.0
+offset_right = -520.0
+offset_bottom = 74.0
 grow_horizontal = 0
 theme = ExtResource("4_kiae7")
 theme_override_font_sizes/font_size = 50
 text = "测试"
 script = ExtResource("7_etcdq")
 
-[node name="测试功能" type="OptionButton" parent="测试/测试"]
+[node name="测试功能" type="OptionButton" parent="测试/展开按钮/测试"]
 layout_mode = 0
 offset_left = -352.0
 offset_right = -16.0
@@ -62,7 +107,7 @@ popup/item_0/id = 0
 popup/item_1/text = "刷新商店"
 popup/item_1/id = 1
 
-[node name="红点提示" parent="测试/测试" instance=ExtResource("5_5a7ci")]
+[node name="红点提示" parent="测试/展开按钮/测试" instance=ExtResource("5_5a7ci")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -74,28 +119,29 @@ grow_horizontal = 0
 grow_vertical = 1
 "红点条目" = "测试红点"
 
-[node name="存档" type="Button" parent="测试"]
+[node name="存档" type="Button" parent="测试/展开按钮"]
 z_index = 1
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -424.0
-offset_top = 24.0
-offset_right = -224.0
-offset_bottom = 94.0
+offset_left = -270.0
+offset_right = -53.0
+offset_bottom = 74.0
 grow_horizontal = 0
 theme = ExtResource("4_kiae7")
 theme_override_font_sizes/font_size = 50
 text = "手动存档"
 script = ExtResource("7_5a7ci")
 
-[node name="存档时间" type="Panel" parent="测试/存档"]
+[node name="存档时间" type="Panel" parent="测试/展开按钮/存档"]
 layout_mode = 0
 offset_left = -240.0
 offset_right = -15.0
 offset_bottom = 70.0
+theme_override_styles/panel = SubResource("StyleBox_q2fph")
 
-[node name="时间" type="Label" parent="测试/存档/存档时间"]
+[node name="时间" type="Label" parent="测试/展开按钮/存档/存档时间"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

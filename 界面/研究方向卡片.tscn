@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://cl13q5qq7l7nf"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ess0i"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_jmdbb"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_tdgbo"]
+[ext_resource type="Script" uid="uid://mo3wx206juin" path="res://代码/专属代码/合成主界面/研究方向卡片.gd" id="4_xlwxm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5jsc"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.70021564, 0.5527891, 0.25613704, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+script = ExtResource("3_tdgbo")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_mdm2x"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("2_jmdbb")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_y5jsc")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[node name="研究方向" type="Panel"]
+custom_minimum_size = Vector2(260, 146)
+offset_right = 260.0
+offset_bottom = 212.0
+theme = ExtResource("1_ess0i")
+theme_override_styles/panel = SubResource("StyleBox_mdm2x")
+script = ExtResource("4_xlwxm")
+
+[node name="精通条" type="ProgressBar" parent="."]
+layout_mode = 1
+offset_left = 9.0
+offset_top = 94.0
+offset_right = 248.0
+offset_bottom = 130.0
+step = 1.0
+show_percentage = false
+
+[node name="文本" type="Label" parent="."]
+layout_mode = 1
+offset_top = 27.0
+offset_right = 260.0
+offset_bottom = 72.0
+text = "方向"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="按钮" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+ignore_time_scale = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 155.0
+offset_right = 206.0
+offset_bottom = 200.0
+text = "100黄图纸"

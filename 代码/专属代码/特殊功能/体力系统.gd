@@ -4,11 +4,11 @@ var 体力上限:int=240
 var 体力值:int=100
 var 体力恢复速度:int=360
 var 恢复量:int=1
-var 计时器=null
+var 计时器:Timer=null
 func _ready() -> void:
 	%"扩展内容".visible=false
-	mouse_entered.connect(func():生成动态文本())
-	mouse_exited.connect(func(): 结束更新())
+	%"触发显示范围".mouse_entered.connect(func():生成动态文本())
+	%"触发显示范围".mouse_exited.connect(func(): 结束更新())
 	初始化.connect("更新_UI", Callable(self, "_更新_UI"))
 	_更新_UI()
 func _更新_UI():
@@ -43,3 +43,6 @@ func 结束更新():
 		计时器.stop()
 		计时器.queue_free()
 		计时器 = null
+func _exit_tree():
+	if 计时器:
+		计时器.queue_free()

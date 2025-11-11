@@ -10,25 +10,22 @@ bg_color = Color(0.1924, 0.557467, 0.74, 1)
 bg_color = Color(0.74, 0.557467, 0.1924, 1)
 
 [node name="等级显示" type="Control"]
-clip_contents = true
+custom_minimum_size = Vector2(1700, 100)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1920.0
-offset_bottom = -1080.0
+offset_right = -220.0
+offset_bottom = -980.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t1bs0")
 
 [node name="精通进度条" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_right = 1.0
-offset_bottom = 10.0
-grow_horizontal = 2
+layout_mode = 0
+offset_right = 1700.0
+offset_bottom = 30.0
 theme = ExtResource("2_brtdv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_brtdv")
 step = 1.0
@@ -37,13 +34,10 @@ show_percentage = false
 
 [node name="熟练进度条" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 10.0
-offset_right = 1.0
-offset_bottom = 20.0
-grow_horizontal = 2
+layout_mode = 0
+offset_top = 30.0
+offset_right = 1700.0
+offset_bottom = 100.0
 theme = ExtResource("2_brtdv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_in4vb")
 step = 1.0
@@ -54,9 +48,31 @@ show_percentage = false
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 10.0
-offset_top = 15.0
-offset_right = 301.0
-offset_bottom = 98.0
+offset_right = 300.0
+offset_bottom = 100.0
 theme = ExtResource("2_brtdv")
 theme_override_font_sizes/font_size = 60
 text = "合成 LV:1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="文本2" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 300.0
+offset_top = 30.0
+offset_right = 1700.0
+offset_bottom = 100.0
+theme = ExtResource("2_brtdv")
+theme_override_font_sizes/font_size = 45
+text = "熟练"
+vertical_alignment = 1
+
+[node name="上层" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

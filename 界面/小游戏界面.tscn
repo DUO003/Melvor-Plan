@@ -105,6 +105,7 @@ metadata/_edit_lock_ = true
 layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
+"系统" = "挂机"
 "玩法" = "小游戏"
 
 [node name="背景" type="ColorRect" parent="."]

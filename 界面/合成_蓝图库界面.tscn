@@ -30,6 +30,7 @@ metadata/_edit_lock_ = true
 layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
+"精通池显示" = true
 
 [node name="背景" type="ColorRect" parent="."]
 layout_mode = 1
@@ -64,12 +65,23 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "主菜单"
 
-[node name="滚动范围" type="ScrollContainer" parent="内容节点"]
+[node name="等级信息" type="RichTextLabel" parent="内容节点"]
 layout_mode = 0
-offset_right = 1400.0
-offset_bottom = 900.0
+offset_left = 1400.0
+offset_right = 1700.0
+offset_bottom = 777.0
+theme_override_constants/line_separation = -10
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "当前最高蓝图等阶"
 
-[node name="图纸容器" type="GridContainer" parent="内容节点/滚动范围"]
+[node name="所有蓝图" type="ScrollContainer" parent="内容节点"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -300.0
+
+[node name="图纸容器" type="GridContainer" parent="内容节点/所有蓝图"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 0

@@ -75,6 +75,7 @@ offset_right = 1700.0
 offset_bottom = 1000.0
 theme = ExtResource("1_q243w")
 script = ExtResource("2_1f70q")
+"基类窗口名称" = "任务界面"
 
 [node name="标题" type="ColorRect" parent="."]
 layout_mode = 1
@@ -118,7 +119,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 2
+current_tab = 1
 
 [node name="主线任务" type="ScrollContainer" parent="内容区域/标签"]
 visible = false
@@ -130,51 +131,87 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(1700, 0)
 layout_mode = 2
 
-[node name="支线任务" type="ScrollContainer" parent="内容区域/标签"]
+[node name="支线任务" type="TabContainer" parent="内容区域/标签"]
+layout_mode = 2
+current_tab = 0
+metadata/_tab_index = 1
+
+[node name="介绍" type="Label" parent="内容区域/标签/支线任务"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 60
+text = "你已解锁的玩法会在这里提供引导任务
+并根据以完成任务数量提供一定加成
+"
+horizontal_alignment = 1
+metadata/_tab_index = 0
+
+[node name="滚动区" type="ScrollContainer" parent="内容区域/标签/支线任务/介绍"]
+custom_minimum_size = Vector2(1500, 550)
+layout_mode = 0
+offset_left = 100.0
+offset_top = 180.0
+offset_right = 1600.0
+offset_bottom = 730.0
+
+[node name="介绍容器" type="VBoxContainer" parent="内容区域/标签/支线任务/介绍/滚动区"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="效果介绍" type="Label" parent="内容区域/标签/支线任务/介绍/滚动区/介绍容器"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 50
+text = "手工:每完成一个任务增加0.1基础资源回复"
+metadata/_tab_index = 0
+
+[node name="当前完成任务数量" type="Label" parent="内容区域/标签/支线任务/介绍/滚动区/介绍容器"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 50
+text = "当前完成数量:"
+metadata/_tab_index = 0
+
+[node name="手工" type="ScrollContainer" parent="内容区域/标签/支线任务"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="支线任务盒子" type="VBoxContainer" parent="内容区域/标签/支线任务"]
+[node name="手工盒子" type="VBoxContainer" parent="内容区域/标签/支线任务/手工"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1700, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="内容区域/标签/支线任务/支线任务盒子"]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 120
-text = "支线任务未开发"
-horizontal_alignment = 1
-
-[node name="任务栏" type="HBoxContainer" parent="内容区域/标签"]
+[node name="快捷面板" type="HBoxContainer" parent="内容区域/标签"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 metadata/_tab_index = 2
 
-[node name="任务栏" type="ScrollContainer" parent="内容区域/标签/任务栏"]
+[node name="任务栏" type="ScrollContainer" parent="内容区域/标签/快捷面板"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 
-[node name="任务栏盒子" type="VBoxContainer" parent="内容区域/标签/任务栏/任务栏"]
+[node name="任务栏盒子" type="VBoxContainer" parent="内容区域/标签/快捷面板/任务栏"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_constants/separation = 10
 
-[node name="窗口切换按钮模板" type="CheckButton" parent="内容区域/标签/任务栏/任务栏/任务栏盒子"]
+[node name="窗口切换按钮模板" type="CheckButton" parent="内容区域/标签/快捷面板/任务栏/任务栏盒子"]
 unique_name_in_owner = true
 layout_mode = 2
 button_pressed = true
 text = "任务"
 alignment = 1
 
-[node name="窗口介绍" type="Control" parent="内容区域/标签/任务栏"]
+[node name="窗口介绍" type="Control" parent="内容区域/标签/快捷面板"]
 custom_minimum_size = Vector2(1300, 828)
 layout_mode = 2
 
-[node name="窗口名" type="Label" parent="内容区域/标签/任务栏/窗口介绍"]
+[node name="窗口名" type="Label" parent="内容区域/标签/快捷面板/窗口介绍"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 145.0
@@ -184,7 +221,7 @@ offset_bottom = 110.0
 theme_override_font_sizes/font_size = 60
 text = "窗口名称:未选中"
 
-[node name="窗口介绍" type="Label" parent="内容区域/标签/任务栏/窗口介绍"]
+[node name="窗口介绍" type="Label" parent="内容区域/标签/快捷面板/窗口介绍"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 5.0
@@ -196,12 +233,12 @@ text = "简介:
 将光标放到左侧选项查看选项信息
 管理任务栏中显示的按钮"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="内容区域/标签/任务栏/窗口介绍"]
+[node name="RichTextLabel" type="RichTextLabel" parent="内容区域/标签/快捷面板/窗口介绍"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="展示按钮" type="Button" parent="内容区域/标签/任务栏/窗口介绍"]
+[node name="展示按钮" type="Button" parent="内容区域/标签/快捷面板/窗口介绍"]
 unique_name_in_owner = true
 editor_description = "保持禁用状态,用于显示图片"
 layout_mode = 0

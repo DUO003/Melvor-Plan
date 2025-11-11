@@ -1,4 +1,5 @@
 extends Button
+var 计时器:Timer
 func _ready():
 	gui_input.connect(func(按键信号): # 确保节点可以接收鼠标事件
 		if 按键信号 is InputEventMouseButton and 按键信号.pressed:
@@ -8,7 +9,7 @@ func _ready():
 			引擎.屏幕.滚动提示("手动存档成功可以安全关闭","手动存档")
 			初始化.emit_signal("更新_UI"))
 	$"存档时间/时间".text="未存档"
-	初始化.创建计时器(1,func():更新显示())
+	计时器=初始化.创建计时器(1,func():更新显示())
 	初始化.connect("更新_UI",func():更新显示())
 func 更新显示():
 	if 初始化.存档时间戳==-1:
@@ -23,4 +24,6 @@ func 更新显示():
 		$"存档时间/时间".text="已保存"
 	else :
 		$"存档时间/时间".text=初始化.格式化时间(总秒数)+"秒前"
-	
+func _exit_tree():
+	if 计时器:
+		计时器.queue_free()

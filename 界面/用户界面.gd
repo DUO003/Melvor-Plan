@@ -1,4 +1,4 @@
-extends Control
+extends 基类梅窗口
 #真实字典位于"梅窗口"此处运行时会覆盖
 var 界面路径映射: Dictionary = {}#数组参数1.场景路径,参数2.场景对应的系统
 var 界面父子关系: Dictionary = {}#界面父子关系字典，键为主界面名称，值为子界面名称数组
@@ -7,12 +7,13 @@ var 初始界面="初始"#缓存当前窗口名称
 var 任务栏数组: Array = []# 任务栏需要显示的界面名称数组,从存档加载
 var 全局图钉=["金币"]
 var 界面图钉={}
-var 滚动计时器
+var 滚动计时器:Timer
 var 图钉区光标=false
 @onready var 任务栏节点: VBoxContainer = %"任务栏"
 @onready var 任务按钮本体: Button = %"任务"  # 明确为Button节点
 signal 场景更新(当前场景)# 场景变化时会发出信号,首次加载也会发出
 func _ready():
+	super._ready()
 	场景更新.connect(func(场景名称):初始化.emit_signal("场景更新",场景名称))
 	%"图钉".mouse_entered.connect(func(): 图钉区光标=true)
 	%"图钉".mouse_exited.connect(func(): 图钉区光标=false)
@@ -25,12 +26,14 @@ func _ready():
 	打开界面={}
 	for key in 界面父子关系.keys():
 		打开界面[key] = null
-	初始化.提示容器=%"提示容器"#注册
-	初始化.节点["空节点"]=self
+	初始化.提示容器=%"提示容器"#仅空窗口注册
 	生成任务栏按钮()# 在节点加载完成后生成任务栏按钮
 	if 初始界面=="初始":
 		print("初始界面:",任务栏数组[0])
 		重载场景(任务栏数组[0])
+func _exit_tree():#理论上不会执行
+	生命周期计时器+=[滚动计时器]
+	super._exit_tree()
 func 重载图钉():
 	for 节点 in %"图钉容器".get_children():
 		%"图钉容器".remove_child(节点)
