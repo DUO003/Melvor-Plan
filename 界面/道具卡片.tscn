@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpy28xhwxt1eg"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_dkn4r"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_5mr8j"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_vl86j"]
+[ext_resource type="Script" uid="uid://uc3adxypbjt0" path="res://代码/专属代码/特殊功能/道具卡片.gd" id="4_g8e1h"]
+[ext_resource type="Texture2D" uid="uid://dd02xf54eyo4l" path="res://素材/全息图片AI素材/元素/冰.png" id="5_p26ac"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5jsc"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.70021564, 0.5527891, 0.25613704, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+script = ExtResource("3_vl86j")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_mdm2x"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("2_5mr8j")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_y5jsc")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[node name="道具卡片" type="Panel"]
+offset_right = 124.0
+offset_bottom = 127.0
+theme = ExtResource("1_dkn4r")
+theme_override_styles/panel = SubResource("StyleBox_mdm2x")
+script = ExtResource("4_g8e1h")
+
+[node name="范围" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 75.0
+offset_bottom = 5.0
+theme_override_constants/separation = -15
+
+[node name="图片" type="TextureRect" parent="范围"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("5_p26ac")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="名称" type="Label" parent="范围"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = -15
+theme_override_font_sizes/font_size = 28
+text = "物品名称"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="数量" type="Label" parent="范围"]
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = -15
+theme_override_font_sizes/font_size = 28
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1

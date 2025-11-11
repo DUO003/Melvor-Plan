@@ -16,6 +16,7 @@ config/version="0.0.2.2"
 config/tags=PackedStringArray("梅计划")
 run/main_scene="res://界面/空界面.tscn"
 config/features=PackedStringArray("4.5", "Mobile")
+run/max_fps=60
 config/icon="uid://cg5lbyhyg8ys3"
 
 [autoload]
@@ -25,6 +26,10 @@ config/icon="uid://cg5lbyhyg8ys3"
 GBIS="*res://addons/grid_base_inventory_system/core/grid_base_inventory_system.gd"
 "引擎"="*res://addons/YgameEngine/脚本/0.引擎.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+
+[debug]
+
+settings/max_fps=60
 
 [dialogic]
 

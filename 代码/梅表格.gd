@@ -7,7 +7,7 @@ func _ready():
 	#print_all_res_files()
 	加载所有表格()
 	#保留旧接口
-	装备蓝图=表格字典["装备蓝图"]
+	装备蓝图=处理表格数据(表格字典["装备蓝图"])
 	#print(装备蓝图)
 
 	
@@ -229,5 +229,28 @@ func traverse_directory_files(dir: DirAccess, current_path: String):
 			print("[文件] ", full_path)
 		
 		entry = dir.get_next()
-	
 	dir.list_dir_end()
+func 处理表格数据(表格: Array):
+	if len(表格) == 0 or len(表格[0]) == 0:# 检查表头是否存在必要字段
+		print("表格数据为空")
+		return []
+	var icon索引 = 表格[0].find("icon")# 获取"icon"和"名称"在表头的索引
+	var 名称索引 = 表格[0].find("名称")
+	if icon索引 == -1 or 名称索引 == -1:# 检查索引有效性
+		print("表头缺少必要字段: icon 或 名称")
+		return []
+	var 表格拷贝=表格.duplicate(true)
+	for 行索引 in range(1, len(表格)):# 从第二行开始遍历数据行（跳过表头）
+		var 当前行 = 表格[行索引]
+		if len(当前行) <= icon索引 or len(当前行) <= 名称索引:# 确保当前行有足够的字段
+			print("第", 行索引, "行数据不完整，跳过处理")
+			continue
+		var 原始icon路径:String = 当前行[icon索引]
+		var 物品名称:String = 当前行[名称索引]
+		var 处理后icon路径:String = 原始icon路径
+		# 检查是否需要特殊转译（以*号结尾）
+		if 原始icon路径.ends_with("*"):
+			# 移除末尾*号，拼接名称和.png
+			处理后icon路径 = 原始icon路径.trim_suffix("*") + 物品名称 + ".png"
+		表格拷贝[行索引][icon索引]=处理后icon路径
+	return 表格拷贝

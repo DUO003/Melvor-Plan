@@ -69,17 +69,28 @@ func 更新贴图():
 	var 纹理 = load(贴图路径)
 	if 纹理:
 		贴图节点.texture = 纹理
+		$"资源粒子".texture = 纹理
+		$"资源粒子".emitting=false
 	else:
 		print("警告：编辑器内无法加载贴图 -> ", 贴图路径, "（可能资源未导入）")
 func 处理按下():
-	# 立即回复5倍基础量资源
-	初始化.获得资源(资源名称, 基础量 * 5, true, true)
-	是否长按 = true# 标记为长按状态并启动计时器
-	长按计时器.start()
-func 处理释放():
-	# 结束长按状态并停止计时器
+	if 基础量>=0:
+		初始化.获得资源(资源名称, 基础量 * 5, true, true)# 点击立即回复5倍基础量资源
+		是否长按 = true# 标记为长按状态并启动计时器
+		长按计时器.start()
+		$"资源粒子".amount=10
+		$"资源粒子".amount_ratio=0.25
+		$"资源粒子".preprocess=0.5
+		$"资源粒子".emitting=true
+func 处理释放():# 结束长按状态但不停止计时器
 	是否长按 = false
-	长按计时器.stop()
 func 长按超时处理():
+	print(资源名称,"长按超时处理",是否长按)
 	if 是否长按:# 长按期间每0.5秒回复1倍基础量资源
-		初始化.获得资源(资源名称, 基础量, true, true)
+		if not $"资源粒子".emitting:
+			$"资源粒子".emitting=true
+			$"资源粒子".preprocess=0
+			$"资源粒子".amount_ratio=0.3
+		初始化.获得资源(资源名称, 基础量, true, true)# 每0.5秒回复一次基础量资源
+	else :
+		长按计时器.stop()

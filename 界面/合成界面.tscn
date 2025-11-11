@@ -93,7 +93,7 @@ grow_vertical = 2
 theme = ExtResource("3_pbgl2")
 script = ExtResource("2_u2knn")
 "基类窗口名称" = "合成界面"
-"提示文本" = Array[String](["温馨提示:左键蓝图加入合成队列", "温馨提示:长按资源加快回复", "温馨提示:物品在背包窗口查看"])
+"提示文本" = Array[String](["温馨提示:左键蓝图加入合成队列", "温馨提示:长按资源加快回复", "温馨提示:物品在背包窗口查看", "温馨提示:自动制作速度与资源回复速度和图纸需求材料量有关", "温馨提示:作者正在努力开发新功能"])
 metadata/_edit_lock_ = true
 
 [node name="标题" type="ColorRect" parent="."]
@@ -154,32 +154,28 @@ metadata/_edit_use_anchors_ = true
 
 [node name="木材" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
-"基础量" = 1
 
 [node name="矿石" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "矿石"
-"基础量" = 1
 
 [node name="皮革" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "皮革"
-"基础量" = 1
 
 [node name="药草" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "药草"
-"基础量" = 1
 
 [node name="零件" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "零件"
-"基础量" = 1
+"基础量" = 0
 
 [node name="精华" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "精华"
-"基础量" = 1
+"基础量" = 0
 
 [node name="进度条" type="Control" parent="内容节点/内容区/第一内容区/资源条/资源管理器"]
 layout_mode = 2
@@ -330,16 +326,19 @@ layout_mode = 2
 
 [node name="温馨提示" type="Label" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(788, 90)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "温馨提示:左键加入合成队列"
+vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="装备充能" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
+[node name="强化" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(270, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 8
-text = "装备充能"
+text = "强化"
 
 [node name="抽奖机" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 unique_name_in_owner = true

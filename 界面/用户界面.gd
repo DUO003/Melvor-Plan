@@ -142,3 +142,9 @@ func 移动节点到最后(容器节点: Node) -> void:
 	
 #快捷方法
 	#初始化.节点["空节点"].重载场景("合成界面",null)
+# 简洁版本
+func 打印戈多引擎开发者():
+	var author_info = Engine.get_author_info()
+	print("Godot引擎贡献者信息:")
+	for category in author_info:
+		print(category + ": " + str(author_info[category]))

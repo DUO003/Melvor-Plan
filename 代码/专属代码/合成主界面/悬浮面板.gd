@@ -1,5 +1,5 @@
 extends Control
-var 面板文本
+var 面板文本:Label
 var 面板
 
 # 定义变量，默认值为0
