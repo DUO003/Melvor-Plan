@@ -33,6 +33,8 @@ signal sig_item_focused(item_data: ItemData, container_name: String)
 ## 物品丢失焦点：监听这个信号以清除物品信息显示
 @warning_ignore("unused_signal")
 signal sig_item_focus_lost(item_data: ItemData)
+## 物品被拿到鼠标上信号
+signal 鼠标物品()
 
 ## 默认角色
 var DEFAULT_PLAYER: String = "player_1"

@@ -20,7 +20,7 @@ func _ready() -> void:
 	%"上层".mouse_exited.connect(func():触发切换())
 
 func 触发切换():
-	print("切换")
+	#print("切换")
 	精通池显示=not 精通池显示
 func _更新_UI():
 	if Engine.is_editor_hint():

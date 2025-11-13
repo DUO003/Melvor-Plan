@@ -1,4 +1,5 @@
 extends Node
+#class_name 类型
 @export_multiline var 多行文本: String = "支持换行\n可展开大文本编辑"
 @export_range(0, 100) var 浮点范围: float = 50.0 # 浮点范围0-100 @export_range(1, 10, 1) var 整数范围: int = 5 # 整数范围1-10，步长1
 @export_file var 任意文件路径: String = ""

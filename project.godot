@@ -11,13 +11,16 @@ config_version=5
 [application]
 
 config/name="梅尔沃计划"
-config/description="无法正常游玩版本,建议不要保留存档,否则后果自负."
-config/version="0.0.2.2"
+config/description="最后一个实验性版本,存档目前状态相对稳定
+游戏基础版本开发总进度(1/7):
+[手工:75%]
+[挂机:5%]"
+config/version="0.0.3"
 config/tags=PackedStringArray("梅计划")
 run/main_scene="res://界面/空界面.tscn"
 config/features=PackedStringArray("4.5", "Mobile")
 run/max_fps=60
-config/icon="uid://cg5lbyhyg8ys3"
+config/icon="uid://b1hn1lg5d5q5l"
 
 [autoload]
 
@@ -96,6 +99,7 @@ glossary/glossary_files=["res://对话/术语.tres"]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"

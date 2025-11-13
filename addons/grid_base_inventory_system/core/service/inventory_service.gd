@@ -56,7 +56,7 @@ func use_item(inv_name: String, grid_id: Vector2i) -> bool:
 	if not item_data:
 		return false
 	if item_data is 标准物品:
-		if item_data.物品使用():
+		if item_data.物品点击(inv_name):
 			remove_item_by_data(inv_name, item_data)
 		else:
 			GBIS.sig_inv_item_updated.emit(inv_name, grid_id)

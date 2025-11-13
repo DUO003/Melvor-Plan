@@ -36,6 +36,15 @@ offset_right = 584.0
 offset_bottom = 66.0
 theme = ExtResource("2_5i305")
 value = 100.0
+allow_greater = true
+
+[node name="背包内数量" type="Label" parent="."]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 0
+offset_left = 184.0
+offset_top = 16.0
+offset_right = 584.0
+offset_bottom = 66.0
 
 [node name="回复" type="Label" parent="."]
 visible = false

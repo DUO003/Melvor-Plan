@@ -1,6 +1,7 @@
 extends Control
 var 金币=初始化.梅存档["金币"]
 var 物品=null
+var 背包="背包"
 var 属性文本="多003\n游历 LV:0		熟练:0/100\n"
 var 战力文本=""
 func _ready():
@@ -38,19 +39,26 @@ func _ready():
 	#%"玩家".mouse_exited.connect(func():%"玩家属性".text=属性文本)
 func 使用物品():
 	if not 物品==null:
-		pass
+		if 物品 is 标准物品:
+			var 类型物品:标准物品=物品
+			var 结果=类型物品.使用物品(背包)
+			if 结果=="成功":
+				if 类型物品==null or 类型物品.current_amount<=0:
+					物品=null
+					%"无选中".visible=true
+					%"选中".visible=false
 	else :
 		引擎.屏幕.滚动提示("错误物品异常","背包信息")
 func 分享物品():
 	if not 物品==null:
-		var 文本 = %"物品提示".文本预处理(物品,"背包")
+		var 文本 = %"物品提示".文本预处理(物品,背包)
 		DisplayServer.clipboard_set(文本)   # 核心操作：将文本写入剪贴板
 		引擎.屏幕.滚动提示("物品信息已粘贴到剪切板","背包信息")
 	else :
 		引擎.屏幕.滚动提示("错误物品异常","背包信息")
 func 删除物品():
 	if not 物品==null:
-		GBIS.inventory_service.remove_item_by_data("背包", 物品)
+		GBIS.inventory_service.remove_item_by_data(背包, 物品)
 		物品=null
 		%"无选中".visible=true
 		%"选中".visible=false
@@ -62,8 +70,9 @@ func _更新_UI():
 	else :
 		%"金币节点".visible=false
 	%"金币文本".text="金币:"+str(金币)
-func _背包物品信息(传入物品:标准物品):
+func _背包物品信息(传入物品:标准物品,背包名称):
 	物品=传入物品
+	背包=背包名称
 	%"无选中".visible=false
 	%"选中".visible=true
 	%"物品详情文本".text=物品.item_name+"\n数量:"+str(物品.current_amount)+"\n堆叠上限:"+科学计数(物品.stack_size)+"\n"+物品.简介

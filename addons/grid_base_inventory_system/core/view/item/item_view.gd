@@ -33,9 +33,11 @@ var 动画执行: bool = false
 # 动画时长（秒）
 const 动画时长: float = 0.1
 
+var 可拿取类型: Array=[]
 ## 构造函数
 @warning_ignore("shadowed_variable")
-func _init(data: ItemData, base_size: int, stack_num_font: Font = null, stack_num_font_size: int = 16, stack_num_margin: int = 2, stack_num_color: Color = Color.WHEAT) -> void:
+func _init(data: ItemData, base_size: int, stack_num_font: Font = null,
+	 stack_num_font_size: int = 16, stack_num_margin: int = 2, stack_num_color: Color = Color.WHEAT,可拿取=[]) -> void:
 	self.data = data
 	self.base_size = base_size
 	self.stack_num_font = stack_num_font if stack_num_font else get_theme_font("font")
@@ -50,6 +52,7 @@ func _init(data: ItemData, base_size: int, stack_num_font: Font = null, stack_nu
 	elif GBIS.item_material:
 		material = GBIS.item_material.duplicate()
 	data.sig_refresh.connect(queue_redraw)
+	可拿取类型=可拿取
 
 ## 重写计算大小
 func recalculate_size() -> void:
@@ -99,7 +102,15 @@ func _draw() -> void:
 		texture_filter = TEXTURE_FILTER_NEAREST
 		# 绘制纹理矩形（使用计算后的位置和尺寸，保持宽高比）
 		draw_texture_rect(data.icon, 矩形新尺寸, false)
-	
+	#print("data",data,可拿取类型)
+	if 可拿取类型.size()>=1:
+		#print("可拿取类型",可拿取类型)
+		if data.item_name in 可拿取类型:
+			self_modulate=Color(1.0, 1.0, 1.0, 1.0)
+		else :
+			self_modulate=Color(0.23, 0.23, 0.23, 1.0)
+	else :
+		self_modulate=Color(1.0, 1.0, 1.0, 1.0)
 	# 如果物品数据是可堆叠类型（StackableData），则绘制堆叠数量文本
 	if data is StackableData:
 		# 计算堆叠数量文本的尺寸：使用指定字体和字号，文本右对齐，不限制最大宽度

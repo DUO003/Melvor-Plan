@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=60 format=3 uid="uid://cigh0v88yomed"]
+[gd_resource type="Theme" load_steps=65 format=3 uid="uid://cigh0v88yomed"]
 
 [ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="1_csmyg"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="1_kb01l"]
@@ -297,6 +297,36 @@ script = ExtResource("1_kb01l")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_gvlpa"), SubResource("StyleBoxFlat_qj2bx")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
+[sub_resource type="DPITexture" id="DPITexture_c3c1y"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\" fill-opacity=\".75\"/></svg>
+"
+
+[sub_resource type="DPITexture" id="DPITexture_i0aoi"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\"/></svg>
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0aoi"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+script = ExtResource("2_csmyg")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykmuj"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+script = ExtResource("2_csmyg")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e681f"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.55, 0.42716667, 0.18149999, 0.49803922)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
 [sub_resource type="DPITexture" id="DPITexture_gklb8"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"12\"><path fill=\"none\" stroke=\"#b2b2b2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-opacity=\".85\" stroke-width=\"2\" d=\"m2 4 4 4 4-4\"/></svg>
 "
@@ -518,6 +548,11 @@ FoldableContainer/styles/title_collapsed_hover_panel = SubResource("StyleBox_ff5
 FoldableContainer/styles/title_collapsed_panel = SubResource("StyleBox_ntsn1")
 FoldableContainer/styles/title_hover_panel = SubResource("StyleBox_gklb8")
 FoldableContainer/styles/title_panel = SubResource("StyleBox_c3c1y")
+HSlider/icons/grabber = SubResource("DPITexture_c3c1y")
+HSlider/icons/grabber_highlight = SubResource("DPITexture_i0aoi")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_i0aoi")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ykmuj")
+HSlider/styles/slider = SubResource("StyleBoxFlat_e681f")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_csmyg")

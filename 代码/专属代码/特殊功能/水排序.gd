@@ -65,6 +65,7 @@ func 初始化关卡(关卡: int):
 	if not 初始化.体力门票(12,"水排序"):
 		引擎.屏幕.滚动提示("体力不足","小游戏")
 		return
+	初始化.emit_signal("更新_UI")
 	%"关卡容器".visible=false
 	清空瓶子()# 清空现有瓶子
 	var 颜色数组: Array[Dictionary]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://uh5t35s1wsr5"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_102at"]
+[ext_resource type="Script" uid="uid://bla2j74opcab0" path="res://代码/专属代码/炼金界面/配方容器.gd" id="2_jx0ap"]
+
+[node name="配方容器" type="Panel"]
+offset_right = 150.0
+offset_bottom = 150.0
+theme = ExtResource("1_102at")
+script = ExtResource("2_jx0ap")
+
+[node name="输入" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 150.0
+offset_right = 151.0
+offset_bottom = 160.0
+min_value = 1.0
+max_value = 32.0
+value = 16.0
+
+[node name="图片" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 100.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="数量" type="Label" parent="."]
+layout_mode = 0
+offset_top = 100.0
+offset_right = 150.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 30
+text = "123"
+horizontal_alignment = 1

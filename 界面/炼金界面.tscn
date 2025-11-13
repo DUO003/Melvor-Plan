@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3ipvacpavwmu"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_nocv6"]
+[ext_resource type="Script" uid="uid://dhlygjpx7m47s" path="res://代码/专属代码/炼金界面/炼金界面.gd" id="2_ex6pc"]
+[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_c1r7u"]
+[ext_resource type="Script" uid="uid://bublnb2wstici" path="res://代码/专属代码/炼金界面/背包.gd" id="4_ex6pc"]
+[ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="5_ukucx"]
+[ext_resource type="PackedScene" uid="uid://uh5t35s1wsr5" path="res://界面/插件/配方容器.tscn" id="6_hv23h"]
+
+[node name="合成主界面" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -220.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nocv6")
+script = ExtResource("2_ex6pc")
+metadata/_edit_lock_ = true
+
+[node name="标题" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+color = Color(0.75, 0.67, 0.45, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="等级显示" parent="标题" instance=ExtResource("3_c1r7u")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+"精通池显示" = null
+
+[node name="背景" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.004
+offset_top = 100.0
+offset_bottom = -3.99994
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.82, 0.73253334, 0.492, 0.7058824)
+metadata/_edit_lock_ = true
+
+[node name="内容节点" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 100.0
+offset_right = 1700.0
+offset_bottom = 1000.0
+
+[node name="配方容器" parent="内容节点" instance=ExtResource("6_hv23h")]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 179.0
+offset_right = 350.0
+offset_bottom = 329.0
+
+[node name="配方容器2" parent="内容节点" instance=ExtResource("6_hv23h")]
+layout_mode = 0
+offset_left = 446.0
+offset_top = 183.0
+offset_right = 596.0
+offset_bottom = 333.0
+
+[node name="配方容器3" parent="内容节点" instance=ExtResource("6_hv23h")]
+layout_mode = 0
+offset_left = 742.0
+offset_top = 175.0
+offset_right = 892.0
+offset_bottom = 325.0
+
+[node name="背包栏" type="FoldableContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1550.0
+offset_top = 100.0
+offset_right = 1700.0
+offset_bottom = 160.0
+folded = true
+title = "背包"
+
+[node name="物品栏" type="ScrollContainer" parent="背包栏"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="背包" type="Control" parent="背包栏/物品栏"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(720, 800)
+layout_mode = 2
+script = ExtResource("4_ex6pc")
+container_name = "背包"
+container_columns = 9
+container_rows = 10
+base_size = 80
+grid_border_size = 2
+grid_border_color = Color(0.75, 0.75, 0.75, 0)
+gird_background_color_empty = Color(0.49, 0.444267, 0.3185, 0.784314)
+gird_background_color_taken = Color(0.49, 0.444267, 0.3185, 0.862745)
+gird_background_color_conflict = Color(0.94, 0.68103, 0.6674, 0.784314)
+grid_background_color_avilable = Color(0.4, 0.362667, 0.26, 0.784314)
+stack_num_font = ExtResource("5_ukucx")
+stack_num_font_size = 32
+stack_num_margin = 0
+stack_num_color = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"

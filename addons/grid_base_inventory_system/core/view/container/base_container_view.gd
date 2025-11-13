@@ -77,6 +77,14 @@ class_name BaseContainerView
 	set(value):
 		stack_num_color = value
 		queue_redraw()
+@export_group("交互属性")
+## 背包属性限定可拿取类型
+@export var 可拿取类型: Array=[]:#[String] =[]:
+	set(值):
+		可拿取类型 = 值
+		queue_redraw()
+
+
 
 ## 格子容器
 var _grid_container: GridContainer
@@ -91,29 +99,45 @@ var _item_grids_map: Dictionary[ItemView, Array]
 var _grid_map: Dictionary[Vector2i, BaseGridView]
 ## 格子到物品的映射
 var _grid_item_map: Dictionary[Vector2i, ItemView]
-
-## 刷新背包显示
+# 刷新背包显示
+# 功能：用于刷新背包（或容器）的物品显示，同步容器数据到视图
 func refresh() -> void:
-	_clear_inv()
+	_clear_inv()  # 清除当前已显示的物品
+	# 获取容器数据，优先从库存服务获取，若没有则从商店服务获取
 	var container_data = GBIS.inventory_service.get_container(container_name)
 	if not container_data:
 		container_data = GBIS.shop_service.get_container(container_name)
 	
+	# 用于记录已处理的物品数据及其对应的视图，避免重复绘制
 	var handled_item: Dictionary[ItemData, ItemView]
+	# 遍历所有格子（_grid_map的键为格子标识）
 	for grid in _grid_map.keys():
+		# 获取当前格子对应的物品数据
 		var item_data = container_data.grid_item_map[grid]
+		# 若存在物品数据且未处理过该物品
 		if item_data and not handled_item.has(item_data):
+			print("背包未处理",grid)
+			# 获取该物品占据的所有格子
 			var grids = container_data.item_grids_map[item_data]
+			# 在第一个格子位置绘制物品视图
 			var item = _draw_item(item_data, grids[0])
+			item.可拿取类型=可拿取类型
+			# 记录已处理的物品及其视图
 			handled_item[item_data] = item
+			# 将物品视图添加到物品列表
 			_items.append(item)
+			# 记录物品视图与占据格子的映射关系
 			_item_grids_map[item] = grids
+			# 标记该物品占据的所有格子为已占用（计算相对第一个格子的偏移）
 			for g in grids:
 				_grid_map[g].taken(g - grids[0])
+				# 记录格子与物品视图的映射
 				_grid_item_map[g] = item
 			continue
+		# 若物品数据已处理过，直接关联格子与已有的物品视图
 		elif item_data:
 			_grid_item_map[grid] = handled_item[item_data]
+		# 若没有物品数据，标记格子对应的物品视图为null
 		else:
 			_grid_item_map[grid] = null
 
@@ -152,10 +176,15 @@ func _get_grids_by_shape(start: Vector2i, shape: Vector2i) -> Array[Vector2i]:
 	return ret
 
 ## 绘制物品
+## 功能：创建物品视图实例，设置其位置并添加到容器中，返回创建的物品视图
 func _draw_item(item_data: ItemData, first_grid: Vector2i) -> ItemView:
-	var item = ItemView.new(item_data, base_size, stack_num_font, stack_num_font_size, stack_num_margin, stack_num_color)
+	# 根据物品数据及基础样式参数（尺寸、堆叠数量字体等）创建物品视图实例	
+	var item = ItemView.new(item_data, base_size, stack_num_font, stack_num_font_size, stack_num_margin, stack_num_color,可拿取类型)
+	# 将物品视图添加到物品容器中，使其在界面上显示
 	_item_container.add_child(item)
+	# 设置物品视图的全局位置为第一个格子的全局位置（实现物品在格子上的定位）
 	item.global_position = _grid_map[first_grid].global_position
+	# 返回创建的物品视图
 	return item
 
 ## 初始化格子容器
