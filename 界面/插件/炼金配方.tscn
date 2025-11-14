@@ -1,0 +1,328 @@
+[gd_scene load_steps=19 format=3 uid="uid://bv36ac0k5rwo"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_usgc3"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_f8lap"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_6h5q0"]
+[ext_resource type="Texture2D" uid="uid://bvvvxfldyr4jw" path="res://素材/豆包AI素材/炼金台.png" id="4_gujam"]
+[ext_resource type="PackedScene" uid="uid://uh5t35s1wsr5" path="res://界面/插件/配方容器.tscn" id="5_gujam"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gujam"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.70021564, 0.5527891, 0.25613704, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+script = ExtResource("3_6h5q0")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_t1sfb"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("2_f8lap")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_gujam")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ik2p"]
+bg_color = Color(0.54901963, 0.46666667, 0.3019608, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.70021564, 0.5527891, 0.25613704, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+script = ExtResource("3_6h5q0")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_n2weh"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("2_f8lap")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_7ik2p")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgk5h"]
+bg_color = Color(0.55, 0.46750003, 0.3025, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.6176407, 0.3536455, 0.09672653, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+script = ExtResource("3_6h5q0")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_06t5k"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("2_f8lap")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kgk5h")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5aig"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("3_6h5q0")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kucxn"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.41, 0.28822997, 0.0779, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+expand_margin_bottom = -5.0
+script = ExtResource("3_6h5q0")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+margin_bottom = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drq84"]
+bg_color = Color(0.74, 0.11099999, 0.20534976, 0.7058824)
+border_color = Color(0.41, 0.28822997, 0.0779, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+expand_margin_bottom = -5.0
+script = ExtResource("3_6h5q0")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+margin_bottom = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_gujam"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 10.0
+content_margin_top = 2.0
+content_margin_right = 10.0
+content_margin_bottom = 2.0
+script = ExtResource("2_f8lap")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBox" id="StyleBox_7ik2p"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 10.0
+content_margin_top = 2.0
+content_margin_right = 10.0
+content_margin_bottom = 2.0
+script = ExtResource("2_f8lap")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBox" id="StyleBox_kgk5h"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 10.0
+content_margin_top = 2.0
+content_margin_right = 10.0
+content_margin_bottom = 2.0
+script = ExtResource("2_f8lap")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBox" id="StyleBox_tqll5"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 10.0
+content_margin_top = 2.0
+content_margin_right = 10.0
+content_margin_bottom = 2.0
+script = ExtResource("2_f8lap")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[node name="炼金配方卡片" type="FoldableContainer"]
+custom_minimum_size = Vector2(385, 0)
+theme = ExtResource("1_usgc3")
+title = "配方1"
+
+[node name="炼金配方" type="Panel" parent="."]
+custom_minimum_size = Vector2(385, 350)
+layout_mode = 2
+theme = ExtResource("1_usgc3")
+theme_override_styles/panel = SubResource("StyleBox_t1sfb")
+
+[node name="信息" type="TabContainer" parent="炼金配方"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+current_tab = 0
+
+[node name="配方" type="Control" parent="炼金配方/信息"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="图片" type="TextureRect" parent="炼金配方/信息/配方"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 130.0
+offset_bottom = 130.0
+texture = ExtResource("4_gujam")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="配方容器1" parent="炼金配方/信息/配方" instance=ExtResource("5_gujam")]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 10.0
+offset_right = 284.0
+offset_bottom = 160.0
+scale = Vector2(0.765, 0.765)
+theme_override_styles/panel = SubResource("StyleBox_n2weh")
+
+[node name="配方容器2" parent="炼金配方/信息/配方" instance=ExtResource("5_gujam")]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 10.0
+offset_right = 408.0
+offset_bottom = 160.0
+scale = Vector2(0.765, 0.765)
+theme_override_styles/panel = SubResource("StyleBox_n2weh")
+
+[node name="配方容器3" parent="炼金配方/信息/配方" instance=ExtResource("5_gujam")]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 134.0
+offset_right = 284.0
+offset_bottom = 284.0
+scale = Vector2(0.765, 0.765)
+theme_override_styles/panel = SubResource("StyleBox_n2weh")
+
+[node name="配方容器4" parent="炼金配方/信息/配方" instance=ExtResource("5_gujam")]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 134.0
+offset_right = 408.0
+offset_bottom = 284.0
+scale = Vector2(0.765, 0.765)
+theme_override_styles/panel = SubResource("StyleBox_n2weh")
+
+[node name="催化剂" parent="炼金配方/信息/配方" instance=ExtResource("5_gujam")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 134.0
+offset_right = 160.0
+offset_bottom = 284.0
+scale = Vector2(0.765, 0.765)
+theme_override_styles/panel = SubResource("StyleBox_06t5k")
+"催化剂" = true
+
+[node name="还不够了解" type="Label" parent="炼金配方/信息/配方"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = -39.0
+offset_right = 372.0
+offset_bottom = 6.0
+theme_override_font_sizes/font_size = 28
+text = "还不够了解:0/20"
+
+[node name="使用" type="Button" parent="炼金配方"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -168.5
+offset_top = -58.0
+offset_right = -79.5
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "使用"
+
+[node name="删除" type="Button" parent="炼金配方"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 85.5
+offset_top = -58.0
+offset_right = 174.5
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBox_gujam")
+theme_override_styles/pressed = SubResource("StyleBox_7ik2p")
+theme_override_styles/hover = SubResource("StyleBox_kgk5h")
+theme_override_styles/focus = SubResource("StyleBox_tqll5")
+text = "删除"
+
+[node name="保存" type="Button" parent="炼金配方"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.5
+offset_top = -58.0
+offset_right = 22.5
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "使用"

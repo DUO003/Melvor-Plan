@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/block_code/block_code_node/block_code_node.svg")
+#@icon("res://addons/block_code/block_code_node/block_code_node.svg")
 extends BaseContainerView
 ## 背包视图，控制背包的绘制
 class_name InventoryView

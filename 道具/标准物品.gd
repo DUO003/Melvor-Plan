@@ -82,6 +82,7 @@ func 使用物品(背包) -> String:# 中间函数：处理物品使用流程
 			self.current_amount-=使用数量
 			if self.current_amount<=0:
 				GBIS.inventory_service.remove_item_by_data(背包, self)
+		初始化.emit_signal("更新_UI")
 		初始化.保存存档("使用背包内道具")
 		return "成功"
 func 物品点击(背包) -> bool:#物品被点击时调用,返回不销毁

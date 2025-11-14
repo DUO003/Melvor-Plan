@@ -8,9 +8,19 @@ func _ready() -> void:
 	super._ready()
 	任务字典=初始化.梅任务单例.任务字典
 	$"内容区域/标签/支线任务/介绍".visible=true
-	初始化所有任务容器()
+	await 初始化所有任务容器()
 	任务栏初始化()
 	初始化.任务更新.connect(加载任务说明)
+	%"启用全屏".button_pressed=初始化.配置文件.get("全屏",false)
+	%"启用全屏".toggled.connect(func(条件):初始化.切换全屏(条件))
+	if 初始化.跳转设置:
+		print("跳转设置成功")
+		切换到设置()
+func _exit_tree() -> void:
+	super._exit_tree()
+	初始化.跳转设置=false
+func 切换到设置():
+	%"标签".current_tab=3
 func 加载任务说明(任务数组=null):
 	#print("信号正确接受",任务数组,任务文本字典)
 	if 任务数组==null:
@@ -30,7 +40,7 @@ func 初始化所有任务容器():
 		清除子节点(容器)
 	任务文本字典={}
 	默认展开容器=初始化.梅存档["挂机"].get("默认展开容器",默认展开容器)
-	if 默认展开容器=="作者" or 默认展开容器=="挂机":
+	if (默认展开容器=="作者" or 默认展开容器=="挂机") :
 		$"内容区域/标签/主线任务".visible=true
 	else :
 		$"内容区域/标签/支线任务".visible=true

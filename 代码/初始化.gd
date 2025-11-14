@@ -14,9 +14,14 @@ var 配置文件:Dictionary={}
 #参数:值(文本类参数已数组表示所有可能值)
 #通知位置:["左", "中", "右"]
 static var 首次加载 = true
+##当修改这个属性时,任务窗口被加载时会进设置
+var 跳转设置=false
+##用于更新存档内物品上限
 var 堆叠上限修改={}
-
+##用于同步基础资源回复数量
 var 基础资源每秒 = {"木材": 1, "矿石": 1, "皮革": 1, "药草": 1}
+
+
 var 矿石上限: float
 var 木材上限: float
 var 皮革上限: float
@@ -84,6 +89,7 @@ func _ready() -> void:
 		_配置背包()
 		_读档()
 		初始化资源上限()
+		切换全屏(初始化.配置文件.get("全屏",false))
 		await 保存存档("初始化存档")
 		#调试精通()
 	附加代码("梅任务")#加载顺序,存档之后
@@ -193,6 +199,7 @@ func 初始化资源上限():
 	精华上限 = 1.79769e308# 精华无上限
 func _读档():# 从文件加载玩家数据，不存在则创建新存档
 	GBIS.load()
+	配置文件=梅存档.get("配置文件",{})
 	var 修复存档=初始化存档数据(梅存档)
 	if 梅存档 != 修复存档:
 		梅存档 = 修复存档
@@ -208,7 +215,7 @@ func _读档():# 从文件加载玩家数据，不存在则创建新存档
 		## 文件不存在时创建新存档
 		#创建初始存档数据()
 		#print("创建新存档")
-# 创建初始存档数据
+## 创建初始存档数据
 func 初始化存档数据(原始存档数据):
 	# 定义标准存档结构（写死在方法内,默认为空存档.数据由其他位置写入）
 	var 标准存档 = {
@@ -240,7 +247,7 @@ func 检查物品是否存在(目标名称: String) -> bool:
 		if 物品数据.item_name == 目标名称:# 对比物品名称（区分大小写）
 			return true
 	return false# 未找到匹配的物品
-# 填充物品到物品字典
+## 填充物品到物品字典
 # 参数: 物品名称 - 作为物品字典的键; 数据字典 - 包含物品属性的字典
 func 填充物品(物品名称: String, 数据字典: Dictionary={}):
 	if 检查物品是否存在(物品名称):
@@ -284,7 +291,7 @@ func 填充物品(物品名称: String, 数据字典: Dictionary={}):
 			pass# 忽略多余的属性
 	物品字典[物品名称] = 道具# 将处理好的道具存入物品字典(以物品名称为键)
 	return 道具.duplicate()
-# 填充物品到物品字典
+## 填充物品到物品字典
 # 参数: 物品名称 - 作为物品字典的键; 数据字典 - 包含物品属性的字典
 func 初始化装备(物品蓝图名: String):
 	# 构建道具资源路径并加载
@@ -380,10 +387,18 @@ func 零点检测(计时器=null):
 			门票.erase(i)
 	保存存档("零点重置副本次数")
 	emit_signal("更新_UI")
+func 切换全屏(条件):
+	初始化.配置文件["全屏"]=条件
+	# 根据条件设置窗口模式（使用正确的枚举常量）
+	if 条件:# 全屏模式（正确常量：WINDOW_MODE_FULLSCREEN）
+		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
+	else:# 窗口模式（正确常量：WINDOW_MODE_WINDOWED）
+		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_WINDOWED)
 #endregion
 #region 便利引用
 # 保存玩家数据到文件
 func 保存存档(保存原因=""):
+	梅存档["配置文件"]=配置文件
 	GBIS.save()
 	存档时间戳=Time.get_unix_time_from_system()
 	#var file = FileAccess.open(存档路径, FileAccess.WRITE)
@@ -588,6 +603,7 @@ func 获得物品语法糖(物品名称, 数量=1,  类型="标准物品",_参�
 		道具 = 填充物品(物品名称, {"简介":"数据错误"})
 	if 道具.item_name=="金币":
 		梅存档["金币"]+=数量
+		道具.current_amount = 数量
 	elif 道具 is StackableData:# 处理可堆叠物品
 		道具.current_amount = 数量
 		GBIS.add_item(背包类型, 道具)

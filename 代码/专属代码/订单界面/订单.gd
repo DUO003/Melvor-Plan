@@ -47,6 +47,7 @@ func _ready() -> void:
 			初始化.梅存档["金币"]+=订单金币()
 			if 额外概率>=randf():
 				初始化.语法糖获得物品(额外物品,订单额外())
+			初始化.emit_signal("更新_UI")
 			销毁卡片订单())
 	if not 时限==-1:
 		$"计时器".timeout.connect(func(): 更新计时器())

@@ -54,6 +54,7 @@ join 多003 leftmost
 			join 多003 leftmost
 			多003: 等等冤枉啊,我只是一个普通的游戏作者根本没有\
 			顺着网线诅咒人的本事
+	
 	- 演都不演了
 		leave --All-- [animation="Instant Out" length="0.1" wait="true"]
 		join 玩家 leftmost [animation="Fade In" length="0.1"]
@@ -66,6 +67,16 @@ join 多003 leftmost
 		多003: 另一个视角,比如从我的角度看\
 		这是一个发生在另一个可能性纠缠里的故事
 		多003: 或者对于故事里的人而已这就是现实
+	多003: 你需要了解游戏这些玩法吗
+	- 什么是手工系统
+		多003: 在其他时间线里其他的玩家有很多需求订单\
+		为了满足这些订单需求,我会教你如何在游戏里创造这些蓝图的物品
+		多003: 我将蓝图需求分解为4种基础材料\
+		和1种高级基础材料,以及特殊的精华.
+		多003: 当你的基础材料恢复溢出时会转换为高级基础材料\
+		等你掌握更多知识也许还能找到更多基础和高级材料
+		多003: 完成订单可以拿到金币等道具奖励
+	- 不需要
 - 快进到结束吧
 	leave --All-- [animation="Instant Out" length="0.1" wait="true"]
 	join 玩家 leftmost [animation="Fade In" length="0.1"]
@@ -73,7 +84,6 @@ join 多003 leftmost
 	leave --All-- [animation="Instant Out" length="0.1" wait="true"]
 	join 多003 leftmost
 if {SCJQ} == true:
-	多003: 那么选择你开始游戏的第一个系统吧.
 	- 手工系统
 		do 初始化.任务完成处理("新手任务", "解锁手工")
 else:

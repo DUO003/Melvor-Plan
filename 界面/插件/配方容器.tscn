@@ -1,12 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://uh5t35s1wsr5"]
+[gd_scene load_steps=8 format=3 uid="uid://uh5t35s1wsr5"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_102at"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_7yctv"]
 [ext_resource type="Script" uid="uid://bla2j74opcab0" path="res://代码/专属代码/炼金界面/配方容器.gd" id="2_jx0ap"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_0ylib"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5jsc"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.70021564, 0.5527891, 0.25613704, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+script = ExtResource("3_0ylib")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_o67h5"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("2_7yctv")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_y5jsc")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yctv"]
+content_margin_left = 4.0
+content_margin_top = 8.0
+content_margin_right = 4.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.60784316)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
 
 [node name="配方容器" type="Panel"]
+custom_minimum_size = Vector2(150, 150)
 offset_right = 150.0
 offset_bottom = 150.0
 theme = ExtResource("1_102at")
+theme_override_styles/panel = SubResource("StyleBox_o67h5")
 script = ExtResource("2_jx0ap")
 
 [node name="输入" type="HSlider" parent="."]
@@ -14,7 +60,8 @@ layout_mode = 0
 offset_left = 1.0
 offset_top = 150.0
 offset_right = 151.0
-offset_bottom = 160.0
+offset_bottom = 176.0
+theme_override_styles/slider = SubResource("StyleBoxFlat_7yctv")
 min_value = 1.0
 max_value = 32.0
 value = 16.0

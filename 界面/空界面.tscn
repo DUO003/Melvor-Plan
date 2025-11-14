@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://btsgbqm2kx3s1"]
+[gd_scene load_steps=18 format=3 uid="uid://btsgbqm2kx3s1"]
 
 [ext_resource type="Script" uid="uid://5fy5axsca6i2" path="res://界面/用户界面.gd" id="1_1xcs4"]
 [ext_resource type="Texture2D" uid="uid://b6q0o46fjedne" path="res://素材/游戏素材/背景/3.png" id="3_kiae7"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bmlc8vpbcln8u" path="res://代码/专属代码/合成主界面/测试.gd" id="7_etcdq"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="8_0p14m"]
 [ext_resource type="PackedScene" uid="uid://cq8y0f7wmpt01" path="res://界面/插件/奖励悬浮面板.tscn" id="10_0p14m"]
+[ext_resource type="Script" uid="uid://cc1j5mukjb2p1" path="res://代码/专属代码/暂停界面/暂停界面.gd" id="11_s3egw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0p14m"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
@@ -98,6 +99,7 @@ unique_name_in_owner = true
 [node name="悬浮面板" type="Node" parent="."]
 
 [node name="奖励悬浮面板" parent="悬浮面板" instance=ExtResource("10_0p14m")]
+visible = false
 z_index = 10
 anchors_preset = 8
 anchor_left = 0.5
@@ -115,9 +117,9 @@ theme_override_styles/panel = SubResource("StyleBox_s3egw")
 [node name="测试" type="Node" parent="."]
 
 [node name="展开按钮" type="Button" parent="测试"]
-offset_left = 1649.0
+offset_left = 1538.0
 offset_top = 24.0
-offset_right = 1697.0
+offset_right = 1586.0
 offset_bottom = 98.0
 theme = ExtResource("4_kiae7")
 theme_override_font_sizes/font_size = 50
@@ -201,6 +203,14 @@ text = "10秒前"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="暂停" type="Button" parent="测试/展开按钮"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = -14.0
+offset_right = 156.0
+offset_bottom = 75.0
+text = "⏸️"
+
 [node name="任务栏" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
@@ -258,3 +268,53 @@ offset_bottom = 1080.0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+
+[node name="暂停界面" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+follow_viewport_scale = 0.4
+script = ExtResource("11_s3egw")
+
+[node name="背景" type="ColorRect" parent="暂停界面"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_kiae7")
+color = Color(0.36, 0.36, 0.36, 0.78431374)
+
+[node name="排序" type="VBoxContainer" parent="暂停界面/背景"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -91.0
+offset_right = 128.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="跳转设置" type="Button" parent="暂停界面/背景/排序"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+text = "跳转设置"
+
+[node name="保存关闭" type="Button" parent="暂停界面/背景/排序"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+text = "保存关闭"
+
+[node name="取消" type="Button" parent="暂停界面/背景/排序"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "取消"

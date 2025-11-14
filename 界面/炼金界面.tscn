@@ -1,13 +1,42 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3ipvacpavwmu"]
+[gd_scene load_steps=13 format=3 uid="uid://c3ipvacpavwmu"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_nocv6"]
 [ext_resource type="Script" uid="uid://dhlygjpx7m47s" path="res://代码/专属代码/炼金界面/炼金界面.gd" id="2_ex6pc"]
 [ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_c1r7u"]
 [ext_resource type="Script" uid="uid://bublnb2wstici" path="res://代码/专属代码/炼金界面/背包.gd" id="4_ex6pc"]
+[ext_resource type="Texture2D" uid="uid://bvvvxfldyr4jw" path="res://素材/豆包AI素材/炼金台.png" id="4_ukucx"]
 [ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="5_ukucx"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="6_4tae6"]
 [ext_resource type="PackedScene" uid="uid://uh5t35s1wsr5" path="res://界面/插件/配方容器.tscn" id="6_hv23h"]
+[ext_resource type="PackedScene" uid="uid://bv36ac0k5rwo" path="res://界面/插件/炼金配方.tscn" id="6_wqebm"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="7_1ov6e"]
 
-[node name="合成主界面" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgk5h"]
+bg_color = Color(0.55, 0.46750003, 0.3025, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.6176407, 0.3536455, 0.09672653, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+script = ExtResource("7_1ov6e")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_wdor2"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("6_4tae6")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kgk5h")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[node name="炼金主界面" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,26 +82,77 @@ offset_top = 100.0
 offset_right = 1700.0
 offset_bottom = 1000.0
 
-[node name="配方容器" parent="内容节点" instance=ExtResource("6_hv23h")]
+[node name="图片" type="TextureRect" parent="内容节点"]
+custom_minimum_size = Vector2(150, 100)
 layout_mode = 0
-offset_left = 200.0
-offset_top = 179.0
-offset_right = 350.0
-offset_bottom = 329.0
+offset_left = 95.0
+offset_top = 121.0
+offset_right = 627.0
+offset_bottom = 572.0
+texture = ExtResource("4_ukucx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="配方容器1" parent="内容节点" instance=ExtResource("6_hv23h")]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 43.0
+offset_right = 359.0
+offset_bottom = 193.0
+"可修改" = true
 
 [node name="配方容器2" parent="内容节点" instance=ExtResource("6_hv23h")]
 layout_mode = 0
-offset_left = 446.0
-offset_top = 183.0
-offset_right = 596.0
-offset_bottom = 333.0
+offset_left = 380.0
+offset_top = 43.0
+offset_right = 530.0
+offset_bottom = 193.0
+"可修改" = true
 
 [node name="配方容器3" parent="内容节点" instance=ExtResource("6_hv23h")]
 layout_mode = 0
-offset_left = 742.0
-offset_top = 175.0
-offset_right = 892.0
-offset_bottom = 325.0
+offset_left = 209.0
+offset_top = 222.0
+offset_right = 359.0
+offset_bottom = 372.0
+"可修改" = true
+
+[node name="配方容器4" parent="内容节点" instance=ExtResource("6_hv23h")]
+layout_mode = 0
+offset_left = 379.0
+offset_top = 222.0
+offset_right = 529.0
+offset_bottom = 372.0
+"可修改" = true
+
+[node name="催化剂" parent="内容节点" instance=ExtResource("6_hv23h")]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 121.0
+offset_right = 190.0
+offset_bottom = 271.0
+theme_override_styles/panel = SubResource("StyleBox_wdor2")
+"催化剂" = true
+"可修改" = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="内容节点"]
+layout_mode = 0
+offset_left = 1304.0
+offset_top = 57.0
+offset_right = 1698.0
+offset_bottom = 899.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="内容节点/ScrollContainer"]
+layout_mode = 2
+
+[node name="蓝图信息" parent="内容节点/ScrollContainer/VBoxContainer" instance=ExtResource("6_wqebm")]
+layout_mode = 2
+
+[node name="蓝图信息2" parent="内容节点/ScrollContainer/VBoxContainer" instance=ExtResource("6_wqebm")]
+layout_mode = 2
+
+[node name="蓝图信息3" parent="内容节点/ScrollContainer/VBoxContainer" instance=ExtResource("6_wqebm")]
+layout_mode = 2
 
 [node name="背包栏" type="FoldableContainer" parent="."]
 unique_name_in_owner = true

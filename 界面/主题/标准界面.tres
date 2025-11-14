@@ -246,9 +246,11 @@ metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj2bx"]
 bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+expand_margin_left = -5.0
 expand_margin_top = -5.0
 expand_margin_right = -5.0
 script = ExtResource("2_csmyg")
+margin_left = -5
 margin_top = -5
 margin_right = -5
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
@@ -307,11 +309,19 @@ _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\">
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0aoi"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 script = ExtResource("2_csmyg")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykmuj"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 script = ExtResource("2_csmyg")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 

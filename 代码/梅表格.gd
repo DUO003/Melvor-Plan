@@ -1,16 +1,28 @@
 extends Node
 class_name CSVReader# 自动加载的CSV读取器，用于从CSV文件中读取数据
 var 装备蓝图
-var 表格字典 = {}
-
+##已蓝图名称为键名,返回对应蓝图数组
+var 蓝图字典:Dictionary = {}
+var 表格字典:Dictionary = {}
+##预先加载标签
+var 缓存蓝图标签:Dictionary={}
 func _ready():
 	#print_all_res_files()
 	加载所有表格()
 	#保留旧接口
 	装备蓝图=处理表格数据(表格字典["装备蓝图"])
+	字典加载()
+	标签加载()
 	#print(装备蓝图)
-
-	
+func 标签加载():
+	缓存蓝图标签={}
+	var 图纸标签=装备蓝图[0].find("标签")
+	for 蓝图 in 装备蓝图:
+		缓存蓝图标签[蓝图[0]]=蓝图[图纸标签]
+func 字典加载():
+	蓝图字典={}
+	for 蓝图 in 装备蓝图:
+		蓝图字典[蓝图[0]]=蓝图
 func 加载所有表格():
 	# 清空现有数据
 	表格字典.clear()
