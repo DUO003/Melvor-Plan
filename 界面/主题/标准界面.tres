@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=65 format=3 uid="uid://cigh0v88yomed"]
+[gd_resource type="Theme" load_steps=77 format=3 uid="uid://cigh0v88yomed"]
 
 [ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="1_csmyg"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="1_kb01l"]
@@ -245,7 +245,7 @@ script = ExtResource("2_csmyg")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj2bx"]
-bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
 expand_margin_left = -5.0
 expand_margin_top = -5.0
 expand_margin_right = -5.0
@@ -337,6 +337,22 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 corner_detail = 6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntsn1"]
+bg_color = Color(0.4, 0.30666667, 0.120000005, 0.78431374)
+script = ExtResource("2_csmyg")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gklb8"]
+bg_color = Color(0.4, 0.30666667, 0.120000005, 0.78431374)
+expand_margin_left = 5.0
+script = ExtResource("2_csmyg")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3c1y"]
+bg_color = Color(0.4, 0.30666667, 0.120000005, 0.78431374)
+script = ExtResource("2_csmyg")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
 [sub_resource type="DPITexture" id="DPITexture_gklb8"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"12\"><path fill=\"none\" stroke=\"#b2b2b2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-opacity=\".85\" stroke-width=\"2\" d=\"m2 4 4 4 4-4\"/></svg>
 "
@@ -423,6 +439,51 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="DPITexture" id="DPITexture_ykmuj"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"8\"><path fill=\"none\" stroke=\"#fff\" stroke-width=\"2\" d=\"m12 2-4 3.5L4 2\"/></svg>
+"
+base_scale = 4.0
+
+[sub_resource type="DPITexture" id="DPITexture_e681f"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"8\"><path fill=\"none\" stroke=\"#fff\" stroke-width=\"2\" d=\"m12 2-4 3.5L4 2\"/></svg>
+"
+base_scale = 4.0
+
+[sub_resource type="DPITexture" id="DPITexture_rqfis"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"8\"><path fill=\"none\" stroke=\"#fff\" stroke-width=\"2\" d=\"m12 2-4 3.5L4 2\"/></svg>
+"
+base_scale = 4.0
+
+[sub_resource type="DPITexture" id="DPITexture_xlieo"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"8\"><path fill=\"none\" stroke=\"#fff\" stroke-width=\"2\" d=\"m12 2-4 3.5L4 2\"/></svg>
+"
+base_scale = 4.0
+
+[sub_resource type="DPITexture" id="DPITexture_r7qdb"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"8\"><path fill=\"none\" stroke=\"#fff\" stroke-width=\"2\" d=\"m4 6 4-3.5L12 6\"/></svg>
+"
+base_scale = 4.0
+
+[sub_resource type="DPITexture" id="DPITexture_gowdn"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"8\"><path fill=\"none\" stroke=\"#fff\" stroke-width=\"2\" d=\"m4 6 4-3.5L12 6\"/></svg>
+"
+base_scale = 4.0
+
+[sub_resource type="DPITexture" id="DPITexture_ysomb"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"8\"><path fill=\"none\" stroke=\"#fff\" stroke-width=\"2\" d=\"m4 6 4-3.5L12 6\"/></svg>
+"
+base_scale = 4.0
+
+[sub_resource type="DPITexture" id="DPITexture_prhvx"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"8\"><path fill=\"none\" stroke=\"#fff\" stroke-width=\"2\" d=\"m4 6 4-3.5L12 6\"/></svg>
+"
+base_scale = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xjbn"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+script = ExtResource("2_csmyg")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_csmyg"]
 
@@ -566,7 +627,11 @@ HSlider/styles/slider = SubResource("StyleBoxFlat_e681f")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_csmyg")
+LineEdit/font_sizes/font_size = 30
 LineEdit/fonts/font = ExtResource("1_csmyg")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_ntsn1")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_gklb8")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_c3c1y")
 MenuButton/fonts/font = ExtResource("1_csmyg")
 OptionButton/colors/font_color = Color(0, 0, 0, 1)
 OptionButton/constants/outline_size = 1
@@ -608,6 +673,15 @@ RichTextLabel/fonts/bold_italics_font = ExtResource("1_csmyg")
 RichTextLabel/fonts/italics_font = ExtResource("1_csmyg")
 RichTextLabel/fonts/mono_font = ExtResource("1_csmyg")
 RichTextLabel/fonts/normal_font = ExtResource("1_csmyg")
+SpinBox/icons/down = SubResource("DPITexture_ykmuj")
+SpinBox/icons/down_disabled = SubResource("DPITexture_e681f")
+SpinBox/icons/down_hover = SubResource("DPITexture_rqfis")
+SpinBox/icons/down_pressed = SubResource("DPITexture_xlieo")
+SpinBox/icons/up = SubResource("DPITexture_r7qdb")
+SpinBox/icons/up_disabled = SubResource("DPITexture_gowdn")
+SpinBox/icons/up_hover = SubResource("DPITexture_ysomb")
+SpinBox/icons/up_pressed = SubResource("DPITexture_prhvx")
+SpinBox/styles/field_and_buttons_separator = SubResource("StyleBoxFlat_1xjbn")
 TabContainer/font_sizes/font_size = 50
 TabContainer/fonts/font = ExtResource("1_csmyg")
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_csmyg")

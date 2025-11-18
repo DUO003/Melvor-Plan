@@ -120,10 +120,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 3
+current_tab = 0
 
 [node name="主线任务" type="ScrollContainer" parent="内容区域/标签"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -252,6 +251,7 @@ theme_override_styles/disabled = SubResource("StyleBox_jrtx1")
 disabled = true
 
 [node name="设置面板" type="Control" parent="内容区域/标签"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 

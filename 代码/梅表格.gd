@@ -1,8 +1,13 @@
 extends Node
 class_name CSVReader# 自动加载的CSV读取器，用于从CSV文件中读取数据
-var 装备蓝图
+var 装备蓝图: Array
 ##已蓝图名称为键名,返回对应蓝图数组
 var 蓝图字典:Dictionary = {}
+##缓存对应表头的int
+var 蓝图表头:Dictionary = {}
+##缓存被使用的贴图实例
+var 蓝图贴图:Dictionary[String,Texture2D] = {}
+##所有被加载的字典 已字典名称为键
 var 表格字典:Dictionary = {}
 ##预先加载标签
 var 缓存蓝图标签:Dictionary={}
@@ -13,16 +18,33 @@ func _ready():
 	装备蓝图=处理表格数据(表格字典["装备蓝图"])
 	字典加载()
 	标签加载()
-	#print(装备蓝图)
+	#print("打印简介",获取简介("深渊苦露粉"))
 func 标签加载():
 	缓存蓝图标签={}
 	var 图纸标签=装备蓝图[0].find("标签")
 	for 蓝图 in 装备蓝图:
 		缓存蓝图标签[蓝图[0]]=蓝图[图纸标签]
 func 字典加载():
+	蓝图表头={}
+	var 缓存序号=0
+	for 表头 in 装备蓝图[0]:
+		蓝图表头[表头]=缓存序号
+		缓存序号+=1
 	蓝图字典={}
 	for 蓝图 in 装备蓝图:
 		蓝图字典[蓝图[0]]=蓝图
+	#print(蓝图表头)
+func 道具贴图(贴图名称:String):#->Texture2Dprint("贴图名称",贴图名称)
+	if 贴图名称 in 蓝图贴图:
+		return 蓝图贴图[贴图名称]
+	if 贴图名称 in 蓝图字典:
+		var 贴图:Texture2D=load(蓝图字典[贴图名称][蓝图表头["icon"]])
+		if 贴图:
+			蓝图贴图[贴图名称]=贴图
+			return 贴图
+	
+	return null
+	
 func 加载所有表格():
 	# 清空现有数据
 	表格字典.clear()
@@ -266,3 +288,22 @@ func 处理表格数据(表格: Array):
 			处理后icon路径 = 原始icon路径.trim_suffix("*") + 物品名称 + ".png"
 		表格拷贝[行索引][icon索引]=处理后icon路径
 	return 表格拷贝
+# 生成简介文本（仅依赖传入的尺寸参数，完全解耦节点）
+func 获取简介(物品名称: String, 图片尺寸: int=40) -> String:
+	var 基础简介文本: String = 蓝图字典[物品名称][蓝图表头["简介"]]
+	if 基础简介文本=="":
+		return ""
+	var 匹配器: RegEx = RegEx.new()# 正则匹配所有 "替换#{图片名称}" 标记
+	匹配器.compile("替换#\\{([^}]+)\\}")  # 匹配格式：替换#{图片名}
+	var 匹配结果: Array = 匹配器.search_all(基础简介文本)
+	var 结果文本: String = 基础简介文本# 从后往前替换，避免索引偏移
+	for i in range(匹配结果.size() - 1, -1, -1):
+		var 匹配项: RegExMatch = 匹配结果[i]
+		var 图片名称: String = 匹配项.get_group(1)  # 提取图片名称
+		var 图片路径: String = 道具贴图(图片名称)   # 调用你的图片路径方法
+		var 替换内容: String = ""# 生成替换内容（图片路径错误则不显示）
+		if not 图片路径=="":
+			var 尺寸字符串: String = "%dx%d" % [图片尺寸, 图片尺寸]# 生成尺寸字符串（如 "100x100"）
+			替换内容 = ("[img=%s]%s[/img]") % [尺寸字符串, 图片路径]
+		结果文本 = 结果文本.substr(0, 匹配项.get_start()) + 替换内容 + 结果文本.substr(匹配项.get_end())# 执行替换
+	return 结果文本

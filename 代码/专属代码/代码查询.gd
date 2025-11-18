@@ -55,6 +55,7 @@ func 语法备忘录(真: bool=true,假: bool=false,
 	var 参数:Variant=""
 	方法.call(参数)#执行方法.call()
 	return[真,假,整数,浮点数,文本,数组,字典,节点引用,颜色,空值,纹理,二维向量,二维向量整数,三维向量,三维向量整数]
+#.resize()#声明数组长度
 #func _ready() -> void:#节点进入节点树
 #super._ready()#运行上级节点的方法
 #func _exit_tree() -> void:#节点退出节点树时执行（生命周期结束）

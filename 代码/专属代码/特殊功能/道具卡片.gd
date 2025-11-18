@@ -1,6 +1,6 @@
 extends Panel
 class_name 道具卡片类
-var 道具:标准物品
+var 道具:ItemData#基础类物品StackableData#可堆叠物品
 var 物品名称
 var 物品贴图
 var 数量
@@ -13,7 +13,10 @@ func _ready() -> void:
 		#var 缓存贴图=load(缓存表格.get("icon",""))
 		if 缓存贴图:
 			物品贴图=缓存贴图
-		数量=道具.current_amount
+		if 道具 is StackableData:
+			数量=道具.current_amount
+		else :
+			数量=1
 		$"范围/图片".texture=物品贴图
 		$"范围/名称".text=物品名称
 		$"范围/数量".text=str(数量)

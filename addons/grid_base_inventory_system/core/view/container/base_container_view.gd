@@ -5,7 +5,7 @@ class_name BaseContainerView
 
 @export_group("Container Settings")
 ## 背包名字，如果重复，则显示同一来源的数据
-@export var container_name: String = GBIS.DEFAULT_INVENTORY_NAME
+@export var container_name: String = "Inventory"#GBIS.DEFAULT_INVENTORY_NAME
 	#set(value):
 		#print("背包名字:",GBIS.DEFAULT_INVENTORY_NAME)
 ## 背包列数，如果背包名字重复，列数需要一样
@@ -116,7 +116,7 @@ func refresh() -> void:
 		var item_data = container_data.grid_item_map[grid]
 		# 若存在物品数据且未处理过该物品
 		if item_data and not handled_item.has(item_data):
-			print("背包未处理",grid)
+			#print("背包未处理",grid)
 			# 获取该物品占据的所有格子
 			var grids = container_data.item_grids_map[item_data]
 			# 在第一个格子位置绘制物品视图

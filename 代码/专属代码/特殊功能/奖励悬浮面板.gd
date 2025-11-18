@@ -1,5 +1,5 @@
-#@tool  # 关键：让脚本在编辑器内运行，实现实时预览
 extends Panel
+class_name 奖励悬浮面板
 var 物品数组: Array=[]:#限制类型为标准物品 或 物品装备
 	set(值):
 		物品数组=值
@@ -9,8 +9,13 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		初始化.节点["奖励悬浮面板"]=self#注册
 	更新物品()
-	$"确认".pressed.connect(func():
-		物品数组=[])
+	$"确认".pressed.connect(func():清空界面())
+func 语法糖传入数组(物品的数组: Array,奖励标题:String="待确认奖励"):
+	%"标题".text=奖励标题
+	custom_minimum_size=Vector2(10,0)+%"标题".get_combined_minimum_size()
+	物品数组+=物品的数组
+func 清空界面():
+	物品数组=[]
 func 更新物品():#先删除后添加
 	var 节点容器:GridContainer=%"范围"
 	var 已加载道具: Array[标准物品]=[]
