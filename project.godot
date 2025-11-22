@@ -24,7 +24,7 @@ config/icon="uid://b1hn1lg5d5q5l"
 
 [autoload]
 
-"初始化"="*res://代码/初始化.gd"
+"计划"="*res://代码/梅计划.gd"
 "梅表格"="*res://代码/梅表格.gd"
 GBIS="*res://addons/grid_base_inventory_system/core/grid_base_inventory_system.gd"
 "引擎"="*res://addons/YgameEngine/脚本/0.引擎.gd"

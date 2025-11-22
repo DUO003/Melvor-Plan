@@ -41,10 +41,8 @@ script = ExtResource("4_g8e1h")
 [node name="范围" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 75.0
-offset_bottom = 5.0
+offset_right = 121.0
+offset_bottom = 120.0
 theme_override_constants/separation = -15
 
 [node name="图片" type="TextureRect" parent="范围"]
@@ -55,16 +53,15 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="名称" type="Label" parent="范围"]
-custom_minimum_size = Vector2(100, 40)
+custom_minimum_size = Vector2(100, 35)
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 1
-theme_override_constants/line_spacing = 0
-theme_override_constants/paragraph_spacing = -15
-theme_override_font_sizes/font_size = 28
-text = "物品名称"
+theme_override_font_sizes/font_size = 22
+text = "物品的名称是"
 horizontal_alignment = 1
 vertical_alignment = 1
+text_overrun_behavior = 1
+uppercase = true
 
 [node name="数量" type="Label" parent="范围"]
 custom_minimum_size = Vector2(70, 40)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://betfjld3wevij"
-path="res://.godot/imported/星芒药水.png-d5ddd25e48541b07420866988ddea3ed.ctex"
+uid="uid://nsuvd2wapfva"
+path="res://.godot/imported/圣坚药水.png-bc16bb97693040320c9e1044019c0732.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://素材/豆包AI素材/炼金材料1/星芒药水.png"
-dest_files=["res://.godot/imported/星芒药水.png-d5ddd25e48541b07420866988ddea3ed.ctex"]
+source_file="res://素材/豆包AI素材/药水/圣坚药水.png"
+dest_files=["res://.godot/imported/圣坚药水.png-bc16bb97693040320c9e1044019c0732.ctex"]
 
 [params]
 

@@ -230,7 +230,6 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 100.0
-offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -238,15 +237,15 @@ grow_vertical = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 342.0
-offset_top = 339.0
-offset_right = 562.0
-offset_bottom = 424.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -514.0
+offset_top = -139.0
+offset_right = -294.0
+offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 10
@@ -369,7 +368,7 @@ scale = Vector2(1.25075, 1.25075)
 texture = ExtResource("8_yqcxx")
 expand_mode = 1
 
-[node name="TabContainer" type="TabContainer" parent="内容节点"]
+[node name="标签页" type="TabContainer" parent="内容节点"]
 custom_minimum_size = Vector2(1150, 763)
 layout_mode = 0
 offset_left = 520.0
@@ -377,23 +376,22 @@ offset_right = 1670.0
 offset_bottom = 763.0
 current_tab = 0
 
-[node name="抽取说明" type="RichTextLabel" parent="内容节点/TabContainer"]
+[node name="抽取说明" type="RichTextLabel" parent="内容节点/标签页"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_behavior_recursive = 1
 theme_override_constants/paragraph_separation = 0
+theme_override_font_sizes/bold_font_size = 60
 bbcode_enabled = true
 text = "[b]蓝图抽取说明[/b]示例文本,实际修改见游戏内
 75%获得残缺蓝图
 20%获得UP类型的装备蓝图 重复累积更多经验值
 5%获得未拥有的特殊蓝图 全收集给 黄图纸*160
-特等奖 初始1%获得图纸包
 研究费用随抽到物品提升（0点重置最大160）
 --------分界线--------
 当获蓝图等级T7（326/600）
 当前UP选项 斧头
 当前研究费用：0"
-deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 metadata/_tab_index = 0
 

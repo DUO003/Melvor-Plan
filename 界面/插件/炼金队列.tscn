@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyci22bapm4g7"]
+[gd_scene load_steps=18 format=3 uid="uid://dyci22bapm4g7"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_kmc5p"]
 [ext_resource type="Texture2D" uid="uid://bvvvxfldyr4jw" path="res://素材/豆包AI素材/炼金台.png" id="1_rh5g5"]
+[ext_resource type="Script" uid="uid://cmrybs4fon4yr" path="res://代码/专属代码/炼金界面/炼金队列卡片.gd" id="2_c74w5"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_kmc5p"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_bkfwv"]
-[ext_resource type="Texture2D" uid="uid://nsuvd2wapfva" path="res://素材/豆包AI素材/炼金材料1/圣坚药水.png" id="5_bkfwv"]
+[ext_resource type="Texture2D" uid="uid://nsuvd2wapfva" path="res://素材/豆包AI素材/药水/圣坚药水.png" id="5_bkfwv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5jsc"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
@@ -154,6 +155,7 @@ custom_minimum_size = Vector2(440, 280)
 offset_right = 427.0
 offset_bottom = 280.0
 theme = ExtResource("1_kmc5p")
+script = ExtResource("2_c74w5")
 
 [node name="图片" type="TextureRect" parent="."]
 layout_mode = 0
@@ -175,6 +177,7 @@ theme = ExtResource("1_kmc5p")
 theme_override_styles/panel = SubResource("StyleBox_o67h5")
 
 [node name="药水" type="TextureRect" parent="配方容器"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -186,7 +189,8 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_lock_ = true
 
-[node name="删除" type="Button" parent="."]
+[node name="取消" type="Button" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -206,15 +210,16 @@ theme_override_styles/focus = SubResource("StyleBox_y7u36")
 text = "取消"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="."]
+[node name="配方编号" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 20.0
 offset_top = 10.0
 offset_right = 215.0
 offset_bottom = 55.0
-text = "1#号配方配方"
+text = "1#号配方"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="信息区" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -226,18 +231,18 @@ offset_right = -8.0
 offset_bottom = -63.0
 theme_override_styles/panel = SubResource("StyleBox_c74w5")
 
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -68.5
-offset_right = 138.0
-offset_bottom = -23.5
-grow_vertical = 2
-text = "剩余:"
+[node name="信息" type="Label" parent="信息区"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 8.0
+offset_right = 107.0
+offset_bottom = 153.0
+text = "剩余:
+完成:
+总时间:"
 
-[node name="SpinBox" type="SpinBox" parent="Panel"]
+[node name="剩余数量" type="SpinBox" parent="信息区"]
+visible = false
 layout_mode = 0
 offset_left = 85.0
 offset_right = 325.0
@@ -249,15 +254,8 @@ update_on_text_changed = true
 suffix = "次"
 select_all_on_focus = true
 
-[node name="Label2" type="Label" parent="Panel"]
-layout_mode = 0
-offset_top = 60.0
-offset_right = 107.0
-offset_bottom = 153.0
-text = "完成:
-总时间:"
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="进度条" type="ProgressBar" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -266,8 +264,11 @@ offset_top = 231.0
 offset_right = -119.0
 offset_bottom = 271.0
 grow_horizontal = 2
+step = 1.0
+rounded = true
 
-[node name="使用" type="Button" parent="."]
+[node name="领取" type="Button" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = -1

@@ -5,15 +5,14 @@ var 物品数组: Array=[]:#限制类型为标准物品 或 物品装备
 		物品数组=值
 		if is_inside_tree():
 			更新物品()
+var 详情=0
+var 标题节点
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		初始化.节点["奖励悬浮面板"]=self#注册
 	更新物品()
+	标题节点=%"标题"
 	$"确认".pressed.connect(func():清空界面())
-func 语法糖传入数组(物品的数组: Array,奖励标题:String="待确认奖励"):
-	%"标题".text=奖励标题
-	custom_minimum_size=Vector2(10,0)+%"标题".get_combined_minimum_size()
-	物品数组+=物品的数组
 func 清空界面():
 	物品数组=[]
 func 更新物品():#先删除后添加
@@ -38,6 +37,8 @@ func 更新物品():#先删除后添加
 	for 物品数据 in 物品数组:
 		if not 物品数据 in 已加载道具:
 			var 道具卡片场景:道具卡片类 = preload("res://界面/道具卡片.tscn").instantiate()
+			if 详情>=1:
+				道具卡片场景.名称详情=true
 			道具卡片场景.道具=物品数据
 			%"范围".add_child(道具卡片场景)
 	节点容器.update_minimum_size()# 更新尺寸
@@ -50,3 +51,6 @@ func 更新物品():#先删除后添加
 	$"滚动区域".position = (size - $"滚动区域".size) / 2
 	position=Vector2((1700-size.x)/2,50+(850-size.y)/2)
 	visible = 节点数量 >= 1
+	await get_tree().process_frame
+	for 道具卡片场景 in 节点容器.get_children():
+		道具卡片场景.调整位置()

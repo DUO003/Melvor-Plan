@@ -4,6 +4,7 @@ var 道具名称=null
 @export var 催化剂:bool=false
 @export var 可修改:bool=false
 @export var 编号:int=1
+var 修改返回对象=null
 func 初始更新():
 	$"输入".visible=可修改
 	if 可修改:
@@ -13,8 +14,11 @@ func 初始更新():
 			$"输入".visible=false
 		else :
 			$"输入".value_changed.connect(func(值):
-				当前值=int(值)
-				更新文本())
+				if 当前值!=int(值):
+					当前值=int(值)
+					if not 修改返回对象==null:
+						修改返回对象.返回处理方法()
+					更新文本())
 	更新文本()
 func 更新文本():
 	if 道具名称==null:
@@ -42,13 +46,33 @@ func 鼠标信号处理(鼠标信号):
 		if GBIS.has_moving_item():
 			var 正在移动的物品=GBIS.moving_item_service.moving_item
 			print("正在移动的物品",正在移动的物品)
-			道具名称=GBIS.moving_item_service.moving_item.item_name
-			if not 催化剂 and 梅表格.缓存蓝图标签[道具名称]=="炼金":
-				$"图片".texture=GBIS.moving_item_service.moving_item.icon
-				更新文本()
-			if 催化剂 and 梅表格.缓存蓝图标签[道具名称]=="催化":
-				$"图片".texture=GBIS.moving_item_service.moving_item.icon
-				当前值=1
-				更新文本()
+			var 缓存道具名=GBIS.moving_item_service.moving_item.item_name
+			if 催化剂: 
+				if 梅表格.缓存蓝图标签[缓存道具名]=="催化":
+					道具名称=缓存道具名
+					$"图片".texture=GBIS.moving_item_service.moving_item.icon
+					当前值=1
+					更新文本()
+				else :
+					引擎.屏幕.滚动提示("材料类型不匹配","炼金容器")
+			elif 梅表格.缓存蓝图标签[缓存道具名]=="炼金":
+					道具名称=缓存道具名
+					$"图片".texture=GBIS.moving_item_service.moving_item.icon
+					当前值=10
+					更新文本()
+			else :
+				引擎.屏幕.滚动提示("材料类型不匹配","炼金容器")
+			#print(道具名称,当前值)
+			$"输入".value=当前值
+			if not 修改返回对象==null:
+				if 初始化.节点有效性检查("炼金窗口"):
+					初始化.节点["炼金窗口"].背包折叠(false)
+				修改返回对象.返回处理方法()
 			GBIS.moving_item_service.安全清除移动物品()
-			
+	elif 鼠标信号 is InputEventMouseButton and 鼠标信号.button_index == MOUSE_BUTTON_RIGHT and 鼠标信号.pressed:
+		if not 道具名称==null:
+			道具名称=null
+			当前值=0
+			更新文本()
+			if not 修改返回对象==null:
+				修改返回对象.返回处理方法()

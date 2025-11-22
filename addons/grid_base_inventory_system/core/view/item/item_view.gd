@@ -34,7 +34,7 @@ var 动画执行: bool = false
 const 动画时长: float = 0.1
 
 var 可拿取类型: Array=[]
-var 罗马数字:String=""
+#var 罗马数字:String=""
 ## 构造函数
 @warning_ignore("shadowed_variable")
 func _init(data: ItemData, base_size: int, stack_num_font: Font = null,
@@ -98,7 +98,7 @@ func move(offset: Vector2i = Vector2i.ZERO) -> void:
 ## 绘制物品
 func _draw() -> void:
 	# 如果物品数据中存在图标纹理，则绘制图标（维持宽高比）
-	罗马数字=初始化.罗马数字(1)
+	#罗马数字=初始化.罗马数字(1)
 	if data.icon:
 		# 设置纹理过滤模式为最近邻，解决纹理放大时的模糊问题
 		texture_filter = TEXTURE_FILTER_NEAREST

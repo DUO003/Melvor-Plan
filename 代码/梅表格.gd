@@ -18,7 +18,7 @@ func _ready():
 	装备蓝图=处理表格数据(表格字典["装备蓝图"])
 	字典加载()
 	标签加载()
-	#print("打印简介",获取简介("深渊苦露粉"))
+	#print("打印",筛选分类())
 func 标签加载():
 	缓存蓝图标签={}
 	var 图纸标签=装备蓝图[0].find("标签")
@@ -307,3 +307,22 @@ func 获取简介(物品名称: String, 图片尺寸: int=40) -> String:
 			替换内容 = ("[img=%s]%s[/img]") % [尺寸字符串, 图片路径]
 		结果文本 = 结果文本.substr(0, 匹配项.get_start()) + 替换内容 + 结果文本.substr(匹配项.get_end())# 执行替换
 	return 结果文本
+func 获取属性(道具名称,属性名称=null,解析失败=""):
+	var 属性=蓝图字典[道具名称][蓝图表头["属性"]]
+	var 字典={}
+	var json = JSON.new()
+	var 解析 = json.parse(属性)
+	if 解析 == OK:
+		字典 = json.data
+		if 属性名称==null:
+			return 字典
+	else :
+		print("解析JSON错误",道具名称)
+	return 字典.get(属性名称,解析失败)
+func 筛选物品(表头条件: String,目标值: String,待筛选数组: Array=蓝图字典.keys()) -> Array:
+	var 筛选结果: Array = []
+	var 索引: int = 蓝图表头[表头条件]
+	for 物品名称 in 待筛选数组:
+		if 蓝图字典[物品名称][索引] == 目标值:# 符合条件则加入结果字典
+			筛选结果 += [物品名称]
+	return 筛选结果

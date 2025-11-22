@@ -1,10 +1,10 @@
-[gd_scene load_steps=46 format=3 uid="uid://bv36ac0k5rwo"]
+[gd_scene load_steps=46 format=3 uid="uid://dxwbm08wtn1df"]
 
-[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_usgc3"]
-[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_f8lap"]
-[ext_resource type="Script" uid="uid://bv43rur7rji2w" path="res://代码/专属代码/炼金界面/炼金配方.gd" id="2_t1sfb"]
-[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_6h5q0"]
-[ext_resource type="PackedScene" uid="uid://unn8tlhgiegn" path="res://界面/插件/配方格子.tscn" id="5_gujam"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_t4q2w"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_pltcs"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_gsyse"]
+[ext_resource type="Script" uid="uid://bv43rur7rji2w" path="res://代码/专属代码/炼金界面/炼金配方.gd" id="4_ee4g3"]
+[ext_resource type="PackedScene" uid="uid://unn8tlhgiegn" path="res://界面/插件/配方格子.tscn" id="5_irp1r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1sfb"]
 bg_color = Color(0, 0, 0, 1)
@@ -12,7 +12,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-script = ExtResource("3_6h5q0")
+script = ExtResource("3_gsyse")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ik2p"]
@@ -24,7 +24,7 @@ corner_radius_bottom_left = 10
 expand_margin_left = -5.0
 expand_margin_top = -5.0
 expand_margin_right = -5.0
-script = ExtResource("3_6h5q0")
+script = ExtResource("3_gsyse")
 margin_left = -5
 margin_top = -5
 margin_right = -5
@@ -37,7 +37,7 @@ content_margin_left = -1.0
 content_margin_top = -1.0
 content_margin_right = -1.0
 content_margin_bottom = -1.0
-script = ExtResource("2_f8lap")
+script = ExtResource("2_pltcs")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_t1sfb"), SubResource("StyleBoxFlat_7ik2p")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -50,7 +50,7 @@ corner_radius_bottom_left = 10
 expand_margin_left = -5.0
 expand_margin_top = -5.0
 expand_margin_right = -5.0
-script = ExtResource("3_6h5q0")
+script = ExtResource("3_gsyse")
 margin_left = -5
 margin_top = -5
 margin_right = -5
@@ -63,7 +63,7 @@ content_margin_left = -1.0
 content_margin_top = -1.0
 content_margin_right = -1.0
 content_margin_bottom = -1.0
-script = ExtResource("2_f8lap")
+script = ExtResource("2_pltcs")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_t1sfb"), SubResource("StyleBoxFlat_7trn3")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -73,7 +73,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-script = ExtResource("3_6h5q0")
+script = ExtResource("3_gsyse")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07wse"]
@@ -85,7 +85,7 @@ corner_radius_bottom_left = 10
 expand_margin_left = -5.0
 expand_margin_top = -5.0
 expand_margin_right = -5.0
-script = ExtResource("3_6h5q0")
+script = ExtResource("3_gsyse")
 margin_left = -5
 margin_top = -5
 margin_right = -5
@@ -98,13 +98,13 @@ content_margin_left = -1.0
 content_margin_top = -1.0
 content_margin_right = -1.0
 content_margin_bottom = -1.0
-script = ExtResource("2_f8lap")
+script = ExtResource("2_pltcs")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_tqll5"), SubResource("StyleBoxFlat_07wse")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2weh"]
 bg_color = Color(0.82, 0.73253334, 0.492, 0)
-script = ExtResource("3_6h5q0")
+script = ExtResource("3_gsyse")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gujam"]
@@ -118,7 +118,7 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-script = ExtResource("3_6h5q0")
+script = ExtResource("3_gsyse")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBox" id="StyleBox_t1sfb"]
@@ -128,7 +128,7 @@ content_margin_left = -1.0
 content_margin_top = -1.0
 content_margin_right = -1.0
 content_margin_bottom = -1.0
-script = ExtResource("2_f8lap")
+script = ExtResource("2_pltcs")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_gujam")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -138,7 +138,7 @@ border_width_left = 10
 border_width_top = 10
 border_width_right = 10
 border_color = Color(0, 0, 0, 1)
-script = ExtResource("3_6h5q0")
+script = ExtResource("3_gsyse")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06t5k"]
@@ -151,7 +151,7 @@ border_color = Color(0.40784314, 0.2901961, 0.078431375, 1)
 expand_margin_left = -5.0
 expand_margin_top = -5.0
 expand_margin_right = -5.0
-script = ExtResource("3_6h5q0")
+script = ExtResource("3_gsyse")
 margin_left = -5
 margin_top = -5
 margin_right = -5
@@ -164,7 +164,7 @@ content_margin_left = 20.0
 content_margin_top = 2.0
 content_margin_right = 20.0
 content_margin_bottom = 0.0
-script = ExtResource("2_f8lap")
+script = ExtResource("2_pltcs")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kgk5h"), SubResource("StyleBoxFlat_06t5k")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -241,7 +241,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-script = ExtResource("3_6h5q0")
+script = ExtResource("3_gsyse")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kucxn"]
@@ -259,7 +259,7 @@ expand_margin_left = -5.0
 expand_margin_top = -5.0
 expand_margin_right = -5.0
 expand_margin_bottom = -5.0
-script = ExtResource("3_6h5q0")
+script = ExtResource("3_gsyse")
 margin_left = -5
 margin_top = -5
 margin_right = -5
@@ -277,7 +277,7 @@ expand_margin_left = -5.0
 expand_margin_top = -5.0
 expand_margin_right = -5.0
 expand_margin_bottom = -5.0
-script = ExtResource("3_6h5q0")
+script = ExtResource("3_gsyse")
 margin_left = -5
 margin_top = -5
 margin_right = -5
@@ -291,7 +291,7 @@ content_margin_left = 10.0
 content_margin_top = 2.0
 content_margin_right = 10.0
 content_margin_bottom = 2.0
-script = ExtResource("2_f8lap")
+script = ExtResource("2_pltcs")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -302,7 +302,7 @@ content_margin_left = 10.0
 content_margin_top = 2.0
 content_margin_right = 10.0
 content_margin_bottom = 2.0
-script = ExtResource("2_f8lap")
+script = ExtResource("2_pltcs")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -313,7 +313,7 @@ content_margin_left = 10.0
 content_margin_top = 2.0
 content_margin_right = 10.0
 content_margin_bottom = 2.0
-script = ExtResource("2_f8lap")
+script = ExtResource("2_pltcs")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -324,20 +324,20 @@ content_margin_left = 10.0
 content_margin_top = 2.0
 content_margin_right = 10.0
 content_margin_bottom = 2.0
-script = ExtResource("2_f8lap")
+script = ExtResource("2_pltcs")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [node name="炼金配方卡片" type="FoldableContainer"]
 custom_minimum_size = Vector2(385, 0)
-theme = ExtResource("1_usgc3")
+theme = ExtResource("1_t4q2w")
 theme_override_styles/title_panel = SubResource("StyleBox_n2weh")
 theme_override_styles/title_hover_panel = SubResource("StyleBox_n2weh")
 theme_override_styles/title_collapsed_panel = SubResource("StyleBox_06t5k")
 theme_override_styles/title_collapsed_hover_panel = SubResource("StyleBox_7trn3")
 theme_override_styles/panel = SubResource("StyleBoxFlat_n2weh")
 title = "配方1"
-script = ExtResource("2_t1sfb")
+script = ExtResource("4_ee4g3")
 
 [node name="炼金配方" type="Panel" parent="."]
 custom_minimum_size = Vector2(385, 350)
@@ -361,7 +361,7 @@ current_tab = 0
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="配方格子" parent="炼金配方/信息/配方" instance=ExtResource("5_gujam")]
+[node name="配方格子" parent="炼金配方/信息/配方" instance=ExtResource("5_irp1r")]
 unique_name_in_owner = true
 layout_mode = 0
 anchors_preset = 0
