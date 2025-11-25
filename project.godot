@@ -15,19 +15,19 @@ config/description="最后一个实验性版本,存档目前状态相对稳定
 游戏基础版本开发总进度(1/7):
 [手工:75%]
 [挂机:5%]"
-config/version="0.0.3"
+config/version="0.1"
 config/tags=PackedStringArray("梅计划")
-run/main_scene="res://界面/空界面.tscn"
+run/main_scene="uid://kifxwq2enhmp"
 config/features=PackedStringArray("4.5", "Mobile")
 run/max_fps=60
+boot_splash/bg_color=Color(0.39, 0.3289, 0.20669998, 1)
+boot_splash/image="uid://b6jdxhylrmsvu"
 config/icon="uid://b1hn1lg5d5q5l"
 
 [autoload]
 
 "计划"="*res://代码/梅计划.gd"
-"梅表格"="*res://代码/梅表格.gd"
 GBIS="*res://addons/grid_base_inventory_system/core/grid_base_inventory_system.gd"
-"引擎"="*res://addons/YgameEngine/脚本/0.引擎.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [debug]
@@ -105,7 +105,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/YgameEngine/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/fastnode/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/tab_saver/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/fastnode/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/tab_saver/plugin.cfg")
 
 [file_customization]
 

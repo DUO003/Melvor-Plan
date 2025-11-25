@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ContainerRepository" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://addons/grid_base_inventory_system/core/model/container/container_data.gd" id="1_arhl7"]
+[ext_resource type="Script" path="res://addons/grid_base_inventory_system/core/repository/container_repository.gd" id="2_pib5s"]
+
+[resource]
+script = ExtResource("2_pib5s")
+"梅存档" = {
+"召唤": {},
+"手工": {},
+"挂机": {},
+"木料": {},
+"游历": {},
+"矿城": {},
+"职业": {},
+"配置文件": {},
+"金币": 0
+}

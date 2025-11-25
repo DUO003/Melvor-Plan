@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://c64xayrsf6jhw"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_6kgjp"]
+[ext_resource type="Script" uid="uid://dl4d3306j5yd2" path="res://addons/tab_saver/快捷跳转.gd" id="2_u6nr5"]
+
+[node name="快捷跳转" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_6kgjp")
+script = ExtResource("2_u6nr5")
+
+[node name="水平分割" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="标签" type="TabContainer" parent="水平分割"]
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 0
+
+[node name="场景" type="ScrollContainer" parent="水平分割/标签"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_tab_index = 0
+
+[node name="场景页" type="GridContainer" parent="水平分割/标签/场景"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 8
+
+[node name="代码" type="ScrollContainer" parent="水平分割/标签"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_tab_index = 1
+
+[node name="代码页" type="GridContainer" parent="水平分割/标签/代码"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 8
+
+[node name="功能按钮" type="VBoxContainer" parent="水平分割"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="重新载入" type="Button" parent="水平分割/功能按钮"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "刷新"
+
+[node name="载入脚本" type="Button" parent="水平分割/功能按钮"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "计划"

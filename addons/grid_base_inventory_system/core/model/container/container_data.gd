@@ -29,6 +29,30 @@ func _init(container_name: String = GBIS.DEFAULT_INVENTORY_NAME, columns: int = 
 		for col in columns:
 			var pos = Vector2i(col, row)
 			grid_item_map[pos] = null
+# 忽略"变量遮蔽"警告（保持与原有代码风格一致）
+@warning_ignore("shadowed_variable")
+# 背包Y轴扩容方法（仅增加行数，纯数据层面，不处理UI）
+# 参数：扩容数量 - 必须≥1，代表要新增的行数
+func 扩容_增加行数(扩容数量: int) -> void:
+	if 扩容数量 < 1:
+		push_error("背包扩容失败：扩容数量必须大于等于1，当前传入值为：", 扩容数量)
+		return
+	var 原有总行数 = self.rows
+	var 新总行数 = 原有总行数 + 扩容数量
+	var 新增行起始索引 = 原有总行数
+	var 新增行结束索引 = 新总行数 - 1
+	for 新增行索引 in range(新增行起始索引, 新增行结束索引 + 1):
+		# 遍历原有列数（仅扩Y轴，列数保持不变）
+		for 列索引 in range(self.columns):
+			# 生成新格子的坐标（列优先，与原有逻辑一致）
+			var 新格子坐标 = Vector2i(列索引, 新增行索引)
+			# 安全校验：避免重复初始化已有格子（防止覆盖原有数据）
+			if 新格子坐标 not in grid_item_map:
+				# 初始化新格子为null（空格子），与原有初始化逻辑一致
+				grid_item_map[新格子坐标] = null
+	self.rows = 新总行数
+	print("背包【", self.container_name, "】扩容完成：原有行数=", 原有总行数, "，新行数=", 新总行数, "，新增行数=", 扩容数量)
+
 
 ## 清空重启
 func clear() -> void:

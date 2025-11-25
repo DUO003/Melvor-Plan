@@ -432,10 +432,10 @@ func 定义减伤():
 
 # 装备时调用
 func equipped(_装备栏: String) -> void:
-	初始化.玩家单例.装备来源属性.append(self)
+	计划.梅游历.装备来源属性.append(self)
 # 脱装备时调用
 func unequipped(_装备栏: String) -> void:
-	if 初始化.玩家单例.装备来源属性.has(self):
-		初始化.玩家单例.装备来源属性.erase(self)
+	if 计划.梅游历.装备来源属性.has(self):
+		计划.梅游历.装备来源属性.erase(self)
 func 基础检查()->bool:
 	return 基础数值.has(类型)

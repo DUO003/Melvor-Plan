@@ -15,7 +15,7 @@ func _ready() -> void:
 	_更新_UI()
 	if Engine.is_editor_hint():
 		return  # 直接返回，不执行后续可能出错的代码
-	初始化.connect("更新_UI", Callable(self, "_更新_UI"))
+	计划.connect("更新_UI", Callable(self, "_更新_UI"))
 	%"上层".mouse_entered.connect(func(): 触发切换())
 	%"上层".mouse_exited.connect(func():触发切换())
 
@@ -30,13 +30,13 @@ func _更新_UI():
 		%熟练进度条.max_value=100
 		%熟练进度条.value=66
 	else :
-		var 系统缓存=初始化.梅存档.get(系统,{})
+		var 系统缓存=计划.梅存档.get(系统,{})
 		等级=系统缓存.get("等级",0)
 		%"文本".text= 玩法+" LV:"+str(等级)
 		var 精通=int(系统缓存.get("精通",0))
 		var 精通上限=10000+等级*1000
 		var 熟练=int(系统缓存.get("熟练",0))
-		var 熟练上限=初始化.结算升级(系统,"null",true)
+		var 熟练上限=计划.结算升级(系统,"null",true)
 		%精通进度条.max_value=精通上限
 		%精通进度条.value=精通
 		%熟练进度条.max_value=熟练上限

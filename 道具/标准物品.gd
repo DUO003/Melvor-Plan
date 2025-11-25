@@ -24,38 +24,38 @@ var 物品使用映射 = {
 		return -1),  # 失败
 	"礼盒":(func(字典):
 		if self.current_amount >= 1:
-			if 初始化.节点有效性检查("空节点"):
-				初始化.节点["空节点"].便利摄像机效果()
-			var 挂机数据: Dictionary=初始化.梅存档["挂机"]
+			if 计划.节点有效性检查("空节点"):
+				计划.节点["空节点"].便利摄像机效果()
+			var 挂机数据: Dictionary=计划.梅存档["挂机"]
 			var 开启次数=挂机数据.get("开启次数",0)
 			if 开启次数<5:
 				var 在线时间=挂机数据.get("在线时间",{}).get("今日累计",0)
 				if not 在线时间 >(开启次数+1)*360:
-					引擎.屏幕.滚动提示("今天已开启次数:"+str(开启次数)+"/5","物品使用")
-					引擎.屏幕.滚动提示("下次开启需要:"+str((开启次数+1)*360-在线时间)+"秒")
+					计划.语法糖通知("今天已开启次数:"+str(开启次数)+"/5","物品使用")
+					计划.语法糖通知("下次开启需要:"+str((开启次数+1)*360-在线时间)+"秒")
 					return 0
 				var 礼盒=字典["礼盒"]
 				var 通知奖励=[]
 				for 内容 in 礼盒:
 					通知奖励+=抽取奖励(内容)
-				初始化.语法糖奖励显示(通知奖励,"礼包",1)
-				引擎.屏幕.滚动提示("今天已开启次数:"+str(开启次数)+"/5","物品使用")
-				初始化.梅存档["挂机"]["开启次数"]=开启次数+1
+				计划.语法糖奖励显示(通知奖励,"礼包",1)
+				计划.语法糖通知("今天已开启次数:"+str(开启次数)+"/5","物品使用")
+				计划.梅存档["挂机"]["开启次数"]=开启次数+1
 				return 1
 			else :
-				引擎.屏幕.滚动提示("今天使用已超过上限","物品使用")
+				计划.语法糖通知("今天使用已超过上限","物品使用")
 			return 0
 		return -1),  # 失败
 	"资源":(func(_字典):
 		if self.current_amount >= 1:
-			初始化.获得资源(self.item_name,self.current_amount,false)
+			计划.获得资源(self.item_name,self.current_amount,false)
 			return self.current_amount
 		else:
 			print("不足，无法使用")
 		return -1),  # 失败
 	"金币":(func(_字典):
 		if self.current_amount >= 1:
-			初始化.梅存档["金币"]+=self.current_amount
+			计划.梅存档["金币"]+=self.current_amount
 			return self.current_amount
 		else:
 			print("不足，无法使用")
@@ -64,13 +64,13 @@ var 物品使用映射 = {
 ## 物品被使用时调用,自行处理销毁逻辑与变量外观
 func 使用物品(背包) -> String:# 中间函数：处理物品使用流程
 	print("尝试使用物品",self.item_name)
-	var 表格字典:Dictionary=梅表格.获取表格字典(梅表格.装备蓝图,-1,self.item_name)
+	var 表格字典:Dictionary=计划.表格.获取表格字典(计划.表格.创世蓝图,-1,self.item_name)
 	if not "属性" in 表格字典:
 		print("属性错误")
 		return "属性错误"
-	var 字典=梅表格.获取属性(self.item_name,null,{})
+	var 字典=计划.表格.获取属性(self.item_name,null,{})
 	if not "使用" in 字典 or 字典["使用"] not in 物品使用映射:# 步骤2：检查字典中是否有对应处理方法
-		引擎.屏幕.滚动提示("该物品没有使用方法","物品使用")
+		计划.语法糖通知("该物品没有使用方法","物品使用")
 		return "缺少方法"
 	print("使用成功")
 	var 使用数量 = 物品使用映射[字典["使用"]].call(字典)# 步骤3：执行对应使用方法，获取使用数量
@@ -82,11 +82,11 @@ func 使用物品(背包) -> String:# 中间函数：处理物品使用流程
 			self.current_amount-=使用数量
 			if self.current_amount<=0:
 				GBIS.inventory_service.remove_item_by_data(背包, self)
-		初始化.emit_signal("更新_UI")
-		初始化.保存存档("使用背包内道具")
+		计划.emit_signal("更新_UI")
+		计划.保存存档("使用背包内道具")
 		return "成功"
 func 物品点击(背包) -> bool:#物品被点击时调用,返回不销毁
-	初始化.emit_signal("更新_背包物品信息", self,背包)
+	计划.emit_signal("更新_背包物品信息", self,背包)
 	return false
 ## 消耗方法，需重写，返回消耗数量（>=0）
 func 获取消耗量() -> int:
@@ -97,7 +97,7 @@ func 抽取奖励(内容):
 	var 筛选数组=[]
 	var 通知奖励=[]
 	if 内容[0] is Array:
-		筛选数组=初始化.语法糖获取标签组(内容[0])
+		筛选数组=计划.语法糖获取标签组(内容[0])
 	else :
 		筛选数组=[内容[0]]
 	if 筛选数组.size()>=1:
@@ -107,7 +107,7 @@ func 抽取奖励(内容):
 		var 步进=int(内容[4])
 		for x in 抽取次数:
 			var 物品名称=筛选数组[randi()% 筛选数组.size()]
-			通知奖励+=[初始化.语法糖获得物品(物品名称,随机数量(最低,最高,步进))]
+			通知奖励+=[计划.语法糖获得物品(物品名称,随机数量(最低,最高,步进))]
 	return 通知奖励
 	
 func 随机数量(最低: int, 最高: int, 步进: int) -> int:

@@ -46,7 +46,7 @@ func _process(delta):
 
 
 func 更新文本(配方编号):
-	面板文本.text = 初始化.预生成文本(配方编号,true)
+	面板文本.text = 计划.预生成文本(配方编号,true)
 	面板文本.update_minimum_size()# 更新尺寸
 	面板文本.set_size(面板文本.get_combined_minimum_size())
 	面板.size = 面板文本.size + Vector2(16, 16)

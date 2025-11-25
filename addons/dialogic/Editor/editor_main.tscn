@@ -27,14 +27,18 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_drcn6"]
 image = SubResource("Image_4esak")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bs7k"]
-content_margin_left = 8.0
-content_margin_top = 8.0
-content_margin_right = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(0.1155, 0.132, 0.1595, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mevaw"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.365, 0.365, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 corner_detail = 1
-anti_aliasing = false
 
 [node name="EditorView" type="ScrollContainer"]
 anchors_preset = 15
@@ -85,6 +89,7 @@ script = ExtResource("4_6cx8s")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
+current_tab = 0
 tab_count = 7
 tab_0/icon = ExtResource("2_scwcl")
 tab_1/title = "Timeline"
@@ -134,7 +139,7 @@ content_scale_aspect = 4
 script = ExtResource("10_xbkrt")
 
 [node name="Manager" parent="ReferenceManager" instance=ExtResource("10_l1rf8")]
-theme_override_styles/panel = SubResource("StyleBoxFlat_5bs7k")
+theme_override_styles/panel = SubResource("StyleBoxFlat_mevaw")
 
 [node name="UpdateManager" type="Node" parent="."]
 script = ExtResource("14_l6b1p")

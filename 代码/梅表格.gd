@@ -1,6 +1,6 @@
 extends Node
-class_name CSVReader# 自动加载的CSV读取器，用于从CSV文件中读取数据
-var 装备蓝图: Array
+class_name 梅表格
+var 创世蓝图: Array
 ##已蓝图名称为键名,返回对应蓝图数组
 var 蓝图字典:Dictionary = {}
 ##缓存对应表头的int
@@ -11,27 +11,25 @@ var 蓝图贴图:Dictionary[String,Texture2D] = {}
 var 表格字典:Dictionary = {}
 ##预先加载标签
 var 缓存蓝图标签:Dictionary={}
+##载入所有表格信息到字典,单独保存蓝图信息到创世蓝图
 func _ready():
-	#print_all_res_files()
 	加载所有表格()
-	#保留旧接口
-	装备蓝图=处理表格数据(表格字典["装备蓝图"])
+	创世蓝图=处理表格数据(表格字典["创世蓝图"])
 	字典加载()
 	标签加载()
-	#print("打印",筛选分类())
 func 标签加载():
 	缓存蓝图标签={}
-	var 图纸标签=装备蓝图[0].find("标签")
-	for 蓝图 in 装备蓝图:
+	var 图纸标签=创世蓝图[0].find("标签")
+	for 蓝图 in 创世蓝图:
 		缓存蓝图标签[蓝图[0]]=蓝图[图纸标签]
 func 字典加载():
 	蓝图表头={}
 	var 缓存序号=0
-	for 表头 in 装备蓝图[0]:
+	for 表头 in 创世蓝图[0]:
 		蓝图表头[表头]=缓存序号
 		缓存序号+=1
 	蓝图字典={}
-	for 蓝图 in 装备蓝图:
+	for 蓝图 in 创世蓝图:
 		蓝图字典[蓝图[0]]=蓝图
 	#print(蓝图表头)
 func 道具贴图(贴图名称:String):#->Texture2Dprint("贴图名称",贴图名称)
@@ -46,54 +44,27 @@ func 道具贴图(贴图名称:String):#->Texture2Dprint("贴图名称",贴图�
 	return null
 	
 func 加载所有表格():
-	# 清空现有数据
-	表格字典.clear()
-	# 打开表格目录
-	var 目录 = DirAccess.open("res://表格/")
-		
+	表格字典.clear()# 清空现有数据
+	var 目录 = DirAccess.open("res://表格/")# 打开表格目录
 	if 目录 == null:
 		print("无法打开表格目录: ", DirAccess.get_open_error())
 		return
-		
-	# 枚举目录中的所有文件
-	目录.list_dir_begin()
+	目录.list_dir_begin()# 枚举目录中的所有文件
 	var 文件名 = 目录.get_next()
-	
 	while 文件名 != "":
-		# 同时处理 .csv 和 .csv.import 文件
-		var 是CSV文件 = 文件名.ends_with(".csv") and !文件名.ends_with(".csv.import")
-		var 是Import文件 = 文件名.ends_with(".csv.import")
-		
-		if 是CSV文件 or 是Import文件:
-			# 处理基础文件名（去掉对应的扩展名）
-			var 基础文件名 = ""
-			if 是CSV文件:
-				基础文件名 = 文件名.get_basename()  # 去掉 .csv
-			else:
-				基础文件名 = 文件名.get_basename().get_basename()  # 先去掉 .import，再去掉 .csv
-			
-			# 处理键名（保持原有的分割逻辑）
+		var 是CSV文件 = 文件名.ends_with(".csv")
+		if 是CSV文件:
+			var 基础文件名 = ""# 处理基础文件名去掉 .csv
+			基础文件名 = 文件名.get_basename()
 			var 分割结果 = 基础文件名.split(" - ")
 			var 键名 = 基础文件名
-			if 分割结果.size() >= 2:
+			if 分割结果.size() >= 2:# 处理键名（保持原有的分割逻辑）
 				键名 = 分割结果.slice(1)[0]
-			
-			# 修正三元运算符语法：使用 GDScript 支持的 "if else" 形式
 			var 加载文件名 = 文件名.get_basename() if 是CSV文件 else 基础文件名
-			
-			# 加载对应文件
-			表格字典[键名] = 获取表格(加载文件名)
-			
-			# 打印提示，区分两种文件类型
-			#if 是CSV文件:
-				#print("加载CSV文件: ", 文件名, " 键名: ", 键名)
-			#else:
-				#print("加载Import文件: ", 文件名, " 键名: ", 键名)
-		
+			表格字典[键名] = 获取表格(加载文件名)# 加载对应文件
 		文件名 = 目录.get_next()
-	
 	目录.list_dir_end()
-	# print("已加载:", 表格字典)
+
 
 func 获取表格(表格: String) -> Array:
 	var 文件路径 = "res://表格/" + 表格 + ".csv"
@@ -225,7 +196,7 @@ func 获取表格字典(表格数据,表格行号:int, 首项名称 = null) -> D
 	
 	return 结果字典
 	
-func print_all_res_files():
+func 调试打印所有文件目录():
 	var root_path = "res://"
 	# 使用静态方法获取目录访问实例
 	var dir = DirAccess.open(root_path)

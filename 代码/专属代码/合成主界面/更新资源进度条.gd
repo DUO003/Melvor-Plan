@@ -9,7 +9,7 @@ func _ready():#初始化
 	资源 = $"../文本".text
 	update_resource_size()
 	
-	初始化.connect("更新_UI", Callable(self, "_on_更新_UI"))
+	计划.connect("更新_UI", Callable(self, "_on_更新_UI"))
 #func _process(_delta):#每帧执行
 
 func _on_更新_UI():
@@ -18,9 +18,9 @@ func _on_更新_UI():
 func update_resource_size():
 	
 	if 资源 == "精华":
-		$"数值".text = str(初始化.资源(资源))
+		$"数值".text = str(计划.资源(资源))
 	else:
-		variable1 = 初始化.资源(资源)
+		variable1 = 计划.资源(资源)
 		variable2 = 100
 
 		# 计算比例（防止除以零）

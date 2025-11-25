@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhucfadbhtaq6"]
+
+[ext_resource type="Script" uid="uid://coq0o0dl80roa" path="res://界面/插件/通知.gd" id="1_0iigp"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_73lfj"]
+
+[node name="通知" type="Panel"]
+anchors_preset = -1
+anchor_right = 0.119
+anchor_bottom = 0.062000003
+offset_right = -2.480011
+offset_bottom = -27.960007
+theme = ExtResource("1_73lfj")
+script = ExtResource("1_0iigp")
+
+[node name="文本" type="RichTextLabel" parent="."]
+layout_mode = 1
+offset_right = 59.0
+offset_bottom = 55.0
+size_flags_horizontal = 0
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "测试"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+metadata/_edit_lock_ = true

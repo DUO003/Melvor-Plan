@@ -1,43 +1,32 @@
 @tool
 extends EditorPlugin
-# 固定场景路径
-const TARGET_SCENE_PATH: String = "res://界面/空界面.tscn"
+##将固定场景路径字典（键=按钮名称，值=场景路径）
 # 自定义标签页的主控件
-var custom_screen: Control = null
+var 标签页: Control = null
+const 快捷跳转 := preload("res://addons/tab_saver/快捷跳转.tscn")
 func _enter_tree() -> void:
-	# 1. 创建标签页内容（一个按钮，居中显示）
-	custom_screen = PanelContainer.new()
-	custom_screen.name = "EmptySceneScreen"
-	# 按钮
-	var open_btn = Button.new()
-	open_btn.text = "打开空界面场景"
-	open_btn.custom_minimum_size = Vector2(200, 50)
-	open_btn.pressed.connect(_on_open_clicked)
-	# 居中容器
-	var center_container = CenterContainer.new()
-	center_container.add_child(open_btn)
-	custom_screen.add_child(center_container)
-	# 2. 将控件添加到编辑器主屏幕（主屏幕是 2D/3D/脚本标签的容器）
-	var main_screen = EditorInterface.get_editor_main_screen()
-	main_screen.add_child(custom_screen)
-	custom_screen.hide()  # 初始隐藏，切换到该标签时再显示
+	标签页=快捷跳转.instantiate()
+	标签页.hide()  # 初始隐藏，切换到该标签时再显示
+	var 扩展页 = EditorInterface.get_editor_main_screen()
+	扩展页.add_child(标签页)
+	#print("标签页",标签页)
 func _exit_tree() -> void:
-	# 移除控件
-	custom_screen.queue_free()
-# 声明这是一个主屏幕插件（必须实现，否则标签不显示）
+	# 移除控件（保留原逻辑）
+	if is_instance_valid(标签页):
+		标签页.queue_free()
+# 声明这是一个主屏幕插件
 func _has_main_screen() -> bool:
 	return true
-# 标签页显示的名称（必须实现）
+
+# 标签页显示的名称（保留原逻辑）
 func _get_plugin_name() -> String:
-	return "空界面"
-# 标签页的图标（可选，用内置图标）
-func _get_plugin_icon() -> Texture2D:
-	return EditorInterface.get_editor_theme().get_icon("SceneFile", "EditorIcons")
-# 控制标签页的显示/隐藏（当切换到该标签时调用）
+	return "快捷跳转"
+
+## 标签页的图标
+#func _get_plugin_icon() -> Texture2D:
+	#return EditorInterface.get_editor_theme().get_icon("SceneFile", "EditorIcons")
+
+# 控制标签页的显示/隐藏（保留原逻辑）
 func _make_visible(visible: bool) -> void:
-	custom_screen.visible = visible
-# 按钮点击事件：打开固定场景
-func _on_open_clicked() -> void:
-	var editor = EditorInterface
-	editor.open_scene_from_path(TARGET_SCENE_PATH)
-	editor.set_main_screen_editor("2D")
+	if is_instance_valid(标签页):
+		标签页.visible = visible

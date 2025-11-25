@@ -40,7 +40,7 @@ func 更新文本():
 			$"数量".text=""
 			$"图片".size=Vector2(150,150)
 		$"数量".position=Vector2(0,100)
-		$"图片".texture=梅表格.道具贴图(str(道具名称))
+		$"图片".texture=计划.表格.道具贴图(str(道具名称))
 func 鼠标信号处理(鼠标信号):
 	if 鼠标信号 is InputEventMouseButton and not 鼠标信号.pressed:
 		if GBIS.has_moving_item():
@@ -48,25 +48,25 @@ func 鼠标信号处理(鼠标信号):
 			print("正在移动的物品",正在移动的物品)
 			var 缓存道具名=GBIS.moving_item_service.moving_item.item_name
 			if 催化剂: 
-				if 梅表格.缓存蓝图标签[缓存道具名]=="催化":
+				if 计划.表格.缓存蓝图标签[缓存道具名]=="催化":
 					道具名称=缓存道具名
 					$"图片".texture=GBIS.moving_item_service.moving_item.icon
 					当前值=1
 					更新文本()
 				else :
-					引擎.屏幕.滚动提示("材料类型不匹配","炼金容器")
-			elif 梅表格.缓存蓝图标签[缓存道具名]=="炼金":
+					计划.语法糖通知("材料类型不匹配","炼金容器")
+			elif 计划.表格.缓存蓝图标签[缓存道具名]=="炼金":
 					道具名称=缓存道具名
 					$"图片".texture=GBIS.moving_item_service.moving_item.icon
 					当前值=10
 					更新文本()
 			else :
-				引擎.屏幕.滚动提示("材料类型不匹配","炼金容器")
+				计划.语法糖通知("材料类型不匹配","炼金容器")
 			#print(道具名称,当前值)
 			$"输入".value=当前值
 			if not 修改返回对象==null:
-				if 初始化.节点有效性检查("炼金窗口"):
-					初始化.节点["炼金窗口"].背包折叠(false)
+				if 计划.节点有效性检查("炼金窗口"):
+					计划.节点["炼金窗口"].背包折叠(false)
 				修改返回对象.返回处理方法()
 			GBIS.moving_item_service.安全清除移动物品()
 	elif 鼠标信号 is InputEventMouseButton and 鼠标信号.button_index == MOUSE_BUTTON_RIGHT and 鼠标信号.pressed:

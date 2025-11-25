@@ -16,9 +16,9 @@ func _ready() -> void:
 	加载配方信息()
 	$"炼金配方/使用".pressed.connect(func():使用事件.call(int(%"制作数量".value)))
 	$"炼金配方/删除".pressed.connect(func():删除事件.call())
-	var 哈希结果=初始化.梅手工单例.哈希配方(配方)
+	var 哈希结果=计划.梅手工单例.哈希配方(配方)
 	var 了解=$"炼金配方/信息/配方/还不够了解"
-	var 炼金配方=初始化.梅存档["手工"]["炼金配方"]
+	var 炼金配方=计划.梅存档["手工"]["炼金配方"]
 	了解.visible=true
 	%"查看".visible=false
 	%"查看".pressed.connect(func():查看事件.call())

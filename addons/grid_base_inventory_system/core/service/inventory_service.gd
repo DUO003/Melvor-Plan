@@ -45,7 +45,7 @@ func stack_moving_item(inv_name: String, grid_id: Vector2i) -> void:
 func place_moving_item(inv_name: String, grid_id: Vector2i) -> bool:
 	if place_to(inv_name, GBIS.moving_item_service.moving_item, grid_id):
 		GBIS.moving_item_service.clear_moving_item()
-		初始化.保存存档("背包:物品格子移动")
+		计划.保存存档("背包:物品格子移动")
 		
 		return true
 	return false

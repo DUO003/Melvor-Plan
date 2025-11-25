@@ -1,0 +1,285 @@
+[gd_scene load_steps=9 format=3 uid="uid://kifxwq2enhmp"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_6r68l"]
+[ext_resource type="Texture2D" uid="uid://b6q0o46fjedne" path="res://素材/游戏素材/背景/3.png" id="2_clqjb"]
+[ext_resource type="Script" uid="uid://blxbxdy28ud5v" path="res://界面/开始菜单/开始菜单.gd" id="2_l8v50"]
+[ext_resource type="Texture2D" uid="uid://b1hn1lg5d5q5l" path="res://素材/全息图片AI素材/元素/火.png" id="3_l8v50"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="4_qbyf1"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_btlti"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s0f7"]
+bg_color = Color(0.55, 0.42716667, 0.18149999, 0.78431374)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_btlti")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_ubnl7"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("4_qbyf1")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_1s0f7")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[node name="开始界面" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_l8v50")
+
+[node name="开始菜单" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_6r68l")
+
+[node name="背景" type="NinePatchRect" parent="开始菜单"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_clqjb")
+metadata/_edit_lock_ = true
+
+[node name="游戏图标" type="TextureRect" parent="开始菜单"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 265.0
+offset_right = 565.0
+offset_bottom = 672.0
+texture = ExtResource("3_l8v50")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="游戏名称" type="Label" parent="开始菜单/游戏图标"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 435.0
+offset_right = 352.0
+offset_bottom = 575.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 100
+text = "梅计划"
+
+[node name="版本号" type="Label" parent="开始菜单/游戏图标"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 26.0
+offset_top = 562.0
+offset_right = 385.0
+offset_bottom = 668.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 75
+text = "V0.1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="主面板" type="Panel" parent="开始菜单"]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 225.0
+offset_right = 1772.0
+offset_bottom = 815.0
+theme_override_styles/panel = SubResource("StyleBox_ubnl7")
+
+[node name="存档数量" type="Label" parent="开始菜单/主面板"]
+layout_mode = 1
+offset_left = 23.0
+offset_top = 23.0
+offset_right = 267.0
+offset_bottom = 93.0
+theme_override_font_sizes/font_size = 50
+text = "存档数量:0"
+
+[node name="存档选择" type="TabContainer" parent="开始菜单/主面板"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 50.0
+offset_top = 107.0
+offset_right = 1050.0
+offset_bottom = 386.0
+
+[node name="按钮区" type="HBoxContainer" parent="开始菜单/主面板"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -194.0
+offset_right = 1050.0
+offset_bottom = -104.0
+grow_vertical = 0
+
+[node name="开始游戏" type="Button" parent="开始菜单/主面板/按钮区"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+text = "开始游戏"
+
+[node name="新建" type="Button" parent="开始菜单/主面板/按钮区"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 55
+text = "新建"
+
+[node name="设置" type="Button" parent="开始菜单/主面板/按钮区"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 50
+text = "设置"
+
+[node name="删除" type="Button" parent="开始菜单/主面板/按钮区"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 55
+text = "删除"
+
+[node name="自定义存档名" type="LineEdit" parent="开始菜单/主面板"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 669.0
+offset_top = -95.0
+offset_right = 1055.0
+offset_bottom = -25.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+placeholder_text = "自定义存档名称"
+max_length = 7
+emoji_menu_enabled = false
+
+[node name="存档" type="Label" parent="开始菜单/主面板/自定义存档名"]
+layout_mode = 0
+offset_left = -277.0
+offset_right = -12.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 50
+text = "新建存档名:"
+
+[node name="多语言功能区" type="Panel" parent="开始菜单"]
+layout_mode = 0
+offset_left = 1235.0
+offset_top = 840.0
+offset_right = 1769.0
+offset_bottom = 940.0
+theme_override_styles/panel = SubResource("StyleBox_ubnl7")
+
+[node name="语言下拉菜单" type="OptionButton" parent="开始菜单/多语言功能区"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -443.0
+offset_top = -44.5
+offset_bottom = 44.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+alignment = 1
+selected = 0
+fit_to_longest_item = false
+item_count = 3
+popup/item_0/text = "中文"
+popup/item_0/id = 0
+popup/item_1/text = "中文"
+popup/item_1/id = 1
+popup/item_2/text = "中文"
+popup/item_2/id = 2
+
+[node name="地球" type="Label" parent="开始菜单/多语言功能区"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -42.5
+offset_right = 80.0
+offset_bottom = 42.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "🌏"
+
+[node name="退出游戏" type="Button" parent="开始菜单"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 672.0
+offset_top = 305.0
+offset_right = 1010.0
+offset_bottom = 395.0
+grow_vertical = 2
+size_flags_horizontal = 6
+text = "❌️退出游戏"
+
+[node name="提示容器" type="VBoxContainer" parent="开始菜单"]
+unique_name_in_owner = true
+z_index = 10
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_behavior_recursive = 1
+
+[node name="SaveConfirmationDialog" type="ConfirmationDialog" parent="."]
+disable_3d = true
+oversampling_override = 1.0
+title = ""
+initial_position = 1
+size = Vector2i(840, 400)
+visible = true
+unresizable = true
+min_size = Vector2i(800, 400)
+max_size = Vector2i(800, 200)
+theme = ExtResource("1_6r68l")
+ok_button_text = "确认"
+cancel_button_text = "取消"
+
+[node name="Control" type="Control" parent="SaveConfirmationDialog"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 28.0
+offset_right = 830.0
+offset_bottom = 293.0
+
+[node name="Label" type="Label" parent="SaveConfirmationDialog/Control"]
+layout_mode = 0
+offset_top = -28.0
+offset_right = 236.0
+offset_bottom = 57.0
+theme = ExtResource("1_6r68l")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 60
+text = "二次确认"
+
+[node name="Label2" type="Label" parent="SaveConfirmationDialog/Control"]
+layout_mode = 0
+offset_top = 70.0
+offset_right = 624.0
+offset_bottom = 140.0
+theme = ExtResource("1_6r68l")
+theme_override_font_sizes/font_size = 50
+text = "是否确认删除存档,不可恢复!"

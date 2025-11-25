@@ -93,6 +93,9 @@ func 语法备忘录(真: bool=true,假: bool=false,
 	#print()
 	#signal#声明信号
 	#.queue_free()#删除节点
-	#初始化.emit_signal("更新_UI")#发出信号示例
+	#计划.emit_signal("更新_UI")#发出信号示例
 #preload().instantiate()#预加载
 #load()#?.instantiate()#动态加载
+#self#当前节点
+#super#继承上级节点
+#"整数%d:文本%s:浮点%f:控制精度浮点%.2f:"%[10,"文本",3.14,3.1415]

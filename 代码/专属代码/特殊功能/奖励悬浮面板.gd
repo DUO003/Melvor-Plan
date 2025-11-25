@@ -9,7 +9,7 @@ var 详情=0
 var 标题节点
 func _ready() -> void:
 	if not Engine.is_editor_hint():
-		初始化.节点["奖励悬浮面板"]=self#注册
+		计划.节点["奖励悬浮面板"]=self#注册
 	更新物品()
 	标题节点=%"标题"
 	$"确认".pressed.connect(func():清空界面())

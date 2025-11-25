@@ -2,24 +2,23 @@
 
 [ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="1_csmyg"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="1_kb01l"]
-[ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="2_cgrsc"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_csmyg"]
 
-[sub_resource type="Gradient" id="Gradient_ly6fy"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.6666667, 0.6039216, 0.43529412, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_o32f2"]
-gradient = SubResource("Gradient_ly6fy")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h4m5x"]
-content_margin_left = 60.0
-content_margin_top = 40.0
-content_margin_right = 60.0
-content_margin_bottom = 20.0
-texture = SubResource("GradientTexture1D_o32f2")
-script = ExtResource("2_cgrsc")
-metadata/_custom_type_script = "uid://dr0317kuw34um"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csmyg"]
+content_margin_left = 10.0
+content_margin_top = 28.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.68, 0.52813333, 0.22439998, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 8.0
+expand_margin_top = 32.0
+expand_margin_right = 8.0
+expand_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gq0t6"]
 content_margin_left = 10.0
@@ -571,10 +570,36 @@ script = ExtResource("1_kb01l")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_ly6fy"), SubResource("StyleBoxFlat_o32f2")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
+[sub_resource type="DPITexture" id="DPITexture_1xjbn"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#fff\" d=\"m1 3 2-2 5 5 5-5 2 2-5 5 5 5-2 2-5-5-5 5-2-2 5-5z\"/></svg>
+"
+
+[sub_resource type="DPITexture" id="DPITexture_fhl5v"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#fff\" d=\"m1 3 2-2 5 5 5-5 2 2-5 5 5 5-2 2-5-5-5 5-2-2 5-5z\"/></svg>
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gowdn"]
+content_margin_left = 10.0
+content_margin_top = 28.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.54901963, 0.42745098, 0.18039216, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 8.0
+expand_margin_top = 32.0
+expand_margin_right = 8.0
+expand_margin_bottom = 6.0
+
 [resource]
-AcceptDialog/font_sizes/title_font_size = 30
+AcceptDialog/constants/close_h_offset = 30
+AcceptDialog/constants/title_height = 30
+AcceptDialog/font_sizes/title_font_size = 40
 AcceptDialog/fonts/title_font = ExtResource("1_csmyg")
-AcceptDialog/styles/panel = SubResource("StyleBoxTexture_h4m5x")
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_csmyg")
 Button/constants/outline_size = 10
 Button/font_sizes/font_size = 60
 Button/fonts/font = ExtResource("1_csmyg")
@@ -692,3 +717,11 @@ TabContainer/styles/tab_unselected = SubResource("StyleBox_gvlpa")
 TextEdit/fonts/font = ExtResource("1_csmyg")
 Tree/fonts/font = ExtResource("1_csmyg")
 Tree/fonts/title_button_font = ExtResource("1_csmyg")
+Window/colors/title_color = Color(0, 0, 0, 1)
+Window/colors/title_outline_modulate = Color(0, 0, 0, 1)
+Window/font_sizes/title_font_size = 40
+Window/fonts/title_font = ExtResource("1_csmyg")
+Window/icons/close = SubResource("DPITexture_1xjbn")
+Window/icons/close_pressed = SubResource("DPITexture_fhl5v")
+Window/styles/embedded_border = SubResource("StyleBoxFlat_gowdn")
+Window/styles/embedded_unfocused_border = SubResource("StyleBoxFlat_gowdn")

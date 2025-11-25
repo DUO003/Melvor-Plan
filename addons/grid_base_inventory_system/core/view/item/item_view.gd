@@ -98,7 +98,7 @@ func move(offset: Vector2i = Vector2i.ZERO) -> void:
 ## 绘制物品
 func _draw() -> void:
 	# 如果物品数据中存在图标纹理，则绘制图标（维持宽高比）
-	#罗马数字=初始化.罗马数字(1)
+	#罗马数字=计划.罗马数字(1)
 	if data.icon:
 		# 设置纹理过滤模式为最近邻，解决纹理放大时的模糊问题
 		texture_filter = TEXTURE_FILTER_NEAREST

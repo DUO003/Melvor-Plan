@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvuflpgdnv6i1"]
+
+[ext_resource type="Script" uid="uid://bdxkibcohm4o5" path="res://界面/开始菜单/存档样式.gd" id="1_h3nmw"]
+
+[node name="<存档名称>" type="Panel"]
+script = ExtResource("1_h3nmw")
+metadata/_tab_index = 0
+
+[node name="文本节点" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "当前存档<存档名称>
+挂机:-1
+保存时间:无"
+metadata/_edit_lock_ = true
