@@ -652,7 +652,7 @@ var 插件节点字典 = {
 # 分类名称(字符串) 作为键，对应节点名称列表(字符串数组) 作为值
 var 节点类型字典 = {
 	"容器类": [
-		"Container", "PanelContainer", "TabContainer", "BoxContainer",
+		"Control","Container", "PanelContainer", "TabContainer", "BoxContainer",
 		"HBoxContainer", "VBoxContainer", "FlowContainer", "HFlowContainer",
 		"VFlowContainer", "SplitContainer", "HSplitContainer", "VSplitContainer",
 		"GridContainer", "ScrollContainer", "MarginContainer", "AspectRatioContainer",
@@ -699,6 +699,7 @@ var 目录 = {
 	"其他": ["网络类", "插件类", "视效类", "粒子类", "窗口类", "对话框类", "弹出框类","加载"]
 }
 var 缓存尺寸=-1
+var 缓存次数=0
 func _ready() -> void:
 	resized.connect(func():
 		if visible:
@@ -708,17 +709,21 @@ func _ready() -> void:
 	快速生成结构()
 	visibility_changed.connect(func():if visible:一键设置())
 func 一键设置():
+	缓存次数+=1
+	var 执行次数=缓存次数
 	await get_tree().process_frame
 	await get_tree().process_frame
-	var 平均宽度字典={}
-	var 我是谁的子节点={}
+	if not 执行次数==缓存次数:
+		return
+	#var 平均宽度字典={}
+	#var 我是谁的子节点={}
 	if size.x<320:
 		按钮宽度=int(clamp(size.x/2,100,150))
 		for 节点 in 按钮数组:
 			节点.custom_minimum_size=Vector2(按钮宽度,50)
 			节点.size=Vector2(按钮宽度,50)
 			节点.text_overrun_behavior=TextServer.OVERRUN_TRIM_CHAR
-		print("按钮宽度:",按钮宽度,"/",size)
+		#print("按钮宽度:",按钮宽度,"/",size)
 		var 容量:int=max(1,int(size.x/按钮宽度))
 		for 节点 in 容器数组:
 			节点.columns=容量
@@ -729,28 +734,20 @@ func 一键设置():
 				子节点.custom_minimum_size=Vector2(0,50)
 				子节点.text_overrun_behavior=TextServer.OVERRUN_NO_TRIMMING
 				总宽度+=子节点.get_combined_minimum_size().x
-				我是谁的子节点[子节点]=节点
-			var 平均宽度=总宽度/节点.get_children().size()+5
-			平均宽度字典[节点]=平均宽度
+				#我是谁的子节点[子节点]=节点
+			var 平均宽度=总宽度/节点.get_children().size()
+			var 容量:int=max(1,int(size.x/(平均宽度+4)))
+			#平均宽度字典[节点]=(size.x/容量)
 			for 子节点 in 节点.get_children():
 				if 子节点.get_combined_minimum_size().x>平均宽度:
 					子节点.custom_minimum_size=Vector2(平均宽度,50)
 					子节点.size=Vector2(平均宽度,50)
 					子节点.text_overrun_behavior=TextServer.OVERRUN_TRIM_CHAR
-			var 容量:int=max(1,int(size.x/平均宽度))
-			print("平均宽度:",平均宽度,"/",size,"/",容量)
+					子节点.set_size(子节点.get_combined_minimum_size())
+			#print("平均宽度:",平均宽度,"/",size,"/",容量)
 			节点.columns=容量
 	for 节点 in 滚动容器数组:
 		节点.custom_minimum_size=size+Vector2(-1,-80)
-	await get_tree().process_frame
-	await get_tree().process_frame
-	if size.x>=320:
-		for 子节点 in 按钮数组:
-			var 平均宽度=平均宽度字典[我是谁的子节点[子节点]]
-			if 子节点.get_combined_minimum_size().x>平均宽度:
-				子节点.custom_minimum_size=Vector2(平均宽度,50)
-				子节点.size=Vector2(平均宽度,50)
-				子节点.text_overrun_behavior=TextServer.OVERRUN_TRIM_CHAR
 func _on_刷新_pressed() -> void:
 	if is_instance_valid(ed.面板): #如果面板存在
 		if visible:一键设置()
