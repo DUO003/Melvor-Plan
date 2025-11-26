@@ -651,15 +651,12 @@ var 插件节点字典 = {
 }
 # 分类名称(字符串) 作为键，对应节点名称列表(字符串数组) 作为值
 var 节点类型字典 = {
-	"容器类": [
-		"Control","Container", "PanelContainer", "TabContainer", "BoxContainer",
-		"HBoxContainer", "VBoxContainer", "FlowContainer", "HFlowContainer",
-		"VFlowContainer", "SplitContainer", "HSplitContainer", "VSplitContainer",
-		"GridContainer", "ScrollContainer", "MarginContainer", "AspectRatioContainer",
-		"CenterContainer", "SubViewportContainer", "GraphElement", "GraphFrame",
-		"GraphNode", "ColorPicker"],
-	"按钮类": [
-		"Button", "CheckBox", "CheckButton", "ColorPickerButton",
+	"常用容器类": ["Control", "PanelContainer", "TabContainer",
+		"HBoxContainer", "VBoxContainer", "HFlowContainer","VFlowContainer", "HSplitContainer", "VSplitContainer",
+		"GridContainer", "ScrollContainer", "MarginContainer", "AspectRatioContainer","CenterContainer"],
+	"其他容器类": ["Container", "BoxContainer", "FlowContainer", "SplitContainer", "SubViewportContainer", 
+		"GraphElement", "GraphFrame","GraphNode", "ColorPicker",],
+	"按钮类": ["Button", "CheckBox", "CheckButton", "ColorPickerButton",
 		"MenuButton", "OptionButton", "LinkButton", "TextureButton"],
 	"文本类": ["Label", "RichTextLabel", "LineEdit", "TextEdit", "CodeEdit", "SpinBox"],
 	"图片类": ["ColorRect", "TextureRect", "NinePatchRect", "GraphEdit"],
@@ -693,7 +690,7 @@ var 节点类型字典 = {
 	"弹出框类": ["Popup", "PopupMenu", "PopupPanel", "SubViewport"],
 	"加载":["ResourcePreloader", "ShaderGlobalsOverride"]}
 var 目录 = {
-	"UI": ["容器类", "按钮类", "文本类", "图片类", "进度条类","布局类"],
+	"UI": ["常用容器类", "按钮类", "文本类", "图片类", "进度条类","布局类","其他容器类"],
 	"2D": ["2D节点类", "2D物理类", "骨骼类","光照类", "导航类", ],
 	"功能": ["特殊类", "音频类", "动画类"],
 	"其他": ["网络类", "插件类", "视效类", "粒子类", "窗口类", "对话框类", "弹出框类","加载"]
@@ -717,11 +714,15 @@ func 一键设置():
 		return
 	#var 平均宽度字典={}
 	#var 我是谁的子节点={}
-	if size.x<320:
-		按钮宽度=int(clamp(size.x/2,100,150))
+
+	if size.x<320 or %"排列方式".text=="极限排列":
+		if %"排列方式".text=="极限排列":
+			按钮宽度=90
+		else :
+			按钮宽度=int(clamp(size.x/2,100,150))
 		for 节点 in 按钮数组:
-			节点.custom_minimum_size=Vector2(按钮宽度,50)
-			节点.size=Vector2(按钮宽度,50)
+			节点.custom_minimum_size=Vector2(按钮宽度,40)
+			节点.size=Vector2(按钮宽度,40)
 			节点.text_overrun_behavior=TextServer.OVERRUN_TRIM_CHAR
 		#print("按钮宽度:",按钮宽度,"/",size)
 		var 容量:int=max(1,int(size.x/按钮宽度))
@@ -731,7 +732,7 @@ func 一键设置():
 		for 节点 in 容器数组:
 			var 总宽度=0
 			for 子节点 in 节点.get_children():
-				子节点.custom_minimum_size=Vector2(0,50)
+				子节点.custom_minimum_size=Vector2(0,40)
 				子节点.text_overrun_behavior=TextServer.OVERRUN_NO_TRIMMING
 				总宽度+=子节点.get_combined_minimum_size().x
 				#我是谁的子节点[子节点]=节点
@@ -740,8 +741,8 @@ func 一键设置():
 			#平均宽度字典[节点]=(size.x/容量)
 			for 子节点 in 节点.get_children():
 				if 子节点.get_combined_minimum_size().x>平均宽度:
-					子节点.custom_minimum_size=Vector2(平均宽度,50)
-					子节点.size=Vector2(平均宽度,50)
+					子节点.custom_minimum_size=Vector2(平均宽度,40)
+					子节点.size=Vector2(平均宽度,40)
 					子节点.text_overrun_behavior=TextServer.OVERRUN_TRIM_CHAR
 					子节点.set_size(子节点.get_combined_minimum_size())
 			#print("平均宽度:",平均宽度,"/",size,"/",容量)

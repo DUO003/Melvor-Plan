@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_wok3q"]
 [ext_resource type="Script" uid="uid://3qbuxr56jjr6" path="res://代码/专属代码/特殊功能/体力系统.gd" id="2_n7kj1"]
-[ext_resource type="Texture2D" uid="uid://bdg2mnes3rcs" path="res://素材/游戏素材/食品包/without background/33.png" id="3_0tcwq"]
+[ext_resource type="Texture2D" uid="uid://c0i2q8rgobytr" path="res://素材/游戏素材/食品包/体力蛋糕.png" id="3_0tcwq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxrpf"]
 bg_color = Color(0.91764706, 0.60784316, 0.24705882, 1)
@@ -102,7 +102,7 @@ anchor_right = 0.5
 offset_left = -188.0
 offset_top = 10.0
 offset_right = 186.0
-offset_bottom = 109.0
+offset_bottom = 111.0
 grow_horizontal = 2
 mouse_behavior_recursive = 1
 theme = ExtResource("1_wok3q")
@@ -111,8 +111,8 @@ theme_override_colors/font_shadow_color = Color(0.5529556, 0.55295557, 0.5529555
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
-text = "[img=50x33]res://素材/游戏素材/食品包/without background/33.png[/img]体力恢复速度1点/6分钟
-[img=40x30]res://素材/游戏素材/货币/without background/17.png[/img]门票总库存:
+text = "[img=50x33]res://素材/游戏素材/食品包/体力蛋糕.png[/img]体力恢复速度1点/6分钟
+[img=40x30]res://素材/游戏素材/货币/17.png[/img]门票总库存:
 "
 fit_content = true
 scroll_active = false

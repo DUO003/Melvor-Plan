@@ -36,7 +36,7 @@ func _更新_UI():
 		var 精通=int(系统缓存.get("精通",0))
 		var 精通上限=10000+等级*1000
 		var 熟练=int(系统缓存.get("熟练",0))
-		var 熟练上限=计划.结算升级(系统,"null",true)
+		var 熟练上限=计划.结算升级(系统,"null","null",true)
 		%精通进度条.max_value=精通上限
 		%精通进度条.value=精通
 		%熟练进度条.max_value=熟练上限

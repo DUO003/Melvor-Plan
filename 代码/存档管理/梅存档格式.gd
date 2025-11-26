@@ -6,6 +6,8 @@ var 存档命名: String="存档_"
 @export_storage var 梅存档:={}
 @export_storage var 哈希值:int=-1
 @export_storage var 保存时间:float=Time.get_unix_time_from_system()
+#@export_storage var 测试
+
 #ContainerRepository
 ## 单例
 static var 单例:梅存档格式:
@@ -46,11 +48,14 @@ func 存档(存档名: String = "",存档数据:Dictionary={}) -> bool:
 	var 完整路径 = 存档配置路径 + 最终存档名 + ".tres"
 	梅存档=存档数据.duplicate(true)
 	if 梅存档.has("挂机"):#新存档不含数据无需保存
-		梅存档["挂机"]["装备栏"]=EquipmentSlotRepository.instance._slot_data_map.duplicate(true)
-		梅存档["挂机"]["背包与商店"]=ContainerRepository.instance._container_data_map.duplicate(true)
-		梅存档["挂机"]["快速移动关系"]=ContainerRepository.instance._quick_move_relations_map.duplicate(true)
+		if EquipmentSlotRepository.instance:
+			梅存档["挂机"]["装备栏"]=EquipmentSlotRepository.instance._slot_data_map.duplicate(true)
+		if ContainerRepository.instance:
+			梅存档["挂机"]["背包与商店"]=ContainerRepository.instance._container_data_map.duplicate(true)
+			梅存档["挂机"]["快速移动关系"]=ContainerRepository.instance._quick_move_relations_map.duplicate(true)
 	哈希值=最终存档名.hash()
 	保存时间=Time.get_unix_time_from_system()if 计划.存档时间戳==-1 else 计划.存档时间戳
+	#测试=标准物品.new(1,"蓝图纸")
 	var 保存结果 = ResourceSaver.save(self, 完整路径)
 	if 保存结果 == OK:# 保存存档并返回结果
 		return true
@@ -64,12 +69,26 @@ func 存档(存档名: String = "",存档数据:Dictionary={}) -> bool:
 			_: 错误说明 = "未知错误"
 		print("新建或保存存档失败：", 错误说明, "，错误码：", 保存结果)
 		return false
+##读取存档到游戏内
 func 读档(存档名: String = "")->bool:
 	var 最终存档名 = (存档名 if 存档名 != "" else 存档命名).strip_edges()
 	var 完整路径 = 存档配置路径 + 最终存档名 + ".tres"
 	var 加载结果 = load(完整路径)
 	if 加载结果 != null and 加载结果 is 梅存档格式:
-		梅存档=加载结果.梅存档.duplicate(true)
+		计划.梅存档=加载结果.梅存档.duplicate(true)
+		梅存档=计划.梅存档
+		if 梅存档.has("挂机"):
+			var 挂机=梅存档["挂机"]
+			var 装备栏单例:EquipmentSlotRepository=EquipmentSlotRepository.instance
+			if 挂机.has("装备栏")	and 装备栏单例:
+				装备栏单例._slot_data_map=梅存档["挂机"]["装备栏"].duplicate(true)
+			var 背包单例:ContainerRepository=ContainerRepository.instance
+			if 挂机.has("背包与商店") and 背包单例:
+				背包单例._container_data_map.clear()
+				for 背包名称 in 梅存档["挂机"]["背包与商店"].keys():
+					背包单例._container_data_map[背包名称] = 梅存档["挂机"]["背包与商店"][背包名称].deep_duplicate()
+			if 挂机.has("快速移动关系") and 背包单例:
+				背包单例._quick_move_relations_map=梅存档["挂机"]["快速移动关系"].duplicate(true)
 		return true
 	else:
 		print("文件格式错误，非梅存档格式: ", 最终存档名)# 格式验证失败（非梅存档格式）
@@ -79,8 +98,11 @@ func 基础存档():
 	# 1. 尝试打开存档目录（处理目录不存在/无法访问的情况）
 	var 目录 = DirAccess.open(存档配置路径)
 	if 目录 == null:
-		# 目录不存在/无法打开 → 无文件 → 返回 false
-		return false
+		var 路径 = DirAccess.open("user://")
+		路径.make_dir_recursive(存档配置路径)
+		目录 = DirAccess.open(存档配置路径)
+		if 目录 == null:
+			return
 	# 2. 开始枚举目录中的所有条目（文件/子目录）
 	目录.list_dir_begin()
 	var 当前条目 = 目录.get_next()

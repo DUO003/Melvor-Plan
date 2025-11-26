@@ -1,6 +1,6 @@
 extends Control
 var 金币=计划.梅存档["金币"]
-var 物品=null
+var 物品:标准物品=null
 var 背包="背包"
 var 属性文本="多003\n游历 LV:0		熟练:0/100\n"
 var 战力文本=""
@@ -40,10 +40,9 @@ func _ready():
 func 使用物品():
 	if not 物品==null:
 		if 物品 is 标准物品:
-			var 类型物品:标准物品=物品
-			var 结果=类型物品.使用物品(背包)
+			var 结果=物品.使用物品(背包)
 			if 结果=="成功":
-				if 类型物品==null or 类型物品.current_amount<=0:
+				if 物品==null or 物品.current_amount<=0:
 					物品=null
 					%"无选中".visible=true
 					%"选中".visible=false
@@ -51,7 +50,7 @@ func 使用物品():
 		计划.语法糖通知("错误物品异常","背包信息")
 func 分享物品():
 	if not 物品==null:
-		var 文本 = %"物品提示".文本预处理(物品,背包)
+		var 文本 = 物品.文本预处理()
 		DisplayServer.clipboard_set(文本)   # 核心操作：将文本写入剪贴板
 		计划.语法糖通知("物品信息已粘贴到剪切板","背包信息")
 	else :
@@ -75,26 +74,9 @@ func _背包物品信息(传入物品:标准物品,背包名称):
 	背包=背包名称
 	%"无选中".visible=false
 	%"选中".visible=true
-	%"物品详情文本".text=物品.item_name+"\n数量:"+str(物品.current_amount)+"\n堆叠上限:"+科学计数(物品.stack_size)+"\n"+物品.简介
+	%"物品详情文本".text=物品.文本预处理()
 	%"物品详情名称".text=物品.item_name
 	%"物品详情贴图".texture=物品.icon
 	if 计划.节点.has("空节点"):
 		%"图钉".button_pressed=计划.节点["空节点"].全局图钉.has(str(物品.item_name))
 	print("收到物品更新：", 物品.简介)
-func 科学计数(数值, 小数位数: int = 2,免转换范围:int=10000) -> String:
-	if 数值 == 0:
-		return "0"
-	elif abs(数值) < 免转换范围:
-		return str(数值)
-	var 量级 = 0# 计算数量级（10的幂）
-	var 绝对值: float = abs(float(数值))
-	if 数值>=1:
-		while 绝对值 >= 10:
-			绝对值 /= 10
-			量级 += 1
-	else :
-		while 绝对值 < 1 and 绝对值 > 0:
-			绝对值 *= 10
-			量级 -= 1
-	var 格式化数值 ="+%.{长度}f".format({"长度":str(小数位数)}) % 绝对值# 格式化小数部分（保留指定位数）
-	return "%sE%d" % [格式化数值, 量级]# 拼接科学计数法字符串（如 "9.22e18"）

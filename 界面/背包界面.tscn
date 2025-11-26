@@ -1,11 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://dr3p3f8wbo87d"]
+[gd_scene load_steps=22 format=3 uid="uid://dr3p3f8wbo87d"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_loe2l"]
 [ext_resource type="Script" uid="uid://mkdbh1ljjonw" path="res://代码/专属代码/背包界面/背包界面.gd" id="2_tb4we"]
-[ext_resource type="Texture2D" uid="uid://bgapac8xq358f" path="res://素材/游戏素材/货币/without background/2.png" id="3_1hlae"]
 [ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_4r775"]
-[ext_resource type="PackedScene" uid="uid://bmtorijdfu4jh" path="res://GBIS_demos/item_info/ItemInfo.tscn" id="3_ox21q"]
 [ext_resource type="Script" uid="uid://b3x4mwtjmm4tp" path="res://addons/grid_base_inventory_system/core/view/container/inventory/inventory_view.gd" id="5_tb4we"]
+[ext_resource type="Texture2D" uid="uid://dh41kh8yv8mcw" path="res://素材/游戏素材/货币/2.png" id="5_tjqle"]
 [ext_resource type="Script" uid="uid://dg6xjko3rdcta" path="res://addons/grid_base_inventory_system/core/view/slot/equipment_slot_view.gd" id="7_ggjuy"]
 [ext_resource type="Texture2D" uid="uid://conmhorhmnqpg" path="res://素材/像素/框.png" id="8_sso0e"]
 [ext_resource type="Script" uid="uid://gqt6pq4lt0gw" path="res://addons/grid_base_inventory_system/core/view/container/shop/shop_view.gd" id="9_sxijb"]
@@ -193,7 +192,7 @@ offset_left = 6.0
 offset_top = 2.0
 offset_right = 66.0
 offset_bottom = 62.0
-texture = ExtResource("3_1hlae")
+texture = ExtResource("5_tjqle")
 expand_mode = 1
 
 [node name="金币文本" type="Label" parent="内容节点/HBoxContainer/VBoxContainer/金币节点"]
@@ -210,10 +209,11 @@ text = "金币:100"
 [node name="TabContainer" type="TabContainer" parent="内容节点/HBoxContainer"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
-current_tab = 0
+current_tab = 1
 
 [node name="物品" type="Control" parent="内容节点/HBoxContainer/TabContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(600, 828)
 layout_mode = 2
 metadata/_tab_index = 0
@@ -251,7 +251,6 @@ offset_left = 91.0
 offset_top = 28.0
 offset_right = 275.0
 offset_bottom = 212.0
-texture = ExtResource("3_1hlae")
 expand_mode = 1
 stretch_mode = 5
 
@@ -334,7 +333,6 @@ alignment = 2
 
 [node name="装备" type="Control" parent="内容节点/HBoxContainer/TabContainer"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(600, 828)
 layout_mode = 2
 metadata/_tab_index = 1
@@ -344,7 +342,6 @@ anchors_preset = 0
 offset_right = 145.0
 offset_bottom = 145.0
 script = ExtResource("7_ggjuy")
-slot_name = "项链"
 base_size = 145
 columns = 1
 rows = 1
@@ -360,7 +357,6 @@ offset_top = 150.0
 offset_right = 145.0
 offset_bottom = 295.0
 script = ExtResource("7_ggjuy")
-slot_name = "披挂"
 base_size = 145
 columns = 1
 rows = 1
@@ -376,7 +372,6 @@ offset_top = 300.0
 offset_right = 145.0
 offset_bottom = 445.0
 script = ExtResource("7_ggjuy")
-slot_name = "戒指A"
 base_size = 145
 columns = 1
 rows = 1
@@ -392,7 +387,6 @@ offset_top = 450.0
 offset_right = 145.0
 offset_bottom = 595.0
 script = ExtResource("7_ggjuy")
-slot_name = "戒指B"
 base_size = 145
 columns = 1
 rows = 1
@@ -409,7 +403,6 @@ offset_top = 450.0
 offset_right = 295.0
 offset_bottom = 595.0
 script = ExtResource("7_ggjuy")
-slot_name = "主手"
 base_size = 145
 columns = 1
 rows = 1
@@ -426,7 +419,6 @@ offset_top = 450.0
 offset_right = 445.0
 offset_bottom = 595.0
 script = ExtResource("7_ggjuy")
-slot_name = "副手"
 base_size = 145
 columns = 1
 rows = 1
@@ -442,7 +434,6 @@ offset_left = 450.0
 offset_right = 595.0
 offset_bottom = 145.0
 script = ExtResource("7_ggjuy")
-slot_name = "头盔"
 base_size = 145
 columns = 1
 rows = 1
@@ -459,7 +450,6 @@ offset_top = 150.0
 offset_right = 595.0
 offset_bottom = 295.0
 script = ExtResource("7_ggjuy")
-slot_name = "衣服"
 base_size = 145
 columns = 1
 rows = 1
@@ -476,7 +466,6 @@ offset_top = 300.0
 offset_right = 595.0
 offset_bottom = 445.0
 script = ExtResource("7_ggjuy")
-slot_name = "裤子"
 base_size = 145
 columns = 1
 rows = 1
@@ -493,7 +482,6 @@ offset_top = 450.0
 offset_right = 595.0
 offset_bottom = 595.0
 script = ExtResource("7_ggjuy")
-slot_name = "鞋子"
 base_size = 145
 columns = 1
 rows = 1
@@ -562,11 +550,3 @@ dialog_text = "删除物品后该格子内所有物品将一起移除
 如果仅删除一个可以尝试鼠标中间分组后删除"
 dialog_autowrap = true
 cancel_button_text = " 取消 "
-
-[node name="物品提示" parent="." instance=ExtResource("3_ox21q")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = -208.0
-offset_top = 944.0
-offset_right = -11.0
-offset_bottom = 998.0

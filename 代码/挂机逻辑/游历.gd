@@ -33,6 +33,12 @@ func 打印属性():
 	print("闪避: ", 闪避)
 	print("暴击: ", 暴击)
 func 更新属性():
+	装备来源属性=[]
+	var 装备扩展单例=EquipmentSlotRepository.instance
+	for 槽位名称 in 装备扩展单例._slot_data_map.keys():
+		var 装备:物品装备 = 装备扩展单例._slot_data_map[槽位名称].equipped_item
+		if 装备:
+			装备来源属性.append(装备)
 	var 游历等级=计划.梅存档["游历"].get("等级",0)
 	血量 = 100+int(游历等级*基础属性增长["血量"])
 	攻击 = 10+int(游历等级*基础属性增长["攻击"])

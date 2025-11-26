@@ -29,8 +29,8 @@ func 生成动态文本():
 	计时器=计划.创建计时器(0.05,更新进度条)
 	var 挂机数据 = 计划.梅存档["挂机"]
 	var 门票名=挂机数据.get("门票",{}).keys()
-	var 体力 = "[img=50x33]res://素材/游戏素材/食品包/without background/33.png[/img]"+"体力恢复速度"+str(恢复量)+"点/"+str(体力恢复速度)+"分钟"
-	var 门票 = "[img=40x30]res://素材/游戏素材/货币/without background/17.png[/img]"+"门票总库存:"+str(门票名)
+	var 体力 = "[img=50x33]res://素材/游戏素材/食品包/体力蛋糕.png[/img]"+"体力恢复速度"+str(恢复量)+"点/"+str(体力恢复速度)+"分钟"
+	var 门票 = "[img=40x30]res://素材/游戏素材/货币/17.png[/img]"+"门票总库存:"+str(门票名)
 	%"扩展信息".text="%s\n%s" % [体力,门票]# 拼接文本
 	%"扩展信息".update_minimum_size()
 	%"扩展信息".set_size(%"扩展信息".get_combined_minimum_size())

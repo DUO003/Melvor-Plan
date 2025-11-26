@@ -43,13 +43,5 @@ func 应用纹理(纹理: Texture2D) -> void:
 	# 计算缩放比例
 	var 缩放X: float = 目标宽度 / float(纹理宽度)
 	var 缩放Y: float = 目标高度 / float(纹理高度)
-	var 最小缩放: float = min(缩放X, 缩放Y)
-	
-	# 处理极端情况
-	if 最小缩放 <= 0:
-		print("⚠️ 缩放值异常，重置为1.0")
-		最小缩放 = 1.0
-	
-	# 应用缩放
-	self.scale = Vector2(缩放X, 缩放Y)
+	self.scale = Vector2(缩放X, 缩放Y)# 应用缩放
 	#print("最终应用缩放：", self.scale)

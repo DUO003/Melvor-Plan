@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://fhiod2yd4lhv"]
 
 [ext_resource type="Script" uid="uid://c1ef0ysqkbne2" path="res://代码/资源条.gd" id="1_5i305"]
-[ext_resource type="Texture2D" uid="uid://bwlsnmdrtqxxo" path="res://素材/游戏素材/货币/without background/36.png" id="1_5uhmg"]
+[ext_resource type="Texture2D" uid="uid://bhhvc44hrv7uq" path="res://素材/游戏素材/货币/36.png" id="1_5uhmg"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_5i305"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5i305"]

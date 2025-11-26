@@ -2,11 +2,11 @@ extends StackableData
 class_name 标准物品
 
 ## 梅尔沃计划定义属性,决定部分抽取道具的随机池
-@export var 标签: Array = ["物品"]
+var 标签: String = "物品"
 ## 梅尔沃计划定义属性,决定鼠标指向物品的提示
-@export var 简介: String = "暂无简介"
+var 简介: String = "暂无简介"
 ## 梅尔沃计划定义属性,决定道具商店直接出售价格,回收价格需要参考表格.
-@export var 价值: int = 0
+var 价值: int = 0
 ## 梅尔沃计划定义属性,决定道具商店内保存数量购买时可能不止一个但只计数-1,为0时删除-1为无限.
 @export var 商店剩余数量: int = 0
 ##锁定的物品不会被计算剩余数量和使用.也不能被拿起.合并.
@@ -48,7 +48,7 @@ var 物品使用映射 = {
 		return -1),  # 失败
 	"资源":(func(_字典):
 		if self.current_amount >= 1:
-			计划.获得资源(self.item_name,self.current_amount,false)
+			计划.手工.获得资源(self.item_name,self.current_amount,false)
 			return self.current_amount
 		else:
 			print("不足，无法使用")
@@ -61,6 +61,13 @@ var 物品使用映射 = {
 			print("不足，无法使用")
 		return -1),  # 失败
 	}
+
+func 更新属性():
+	if super.更新属性():
+		标签=表格数据[蓝图表头["标签"]]
+		简介=表格数据[蓝图表头["简介"]]
+		价值=int(表格数据[蓝图表头["价值"]])
+
 ## 物品被使用时调用,自行处理销毁逻辑与变量外观
 func 使用物品(背包) -> String:# 中间函数：处理物品使用流程
 	print("尝试使用物品",self.item_name)
@@ -114,3 +121,22 @@ func 随机数量(最低: int, 最高: int, 步进: int) -> int:
 	var 最大倍数 = floori((最高 - 最低)*1.0 / 步进)
 	var 随机倍数 = randi() % (最大倍数 + 1)
 	return clampi(最低 + 随机倍数 * 步进, 最低, 最高)
+func 文本预处理()->String:
+	return item_name+"\n数量:"+str(current_amount)+"\n堆叠上限:"+科学计数(stack_size)+"\n"+简介
+func 科学计数(数值, 小数位数: int = 2,免转换范围:int=10000) -> String:
+	if 数值 == 0:
+		return "0"
+	elif abs(数值) < 免转换范围:
+		return str(数值)
+	var 量级 = 0# 计算数量级（10的幂）
+	var 绝对值: float = abs(float(数值))
+	if 数值>=1:
+		while 绝对值 >= 10:
+			绝对值 /= 10
+			量级 += 1
+	else :
+		while 绝对值 < 1 and 绝对值 > 0:
+			绝对值 *= 10
+			量级 -= 1
+	var 格式化数值 ="+%.{长度}f".format({"长度":str(小数位数)}) % 绝对值# 格式化小数部分（保留指定位数）
+	return "%sE%d" % [格式化数值, 量级]# 拼接科学计数法字符串（如 "9.22e18"）

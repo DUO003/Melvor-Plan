@@ -53,6 +53,16 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "文档"
 
+[node name="排列方式" type="OptionButton" parent="VBoxContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "标准排列"
+popup/item_0/id = 0
+popup/item_1/text = "极限排列"
+popup/item_1/id = 1
+
 [node name="功能区" type="TabContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2

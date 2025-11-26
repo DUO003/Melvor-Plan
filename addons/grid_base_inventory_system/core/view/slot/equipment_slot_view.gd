@@ -7,12 +7,12 @@ class_name EquipmentSlotView
 enum State{
 	NORMAL, AVILABLE, INVILABLE
 }
-
 ## 装备槽名称，如果重复则展示相同来源的数据
-@export var slot_name: String = GBIS.DEFAULT_SLOT_NAME:
+@export var slot_name: String = "装备":
 	set(value):
-		slot_name = value
-		_recalculate_size()
+		if not Engine.is_editor_hint():
+			slot_name = value
+			_recalculate_size()
 
 ## 基础大小（格子大小）
 @export var base_size: int = 32:

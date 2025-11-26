@@ -17,7 +17,7 @@ class_name 订单卡片
 var 订单标记:int=0#作为枚举使用0表示资源订单
 
 @export_group("固定文本")
-@export_multiline var 固定文本:String="[font_size=30]金币合计:[/font_size]{金币数量}[img=40x40]res://素材/游戏素材/货币/without background/2.png[/img]
+@export_multiline var 固定文本:String="[font_size=30]金币合计:[/font_size]{金币数量}[img=40x40]res://素材/游戏素材/货币/2.png[/img]
 [font_size=30]{额外奖励概率}%概率:[/font_size]{额外奖励数量}[img=40x40]{额外奖励图片}[/img]"
 var 固定条件=[["{金币数量}",func():return 订单金币()],
 ["{额外奖励概率}",func():return clampi(int(额外概率*100),0,100)],

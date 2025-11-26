@@ -10,24 +10,64 @@ signal sig_refresh
 ## 物品名称，需要唯一
 @export var item_name: String = "Item Name"
 ## 物品类型，值为“ANY”表示所有类型
-@export var type: String = "ANY"
+var type: String = "ANY"
 
 @export_group("显示设置")
 ## 物品图标
-@export var icon: Texture2D
+var icon: Texture2D=null
 ## 物品占的列数
-@export var columns: int = 1
+var columns: int = 1
 ## 物品占的行数
-@export var rows: int = 1
+var rows: int = 1
 ## view 上的材质，如果为空，则尝试获取 GBIS.material
-@export var material: ShaderMaterial
+var material: ShaderMaterial
 ## 把 shader 需要修改的参数设置在这里
-@export var shader_params: Dictionary[String, Variant]
-
+var shader_params: Dictionary[String, Variant]
+## 加载逻辑0 专门为存档使用[br]
+## 加载逻辑1 自动加载数据[br]
+## 加载逻辑2 手动加载 不进行init内处理
+func _init(加载逻辑=0,物品名称: String="默认名称") -> void:
+	if 加载逻辑==0:
+		call_deferred("延迟加载")
+		return
+	elif 加载逻辑==1:
+		item_name=物品名称
+		if not item_name in 计划.表格.蓝图字典:
+			push_warning("错误[%s]:未能读取到表格" % item_name)
+		更新属性()
+var 延迟计数器=0
+func 延迟加载():
+	if item_name=="Item Name":
+		延迟计数器+=1
+		if 延迟计数器>10:
+			push_warning("错误超过延迟执行范围")
+			return
+		call_deferred("延迟加载")
+	else :
+		更新属性()
+##加载数据专用
+var 表格数据:=[]
+##加载数据专用
+var 蓝图表头
+##从表格数据加载物品信息(必须先等表格初始化)
+func 更新属性()->bool:
+## 物品图标
+	icon=计划.表格.道具贴图(item_name)
+## 正式开始数据加载
+	表格数据=计划.表格.蓝图字典.get(item_name,[])
+	蓝图表头=计划.表格.蓝图表头
+	if 表格数据==[]:
+		push_warning("错误[%s]:未能读取到表格" % item_name)
+		return false
+## 物品占的列数
+	columns = int(表格数据[蓝图表头["列"]])
+## 物品占的行数
+	rows = int(表格数据[蓝图表头["行"]])
+	return true
 ## 获取货品形状
 func get_shape() -> Vector2i:
 	return Vector2i(columns, rows)
-
+## 物品掉落
 func can_drop() -> bool:
 	push_warning("[Override this function] check if the item [%s] can drop" % item_name)
 	return true

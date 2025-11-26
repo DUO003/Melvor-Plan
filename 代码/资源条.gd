@@ -8,18 +8,19 @@ class_name 资源进度条
 		if is_inside_tree():
 			更新贴图()
 var 材料贴图: Dictionary = {# 资源名称与贴图路径的映射
-	"木材": "res://素材/游戏素材/货币/without background/36.png",
-	"矿石": "res://素材/游戏素材/货币/without background/13.png",
-	"皮革": "res://素材/游戏素材/货币/without background/16.png",
-	"药草": "res://素材/游戏素材/货币/without background/11.png",
-	"零件": "res://素材/游戏素材/货币/without background/49.png",
-	"精华": "res://素材/游戏素材/货币/without background/50.png"
+	"木材": "res://素材/游戏素材/货币/36.png",
+	"矿石": "res://素材/游戏素材/货币/13.png",
+	"皮革": "res://素材/游戏素材/货币/16.png",
+	"药草": "res://素材/游戏素材/货币/11.png",
+	"零件": "res://素材/游戏素材/货币/49.png",
+	"精华": "res://素材/游戏素材/货币/50.png"
 }
 @export var 基础量: int = 1       # 基础回复量（外部传入）
 var 是否长按: bool = false        # 标记是否处于长按状态
 var 长按计时器: Timer            # 用于长按周期性回复的计时器
-func 更新UI(资源回复速度={}):
-	var 当前数量 = 计划.查看资源(资源名称)
+func 更新UI():
+	var 资源回复速度=计划.手工.资源回复
+	var 当前数量 = 计划.手工.查看资源(资源名称)
 	var 上限变量名 = 资源名称 + "上限"
 	var 上限值 = 计划.get(上限变量名)
 	var 背包内数量=计划.检查背包物品数量(资源名称)
@@ -81,7 +82,7 @@ func 更新贴图():
 		print("警告：编辑器内无法加载贴图 -> ", 贴图路径, "（可能资源未导入）")
 func 处理按下():
 	if 基础量>0:
-		计划.获得资源(资源名称, 基础量 * 5, true, true)# 点击立即回复5倍基础量资源
+		计划.手工.获得资源(资源名称, 基础量 * 5, true, true)# 点击立即回复5倍基础量资源
 		是否长按 = true# 标记为长按状态并启动计时器
 		长按计时器.start()
 		$"资源粒子".amount=10
@@ -97,6 +98,6 @@ func 长按超时处理():
 			$"资源粒子".emitting=true
 			$"资源粒子".preprocess=0
 			$"资源粒子".amount_ratio=0.3
-		计划.获得资源(资源名称, 基础量, true, true)# 每0.5秒回复一次基础量资源
+		计划.手工.获得资源(资源名称, 基础量, true, true)# 每0.5秒回复一次基础量资源
 	else :
 		长按计时器.stop()

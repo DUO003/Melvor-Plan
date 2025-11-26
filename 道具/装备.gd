@@ -216,13 +216,18 @@ var 类型: String = "长剑":# 默认值为"长剑"，值直接是字符串
 @export var 回蓝:int=0
 @export var 闪避:int=0
 @export var 暴击:int=0
-func _init():
-	type = "装备"
-	  # 覆盖父类的默认值 "ANY"
+func 更新属性():
+	super.更新属性()
+	if 蓝图名称=="默认蓝图":
+		覆盖更新(表格数据[蓝图表头["分类"]],表格数据[蓝图表头["类型"]],表格数据[蓝图表头["职业"]],int(表格数据[蓝图表头["阶级"]]))
+		蓝图名称=item_name
+		item_name = 计划.生成装备名(item_name)##最后一步改名,保证名称不冲突
+		
+	#如果不是默认蓝图说明,是一个从存档读取的装备无需计算装备的属性(图标等由上一步计算)
 func 覆盖更新(新分类=分类,新类型=类型,新职业=职业,新阶级=阶级):
+	type = "装备"
 	分类 = 新分类
 	类型 = 新类型
-	type = "装备"
 	职业 = 新职业
 	阶级 = 新阶级
 	@warning_ignore("incompatible_ternary")
@@ -432,10 +437,11 @@ func 定义减伤():
 
 # 装备时调用
 func equipped(_装备栏: String) -> void:
-	计划.梅游历.装备来源属性.append(self)
+	pass
 # 脱装备时调用
 func unequipped(_装备栏: String) -> void:
-	if 计划.梅游历.装备来源属性.has(self):
-		计划.梅游历.装备来源属性.erase(self)
+	pass
+	#if 计划.游历.装备来源属性.has(self):
+		#计划.游历.装备来源属性.erase(self)
 func 基础检查()->bool:
 	return 基础数值.has(类型)

@@ -429,8 +429,6 @@ scale = Vector2(8.59375, 7.65625)
 skew = 0.2268928
 texture = ExtResource("8_yqcxx")
 script = ExtResource("11_yqcxx")
-"目标宽度" = 275
-"目标高度" = 245
 
 [node name="倾斜度控制" type="Node2D" parent="蓝色图纸"]
 position = Vector2(214.90494, -151.18474)

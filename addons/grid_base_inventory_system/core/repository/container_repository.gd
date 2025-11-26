@@ -55,26 +55,6 @@ func add_container(inv_name: String, columns: int, rows: int, avilable_types: Ar
 		return new_container
 	return inv
 
-func 堆叠上限更新(原存档: ContainerRepository, 修改字典: Dictionary) -> ContainerRepository:
-	# 创建存档副本避免修改原数据
-	var 修改后存档 = 原存档.duplicate()
-	
-	# 遍历所有容器
-	for inv_name in 修改后存档._container_data_map.keys():
-		var container_data = 修改后存档._container_data_map[inv_name].deep_duplicate()
-		
-		# 遍历容器中的所有物品
-		for item in container_data.items:
-			# 检查物品是否存在且修改字典中包含该物品的设置
-			if item != null and item.item_name in 修改字典:
-				# 更新堆叠上限
-				item.stack_size = 修改字典[item.item_name]
-				
-		# 更新容器数据
-		修改后存档._container_data_map[inv_name] = container_data
-	
-	return 修改后存档
-
 ## 获取背包数据
 func get_container(inv_name: String) -> ContainerData:
 	return _container_data_map.get(inv_name)
