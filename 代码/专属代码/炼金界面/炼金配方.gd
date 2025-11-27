@@ -18,7 +18,7 @@ func _ready() -> void:
 	$"炼金配方/删除".pressed.connect(func():删除事件.call())
 	var 哈希结果=计划.梅手工单例.哈希配方(配方)
 	var 了解=$"炼金配方/信息/配方/还不够了解"
-	var 炼金配方=计划.梅存档["手工"]["炼金配方"]
+	var 炼金配方=计划.手工.读取炼金配方列表()
 	了解.visible=true
 	%"查看".visible=false
 	%"查看".pressed.connect(func():查看事件.call())

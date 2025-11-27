@@ -32,7 +32,7 @@ func _ready():
 	%"金币贴图".gui_input.connect(func(按键信号):
 		if (按键信号 is InputEventMouseButton and 按键信号.pressed and
 		按键信号.button_index == MOUSE_BUTTON_LEFT):
-			var 按钮状态=not 计划.梅存档["挂机"].get("全局图钉",[]).has("金币")
+			var 按钮状态=not 计划.梅存档["挂机"]["全局图钉"].has("金币")
 			计划.全局图钉("金币",按钮状态))
 	%"删除确认弹窗".confirmed.connect(func():删除物品())
 	#%"玩家".mouse_entered.connect(func(): %"玩家属性".text=战力文本)

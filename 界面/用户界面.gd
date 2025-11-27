@@ -42,7 +42,7 @@ func 重载图钉():
 		%"图钉容器".remove_child(节点)
 		节点.queue_free()
 	var 图钉场景 = preload("res://界面/插件/图钉.tscn").instantiate()
-	全局图钉=计划.梅存档["挂机"].get("全局图钉",[])
+	全局图钉=计划.梅存档["挂机"]["全局图钉"]
 	for 图钉 in 全局图钉:
 		var 新图钉=图钉场景.duplicate()
 		新图钉.物品名称=图钉
