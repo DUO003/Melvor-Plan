@@ -57,6 +57,7 @@ func 更新属性()->bool:
 	表格数据=计划.表格.蓝图字典.get(item_name,[])
 	蓝图表头=计划.表格.蓝图表头
 	if 表格数据==[]:
+		print("表格:",计划.表格.蓝图字典.keys())
 		push_warning("错误[%s]:未能读取到表格" % item_name)
 		return false
 ## 物品占的列数

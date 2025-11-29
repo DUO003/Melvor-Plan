@@ -7,25 +7,23 @@ class_name 资源进度条
 		资源名称=值
 		if is_inside_tree():
 			更新贴图()
-var 材料贴图: Dictionary = {# 资源名称与贴图路径的映射
-	"木材": "res://素材/游戏素材/货币/36.png",
-	"矿石": "res://素材/游戏素材/货币/13.png",
-	"皮革": "res://素材/游戏素材/货币/16.png",
-	"药草": "res://素材/游戏素材/货币/11.png",
-	"零件": "res://素材/游戏素材/货币/49.png",
-	"精华": "res://素材/游戏素材/货币/50.png"
-}
 @export var 基础量: int = 1       # 基础回复量（外部传入）
 var 是否长按: bool = false        # 标记是否处于长按状态
 var 长按计时器: Timer            # 用于长按周期性回复的计时器
 func 更新UI():
 	var 资源回复速度=计划.手工.资源回复
 	var 当前数量 = 计划.手工.查看资源(资源名称)
-	var 上限变量名 = 资源名称 + "上限"
-	var 上限值 = 计划.get(上限变量名)
+	var 上限值 = 计划.手工.资源上限字典.get(资源名称,0)
 	var 背包内数量=计划.检查背包物品数量(资源名称)
-	$"进度".max_value = 上限值
-	$"进度".value = 当前数量
+	var 类型=计划.手工.资源字典.get(资源名称,{"类型":"基础"})["类型"]
+	if 类型=="特殊":
+		$"进度".max_value = 1
+		$"进度".value = 1
+		$"进度".show_percentage=false
+	else :
+		$"进度".max_value = 上限值
+		$"进度".value = 当前数量
+		$"进度".show_percentage=false
 	if 背包内数量>=1:
 		$"背包内数量".text="存:"+str(背包内数量)
 		$"背包内数量".visible=true
@@ -35,17 +33,18 @@ func 更新UI():
 	if 回复速度==0:
 		$"进度".size=Vector2(400,50)
 		$"回复".visible=false
+		%"刻度".更新进度条参数(上限值,400)
 	else :
 		$"进度".size=Vector2(350,50)
 		$"回复".visible=true
 		$"回复".text= "+%.1f" % 回复速度
+		%"刻度".更新进度条参数(上限值,350)
 func _ready():
 	更新贴图()# 节点就绪时初始化
 	if Engine.is_editor_hint():
 		$"进度".size=Vector2(400,50)
 		$"回复".visible=false
 	else :
-		材料贴图=计划.材料贴图
 		更新UI()
 	if is_inside_tree():# 编辑器内安全检查：确保节点已加入场景树，避免空引用错误
 		长按计时器 = Timer.new()
@@ -72,14 +71,12 @@ func 更新贴图():
 	if not 贴图节点:# 确保TextureRect节点存在
 		print("警告：未找到「贴图」节点，请检查节点路径")
 		return
-	var 贴图路径=材料贴图.get(资源名称)
-	var 纹理 = load(贴图路径)
-	if 纹理:
+	if not Engine.is_editor_hint():
+		var 纹理 = 计划.手工.资源字典.get(资源名称,{"贴图":null})["贴图"]
+		if 纹理:
+			$"资源粒子".emitting=false
 		贴图节点.texture = 纹理
 		$"资源粒子".texture = 纹理
-		$"资源粒子".emitting=false
-	else:
-		print("警告：编辑器内无法加载贴图 -> ", 贴图路径, "（可能资源未导入）")
 func 处理按下():
 	if 基础量>0:
 		计划.手工.获得资源(资源名称, 基础量 * 5, true, true)# 点击立即回复5倍基础量资源

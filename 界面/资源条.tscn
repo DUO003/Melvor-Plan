@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://fhiod2yd4lhv"]
+[gd_scene load_steps=6 format=3 uid="uid://fhiod2yd4lhv"]
 
 [ext_resource type="Script" uid="uid://c1ef0ysqkbne2" path="res://代码/资源条.gd" id="1_5i305"]
 [ext_resource type="Texture2D" uid="uid://bhhvc44hrv7uq" path="res://素材/游戏素材/货币/36.png" id="1_5uhmg"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_5i305"]
+[ext_resource type="Script" uid="uid://bru7ehuqamvdq" path="res://界面/插件/资源进度条/刻度.gd" id="4_unkxt"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5i305"]
 particle_flag_disable_z = true
@@ -37,6 +38,33 @@ offset_bottom = 66.0
 theme = ExtResource("2_5i305")
 value = 100.0
 allow_greater = true
+
+[node name="刻度" type="Control" parent="进度"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 50.0
+script = ExtResource("4_unkxt")
+"刻度高度" = 5.0
+"大刻度颜色" = Color(0.43197232, 0.19236407, 0.0024436945, 1)
+"小刻度颜色" = Color(0, 0, 0, 0.78431374)
+"强制量级" = 100.0
+"启用刻度" = true
+"刻度偏移" = Vector2(-10, -2)
+
+[node name="刻度单位" type="Label" parent="进度/刻度"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_top = -2.0
+offset_right = -10.0
+offset_bottom = 34.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.12778333, 0.41, 0.123, 1)
+theme_override_font_sizes/font_size = 25
+text = "刻度10"
 
 [node name="背包内数量" type="Label" parent="."]
 custom_minimum_size = Vector2(400, 50)

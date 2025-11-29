@@ -14,17 +14,17 @@ func _ready():
 	%"随身商店".visibility_changed.connect(func(): if %"随身商店".visible: %"物品栏".visible = true)
 	%"装备".visibility_changed.connect(func(): if %"装备".visible: %"装备栏".visible = true)
 	%"物品".visibility_changed.connect(func(): if %"物品".visible: %"物品栏".visible = true)
-	战力文本=计划.梅游历.战力文本更新()
+	战力文本=计划.游历.战力文本更新()
 	%"玩家属性".text=属性文本+战力文本
 	GBIS.connect("sig_slot_item_unequipped", Callable(func(_1,_2):
-		战力文本=计划.梅游历.战力文本更新()
+		战力文本=计划.游历.战力文本更新()
 		%"玩家属性".text=属性文本+战力文本
 		))
 	GBIS.connect("sig_slot_item_equipped", Callable(func(_1,_2):
-		战力文本=计划.梅游历.战力文本更新()
+		战力文本=计划.游历.战力文本更新()
 		%"玩家属性".text=属性文本+战力文本
 		))
-	战力文本=计划.梅游历.战力文本更新()
+	战力文本=计划.游历.战力文本更新()
 	%"使用".pressed.connect(func(): 使用物品())
 	%"丢弃".pressed.connect(func(): %"删除确认弹窗".visible = true)
 	%"分享".pressed.connect(func():分享物品())
