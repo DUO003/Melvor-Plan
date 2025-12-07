@@ -6,7 +6,7 @@ class_name InventoryService
 ## 如果是可堆叠物品，如果当前数量大于可堆叠数量，会重置为允许的最大值，成功后发射信号 sig_inv_item_updated
 ## 如果是不可堆叠物品，或堆叠后还有剩余，成功后发射 sig_inv_item_added
 func add_item(inv_name: String, item_data: ItemData) -> bool:
-	var new_item_data = item_data.duplicate()
+	var new_item_data = item_data#不能复制,会丢失上限数据
 	if new_item_data is StackableData:
 		if new_item_data.current_amount > new_item_data.stack_size:
 			new_item_data.current_amount = new_item_data.stack_size

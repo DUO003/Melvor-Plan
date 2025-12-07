@@ -8,8 +8,10 @@ func _ready():
 	%"暂停界面".visible=false
 	$"暂停".pressed.connect(func():%"暂停界面".visible=true)
 func 展开界面():
-	if OS.has_feature("editor_runtime"):
+	if 梅存档格式.单例.启用测试:
 		$"测试".visible=展开
+	else :
+		$"测试".visible=false
 	$"存档".visible=展开
 	if 展开:
 		text=">"

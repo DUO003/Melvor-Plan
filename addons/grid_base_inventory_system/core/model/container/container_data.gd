@@ -29,8 +29,7 @@ func _init(container_name: String = GBIS.DEFAULT_INVENTORY_NAME, columns: int = 
 		for col in columns:
 			var pos = Vector2i(col, row)
 			grid_item_map[pos] = null
-# 忽略"变量遮蔽"警告（保持与原有代码风格一致）
-@warning_ignore("shadowed_variable")
+
 # 背包Y轴扩容方法（仅增加行数，纯数据层面，不处理UI）
 # 参数：扩容数量 - 必须≥1，代表要新增的行数
 func 扩容_增加行数(扩容数量: int) -> void:
@@ -161,3 +160,50 @@ func _try_get_empty_grids_by_shape(start: Vector2i, shape: Vector2i) -> Array[Ve
 			else:
 				return []
 	return ret
+## 整理背包物品（物品排列 + 可堆叠物品合并）
+func 整理物品() -> void:
+	var 备份物品列表: Array[ItemData] = items.duplicate()# 1. 备份当前所有物品
+	if 备份物品列表.is_empty():#背包为空停止逻辑
+		print("背包【", container_name, "】暂无物品需要整理")
+		return
+	clear()# 2. 清空当前背包的所有数据
+	备份物品列表.sort_custom(func(物品A: ItemData, 物品B: ItemData) -> bool:
+		return 物品A.排序值() < 物品B.排序值())# 3. 按物品的排序值升序排序
+	var 合并后物品列表: Array[ItemData] = []#可堆叠物品合并逻辑
+	for 待处理物品 in 备份物品列表:
+		if 待处理物品 is StackableData:# 仅处理继承自StackableData的可堆叠物品
+			# 检查合并列表最后一个是否是同名称的可堆叠物品（排序后同名称必然连续）
+			if (not 合并后物品列表.is_empty() and 合并后物品列表[-1] is StackableData 
+			and 合并后物品列表[-1].item_name == 待处理物品.item_name):
+				var 目标物品: StackableData = 合并后物品列表[-1]
+				# 计算目标物品可接收的剩余数量（堆叠上限 - 当前数量）
+				var 可合并数量 = min(目标物品.stack_size - 目标物品.current_amount, 待处理物品.current_amount)
+				if 可合并数量 > 0:# 合并数量到目标物品
+					目标物品.current_amount += 可合并数量
+					待处理物品.current_amount -= 可合并数量
+				if 待处理物品.current_amount > 0:# 若当前物品仍有剩余数量，加入合并列表；否则丢弃
+					合并后物品列表.append(待处理物品)
+			else:# 无同名称前置物品，直接加入合并列表
+				合并后物品列表.append(待处理物品)
+		else:# 非可堆叠物品，直接加入合并列表
+			合并后物品列表.append(待处理物品)
+	var 放入失败物品列表: Array[ItemData] = []# 4. 依次将合并后的物品重新放入背包
+	for 待放入物品 in 合并后物品列表:
+		var 实际占用网格 = add_item(待放入物品)
+		if 实际占用网格.is_empty():# 检查物品是否成功放入
+			放入失败物品列表.append(待放入物品)
+			push_warning("背包【", container_name, "】整理时放入物品失败：", 
+				待放入物品.item_name, "（排序值：", 待放入物品.排序值(), "）")
+	GBIS.sig_inv_refresh.emit()#发送信号更新背包
+	
+	
+	# 5. 输出整理结果日志（可选保留）
+	#var 原始物品数 = 备份物品列表.size()
+	#var 合并后物品数 = 合并后物品列表.size()
+	#var 成功整理数量 = 合并后物品数 - 放入失败物品列表.size()
+	#print(# 调试日志（可注释）
+		#"背包【", container_name, "】物品整理完成 | ",
+		#"原始物品数：", 原始物品数, " | ",
+		#"合并后物品数：", 合并后物品数, " | ",
+		#"成功放入：", 成功整理数量, " | ",
+		#"放入失败：", 放入失败物品列表.size())

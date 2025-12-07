@@ -159,14 +159,8 @@ popup/item_1/id = 1
 
 [node name="红点提示" parent="测试/展开按钮/测试" instance=ExtResource("5_5a7ci")]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_bottom = 0.0
-offset_left = -56.0
-offset_right = -16.0
+offset_right = 0.0
 offset_bottom = 0.0
-grow_horizontal = 0
-grow_vertical = 1
 "红点条目" = "测试红点"
 
 [node name="存档" type="Button" parent="测试/展开按钮"]
@@ -211,20 +205,26 @@ offset_right = 156.0
 offset_bottom = 75.0
 text = "⏸️"
 
-[node name="任务栏" type="VBoxContainer" parent="."]
-unique_name_in_owner = true
+[node name="任务栏滚动区" type="ScrollContainer" parent="."]
 layout_mode = 0
 offset_left = 1700.0
 offset_top = 10.0
 offset_right = 1920.0
-offset_bottom = 1010.0
-theme = ExtResource("4_kiae7")
-theme_override_constants/separation = 25
+offset_bottom = 810.0
 
-[node name="任务" type="Button" parent="任务栏"]
+[node name="任务栏" type="VBoxContainer" parent="任务栏滚动区"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("4_kiae7")
+theme_override_constants/separation = 10
+
+[node name="任务" type="Button" parent="任务栏滚动区/任务栏"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+size_flags_vertical = 0
 theme = ExtResource("4_kiae7")
 theme_override_constants/h_separation = 0
 theme_override_constants/icon_max_width = 60
@@ -232,29 +232,10 @@ theme_override_constants/align_to_largest_stylebox = 1
 text = "合成"
 expand_icon = true
 
-[node name="红点提示" parent="任务栏/任务" instance=ExtResource("5_5a7ci")]
+[node name="红点提示" parent="任务栏滚动区/任务栏/任务" instance=ExtResource("5_5a7ci")]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_bottom = 0.0
-offset_left = -43.0
-offset_top = 7.0
-offset_right = -3.0
-offset_bottom = 7.0
-grow_horizontal = 0
-grow_vertical = 1
-
-[node name="提示容器" type="VBoxContainer" parent="."]
-unique_name_in_owner = true
-z_index = 10
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_behavior_recursive = 1
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="图钉" type="ScrollContainer" parent="."]
 unique_name_in_owner = true
@@ -268,6 +249,19 @@ offset_bottom = 1080.0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+
+[node name="提示容器" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+z_index = 10
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+mouse_behavior_recursive = 1
 
 [node name="暂停界面" type="CanvasLayer" parent="."]
 unique_name_in_owner = true

@@ -1,6 +1,5 @@
 extends 基类梅窗口
 var 任务字典:Dictionary={}
-var 默认展开容器="作者"
 var 窗口解锁数组: Array
 var 窗口禁用数组: Array
 var 任务文本字典
@@ -39,11 +38,13 @@ func 初始化所有任务容器():
 	for 容器 in 配置:
 		清除子节点(容器)
 	任务文本字典={}
-	默认展开容器=计划.窗口状态管理("任务","默认展开容器")
+	var 默认展开容器=计划.窗口状态管理("任务","默认展开容器","作者")
+	var 默认展开任务=计划.窗口状态管理("任务","默认展开任务","新手任务")
+	var 红点提示:红点场景=preload("res://界面/插件/红点提示.tscn").instantiate()
 	if (默认展开容器=="作者" or 默认展开容器=="挂机") :
-		$"内容区域/标签/主线任务".visible=true
+		%"标签".current_tab=0
 	else :
-		$"内容区域/标签/支线任务".visible=true
+		%"标签".current_tab=1
 		if 默认展开容器=="手工":
 			$"内容区域/标签/支线任务/手工".visible=true
 	加载任务完成统计()
@@ -52,21 +53,7 @@ func 初始化所有任务容器():
 		for 主容器名 in 任务字典:
 			if not 主容器名 in 配置[容器]:
 				continue
-			var 折叠主容器=FoldableContainer.new()
-			var 垂直任务容器 = VBoxContainer.new()
-			垂直任务容器.name = "垂直任务容器"
-			if 默认展开容器==主容器名:
-				折叠主容器.folded=false
-			else :
-				折叠主容器.folded=true
-			折叠主容器.title=主容器名
-			折叠主容器.add_theme_font_size_override("font_size", 60)
-			折叠主容器.folding_changed.connect(func(折叠):
-				if not 折叠:
-					计划.窗口状态管理("任务","默认展开容器",主容器名)
-					print("更新默认折叠容器"))
 			var 序号=1
-			var 展开=true
 			for 子容器名 in 任务字典[主容器名]:
 				var 前置任务=任务字典[主容器名][子容器名].get("前置任务",[])
 				var 任务数量=前置任务.size()
@@ -95,18 +82,32 @@ func 初始化所有任务容器():
 					垂直进度条容器.add_child(文本节点)  # 加入垂直容器
 					垂直进度条容器.add_child(进度条)
 					折叠子容器.add_child(垂直进度条容器)
+				折叠子容器.folding_changed.connect(func(折叠):
+					if not 计划.红点.红点数据.has("任务_"+子容器名):
+						计划.红点.红点数据["任务_"+子容器名]=1
+						计划.更新红点.emit("任务_"+子容器名)
+						折叠子容器.folded=false
+						return
+					if not 折叠:
+						计划.窗口状态管理("任务","默认展开容器",null,主容器名)
+						计划.窗口状态管理("任务","默认展开任务",null,子容器名))
 				var 剧情进度=计划.梅存档["挂机"].get("任务进度",{}).get(子容器名,0)#初始=0,完成=1,进行中0到1之间
-				if 展开 and not 剧情进度==1:
-					展开=false
-					折叠子容器.folded=false
+				var 后缀=""
+				if 默认展开任务==子容器名:
+					折叠子容器.folded=false#展开
 				else :
 					折叠子容器.folded=true
-				var 后缀="(已完成)"if 剧情进度==1 else "(进行中)"
-				折叠子容器.title=str(序号)+"."+子容器名+后缀
-				垂直任务容器.add_child(折叠子容器)
+				if 剧情进度==1:
+					后缀="(已完成)"
+				elif 计划.红点.获取红点状态("任务_"+子容器名)==1:
+					后缀="(进行中)"
+					折叠子容器.folded=false#展开
+				折叠子容器.title=主容器名+str(序号)+"."+子容器名+后缀
+				var 克隆红点:红点场景=红点提示.duplicate()
+				克隆红点.红点条目="任务_"+子容器名
+				场景容器.add_child(克隆红点)
+				场景容器.add_child(折叠子容器)
 				序号+=1
-			折叠主容器.add_child(垂直任务容器)
-			场景容器.add_child(折叠主容器)
 func 任务节点组合(字典,容器,任务名称):
 	var 水平容器=HBoxContainer.new()
 	var 文本节点=RichTextLabel.new()
@@ -165,7 +166,6 @@ func 解析功能按钮(功能数组的数组,容器):
 		if 功能数组[0]=="对话":
 			按钮.pressed.connect(func():启动对话(功能数组[2]))
 		elif 功能数组[0]=="解锁":
-			#print("解锁任务按钮:",功能数组,"容器:",容器)
 			按钮.pressed.connect(func():
 				if 计划.梅存档["挂机"].get("任务进度",{}).get(功能数组[2],0)==1:
 					计划.语法糖通知("任务奖励已领取","任务提示")
@@ -174,8 +174,17 @@ func 解析功能按钮(功能数组的数组,容器):
 					解锁窗口(功能数组[2],功能数组[3])
 				else :
 					解锁窗口(功能数组[2]))
+		elif 功能数组[0]=="提交":
+			按钮.pressed.connect(func():
+				if 计划.梅存档["挂机"].get("任务进度",{}).get(功能数组[2],0)==1:
+					计划.语法糖通知("任务奖励已完成,无需重复","任务提示")
+					return
+				if 计划.检查背包物品数量("绿色电路板")>=功能数组[3]:
+					计划.语法糖消耗物品("绿色电路板",功能数组[3])
+					解锁窗口(功能数组[2]))
 		容器.add_child.call_deferred(按钮)
 func 解锁窗口(任务代号,参数="null"):
+	计划.删除强调通知.emit(任务代号)
 	计划.任务完成处理(任务代号,参数,1)
 func 启动对话(对话时间线):
 	if Dialogic.current_timeline != null:
@@ -210,7 +219,7 @@ func 任务栏初始化():
 		任务按钮.mouse_entered.connect(func():
 			%"窗口名".text="窗口名称:"+界面名称
 			处理样式(%"展示按钮",界面名称)
-			var 加载简介=计划.窗口.界面简介.get(界面名称,"当前窗口简介丢失")
+			var 加载简介=计划.窗口.界面简介.get(界面名称,["当前窗口简介丢失"])
 			%"窗口介绍".text="简介:\r"+ "\r".join(加载简介) +"\r管理任务栏中显示的按钮"
 			)
 		%"任务栏盒子".add_child(任务按钮)
@@ -218,7 +227,8 @@ func 任务栏初始化():
 func 处理样式(节点: Button, 界面名称: String) -> void:
 	var 纹理地址=计划.窗口.界面路径映射[界面名称]
 	if 纹理地址.size()>=1:
-		var 纹理 = load(纹理地址[1])# 1. 加载图片
+		var 纹理 = null
+		if not 纹理地址[1]=="":纹理 =load(纹理地址[1])# 1. 加载图片
 		var 样式 = 节点.get_theme_stylebox("disabled")
 		if 纹理:
 			样式.样式数组[2].texture = 纹理

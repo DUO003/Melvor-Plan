@@ -3,7 +3,7 @@ extends BaseContainerView
 ## 背包视图，控制背包的绘制
 class_name ShopView
 
-@export var goods: Array[ItemData]
+#@export var goods: Array[ItemData]
 
 ## 格子高亮
 func grid_hover(grid_id: Vector2i) -> void:

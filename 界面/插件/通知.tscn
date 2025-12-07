@@ -9,6 +9,7 @@ anchor_right = 0.119
 anchor_bottom = 0.062000003
 offset_right = -2.480011
 offset_bottom = -27.960007
+mouse_filter = 2
 theme = ExtResource("1_73lfj")
 script = ExtResource("1_0iigp")
 
@@ -17,6 +18,7 @@ layout_mode = 1
 offset_right = 59.0
 offset_bottom = 55.0
 size_flags_horizontal = 0
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "测试"
@@ -25,3 +27,13 @@ scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
 metadata/_edit_lock_ = true
+
+[node name="按钮" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_behavior_recursive = 2

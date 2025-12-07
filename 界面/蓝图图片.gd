@@ -2,11 +2,11 @@
 extends Sprite2D
 
 # 导出变量：设置固定目标尺寸（像素）
-@export var 目标宽度: int:
+@export var 目标宽度: int=200:
 	set(值):
 		目标宽度=值
 		应用纹理(texture)
-@export var 目标高度: int:
+@export var 目标高度: int=200:
 	set(值):
 		目标高度=值
 		应用纹理(texture)

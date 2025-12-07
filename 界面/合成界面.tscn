@@ -109,6 +109,7 @@ metadata/_edit_lock_ = true
 layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
+"玩法" = "合成"
 "精通池显示" = null
 
 [node name="背景" type="ColorRect" parent="."]

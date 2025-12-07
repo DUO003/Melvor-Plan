@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dr3p3f8wbo87d"]
+[gd_scene load_steps=19 format=3 uid="uid://dr3p3f8wbo87d"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_loe2l"]
 [ext_resource type="Script" uid="uid://mkdbh1ljjonw" path="res://代码/专属代码/背包界面/背包界面.gd" id="2_tb4we"]
@@ -9,8 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://conmhorhmnqpg" path="res://素材/像素/框.png" id="8_sso0e"]
 [ext_resource type="Script" uid="uid://gqt6pq4lt0gw" path="res://addons/grid_base_inventory_system/core/view/container/shop/shop_view.gd" id="9_sxijb"]
 [ext_resource type="PackedScene" uid="uid://cjsi35bpmr7oo" path="res://界面/插件/玩家.tscn" id="9_wurb6"]
-[ext_resource type="Script" uid="uid://c5uqs7o5b2w68" path="res://addons/grid_base_inventory_system/core/model/item/item_data.gd" id="10_wurb6"]
-[ext_resource type="Script" uid="uid://fcwto8ogpj0n" path="res://道具/标准物品.gd" id="12_ijs6s"]
+[ext_resource type="PackedScene" uid="uid://dlf0o8yt0hscg" path="res://界面/插件/悬浮提示.tscn" id="10_odugo"]
 
 [sub_resource type="DPITexture" id="DPITexture_sxijb"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"24\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\"/></svg>
@@ -52,12 +51,6 @@ _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\">
 "
 base_scale = 2.0
 
-[sub_resource type="Resource" id="Resource_loe2l"]
-script = ExtResource("12_ijs6s")
-"商店剩余数量" = 100
-item_name = "测试瓶子"
-metadata/_custom_type_script = "uid://fcwto8ogpj0n"
-
 [node name="背包主界面" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -82,10 +75,9 @@ metadata/_edit_lock_ = true
 
 [node name="等级显示" parent="标题" instance=ExtResource("3_4r775")]
 layout_mode = 1
-offset_right = 0.0
-offset_bottom = 0.0
 "系统" = "挂机"
 "玩法" = "背包"
+"同时显示" = null
 
 [node name="背景" type="ColorRect" parent="."]
 layout_mode = 1
@@ -105,29 +97,29 @@ offset_top = 100.0
 offset_right = 1700.0
 offset_bottom = 1000.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="内容节点"]
+[node name="水平排列" type="HBoxContainer" parent="内容节点"]
 custom_minimum_size = Vector2(1700, 900)
 layout_mode = 0
 offset_right = 1700.0
 offset_bottom = 900.0
 theme_override_constants/separation = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="内容节点/HBoxContainer"]
+[node name="垂直排列" type="VBoxContainer" parent="内容节点/水平排列"]
 custom_minimum_size = Vector2(1100, 900)
 layout_mode = 2
 
-[node name="物品栏选项卡" type="TabContainer" parent="内容节点/HBoxContainer/VBoxContainer"]
+[node name="物品栏选项卡" type="TabContainer" parent="内容节点/水平排列/垂直排列"]
 unique_name_in_owner = true
 layout_mode = 2
 current_tab = 0
 
-[node name="物品栏" type="ScrollContainer" parent="内容节点/HBoxContainer/VBoxContainer/物品栏选项卡"]
+[node name="物品栏" type="ScrollContainer" parent="内容节点/水平排列/垂直排列/物品栏选项卡"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1100, 750)
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="背包" type="Control" parent="内容节点/HBoxContainer/VBoxContainer/物品栏选项卡/物品栏"]
+[node name="背包" type="Control" parent="内容节点/水平排列/垂直排列/物品栏选项卡/物品栏"]
 custom_minimum_size = Vector2(1089, 1210)
 layout_mode = 2
 script = ExtResource("5_tb4we")
@@ -146,14 +138,14 @@ stack_num_margin = 0
 stack_num_color = Color(0, 0, 0, 1)
 metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
 
-[node name="装备栏" type="ScrollContainer" parent="内容节点/HBoxContainer/VBoxContainer/物品栏选项卡"]
+[node name="装备栏" type="ScrollContainer" parent="内容节点/水平排列/垂直排列/物品栏选项卡"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(1100, 750)
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="装备" type="Control" parent="内容节点/HBoxContainer/VBoxContainer/物品栏选项卡/装备栏"]
+[node name="装备" type="Control" parent="内容节点/水平排列/垂直排列/物品栏选项卡/装备栏"]
 custom_minimum_size = Vector2(1080, 540)
 layout_mode = 2
 script = ExtResource("5_tb4we")
@@ -173,12 +165,12 @@ stack_num_margin = 0
 stack_num_color = Color(0, 0, 0, 1)
 metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
 
-[node name="金币节点" type="Control" parent="内容节点/HBoxContainer/VBoxContainer"]
+[node name="金币节点" type="Control" parent="内容节点/水平排列/垂直排列"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
-[node name="金币贴图" type="TextureRect" parent="内容节点/HBoxContainer/VBoxContainer/金币节点"]
+[node name="金币贴图" type="TextureRect" parent="内容节点/水平排列/垂直排列/金币节点"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
@@ -189,7 +181,7 @@ offset_bottom = 62.0
 texture = ExtResource("5_tjqle")
 expand_mode = 1
 
-[node name="金币文本" type="Label" parent="内容节点/HBoxContainer/VBoxContainer/金币节点"]
+[node name="金币文本" type="Label" parent="内容节点/水平排列/垂直排列/金币节点"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 0
@@ -200,23 +192,24 @@ offset_bottom = 66.0
 theme_override_font_sizes/font_size = 50
 text = "金币:100"
 
-[node name="状态区" type="TabContainer" parent="内容节点/HBoxContainer"]
+[node name="状态区" type="TabContainer" parent="内容节点/水平排列"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
-current_tab = 2
+current_tab = 0
 
-[node name="物品" type="Control" parent="内容节点/HBoxContainer/状态区"]
+[node name="物品" type="Control" parent="内容节点/水平排列/状态区"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(600, 828)
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="无选中" type="Control" parent="内容节点/HBoxContainer/状态区/物品"]
+[node name="无选中" type="Control" parent="内容节点/水平排列/状态区/物品"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 
-[node name="物品详情名称" type="Label" parent="内容节点/HBoxContainer/状态区/物品/无选中"]
+[node name="物品详情名称" type="Label" parent="内容节点/水平排列/状态区/物品/无选中"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 0
 offset_left = 35.0
@@ -231,12 +224,11 @@ text = "左键:查看详情(装备)
 金币图标可点击"
 horizontal_alignment = 1
 
-[node name="选中" type="Control" parent="内容节点/HBoxContainer/状态区/物品"]
+[node name="选中" type="Control" parent="内容节点/水平排列/状态区/物品"]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 0
 
-[node name="物品详情贴图" type="TextureRect" parent="内容节点/HBoxContainer/状态区/物品/选中"]
+[node name="物品详情贴图" type="TextureRect" parent="内容节点/水平排列/状态区/物品/选中"]
 unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(60, 60)
@@ -248,7 +240,7 @@ offset_bottom = 212.0
 expand_mode = 1
 stretch_mode = 5
 
-[node name="物品详情名称" type="Label" parent="内容节点/HBoxContainer/状态区/物品/选中"]
+[node name="物品详情名称" type="Label" parent="内容节点/水平排列/状态区/物品/选中"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 0
@@ -260,19 +252,19 @@ theme_override_font_sizes/font_size = 50
 text = "金币"
 horizontal_alignment = 1
 
-[node name="物品详情文本" type="RichTextLabel" parent="内容节点/HBoxContainer/状态区/物品/选中"]
+[node name="物品详情文本" type="RichTextLabel" parent="内容节点/水平排列/状态区/物品/选中"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 0
 offset_left = 19.0
 offset_top = 300.0
-offset_right = 568.0
-offset_bottom = 796.0
+offset_right = 569.0
+offset_bottom = 720.0
 text = "金币
 堆叠上限:100
 简介:交易的基础货币"
 
-[node name="使用" type="Button" parent="内容节点/HBoxContainer/状态区/物品/选中"]
+[node name="使用" type="Button" parent="内容节点/水平排列/状态区/物品/选中"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 70)
 layout_mode = 0
@@ -283,7 +275,7 @@ offset_bottom = 82.0
 theme_override_font_sizes/font_size = 40
 text = "使用"
 
-[node name="丢弃" type="Button" parent="内容节点/HBoxContainer/状态区/物品/选中"]
+[node name="丢弃" type="Button" parent="内容节点/水平排列/状态区/物品/选中"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 70)
 layout_mode = 0
@@ -294,7 +286,7 @@ offset_bottom = 154.0
 theme_override_font_sizes/font_size = 40
 text = "丢弃"
 
-[node name="分享" type="Button" parent="内容节点/HBoxContainer/状态区/物品/选中"]
+[node name="分享" type="Button" parent="内容节点/水平排列/状态区/物品/选中"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 70)
 layout_mode = 0
@@ -305,7 +297,7 @@ offset_bottom = 226.0
 theme_override_font_sizes/font_size = 40
 text = "分享"
 
-[node name="图钉" type="CheckButton" parent="内容节点/HBoxContainer/状态区/物品/选中"]
+[node name="图钉" type="CheckButton" parent="内容节点/水平排列/状态区/物品/选中"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 70)
 layout_mode = 0
@@ -325,14 +317,27 @@ theme_override_icons/unchecked_disabled_mirrored = SubResource("DPITexture_3t1pr
 text = "图钉"
 alignment = 2
 
-[node name="装备" type="Control" parent="内容节点/HBoxContainer/状态区"]
+[node name="整理按钮区" type="HBoxContainer" parent="内容节点/水平排列/状态区/物品"]
+layout_mode = 0
+offset_top = 750.0
+offset_right = 160.0
+offset_bottom = 820.0
+
+[node name="整理" type="Button" parent="内容节点/水平排列/状态区/物品/整理按钮区"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "整理"
+
+[node name="装备" type="Control" parent="内容节点/水平排列/状态区"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(600, 828)
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="项链" type="Control" parent="内容节点/HBoxContainer/状态区/装备"]
+[node name="项链" type="Control" parent="内容节点/水平排列/状态区/装备"]
 anchors_preset = 0
 offset_right = 145.0
 offset_bottom = 145.0
@@ -346,7 +351,7 @@ INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
 avilable_types = Array[String](["项链", "光环"])
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="披挂" type="Control" parent="内容节点/HBoxContainer/状态区/装备"]
+[node name="披挂" type="Control" parent="内容节点/水平排列/状态区/装备"]
 anchors_preset = 0
 offset_top = 150.0
 offset_right = 145.0
@@ -361,7 +366,7 @@ INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
 avilable_types = Array[String](["披风", "宠物"])
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="戒指A" type="Control" parent="内容节点/HBoxContainer/状态区/装备"]
+[node name="戒指A" type="Control" parent="内容节点/水平排列/状态区/装备"]
 anchors_preset = 0
 offset_top = 300.0
 offset_right = 145.0
@@ -376,7 +381,7 @@ INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
 avilable_types = Array[String](["戒指"])
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="戒指B" type="Control" parent="内容节点/HBoxContainer/状态区/装备"]
+[node name="戒指B" type="Control" parent="内容节点/水平排列/状态区/装备"]
 anchors_preset = 0
 offset_top = 450.0
 offset_right = 145.0
@@ -391,7 +396,7 @@ INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
 avilable_types = Array[String](["戒指"])
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="主手" type="Control" parent="内容节点/HBoxContainer/状态区/装备"]
+[node name="主手" type="Control" parent="内容节点/水平排列/状态区/装备"]
 anchors_preset = 0
 offset_left = 150.0
 offset_top = 450.0
@@ -407,7 +412,7 @@ INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
 avilable_types = Array[String](["长剑", "斧头", "匕首", "战锤", "矛", "弓", "法杖", "魔杖", "手弩", "火枪"])
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="副手" type="Control" parent="内容节点/HBoxContainer/状态区/装备"]
+[node name="副手" type="Control" parent="内容节点/水平排列/状态区/装备"]
 anchors_preset = 0
 offset_left = 300.0
 offset_top = 450.0
@@ -423,7 +428,7 @@ INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
 avilable_types = Array[String](["盾牌", "乐器", "卷轴", "箭袋", "护手", "手套"])
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="头盔" type="Control" parent="内容节点/HBoxContainer/状态区/装备"]
+[node name="头盔" type="Control" parent="内容节点/水平排列/状态区/装备"]
 anchors_preset = 0
 offset_left = 450.0
 offset_right = 595.0
@@ -438,7 +443,7 @@ INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
 avilable_types = Array[String](["头盔", "盗贼帽", "法师帽"])
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="衣服" type="Control" parent="内容节点/HBoxContainer/状态区/装备"]
+[node name="衣服" type="Control" parent="内容节点/水平排列/状态区/装备"]
 anchors_preset = 0
 offset_left = 450.0
 offset_top = 150.0
@@ -454,7 +459,7 @@ INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
 avilable_types = Array[String](["重甲", "轻甲", "法袍"])
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="裤子" type="Control" parent="内容节点/HBoxContainer/状态区/装备"]
+[node name="裤子" type="Control" parent="内容节点/水平排列/状态区/装备"]
 anchors_preset = 0
 offset_left = 450.0
 offset_top = 300.0
@@ -470,7 +475,7 @@ INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
 avilable_types = Array[String](["裤子", "腿甲", "法裤"])
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="鞋子" type="Control" parent="内容节点/HBoxContainer/状态区/装备"]
+[node name="鞋子" type="Control" parent="内容节点/水平排列/状态区/装备"]
 anchors_preset = 0
 offset_left = 450.0
 offset_top = 450.0
@@ -486,7 +491,7 @@ INVILABLE_color = Color(0.5294118, 0.4117647, 0.21176471, 1)
 avilable_types = Array[String](["靴子", "鞋子", "法鞋"])
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="玩家属性" type="RichTextLabel" parent="内容节点/HBoxContainer/状态区/装备"]
+[node name="玩家属性" type="RichTextLabel" parent="内容节点/水平排列/状态区/装备"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 4.0
@@ -497,7 +502,7 @@ theme_override_constants/paragraph_separation = -10
 theme_override_font_sizes/normal_font_size = 38
 text = "游历 LV:0		熟练:0/100"
 
-[node name="玩家" parent="内容节点/HBoxContainer/状态区/装备" instance=ExtResource("9_wurb6")]
+[node name="玩家" parent="内容节点/水平排列/状态区/装备" instance=ExtResource("9_wurb6")]
 unique_name_in_owner = true
 layout_mode = 1
 offset_left = 196.0
@@ -505,18 +510,18 @@ offset_top = 52.0
 offset_right = -196.0
 offset_bottom = -416.0
 
-[node name="随身商店" type="ScrollContainer" parent="内容节点/HBoxContainer/状态区"]
+[node name="随身商店" type="ScrollContainer" parent="内容节点/水平排列/状态区"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(600, 828)
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="商店" type="Control" parent="内容节点/HBoxContainer/状态区/随身商店"]
+[node name="商店" type="Control" parent="内容节点/水平排列/状态区/随身商店"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("9_sxijb")
-goods = Array[ExtResource("10_wurb6")]([SubResource("Resource_loe2l")])
 container_name = "随身商店"
 container_columns = 5
 container_rows = 10
@@ -546,3 +551,10 @@ dialog_text = "删除物品后该格子内所有物品将一起移除
 如果仅删除一个可以尝试鼠标中间分组后删除"
 dialog_autowrap = true
 cancel_button_text = " 取消 "
+
+[node name="悬浮提示" parent="." instance=ExtResource("10_odugo")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -297.0
+offset_right = -59.0
+offset_bottom = 230.6

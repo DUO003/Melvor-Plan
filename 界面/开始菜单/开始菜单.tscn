@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://kifxwq2enhmp"]
+[gd_scene load_steps=10 format=3 uid="uid://kifxwq2enhmp"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_6r68l"]
 [ext_resource type="Texture2D" uid="uid://b6q0o46fjedne" path="res://素材/游戏素材/背景/3.png" id="2_clqjb"]
@@ -26,6 +26,9 @@ content_margin_bottom = -1.0
 script = ExtResource("4_qbyf1")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_1s0f7")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clqjb"]
+bg_color = Color(0.65, 0.52216667, 0.2665, 0.19607843)
 
 [node name="开始界面" type="ScrollContainer"]
 anchors_preset = 15
@@ -90,7 +93,7 @@ autowrap_trim_flags = 128
 [node name="主面板" type="Panel" parent="开始菜单"]
 layout_mode = 0
 offset_left = 672.0
-offset_top = 225.0
+offset_top = 114.0
 offset_right = 1772.0
 offset_bottom = 815.0
 theme_override_styles/panel = SubResource("StyleBox_ubnl7")
@@ -110,7 +113,8 @@ layout_mode = 0
 offset_left = 50.0
 offset_top = 107.0
 offset_right = 1050.0
-offset_bottom = 386.0
+offset_bottom = 457.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_clqjb")
 
 [node name="按钮区" type="HBoxContainer" parent="开始菜单/主面板"]
 layout_mode = 1
@@ -118,16 +122,23 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 50.0
-offset_top = -194.0
+offset_top = -123.0
 offset_right = 1050.0
-offset_bottom = -104.0
+offset_bottom = -33.0
 grow_vertical = 0
 
 [node name="开始游戏" type="Button" parent="开始菜单/主面板/按钮区"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 6
 text = "开始游戏"
+
+[node name="设置" type="Button" parent="开始菜单/主面板/按钮区"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 50
+text = "打开设置"
 
 [node name="新建" type="Button" parent="开始菜单/主面板/按钮区"]
 unique_name_in_owner = true
@@ -135,13 +146,6 @@ layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 55
 text = "新建"
-
-[node name="设置" type="Button" parent="开始菜单/主面板/按钮区"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 50
-text = "设置"
 
 [node name="删除" type="Button" parent="开始菜单/主面板/按钮区"]
 unique_name_in_owner = true
@@ -156,10 +160,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 669.0
-offset_top = -95.0
+offset_left = 735.0
+offset_top = -213.0
 offset_right = 1055.0
-offset_bottom = -25.0
+offset_bottom = -143.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 50
 placeholder_text = "自定义存档名称"
@@ -168,11 +172,36 @@ emoji_menu_enabled = false
 
 [node name="存档" type="Label" parent="开始菜单/主面板/自定义存档名"]
 layout_mode = 0
-offset_left = -277.0
+offset_left = -179.0
 offset_right = -12.0
 offset_bottom = 70.0
 theme_override_font_sizes/font_size = 50
-text = "新建存档名:"
+text = "文件名:"
+
+[node name="玩家名" type="LineEdit" parent="开始菜单/主面板"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 228.0
+offset_top = -213.0
+offset_right = 548.0
+offset_bottom = -143.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "玩家"
+placeholder_text = "用户名"
+max_length = 7
+emoji_menu_enabled = false
+
+[node name="存档" type="Label" parent="开始菜单/主面板/玩家名"]
+layout_mode = 0
+offset_left = -179.0
+offset_right = -12.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 50
+text = "用户名:"
 
 [node name="多语言功能区" type="Panel" parent="开始菜单"]
 layout_mode = 0
@@ -244,13 +273,14 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_behavior_recursive = 1
 
-[node name="删除二次确认" type="ConfirmationDialog" parent="."]
+[node name="确认弹窗" type="ConfirmationDialog" parent="."]
 unique_name_in_owner = true
 disable_3d = true
 oversampling_override = 1.0
 title = ""
 initial_position = 1
 size = Vector2i(840, 400)
+visible = true
 unresizable = true
 min_size = Vector2i(800, 400)
 max_size = Vector2i(800, 200)
@@ -258,7 +288,7 @@ theme = ExtResource("1_6r68l")
 ok_button_text = "确认"
 cancel_button_text = "取消"
 
-[node name="节点" type="Control" parent="删除二次确认"]
+[node name="节点" type="Control" parent="确认弹窗"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 10.0
@@ -266,7 +296,8 @@ offset_top = 28.0
 offset_right = 830.0
 offset_bottom = 293.0
 
-[node name="文本1" type="Label" parent="删除二次确认/节点"]
+[node name="弹窗标题" type="Label" parent="确认弹窗/节点"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_top = -28.0
 offset_right = 236.0
@@ -276,11 +307,26 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 60
 text = "二次确认"
 
-[node name="文本2" type="Label" parent="删除二次确认/节点"]
+[node name="弹窗文本" type="Label" parent="确认弹窗/节点"]
+unique_name_in_owner = true
 layout_mode = 0
-offset_top = 70.0
-offset_right = 624.0
-offset_bottom = 140.0
+offset_top = 56.0
+offset_right = 640.0
+offset_bottom = 359.0
 theme = ExtResource("1_6r68l")
-theme_override_font_sizes/font_size = 50
-text = "是否确认删除存档,不可恢复!"
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 40
+text = "存档创建后
+文件名需要关闭游戏手动修改
+用户名修改后进入游戏存档后生效
+沙盒模式启用可以使用命令,但禁用多人(未开发)"
+
+[node name="启用测试" type="CheckButton" parent="确认弹窗/节点"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 527.0
+offset_top = -15.0
+offset_right = 816.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 40
+text = "启用沙盒"

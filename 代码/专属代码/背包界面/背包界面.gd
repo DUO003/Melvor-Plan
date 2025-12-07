@@ -6,14 +6,25 @@ var 属性文本="多003\n游历 LV:0		熟练:0/100\n"
 var 战力文本=""
 func _ready():
 	%物品栏选项卡.set_tab_title(0, "物品栏")
+	%"物品栏选项卡".current_tab=0
+	%"状态区".current_tab=0
 	计划.connect("更新_UI", Callable(self, "_更新_UI"))
 	计划.更新_背包物品信息.connect(_背包物品信息)
 	_更新_UI()
 	%"无选中".visible=true
 	%"选中".visible=false
-	%"随身商店".visibility_changed.connect(func(): if %"随身商店".visible: %"物品栏".visible = true)
-	%"装备".visibility_changed.connect(func(): if %"装备".visible: %"装备栏".visible = true)
-	%"物品".visibility_changed.connect(func(): if %"物品".visible: %"物品栏".visible = true)
+	%"随身商店".visibility_changed.connect(func():
+		if %"随身商店".visible:
+			%"物品栏".visible = true
+		%"悬浮提示".visible=false)
+	%"装备".visibility_changed.connect(func():
+		if %"装备".visible:
+			%"装备栏".visible = true
+		%"悬浮提示".visible=false)
+	%"物品".visibility_changed.connect(func(): 
+		if %"物品".visible:
+			%"物品栏".visible = true
+		%"悬浮提示".visible=false)
 	战力文本=计划.游历.战力文本更新()
 	%"玩家属性".text=属性文本+战力文本
 	GBIS.connect("sig_slot_item_unequipped", Callable(func(_1,_2):
@@ -24,19 +35,29 @@ func _ready():
 		战力文本=计划.游历.战力文本更新()
 		%"玩家属性".text=属性文本+战力文本
 		))
+	GBIS.sig_item_focused.connect(func(物品实例:ItemData,背包名):
+		%"悬浮提示".更新文本(物品实例.返回简介(背包名)))
+	GBIS.sig_item_focus_lost.connect(func(_物品实例:ItemData):
+		%"悬浮提示".visible=false)
 	战力文本=计划.游历.战力文本更新()
-	%"使用".pressed.connect(func(): 使用物品())
+	%"使用".pressed.connect(使用物品)
 	%"丢弃".pressed.connect(func(): %"删除确认弹窗".visible = true)
-	%"分享".pressed.connect(func():分享物品())
+	%"分享".pressed.connect(分享物品)
 	%"图钉".pressed.connect(func():计划.全局图钉(物品.item_name,%"图钉".button_pressed))
 	%"金币贴图".gui_input.connect(func(按键信号):
 		if (按键信号 is InputEventMouseButton and 按键信号.pressed and
 		按键信号.button_index == MOUSE_BUTTON_LEFT):
 			var 按钮状态=not 计划.梅存档["挂机"]["全局图钉"].has("金币")
 			计划.全局图钉("金币",按钮状态))
-	%"删除确认弹窗".confirmed.connect(func():删除物品())
+	%"删除确认弹窗".confirmed.connect(删除物品)
+	%"整理".pressed.connect(整理物品)
 	#%"玩家".mouse_entered.connect(func(): %"玩家属性".text=战力文本)
 	#%"玩家".mouse_exited.connect(func():%"玩家属性".text=属性文本)
+func 整理物品():
+	var 背包数据库单例=ContainerRepository.instance
+	var 背包的实例:ContainerData = 背包数据库单例._container_data_map.get("背包",null)
+	if 背包的实例 is ContainerData:
+		背包的实例.整理物品()
 func 使用物品():
 	if not 物品==null:
 		if 物品 is 标准物品:
@@ -74,6 +95,7 @@ func _背包物品信息(传入物品:标准物品,背包名称):
 	背包=背包名称
 	%"无选中".visible=false
 	%"选中".visible=true
+	%"状态区".current_tab=0
 	%"物品详情文本".text=物品.文本预处理()
 	%"物品详情名称".text=物品.item_name
 	%"物品详情贴图".texture=物品.icon

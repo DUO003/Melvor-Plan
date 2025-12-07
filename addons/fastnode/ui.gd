@@ -33,6 +33,11 @@ var 插件节点字典 = {
 		"代码": BoxContainer,
 		"图片": preload("res://addons/fastnode/icons/BoxContainer.svg")
 	},
+	"FoldableContainer":{
+		"名称": "折叠容器",
+		"代码": FoldableContainer,
+		"图片": null
+	},
 	"HBoxContainer": {
 		"名称": "水平盒子容器",
 		"代码": HBoxContainer,
@@ -651,7 +656,7 @@ var 插件节点字典 = {
 }
 # 分类名称(字符串) 作为键，对应节点名称列表(字符串数组) 作为值
 var 节点类型字典 = {
-	"常用容器类": ["Control", "PanelContainer", "TabContainer",
+	"常用容器类": ["Control", "PanelContainer", "TabContainer","FoldableContainer",
 		"HBoxContainer", "VBoxContainer", "HFlowContainer","VFlowContainer", "HSplitContainer", "VSplitContainer",
 		"GridContainer", "ScrollContainer", "MarginContainer", "AspectRatioContainer","CenterContainer"],
 	"其他容器类": ["Container", "BoxContainer", "FlowContainer", "SplitContainer", "SubViewportContainer", 

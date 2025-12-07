@@ -257,7 +257,7 @@ theme_override_constants/line_separation = -12
 theme_override_constants/paragraph_separation = -5
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "[font_size=30]金币合计:[/font_size]10000[img=40x40]res://素材/游戏素材/货币/without background/2.png[/img]
+text = "[font_size=30]金币合计:[/font_size]10000[img=40x40]res://素材/游戏素材/货币/2.png[/img]
 [font_size=30]15%概率:[/font_size]100[img=40x40]res://素材/选用素材/卷轴/scroll-blue.png[/img]"
 
 [node name="进度条" type="ProgressBar" parent="."]

@@ -15,30 +15,33 @@ func 更新UI():
 	var 当前数量 = 计划.手工.查看资源(资源名称)
 	var 上限值 = 计划.手工.资源上限字典.get(资源名称,0)
 	var 背包内数量=计划.检查背包物品数量(资源名称)
-	var 类型=计划.手工.资源字典.get(资源名称,{"类型":"基础"})["类型"]
+	var 类型=计划.手工.检查资源类(资源名称)
 	if 类型=="特殊":
 		$"进度".max_value = 1
 		$"进度".value = 1
 		$"进度".show_percentage=false
+		%"显示数量".text="拥有:"+str(int(背包内数量+当前数量))
+		%"显示数量".visible=true
 	else :
 		$"进度".max_value = 上限值
 		$"进度".value = 当前数量
 		$"进度".show_percentage=false
-	if 背包内数量>=1:
-		$"背包内数量".text="存:"+str(背包内数量)
-		$"背包内数量".visible=true
-	else :
-		$"背包内数量".visible=false
+		if 背包内数量>=1:
+			%"显示数量".text="存:"+str(背包内数量)
+			%"显示数量".visible=true
+		else :
+			%"显示数量".visible=false
 	var 回复速度=资源回复速度.get(资源名称,0)
 	if 回复速度==0:
 		$"进度".size=Vector2(400,50)
 		$"回复".visible=false
 		%"刻度".更新进度条参数(上限值,400)
 	else :
-		$"进度".size=Vector2(350,50)
+		var 宽度=int(%"显示数量".get_combined_minimum_size().x)
+		$"进度".size=Vector2(400-宽度,50)
 		$"回复".visible=true
 		$"回复".text= "+%.1f" % 回复速度
-		%"刻度".更新进度条参数(上限值,350)
+		%"刻度".更新进度条参数(上限值,400-宽度)
 func _ready():
 	更新贴图()# 节点就绪时初始化
 	if Engine.is_editor_hint():
@@ -71,12 +74,16 @@ func 更新贴图():
 	if not 贴图节点:# 确保TextureRect节点存在
 		print("警告：未找到「贴图」节点，请检查节点路径")
 		return
-	if not Engine.is_editor_hint():
+	if Engine.is_editor_hint():
+		var 纹理 = 梅手工.new().资源字典.get(资源名称,{"贴图":null})["贴图"]
+		贴图节点.texture = 纹理
+	else :
 		var 纹理 = 计划.手工.资源字典.get(资源名称,{"贴图":null})["贴图"]
 		if 纹理:
 			$"资源粒子".emitting=false
 		贴图节点.texture = 纹理
 		$"资源粒子".texture = 纹理
+	
 func 处理按下():
 	if 基础量>0:
 		计划.手工.获得资源(资源名称, 基础量 * 5, true, true)# 点击立即回复5倍基础量资源

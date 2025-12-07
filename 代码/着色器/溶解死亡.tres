@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://drpe4kid4m260"]
+
+[ext_resource type="Shader" uid="uid://yn5fc37u4o81" path="res://代码/着色器/溶解死亡.gdshader" id="1_xgo7d"]
+
+[resource]
+shader = ExtResource("1_xgo7d")

@@ -57,8 +57,8 @@ func 更新属性()->bool:
 	表格数据=计划.表格.蓝图字典.get(item_name,[])
 	蓝图表头=计划.表格.蓝图表头
 	if 表格数据==[]:
-		print("表格:",计划.表格.蓝图字典.keys())
-		push_warning("错误[%s]:未能读取到表格" % item_name)
+		push_warning("错误[%s]:未能读取到表格信息,表格:" % [item_name],计划.表格.蓝图字典.keys())
+		#breakpoint
 		return false
 ## 物品占的列数
 	columns = int(表格数据[蓝图表头["列"]])
@@ -126,3 +126,17 @@ func buy(背包) -> bool:
 			cost(背包)
 			return true
 	return false
+var 排序缓存:int=0#0是一个不可能值,因为0号位置是表头不存放物品,-1为找不到物品
+func 排序值()->int:
+	if 排序缓存>=1:
+		return 排序缓存
+	if 计划.表格.蓝图字典.has(item_name):
+		var 蓝图键数组 = 计划.表格.蓝图数组
+		排序缓存 = 蓝图键数组.find(item_name)
+	else :
+		排序缓存 =-1
+	return 排序缓存
+func 返回简介(背包名):
+	var 简介="物品名称:"+item_name
+	if GBIS.shop_names.has(背包名):简介+="(商品)"
+	return 简介

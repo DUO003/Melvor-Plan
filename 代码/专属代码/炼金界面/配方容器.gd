@@ -48,7 +48,8 @@ func 鼠标信号处理(鼠标信号):
 			print("正在移动的物品",正在移动的物品)
 			var 缓存道具名=GBIS.moving_item_service.moving_item.item_name
 			if 催化剂: 
-				if 计划.表格.缓存蓝图标签[缓存道具名]=="催化":
+				var 标签=计划.表格.缓存蓝图标签[缓存道具名]
+				if 标签=="催化" or 标签=="特殊催化":
 					道具名称=缓存道具名
 					$"图片".texture=GBIS.moving_item_service.moving_item.icon
 					当前值=1

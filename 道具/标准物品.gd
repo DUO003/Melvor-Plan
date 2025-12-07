@@ -14,7 +14,7 @@ var 价值: int = 0
 ##假设消耗为0后是否从背包移除,本属性不使用
 var 是否销毁=true
 ##已字典形式保存方法,可以被物品的 属性["使用"]访问解析
-var 物品使用映射 = {
+var 物品使用映射:Dictionary = {
 	"标准示例":(func(_字典):# 示例：使用1个治疗药水（成功，消耗1个）
 		if self.current_amount >= 1:
 			print("使用治疗药水，恢复生命值")
@@ -27,7 +27,7 @@ var 物品使用映射 = {
 			if 计划.节点有效性检查("空节点"):
 				计划.节点["空节点"].便利摄像机效果()
 			var 在线数据: Dictionary=计划.梅存档["挂机"]["在线时间"]
-			var 礼包次数=在线数据.get("礼包次数",0)
+			var 礼包次数=在线数据.get("开启次数",0)
 			if 礼包次数<5:
 				var 在线时间=在线数据.get("今日累计",0)
 				if not 在线时间 >(礼包次数+1)*360:
@@ -39,7 +39,7 @@ var 物品使用映射 = {
 				for 内容 in 礼盒:
 					通知奖励+=抽取奖励(内容)
 				计划.语法糖奖励显示(通知奖励,"礼包",1)
-				计划.语法糖通知("今天已开启次数:"+str(礼包次数)+"/5","物品使用")
+				计划.语法糖通知("今天已开启次数:"+str(礼包次数+1)+"/5","物品使用")
 				在线数据["开启次数"]=礼包次数+1
 				return 1
 			else :
@@ -60,6 +60,13 @@ var 物品使用映射 = {
 		else:
 			print("不足，无法使用")
 		return -1),  # 失败
+	"体力":(func(_字典):
+		if self.current_amount >= 1:
+			var 获得量=计划.获得体力(self.current_amount,true)
+			return 获得量
+		else:
+			print("不足，无法使用")
+		return -1),  # 失败
 	}
 
 func 更新属性():
@@ -75,8 +82,8 @@ func 使用物品(背包) -> String:# 中间函数：处理物品使用流程
 	if not "属性" in 表格字典:
 		print("属性错误")
 		return "属性错误"
-	var 字典=计划.表格.获取属性(self.item_name,null,{})
-	if not "使用" in 字典 or 字典["使用"] not in 物品使用映射:# 步骤2：检查字典中是否有对应处理方法
+	var 字典:Dictionary=计划.表格.获取属性(self.item_name,null,{})
+	if not "使用" in 字典 or not 字典["使用"] in 物品使用映射:# 步骤2：检查字典中是否有对应处理方法
 		计划.语法糖通知("该物品没有使用方法","物品使用")
 		return "缺少方法"
 	print("使用成功")
@@ -89,7 +96,8 @@ func 使用物品(背包) -> String:# 中间函数：处理物品使用流程
 			self.current_amount-=使用数量
 			if self.current_amount<=0:
 				GBIS.inventory_service.remove_item_by_data(背包, self)
-		计划.emit_signal("更新_UI")
+		计划.更新_UI.emit()
+		GBIS.sig_inv_refresh.emit()
 		计划.保存存档("使用背包内道具")
 		return "成功"
 func 物品点击(背包) -> bool:#物品被点击时调用,返回不销毁
@@ -140,3 +148,12 @@ func 科学计数(数值, 小数位数: int = 2,免转换范围:int=10000) -> St
 			量级 -= 1
 	var 格式化数值 ="+%.{长度}f".format({"长度":str(小数位数)}) % 绝对值# 格式化小数部分（保留指定位数）
 	return "%sE%d" % [格式化数值, 量级]# 拼接科学计数法字符串（如 "9.22e18"）
+func 返回简介(背包名):
+	var 简介文本=super.返回简介(背包名)
+	if GBIS.shop_names.has(背包名):
+		简介文本+="\r每次购买数量:"+str(current_amount)
+		简介文本+="\r每次购买单价:"+str(价值)
+		简介文本+="\r剩余购买次数:"+str(商店剩余数量)
+	else :
+		简介文本+="\r简介:"+简介
+	return 简介文本

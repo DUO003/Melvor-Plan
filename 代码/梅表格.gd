@@ -1,20 +1,26 @@
 extends Node
 class_name 梅表格
+##嵌套字典[[物品名称,属性...]["物品","属性",1]]
+##注意数组的数据类的文本已经被转换成整数例如"100"->100
 var 创世蓝图: Array
 ##已蓝图名称为键名,返回对应蓝图数组
 var 蓝图字典:Dictionary = {}
+##避免错误,这里的数据会事先为int与浮点,不能转换才会为文本
+var 处理的蓝图字典:Dictionary = {}
+##已蓝图名称为键名,返回对应蓝图数组
+var 蓝图数组: Array=[]
 ##缓存对应表头的int
 var 蓝图表头:Dictionary = {}
 ##缓存被使用的贴图实例
 var 蓝图贴图:Dictionary[String,Texture2D] = {}
 ##所有被加载的字典 已字典名称为键
-var 表格字典:Dictionary = {}
+var 所有表格字典:Dictionary = {}
 ##预先加载标签
 var 缓存蓝图标签:Dictionary={}
 ##载入所有表格信息到字典,单独保存蓝图信息到创世蓝图
 func _ready():
 	加载所有表格()
-	创世蓝图=处理表格数据(表格字典["创世蓝图"])
+	创世蓝图=处理表格数据(所有表格字典["创世蓝图"])
 	字典加载()
 	标签加载()
 func 标签加载():
@@ -31,20 +37,37 @@ func 字典加载():
 	蓝图字典={}
 	for 蓝图 in 创世蓝图:
 		蓝图字典[蓝图[0]]=蓝图
+		var 处理后的蓝图行 = []
+		for 元素 in 蓝图:
+			处理后的蓝图行.append(_转换值(元素))
+		处理的蓝图字典[蓝图[0]] = 处理后的蓝图行
+	蓝图数组=蓝图字典.keys()
 	#print(蓝图表头)
+func _转换值(值:String) -> Variant:
+	if 值.is_valid_int():
+		return int(值)
+	elif 值.is_valid_float():
+		return float(值)
+	else:
+		return 值
 func 道具贴图(贴图名称:String):#->Texture2Dprint("贴图名称",贴图名称)
 	if 贴图名称 in 蓝图贴图:
 		return 蓝图贴图[贴图名称]
 	if 贴图名称 in 蓝图字典:
-		var 贴图:Texture2D=load(蓝图字典[贴图名称][蓝图表头["icon"]])
+		var 贴图:Texture2D=load(蓝图数据(贴图名称,"icon"))
 		if 贴图:
 			蓝图贴图[贴图名称]=贴图
 			return 贴图
-	
 	return null
-	
+func 蓝图数据(道具名称,读取值,强制类型="自动"):
+	if 道具名称 in 蓝图字典:
+		match 强制类型:
+			"自动": return 处理的蓝图字典[道具名称][蓝图表头[读取值]]
+			_: return 蓝图字典[道具名称][蓝图表头[读取值]]
+	breakpoint#不应该传入一个不存在的值
+	return null
 func 加载所有表格():
-	表格字典.clear()# 清空现有数据
+	所有表格字典.clear()# 清空现有数据
 	var 目录 = DirAccess.open("res://表格/")# 打开表格目录
 	if 目录 == null:
 		print("无法打开表格目录: ", DirAccess.get_open_error())
@@ -61,7 +84,7 @@ func 加载所有表格():
 			if 分割结果.size() >= 2:# 处理键名（保持原有的分割逻辑）
 				键名 = 分割结果.slice(1)[0]
 			var 加载文件名 = 文件名.get_basename() if 是CSV文件 else 基础文件名
-			表格字典[键名] = 获取表格(加载文件名)# 加载对应文件
+			所有表格字典[键名] = 获取表格(加载文件名)# 加载对应文件
 		文件名 = 目录.get_next()
 	目录.list_dir_end()
 
@@ -279,17 +302,19 @@ func 获取简介(物品名称: String, 图片尺寸: int=40) -> String:
 		结果文本 = 结果文本.substr(0, 匹配项.get_start()) + 替换内容 + 结果文本.substr(匹配项.get_end())# 执行替换
 	return 结果文本
 func 获取属性(道具名称,属性名称=null,解析失败=""):
-	var 属性=蓝图字典[道具名称][蓝图表头["属性"]]
-	var 字典={}
-	var json = JSON.new()
-	var 解析 = json.parse(属性)
-	if 解析 == OK:
-		字典 = json.data
-		if 属性名称==null:
-			return 字典
-	else :
-		print("解析JSON错误",道具名称)
-	return 字典.get(属性名称,解析失败)
+	if 蓝图字典.has(道具名称) and 蓝图表头.has("属性"):
+		var 属性=蓝图字典[道具名称][蓝图表头["属性"]]
+		var 字典={}
+		var json = JSON.new()
+		var 解析 = json.parse(属性)
+		if 解析 == OK:
+			字典 = json.data
+			if 属性名称==null:
+				return 字典
+		else :
+			print("解析JSON错误",道具名称)
+		return 字典.get(属性名称,解析失败)
+	return 解析失败
 func 筛选物品(表头条件: String,目标值: String,待筛选数组: Array=蓝图字典.keys()) -> Array:
 	var 筛选结果: Array = []
 	var 索引: int = 蓝图表头[表头条件]

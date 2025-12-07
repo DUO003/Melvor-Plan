@@ -162,7 +162,10 @@ offset_top = 116.0
 offset_right = 1681.0
 offset_bottom = 209.0
 text = "小游戏
-还没做完.这里显示一些文本"
+游玩水排序需要消耗体力
+基础奖励 金币
+特殊奖励 蓝图纸,颜料催化剂
+还没做完."
 
 [node name="体力状态" parent="内容节点" instance=ExtResource("8_xc7x2")]
 layout_mode = 0

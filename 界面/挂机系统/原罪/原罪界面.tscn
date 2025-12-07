@@ -1,0 +1,131 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuduk8yjwl5nn"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_msww2"]
+[ext_resource type="Script" uid="uid://dp04b1gplr3je" path="res://界面/挂机系统/原罪/原罪界面.gd" id="2_riyk3"]
+[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_4ycnk"]
+[ext_resource type="PackedScene" uid="uid://bd3xjcgrk6vpk" path="res://界面/挂机系统/原罪/系统管理.tscn" id="4_riyk3"]
+
+[node name="原罪界面" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -220.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_msww2")
+script = ExtResource("2_riyk3")
+"基类窗口名称" = "原罪界面"
+
+[node name="标题" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+color = Color(0.75, 0.67, 0.45, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="等级显示" parent="标题" instance=ExtResource("3_4ycnk")]
+layout_mode = 1
+"系统" = "挂机"
+"玩法" = "原罪"
+"精通池显示" = true
+"同时显示" = null
+
+[node name="背景" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.004
+offset_top = 100.0
+offset_bottom = -3.99994
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.82, 0.732533, 0.492, 0.705882)
+metadata/_edit_lock_ = true
+
+[node name="内容节点" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 100.0
+offset_right = 1700.0
+offset_bottom = 1000.0
+
+[node name="选项卡" type="TabContainer" parent="内容节点"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="原罪突破" type="Control" parent="内容节点/选项卡"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="原罪值" type="Label" parent="内容节点/选项卡/原罪突破"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 533.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "原罪值
+傲慢:100/1000"
+
+[node name="系统管理" type="TabContainer" parent="内容节点/选项卡"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+current_tab = 6
+metadata/_tab_index = 1
+
+[node name="0_挂机" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+"系统" = "挂机"
+
+[node name="1_木料" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+"系统" = "木料"
+metadata/_tab_index = 1
+
+[node name="2_矿城" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+"系统" = "矿城"
+metadata/_tab_index = 2
+
+[node name="3_手工" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="4_游历" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+"系统" = "游历"
+metadata/_tab_index = 4
+
+[node name="5_职业" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+"系统" = "职业"
+metadata/_tab_index = 5
+
+[node name="6_召唤" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
+unique_name_in_owner = true
+layout_mode = 2
+"系统" = "召唤"
+metadata/_tab_index = 6

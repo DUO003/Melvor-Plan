@@ -1,0 +1,171 @@
+[gd_scene load_steps=9 format=3 uid="uid://bd3xjcgrk6vpk"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_aokyi"]
+[ext_resource type="Script" uid="uid://1ffrkhixjt8n" path="res://界面/挂机系统/原罪/系统管理.gd" id="1_u73ba"]
+[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_8vsgt"]
+
+[sub_resource type="DPITexture" id="DPITexture_aokyi"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\" fill-opacity=\".75\"/></svg>
+"
+base_scale = 2.0
+
+[sub_resource type="DPITexture" id="DPITexture_8vsgt"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\"/></svg>
+"
+base_scale = 2.0
+
+[sub_resource type="DPITexture" id="DPITexture_8p6r8"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\" fill-opacity=\".37\"/></svg>
+"
+base_scale = 2.0
+
+[sub_resource type="DPITexture" id="DPITexture_4hnur"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"4\" height=\"8\"><path fill=\"#fff\" fill-opacity=\".25\" d=\"M1 0h2v16H1z\"/></svg>
+"
+base_scale = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrkhn"]
+content_margin_left = 4.0
+content_margin_top = 10.0
+content_margin_right = 4.0
+content_margin_bottom = 10.0
+bg_color = Color(0.55, 0.42716667, 0.18149999, 0.49803922)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[node name="系统管理" type="Control"]
+custom_minimum_size = Vector2(1700, 756)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1700.0
+offset_bottom = 756.0
+theme = ExtResource("1_aokyi")
+script = ExtResource("1_u73ba")
+"系统" = "手工"
+"查看解锁" = true
+metadata/_tab_index = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.078431375)
+metadata/_edit_lock_ = true
+
+[node name="等级显示" parent="." instance=ExtResource("3_8vsgt")]
+custom_minimum_size = Vector2(1700, 120)
+layout_mode = 1
+offset_bottom = 120.0
+"玩法" = "手工"
+"精通池显示" = true
+"同时显示" = true
+
+[node name="锁定" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 475.0
+offset_top = 247.0
+offset_right = 1102.0
+offset_bottom = 527.0
+theme_override_font_sizes/font_size = 200
+text = "🔒︎锁定"
+
+[node name="解锁条件" type="Label" parent="锁定"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 165.0
+offset_bottom = 83.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "在任务窗口解锁"
+
+[node name="内容区域" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 120.0
+offset_right = 1700.0
+offset_bottom = 756.0
+metadata/_edit_lock_ = true
+
+[node name="熟练转移" type="HSlider" parent="内容区域"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1132.0
+offset_top = 9.0
+offset_right = 1276.0
+offset_bottom = 64.0
+theme_override_icons/grabber = SubResource("DPITexture_aokyi")
+theme_override_icons/grabber_highlight = SubResource("DPITexture_8vsgt")
+theme_override_icons/grabber_disabled = SubResource("DPITexture_8p6r8")
+theme_override_icons/tick = SubResource("DPITexture_4hnur")
+theme_override_styles/slider = SubResource("StyleBoxFlat_hrkhn")
+max_value = 1.0
+
+[node name="文本" type="Label" parent="内容区域/熟练转移"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 4.0
+offset_right = 542.0
+offset_bottom = 49.0
+text = "获得的熟练转移给挂机系统"
+
+[node name="文本2" type="Label" parent="内容区域/熟练转移"]
+layout_mode = 0
+offset_left = -150.0
+offset_top = 7.0
+offset_right = -12.0
+offset_bottom = 52.0
+text = "熟练转移:"
+
+[node name="突破等级" type="Label" parent="内容区域"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 982.0
+offset_top = 16.0
+offset_right = 1138.0
+offset_bottom = 61.0
+text = "突破等级:0"
+
+[node name="原罪介绍" type="RichTextLabel" parent="内容区域"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 965.0
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+text = "懒惰原罪
+基础资源溢出转高级资源
+高级资源(零件)溢出加原罪
+上限增加：蓝图升星提升上限
+当前懒惰原罪:0/1000"
+
+[node name="权限介绍" type="RichTextLabel" parent="内容区域"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.123
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -720.0
+offset_top = -0.22800446
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "手工系统等级提升效果
+1.精通池容量+LV1000
+2.资源容量增加
+3.资源回复速度增加
+4.每10级增加1个制作栏位"

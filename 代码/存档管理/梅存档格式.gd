@@ -2,10 +2,12 @@ extends Resource
 ## 梅存档数据库，管理不同的存档
 class_name 梅存档格式
 var 存档配置路径: String = "user://存档/"#最后一个字符必须传入"/"
-var 存档命名: String="存档_"
+var 存档命名: String="默认存档"
 @export_storage var 梅存档:={}
 @export_storage var 哈希值:int=-1
 @export_storage var 保存时间:float=Time.get_unix_time_from_system()
+@export_storage var 启用测试:bool=false
+var 用户名: String="玩家"#默认为玩家,可以在开始菜单随时修改
 #@export_storage var 测试
 
 #ContainerRepository
@@ -44,7 +46,6 @@ func 加载所有存档():
 ## 新建或保存存档[br]
 ## 返回是否保存成功
 func 存档(存档名: String = "",存档数据:Dictionary={}) -> bool:
-
 	var 最终存档名 = (存档名 if 存档名 != "" else 存档命名).strip_edges()
 	var 完整路径 = 存档配置路径 + 最终存档名 + ".tres"
 	梅存档=存档数据#.duplicate(true)
@@ -54,6 +55,10 @@ func 存档(存档名: String = "",存档数据:Dictionary={}) -> bool:
 		if ContainerRepository.instance:
 			梅存档["挂机"]["背包与商店"]=ContainerRepository.instance._container_data_map.duplicate(true)
 			梅存档["挂机"]["快速移动关系"]=ContainerRepository.instance._quick_move_relations_map.duplicate(true)
+		if 梅存档["挂机"].has("用户信息"):
+			梅存档["挂机"]["用户信息"]["用户名"]=用户名
+		if 梅存档["挂机"].has("红点存档") and 计划.红点 and 计划.红点.红点存档:
+			梅存档["挂机"]["红点存档"]=计划.红点.红点存档
 	哈希值=最终存档名.hash()
 	保存时间=Time.get_unix_time_from_system()if 计划.存档时间戳==-1 else 计划.存档时间戳
 	#测试=标准物品.new(1,"蓝图纸")
@@ -71,8 +76,8 @@ func 存档(存档名: String = "",存档数据:Dictionary={}) -> bool:
 		print("新建或保存存档失败：", 错误说明, "，错误码：", 保存结果)
 		return false
 ##读取存档到游戏内,仅开始界面可使用
-func 读档(存档名: String = "",存档的数据:梅存档格式=null)->bool:
-	var 加载结果
+func 读档(存档名: String = "",存档的数据:梅存档格式=null,覆盖用户名: String="")->bool:
+	var 加载结果:梅存档格式
 	var 最终存档名 = (存档名 if 存档名 != "" else 存档命名).strip_edges()
 	if 存档的数据 is 梅存档格式:
 		加载结果=存档的数据
@@ -80,10 +85,15 @@ func 读档(存档名: String = "",存档的数据:梅存档格式=null)->bool:
 		var 完整路径 = 存档配置路径 + 最终存档名 + ".tres"
 		加载结果 = load(完整路径)
 	if 加载结果 != null and 加载结果 is 梅存档格式:
+		启用测试=加载结果.启用测试
 		计划.存档路径=存档配置路径
 		计划.存档名称=最终存档名
 		计划.梅存档=加载结果.梅存档.duplicate(true)
 		梅存档=计划.梅存档
+		if 覆盖用户名=="":
+			用户名=梅存档.get("挂机",{}).get("用户信息",{}).get("用户名",用户名)
+		else :
+			用户名=覆盖用户名
 		if 梅存档.has("挂机"):
 			var 挂机=梅存档["挂机"]
 			var 装备栏单例:EquipmentSlotRepository=EquipmentSlotRepository.instance
@@ -96,6 +106,7 @@ func 读档(存档名: String = "",存档的数据:梅存档格式=null)->bool:
 					背包单例._container_data_map[背包名称] = 梅存档["挂机"]["背包与商店"][背包名称].deep_duplicate()
 			if 挂机.has("快速移动关系") and 背包单例:
 				背包单例._quick_move_relations_map=梅存档["挂机"]["快速移动关系"].duplicate(true)
+
 		await 计划.正式加载()
 		return true
 	else:
@@ -127,7 +138,7 @@ func 基础存档():
 		当前条目 = 目录.get_next()
 	# 4. 遍历结束未找到任何文件 → 结束枚举并返回 false
 	目录.list_dir_end()
-	存档(存档命名+"1")
+	存档()
 	return false
 func 删除存档(存档名: String = "")->bool:
 	var dir = DirAccess.open(存档配置路径)# 创建 DirAccess 实例
