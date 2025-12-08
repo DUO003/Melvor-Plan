@@ -233,8 +233,6 @@ metadata/_edit_lock_ = true
 
 [node name="等级显示" parent="标题" instance=ExtResource("3_c1r7u")]
 layout_mode = 1
-offset_right = 0.0
-offset_bottom = 0.0
 "精通池显示" = null
 
 [node name="背景" type="ColorRect" parent="."]
@@ -260,10 +258,9 @@ custom_minimum_size = Vector2(1290, 500)
 layout_mode = 0
 offset_right = 1290.0
 offset_bottom = 500.0
-current_tab = 1
+current_tab = 0
 
 [node name="炼金台" type="Control" parent="内容节点/选项卡"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -339,6 +336,7 @@ text = "当前配方
 
 [node name="预览配方" type="Control" parent="内容节点/选项卡"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

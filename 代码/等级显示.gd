@@ -28,6 +28,7 @@ func _ready() -> void:
 func 触发切换():
 	#print("切换")
 	精通池显示=not 精通池显示
+	_更新_UI()
 func _更新_UI():
 	if not has_node("文本") or not is_instance_valid(%"文本"):
 		return

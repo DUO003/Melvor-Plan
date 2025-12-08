@@ -1,9 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuduk8yjwl5nn"]
+[gd_scene load_steps=14 format=3 uid="uid://cuduk8yjwl5nn"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_msww2"]
 [ext_resource type="Script" uid="uid://dp04b1gplr3je" path="res://界面/挂机系统/原罪/原罪界面.gd" id="2_riyk3"]
 [ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_4ycnk"]
+[ext_resource type="Texture2D" uid="uid://ciq26m4nivrqb" path="res://素材/自制/图标/傲慢.svg" id="4_2eyov"]
 [ext_resource type="PackedScene" uid="uid://bd3xjcgrk6vpk" path="res://界面/挂机系统/原罪/系统管理.tscn" id="4_riyk3"]
+[ext_resource type="Texture2D" uid="uid://cdl0fyyyy5olv" path="res://素材/自制/图标/嫉妒.svg" id="5_nhtbf"]
+[ext_resource type="Texture2D" uid="uid://cb3mq08dupx3t" path="res://素材/自制/图标/懒惰.svg" id="6_yuie1"]
+[ext_resource type="Texture2D" uid="uid://cx2e3aax3vh2c" path="res://素材/自制/图标/暴怒.svg" id="7_wace0"]
+[ext_resource type="Texture2D" uid="uid://cun3m5fqw1jf2" path="res://素材/自制/图标/暴食.svg" id="8_6nm3x"]
+[ext_resource type="Texture2D" uid="uid://c1cgyiktgwefk" path="res://素材/自制/图标/色欲.svg" id="9_mrh1p"]
+[ext_resource type="Texture2D" uid="uid://1b6ply323inq" path="res://素材/自制/图标/贪婪.svg" id="10_uhxdx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_riyk3"]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ycnk"]
+content_margin_left = 10.0
 
 [node name="原罪界面" type="Control"]
 layout_mode = 3
@@ -31,7 +44,6 @@ metadata/_edit_lock_ = true
 layout_mode = 1
 "系统" = "挂机"
 "玩法" = "原罪"
-"精通池显示" = true
 "同时显示" = null
 
 [node name="背景" type="ColorRect" parent="."]
@@ -71,22 +83,132 @@ custom_minimum_size = Vector2(600, 0)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 533.0
+offset_left = 1093.0
+offset_top = -72.0
+offset_right = 1693.0
+offset_bottom = -325.0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 60
+theme_override_constants/line_spacing = -15
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_riyk3")
 text = "原罪值
+合计:
+傲慢:100/1000
+傲慢:100/1000
+傲慢:100/1000
+傲慢:100/1000
+傲慢:100/1000
+傲慢:100/1000
 傲慢:100/1000"
+
+[node name="突破" type="Label" parent="内容节点/选项卡/原罪突破"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 10.0
+offset_right = 398.0
+offset_bottom = 153.0
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4ycnk")
+text = "突破LV:0
+突破成功率:100%
+失败将损失20%熟练度
+突破成功+5挂机等级上限,精通获取乘以1.28"
+
+[node name="突破按钮" type="Button" parent="内容节点/选项卡/原罪突破/突破"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 14.0
+offset_top = 259.0
+offset_right = 162.0
+offset_bottom = 351.0
+text = "突破"
+
+[node name="原罪标签" type="HBoxContainer" parent="内容节点/选项卡/原罪突破"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -850.0
+offset_top = -362.0
+offset_right = 850.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="傲慢" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+custom_minimum_size = Vector2(225, 225)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+texture = ExtResource("4_2eyov")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="暴食" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+custom_minimum_size = Vector2(225, 225)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+texture = ExtResource("8_6nm3x")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="贪婪" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+custom_minimum_size = Vector2(225, 225)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+texture = ExtResource("10_uhxdx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="懒惰" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+custom_minimum_size = Vector2(225, 225)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+texture = ExtResource("6_yuie1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="暴怒" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+custom_minimum_size = Vector2(225, 225)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+texture = ExtResource("7_wace0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="色欲" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+custom_minimum_size = Vector2(225, 225)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+texture = ExtResource("9_mrh1p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="嫉妒" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+custom_minimum_size = Vector2(225, 225)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+texture = ExtResource("5_nhtbf")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="系统管理" type="TabContainer" parent="内容节点/选项卡"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-current_tab = 6
+current_tab = 0
 metadata/_tab_index = 1
 
 [node name="0_挂机" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 "系统" = "挂机"
 
@@ -126,6 +248,33 @@ metadata/_tab_index = 5
 
 [node name="6_召唤" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 "系统" = "召唤"
 metadata/_tab_index = 6
+
+[node name="介绍" type="RichTextLabel" parent="内容节点/选项卡"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/line_separation = -10
+theme_override_constants/paragraph_separation = -10
+theme_override_font_sizes/normal_font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxEmpty_riyk3")
+text = "挂机系统升级
+挂机系统不能直接获取熟练度需要 打开系统管理中的\"精通转移\"
+将其他玩法系统的\"熟练度\"与\"精通池收益\"转移至挂机系统。
+
+熟练度:提升系统等级；
+精通池收益:供给其他玩法系统使用。
+核心特性：挂机等级是提升全局熟练度获取倍率的唯一途径(LV+10%)
+挂机系统初始等级上限为 5 级，每次突破成功后，等级上限将提升 5 级
+
+原罪突破
+1.不同玩法系统对应专属原罪，每种原罪均有独立的获取途径与提升上限
+具体规则可在对应系统玩法界面查询。
+2.共存在 7 种原罪值，其综合属性将影响突破成功率
+3.突破需满足成功率≥20% 方可发起尝试，为提升成功率，建议在达到 50% 以上时操作。
+4.累计成功突破 2、4、6、8、10 次后，将解锁新玩法系统。"
+metadata/_tab_index = 2

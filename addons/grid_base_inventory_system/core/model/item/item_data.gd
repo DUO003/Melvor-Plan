@@ -86,21 +86,18 @@ func can_sell() -> bool:
 
 ## 物品是否能购买（检查资源是否足够等）
 func can_buy() -> bool:
-	if 计划.梅存档["金币"]>=self.价值:
-	#push_warning("[Override this function] check if the item [%s] can be bought" % item_name)
-		return true
+	if 计划.语法糖金币消费(self.价值):return true
 	计划.语法糖通知("购买失败金币不足","商店信息")
 	return false
 
-## 购买后扣除资源
+## 购买后逻辑
 func cost(背包) -> void:
-	计划.梅存档["金币"]-=self.价值
 	self.商店剩余数量-=1
 	if self.商店剩余数量<=0:
 		GBIS.inventory_service.remove_item_by_data(背包, self)
 		计划.语法糖通知("该商品当前库存已空谢谢惠顾","商店信息补货")
 		print("商店剩余数量<=0")
-	计划.emit_signal("更新_UI")#刷新金币数量显示
+	计划.更新_UI.emit()#刷新金币数量显示
 	计划.购买物品.emit(self,背包)#刷新商品描述显示 剩余数量
 	#push_warning("[Override this function] [%s] cost resource" % item_name)
 
@@ -116,13 +113,15 @@ func sold() -> void:
 func buy(背包) -> bool:
 	if not can_buy():
 		return false
-	for target_inv in GBIS.inventory_names:
-		var 资源 = self.duplicate()
-		if 资源 is 标准物品:
-			资源.价值=0
-			资源.商店剩余数量=0
+	var 资源 = self.duplicate()
+	if 资源 is StackableData:
+		资源.stack_size=self.stack_size#必须保留,因为这个不是存档变量.
+	if 资源 is 标准物品:#可选,这些值仅作为商品生效,删掉可以少一行存档数据
+		资源.价值=0
+		资源.商店剩余数量=0
+	for 背包名称 in GBIS.inventory_names:
+		if GBIS.inventory_service.add_item(背包名称, 资源):
 			计划.语法糖通知("购买成功:"+str(资源.item_name),"商店信息")
-		if GBIS.inventory_service.add_item(target_inv, 资源):
 			cost(背包)
 			return true
 	return false

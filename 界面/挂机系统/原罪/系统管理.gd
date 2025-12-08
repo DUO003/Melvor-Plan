@@ -40,7 +40,9 @@ var 权限介绍: Dictionary = {
 }
 func _ready() -> void:
 	_更新_UI()
-	%"熟练转移".drag_ended.connect(func(编辑):if 编辑:计划.数据原罪("熟练转移",系统,%"熟练转移".value))
+	%"熟练转移".drag_ended.connect(func(编辑):
+		if 编辑:计划.数据原罪("熟练转移",系统,%"熟练转移".value)
+		%"转换进度".text="%.0f%%"%(%"熟练转移".value*100))
 func _更新_UI() -> void:
 	if not has_node("等级显示") or not is_instance_valid($"等级显示"):
 		return
@@ -77,3 +79,4 @@ func _更新_UI() -> void:
 		%"突破等级".visible=false
 		%"熟练转移".visible=true
 		%"熟练转移".value=熟练转移
+		%"转换进度".text="%.0f%%"%(%"熟练转移".value*100)

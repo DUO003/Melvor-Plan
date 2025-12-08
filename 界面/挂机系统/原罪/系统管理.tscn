@@ -107,7 +107,8 @@ theme_override_icons/grabber_highlight = SubResource("DPITexture_8vsgt")
 theme_override_icons/grabber_disabled = SubResource("DPITexture_8p6r8")
 theme_override_icons/tick = SubResource("DPITexture_4hnur")
 theme_override_styles/slider = SubResource("StyleBoxFlat_hrkhn")
-max_value = 1.0
+max_value = 0.5
+step = 0.1
 
 [node name="文本" type="Label" parent="内容区域/熟练转移"]
 layout_mode = 0
@@ -124,6 +125,19 @@ offset_top = 7.0
 offset_right = -12.0
 offset_bottom = 52.0
 text = "熟练转移:"
+
+[node name="转换进度" type="Label" parent="内容区域/熟练转移"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_behavior_recursive = 1
+text = "0%"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="突破等级" type="Label" parent="内容区域"]
 unique_name_in_owner = true
@@ -148,7 +162,7 @@ text = "懒惰原罪
 基础资源溢出转高级资源
 高级资源(零件)溢出加原罪
 上限增加：蓝图升星提升上限
-当前懒惰原罪:0/1000"
+当前懒惰原罪:0/10"
 
 [node name="权限介绍" type="RichTextLabel" parent="内容区域"]
 unique_name_in_owner = true
@@ -164,8 +178,4 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "手工系统等级提升效果
-1.精通池容量+LV1000
-2.资源容量增加
-3.资源回复速度增加
-4.每10级增加1个制作栏位"
+text = "手工等级提升效果1.精通池容量+LV10002.资源容量增加3.资源回复速度增加4.每10级增加1个制作栏位"

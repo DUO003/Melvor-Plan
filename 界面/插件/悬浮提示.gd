@@ -1,5 +1,7 @@
 extends Panel
 var 宽度上限=800
+func _ready() -> void:
+	visible=false
 func 更新文本(文本内容=""):
 	position = get_global_mouse_position() + Vector2(10, 10)
 	%"文本".text=文本内容
@@ -17,5 +19,3 @@ func 更新文本(文本内容=""):
 	size = %"文本".size + Vector2(16, 16)
 	%"文本".position=Vector2(8, 8)
 	visible=true
-func _ready() -> void:
-	visible=false

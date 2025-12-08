@@ -4,6 +4,7 @@ var 物品:标准物品=null
 var 背包="背包"
 var 属性文本="多003\n游历 LV:0		熟练:0/100\n"
 var 战力文本=""
+var 上次查看:={}
 func _ready():
 	%物品栏选项卡.set_tab_title(0, "物品栏")
 	%"物品栏选项卡".current_tab=0
@@ -16,15 +17,15 @@ func _ready():
 	%"随身商店".visibility_changed.connect(func():
 		if %"随身商店".visible:
 			%"物品栏".visible = true
-		%"悬浮提示".visible=false)
+		解除提示占用())
 	%"装备".visibility_changed.connect(func():
 		if %"装备".visible:
 			%"装备栏".visible = true
-		%"悬浮提示".visible=false)
+		解除提示占用())
 	%"物品".visibility_changed.connect(func(): 
 		if %"物品".visible:
 			%"物品栏".visible = true
-		%"悬浮提示".visible=false)
+		解除提示占用())
 	战力文本=计划.游历.战力文本更新()
 	%"玩家属性".text=属性文本+战力文本
 	GBIS.connect("sig_slot_item_unequipped", Callable(func(_1,_2):
@@ -35,10 +36,17 @@ func _ready():
 		战力文本=计划.游历.战力文本更新()
 		%"玩家属性".text=属性文本+战力文本
 		))
-	GBIS.sig_item_focused.connect(func(物品实例:ItemData,背包名):
+	GBIS.sig_item_focused.connect(func(物品实例:ItemData,背包名):#当鼠标获得物品焦点信号
+		上次查看["物品实例"]=物品实例
+		上次查看["背包名"]=背包名
 		%"悬浮提示".更新文本(物品实例.返回简介(背包名)))
-	GBIS.sig_item_focus_lost.connect(func(_物品实例:ItemData):
-		%"悬浮提示".visible=false)
+	GBIS.sig_item_focus_lost.connect(func(物品实例:ItemData):解除提示占用(物品实例))#当鼠标失去物品焦点信号(不安全概率失效)
+	计划.购买物品.connect(func(物品实例:ItemData,_背包名):#购买物品后需要刷新显示
+		if 上次查看.has("物品实例")and 上次查看["物品实例"] is ItemData and 物品实例==上次查看["物品实例"]:
+			if 物品实例 is 标准物品 and 物品实例.商店剩余数量<=0:#如果购买完最后一个物品就不显示了
+				解除提示占用()
+				return
+			%"悬浮提示".更新文本(上次查看["物品实例"].返回简介(上次查看["背包名"])))
 	战力文本=计划.游历.战力文本更新()
 	%"使用".pressed.connect(使用物品)
 	%"丢弃".pressed.connect(func(): %"删除确认弹窗".visible = true)
@@ -58,6 +66,10 @@ func 整理物品():
 	var 背包的实例:ContainerData = 背包数据库单例._container_data_map.get("背包",null)
 	if 背包的实例 is ContainerData:
 		背包的实例.整理物品()
+func 解除提示占用(物品实例=null):
+	if 物品实例==null or 上次查看.get("物品实例",null)==物品实例:
+		上次查看.clear()
+	%"悬浮提示".visible=false
 func 使用物品():
 	if not 物品==null:
 		if 物品 is 标准物品:

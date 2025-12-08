@@ -107,8 +107,6 @@ metadata/_edit_lock_ = true
 
 [node name="等级显示" parent="标题" instance=ExtResource("19_dk4n3")]
 layout_mode = 1
-offset_right = 0.0
-offset_bottom = 0.0
 "玩法" = "合成"
 "精通池显示" = null
 

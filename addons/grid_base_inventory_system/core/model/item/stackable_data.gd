@@ -1,8 +1,8 @@
 extends ItemData
 ## 可堆叠物品数据基类，你的可堆叠物品数据类应继承此类（如：可堆叠的宝石）。注意：消耗品应继承 ConsumableData
 class_name StackableData
-##堆叠上限
-var stack_size: int = 100
+##堆叠上限.duplicate()必须手动赋值
+var stack_size: int = 12480#初始化会覆盖这个值,除非错误或.duplicate()后忘记赋值
 ##数量
 @export var current_amount: int = 1
 func 更新属性()->bool:

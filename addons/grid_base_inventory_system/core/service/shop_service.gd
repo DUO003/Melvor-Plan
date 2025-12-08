@@ -2,9 +2,9 @@ extends BaseContainerService
 class_name ShopService
 
 ## 加载货物
-func load_goods(shop_name: String, goods: Array[ItemData]) -> void:
+func load_goods(shop_name: String, goods: Array[标准物品]) -> void:
 	for good in goods:
-		_container_repository.get_container(shop_name).add_item(good.duplicate())
+		_container_repository.get_container(shop_name).add_item(good)
 
 ## 购买物品
 func buy(shop_name: String, item: ItemData) -> bool:
