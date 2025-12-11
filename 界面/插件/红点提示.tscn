@@ -116,14 +116,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -10.972294
-offset_top = 10.054833
-offset_right = -10.972294
-offset_bottom = 25.054832
+offset_left = -16.062445
+offset_top = 5.1507573
+offset_right = -16.062445
+offset_bottom = 32.149834
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.7853982
 theme_override_colors/font_color = Color(1, 1, 1, 0.78431374)
+theme_override_font_sizes/font_size = 32
 text = "!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -153,3 +154,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_055p1")
 }
 autoplay = "红点"
+
+[node name="按钮" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

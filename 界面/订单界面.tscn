@@ -30,8 +30,6 @@ metadata/_edit_lock_ = true
 
 [node name="等级显示" parent="标题" instance=ExtResource("3_syeus")]
 layout_mode = 1
-offset_right = 0.0
-offset_bottom = 0.0
 "系统" = "挂机"
 "玩法" = "订单"
 
@@ -108,6 +106,7 @@ offset_top = -7.0
 offset_right = -9.0
 offset_bottom = 73.0
 theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 32
 text = "消耗:5体力
 不可超过上限"
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dr3p3f8wbo87d"]
+[gd_scene load_steps=21 format=3 uid="uid://dr3p3f8wbo87d"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_loe2l"]
 [ext_resource type="Script" uid="uid://mkdbh1ljjonw" path="res://代码/专属代码/背包界面/背包界面.gd" id="2_tb4we"]
@@ -10,6 +10,14 @@
 [ext_resource type="Script" uid="uid://gqt6pq4lt0gw" path="res://addons/grid_base_inventory_system/core/view/container/shop/shop_view.gd" id="9_sxijb"]
 [ext_resource type="PackedScene" uid="uid://cjsi35bpmr7oo" path="res://界面/插件/玩家.tscn" id="9_wurb6"]
 [ext_resource type="PackedScene" uid="uid://dlf0o8yt0hscg" path="res://界面/插件/悬浮提示.tscn" id="10_odugo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_odugo"]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2qtmj"]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
 
 [sub_resource type="DPITexture" id="DPITexture_sxijb"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"24\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\"/></svg>
@@ -111,6 +119,7 @@ layout_mode = 2
 [node name="物品栏选项卡" type="TabContainer" parent="内容节点/水平排列/垂直排列"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_odugo")
 current_tab = 0
 
 [node name="物品栏" type="ScrollContainer" parent="内容节点/水平排列/垂直排列/物品栏选项卡"]
@@ -196,6 +205,7 @@ text = "金币:100"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2qtmj")
 current_tab = 0
 
 [node name="物品" type="Control" parent="内容节点/水平排列/状态区"]

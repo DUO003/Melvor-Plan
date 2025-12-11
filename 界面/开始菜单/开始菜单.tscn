@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://kifxwq2enhmp"]
+[gd_scene load_steps=12 format=3 uid="uid://kifxwq2enhmp"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_6r68l"]
 [ext_resource type="Texture2D" uid="uid://b6q0o46fjedne" path="res://素材/游戏素材/背景/3.png" id="2_clqjb"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b1hn1lg5d5q5l" path="res://素材/全息图片AI素材/元素/火.png" id="3_l8v50"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="4_qbyf1"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_btlti"]
+[ext_resource type="Texture2D" uid="uid://cwjp45s27o0yb" path="res://素材/豆包AI素材/图标/地球.png" id="7_l8v50"]
+[ext_resource type="Texture2D" uid="uid://d0hix3kg76sl3" path="res://素材/自制/图标/关闭.png" id="8_qbyf1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s0f7"]
 bg_color = Color(0.55, 0.42716667, 0.18149999, 0.78431374)
@@ -122,9 +124,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 50.0
-offset_top = -123.0
+offset_top = -101.0
 offset_right = 1050.0
-offset_bottom = -33.0
+offset_bottom = -26.0
 grow_vertical = 0
 
 [node name="开始游戏" type="Button" parent="开始菜单/主面板/按钮区"]
@@ -137,21 +139,18 @@ text = "开始游戏"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 50
 text = "打开设置"
 
 [node name="新建" type="Button" parent="开始菜单/主面板/按钮区"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 55
 text = "新建"
 
 [node name="删除" type="Button" parent="开始菜单/主面板/按钮区"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 55
 text = "删除"
 
 [node name="自定义存档名" type="LineEdit" parent="开始菜单/主面板"]
@@ -205,25 +204,20 @@ text = "用户名:"
 
 [node name="多语言功能区" type="Panel" parent="开始菜单"]
 layout_mode = 0
-offset_left = 1235.0
+offset_left = 1400.0
 offset_top = 840.0
 offset_right = 1769.0
-offset_bottom = 940.0
+offset_bottom = 904.0
 theme_override_styles/panel = SubResource("StyleBox_ubnl7")
 
 [node name="语言下拉菜单" type="OptionButton" parent="开始菜单/多语言功能区"]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -443.0
-offset_top = -44.5
-offset_bottom = 44.5
-grow_horizontal = 0
+anchor_bottom = 1.0
+offset_left = 80.0
+grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 50
 alignment = 1
 selected = 0
 fit_to_longest_item = false
@@ -235,17 +229,10 @@ popup/item_1/id = 1
 popup/item_2/text = "中文"
 popup/item_2/id = 2
 
-[node name="地球" type="Label" parent="开始菜单/多语言功能区"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -42.5
-offset_right = 80.0
-offset_bottom = 42.5
-grow_vertical = 2
-theme_override_font_sizes/font_size = 60
-text = "🌏"
+[node name="地球" type="Sprite2D" parent="开始菜单/多语言功能区"]
+position = Vector2(41.12495, 33)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_l8v50")
 
 [node name="退出游戏" type="Button" parent="开始菜单"]
 unique_name_in_owner = true
@@ -255,11 +242,12 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 672.0
 offset_top = 305.0
-offset_right = 1010.0
-offset_bottom = 395.0
+offset_right = 914.0
+offset_bottom = 372.0
 grow_vertical = 2
 size_flags_horizontal = 6
-text = "❌️退出游戏"
+text = "退出游戏"
+icon = ExtResource("8_qbyf1")
 
 [node name="提示容器" type="VBoxContainer" parent="开始菜单"]
 unique_name_in_owner = true
@@ -280,7 +268,6 @@ oversampling_override = 1.0
 title = ""
 initial_position = 1
 size = Vector2i(840, 400)
-visible = true
 unresizable = true
 min_size = Vector2i(800, 400)
 max_size = Vector2i(800, 200)

@@ -29,13 +29,16 @@ func 蓝图解析():
 		$"精通条".value=精通
 		$"精通条/精通".text=str(精通)+"/"+str(精通需求)
 		$"精通条".visible=true
+		visible=true
 		modulate=Color(1, 1, 1)
 	else :
 		$"蓝图名称".text=蓝图名称+"\n"+"暂未获得该蓝图"
 		$"精通条".visible=false
 		if 缓存残缺等级>=1:
 			modulate=Color(0.8, 0.8, 0.8, 0.9)
+			visible=true
 		else :
+			visible=false
 			modulate=Color(0.4, 0.4, 0.4, 0.8)
 	var 缓存贴图=load(蓝图字典.get("icon",""))
 	if 缓存贴图:

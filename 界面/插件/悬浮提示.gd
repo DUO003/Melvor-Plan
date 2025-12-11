@@ -19,3 +19,5 @@ func 更新文本(文本内容=""):
 	size = %"文本".size + Vector2(16, 16)
 	%"文本".position=Vector2(8, 8)
 	visible=true
+func _process(_delta: float) -> void:
+	if visible:position = get_global_mouse_position() + Vector2(10, 10)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cuduk8yjwl5nn"]
+[gd_scene load_steps=16 format=3 uid="uid://cuduk8yjwl5nn"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_msww2"]
 [ext_resource type="Script" uid="uid://dp04b1gplr3je" path="res://界面/挂机系统/原罪/原罪界面.gd" id="2_riyk3"]
@@ -12,11 +12,17 @@
 [ext_resource type="Texture2D" uid="uid://c1cgyiktgwefk" path="res://素材/自制/图标/色欲.svg" id="9_mrh1p"]
 [ext_resource type="Texture2D" uid="uid://1b6ply323inq" path="res://素材/自制/图标/贪婪.svg" id="10_uhxdx"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2eyov"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_riyk3"]
 content_margin_left = 10.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ycnk"]
 content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nhtbf"]
+content_margin_left = 10.0
+content_margin_right = 10.0
 
 [node name="原罪界面" type="Control"]
 layout_mode = 3
@@ -71,6 +77,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2eyov")
 current_tab = 0
 
 [node name="原罪突破" type="Control" parent="内容节点/选项卡"]
@@ -120,8 +127,9 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 14.0
 offset_top = 259.0
-offset_right = 162.0
-offset_bottom = 351.0
+offset_right = 142.0
+offset_bottom = 339.0
+theme_override_font_sizes/font_size = 50
 text = "突破"
 
 [node name="原罪标签" type="HBoxContainer" parent="内容节点/选项卡/原罪突破"]
@@ -204,6 +212,7 @@ stretch_mode = 5
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nhtbf")
 current_tab = 0
 metadata/_tab_index = 1
 

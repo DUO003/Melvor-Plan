@@ -37,7 +37,6 @@ corner_radius_bottom_left = 4
 corner_detail = 6
 
 [node name="系统管理" type="Control"]
-custom_minimum_size = Vector2(1700, 756)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1700.0
@@ -59,11 +58,10 @@ color = Color(0, 0, 0, 0.078431375)
 metadata/_edit_lock_ = true
 
 [node name="等级显示" parent="." instance=ExtResource("3_8vsgt")]
-custom_minimum_size = Vector2(1700, 120)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 1
-offset_bottom = 120.0
+offset_bottom = 0.0
 "玩法" = "手工"
-"精通池显示" = true
 "同时显示" = true
 
 [node name="锁定" type="Label" parent="."]
@@ -89,18 +87,25 @@ theme_override_font_sizes/font_size = 60
 text = "在任务窗口解锁"
 
 [node name="内容区域" type="Control" parent="."]
-anchors_preset = 0
-offset_top = 120.0
-offset_right = 1700.0
-offset_bottom = 756.0
+custom_minimum_size = Vector2(0, 636)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 metadata/_edit_lock_ = true
 
 [node name="熟练转移" type="HSlider" parent="内容区域"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 1132.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -568.0
 offset_top = 9.0
-offset_right = 1276.0
+offset_right = -424.0
 offset_bottom = 64.0
 theme_override_icons/grabber = SubResource("DPITexture_aokyi")
 theme_override_icons/grabber_highlight = SubResource("DPITexture_8vsgt")
@@ -116,6 +121,7 @@ offset_left = 164.0
 offset_top = 4.0
 offset_right = 542.0
 offset_bottom = 49.0
+theme_override_font_sizes/font_size = 32
 text = "获得的熟练转移给挂机系统"
 
 [node name="文本2" type="Label" parent="内容区域/熟练转移"]
@@ -124,6 +130,7 @@ offset_left = -150.0
 offset_top = 7.0
 offset_right = -12.0
 offset_bottom = 52.0
+theme_override_font_sizes/font_size = 32
 text = "熟练转移:"
 
 [node name="转换进度" type="Label" parent="内容区域/熟练转移"]

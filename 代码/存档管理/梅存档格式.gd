@@ -1,11 +1,13 @@
 extends Resource
 ## 梅存档数据库，管理不同的存档
 class_name 梅存档格式
+var 游戏版本 = ProjectSettings.get_setting("application/config/version", "错误") # 第二个参数是默认值
 var 存档配置路径: String = "user://存档/"#最后一个字符必须传入"/"
 var 存档命名: String="默认存档"
 @export_storage var 梅存档:={}
 @export_storage var 哈希值:int=-1
 @export_storage var 保存时间:float=Time.get_unix_time_from_system()
+@export_storage var 版本号: String=""
 @export_storage var 启用测试:bool=false
 var 用户名: String="玩家"#默认为玩家,可以在开始菜单随时修改
 #@export_storage var 测试
@@ -61,6 +63,7 @@ func 存档(存档名: String = "",存档数据:Dictionary={}) -> bool:
 			梅存档["挂机"]["红点存档"]=计划.红点.红点存档
 	哈希值=最终存档名.hash()
 	保存时间=Time.get_unix_time_from_system()if 计划.存档时间戳==-1 else 计划.存档时间戳
+	版本号=游戏版本
 	#测试=标准物品.new(1,"蓝图纸")
 	var 保存结果 = ResourceSaver.save(self, 完整路径)
 	if 保存结果 == OK:# 保存存档并返回结果

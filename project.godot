@@ -15,7 +15,7 @@ config/description="最后一个实验性版本,存档目前状态相对稳定
 游戏基础版本开发总进度(1/7):
 [手工:75%]
 [挂机:5%]"
-config/version="0.1"
+config/version="0.1.2"
 config/tags=PackedStringArray("梅计划")
 run/main_scene="uid://kifxwq2enhmp"
 config/features=PackedStringArray("4.5", "Mobile")
@@ -41,8 +41,17 @@ directories/dch_directory={
 "玩家": "res://对话/玩家.dch"
 }
 directories/dtl_directory={
+"加工纤维": "res://对话/加工纤维.dtl",
+"加工鞣革": "res://对话/加工鞣革.dtl",
+"原罪解锁": "res://对话/原罪解锁.dtl",
 "小游戏": "res://对话/小游戏.dtl",
-"新手任务": "res://对话/新手任务.dtl"
+"手动合成": "res://对话/手动合成.dtl",
+"新手任务": "res://对话/新手任务.dtl",
+"研究炼金": "res://对话/研究炼金.dtl",
+"研究烹饪": "res://对话/研究烹饪.dtl",
+"研究长剑": "res://对话/研究长剑.dtl",
+"背包解锁": "res://对话/背包解锁.dtl",
+"食材研究方向": "res://对话/食材研究方向.dtl"
 }
 layout/style_directory={
 "": "res://对话/对话样式.tres",
@@ -110,7 +119,12 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/fast
 [file_customization]
 
 folder_colors={
-"res://界面/多003/": "orange"
+"res://界面/": "green",
+"res://界面/主题/": "gray",
+"res://界面/多003/": "orange",
+"res://界面/开始菜单/": "gray",
+"res://界面/插件/": "gray",
+"res://素材/": "blue"
 }
 
 [input]

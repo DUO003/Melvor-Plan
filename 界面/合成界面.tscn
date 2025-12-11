@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c2ikyp8oaix5u"]
+[gd_scene load_steps=22 format=3 uid="uid://c2ikyp8oaix5u"]
 
 [ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="1_iqbb7"]
 [ext_resource type="Script" uid="uid://v0yytth2tqx2" path="res://代码/专属代码/合成主界面/合成界面.gd" id="2_u2knn"]
@@ -81,6 +81,15 @@ bg_color = Color(0.51, 0.35852996, 0.09689999, 0.15686275)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2xcc"]
 bg_color = Color(0.51, 0.35852996, 0.09689999, 0.28235295)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8sqgc"]
+bg_color = Color(0.53, 0.37258995, 0.10069999, 0.3137255)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+script = ExtResource("22_h2b3j")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
 [node name="合成主界面" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -106,6 +115,7 @@ color = Color(0.75, 0.67, 0.45, 0.705882)
 metadata/_edit_lock_ = true
 
 [node name="等级显示" parent="标题" instance=ExtResource("19_dk4n3")]
+custom_minimum_size = Vector2(1700, 100)
 layout_mode = 1
 "玩法" = "合成"
 "精通池显示" = null
@@ -322,6 +332,7 @@ stretch_mode = 5
 
 [node name="按钮区" type="HBoxContainer" parent="内容节点/内容区/第二内容区/切割分区"]
 layout_mode = 2
+size_flags_vertical = 0
 
 [node name="温馨提示" type="Label" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 unique_name_in_owner = true
@@ -334,39 +345,33 @@ autowrap_mode = 2
 
 [node name="强化" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
 text = "强化"
 
 [node name="抽奖机" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
 text = "抽奖机"
 
 [node name="蓝图库" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
 text = "蓝图库"
 
-[node name="提示背景" type="ColorRect" parent="内容节点/内容区/第二内容区"]
+[node name="提示文本" type="Label" parent="内容节点/内容区/第二内容区"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 340)
 layout_mode = 2
-color = Color(0.55, 0.498667, 0.3575, 0.784314)
-
-[node name="提示文本" type="Label" parent="内容节点/内容区/第二内容区/提示背景"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8sqgc")
 text = "累计精通
 +0"
 horizontal_alignment = 1

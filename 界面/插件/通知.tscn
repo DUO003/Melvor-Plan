@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhucfadbhtaq6"]
+[gd_scene load_steps=4 format=3 uid="uid://bhucfadbhtaq6"]
 
 [ext_resource type="Script" uid="uid://coq0o0dl80roa" path="res://界面/插件/通知.gd" id="1_0iigp"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_73lfj"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0iigp"]
+content_margin_left = 10.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
 [node name="通知" type="Panel"]
 anchors_preset = -1
-anchor_right = 0.119
-anchor_bottom = 0.062000003
-offset_right = -2.480011
-offset_bottom = -27.960007
+anchor_right = 0.11800001
+anchor_bottom = 0.036000002
+offset_right = -0.5600128
+offset_bottom = 0.11999893
 mouse_filter = 2
 theme = ExtResource("1_73lfj")
 script = ExtResource("1_0iigp")
@@ -20,13 +26,13 @@ offset_bottom = 55.0
 size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0iigp")
 bbcode_enabled = true
 text = "测试"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
-metadata/_edit_lock_ = true
 
 [node name="按钮" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)

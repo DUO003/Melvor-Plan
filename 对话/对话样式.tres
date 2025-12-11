@@ -17,6 +17,7 @@ script = ExtResource("2_3ndi7")
 scene = ExtResource("1_q5qm0")
 overrides = {
 "global_bg_color": "Color(0.5294118, 0.37254903, 0.101960786, 0.7058824)",
+"global_font": "\"res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/AlibabaPuHuiTi-3-55-Regular.ttf\"",
 "global_font_size": "30.0"
 }
 
@@ -36,11 +37,16 @@ scene = ExtResource("5_erf78")
 script = ExtResource("2_3ndi7")
 scene = ExtResource("6_a8k1l")
 overrides = {
+"bold_font": "\"res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-75-SemiBold/AlibabaPuHuiTi-3-75-SemiBold.ttf\"",
+"bold_italics_font": "\"res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-75-SemiBold/AlibabaPuHuiTi-3-75-SemiBold.ttf\"",
 "box_margin_bottom": "24.0",
 "box_size": "Vector2(1000, 200)",
+"italics_font": "\"res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/AlibabaPuHuiTi-3-55-Regular.ttf\"",
 "name_label_box_offset": "Vector2(0, -30)",
 "name_label_custom_font_size": "35.0",
+"name_label_font": "\"res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/AlibabaPuHuiTi-3-55-Regular.ttf\"",
 "name_label_use_global_font_size": "false",
+"normal_font": "\"res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/AlibabaPuHuiTi-3-55-Regular.ttf\"",
 "text_size": "24.0"
 }
 
@@ -53,6 +59,7 @@ script = ExtResource("2_3ndi7")
 scene = ExtResource("8_r2jki")
 overrides = {
 "boxes_offset": "Vector2(400, 200)",
+"font_custom": "\"res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/AlibabaPuHuiTi-3-55-Regular.ttf\"",
 "font_size_custom": "40.0",
 "font_size_use_global": "false",
 "maximum_choices": "3.0"
@@ -81,4 +88,4 @@ layer_info = {
 "16": SubResource("Resource_np1rc"),
 "17": SubResource("Resource_fblaa")
 }
-metadata/_latest_layer = "15"
+metadata/_latest_layer = ""

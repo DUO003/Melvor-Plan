@@ -26,8 +26,6 @@ metadata/_edit_lock_ = true
 
 [node name="等级显示" parent="标题" instance=ExtResource("2_0xnmj")]
 layout_mode = 1
-offset_right = 0.0
-offset_bottom = 0.0
 "系统" = "游历"
 "玩法" = "副本"
 

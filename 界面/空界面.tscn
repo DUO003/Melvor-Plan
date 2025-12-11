@@ -1,15 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://btsgbqm2kx3s1"]
+[gd_scene load_steps=20 format=3 uid="uid://btsgbqm2kx3s1"]
 
 [ext_resource type="Script" uid="uid://5fy5axsca6i2" path="res://界面/用户界面.gd" id="1_1xcs4"]
 [ext_resource type="Texture2D" uid="uid://b6q0o46fjedne" path="res://素材/游戏素材/背景/3.png" id="3_kiae7"]
 [ext_resource type="Script" uid="uid://qw0gp35xq72b" path="res://代码/专属代码/特殊功能/展开按钮.gd" id="4_4h1no"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="4_kiae7"]
+[ext_resource type="Script" uid="uid://cvqpr44nuhv1h" path="res://界面/根界面/隐藏奖励.gd" id="4_rhqkc"]
 [ext_resource type="PackedScene" uid="uid://c51gx8des8nv1" path="res://界面/插件/红点提示.tscn" id="5_5a7ci"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="7_4h1no"]
 [ext_resource type="Script" uid="uid://dbhilkborreev" path="res://代码/专属代码/特殊功能/手动存档.gd" id="7_5a7ci"]
 [ext_resource type="Script" uid="uid://bmlc8vpbcln8u" path="res://代码/专属代码/合成主界面/测试.gd" id="7_etcdq"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="8_0p14m"]
 [ext_resource type="PackedScene" uid="uid://cq8y0f7wmpt01" path="res://界面/插件/奖励悬浮面板.tscn" id="10_0p14m"]
+[ext_resource type="Texture2D" uid="uid://b52t5s6a00r87" path="res://素材/自制/图标/暂停.png" id="11_q2fph"]
 [ext_resource type="Script" uid="uid://cc1j5mukjb2p1" path="res://代码/专属代码/暂停界面/暂停界面.gd" id="11_s3egw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0p14m"]
@@ -98,8 +100,14 @@ unique_name_in_owner = true
 
 [node name="悬浮面板" type="Node" parent="."]
 
+[node name="隐藏奖励" type="Button" parent="悬浮面板"]
+self_modulate = Color(1, 1, 1, 0)
+offset_top = 100.0
+offset_right = 1700.0
+offset_bottom = 1000.0
+script = ExtResource("4_rhqkc")
+
 [node name="奖励悬浮面板" parent="悬浮面板" instance=ExtResource("10_0p14m")]
-visible = false
 z_index = 10
 anchors_preset = 8
 anchor_left = 0.5
@@ -117,10 +125,10 @@ theme_override_styles/panel = SubResource("StyleBox_s3egw")
 [node name="测试" type="Node" parent="."]
 
 [node name="展开按钮" type="Button" parent="测试"]
-offset_left = 1538.0
-offset_top = 24.0
-offset_right = 1586.0
-offset_bottom = 98.0
+offset_left = 1550.0
+offset_top = 10.0
+offset_right = 1610.0
+offset_bottom = 90.0
 theme = ExtResource("4_kiae7")
 theme_override_font_sizes/font_size = 50
 shortcut = SubResource("Shortcut_s3egw")
@@ -134,9 +142,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -720.0
-offset_right = -520.0
-offset_bottom = 74.0
+offset_left = -710.0
+offset_right = -510.0
+offset_bottom = 80.0
 grow_horizontal = 0
 theme = ExtResource("4_kiae7")
 theme_override_font_sizes/font_size = 50
@@ -145,9 +153,8 @@ script = ExtResource("7_etcdq")
 
 [node name="测试功能" type="OptionButton" parent="测试/展开按钮/测试"]
 layout_mode = 0
-offset_left = -352.0
-offset_right = -16.0
-offset_bottom = 77.0
+offset_left = -330.0
+offset_bottom = 80.0
 theme = ExtResource("4_kiae7")
 theme_override_font_sizes/font_size = 40
 selected = 0
@@ -158,9 +165,15 @@ popup/item_1/text = "刷新商店"
 popup/item_1/id = 1
 
 [node name="红点提示" parent="测试/展开按钮/测试" instance=ExtResource("5_5a7ci")]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
 "红点条目" = "测试红点"
 
 [node name="存档" type="Button" parent="测试/展开按钮"]
@@ -180,9 +193,8 @@ script = ExtResource("7_5a7ci")
 
 [node name="存档时间" type="Panel" parent="测试/展开按钮/存档"]
 layout_mode = 0
-offset_left = -240.0
-offset_right = -15.0
-offset_bottom = 70.0
+offset_left = -225.0
+offset_bottom = 80.0
 theme_override_styles/panel = SubResource("StyleBox_q2fph")
 
 [node name="时间" type="Label" parent="测试/展开按钮/存档/存档时间"]
@@ -196,14 +208,15 @@ theme_override_font_sizes/font_size = 45
 text = "10秒前"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="暂停" type="Button" parent="测试/展开按钮"]
 layout_mode = 0
-offset_left = 54.0
-offset_top = -14.0
-offset_right = 156.0
-offset_bottom = 75.0
-text = "⏸️"
+offset_left = 55.0
+offset_right = 149.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("11_q2fph")
 
 [node name="任务栏滚动区" type="ScrollContainer" parent="."]
 layout_mode = 0
@@ -211,6 +224,8 @@ offset_left = 1700.0
 offset_top = 10.0
 offset_right = 1920.0
 offset_bottom = 810.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 
 [node name="任务栏" type="VBoxContainer" parent="任务栏滚动区"]
 unique_name_in_owner = true
@@ -233,9 +248,15 @@ text = "合成"
 expand_icon = true
 
 [node name="红点提示" parent="任务栏滚动区/任务栏/任务" instance=ExtResource("5_5a7ci")]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
 
 [node name="图钉" type="ScrollContainer" parent="."]
 unique_name_in_owner = true

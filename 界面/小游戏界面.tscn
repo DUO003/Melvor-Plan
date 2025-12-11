@@ -103,8 +103,6 @@ metadata/_edit_lock_ = true
 
 [node name="等级显示" parent="标题" instance=ExtResource("3_no1vw")]
 layout_mode = 1
-offset_right = 0.0
-offset_bottom = 0.0
 "系统" = "挂机"
 "玩法" = "小游戏"
 
@@ -161,6 +159,7 @@ offset_left = 1288.0
 offset_top = 116.0
 offset_right = 1681.0
 offset_bottom = 209.0
+theme_override_font_sizes/font_size = 32
 text = "小游戏
 游玩水排序需要消耗体力
 基础奖励 金币

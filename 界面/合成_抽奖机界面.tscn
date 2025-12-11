@@ -208,8 +208,6 @@ metadata/_edit_lock_ = true
 
 [node name="等级显示" parent="标题" instance=ExtResource("2_bt04l")]
 layout_mode = 1
-offset_right = 0.0
-offset_bottom = 0.0
 
 [node name="背景" type="ColorRect" parent="."]
 layout_mode = 1

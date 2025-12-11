@@ -3,9 +3,11 @@ class_name 红点场景
 @export var 红点条目: String="默认红点"
 var 红点数量=1
 var 红点文本:Label
+var 点击逻辑:Callable=func():print("点击红点",红点文本)
 func _ready():
 	红点文本=$"定位点/红点/数量"
 	计划.更新红点.connect(_更新红点)
+	$"按钮".pressed.connect(点击逻辑)
 	_更新红点()
 func _更新红点(指定更新=null):
 	if 指定更新==null or 指定更新==红点条目:

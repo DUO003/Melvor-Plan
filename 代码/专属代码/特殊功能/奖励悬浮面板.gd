@@ -7,6 +7,7 @@ var 物品数组: Array=[]:#限制类型为标准物品 或 物品装备
 			更新物品()
 var 详情=0
 var 标题节点
+signal 奖励显示变化(显示)
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		计划.节点["奖励悬浮面板"]=self#注册
@@ -51,6 +52,8 @@ func 更新物品():#先删除后添加
 	$"滚动区域".position = (size - $"滚动区域".size) / 2
 	position=Vector2((1700-size.x)/2,50+(850-size.y)/2)
 	visible = 节点数量 >= 1
+	奖励显示变化.emit(visible)
 	await get_tree().process_frame
 	for 道具卡片场景 in 节点容器.get_children():
 		道具卡片场景.调整位置()
+	

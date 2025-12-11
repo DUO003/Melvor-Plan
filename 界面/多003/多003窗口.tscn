@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmf7yvsffr84w"]
+[gd_scene load_steps=6 format=3 uid="uid://dmf7yvsffr84w"]
 
 [ext_resource type="Script" uid="uid://c6g5anqygf1p6" path="res://界面/多003/多003窗口.gd" id="1_37fqq"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_cesu3"]
 [ext_resource type="Script" uid="uid://52ynw6iuc3w8" path="res://界面/多003/颜色框组.gd" id="3_cesu3"]
 [ext_resource type="Script" uid="uid://6dyxkelqdyas" path="res://界面/多003/身体.gd" id="3_soxqb"]
 [ext_resource type="AnimationLibrary" uid="uid://c47is11hsi1xq" path="res://界面/多003/多003动作.res" id="4_x6mlh"]
@@ -10,6 +11,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 900.0
 offset_bottom = 900.0
+theme = ExtResource("1_cesu3")
 script = ExtResource("1_37fqq")
 metadata/_edit_lock_ = true
 

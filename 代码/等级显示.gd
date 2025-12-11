@@ -69,26 +69,25 @@ func _更新_UI():
 		%精通进度条.value=精通
 		%熟练进度条.max_value=熟练上限
 		%熟练进度条.value=熟练
-	var 文本2位置=%"文本".size.x+10
 	if 同时显示:
-		%"文本2".size=Vector2(1400,120)
-		%"精通进度条".size=Vector2(1700,60)
-		%"熟练进度条".size=Vector2(1700,60)
-		%"熟练进度条".position=Vector2(0,60)
-		custom_minimum_size=Vector2(1700,120)
+		%"文本2".size.y=120
+		%"精通进度条".custom_minimum_size.y=60
+		%"熟练进度条".custom_minimum_size.y=60
+		%"熟练进度条".position.y=60
+		custom_minimum_size.y=120
 	else :
-		%"文本2".size=Vector2(1400,70)
-		custom_minimum_size=Vector2(1700,100)
+		%"文本2".size.y=70
+		custom_minimum_size.y=100
 		if 精通池显示:
-			%"精通进度条".size=Vector2(1700,70)
-			%"熟练进度条".size=Vector2(1700,30)
-			%"熟练进度条".position=Vector2(0,70)
+			%"精通进度条".custom_minimum_size.y=70
+			%"熟练进度条".custom_minimum_size.y=30
+			%"熟练进度条".position.y=70
 		else :
-			%"精通进度条".size=Vector2(1700,30)
-			%"熟练进度条".size=Vector2(1700,70)
-			%"熟练进度条".position=Vector2(0,30)
+			%"精通进度条".custom_minimum_size.y=30
+			%"熟练进度条".custom_minimum_size.y=70
+			%"熟练进度条".position.y=30
 	position=Vector2(0,0)
 	if 精通池显示:
-		%"文本2".position=Vector2(文本2位置,0)
+		%"文本2".position.y=0
 	else :
-		%"文本2".position=Vector2(文本2位置,30)
+		%"文本2".position.y=30

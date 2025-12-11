@@ -8,7 +8,7 @@ func _ready() -> void:
 	$"文本".text=文本
 	await get_tree().process_frame
 	$"文本".set_size($"文本".get_combined_minimum_size())
-	custom_minimum_size=$"文本".size+Vector2(10,-5)
+	custom_minimum_size=$"文本".size+Vector2(10,-10)
 	var 对齐 = 计划.配置文件.get("通知位置", "右")# 从配置文件读取对齐方式，默认靠右
 	match 对齐:
 		"左":# 与左侧对齐（等价于不设置标志，值为0）

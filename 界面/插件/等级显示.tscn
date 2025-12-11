@@ -5,39 +5,56 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brtdv"]
 bg_color = Color(0.1924, 0.557467, 0.74, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_in4vb"]
 bg_color = Color(0.74, 0.557467, 0.1924, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_brtdv"]
 content_margin_left = 10.0
 
 [node name="等级显示" type="Control"]
-custom_minimum_size = Vector2(1700, 100)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1700.0
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 100.0
+grow_horizontal = 2
+size_flags_horizontal = 3
 script = ExtResource("1_t1bs0")
 "玩法" = "挂机"
+"精通池显示" = true
 
-[node name="精通进度条" type="ProgressBar" parent="."]
+[node name="进度条" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
-layout_mode = 0
-offset_right = 1700.0
-offset_bottom = 30.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_constants/separation = -1
+
+[node name="精通进度条" type="ProgressBar" parent="进度条"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
 theme = ExtResource("2_brtdv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_brtdv")
 step = 1.0
 value = 33.0
 show_percentage = false
 
-[node name="熟练进度条" type="ProgressBar" parent="."]
+[node name="熟练进度条" type="ProgressBar" parent="进度条"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_top = 30.0
-offset_right = 1700.0
-offset_bottom = 100.0
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
 theme = ExtResource("2_brtdv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_in4vb")
 step = 1.0
@@ -48,9 +65,10 @@ show_percentage = false
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = -1
+anchor_right = 0.14600001
 anchor_bottom = 1.0
-offset_right = 128.0
+offset_right = -152.32004
 grow_vertical = 2
 theme = ExtResource("2_brtdv")
 theme_override_font_sizes/font_size = 50
@@ -60,15 +78,16 @@ vertical_alignment = 1
 
 [node name="文本2" type="Label" parent="."]
 unique_name_in_owner = true
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 offset_left = 290.0
-offset_top = 30.0
-offset_right = 1690.0
-offset_bottom = 100.0
+offset_right = 1921.0
+offset_bottom = 70.0
+grow_horizontal = 2
 theme = ExtResource("2_brtdv")
 theme_override_constants/line_spacing = -10
 theme_override_font_sizes/font_size = 45
-text = "熟练:"
+text = "精通:"
 vertical_alignment = 1
 
 [node name="上层" type="Control" parent="."]

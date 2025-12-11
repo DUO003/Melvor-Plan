@@ -1,5 +1,6 @@
 extends Node
 #class_name 类型
+#region 备注分组
 @export_multiline var 多行文本: String = "支持换行\n可展开大文本编辑"
 @export_range(0, 100) var 浮点范围: float = 50.0 # 浮点范围0-100 @export_range(1, 10, 1) var 整数范围: int = 5 # 整数范围1-10，步长1
 @export_file var 任意文件路径: String = ""
@@ -13,8 +14,8 @@ extends Node
 @export_node_path("Button", "TouchScreenButton") var 任意节点路径
 @export_group("分组")
 @export_subgroup("小组")
-
-##不具备任何功能,仅展示常用语法.
+#endregion 备注分组
+##不具备任何功能,仅展示常用语法[br]换行语法
 func 语法备忘录(真: bool=true,假: bool=false,
 整数: int = 1,浮点数: float = 1.0,文本:String = "",
 数组: Array = [],字典: Dictionary = {},节点引用: Control = $Control,
@@ -55,6 +56,7 @@ func 语法备忘录(真: bool=true,假: bool=false,
 	var 参数:Variant=""
 	方法.call(参数)#执行方法.call()
 	return[真,假,整数,浮点数,文本,数组,字典,节点引用,颜色,空值,纹理,二维向量,二维向量整数,三维向量,三维向量整数]
+func 内置信号():
 #.resize()#声明数组长度
 #func _ready() -> void:#节点进入节点树
 #super._ready()#运行上级节点的方法
@@ -90,12 +92,44 @@ func 语法备忘录(真: bool=true,假: bool=false,
 #func _script_changed() -> void:#脚本被修改或重新加载时执行
 #
 #func _notification(what: int) -> void:#处理节点通用通知（如场景切换、资源加载等，需配合NOTIFICATION_*常量）
+	pass
 	#print()
 	#signal#声明信号
 	#.queue_free()#删除节点
 	#计划.emit_signal("更新_UI")#发出信号示例
+func 常用功能():
 #preload().instantiate()#预加载
 #load()#?.instantiate()#动态加载
 #self#当前节点
 #super#继承上级节点
 #"整数%d:文本%s:浮点%f:控制精度浮点%.2f:"%[10,"文本",3.14,3.1415]
+	pass
+func BBC语法():
+	var 文本="RichTextLabel 是一种为项目添加文本的灵活方式，
+支持[i]斜体[/i],[b]粗体[/b],[i][b]斜粗体[/b][/i][u]下划线[/u],[s]删除线[/s]
+组合使用[u][i]斜体[/i][/u],[u][b]粗体[/b][/u],[u][i][b]斜粗体[/b][/i][/u]。
+[color=#4cf]颜色[/color],[fgcolor=#49c9]前景[color=#4cf]颜色[/color][/fgcolor]
+[bgcolor=#49c9]背景 [color=#4cf]颜色[/color][/bgcolor]
+图片:[img]res://unicorn_icon.png[/img],[font_size=24]字号[/font_size]
+[color=aqua][url=https://godotengine.org]自定义链接[/url][/color]。[hint=这会显示一个提示。]悬停此处可显示工具提示！[/hint]
+默认左对齐，[center]但也支持居中对齐，[/center][right]以及右对齐。[/right]
+[fill][dropcap font_size=48 color=yellow margins=0,-10,0,-12]首[/dropcap]字下沉对齐也受支持，可输入超长文本。[/fill]
+还提供多种特效：[pulse]脉冲[/pulse][wave]波浪[/wave][tornado]旋风[/tornado][shake]抖动[/shake]
+[fade start=75 length=7]渐隐[/fade][rainbow]彩虹[/rainbow]
+[table=2]
+[cell border=#fff3 bg=#fff1]
+[ul]
+表格
+功能受支持。
+[/ul]
+[/cell]
+[cell border=#fc13 bg=#fc11]
+[ol]
+有序
+列表示例。
+[/ol]
+[/cell]
+[/table]
+你还可以创建自定义标签/特效，或自定义[lb]链接[rb]标签的点击行为。
+[color=aqua][url=https://docs.godotengine.org/en/latest/tutorials/gui/bbcode_in_richtextlabel.html]官方文档[/url][/color]"
+	return 文本
