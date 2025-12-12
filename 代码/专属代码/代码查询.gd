@@ -14,6 +14,9 @@ extends Node
 @export_node_path("Button", "TouchScreenButton") var 任意节点路径
 @export_group("分组")
 @export_subgroup("小组")
+var 变量:
+	get:return 变量# 读取时执行
+	set(值):变量 = 值# 赋值时执行
 #endregion 备注分组
 ##不具备任何功能,仅展示常用语法[br]换行语法
 func 语法备忘录(真: bool=true,假: bool=false,
