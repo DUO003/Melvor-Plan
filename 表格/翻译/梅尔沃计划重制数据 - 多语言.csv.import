@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://hico40qj1hgf"
+
+[deps]
+
+files=["res://表格/翻译/梅尔沃计划重制数据 - 多语言.EN.translation"]
+
+source_file="res://表格/翻译/梅尔沃计划重制数据 - 多语言.csv"
+dest_files=["res://表格/翻译/梅尔沃计划重制数据 - 多语言.EN.translation"]
+
+[params]
+
+compress=true
+delimiter=0

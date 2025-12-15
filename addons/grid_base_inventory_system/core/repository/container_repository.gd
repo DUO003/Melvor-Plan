@@ -45,7 +45,12 @@ func load() -> void:
 	for inv_name in 缓存存档._container_data_map.keys():
 		_container_data_map[inv_name] = 缓存存档._container_data_map[inv_name].deep_duplicate()
 	_quick_move_relations_map = 缓存存档._quick_move_relations_map.duplicate(true)
-
+func 加载物品(背包名称:String):
+	if 背包名称 in _container_data_map:
+		var 背包内物品=_container_data_map[背包名称].items
+		for 物品 in 背包内物品:
+			if 物品 is ItemData:
+				物品.更新属性()
 ## 增加并返回背包，如果已存在，返回已经注册的背包
 func add_container(inv_name: String, columns: int, rows: int, avilable_types: Array[String]) -> ContainerData:
 	var inv = get_container(inv_name)

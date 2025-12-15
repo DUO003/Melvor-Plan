@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://btsgbqm2kx3s1"]
+[gd_scene load_steps=22 format=3 uid="uid://btsgbqm2kx3s1"]
 
 [ext_resource type="Script" uid="uid://5fy5axsca6i2" path="res://界面/用户界面.gd" id="1_1xcs4"]
 [ext_resource type="Texture2D" uid="uid://b6q0o46fjedne" path="res://素材/游戏素材/背景/3.png" id="3_kiae7"]
@@ -48,6 +48,11 @@ unicode = 32
 [sub_resource type="Shortcut" id="Shortcut_s3egw"]
 events = [SubResource("InputEventKey_0p14m")]
 
+[sub_resource type="DPITexture" id="DPITexture_eusfs"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"12\"><path fill=\"none\" stroke=\"#b2b2b2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-opacity=\".85\" stroke-width=\"2\" d=\"m2 4 4 4 4-4\"/></svg>
+"
+base_scale = 3.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3egw"]
 bg_color = Color(0.55, 0.42716667, 0.18149999, 0.78431374)
 corner_radius_top_left = 10
@@ -67,6 +72,10 @@ content_margin_bottom = -1.0
 script = ExtResource("7_4h1no")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_s3egw")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="DPITexture" id="DPITexture_rhqkc"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"30\"><rect width=\"58\" height=\"28\" x=\"1\" y=\"1\" fill=\"#e0e0e0\" fill-opacity=\".6\" stroke=\"#000\" stroke-width=\".8\" rx=\"7\"/></svg>
+"
 
 [node name="空节点" type="Control"]
 layout_mode = 3
@@ -153,16 +162,35 @@ script = ExtResource("7_etcdq")
 
 [node name="测试功能" type="OptionButton" parent="测试/展开按钮/测试"]
 layout_mode = 0
-offset_left = -330.0
+offset_left = -227.0
+offset_top = 1.0
+offset_bottom = 41.0
+theme = ExtResource("4_kiae7")
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 28
+theme_override_constants/arrow_margin = 0
+theme_override_icons/arrow = SubResource("DPITexture_eusfs")
+selected = 0
+item_count = 1
+popup/item_0/text = "测试功能"
+popup/item_0/id = 0
+
+[node name="测试参数" type="OptionButton" parent="测试/展开按钮/测试"]
+layout_mode = 0
+offset_left = -227.0
+offset_top = 40.0
 offset_bottom = 80.0
 theme = ExtResource("4_kiae7")
-theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 28
+theme_override_constants/arrow_margin = 0
+theme_override_icons/arrow = SubResource("DPITexture_eusfs")
 selected = 0
-item_count = 2
-popup/item_0/text = "获取装备"
+item_count = 1
+popup/item_0/text = "测试参数"
 popup/item_0/id = 0
-popup/item_1/text = "刷新商店"
-popup/item_1/id = 1
 
 [node name="红点提示" parent="测试/展开按钮/测试" instance=ExtResource("5_5a7ci")]
 custom_minimum_size = Vector2(40, 40)
@@ -218,24 +246,41 @@ offset_bottom = 80.0
 theme_override_font_sizes/font_size = 40
 icon = ExtResource("11_q2fph")
 
-[node name="任务栏滚动区" type="ScrollContainer" parent="."]
+[node name="任务栏分割" type="VSplitContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 980)
 layout_mode = 0
 offset_left = 1700.0
 offset_top = 10.0
 offset_right = 1920.0
-offset_bottom = 810.0
+offset_bottom = 990.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+theme_override_constants/minimum_grab_thickness = 2
+theme_override_icons/grabber = SubResource("DPITexture_rhqkc")
+split_offset = 200
+drag_area_margin_begin = 10
+drag_area_margin_end = 10
+drag_area_highlight_in_editor = true
+
+[node name="任务栏滚动区" type="ScrollContainer" parent="任务栏分割"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_kiae7")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="任务栏" type="VBoxContainer" parent="任务栏滚动区"]
+[node name="任务栏" type="VBoxContainer" parent="任务栏分割/任务栏滚动区"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("4_kiae7")
-theme_override_constants/separation = 10
+theme_override_constants/separation = 5
 
-[node name="任务" type="Button" parent="任务栏滚动区/任务栏"]
+[node name="任务" type="Button" parent="任务栏分割/任务栏滚动区/任务栏"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
@@ -247,7 +292,7 @@ theme_override_constants/align_to_largest_stylebox = 1
 text = "合成"
 expand_icon = true
 
-[node name="红点提示" parent="任务栏滚动区/任务栏/任务" instance=ExtResource("5_5a7ci")]
+[node name="红点提示" parent="任务栏分割/任务栏滚动区/任务栏/任务" instance=ExtResource("5_5a7ci")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = 1
@@ -257,6 +302,21 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 1
+
+[node name="BUFF滚动区" type="ScrollContainer" parent="任务栏分割"]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_kiae7")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="BUFF" type="VBoxContainer" parent="任务栏分割/BUFF滚动区"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 5
 
 [node name="图钉" type="ScrollContainer" parent="."]
 unique_name_in_owner = true

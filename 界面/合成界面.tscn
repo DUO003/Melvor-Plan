@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://v0yytth2tqx2" path="res://代码/专属代码/合成主界面/合成界面.gd" id="2_u2knn"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="3_pbgl2"]
 [ext_resource type="PackedScene" uid="uid://fhiod2yd4lhv" path="res://界面/资源条.tscn" id="4_l4usl"]
-[ext_resource type="Texture2D" uid="uid://conmhorhmnqpg" path="res://素材/像素/框.png" id="11_3rko8"]
 [ext_resource type="Script" uid="uid://dxqqna74h0y6o" path="res://代码/专属代码/合成主界面/配方选择器代码.gd" id="12_8sqgc"]
+[ext_resource type="PackedScene" uid="uid://dlf0o8yt0hscg" path="res://界面/插件/悬浮提示.tscn" id="14_8sqgc"]
 [ext_resource type="Texture2D" uid="uid://cg5lbyhyg8ys3" path="res://素材/像素/标准剑.png" id="14_wt2ge"]
 [ext_resource type="Script" uid="uid://cy41kvs4h32y8" path="res://代码/专属代码/合成主界面/悬浮面板.gd" id="15_wt2ge"]
 [ext_resource type="PackedScene" uid="uid://ooiwqu3875ea" path="res://界面/插件/动作进度条.tscn" id="15_yntay"]
@@ -179,12 +179,10 @@ layout_mode = 2
 [node name="零件" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "零件"
-"基础量" = 0
 
 [node name="精华" parent="内容节点/内容区/第一内容区/资源条/资源管理器" instance=ExtResource("4_l4usl")]
 layout_mode = 2
 "资源名称" = "精华"
-"基础量" = 0
 
 [node name="进度条" type="Control" parent="内容节点/内容区/第一内容区/资源条/资源管理器"]
 layout_mode = 2
@@ -384,15 +382,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("15_wt2ge")
 
-[node name="悬浮面板背景" type="NinePatchRect" parent="悬浮面板"]
-self_modulate = Color(1, 1, 1, 0.784314)
+[node name="悬浮提示" parent="悬浮面板" instance=ExtResource("14_8sqgc")]
+unique_name_in_owner = true
 layout_mode = 0
-texture = ExtResource("11_3rko8")
-region_rect = Rect2(2, 2, 28, 28)
-
-[node name="面板文本" type="Label" parent="悬浮面板/悬浮面板背景"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 81.0
-offset_bottom = 53.0
+offset_left = -297.0
+offset_right = -59.0
+offset_bottom = 230.6

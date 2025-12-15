@@ -118,7 +118,8 @@ func 测试按钮(按键信号):
 		计划.语法糖奖励显示(物品数组,"测试炼金材料",1)
 		return
 	elif 文本=="测试BUFF":
-		计划.BUFF.创建BUFF("测试","测试按钮按下")
+		计划.BUFF.创建BUFF("以太药水","测试按钮按下")
+		print(计划.BUFF.BUFF字典.keys())
 		return
 	else :
 		return

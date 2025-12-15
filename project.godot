@@ -10,7 +10,10 @@ config_version=5
 
 [application]
 
-config/name="梅尔沃计划"
+config/name="梅计划"
+config/name_localized={
+"zh": "梅计划"
+}
 config/description="最后一个实验性版本,存档目前状态相对稳定
 游戏基础版本开发总进度(1/7):
 [手工:75%]
@@ -166,8 +169,10 @@ dialogic_default_action={
 
 [internationalization]
 
+locale/translations=PackedStringArray("res://表格/翻译/梅尔沃计划重制数据 - 多语言.EN.translation")
 locale/test="zh_CN"
 locale/fallback="zh"
+locale/locale_filter_mode=1
 
 [layer_names]
 

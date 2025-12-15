@@ -221,18 +221,25 @@ grow_vertical = 2
 alignment = 1
 selected = 0
 fit_to_longest_item = false
-item_count = 3
+item_count = 2
 popup/item_0/text = "中文"
 popup/item_0/id = 0
-popup/item_1/text = "中文"
+popup/item_1/text = "英文en"
 popup/item_1/id = 1
-popup/item_2/text = "中文"
-popup/item_2/id = 2
 
 [node name="地球" type="Sprite2D" parent="开始菜单/多语言功能区"]
 position = Vector2(41.12495, 33)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_l8v50")
+
+[node name="可用性警告" type="Label" parent="开始菜单/多语言功能区"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 65.0
+offset_right = 238.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "多语言未适配不可用"
 
 [node name="退出游戏" type="Button" parent="开始菜单"]
 unique_name_in_owner = true

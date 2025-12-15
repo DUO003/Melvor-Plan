@@ -39,7 +39,7 @@ func 加载所有存档():
 			if 加载结果 != null and 加载结果 is 梅存档格式:
 				# 验证通过：键=基础文件名，值=梅存档格式
 				存档字典[基础文件名] = 加载结果
-				print("成功加载存档文件: ", 文件名, " 键名: ", 基础文件名)
+				#print("成功加载存档文件: ", 文件名, " 键名: ", 基础文件名)
 			else:
 				print("文件格式错误，非梅存档格式: ", 文件名)# 格式验证失败（非梅存档格式）
 		文件名 = 目录.get_next()# 遍历下一个文件
@@ -107,9 +107,9 @@ func 读档(存档名: String = "",存档的数据:梅存档格式=null,覆盖�
 				背包单例._container_data_map.clear()
 				for 背包名称 in 梅存档["挂机"]["背包与商店"].keys():
 					背包单例._container_data_map[背包名称] = 梅存档["挂机"]["背包与商店"][背包名称].deep_duplicate()
+					背包单例.加载物品(背包名称)
 			if 挂机.has("快速移动关系") and 背包单例:
 				背包单例._quick_move_relations_map=梅存档["挂机"]["快速移动关系"].duplicate(true)
-
 		await 计划.正式加载()
 		return true
 	else:

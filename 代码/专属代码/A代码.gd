@@ -106,7 +106,7 @@ func 常用功能():
 #self#当前节点
 #super#继承上级节点
 #"整数%d:文本%s:浮点%f:控制精度浮点%.2f:"%[10,"文本",3.14,3.1415]
-	pass
+	breakpoint#断点
 func BBC语法():
 	var 文本="RichTextLabel 是一种为项目添加文本的灵活方式，
 支持[i]斜体[/i],[b]粗体[/b],[i][b]斜粗体[/b][/i][u]下划线[/u],[s]删除线[/s]
@@ -136,3 +136,5 @@ func BBC语法():
 你还可以创建自定义标签/特效，或自定义[lb]链接[rb]标签的点击行为。
 [color=aqua][url=https://docs.godotengine.org/en/latest/tutorials/gui/bbcode_in_richtextlabel.html]官方文档[/url][/color]"
 	return 文本
+func 内置资源():
+	var 物品=标准物品.new()

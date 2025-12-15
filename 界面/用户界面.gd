@@ -27,8 +27,13 @@ func _ready():
 	打开界面={}
 	for key in 界面父子关系.keys():
 		打开界面[key] = null
+	var 分割长度:int=int(计划.窗口状态管理("根节点","分割长度",200))
+	%"任务栏分割".split_offset=分割长度
+	%"任务栏分割".drag_ended.connect(func():计划.窗口状态管理("根节点","分割长度",null,%"任务栏分割".split_offset))
 	计划.提示容器=%"提示容器"#仅空窗口注册
 	生成任务栏按钮()# 在节点加载完成后生成任务栏按钮
+	更新BUFF()
+	计划.BUFF.更新_BUFF.connect(更新BUFF)
 	if 初始界面=="初始":
 		if 计划.跳转设置:
 			重载场景("任务窗口")
@@ -37,6 +42,14 @@ func _ready():
 func _exit_tree():#理论上不会执行
 	生命周期计时器+=[滚动计时器]
 	super._exit_tree()
+func 更新BUFF():
+	清除子节点(%BUFF)
+	var BUFF栏=计划.BUFF.所有BUFF
+	var BUFF提示=preload("res://界面/根界面/buff状态.tscn").instantiate()
+	for BUFF in BUFF栏:
+		var BUFF克隆=BUFF提示.duplicate()
+		BUFF克隆.BUFF数据=BUFF
+		%BUFF.add_child(BUFF克隆)
 func 重载图钉():
 	for 节点 in %"图钉容器".get_children():
 		%"图钉容器".remove_child(节点)

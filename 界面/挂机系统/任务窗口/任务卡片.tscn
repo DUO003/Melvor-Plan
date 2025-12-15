@@ -2,12 +2,12 @@
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ca8jx"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_7pife"]
-[ext_resource type="Script" uid="uid://e031poj6o6r1" path="res://界面/手工系统/任务窗口/任务卡片.gd" id="2_k6e0v"]
+[ext_resource type="Script" uid="uid://e031poj6o6r1" path="res://界面/挂机系统/任务窗口/任务卡片.gd" id="2_k6e0v"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_gxfu4"]
 [ext_resource type="PackedScene" uid="uid://c51gx8des8nv1" path="res://界面/插件/红点提示.tscn" id="3_wwkkq"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wtv7"]
-bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tdtd"]
+bg_color = Color(0.55, 0.42716667, 0.18149999, 0.7058824)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -23,7 +23,7 @@ content_margin_top = -1.0
 content_margin_right = 10.0
 content_margin_bottom = -1.0
 script = ExtResource("2_7pife")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_5wtv7")])
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_7tdtd")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pife"]
@@ -83,9 +83,9 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 10.0
-offset_top = 60.0
+offset_top = 57.0
 offset_right = -10.0
-offset_bottom = 260.0
+offset_bottom = 257.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gxfu4")
 

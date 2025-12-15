@@ -130,22 +130,7 @@ func 随机数量(最低: int, 最高: int, 步进: int) -> int:
 func 文本预处理()->String:
 	return item_name+"\n数量:"+str(current_amount)+"\n堆叠上限:"+科学计数(stack_size)+"\n"+简介
 func 科学计数(数值, 小数位数: int = 2,免转换范围:int=10000) -> String:
-	if 数值 == 0:
-		return "0"
-	elif abs(数值) < 免转换范围:
-		return str(数值)
-	var 量级 = 0# 计算数量级（10的幂）
-	var 绝对值: float = abs(float(数值))
-	if 数值>=1:
-		while 绝对值 >= 10:
-			绝对值 /= 10
-			量级 += 1
-	else :
-		while 绝对值 < 1 and 绝对值 > 0:
-			绝对值 *= 10
-			量级 -= 1
-	var 格式化数值 ="+%.{长度}f".format({"长度":str(小数位数)}) % 绝对值# 格式化小数部分（保留指定位数）
-	return "%sE%d" % [格式化数值, 量级]# 拼接科学计数法字符串（如 "9.22e18"）
+	return 计划.科学计数(数值,小数位数,免转换范围)
 func 返回简介(背包名):
 	var 简介文本=super.返回简介(背包名)
 	if GBIS.shop_names.has(背包名):

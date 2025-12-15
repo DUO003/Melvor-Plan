@@ -64,11 +64,10 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_right = 1020.0
 offset_bottom = 420.0
-current_tab = 2
+current_tab = 0
 
 [node name="副本探索" type="Control" parent="内容区域/TabContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -140,10 +139,11 @@ offset_bottom = 28.0
 [node name="副本显示信息" type="Label" parent="内容区域/TabContainer/副本探索/HBoxContainer/副本探索功能区"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 14.0
+offset_left = 10.0
 offset_top = 60.0
-offset_right = 274.0
-offset_bottom = 153.0
+offset_right = 409.0
+offset_bottom = 228.0
+theme_override_font_sizes/font_size = 38
 text = "每次探索效率:10(0.2秒)
 探索模式:
 事件选择:"
@@ -151,10 +151,10 @@ text = "每次探索效率:10(0.2秒)
 [node name="探索选项" type="OptionButton" parent="内容区域/TabContainer/副本探索/HBoxContainer/副本探索功能区"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 166.0
-offset_top = 108.0
-offset_right = 300.0
-offset_bottom = 151.0
+offset_left = 199.0
+offset_top = 126.0
+offset_right = 379.0
+offset_bottom = 174.0
 theme = ExtResource("1_0xnmj")
 theme_override_font_sizes/font_size = 30
 selected = 0
@@ -165,10 +165,10 @@ popup/item_0/id = 0
 [node name="事件选择" type="OptionButton" parent="内容区域/TabContainer/副本探索/HBoxContainer/副本探索功能区"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 168.0
-offset_top = 156.0
-offset_right = 302.0
-offset_bottom = 199.0
+offset_left = 200.0
+offset_top = 178.0
+offset_right = 380.0
+offset_bottom = 226.0
 pivot_offset = Vector2(1984, -216)
 theme = ExtResource("1_0xnmj")
 theme_override_font_sizes/font_size = 30
@@ -235,6 +235,7 @@ offset_bottom = 4.0
 
 [node name="战利品记录" type="Control" parent="内容区域/TabContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 

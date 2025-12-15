@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2mygwblowgmb"]
+[gd_scene load_steps=15 format=3 uid="uid://b2mygwblowgmb"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_c5l5k"]
-[ext_resource type="Script" uid="uid://dtt0vuu67behi" path="res://界面/手工系统/任务窗口/任务窗口.gd" id="2_mxxnt"]
+[ext_resource type="Script" uid="uid://dtt0vuu67behi" path="res://界面/挂机系统/任务窗口/任务窗口.gd" id="2_mxxnt"]
 [ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_5x4j5"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="4_s36by"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_o58yo"]
 [ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="6_b3vww"]
 [ext_resource type="Texture2D" uid="uid://dnjae2up6wuam" path="res://素材/豆包AI素材/图标/任务图标.png" id="7_noxnm"]
+[ext_resource type="Texture2D" uid="uid://s1sv26if4s6i" path="res://素材/自制/QQ群.png" id="8_60vby"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mxxnt"]
 content_margin_left = 10.0
@@ -291,28 +292,57 @@ text = "启用全屏"
 layout_mode = 0
 offset_left = 1300.0
 offset_top = 30.0
-offset_right = 1650.0
-offset_bottom = 119.0
+offset_right = 1668.0
+offset_bottom = 818.0
+theme_override_constants/separation = -5
 
-[node name="Label" type="Label" parent="内容区域/标签/设置面板/Button"]
+[node name="标题" type="Label" parent="内容区域/标签/设置面板/Button"]
 layout_mode = 2
+theme_override_constants/line_spacing = -20
 theme_override_font_sizes/font_size = 38
-text = "请使用外部音乐网站
-游戏没有BGM"
+text = "游戏没有BGM
+请使用外部音乐网站"
 
-[node name="Button" type="LinkButton" parent="内容区域/标签/设置面板/Button"]
+[node name="网易云" type="LinkButton" parent="内容区域/标签/设置面板/Button"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "网易云"
 underline = 1
 uri = "https://music.163.com/"
 
-[node name="Button2" type="LinkButton" parent="内容区域/标签/设置面板/Button"]
+[node name="QQ音乐" type="LinkButton" parent="内容区域/标签/设置面板/Button"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "QQ音乐"
 underline = 1
 uri = "https://y.qq.com/"
+
+[node name="标题2" type="Label" parent="内容区域/标签/设置面板/Button"]
+layout_mode = 2
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 38
+text = "游戏相关"
+
+[node name="更新日志" type="LinkButton" parent="内容区域/标签/设置面板/Button"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "更新日志"
+underline = 1
+uri = "https://ai.feishu.cn/wiki/ERTNwq8ggiGLlUkJv8CchMjonPb"
+
+[node name="QQ群" type="LinkButton" parent="内容区域/标签/设置面板/Button"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "QQ群链接"
+underline = 1
+uri = "https://qm.qq.com/q/P7b2kw9OsU"
+
+[node name="群二维码" type="TextureButton" parent="内容区域/标签/设置面板/Button"]
+custom_minimum_size = Vector2(64, 400)
+layout_mode = 2
+texture_normal = ExtResource("8_60vby")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="任务功能" type="HBoxContainer" parent="内容区域"]
 layout_mode = 1

@@ -169,8 +169,26 @@ func 整理物品() -> void:
 	clear()# 2. 清空当前背包的所有数据
 	备份物品列表.sort_custom(func(物品A: ItemData, 物品B: ItemData) -> bool:
 		return 物品A.排序值() < 物品B.排序值())# 3. 按物品的排序值升序排序
-	var 合并后物品列表: Array[ItemData] = []#可堆叠物品合并逻辑
+	var 堆叠上限处理: Array[ItemData]
 	for 待处理物品 in 备份物品列表:
+		if 待处理物品 is StackableData:
+			print("容量",待处理物品.stack_size)
+			if 待处理物品.current_amount>=待处理物品.stack_size:
+				var 真实数量=待处理物品.current_amount
+				var 容量:int=待处理物品.stack_size
+				for i in ceili(待处理物品.current_amount*1.0/容量):
+					var 克隆物品=待处理物品.duplicate()
+					克隆物品.stack_size=待处理物品.stack_size
+					if 真实数量>=容量:
+						克隆物品.current_amount = 容量
+					else :
+						克隆物品.current_amount = 真实数量
+					真实数量-=容量
+					堆叠上限处理.append(克隆物品)
+			else :堆叠上限处理.append(待处理物品)
+		else  :堆叠上限处理.append(待处理物品)
+	var 合并后物品列表: Array[ItemData] = []#可堆叠物品合并逻辑
+	for 待处理物品 in 堆叠上限处理:
 		if 待处理物品 is StackableData:# 仅处理继承自StackableData的可堆叠物品
 			# 检查合并列表最后一个是否是同名称的可堆叠物品（排序后同名称必然连续）
 			if (not 合并后物品列表.is_empty() and 合并后物品列表[-1] is StackableData 

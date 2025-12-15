@@ -1,4 +1,6 @@
 extends Panel
+##已废弃的代码
+#
 var 宽度上限=800
 func _ready() -> void:
 	visible=false
@@ -20,4 +22,8 @@ func 更新文本(文本内容=""):
 	%"文本".position=Vector2(8, 8)
 	visible=true
 func _process(_delta: float) -> void:
-	if visible:position = get_global_mouse_position() + Vector2(10, 10)
+	if visible:
+		var 屏幕尺寸:Vector2=计划.游戏分辨率
+		position = get_global_mouse_position() + Vector2(10, 10)
+		if position.x+size.x>屏幕尺寸.x:
+			position.x=屏幕尺寸.x-size.x
