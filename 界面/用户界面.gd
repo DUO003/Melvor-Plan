@@ -24,9 +24,7 @@ func _ready():
 	界面路径映射=计划.窗口.界面路径映射#加载
 	界面父子关系=计划.窗口.界面父子关系
 	界面图钉=计划.窗口.界面图钉
-	打开界面={}
-	for key in 界面父子关系.keys():
-		打开界面[key] = null
+	重新载入存档缓存()
 	var 分割长度:int=int(计划.窗口状态管理("根节点","分割长度",200))
 	%"任务栏分割".split_offset=分割长度
 	%"任务栏分割".drag_ended.connect(func():计划.窗口状态管理("根节点","分割长度",null,%"任务栏分割".split_offset))
@@ -39,17 +37,48 @@ func _ready():
 			重载场景("任务窗口")
 		else :
 			重载场景(任务栏数组[0])
+func 重新载入存档缓存():
+	打开界面={}
+	for 键 in 界面父子关系.keys():
+		var 存档值=计划.窗口状态管理(键,"界面显示","<null>")
+		if 存档值=="<null>" :
+			打开界面[键] = null
+		else:
+			打开界面[键] = 存档值
+
 func _exit_tree():#理论上不会执行
 	生命周期计时器+=[滚动计时器]
 	super._exit_tree()
+#func 更新BUFF():
+	#清除子节点(%BUFF)
+	#var BUFF栏:Array[梅BUFF数据]=计划.BUFF.所有BUFF
+	#var BUFF提示=preload("res://界面/根界面/buff状态.tscn").instantiate()
+	#for BUFF in BUFF栏:
+		#var BUFF克隆=BUFF提示.duplicate()
+		#BUFF克隆.BUFF数据=BUFF
+		#%BUFF.add_child(BUFF克隆)
+var BUFF提示模板 = preload("res://界面/根界面/buff状态.tscn")
 func 更新BUFF():
-	清除子节点(%BUFF)
-	var BUFF栏=计划.BUFF.所有BUFF
-	var BUFF提示=preload("res://界面/根界面/buff状态.tscn").instantiate()
-	for BUFF in BUFF栏:
-		var BUFF克隆=BUFF提示.duplicate()
-		BUFF克隆.BUFF数据=BUFF
-		%BUFF.add_child(BUFF克隆)
+	var 新BUFF列表:Array[梅BUFF数据] = 计划.BUFF.所有BUFF
+	var 现有BUFF节点 = %BUFF.get_children()
+	var 现有节点数量 = 现有BUFF节点.size()
+	var 新BUFF数量 = 新BUFF列表.size()
+	for i in 新BUFF数量:
+		var 当前BUFF数据 = 新BUFF列表[i]
+		var 目标BUFF节点:Node
+		if i < 现有节点数量:
+			目标BUFF节点 = 现有BUFF节点[i]
+			目标BUFF节点.BUFF数据 = 当前BUFF数据
+			目标BUFF节点.初始化()
+		else:#超出索引
+			目标BUFF节点 = BUFF提示模板.instantiate()
+			目标BUFF节点.BUFF数据 = 当前BUFF数据
+			%BUFF.add_child(目标BUFF节点)
+	if 现有节点数量 > 新BUFF数量:
+		for i in range(新BUFF数量, 现有节点数量):
+			var 多余节点 = 现有BUFF节点[i]
+			%BUFF.remove_child(多余节点)
+			多余节点.queue_free()
 func 重载图钉():
 	for 节点 in %"图钉容器".get_children():
 		%"图钉容器".remove_child(节点)
@@ -90,6 +119,7 @@ func 生成任务栏按钮() -> void:# 生成任务栏所有按钮
 		var 任务按钮: Button = 任务按钮本体.duplicate()
 		任务按钮.show()#防止节点为隐藏
 		任务按钮.text = 界面名称.replace("界面", "").replace("窗口", "")
+		if 任务按钮.text =="小游戏":任务按钮.text ="游戏"
 		var 路径=界面路径映射[界面名称][1]
 		var 纹理=load(路径) if 路径!="" else null
 		if 纹理:
@@ -116,7 +146,7 @@ func 重载场景(场景名称: String, 子场景名称 = null,强制重载=fals
 		return
 	if 子场景名称 != null:#验证子场景有效性
 		if 界面父子关系.has(场景名称) and not 界面父子关系[场景名称].has(子场景名称):
-			print("子场景错误",str(子场景名称))
+			print(场景名称,"的子场景错误",子场景名称)
 			子场景名称 = null
 	# 检查场景名称是否在映射表中
 	var 场景字典名
@@ -141,11 +171,13 @@ func 重载场景(场景名称: String, 子场景名称 = null,强制重载=fals
 	场景容器.add_child(场景实例)
 	初始界面=场景名称
 	打开界面[场景名称] = 子场景名称
+	计划.窗口状态管理(场景名称,"界面显示",null,str(子场景名称))
 	重载图钉()
 	emit_signal("场景更新",场景名称)
 
 func _任务栏(界面名称) -> void:
 	重载场景(界面名称,打开界面[界面名称])
+	#print(打开界面)
 	计划.梅红点单例.消除红点(界面名称,"",-1)
 	pass # Replace with function body.
 # 传入容器节点，检查是否有2个以上子节点，如果是则将第一个节点移到最后

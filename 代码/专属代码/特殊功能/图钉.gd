@@ -22,4 +22,4 @@ func 更新UI():
 	$"物品信息".custom_minimum_size=Vector2(最大X尺寸, 80)
 	$"物品信息".size=$"物品信息".custom_minimum_size
 	#position=Vector2(0,0)
-	custom_minimum_size=size
+	#custom_minimum_size=size

@@ -1,5 +1,18 @@
 extends CanvasLayer
 func _ready():
+	if 梅存档格式.单例.启用测试:
+		var 测试功能=%"测试功能"
+		var 测试默认显示:bool=false
+		if OS.has_feature("editor_runtime"):
+			测试默认显示=true
+		测试功能.visible=计划.窗口状态管理("测试","显示",测试默认显示)
+		%"显示测试".visible=true
+		%"显示测试".button_pressed=测试功能.visible
+		%"显示测试".pressed.connect(func():
+			测试功能.visible= not 测试功能.visible
+			计划.窗口状态管理("测试","显示",null,测试功能.visible))
+	else :
+		%"显示测试".visible=false
 	%"跳转设置".pressed.connect(func():
 		print($"..".初始界面)
 		if $"..".初始界面=="任务窗口" and 计划.节点有效性检查("任务界面"):

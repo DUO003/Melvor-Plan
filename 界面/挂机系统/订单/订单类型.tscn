@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyatfka4r8wnd"]
+
+[ext_resource type="Script" uid="uid://qgsp0l30d32l" path="res://界面/挂机系统/订单/订单类型.gd" id="1_djbci"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_gfkmx"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_i10jl"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_svwrv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i10jl"]
+bg_color = Color(0.55, 0.42716667, 0.18149999, 0.78431374)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.55, 0.42716667, 0.18149999, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("3_svwrv")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_52tst"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("2_i10jl")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_i10jl")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fr868"]
+content_margin_left = 125.0
+
+[node name="订单类型" type="Panel"]
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_gfkmx")
+theme_override_styles/panel = SubResource("StyleBox_52tst")
+script = ExtResource("1_djbci")
+"类型" = "资源订单"
+
+[node name="文本" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+offset_right = 371.0
+offset_bottom = 100.0
+theme_override_constants/line_spacing = -15
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fr868")
+text = "资源订单0/10
+扩容费用200"
+vertical_alignment = 1
+
+[node name="扩容" type="Button" parent="."]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 17.0
+offset_right = 117.0
+offset_bottom = 84.0
+text = "扩容"
+
+[node name="配置选项" type="OptionButton" parent="."]
+visible = false
+custom_minimum_size = Vector2(200, 55)
+layout_mode = 0
+offset_left = 200.0
+offset_top = 100.0
+offset_right = 400.0
+offset_bottom = 155.0
+fit_to_longest_item = false
+
+[node name="Label" type="Label" parent="配置选项"]
+layout_mode = 0
+offset_left = -190.0
+offset_right = -150.0
+offset_bottom = 57.0
+text = "配置选项 :"

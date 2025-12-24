@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://q3a6w73vn7xj"]
+[gd_scene load_steps=18 format=3 uid="uid://q3a6w73vn7xj"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_o0hed"]
 [ext_resource type="Script" uid="uid://bns6tdw6v66fp" path="res://代码/专属代码/合成主界面/合成_抽奖机界面.gd" id="2_7yrbw"]
@@ -6,10 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://byxndkdhqwumw" path="res://界面/插件/圆形进度条.tscn" id="6_7solx"]
 [ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="7_5imkx"]
 [ext_resource type="Texture2D" uid="uid://cg5lbyhyg8ys3" path="res://素材/像素/标准剑.png" id="8_yqcxx"]
-[ext_resource type="Texture2D" uid="uid://bncp3kn0a6b4y" path="res://素材/豆包AI素材/特殊图纸.png" id="9_avrdn"]
+[ext_resource type="Texture2D" uid="uid://biml7dtc81p7b" path="res://素材/豆包AI素材/特殊图纸.png" id="9_avrdn"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="11_5imkx"]
+[ext_resource type="PackedScene" uid="uid://xxyqjkn8fefo" path="res://界面/插件/滑块.tscn" id="11_7solx"]
 [ext_resource type="Script" uid="uid://bbi5ojpwx5ouf" path="res://界面/蓝图图片.gd" id="11_yqcxx"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="12_yqcxx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7solx"]
+content_margin_left = 10.0
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 0.25490198)
+script = ExtResource("12_yqcxx")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5imkx"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
@@ -196,6 +203,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_o0hed")
 script = ExtResource("2_7yrbw")
+"基类窗口名称" = "合成_抽奖机界面"
 
 [node name="标题" type="ColorRect" parent="."]
 layout_mode = 1
@@ -276,20 +284,19 @@ offset_bottom = 1000.0
 [node name="研究" type="Button" parent="内容节点"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -700.0
-offset_top = 310.0
-offset_right = -500.0
-offset_bottom = 399.0
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_top = -140.0
+offset_right = 350.0
+offset_bottom = -51.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "研究"
+metadata/_edit_use_anchors_ = true
 
 [node name="研究方向" type="OptionButton" parent="内容节点"]
 unique_name_in_owner = true
@@ -297,10 +304,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = -10.723001
 anchor_bottom = -10.723001
-offset_left = 50.0
-offset_top = 9880.7
-offset_right = 450.0
-offset_bottom = 9971.7
+offset_left = 61.0
+offset_top = 9754.7
+offset_right = 461.0
+offset_bottom = 9845.7
 fit_to_longest_item = false
 item_count = 1
 popup/item_0/text = "符文"
@@ -308,26 +315,43 @@ popup/item_0/id = 0
 
 [node name="文本" type="Label" parent="内容节点/研究方向"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = -76.0
-offset_right = 398.0
-offset_bottom = -6.0
-theme_override_font_sizes/font_size = 50
+offset_top = -65.0
+offset_right = 400.0
+offset_bottom = -1.0
+theme_override_font_sizes/font_size = 45
 text = "研究方向:"
+
+[node name="滑块" parent="内容节点" instance=ExtResource("11_7solx")]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 279.0
+offset_right = 467.0
+offset_bottom = 339.0
+min_value = 1.0
+"标签文本" = "抽取%d次"
+"零点标签" = "锁定"
+"文本偏移" = Vector2(0, -60)
+
+[node name="标签" parent="内容节点/滑块" index="0"]
+offset_left = 0.0
+offset_top = -60.0
+offset_right = 172.49048
+offset_bottom = -3.0
+theme_override_font_sizes/font_size = 45
 
 [node name="研究进度条" parent="内容节点" instance=ExtResource("6_7solx")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(335, 335)
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
 anchor_right = 0.0
-anchor_bottom = 0.0
 offset_left = 82.0
-offset_top = 366.0
+offset_top = -534.0
 offset_right = 417.0
-offset_bottom = 701.0
+offset_bottom = -199.0
 grow_horizontal = 1
-grow_vertical = 1
+grow_vertical = 0
 size_flags_horizontal = 4
 "半径" = 150.0
 "线条宽度" = 25.0
@@ -367,6 +391,7 @@ texture = ExtResource("8_yqcxx")
 expand_mode = 1
 
 [node name="标签页" type="TabContainer" parent="内容节点"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(1150, 763)
 layout_mode = 0
 offset_left = 520.0
@@ -379,19 +404,32 @@ unique_name_in_owner = true
 layout_mode = 2
 mouse_behavior_recursive = 1
 theme_override_constants/paragraph_separation = 0
-theme_override_font_sizes/bold_font_size = 60
+theme_override_font_sizes/bold_font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_7solx")
 bbcode_enabled = true
-text = "[b]蓝图抽取说明[/b]示例文本,实际修改见游戏内
+text = "[b]蓝图抽取说明	[/b]示例文本,实际修改见游戏内
 75%获得残缺蓝图
 20%获得UP类型的装备蓝图 重复累积更多经验值
 5%获得未拥有的特殊蓝图 全收集给 黄图纸*160
 研究费用随抽到物品提升（0点重置最大160）
---------分界线--------
+--------	分界线	--------
 当获蓝图等级T7（326/600）
 当前UP选项 斧头
 当前研究费用：0"
+fit_content = true
 drag_and_drop_selection_enabled = false
 metadata/_tab_index = 0
+
+[node name="抽取记录" type="RichTextLabel" parent="内容节点/标签页"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/line_separation = -15
+theme_override_constants/paragraph_separation = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_7solx")
+bbcode_enabled = true
+drag_and_drop_selection_enabled = false
+metadata/_tab_index = 1
 
 [node name="主菜单" type="Button" parent="."]
 unique_name_in_owner = true
@@ -519,3 +557,5 @@ libraries = {
 [connection signal="pressed" from="蓝色图纸/倾斜度控制/蓝图属性容器/关闭蓝图展示" to="." method="_关闭蓝图展示"]
 [connection signal="pressed" from="蓝色图纸/倾斜度控制/蓝图属性容器/切换按钮节点/蓝图下一页" to="." method="_蓝图下一页"]
 [connection signal="pressed" from="蓝色图纸/倾斜度控制/蓝图属性容器/切换按钮节点/蓝图上一页" to="." method="_蓝图上一页"]
+
+[editable path="内容节点/滑块"]

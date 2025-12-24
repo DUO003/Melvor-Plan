@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c2ikyp8oaix5u"]
+[gd_scene load_steps=23 format=3 uid="uid://c2ikyp8oaix5u"]
 
 [ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="1_iqbb7"]
 [ext_resource type="Script" uid="uid://v0yytth2tqx2" path="res://代码/专属代码/合成主界面/合成界面.gd" id="2_u2knn"]
@@ -80,6 +80,9 @@ bg_color = Color(0.51, 0.35852996, 0.09689999, 0.15686275)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2xcc"]
 bg_color = Color(0.51, 0.35852996, 0.09689999, 0.28235295)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8sqgc"]
+content_margin_left = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8sqgc"]
 bg_color = Color(0.53, 0.37258995, 0.10069999, 0.3137255)
@@ -264,6 +267,7 @@ layout_mode = 2
 
 [node name="切割分区" type="VBoxContainer" parent="内容节点/内容区/第二内容区"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="制作滚动队列" type="ScrollContainer" parent="内容节点/内容区/第二内容区/切割分区"]
 custom_minimum_size = Vector2(1470, 255)
@@ -337,7 +341,11 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(788, 90)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "温馨提示:左键加入合成队列"
+theme_override_constants/line_spacing = -18
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8sqgc")
+text = "温馨提示:左键加入合成队列
+测试多排的文本"
 vertical_alignment = 1
 autowrap_mode = 2
 
@@ -378,13 +386,11 @@ vertical_alignment = 1
 [node name="悬浮面板" type="Control" parent="."]
 unique_name_in_owner = true
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 script = ExtResource("15_wt2ge")
 
 [node name="悬浮提示" parent="悬浮面板" instance=ExtResource("14_8sqgc")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = -297.0
-offset_right = -59.0
-offset_bottom = 230.6
+offset_left = -100.0
+offset_right = 0.0
+offset_bottom = 100.0

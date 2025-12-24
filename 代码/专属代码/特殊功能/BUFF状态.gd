@@ -1,5 +1,6 @@
 extends Resource
 class_name 梅BUFF数据
+var 实例:梅BUFF=计划.BUFF
 #region 持久化
 ## BUFF唯一ID，全局不可重复，用于管理器索引和存档关联
 @export var BUFF名称: String = "默认BUFF"
@@ -74,11 +75,16 @@ func 删除BUFF():
 ##参数说明：统计类型: 要检查的效果类型（如"资源回复"）
 ##目标字典:用于累加结果的字典（引用）
 func 获取效果(统计类型: String, 目标字典: Dictionary) -> void:
+	#print(BUFF名称,"字典状态",目标字典)
 	if not 效果数值.has(统计类型):return# 边界检查：无对应效果类型时直接返回
 	var 强度合计: float = 计算强度合计()# 1. 计算强度合计值
-	if 强度合计 == 0.0:return
+	if 强度合计 == 0.0:
+		print(BUFF名称,"强度错误")
+		return
 	var 效果子字典: Dictionary = 效果数值[统计类型]# 2. 获取当前统计类型的效果字典（如{"木头":1}）
-	if not 效果子字典:return
+	if not 效果子字典:
+		#print(BUFF名称,"没有对应效果")
+		return
 	for 属性名: String in 效果子字典:# 3. 遍历效果项，累加到目标字典
 		var 基础值: float = float(效果子字典[属性名])
 		var 最终增量: float = 基础值 * 强度合计
@@ -89,6 +95,7 @@ func 获取效果(统计类型: String, 目标字典: Dictionary) -> void:
 	if not 目标字典.has("BUFF来源"):目标字典["BUFF来源"]=[]
 	目标字典["哈希"].append(文件哈希)
 	目标字典["BUFF来源"].append(self)
+	#print("字典状态结束",目标字典)
 ## 内部方法：根据叠加方式计算所有层数的强度合计
 func 计算强度合计() -> float:
 	if 层数 <= 0 or 强度.size() == 0:# 处理层数为0或强度数组为空的情况

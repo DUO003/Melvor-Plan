@@ -232,6 +232,7 @@ visible = false
 custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
 theme_override_constants/line_separation = -10
+theme_override_constants/paragraph_separation = 0
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "简介:赤红火纹缠绕符身，触之有跃动光粒，随气息明灭闪烁。"

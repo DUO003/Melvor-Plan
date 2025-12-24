@@ -21,7 +21,6 @@ corner_radius_bottom_left = 10
 [node name="体力状态" type="Control"]
 custom_minimum_size = Vector2(400, 70)
 layout_mode = 3
-anchors_preset = 0
 offset_right = 400.0
 offset_bottom = 70.0
 theme = ExtResource("1_wok3q")
@@ -30,6 +29,7 @@ script = ExtResource("2_n7kj1")
 [node name="触发显示范围" type="Control" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 70)
+layout_mode = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -44,9 +44,11 @@ expand_mode = 1
 
 [node name="体力值" type="ProgressBar" parent="触发显示范围"]
 unique_name_in_owner = true
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99000007
 offset_left = 96.0
-offset_right = 396.0
+offset_right = -3.0517578e-05
 offset_bottom = 70.0
 mouse_behavior_recursive = 1
 theme = ExtResource("1_wok3q")

@@ -16,7 +16,7 @@ var _moving_item_layer: CanvasLayer
 
 ## 获取顶层，没有则新建
 func get_moving_item_layer() -> CanvasLayer:
-	if not _moving_item_layer: 
+	if not _moving_item_layer:
 		_moving_item_layer = CanvasLayer.new()
 		_moving_item_layer.layer = 128
 		GBIS.get_root().add_child(_moving_item_layer)
@@ -43,7 +43,7 @@ func move_item_by_data(item_data: ItemData, offset: Vector2i, base_size: int,背
 	self.moving_item_offset = offset
 	self.moving_item_view = ItemView.new(item_data, base_size)
 	#print("背包本体",背包本体)
-	GBIS.emit_signal("鼠标物品")
+	GBIS.鼠标物品.emit(true)
 	if 背包本体!=null and 背包本体 is BaseContainerView:
 		moving_item_view.base_size = 背包本体.base_size
 		moving_item_view.stack_num_color = 背包本体.stack_num_color

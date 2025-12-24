@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c51gx8des8nv1" path="res://界面/插件/红点提示.tscn" id="5_5a7ci"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="7_4h1no"]
 [ext_resource type="Script" uid="uid://dbhilkborreev" path="res://代码/专属代码/特殊功能/手动存档.gd" id="7_5a7ci"]
-[ext_resource type="Script" uid="uid://bmlc8vpbcln8u" path="res://代码/专属代码/合成主界面/测试.gd" id="7_etcdq"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="8_0p14m"]
+[ext_resource type="PackedScene" uid="uid://bs3xyimmlbfxm" path="res://界面/根界面/测试功能.tscn" id="9_rhqkc"]
 [ext_resource type="PackedScene" uid="uid://cq8y0f7wmpt01" path="res://界面/插件/奖励悬浮面板.tscn" id="10_0p14m"]
 [ext_resource type="Texture2D" uid="uid://b52t5s6a00r87" path="res://素材/自制/图标/暂停.png" id="11_q2fph"]
 [ext_resource type="Script" uid="uid://cc1j5mukjb2p1" path="res://代码/专属代码/暂停界面/暂停界面.gd" id="11_s3egw"]
@@ -48,11 +48,6 @@ unicode = 32
 [sub_resource type="Shortcut" id="Shortcut_s3egw"]
 events = [SubResource("InputEventKey_0p14m")]
 
-[sub_resource type="DPITexture" id="DPITexture_eusfs"]
-_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"12\"><path fill=\"none\" stroke=\"#b2b2b2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-opacity=\".85\" stroke-width=\"2\" d=\"m2 4 4 4 4-4\"/></svg>
-"
-base_scale = 3.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3egw"]
 bg_color = Color(0.55, 0.42716667, 0.18149999, 0.78431374)
 corner_radius_top_left = 10
@@ -76,6 +71,11 @@ metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 [sub_resource type="DPITexture" id="DPITexture_rhqkc"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"30\"><rect width=\"58\" height=\"28\" x=\"1\" y=\"1\" fill=\"#e0e0e0\" fill-opacity=\".6\" stroke=\"#000\" stroke-width=\".8\" rx=\"7\"/></svg>
 "
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhqkc"]
+bg_color = Color(0.55, 0.42716667, 0.18149999, 0.2509804)
+script = ExtResource("8_0p14m")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [node name="空节点" type="Control"]
 layout_mode = 3
@@ -131,9 +131,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBox_s3egw")
 
-[node name="测试" type="Node" parent="."]
+[node name="存档" type="Node" parent="."]
 
-[node name="展开按钮" type="Button" parent="测试"]
+[node name="展开按钮" type="Button" parent="存档"]
 offset_left = 1550.0
 offset_top = 10.0
 offset_right = 1610.0
@@ -145,66 +145,7 @@ shortcut_in_tooltip = false
 text = ">"
 script = ExtResource("4_4h1no")
 
-[node name="测试" type="Button" parent="测试/展开按钮"]
-z_index = 1
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -710.0
-offset_right = -510.0
-offset_bottom = 80.0
-grow_horizontal = 0
-theme = ExtResource("4_kiae7")
-theme_override_font_sizes/font_size = 50
-text = "测试"
-script = ExtResource("7_etcdq")
-
-[node name="测试功能" type="OptionButton" parent="测试/展开按钮/测试"]
-layout_mode = 0
-offset_left = -227.0
-offset_top = 1.0
-offset_bottom = 41.0
-theme = ExtResource("4_kiae7")
-theme_override_constants/outline_size = 0
-theme_override_constants/h_separation = 0
-theme_override_font_sizes/font_size = 28
-theme_override_constants/arrow_margin = 0
-theme_override_icons/arrow = SubResource("DPITexture_eusfs")
-selected = 0
-item_count = 1
-popup/item_0/text = "测试功能"
-popup/item_0/id = 0
-
-[node name="测试参数" type="OptionButton" parent="测试/展开按钮/测试"]
-layout_mode = 0
-offset_left = -227.0
-offset_top = 40.0
-offset_bottom = 80.0
-theme = ExtResource("4_kiae7")
-theme_override_constants/outline_size = 0
-theme_override_constants/h_separation = 0
-theme_override_font_sizes/font_size = 28
-theme_override_constants/arrow_margin = 0
-theme_override_icons/arrow = SubResource("DPITexture_eusfs")
-selected = 0
-item_count = 1
-popup/item_0/text = "测试参数"
-popup/item_0/id = 0
-
-[node name="红点提示" parent="测试/展开按钮/测试" instance=ExtResource("5_5a7ci")]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_bottom = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 0
-grow_vertical = 1
-"红点条目" = "测试红点"
-
-[node name="存档" type="Button" parent="测试/展开按钮"]
+[node name="存档" type="Button" parent="存档/展开按钮"]
 z_index = 1
 layout_mode = 1
 anchors_preset = 1
@@ -219,13 +160,13 @@ theme_override_font_sizes/font_size = 50
 text = "手动存档"
 script = ExtResource("7_5a7ci")
 
-[node name="存档时间" type="Panel" parent="测试/展开按钮/存档"]
+[node name="存档时间" type="Panel" parent="存档/展开按钮/存档"]
 layout_mode = 0
 offset_left = -225.0
 offset_bottom = 80.0
 theme_override_styles/panel = SubResource("StyleBox_q2fph")
 
-[node name="时间" type="Label" parent="测试/展开按钮/存档/存档时间"]
+[node name="时间" type="Label" parent="存档/展开按钮/存档/存档时间"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -238,7 +179,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="暂停" type="Button" parent="测试/展开按钮"]
+[node name="暂停" type="Button" parent="存档/展开按钮"]
 layout_mode = 0
 offset_left = 55.0
 offset_right = 149.0
@@ -248,7 +189,7 @@ icon = ExtResource("11_q2fph")
 
 [node name="任务栏分割" type="VSplitContainer" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(220, 980)
+custom_minimum_size = Vector2(220, 990)
 layout_mode = 0
 offset_left = 1700.0
 offset_top = 10.0
@@ -269,6 +210,7 @@ custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("4_kiae7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_rhqkc")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
@@ -278,7 +220,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("4_kiae7")
-theme_override_constants/separation = 5
+theme_override_constants/separation = -5
 
 [node name="任务" type="Button" parent="任务栏分割/任务栏滚动区/任务栏"]
 unique_name_in_owner = true
@@ -286,9 +228,11 @@ custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("4_kiae7")
+theme_override_constants/outline_size = 8
 theme_override_constants/h_separation = 0
 theme_override_constants/icon_max_width = 60
 theme_override_constants/align_to_largest_stylebox = 1
+theme_override_font_sizes/font_size = 35
 text = "合成"
 expand_icon = true
 
@@ -308,6 +252,7 @@ custom_minimum_size = Vector2(0, 280)
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("4_kiae7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_rhqkc")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
@@ -330,6 +275,7 @@ offset_bottom = 1080.0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="提示容器" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -366,10 +312,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -91.0
-offset_right = 128.0
-offset_bottom = 91.0
+offset_left = -140.0
+offset_top = -160.5
+offset_right = 140.0
+offset_bottom = 160.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -393,3 +339,21 @@ size_flags_vertical = 4
 shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "取消"
+
+[node name="显示测试" type="CheckButton" parent="暂停界面/背景/排序"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "显示测试"
+alignment = 1
+
+[node name="测试功能" type="CanvasLayer" parent="暂停界面"]
+unique_name_in_owner = true
+visible = false
+
+[node name="测试" parent="暂停界面/测试功能" node_paths=PackedStringArray("空节点") instance=ExtResource("9_rhqkc")]
+offset_left = 974.0
+offset_top = 13.0
+offset_right = 1102.0
+offset_bottom = 93.0
+"空节点" = NodePath("../../..")

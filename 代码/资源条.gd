@@ -47,19 +47,24 @@ func 更新点击回复量():
 	var 额外点击回复:Dictionary=计划.BUFF.BUFF统计("资源回复")
 	if 额外点击回复.has(资源名称):
 		基础量+=额外点击回复[资源名称]
-	print(额外点击回复)
+	#print(额外点击回复)
 func 更新UI():
+	var 背包条=$"进度/背包"
 	资源回复速度=计划.手工.资源回复
 	当前数量 = 计划.手工.查看资源(资源名称)
 	上限值 = 计划.手工.资源上限字典.get(资源名称,0)
 	背包内数量=计划.检查背包物品数量(资源名称)
 	if 类型=="特殊":
+		背包条.value=0
+		背包条.max_value=1
 		$"进度".max_value = 1
 		$"进度".value = 1
 		$"进度".show_percentage=false
 		%"显示数量".text="拥有:"+str(int(背包内数量+当前数量))
 		%"显示数量".visible=true
 	else :
+		背包条.value=背包内数量
+		背包条.max_value=上限值
 		$"进度".max_value = 上限值
 		$"进度".value = 当前数量
 		$"进度".show_percentage=false
@@ -69,7 +74,7 @@ func 更新UI():
 		else :
 			%"显示数量".visible=false
 	var 回复速度=资源回复速度.get(资源名称,0)
-	if 回复速度==0:
+	if 回复速度<=0.01:
 		$"进度".size=Vector2(400,50)
 		$"回复".visible=false
 		%"刻度".更新进度条参数(上限值,400)
@@ -106,7 +111,7 @@ func 更新贴图():
 			$"资源粒子".emitting=false
 		贴图节点.texture = 纹理
 		$"资源粒子".texture = 纹理
-	
+
 func 处理按下():
 	#更新点击回复量()
 	if 基础量>0:

@@ -35,14 +35,23 @@ func 字典加载():
 		蓝图表头[表头]=缓存序号
 		缓存序号+=1
 	蓝图字典={}
+	var 格式标准=创世蓝图[1]
 	for 蓝图 in 创世蓝图:
-		蓝图字典[蓝图[0]]=蓝图
-		var 处理后的蓝图行 = []
-		for 元素 in 蓝图:
-			处理后的蓝图行.append(_转换值(元素))
-		处理的蓝图字典[蓝图[0]] = 处理后的蓝图行
+		if not 蓝图==创世蓝图[0] and not 蓝图==创世蓝图[1]:
+			蓝图字典[蓝图[0]]=蓝图
+			var 处理后的蓝图行 = []
+			for 序号 in range(蓝图.size()):
+				处理后的蓝图行.append(_转换格式(蓝图[序号],格式标准[序号]))
+			处理的蓝图字典[蓝图[0]] = 处理后的蓝图行
 	蓝图数组=蓝图字典.keys()
-	#print(蓝图表头)
+	#print(蓝图数组)
+func _转换格式(值:String,目标类型:String) -> Variant:
+	if 目标类型=="整数" and 值.is_valid_int():
+		return int(值)
+	elif 目标类型=="浮点" and 值.is_valid_float():
+		return float(值)
+	else:
+		return 值
 func _转换值(值:String) -> Variant:
 	if 值.is_valid_int():
 		return int(值)
@@ -50,15 +59,15 @@ func _转换值(值:String) -> Variant:
 		return float(值)
 	else:
 		return 值
-func 道具贴图(贴图名称:String):#->Texture2Dprint("贴图名称",贴图名称)
-	if 贴图名称 in 蓝图贴图:
+func 道具贴图(贴图名称:String)->Texture2D:#-print("贴图名称",贴图名称)
+	if 贴图名称 in 蓝图贴图 and 蓝图贴图[贴图名称] is Texture2D:
 		return 蓝图贴图[贴图名称]
 	if 贴图名称 in 蓝图字典:
 		var 贴图:Texture2D=load(蓝图数据(贴图名称,"icon"))
 		if 贴图:
 			蓝图贴图[贴图名称]=贴图
 			return 贴图
-	return null
+	return preload("res://素材/自制/图标/未知图片.png")
 func 蓝图数据(道具名称,读取值,强制类型="自动"):
 	if 道具名称 in 蓝图字典:
 		match 强制类型:
@@ -194,17 +203,17 @@ func 获取表格字典(表格数据,表格行号:int, 首项名称 = null) -> D
 			# 未找到匹配的首项名称
 			push_warning("未找到首项名称对应的行: " + 首项名称)
 			return {}
-	
+
 	# 验证表格行号有效性
 	if 表格行号 < 1 or 表格行号 >= 表格数据.size():
 		push_warning("表格行号无效: " + str(表格行号))
 		return {}
-	
+
 	# 获取表头和对应行数据
 	var 表头 = 表格数据[0]
 	var 行数据 = 表格数据[表格行号]
 	var 结果字典 = {}
-	
+
 	# 遍历表头与行数据，生成键值对
 	for i in range(表头.size()):
 		if i >= 行数据.size():# 确保索行的值引不越界
@@ -216,18 +225,18 @@ func 获取表格字典(表格数据,表格行号:int, 首项名称 = null) -> D
 			结果字典[键] = float(原始值)
 		else:
 			结果字典[键] = 原始值
-	
+
 	return 结果字典
-	
+
 func 调试打印所有文件目录():
 	var root_path = "res://"
 	# 使用静态方法获取目录访问实例
 	var dir = DirAccess.open(root_path)
-	
+
 	if dir == null:
 		print("无法打开目录: ", root_path, " 错误: ", DirAccess.get_open_error())
 		return
-	
+
 	# 开始递归遍历
 	print("开始列出所有 res:// 下的文件和目录：")
 	traverse_directory_files(dir, root_path)
@@ -235,16 +244,16 @@ func 调试打印所有文件目录():
 func traverse_directory_files(dir: DirAccess, current_path: String):
 	dir.list_dir_begin()
 	var entry = dir.get_next()
-	
+
 	while entry != "":
 		# 跳过 . 和 ..
 		if entry == "." or entry == "..":
 			entry = dir.get_next()
 			continue
-		
+
 		var full_path = current_path + entry
 		var is_dir = dir.current_is_dir()
-		
+
 		# 打印路径
 		if is_dir:
 			print("[目录] ", full_path)
@@ -255,7 +264,7 @@ func traverse_directory_files(dir: DirAccess, current_path: String):
 				sub_dir.list_dir_end()  # 结束子目录遍历
 		else:
 			print("[文件] ", full_path)
-		
+
 		entry = dir.get_next()
 	dir.list_dir_end()
 func 处理表格数据(表格: Array):
@@ -282,7 +291,7 @@ func 处理表格数据(表格: Array):
 			处理后icon路径 = 原始icon路径.trim_suffix("*") + 物品名称 + ".png"
 		表格拷贝[行索引][icon索引]=处理后icon路径
 	return 表格拷贝
-# 生成简介文本（仅依赖传入的尺寸参数，完全解耦节点）
+## 生成带图片的简介文本（仅依赖传入的尺寸参数，完全解耦节点）
 func 获取简介(物品名称: String, 图片尺寸: int=40) -> String:
 	var 基础简介文本: String = 蓝图字典[物品名称][蓝图表头["简介"]]
 	if 基础简介文本=="":
@@ -294,7 +303,7 @@ func 获取简介(物品名称: String, 图片尺寸: int=40) -> String:
 	for i in range(匹配结果.size() - 1, -1, -1):
 		var 匹配项: RegExMatch = 匹配结果[i]
 		var 图片名称: String = 匹配项.get_group(1)  # 提取图片名称
-		var 图片路径: String = 道具贴图(图片名称)   # 调用你的图片路径方法
+		var 图片路径: String = 道具贴图(图片名称).resource_path   # 调用你的图片路径方法
 		var 替换内容: String = ""# 生成替换内容（图片路径错误则不显示）
 		if not 图片路径=="":
 			var 尺寸字符串: String = "%dx%d" % [图片尺寸, 图片尺寸]# 生成尺寸字符串（如 "100x100"）

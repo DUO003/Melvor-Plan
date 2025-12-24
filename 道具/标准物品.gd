@@ -66,6 +66,30 @@ var 物品使用映射:Dictionary = {
 			return 获得量
 		else:
 			print("不足，无法使用")
+		return -1),  # 失败,  # 失败
+	"药水":(func(_字典):
+		if not 计划.BUFF.BUFF配置字典.has(self.item_name):return -1#没有药水的BUFF状态
+		if self.current_amount >= 1:
+			if 计划.BUFF.创建BUFF(self.item_name,"使用药水",1.0):
+				计划.语法糖通知(self.item_name+"使用成功")
+				return 1
+			return 0#BUFF层数已满或受到其他限制
+		else:
+			print("不足，无法使用")
+		return -1),  # 失败
+	"精通代币":(func(字典):
+		if self.current_amount >= 1:
+			if not 字典.has("系统"):return -1#如果没有系统键
+			var 系统=字典["系统"]
+			if not 计划.梅存档[系统].has("精通"):
+				计划.梅存档[系统]["精通"]=0
+			var 精通值=计划.数据精通上限(系统)*0.01
+			计划.梅存档["手工"]["精通"]+=精通值
+			计划.更新_UI.emit()
+			计划.语法糖通知(self.item_name+"使用成功")
+			return 1
+		else:
+			print("不足，无法使用")
 		return -1),  # 失败
 	}
 

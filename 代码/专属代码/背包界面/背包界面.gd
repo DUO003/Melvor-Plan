@@ -1,41 +1,31 @@
-extends Control
+extends 基类梅窗口
 var 金币=计划.梅存档["金币"]
 var 物品:标准物品=null
 var 背包="背包"
-var 属性文本="多003\n游历 LV:0		熟练:0/100\n"
 var 战力文本=""
 var 上次查看:={}
+var 物品栏选项卡:TabContainer
+var 状态区:TabContainer
 func _ready():
-	%物品栏选项卡.set_tab_title(0, "物品栏")
-	%"物品栏选项卡".current_tab=0
-	%"状态区".current_tab=0
+	super._ready()
+	状态区=%"状态区"
+	物品栏选项卡=%"物品栏选项卡"
+	物品栏选项卡.set_tab_title(0, "物品栏")
+	物品栏选项卡.current_tab=计划.窗口状态_限制(基类窗口名称,"物品栏选项卡",0,物品栏选项卡.get_tab_count())
+	状态区.current_tab=计划.窗口状态_限制(基类窗口名称,"状态区",0,状态区.get_tab_count())
 	计划.connect("更新_UI", Callable(self, "_更新_UI"))
 	计划.更新_背包物品信息.connect(_背包物品信息)
 	_更新_UI()
 	%"无选中".visible=true
 	%"选中".visible=false
-	%"随身商店".visibility_changed.connect(func():
-		if %"随身商店".visible:
-			%"物品栏".visible = true
-		解除提示占用())
-	%"装备".visibility_changed.connect(func():
-		if %"装备".visible:
-			%"装备栏".visible = true
-		解除提示占用())
-	%"物品".visibility_changed.connect(func(): 
-		if %"物品".visible:
-			%"物品栏".visible = true
-		解除提示占用())
+	%"随身商店".visibility_changed.connect(func():if %"随身商店".visible:切换物品栏(0))
+	%"装备".visibility_changed.connect(func():if %"装备".visible:切换物品栏(1))
+	%"物品".visibility_changed.connect(func():if %"物品".visible:切换物品栏(0))
+	物品栏选项卡.tab_selected.connect(func(序号):计划.窗口状态管理(基类窗口名称,"物品栏选项卡",null,序号))
 	战力文本=计划.游历.战力文本更新()
-	%"玩家属性".text=属性文本+战力文本
-	GBIS.connect("sig_slot_item_unequipped", Callable(func(_1,_2):
-		战力文本=计划.游历.战力文本更新()
-		%"玩家属性".text=属性文本+战力文本
-		))
-	GBIS.connect("sig_slot_item_equipped", Callable(func(_1,_2):
-		战力文本=计划.游历.战力文本更新()
-		%"玩家属性".text=属性文本+战力文本
-		))
+	更新属性()
+	GBIS.sig_slot_item_unequipped.connect(func(_1,_2):更新属性())
+	GBIS.sig_slot_item_equipped.connect(func(_1,_2):更新属性())
 	GBIS.sig_item_focused.connect(func(物品实例:ItemData,背包名):#当鼠标获得物品焦点信号
 		上次查看["物品实例"]=物品实例
 		上次查看["背包名"]=背包名
@@ -61,11 +51,22 @@ func _ready():
 	%"整理".pressed.connect(整理物品)
 	#%"玩家".mouse_entered.connect(func(): %"玩家属性".text=战力文本)
 	#%"玩家".mouse_exited.connect(func():%"玩家属性".text=属性文本)
+func 更新属性():
+	var 用户文本="用户:"+计划.梅存档.get("挂机",{}).get("用户信息",{}).get("用户名","玩家")+"\r"
+	战力文本=计划.游历.战力文本更新()
+	%"玩家属性".text=用户文本+战力文本
+
+func 切换物品栏(物品栏:int):
+	物品栏选项卡.current_tab=物品栏
+	计划.窗口状态管理(基类窗口名称,"状态区",null,状态区.current_tab)
+	解除提示占用()
+	
 func 整理物品():
 	var 背包数据库单例=ContainerRepository.instance
 	var 背包的实例:ContainerData = 背包数据库单例._container_data_map.get("背包",null)
 	if 背包的实例 is ContainerData:
 		背包的实例.整理物品()
+
 func 解除提示占用(物品实例=null):
 	if 物品实例==null or 上次查看.get("物品实例",null)==物品实例:
 		上次查看.clear()
@@ -107,7 +108,7 @@ func _背包物品信息(传入物品:标准物品,背包名称):
 	背包=背包名称
 	%"无选中".visible=false
 	%"选中".visible=true
-	%"状态区".current_tab=0
+	状态区.current_tab=0
 	%"物品详情文本".text=物品.文本预处理()
 	%"物品详情名称".text=物品.item_name
 	%"物品详情贴图".texture=物品.icon

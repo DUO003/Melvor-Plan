@@ -1,0 +1,280 @@
+[gd_scene load_steps=15 format=3 uid="uid://dron5fg7jasw2"]
+
+[ext_resource type="Texture2D" uid="uid://s1sv26if4s6i" path="res://素材/自制/QQ群.png" id="1_1lv0b"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ar4cj"]
+[ext_resource type="Script" uid="uid://cnoic7mbi3ks1" path="res://界面/挂机系统/任务窗口/设置面板.gd" id="2_xx283"]
+[ext_resource type="Script" uid="uid://b7ri82yh6cfx1" path="res://界面/挂机系统/任务窗口/重置倒计时.gd" id="3_jepqw"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="4_jxn20"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xx283"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8yxkd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxn20"]
+content_margin_left = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.53, 0.37258995, 0.10069999, 0.19607843)
+border_width_bottom = 10
+border_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+script = ExtResource("4_jxn20")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jxn20"]
+content_margin_left = 25.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ja3k"]
+content_margin_left = 25.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_26hf3"]
+content_margin_left = 25.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_leojc"]
+content_margin_left = 25.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rl18n"]
+content_margin_left = 25.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_22niw"]
+content_margin_left = 25.0
+
+[node name="设置面板" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_ar4cj")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xx283")
+script = ExtResource("2_xx283")
+metadata/_tab_index = 3
+
+[node name="设置面板" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="设置标签" type="TabContainer" parent="设置面板"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8yxkd")
+current_tab = 1
+
+[node name="基础设置" type="ScrollContainer" parent="设置面板/设置标签"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_tab_index = 0
+
+[node name="设置" type="VBoxContainer" parent="设置面板/设置标签/基础设置"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="标签" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_jxn20")
+text = "游戏运行信息:"
+
+[node name="重置倒计时" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+layout_mode = 2
+theme_override_constants/line_spacing = -15
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jxn20")
+text = "测试文本
+测试文本"
+script = ExtResource("3_jepqw")
+
+[node name="标签2" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_jxn20")
+text = "通知设置:"
+
+[node name="功能说明" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ja3k")
+text = "通知显示时长"
+
+[node name="通知显示时长" type="OptionButton" parent="设置面板/设置标签/基础设置/设置/功能说明"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 283.0
+offset_top = -3.0
+offset_right = 424.0
+offset_bottom = 54.0
+selected = 0
+item_count = 6
+popup/item_0/text = "默认"
+popup/item_0/id = 5
+popup/item_1/text = "1秒"
+popup/item_1/id = 4
+popup/item_2/text = "2秒"
+popup/item_2/id = 3
+popup/item_3/text = "3秒"
+popup/item_3/id = 2
+popup/item_4/text = "4秒"
+popup/item_4/id = 1
+popup/item_5/text = "5秒"
+popup/item_5/id = 0
+
+[node name="功能说明2" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_26hf3")
+text = "通知显示位置"
+
+[node name="通知显示位置" type="OptionButton" parent="设置面板/设置标签/基础设置/设置/功能说明2"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 283.0
+offset_top = -3.0
+offset_right = 424.0
+offset_bottom = 54.0
+selected = 2
+item_count = 3
+popup/item_0/text = "左"
+popup/item_0/id = 0
+popup/item_1/text = "中"
+popup/item_1/id = 1
+popup/item_2/text = "右"
+popup/item_2/id = 2
+
+[node name="标签3" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_jxn20")
+text = "游戏窗口:"
+
+[node name="启用全屏" type="CheckButton" parent="设置面板/设置标签/基础设置/设置"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "启用全屏"
+
+[node name="其他" type="ScrollContainer" parent="设置面板/设置标签"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_tab_index = 1
+
+[node name="设置" type="VBoxContainer" parent="设置面板/设置标签/其他"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="标签2" type="Label" parent="设置面板/设置标签/其他/设置"]
+layout_mode = 2
+theme_override_constants/line_spacing = -10
+theme_override_constants/paragraph_spacing = -10
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_jxn20")
+text = "游戏存档:"
+
+[node name="存档说明" type="Label" parent="设置面板/设置标签/其他/设置"]
+layout_mode = 2
+theme_override_constants/line_spacing = -15
+theme_override_styles/normal = SubResource("StyleBoxEmpty_leojc")
+text = "如果你发现存档丢失
+可能是你的steam云存档未生效或使用本地存档
+可以打开文件夹,将旧存档拷贝进来
+原目录名<梅尔沃计划>就在新目录<梅计划>旁边"
+
+[node name="打开存档文件夹" type="Button" parent="设置面板/设置标签/其他/设置"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+text = "打开存档文件夹"
+
+[node name="标签3" type="Label" parent="设置面板/设置标签/其他/设置"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_jxn20")
+text = "游戏缓存:"
+
+[node name="删除说明" type="Label" parent="设置面板/设置标签/其他/设置"]
+layout_mode = 2
+theme_override_constants/line_spacing = -15
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rl18n")
+text = "游戏会缓存当前窗口状态.通常不需要删除.
+例如选中的标签,筛选器.不影响存档内数据"
+
+[node name="删除缓存" type="Button" parent="设置面板/设置标签/其他/设置"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+text = "删除缓存"
+
+[node name="说明" type="Label" parent="设置面板/设置标签/其他/设置"]
+layout_mode = 2
+theme_override_constants/line_spacing = -15
+theme_override_styles/normal = SubResource("StyleBoxEmpty_22niw")
+text = "如果关闭,会隐藏QQ群的二维码
+可以先隐藏二维码后删除缓存如果删除成功,会恢复默认显示"
+
+[node name="二维码" type="CheckButton" parent="设置面板/设置标签/其他/设置"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "显示二维码"
+
+[node name="外链" type="VBoxContainer" parent="设置面板"]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="标题" type="Label" parent="设置面板/外链"]
+layout_mode = 2
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 38
+text = "游戏没有BGM
+请使用外部音乐网站"
+
+[node name="网易云" type="LinkButton" parent="设置面板/外链"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "网易云"
+underline = 1
+uri = "https://music.163.com/"
+
+[node name="QQ音乐" type="LinkButton" parent="设置面板/外链"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "QQ音乐"
+underline = 1
+uri = "https://y.qq.com/"
+
+[node name="标题2" type="Label" parent="设置面板/外链"]
+layout_mode = 2
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 38
+text = "游戏相关"
+
+[node name="更新日志" type="LinkButton" parent="设置面板/外链"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "更新日志"
+underline = 1
+uri = "https://ai.feishu.cn/wiki/ERTNwq8ggiGLlUkJv8CchMjonPb"
+
+[node name="QQ群" type="LinkButton" parent="设置面板/外链"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "QQ群链接"
+underline = 1
+uri = "https://qm.qq.com/q/P7b2kw9OsU"
+
+[node name="群二维码" type="TextureButton" parent="设置面板/外链"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 400)
+layout_mode = 2
+texture_normal = ExtResource("1_1lv0b")
+ignore_texture_size = true
+stretch_mode = 0

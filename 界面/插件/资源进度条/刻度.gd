@@ -7,7 +7,7 @@ extends Control
 @export var 刻度高度: float = 20.0:# 刻度矩形的高度（垂直方向）
 	set(值):
 		刻度高度 = 值
-		queue_redraw()           
+		queue_redraw()
 @export var 大刻度颜色: Color = Color(0, 0, 0):
 	set(值):
 		大刻度颜色 = 值
@@ -21,7 +21,7 @@ extends Control
 		进制数= 值
 		if Engine.is_editor_hint():
 			queue_redraw()
-			更新文本()         
+			更新文本()
 var 小刻度淡出阈值倍率: float = 0.4   # 小刻度淡出阈值 = 当前量级 * 此倍率（如1000量级→500淡出）
 var 小刻度隐藏阈值倍率: float = 0.9   # 小刻度隐藏阈值 = 当前量级 * 此倍率（如1000量级→600隐藏）
 @export var 强制量级: float = -1:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://wk8j61u2rm2u"]
+[gd_scene load_steps=19 format=3 uid="uid://wk8j61u2rm2u"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_0blbr"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_skso8"]
@@ -20,8 +20,42 @@ corner_radius_bottom_left = 5
 script = ExtResource("3_8p7xd")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skso8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfh7r"]
 bg_color = Color(0.6666667, 0.6039216, 0.43529412, 0.78431374)
+border_color = Color(0.5178843, 0.36404428, 0.109538876, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+expand_margin_bottom = -5.0
+script = ExtResource("3_8p7xd")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+margin_bottom = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_plu3q"]
+bg_color = Color(0.5468471, 0.4737, 0.30870685, 1)
+border_color = Color(0.5178843, 0.36404428, 0.109538876, 1)
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+expand_margin_bottom = -215.0
+script = ExtResource("3_8p7xd")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+margin_bottom = -215
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skso8"]
+bg_color = Color(0.6666667, 0.6039216, 0.43529412, 0)
 border_width_left = 5
 border_width_top = 70
 border_width_right = 5
@@ -50,8 +84,10 @@ content_margin_top = -1.0
 content_margin_right = 10.0
 content_margin_bottom = -1.0
 script = ExtResource("2_skso8")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_m1b3w"), SubResource("StyleBoxFlat_skso8")])
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_m1b3w"), SubResource("StyleBoxFlat_cfh7r"), SubResource("StyleBoxFlat_plu3q"), SubResource("StyleBoxFlat_skso8")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m1b3w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5aig"]
 bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
@@ -152,12 +188,12 @@ script = ExtResource("2_skso8")
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [node name="订单" type="Panel"]
-custom_minimum_size = Vector2(400, 420)
+custom_minimum_size = Vector2(400, 400)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -1520.0
-offset_bottom = -660.0
+offset_bottom = -680.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_0blbr")
@@ -170,7 +206,9 @@ offset_left = 8.0
 offset_top = 2.0
 offset_right = 313.0
 offset_bottom = 76.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_constants/paragraph_separation = 0
+theme_override_constants/outline_size = 10
 bbcode_enabled = true
 text = "[img=40x40]res://素材/豆包AI素材/图标/合成图标.png[/img]#资源订单"
 
@@ -178,38 +216,30 @@ text = "[img=40x40]res://素材/豆包AI素材/图标/合成图标.png[/img]#资
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = -1
-offset_left = 14.0
+offset_left = 245.0
 offset_top = 76.0
-offset_right = 143.0
-offset_bottom = 195.0
+offset_right = 385.0
+offset_bottom = 186.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_m1b3w")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="名称单价" type="Label" parent="."]
-layout_mode = 0
-offset_left = 143.0
-offset_top = 79.0
-offset_right = 389.0
-offset_bottom = 189.0
-theme_override_constants/line_spacing = -15
-theme_override_font_sizes/font_size = 38
-text = "道具名称
-单价:100$"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="装饰文本" type="Label" parent="."]
+[node name="装饰文本" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 317.0
 offset_top = -5.000004
 offset_right = 411.0
-offset_bottom = 39.999996
+offset_bottom = 51.999996
 rotation = 0.4464201
-theme_override_colors/font_color = Color(1, 1, 1, 0.64705884)
-text = "优质"
+theme_override_colors/font_outline_color = Color(0.6117647, 0.53333336, 0.35686275, 0.7058824)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m1b3w")
+bbcode_enabled = true
+text = "词条"
+scroll_active = false
 horizontal_alignment = 1
 
 [node name="倒计时" type="Label" parent="."]
@@ -225,21 +255,38 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "剩余：01:23:45"
 
-[node name="提交" type="Button" parent="."]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 342.0
-offset_right = 168.0
-offset_bottom = 407.0
-theme_override_font_sizes/font_size = 40
-text = "提交"
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -77.0
+offset_right = -11.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="放弃" type="Button" parent="."]
-layout_mode = 0
-offset_left = 223.0
-offset_top = 342.0
-offset_right = 343.0
-offset_bottom = 407.0
+[node name="占位" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="提交" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 40
+text = "提交*10"
+
+[node name="占位2" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="放弃" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBox_cfh7r")
 theme_override_styles/pressed = SubResource("StyleBox_q5aig")
@@ -247,27 +294,36 @@ theme_override_styles/hover = SubResource("StyleBox_kucxn")
 theme_override_styles/focus = SubResource("StyleBox_drq84")
 text = "放弃"
 
+[node name="占位3" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
 [node name="报酬" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 192.0
-offset_right = 389.0
-offset_bottom = 297.0
-theme_override_constants/line_separation = -12
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 15.0
+offset_top = 75.0
+offset_right = -11.0
+offset_bottom = 282.0
+theme_override_constants/line_separation = -15
 theme_override_constants/paragraph_separation = -5
-theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/normal_font_size = 37
 bbcode_enabled = true
-text = "[font_size=30]金币合计:[/font_size]10000[img=40x40]res://素材/游戏素材/货币/2.png[/img]
-[font_size=30]15%概率:[/font_size]100[img=40x40]res://素材/选用素材/卷轴/scroll-blue.png[/img]"
+text = "{物品名称}
+金币{倍率}%
+合计:{金币数量}[img=40x40]res://素材/游戏素材/货币/2.png[/img]
+剩余{}次:{}[图片]"
+scroll_active = false
 
 [node name="进度条" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = -1
 offset_left = 11.0
-offset_top = 297.0
+offset_top = 283.0
 offset_right = 388.0
-offset_bottom = 337.0
+offset_bottom = 323.0
 grow_vertical = 2
 step = 1.0
 value = 50.0
@@ -278,6 +334,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -7.5
+offset_bottom = 9.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "50/100"

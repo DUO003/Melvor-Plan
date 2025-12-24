@@ -29,7 +29,7 @@ content_margin_bottom = 2.0
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqimc"]
-bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+bg_color = Color(0.5254902, 0.6509804, 0.52156866, 1)
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10
@@ -342,6 +342,11 @@ corner_detail = 6
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgrsc"]
 content_margin_left = 10.0
 bg_color = Color(0.4, 0.30588236, 0.12156863, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.30588236, 0.12156863, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -352,6 +357,11 @@ metadata/_custom_type_script = "uid://dyet4yfov8by1"
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntsn1"]
 content_margin_left = 10.0
 bg_color = Color(0.4, 0.30588236, 0.12156863, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.30588236, 0.12156863, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -362,6 +372,11 @@ metadata/_custom_type_script = "uid://dyet4yfov8by1"
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gklb8"]
 content_margin_left = 10.0
 bg_color = Color(0.4, 0.30588236, 0.12156863, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.30588236, 0.12156863, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -792,12 +807,21 @@ _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"30\">
 base_scale = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0fpt"]
-bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
-expand_margin_top = -3.0
-expand_margin_bottom = -3.0
+bg_color = Color(0.53, 0.37258995, 0.10069999, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+expand_margin_left = -3.0
+expand_margin_top = -5.0
+expand_margin_right = -3.0
+expand_margin_bottom = -5.0
 script = ExtResource("2_csmyg")
-margin_top = -3
-margin_bottom = -3
+margin_left = -3
+margin_top = -5
+margin_right = -3
+margin_bottom = -5
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="DPITexture" id="DPITexture_1xjbn"]
@@ -901,6 +925,10 @@ LinkButton/fonts/font = ExtResource("1_csmyg")
 LinkButton/styles/focus = SubResource("StyleBoxFlat_bjkiy")
 MenuButton/fonts/font = ExtResource("1_csmyg")
 OptionButton/colors/font_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_focus_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_hover_color = Color(0.08078333, 0.08078336, 0.08078327, 1)
+OptionButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_pressed_color = Color(0, 0, 0, 1)
 OptionButton/constants/outline_size = 1
 OptionButton/font_sizes/font_size = 40
 OptionButton/fonts/font = ExtResource("1_csmyg")

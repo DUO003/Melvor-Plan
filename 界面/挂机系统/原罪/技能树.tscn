@@ -1,0 +1,293 @@
+[gd_scene load_steps=11 format=3 uid="uid://hropdpl5f686"]
+
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_5fqhb"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_wgu8q"]
+[ext_resource type="PackedScene" uid="uid://4eblwtbjnhi6" path="res://界面/挂机系统/原罪/技能.tscn" id="2_dm3ti"]
+[ext_resource type="Script" uid="uid://dgse7n4w5sdmq" path="res://界面/挂机系统/原罪/技能树.gd" id="2_vnvyc"]
+[ext_resource type="PackedScene" uid="uid://ooiwqu3875ea" path="res://界面/插件/动作进度条.tscn" id="4_vnvyc"]
+[ext_resource type="PackedScene" uid="uid://xxyqjkn8fefo" path="res://界面/插件/滑块.tscn" id="5_wsdai"]
+[ext_resource type="Script" uid="uid://d1dj1i8n44417" path="res://界面/挂机系统/原罪/技能树中心点.gd" id="6_86x06"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgu8q"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("1_5fqhb")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nm3x"]
+bg_color = Color(0.6666667, 0.6039216, 0.43529412, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("1_5fqhb")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrh1p"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 0.19607843)
+script = ExtResource("1_5fqhb")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[node name="技能树" type="HSplitContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_wgu8q")
+theme_override_styles/split_bar_background = SubResource("StyleBoxFlat_wgu8q")
+script = ExtResource("2_vnvyc")
+metadata/_tab_index = 3
+metadata/_edit_lock_ = true
+
+[node name="技能面板" type="Panel" parent="."]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6nm3x")
+
+[node name="排序容器" type="VBoxContainer" parent="技能面板"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 13.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="显示的技能" type="RichTextLabel" parent="技能面板/排序容器"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/line_separation = -15
+theme_override_constants/paragraph_separation = -2
+theme_override_font_sizes/normal_font_size = 35
+text = "【研究改良】
+简介：解锁连续抽奖
+等级：2/9级
+强度：3(+1)
+前置技能：手工核心
+所属系统：手工
+研究进度/研究费用：1500/8000"
+fit_content = true
+scroll_active = false
+
+[node name="动作进度条" parent="技能面板/排序容器" instance=ExtResource("4_vnvyc")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="研究队列" type="ScrollContainer" parent="技能面板/排序容器"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="研究队列" type="VBoxContainer" parent="技能面板/排序容器/研究队列"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="示例文本" type="Label" parent="技能面板/排序容器/研究队列/研究队列"]
+layout_mode = 2
+text = "1.研究XX"
+
+[node name="示例文本2" type="Label" parent="技能面板/排序容器/研究队列/研究队列"]
+layout_mode = 2
+text = "2.研究XX"
+
+[node name="研究倍率" parent="技能面板/排序容器" instance=ExtResource("5_wsdai")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+min_value = 1.0
+"标签文本" = "研究力度:%d"
+"零点标签" = "最大费用"
+"文本偏移" = Vector2(240, -10)
+
+[node name="研究经费" type="Label" parent="技能面板/排序容器"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/line_spacing = -12
+theme_override_font_sizes/font_size = 35
+text = "每秒消耗%d金币
+获取%d的研究进度"
+
+[node name="按键区" type="HBoxContainer" parent="技能面板/排序容器"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="加入队列" type="Button" parent="技能面板/排序容器/按键区"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+text = "加入队列"
+
+[node name="清空队列" type="Button" parent="技能面板/排序容器/按键区"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+text = "清空队列"
+
+[node name="技能树节点" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_mrh1p")
+metadata/_edit_lock_ = true
+
+[node name="显示区域" type="Control" parent="技能树节点"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_lock_ = true
+
+[node name="技能中心点" type="Control" parent="技能树节点/显示区域"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="技能树中心点" type="Label" parent="技能树节点/显示区域/技能中心点"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -28.5
+offset_right = 59.0
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "技能树"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_86x06")
+"线宽" = 5.0
+"线颜色" = Color(0.5294118, 0.37254903, 0.101960786, 1)
+metadata/_edit_lock_ = true
+
+[node name="技能" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+layout_mode = 0
+offset_left = -256.0
+offset_top = -40.0
+offset_right = -136.0
+offset_bottom = 80.0
+grow_horizontal = 1
+"技能文本" = "挂机核心"
+"技能层级" = 0
+
+[node name="技能2" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+layout_mode = 0
+offset_left = -346.0
+offset_top = -190.0
+offset_right = -226.0
+offset_bottom = -70.0
+grow_horizontal = 1
+"技能文本" = "订单提交改良"
+"技能层级" = 1
+
+[node name="技能3" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+layout_mode = 0
+offset_left = -168.0
+offset_top = -190.0
+offset_right = -48.0
+offset_bottom = -70.0
+grow_horizontal = 1
+"技能文本" = "额外的订单"
+"技能层级" = 1
+
+[node name="技能4" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+layout_mode = 0
+offset_left = 134.0
+offset_top = -40.0
+offset_right = 254.0
+offset_bottom = 80.0
+grow_horizontal = 1
+"技能文本" = "手工核心"
+"技能层级" = 0
+
+[node name="技能5" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+layout_mode = 0
+offset_left = 44.0
+offset_top = -190.0
+offset_right = 164.0
+offset_bottom = -70.0
+grow_horizontal = 1
+"技能文本" = "研究残缺图纸"
+"技能层级" = 1
+
+[node name="技能6" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+layout_mode = 0
+offset_left = 224.0
+offset_top = -190.0
+offset_right = 344.0
+offset_bottom = -70.0
+grow_horizontal = 1
+"技能文本" = "研究改良"
+"技能层级" = 1
+
+[node name="下限位" type="Label" parent="技能树节点/显示区域/技能中心点"]
+layout_mode = 0
+offset_left = -148.0
+offset_top = 552.0
+offset_right = 146.0
+offset_bottom = 609.0
+text = "下面什么也没有"
+
+[node name="上限位" type="Label" parent="技能树节点/显示区域/技能中心点"]
+layout_mode = 0
+offset_left = -168.0
+offset_top = -641.0
+offset_right = 126.0
+offset_bottom = -584.0
+text = "上面什么也没有"
+
+[node name="前限位" type="Label" parent="技能树节点/显示区域/技能中心点"]
+layout_mode = 0
+offset_left = -1057.0
+offset_top = -15.0
+offset_right = -742.0
+offset_bottom = 42.0
+text = "再往前什么也没有"
+
+[node name="前限位2" type="Label" parent="技能树节点/显示区域/技能中心点"]
+layout_mode = 0
+offset_left = 766.0
+offset_top = -4.0
+offset_right = 1081.0
+offset_bottom = 53.0
+text = "再往前什么也没有"
+
+[node name="回到中心" type="Button" parent="技能树节点/显示区域"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -187.0
+offset_top = -67.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "回到中心"

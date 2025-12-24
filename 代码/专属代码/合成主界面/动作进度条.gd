@@ -12,6 +12,8 @@ func 开始动作(动作名, 动作时间,对象):
 	动作名文本.text = 名称
 	进度条.value = 0
 	执行动作中 = true
+func 暂停():
+	执行动作中 = false
 func _process(delta: float) -> void:
 	if not 执行动作中:
 		return

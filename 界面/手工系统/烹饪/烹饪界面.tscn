@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cul12q75ouejt"]
+[gd_scene load_steps=6 format=3 uid="uid://cul12q75ouejt"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_7o14l"]
 [ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_5fic2"]
+[ext_resource type="PackedScene" uid="uid://bnjv1qqq3txe4" path="res://界面/插件/背包栏.tscn" id="3_rxtf7"]
+[ext_resource type="Script" uid="uid://dlx5x0nlseodb" path="res://界面/手工系统/烹饪/食材处理管理.gd" id="4_45rc1"]
+[ext_resource type="PackedScene" uid="uid://bkd8k1jonj3lt" path="res://界面/手工系统/烹饪/食材资源条.tscn" id="5_45rc1"]
 
 [node name="原罪界面" type="Control"]
 layout_mode = 3
@@ -13,6 +16,7 @@ offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_7o14l")
+metadata/_edit_lock_ = true
 
 [node name="标题" type="ColorRect" parent="."]
 layout_mode = 1
@@ -26,8 +30,8 @@ metadata/_edit_lock_ = true
 [node name="等级显示" parent="标题" instance=ExtResource("3_5fic2")]
 layout_mode = 1
 "玩法" = "烹饪"
-"精通池显示" = true
 "同时显示" = null
+metadata/_edit_lock_ = true
 
 [node name="背景" type="ColorRect" parent="."]
 layout_mode = 1
@@ -46,3 +50,45 @@ anchors_preset = 0
 offset_top = 100.0
 offset_right = 1700.0
 offset_bottom = 1000.0
+metadata/_edit_lock_ = true
+
+[node name="食材处理管理" type="ScrollContainer" parent="内容节点"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -150.0
+offset_right = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_45rc1")
+
+[node name="食材处理容器" type="HBoxContainer" parent="内容节点/食材处理管理"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+
+[node name="背包栏" parent="." instance=ExtResource("3_rxtf7")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_top = 106.0
+offset_right = 0.0
+offset_bottom = 163.0
+grow_horizontal = 0
+"白名单" = ["食材", "调料"]
+
+[node name="食材管理器" type="CanvasLayer" parent="."]
+
+[node name="资源" parent="食材管理器" instance=ExtResource("5_45rc1")]
+unique_name_in_owner = true
+offset_left = -298.0
+offset_top = 5.0
+offset_right = -12.0
+offset_bottom = 85.0

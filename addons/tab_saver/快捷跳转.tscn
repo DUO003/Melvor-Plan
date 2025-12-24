@@ -38,7 +38,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
-columns = 8
+columns = 10
 
 [node name="代码" type="ScrollContainer" parent="水平分割/标签"]
 visible = false
@@ -53,7 +53,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
-columns = 8
+columns = 10
 
 [node name="功能按钮" type="VBoxContainer" parent="水平分割"]
 custom_minimum_size = Vector2(150, 0)
@@ -70,3 +70,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "计划"
+
+[node name="导入表格" type="Button" parent="水平分割/功能按钮"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "导入"

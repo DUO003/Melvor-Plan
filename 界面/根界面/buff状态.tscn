@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://8anm63fy7dqa"]
+[gd_scene load_steps=7 format=3 uid="uid://8anm63fy7dqa"]
 
-[ext_resource type="Script" uid="uid://debodyj7kxwqp" path="res://界面/根界面/buff状态.gd" id="1_e77f8"]
+[ext_resource type="Script" uid="uid://230ie06rn4gm" path="res://界面/根界面/buff状态.gd" id="1_e77f8"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_vnghs"]
 [ext_resource type="Texture2D" uid="uid://27dm66tguqe7" path="res://素材/豆包AI素材/图标/BUFF栏图标.png" id="2_e77f8"]
 
@@ -16,8 +16,11 @@ metadata/_custom_type_script = "uid://dyet4yfov8by1"
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e77f8"]
 content_margin_left = 64.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5sppv"]
+content_margin_left = 64.0
+
 [node name="BUFF状态" type="Control"]
-custom_minimum_size = Vector2(220, 100)
+custom_minimum_size = Vector2(220, 80)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_e77f8")
@@ -32,15 +35,15 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yd0tu")
 
 [node name="BUFF名称" type="Label" parent="."]
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 57.0
+offset_bottom = 53.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 34
+theme_override_font_sizes/font_size = 38
 theme_override_styles/normal = SubResource("StyleBoxEmpty_e77f8")
-text = "BUFF名称"
+text = "测试可以显示几个字"
 vertical_alignment = 1
 clip_text = true
 
@@ -64,7 +67,7 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5sppv")
 text = "BUFF时间"
-horizontal_alignment = 1
 vertical_alignment = 2
 clip_text = true

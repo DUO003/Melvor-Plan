@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkd8k1jonj3lt"]
+
+[ext_resource type="Script" uid="uid://dso83uytjnx2t" path="res://界面/手工系统/烹饪/食材资源条.gd" id="1_3hu5w"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="2_3hu5w"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="3_v0qbg"]
+[ext_resource type="Script" uid="uid://bru7ehuqamvdq" path="res://界面/插件/资源进度条/刻度.gd" id="5_tok8q"]
+
+[node name="资源" type="Control"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 487.0
+offset_bottom = 80.0
+theme = ExtResource("3_v0qbg")
+script = ExtResource("1_3hu5w")
+
+[node name="贴图" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("2_3hu5w")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="物品标签" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 81.0
+offset_top = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "测试文本"
+
+[node name="进度" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99200004
+anchor_bottom = 1.0
+offset_left = 83.0
+offset_top = 1.0
+offset_right = -0.104034424
+offset_bottom = -39.0
+grow_vertical = 2
+theme = ExtResource("3_v0qbg")
+max_value = 5.0
+step = 1.0
+value = 5.0
+allow_greater = true
+show_percentage = false
+
+[node name="刻度" type="Control" parent="进度"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_tok8q")
+"刻度高度" = 5.0
+"大刻度颜色" = Color(0.43197232, 0.19236407, 0.0024436945, 1)
+"小刻度颜色" = Color(0, 0, 0, 0.78431374)
+"强制量级" = 100.0
+"启用刻度" = true
+"刻度偏移" = Vector2(-10, -2)
+"测试上限" = 100.0
+metadata/_edit_lock_ = true
+
+[node name="刻度单位" type="Label" parent="进度/刻度"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_top = -2.0
+offset_right = -10.0
+offset_bottom = 34.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.12778333, 0.41, 0.123, 1)
+theme_override_font_sizes/font_size = 25
+text = "刻度10"
+
+[node name="点击范围" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true

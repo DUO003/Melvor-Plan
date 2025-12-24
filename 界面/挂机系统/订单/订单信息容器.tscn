@@ -1,0 +1,149 @@
+[gd_scene load_steps=13 format=3 uid="uid://g4qh6u1x0jwp"]
+
+[ext_resource type="Script" uid="uid://deq7kxue4meaq" path="res://界面/挂机系统/订单/订单信息容器.gd" id="1_4h588"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_fr868"]
+[ext_resource type="PackedScene" uid="uid://cyatfka4r8wnd" path="res://界面/挂机系统/订单/订单类型.tscn" id="3_t175g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t175g"]
+
+[sub_resource type="DPITexture" id="DPITexture_atuik"]
+resource_local_to_scene = true
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#ffffffff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"24\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\"/></svg>
+"
+base_scale = 2.0
+color_map = {
+Color(0.101960786, 0.101960786, 0.101960786, 1): Color(1, 1, 1, 1),
+Color(1, 1, 1, 1): Color(0.5058824, 0.78039217, 0.5176471, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_ocm0d"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#ffffffff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"8\" cy=\"8\" r=\"5\" fill=\"#000000ff\"/></svg>
+"
+base_scale = 2.0
+color_map = {
+Color(0, 0, 0, 1): Color(1, 1, 1, 1),
+Color(1, 1, 1, 1): Color(0.75, 0.1875, 0.1875, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_f2t5k"]
+resource_local_to_scene = true
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#ffffffff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"24\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\"/></svg>
+"
+base_scale = 2.0
+color_map = {
+Color(0.101960786, 0.101960786, 0.101960786, 1): Color(1, 1, 1, 1),
+Color(1, 1, 1, 1): Color(0.5058824, 0.78039217, 0.5176471, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_n2ixl"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#ffffffff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"8\" cy=\"8\" r=\"5\" fill=\"#000000ff\"/></svg>
+"
+base_scale = 2.0
+color_map = {
+Color(0, 0, 0, 1): Color(1, 1, 1, 1),
+Color(1, 1, 1, 1): Color(0.75, 0.1875, 0.1875, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_6svn2"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#ffffffff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"8\" cy=\"8\" r=\"5\" fill=\"#000000ff\"/></svg>
+"
+base_scale = 2.0
+color_map = {
+Color(0, 0, 0, 1): Color(1, 1, 1, 1),
+Color(1, 1, 1, 1): Color(0.75, 0.1875, 0.1875, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_6p28d"]
+resource_local_to_scene = true
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#ffffffff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"24\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\"/></svg>
+"
+base_scale = 2.0
+color_map = {
+Color(0.101960786, 0.101960786, 0.101960786, 1): Color(1, 1, 1, 1),
+Color(1, 1, 1, 1): Color(0.5058824, 0.78039217, 0.5176471, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_xv72j"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#ffffffff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"8\" cy=\"8\" r=\"5\" fill=\"#000000ff\"/></svg>
+"
+base_scale = 2.0
+color_map = {
+Color(0, 0, 0, 1): Color(1, 1, 1, 1),
+Color(1, 1, 1, 1): Color(0.75, 0.1875, 0.1875, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_bp7qt"]
+resource_local_to_scene = true
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#ffffffff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"24\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\"/></svg>
+"
+base_scale = 2.0
+color_map = {
+Color(0.101960786, 0.101960786, 0.101960786, 1): Color(1, 1, 1, 1),
+Color(1, 1, 1, 1): Color(0.5058824, 0.78039217, 0.5176471, 1)
+}
+
+[node name="订单信息" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_4h588")
+
+[node name="订单信息容器" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_fr868")
+
+[node name="订单标题" type="Label" parent="订单信息容器"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "刷新倒计时:"
+
+[node name="开关" type="CheckButton" parent="订单信息容器"]
+visible = false
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t175g")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_t175g")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t175g")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_t175g")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_t175g")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t175g")
+theme_override_icons/checked = SubResource("DPITexture_atuik")
+theme_override_icons/unchecked = SubResource("DPITexture_ocm0d")
+theme_override_icons/checked_disabled = SubResource("DPITexture_f2t5k")
+theme_override_icons/unchecked_disabled = SubResource("DPITexture_n2ixl")
+theme_override_icons/checked_mirrored = SubResource("DPITexture_6svn2")
+theme_override_icons/unchecked_mirrored = SubResource("DPITexture_6p28d")
+theme_override_icons/checked_disabled_mirrored = SubResource("DPITexture_xv72j")
+theme_override_icons/unchecked_disabled_mirrored = SubResource("DPITexture_bp7qt")
+
+[node name="订单滚动区" type="ScrollContainer" parent="订单信息容器"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="订单" type="VBoxContainer" parent="订单信息容器/订单滚动区"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme_override_constants/separation = -5
+
+[node name="资源订单" parent="订单信息容器/订单滚动区/订单" instance=ExtResource("3_t175g")]
+layout_mode = 2
+
+[node name="课题订单" parent="订单信息容器/订单滚动区/订单" instance=ExtResource("3_t175g")]
+layout_mode = 2
+"类型" = "课题订单"
+
+[node name="炼金订单" parent="订单信息容器/订单滚动区/订单" instance=ExtResource("3_t175g")]
+layout_mode = 2
+"类型" = "炼金订单"
+
+[node name="药剂订单" parent="订单信息容器/订单滚动区/订单" instance=ExtResource("3_t175g")]
+layout_mode = 2
+"类型" = "药剂订单"

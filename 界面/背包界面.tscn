@@ -70,6 +70,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_loe2l")
 script = ExtResource("2_tb4we")
+"基类窗口名称" = "背包界面"
 metadata/_edit_lock_ = true
 
 [node name="标题" type="ColorRect" parent="."]
@@ -137,7 +138,7 @@ container_columns = 9
 container_rows = 10
 base_size = 121
 grid_border_size = 2
-grid_border_color = Color(0.75, 0.75, 0.75, 0)
+grid_border_color = Color(0, 0, 0, 0)
 gird_background_color_empty = Color(0.49, 0.444267, 0.3185, 0.784314)
 gird_background_color_taken = Color(0.49, 0.444267, 0.3185, 0.862745)
 gird_background_color_conflict = Color(0.94, 0.68103, 0.6674, 0.784314)
@@ -146,6 +147,7 @@ stack_num_font_size = 32
 stack_num_margin = 0
 stack_num_color = Color(0, 0, 0, 1)
 metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
+metadata/_edit_lock_ = true
 
 [node name="装备栏" type="ScrollContainer" parent="内容节点/水平排列/垂直排列/物品栏选项卡"]
 unique_name_in_owner = true
@@ -254,7 +256,7 @@ stretch_mode = 5
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 0
-offset_left = 35.0
+offset_left = 2.0
 offset_top = 228.0
 offset_right = 371.0
 offset_bottom = 298.0

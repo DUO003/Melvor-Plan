@@ -19,11 +19,13 @@ func _ready() -> void:
 			size_flags_horizontal = Control.SIZE_SHRINK_END
 	if 点击动作==null:
 		$"按钮".visible=false
+		显示时间=计划.配置文件.get("通知显示时长",0)
+		if 显示时间<=0:显示时间=3
 		await get_tree().create_timer(显示时间).timeout
 		var tween=create_tween()
 		tween.set_parallel()
-		tween.tween_property(self,"modulate:a",0,0.5)
-		tween.tween_property(self,"custom_minimum_size:y",0,0.5)
+		tween.tween_property(self,"modulate:a",0,0.25)
+		tween.tween_property(self,"custom_minimum_size:y",0,0.25)
 		await tween.finished
 		queue_free()
 	else :

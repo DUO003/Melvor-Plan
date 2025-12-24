@@ -5,16 +5,28 @@ var 代码页:GridContainer
 var 标签字典: Dictionary = {
 	#"空界面": "res://界面/空界面.tscn"
 }
-var 代码字典: Dictionary={"GBIS":["res://addons/grid_base_inventory_system/core/grid_base_inventory_system.gd",""]}
-var 按钮宽度:=200
+#代码字典
+var 代码字典: Dictionary={
+	"代码教程":["res://代码/专属代码/A代码.gd",""],
+	"GBIS":["res://addons/grid_base_inventory_system/core/grid_base_inventory_system.gd",""],
+	"插件本体":["res://addons/tab_saver/快捷跳转.gd","#代码字典"],
+	"订单数据":["res://代码/专属代码/特殊功能/订单状态.gd",""],
+	"BUFF数据":["res://代码/专属代码/特殊功能/BUFF状态.gd",""],
+	"梅BUFF":["res://代码/专属代码/特殊功能/BUFF管理.gd",""],
+	"标准物品":["res://道具/标准物品.gd",""]}
+var 按钮宽度:=163
+var 按钮高度:=60
 func _ready() -> void:
 	visibility_changed.connect(func(): 重新分配区域())
 	场景页=%"场景页"
 	代码页=%"代码页"
-	%"重新载入".pressed.connect(func(): 
+	%"重新载入".pressed.connect(func():
 		重新载入场景()
 		重新分配区域())
-	%"载入脚本".pressed.connect(func():打开代码文件("res://代码/梅计划.gd","#region 单例"))
+	%"载入脚本".pressed.connect(func():打开代码文件("res://代码/梅计划.gd","#region 简短单例"))
+	%"导入表格".pressed.connect(func():
+		var 转移表格:快速转移表格=快速转移表格.new()
+		转移表格._run())
 	重新载入场景()
 func 重新分配区域():
 	if visible:
@@ -44,9 +56,9 @@ func 重新载入场景():
 		代码页.add_child(按钮)
 func 返回按钮()->Button:
 	var 按钮: = Button.new()
-	按钮.add_theme_font_size_override("font_size", 30)
-	按钮.custom_minimum_size=Vector2(按钮宽度,90)
-	按钮.size=Vector2(按钮宽度,90)
+	按钮.add_theme_font_size_override("font_size", 20)
+	按钮.custom_minimum_size=Vector2(按钮宽度,按钮高度)
+	按钮.size=Vector2(按钮宽度,按钮高度)
 	按钮.text_overrun_behavior=TextServer.OVERRUN_TRIM_CHAR
 	按钮.clip_text=true
 	return 按钮
@@ -96,7 +108,7 @@ func 打开代码文件(路径: String,目标备注: String="") -> void:
 		var 源代码: String = 脚本资源.get_source_code()
 		# 按换行拆分所有行（\n 兼容Linux/Mac，\r\n 兼容Windows）
 		var 所有行: PackedStringArray = 源代码.split("\n", true)
-		
+
 		# 逐行查找目标备注（忽略大小写/空格可选）
 		for 行索引 in 所有行.size():
 			var 行内容: String = 所有行[行索引].strip_edges()  # 去除首尾空格

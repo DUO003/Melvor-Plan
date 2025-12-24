@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cuduk8yjwl5nn"]
+[gd_scene load_steps=17 format=3 uid="uid://cuduk8yjwl5nn"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_msww2"]
 [ext_resource type="Script" uid="uid://dp04b1gplr3je" path="res://界面/挂机系统/原罪/原罪界面.gd" id="2_riyk3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cun3m5fqw1jf2" path="res://素材/自制/图标/暴食.svg" id="8_6nm3x"]
 [ext_resource type="Texture2D" uid="uid://c1cgyiktgwefk" path="res://素材/自制/图标/色欲.svg" id="9_mrh1p"]
 [ext_resource type="Texture2D" uid="uid://1b6ply323inq" path="res://素材/自制/图标/贪婪.svg" id="10_uhxdx"]
+[ext_resource type="PackedScene" uid="uid://hropdpl5f686" path="res://界面/挂机系统/原罪/技能树.tscn" id="12_nhtbf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2eyov"]
 
@@ -71,6 +72,7 @@ offset_right = 1700.0
 offset_bottom = 1000.0
 
 [node name="选项卡" type="TabContainer" parent="内容节点"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,9 +80,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2eyov")
-current_tab = 0
+current_tab = 3
 
 [node name="原罪突破" type="Control" parent="内容节点/选项卡"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -213,17 +216,17 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_nhtbf")
-current_tab = 0
+current_tab = 1
 metadata/_tab_index = 1
 
 [node name="0_挂机" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 "系统" = "挂机"
 
 [node name="1_木料" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 "系统" = "木料"
 metadata/_tab_index = 1
@@ -287,3 +290,8 @@ text = "挂机系统升级
 3.突破需满足成功率≥20% 方可发起尝试，为提升成功率，建议在达到 50% 以上时操作。
 4.累计成功突破 2、4、6、8、10 次后，将解锁新玩法系统。"
 metadata/_tab_index = 2
+
+[node name="技能树" parent="内容节点/选项卡" instance=ExtResource("12_nhtbf")]
+layout_mode = 2
+
+[editable path="内容节点/选项卡/技能树"]

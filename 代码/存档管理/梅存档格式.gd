@@ -110,6 +110,7 @@ func 读档(存档名: String = "",存档的数据:梅存档格式=null,覆盖�
 					背包单例.加载物品(背包名称)
 			if 挂机.has("快速移动关系") and 背包单例:
 				背包单例._quick_move_relations_map=梅存档["挂机"]["快速移动关系"].duplicate(true)
+		计划.存档时间戳=加载结果.保存时间
 		await 计划.正式加载()
 		return true
 	else:

@@ -1,9 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://fhiod2yd4lhv"]
+[gd_scene load_steps=12 format=3 uid="uid://fhiod2yd4lhv"]
 
 [ext_resource type="Script" uid="uid://c1ef0ysqkbne2" path="res://代码/资源条.gd" id="1_5i305"]
 [ext_resource type="Texture2D" uid="uid://bhhvc44hrv7uq" path="res://素材/游戏素材/货币/36.png" id="1_5uhmg"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="2_0wsje"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_5i305"]
+[ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="4_b5354"]
 [ext_resource type="Script" uid="uid://bru7ehuqamvdq" path="res://界面/插件/资源进度条/刻度.gd" id="4_unkxt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unkxt"]
+bg_color = Color(0.5243333, 0.65, 0.52, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Gradient" id="Gradient_0wsje"]
+offsets = PackedFloat32Array(0, 0.02, 0.24, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0.19966345, 0, 1, 1, 1, 0)
+metadata/_snap_count = 50
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_43vdm"]
+gradient = SubResource("Gradient_0wsje")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u3ykc"]
+texture = SubResource("GradientTexture2D_43vdm")
+script = ExtResource("4_b5354")
+metadata/_custom_type_script = "uid://dr0317kuw34um"
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5i305"]
 particle_flag_disable_z = true
@@ -25,7 +49,7 @@ script = ExtResource("1_5i305")
 [node name="贴图" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 0
-texture = ExtResource("1_5uhmg")
+texture = ExtResource("2_0wsje")
 expand_mode = 1
 stretch_mode = 5
 
@@ -38,6 +62,18 @@ offset_bottom = 66.0
 theme = ExtResource("2_5i305")
 value = 100.0
 allow_greater = true
+
+[node name="背包" type="ProgressBar" parent="进度"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_unkxt")
+theme_override_styles/fill = SubResource("StyleBoxTexture_u3ykc")
+value = 25.0
+show_percentage = false
 
 [node name="刻度" type="Control" parent="进度"]
 unique_name_in_owner = true

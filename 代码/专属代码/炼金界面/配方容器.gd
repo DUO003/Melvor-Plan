@@ -47,7 +47,7 @@ func 鼠标信号处理(鼠标信号):
 			var 正在移动的物品=GBIS.moving_item_service.moving_item
 			print("正在移动的物品",正在移动的物品)
 			var 缓存道具名=GBIS.moving_item_service.moving_item.item_name
-			if 催化剂: 
+			if 催化剂:
 				var 标签=计划.表格.缓存蓝图标签[缓存道具名]
 				if 标签=="催化" or 标签=="特殊催化":
 					道具名称=缓存道具名
@@ -66,8 +66,7 @@ func 鼠标信号处理(鼠标信号):
 			#print(道具名称,当前值)
 			$"输入".value=当前值
 			if not 修改返回对象==null:
-				if 计划.节点有效性检查("炼金窗口"):
-					计划.节点["炼金窗口"].背包折叠(false)
+				GBIS.鼠标物品.emit(false)
 				修改返回对象.返回处理方法()
 			GBIS.moving_item_service.安全清除移动物品()
 	elif 鼠标信号 is InputEventMouseButton and 鼠标信号.button_index == MOUSE_BUTTON_RIGHT and 鼠标信号.pressed:

@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://xxyqjkn8fefo"]
+
+[ext_resource type="Script" uid="uid://wp24iy2wfcto" path="res://界面/插件/滑块.gd" id="1_5dwu4"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_tnkit"]
+
+[sub_resource type="DPITexture" id="DPITexture_hy1w4"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\" fill-opacity=\".75\"/></svg>
+"
+base_scale = 2.0
+
+[sub_resource type="DPITexture" id="DPITexture_lwtkq"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\"/></svg>
+"
+base_scale = 2.0
+
+[sub_resource type="DPITexture" id="DPITexture_xolyl"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\" fill-opacity=\".37\"/></svg>
+"
+base_scale = 2.0
+
+[sub_resource type="DPITexture" id="DPITexture_35dnx"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"4\" height=\"8\"><path fill=\"#fff\" fill-opacity=\".25\" d=\"M1 0h2v16H1z\"/></svg>
+"
+base_scale = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcijj"]
+content_margin_left = 4.0
+content_margin_top = 8.0
+content_margin_right = 4.0
+content_margin_bottom = 8.0
+bg_color = Color(0.55, 0.42716667, 0.18149999, 0.49803922)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[node name="滑块" type="HSlider"]
+custom_minimum_size = Vector2(220, 60)
+size_flags_horizontal = 8
+theme = ExtResource("1_tnkit")
+theme_override_icons/grabber = SubResource("DPITexture_hy1w4")
+theme_override_icons/grabber_highlight = SubResource("DPITexture_lwtkq")
+theme_override_icons/grabber_disabled = SubResource("DPITexture_xolyl")
+theme_override_icons/tick = SubResource("DPITexture_35dnx")
+theme_override_styles/slider = SubResource("StyleBoxFlat_lcijj")
+max_value = 10.0
+value = 1.0
+tick_count = 11
+ticks_on_borders = true
+script = ExtResource("1_5dwu4")
+
+[node name="标签" type="Label" parent="."]
+layout_mode = 0
+offset_left = -250.0
+offset_right = -77.50952
+offset_bottom = 57.0
+text = "提交1次"
+metadata/_edit_lock_ = true

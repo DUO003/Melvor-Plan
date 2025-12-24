@@ -1,120 +1,113 @@
 extends Control
 class_name 订单卡片
 @export_group("外部传入入参数")
-@export var 订单字典: Dictionary={}
-
-@export_group("自动识别参数")
-@export var 物品名称:String="铁锭"
-@export var 物品贴图:Texture2D
-@export var 单价:int=100
-@export var 订单量:int=20
-@export var 时限:int=-1
-@export var 额外概率: float=0.20
-@export var 额外数量倍率: float=0.5
-@export var 额外物品:String="蓝图纸"
-@export var 背包数量:int#每次使用前自行更新
-@export var 唯一ID:String#销毁订单的凭据
-var 订单标记:int=0#作为枚举使用0表示资源订单
-
+@export var 订单数据: 梅订单数据
+@export var 提交数量:int=1
+var 初始提交
 @export_group("固定文本")
-@export_multiline var 固定文本:String="[font_size=30]金币合计:[/font_size]{金币数量}[img=40x40]res://素材/游戏素材/货币/2.png[/img]
-[font_size=30]{额外奖励概率}%概率:[/font_size]{额外奖励数量}[img=40x40]{额外奖励图片}[/img]"
-var 固定条件=[["{金币数量}",func():return 订单金币()],
-["{额外奖励概率}",func():return clampi(int(额外概率*100),0,100)],
-["{额外奖励数量}",func():return 订单额外()],
-["{额外奖励图片}",func():return 计划.表格.获取表格信息(计划.表格.创世蓝图,额外物品,"icon")]]
-var 装饰词数组 = ["优质", "完美", "卓越", "精良", "顶级", "上乘","优选", "精品", "优品",
-	"臻品", "绝佳", "超凡","顶配", "高端", "精粹", "极速", "快捷", "高效","速达", "迅捷", "神速", "快单", "急单", "捷取",
-	"珍稀", "稀有", "限定","专属", "绝版", "孤品", "特选", "稀缺", "罕见","珍品", "福运", "祥瑞", "吉运", "好运", "顺遂",
-	"如意", "安康", "喜乐", "锦鲤", "幸运", "福泽", "吉兆"];
-var 装饰随机数=randi() % 装饰词数组.size()
+@export_multiline var 固定文本:String="[font_size=47][b]{物品名称}[/b][/font_size]
+倍率{倍率}%
+合计:{金币数量}[img=40x40]res://素材/游戏素材/货币/2.png[/img]
+剩余{额外奖励}次赠品+{额外奖励数量}[img=40x40]{额外奖励图片}[/img]"
+var 固定条件=[["{物品名称}",func():return 订单数据.名称],
+["{倍率}",func():return "%.1f"%(100*订单数据.单价)],
+["{金币数量}",func():
+	var 金币:int=0
+	if 提交数量>=1:
+		var 单价损失:float=订单数据.单价损失
+		var 基础价格:float=订单数据.价格
+		for i in range(提交数量):
+			金币+=int(基础价格)#存在非常微小的差异
+			基础价格=单价损失*基础价格
+	return 金币],
+["{额外奖励}",func():return 订单数据.额外奖励],
+["{额外奖励数量}",func():return 订单数据.额外物品数量],
+["{额外奖励图片}",func():return 计划.表格.道具贴图(订单数据.额外物品).resource_path]]
 var 固定标题="[img=40x40]{图标}[/img]#{标题}"
-var 标题=[["res://素材/豆包AI素材/图标/合成图标.png","资源订单"],["res://素材/豆包AI素材/图标/合成图标.png","课题订单"]]
-
+var 提交:Button
 func _ready() -> void:
-	订单解析()
+	初始提交=提交数量
+	if 提交数量==0:
+		var 订单数量=计划.读取数据订单("订单数量",订单数据.订单类型)
+		var 物品数量:int=订单数据.背包数量
+		var 订单量:int=订单数据.订单量
+		while not 订单数量<=提交数量:
+			if 订单量>物品数量:break
+			物品数量-=订单量
+			提交数量+=1
+		if 提交数量==0:提交数量=1
+	提交=%"提交"
 	全面更新()
-	更新计时器()
-	$"放弃".pressed.connect(func():
-		销毁卡片订单()
-		if 计划.节点有效性检查("订单界面"):
-			计划.节点["订单界面"].网格容器.mouse_behavior_recursive=MOUSE_BEHAVIOR_DISABLED
-			计划.创建计时器(0.3,func():计划.节点["订单界面"].网格容器.mouse_behavior_recursive=MOUSE_BEHAVIOR_INHERITED,{"是否循环":false}))
-	$"提交".pressed.connect(func(): 
-		背包数量=计划.检查背包物品数量(物品名称)
-		if 背包数量>=订单量:
-			计划.语法糖消耗物品(物品名称,订单量)
-			计划.梅存档["金币"]+=订单金币()
-			if 额外概率>=randf():
-				计划.语法糖获得物品(额外物品,订单额外())
-			计划.emit_signal("更新_UI")
-			销毁卡片订单())
-	计划.connect("更新_UI",func():全面更新())
-	if not 时限==-1:
+	%"放弃".pressed.connect(放弃)
+	提交.pressed.connect(func(): 
+		var 提交成功:int=0
+		for i in range(提交数量):
+			if 订单数据.提交订单():提交成功+=1
+		if 提交成功<1:计划.语法糖通知("订单提交条件不满足","订单提交")
+		if 提交成功==1:计划.语法糖通知("订单提交成功","订单提交")
+		else :计划.语法糖通知("订单提交成功%d次"%提交成功,"订单提交")
+		if 初始提交==0:计划.更新玩法.emit()
+		计划.更新_UI.emit())
+	计划.更新_UI.connect(全面更新)
+	if not 订单数据.时限==-1:
 		$"计时器".timeout.connect(func(): 更新计时器())
-func 订单金币():
-	return 单价*订单量
-func 订单额外():
-	return ceili(额外数量倍率*订单量)
-func 订单解析():
-	物品名称=订单字典.get("名称","错误")
-	订单量=订单字典.get("订单量",-1)
-	唯一ID=订单字典.get("ID","")
-	if 物品名称=="错误" or 订单量==-1 or 唯一ID=="":
-		print_rich("[color=red]订单有异常数据错误[/color]\r",订单字典)
-		销毁卡片订单()#订单有异常数据错误
-	时限=订单字典.get("时限",-1)
-	var 缓存表格=计划.表格.获取表格字典(计划.表格.创世蓝图,-1,物品名称)
-	#print(缓存表格)
-	var 缓存贴图=load(缓存表格.get("icon",""))
-	if 缓存贴图:
-		物品贴图=缓存贴图
-	var 三星数量:int=计划.手工.数据合成配方("","升星3数量")
-	单价=int(float((0.75+0.01*三星数量)*缓存表格.get("价值",1.0))*(1+0.01*订单字典.get("幸运值",0)))
-	var 类型=缓存表格.get("类型","")
-	if 类型=="符文":
-		var 精通等级=计划.手工.数据合成配方(物品名称)
-		单价=int(min(20,1.0305 ** 精通等级))*单价
-	var 阶级:int=int(缓存表格.get("阶级",0))
-	订单标记=订单字典.get("订单标记",订单标记)
-	额外概率=min(0.50+0.05*阶级,1)
-	额外数量倍率=(0.4+0.1*阶级)if 阶级<10 else (1.4+0.3*(阶级-10))#补偿概率达到百分比后数量
-	if 订单标记==1:
-		额外物品="黄图纸"
-	else :
-		额外物品="蓝图纸"
+func 放弃():
+	订单数据.放弃()
+	计划.更新_UI.emit()
+	if 计划.节点有效性检查("订单界面"):
+		计划.节点["订单界面"].网格容器.mouse_behavior_recursive=MOUSE_BEHAVIOR_DISABLED
+		计划.创建计时器(0.3,func():计划.节点["订单界面"].网格容器.mouse_behavior_recursive=MOUSE_BEHAVIOR_INHERITED,{"是否循环":false})
 func 全面更新():
-	$"名称单价".text=物品名称+"\n单价:"+str(单价)+"$"
-	$"装饰文本".text=装饰词数组[装饰随机数]
-	$"贴图".texture=物品贴图
-	背包数量=计划.检查背包物品数量(物品名称)
-	$"进度条".max_value=订单量
-	$"进度条".value=背包数量
-	$"进度条/进度".text=str(min(订单量,背包数量))+"/"+str(订单量)
-	
 	var 缓存标题=固定标题
-	缓存标题=缓存标题.replace("{图标}",标题[订单标记][0])
-	缓存标题=缓存标题.replace("{标题}",标题[订单标记][1])
+	缓存标题=缓存标题.replace("{图标}",订单数据.图标)
+	缓存标题=缓存标题.replace("{标题}",订单数据.订单类型)
 	$"订单类型".text=缓存标题
-	报酬处理()
+	if not 订单数据 is 梅订单数据 or 订单数据.名称=="":
+		显示或隐藏(false)
+		self_modulate=Color(0.352, 0.352, 0.352, 1.0)
+	else :
+		显示或隐藏(true)
+		self_modulate=Color(1.0, 1.0, 1.0, 1.0)
+		$"装饰文本".text=订单数据.修饰
+		#print("装饰",订单数据.修饰)
+		var 缓存贴图=计划.表格.道具贴图(订单数据.名称)
+		if 缓存贴图:
+			$"贴图".texture=缓存贴图
+		else :$"贴图".texture=null
+		var 背包数量=订单数据.背包数量
+		$"进度条".max_value=订单数据.订单量
+		$"进度条".value=背包数量
+		var 目标订单量=订单数据.订单量*提交数量
+		$"进度条/进度".text=str(min(目标订单量,背包数量))+"/"+str(目标订单量)
+		if not 提交数量==1:$"进度条/进度".text+="(%d)"%订单数据.订单量
+		var 文本=固定文本
+		for 条件 in 固定条件:
+			文本=文本.replace(条件[0], str(条件[1].call()))
+		$"报酬".text=文本
+		if 初始提交==0:提交.text="全部提交"
+		elif 提交数量==1:提交.text="提交"
+		else:提交.text="提交*%d"%提交数量
+		更新计时器()
+
 func 更新计时器():
-	if 时限==-1:
+	if 订单数据.时限==-1 or 订单数据.名称=="":
 		$"倒计时".visible=false
 	else :
 		var 当前时间: float=Time.get_unix_time_from_system()
-		var 剩余秒数: int=int(时限-当前时间)
+		var 剩余秒数: int=int(订单数据.时限-当前时间)
 		if 剩余秒数>0:
 			$"倒计时".visible=true
 			$"倒计时".text="剩余："+计划.格式化时间(剩余秒数,2)
 		else :
-			销毁卡片订单()
-##销毁卡片订单
-func 销毁卡片订单():
-	计划.数据订单("订单存档",唯一ID)
-	queue_free()
-	计划.保存存档("订单完成或订单删除")
-func 报酬处理():
-	var 文本=固定文本
-	for 条件 in 固定条件:
-		文本=文本.replace(条件[0], str(条件[1].call()))
-	$"报酬".text=文本
+			放弃()
+
+func 显示或隐藏(显示:bool):
+	if not 显示:
+		$"倒计时".visible=false
+	$"订单类型".visible=true
+	$"贴图".visible=显示
+	$"装饰文本".visible=显示
+	%"提交".visible=显示
+	%"放弃".visible=显示
+	$"报酬".visible=显示
+	$"进度条".visible=显示
