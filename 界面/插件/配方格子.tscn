@@ -85,8 +85,11 @@ offset_right = 160.0
 offset_bottom = 278.0
 scale = Vector2(0.765, 0.765)
 theme_override_styles/panel = SubResource("StyleBox_06t5k")
-"催化剂" = true
+"物品数量限制" = Vector2i(1, 1)
 "编号" = 0
+"限制类型" = ["催化", "特殊催化"]
+"空置标签" = "催化剂"
+"标签警告" = "该物品不是催化剂"
 
 [node name="配方容器1" parent="." instance=ExtResource("2_p2uem")]
 unique_name_in_owner = true
@@ -97,6 +100,10 @@ offset_right = 284.0
 offset_bottom = 151.0
 scale = Vector2(0.765, 0.765)
 theme_override_styles/panel = SubResource("StyleBox_n2weh")
+"限制类型" = ["炼金"]
+"空置标签" = "1号格子"
+"标签警告" = "需要炼金材料"
+"默认值" = 10
 
 [node name="配方容器2" parent="." instance=ExtResource("2_p2uem")]
 unique_name_in_owner = true
@@ -108,6 +115,10 @@ offset_bottom = 151.0
 scale = Vector2(0.765, 0.765)
 theme_override_styles/panel = SubResource("StyleBox_n2weh")
 "编号" = 2
+"限制类型" = ["炼金"]
+"空置标签" = "2号格子"
+"标签警告" = "需要炼金材料"
+"默认值" = 10
 
 [node name="配方容器3" parent="." instance=ExtResource("2_p2uem")]
 unique_name_in_owner = true
@@ -119,6 +130,10 @@ offset_bottom = 278.0
 scale = Vector2(0.765, 0.765)
 theme_override_styles/panel = SubResource("StyleBox_n2weh")
 "编号" = 3
+"限制类型" = ["炼金"]
+"空置标签" = "3号格子"
+"标签警告" = "需要炼金材料"
+"默认值" = 10
 
 [node name="配方容器4" parent="." instance=ExtResource("2_p2uem")]
 unique_name_in_owner = true
@@ -130,3 +145,7 @@ offset_bottom = 278.0
 scale = Vector2(0.765, 0.765)
 theme_override_styles/panel = SubResource("StyleBox_n2weh")
 "编号" = 4
+"限制类型" = ["炼金"]
+"空置标签" = "4号格子"
+"标签警告" = "需要炼金材料"
+"默认值" = 10

@@ -90,12 +90,15 @@ func 处理动作(动作名称):
 			计划.保存存档("技能研究")
 var 是否正在拖动: bool = false
 var 拖动偏移量: Vector2 = Vector2.ZERO
+var 滑动速度: Vector2 = Vector2.ZERO
+const 速度衰减系数: float = 8
+const 停止阈值: float = 1.0
 func 回中心():
 	中心点=Vector2(中心节点.size.x*0.5,中心节点.size.y*0.5)
 	范围节点.position=中心点
+var 时间
 ##范围节点的GUI输入回调函数
 func _当范围节点接收GUI输入时(事件: InputEvent):
-	#print("输入事件")
 	if 事件 is InputEventMouseButton:
 		if 事件.button_index == MOUSE_BUTTON_LEFT and 事件.pressed:# 左键按下：开启拖动
 			是否正在拖动 = true
@@ -103,8 +106,20 @@ func _当范围节点接收GUI输入时(事件: InputEvent):
 		elif 事件.button_index == MOUSE_BUTTON_LEFT and not 事件.pressed:
 			是否正在拖动 = false
 			计划.窗口状态管理("技能树","拖动位置",null,范围节点.position)
-	if 事件 is InputEventMouseMotion and 是否正在拖动:
+	elif 事件 is InputEventMouseMotion and 是否正在拖动:
 		范围节点.global_position = 事件.global_position - 拖动偏移量
+		var 速度倍率=1.0
+		滑动速度 = 速度倍率*事件.velocity
+# 每帧处理惯性滑动逻辑（核心）
+func _process( delta: float):# 非拖动 + 速度（像素/秒）大于阈值
+	if 滑动速度.length() > 停止阈值:
+		滑动速度 *= (1 - 速度衰减系数 * delta)
+		if not 是否正在拖动:
+			范围节点.position += 滑动速度 * delta
+	elif not 是否正在拖动:
+		if not 滑动速度==Vector2.ZERO:
+			计划.窗口状态管理("技能树","拖动位置",null,范围节点.position)
+			滑动速度 = Vector2.ZERO
 func 加载技能文本(技能名=技能名称):
 	技能名称=技能名
 	var 技能字典 = 计划.数据技能树(技能名称, "字典")

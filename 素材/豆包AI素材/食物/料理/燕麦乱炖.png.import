@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx1dg36wimtl8"
-path="res://.godot/imported/糯米香菇扣肉乱炖.png-9bef0ca060dea5f60cc32d149a792c4b.ctex"
+uid="uid://npa7hwxw4edd"
+path="res://.godot/imported/燕麦乱炖.png-b3a0b7325f0e3f69154266a55f789782.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://素材/豆包AI素材/食物/料理/糯米香菇扣肉乱炖.png"
-dest_files=["res://.godot/imported/糯米香菇扣肉乱炖.png-9bef0ca060dea5f60cc32d149a792c4b.ctex"]
+source_file="res://素材/豆包AI素材/食物/料理/燕麦乱炖.png"
+dest_files=["res://.godot/imported/燕麦乱炖.png-b3a0b7325f0e3f69154266a55f789782.ctex"]
 
 [params]
 

@@ -1,0 +1,110 @@
+[gd_scene load_steps=9 format=3 uid="uid://640xn7jwvwjc"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_vpibe"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_8mnn1"]
+[ext_resource type="Script" uid="uid://c8o76o104figh" path="res://界面/手工系统/烹饪/qte.gd" id="4_rlo1g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpibe"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("3_8mnn1")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fic2"]
+bg_color = Color(0.690919, 0.54496706, 0.25101668, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("3_8mnn1")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oyyuy"]
+bg_color = Color(0.5294118, 0.16470589, 0.101960786, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("3_8mnn1")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjdfs"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+draw_center = false
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.23210189, 0.17382067, 0.05455815, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("3_8mnn1")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2uakv"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("3_8mnn1")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[node name="QTE" type="Panel"]
+offset_left = 143.0
+offset_top = 374.0
+offset_right = 305.0
+offset_bottom = 424.0
+theme = ExtResource("1_vpibe")
+theme_override_styles/panel = SubResource("StyleBoxFlat_vpibe")
+script = ExtResource("4_rlo1g")
+
+[node name="背景" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_right = 0.75
+anchor_bottom = 1.0
+offset_left = -0.0060043335
+offset_right = 0.01399231
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vpibe")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5fic2")
+
+[node name="背景中心" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_right = 0.55
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vpibe")
+theme_override_styles/panel = SubResource("StyleBoxFlat_oyyuy")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rjdfs")
+
+[node name="指针" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.05
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vpibe")
+theme_override_styles/panel = SubResource("StyleBoxFlat_2uakv")

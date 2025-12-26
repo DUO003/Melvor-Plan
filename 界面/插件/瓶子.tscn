@@ -37,6 +37,7 @@ scale = Vector2(1, 0.4)
 mouse_behavior_recursive = 1
 script = ExtResource("2_3henv")
 "高度" = 260.0
+"颜色" = Color(0.47079325, 0.27306607, 0.12814064, 1)
 "内容长度" = 4
 "内容数组" = Array[Dictionary]([{
 Color(0, 0, 0, 1): 1
@@ -45,7 +46,6 @@ Color(1, 0, 0, 1): 1
 }, {
 Color(0.99116415, 0.99116427, 0.99116415, 1): 1
 }])
-"迷雾数量" = 1
 "偏移量" = Vector2(5, 275)
 
 [node name="瓶子" type="TextureRect" parent="瓶子缩放"]

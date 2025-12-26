@@ -35,6 +35,9 @@ func find_item_data_by_grid(container_name: String, grid_id: Vector2i) -> ItemDa
 ## 尝试把物品放置到指定格子
 func place_to(container_name: String, item_data: ItemData, grid_id: Vector2i) -> bool:
 	if item_data:
+		if item_data is StackableData:#物品数量检查,因为现在允许鼠标上拿的物品数量为0了
+			if item_data.current_amount<=0:
+				return false
 		var inv = _container_repository.get_container(container_name)
 		if inv:
 			var grids = inv.try_add_to_grid(item_data, grid_id - GBIS.moving_item_service.moving_item_offset)

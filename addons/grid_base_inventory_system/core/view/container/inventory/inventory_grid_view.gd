@@ -34,7 +34,7 @@ func _gui_input(event: InputEvent) -> void:
 			GBIS.inventory_service.place_moving_item(_container_view.container_name, grid_id)
 		return
 	if not has_taken:# 如果不是点击动作且格子没有物品，直接返回
-		print("没有物品")
+		#print("没有物品")
 		return
 	if event.is_action_pressed(GBIS.input_quick_move):
 		print("快速移动操作操作 容器名: %s\r坐标: %s" % [_container_view.container_name,grid_id])

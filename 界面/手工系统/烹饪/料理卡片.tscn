@@ -1,0 +1,201 @@
+[gd_scene load_steps=12 format=3 uid="uid://b21qe2xo4w534"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_0blq6"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_q1bay"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="2_0blq6"]
+[ext_resource type="Script" uid="uid://p0xiy0mo3csh" path="res://界面/手工系统/烹饪/料理卡片.gd" id="3_0blq6"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="5_kj8wr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7jk0"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 0.4862745)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.69803923, 0.5529412, 0.25490198, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+script = ExtResource("1_q1bay")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5fic2"]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ay8b"]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0blq6"]
+content_margin_left = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64hk1"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 0.78431374)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("1_q1bay")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_1n26y"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("5_kj8wr")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_64hk1")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[node name="料理卡片" type="Panel"]
+custom_minimum_size = Vector2(450, 0)
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = ExtResource("1_0blq6")
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7jk0")
+script = ExtResource("3_0blq6")
+"料理名称" = "盖浇扣肉饭"
+
+[node name="料理排序" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = -10.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="标题" type="Label" parent="料理排序"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5fic2")
+text = "料理:盖浇扣肉饭"
+
+[node name="顶部信息" type="HBoxContainer" parent="料理排序"]
+layout_mode = 2
+
+[node name="贴图" type="TextureRect" parent="料理排序/顶部信息"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_0blq6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="属性标签" type="Label" parent="料理排序/顶部信息"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_constants/paragraph_spacing = -15
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ay8b")
+text = "+50卡路里
+美味度10
+解锁需要50"
+vertical_alignment = 1
+
+[node name="食材滚动区" type="ScrollContainer" parent="料理排序"]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+size_flags_vertical = 0
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+
+[node name="食材容器" type="HBoxContainer" parent="料理排序/食材滚动区"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="食材标题" type="Label" parent="料理排序/食材滚动区/食材容器"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/paragraph_spacing = -15
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0blq6")
+text = "食
+材"
+
+[node name="材料" type="RichTextLabel" parent="料理排序"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/paragraph_separation = -10
+theme_override_font_sizes/normal_font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5fic2")
+text = "需要:
+肉类*3,谷物*5"
+
+[node name="按钮容器" type="HBoxContainer" parent="料理排序"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="占位" type="Control" parent="料理排序/按钮容器"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="制作" type="Button" parent="料理排序/按钮容器"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 8
+text = "制作"
+
+[node name="占位3" type="Control" parent="料理排序/按钮容器"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="保存" type="Button" parent="料理排序/按钮容器"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "保存"
+
+[node name="占位2" type="Control" parent="料理排序/按钮容器"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="未解锁" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBox_1n26y")
+
+[node name="解锁标签" type="Label" parent="未解锁"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -28.5
+offset_right = 20.0
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "你需要消耗100个
+烹饪代币解锁"
+
+[node name="解锁按钮" type="Button" parent="未解锁/解锁标签"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45900002
+anchor_top = 0.99572647
+anchor_right = 0.45900002
+anchor_bottom = 0.99572647
+offset_left = -54.49501
+offset_top = -2.0
+offset_right = 54.50499
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "解锁"

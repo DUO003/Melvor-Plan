@@ -75,7 +75,7 @@ script = ExtResource("4_s36by")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_solxu"), SubResource("StyleBoxFlat_k5gyb"), SubResource("StyleBoxTexture_x08yf")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
-[node name="任务窗口" type="Control"]
+[node name="任务窗口" type="Control" node_paths=PackedStringArray("滚动区同步")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1700.0
@@ -83,6 +83,12 @@ offset_bottom = 1000.0
 theme = ExtResource("1_c5l5k")
 script = ExtResource("2_mxxnt")
 "基类窗口名称" = "任务界面"
+"滚动区同步" = {
+"主线滚动区": NodePath("内容区域/标签/主线任务"),
+"任务栏": NodePath("内容区域/标签/快捷面板/任务栏"),
+"支线手工": NodePath("内容区域/标签/支线任务/手工"),
+"设置面板": NodePath("内容区域/标签/设置面板")
+}
 
 [node name="标题" type="ColorRect" parent="."]
 layout_mode = 1
@@ -126,7 +132,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_mxxnt")
-current_tab = 3
+current_tab = 1
 
 [node name="主线任务" type="ScrollContainer" parent="内容区域/标签"]
 visible = false
@@ -144,14 +150,12 @@ columns = 2
 
 [node name="支线任务" type="TabContainer" parent="内容区域/标签"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_c5l5k")
-current_tab = 1
+current_tab = 0
 metadata/_tab_index = 1
 
 [node name="介绍" type="Label" parent="内容区域/标签/支线任务"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 60
@@ -192,6 +196,7 @@ text = "当前完成数量:"
 metadata/_tab_index = 0
 
 [node name="手工" type="ScrollContainer" parent="内容区域/标签/支线任务"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -275,6 +280,7 @@ theme_override_styles/disabled = SubResource("StyleBox_jrtx1")
 disabled = true
 
 [node name="设置面板" parent="内容区域/标签" instance=ExtResource("8_60vby")]
+visible = false
 layout_mode = 2
 
 [node name="任务功能" type="HBoxContainer" parent="内容区域"]

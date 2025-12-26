@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btgru1h1cibit"
-path="res://.godot/imported/燕麦平菇白菜乱炖.png-6188aae3ae3c894ef6b37e0feadda5ea.ctex"
+uid="uid://dmxceaxoayvjy"
+path="res://.godot/imported/料理瓶子.png-e3b44069b9eac976ba08a41f78782217.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://素材/豆包AI素材/食物/料理/燕麦平菇白菜乱炖.png"
-dest_files=["res://.godot/imported/燕麦平菇白菜乱炖.png-6188aae3ae3c894ef6b37e0feadda5ea.ctex"]
+source_file="res://素材/自制/教学截图/料理瓶子.png"
+dest_files=["res://.godot/imported/料理瓶子.png-e3b44069b9eac976ba08a41f78782217.ctex"]
 
 [params]
 

@@ -59,7 +59,7 @@ _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\">
 "
 base_scale = 2.0
 
-[node name="背包主界面" type="Control"]
+[node name="背包主界面" type="Control" node_paths=PackedStringArray("滚动区同步")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,6 +71,10 @@ grow_vertical = 2
 theme = ExtResource("1_loe2l")
 script = ExtResource("2_tb4we")
 "基类窗口名称" = "背包界面"
+"滚动区同步" = {
+"物品栏": NodePath("内容节点/水平排列/垂直排列/物品栏选项卡/物品栏"),
+"装备栏": NodePath("内容节点/水平排列/垂直排列/物品栏选项卡/装备栏")
+}
 metadata/_edit_lock_ = true
 
 [node name="标题" type="ColorRect" parent="."]

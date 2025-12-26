@@ -26,7 +26,7 @@ func _ready():
 		计划.保存存档("关闭游戏")
 		get_tree().quit())
 	%"取消".pressed.connect(func():切换暂停())
-	
+
 func _input(event: InputEvent):
 	# 检测 ESC 键按下（对应 InputMap 中的 "ui_cancel" 动作）
 	if event.is_action_pressed("显示控制台"):

@@ -132,6 +132,8 @@ var 测试=0
 func _ready() -> void:
 	梅声音单例=附加代码("梅声音")
 	梅表格单例=附加代码("梅表格")
+	var BUFF贴图实例: BUFF贴图 = BUFF贴图.new()
+	贴图字典=BUFF贴图实例.生成BUFF图标映射字典()
 ##游戏正式开始加载
 func 正式加载() -> void:
 	await get_tree().process_frame#等待背包内物品价值
@@ -146,8 +148,6 @@ func 正式加载() -> void:
 	创建或更新商店刷新计时器()
 	if 存档时间戳<获取零点时间戳(-86400):
 		call_deferred("零点刷新")
-	var BUFF贴图实例: BUFF贴图 = BUFF贴图.new()
-	贴图字典=BUFF贴图实例.生成BUFF图标映射字典()
 	梅红点单例=附加代码("梅红点")
 	红点.加载红点存档()
 	梅任务单例=附加代码("梅任务")#加载顺序,存档之后
@@ -501,8 +501,10 @@ func 获得物品语法糖(物品名称, 数量=1,  类型="标准物品",_参�
 			GBIS.add_item(背包类型, 道具.duplicate())# 每次添加都创建新实例，避免引用同一对象
 	return 道具
 func 检查背包物品数量(物品名称)->int:
-	# 获取背包中指定名称的物品列表，背包名称写死为"背包"
 	var 物品列表 = GBIS.inventory_service.find_item_data_by_item_name("背包", 物品名称)
+	var 鼠标物品=GBIS.item_focus_service.current_item_data
+	if 鼠标物品 and 鼠标物品.item_name == 物品名称:
+		物品列表.append(鼠标物品)
 	var 总数量 = 0
 	if 物品列表.size() == 0:
 		return 0# 如果没有找到物品，直接返回0

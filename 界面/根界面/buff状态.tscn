@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://230ie06rn4gm" path="res://界面/根界面/buff状态.gd" id="1_e77f8"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_vnghs"]
-[ext_resource type="Texture2D" uid="uid://27dm66tguqe7" path="res://素材/豆包AI素材/图标/BUFF栏图标.png" id="2_e77f8"]
+[ext_resource type="PackedScene" uid="uid://dl4tiwe8q607g" path="res://界面/插件/贴图/贴图.tscn" id="3_e77f8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yd0tu"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
@@ -47,13 +47,9 @@ text = "测试可以显示几个字"
 vertical_alignment = 1
 clip_text = true
 
-[node name="贴图" type="Sprite2D" parent="."]
+[node name="贴图" parent="." instance=ExtResource("3_e77f8")]
 unique_name_in_owner = true
 position = Vector2(32, 32)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_e77f8")
-region_enabled = true
-region_rect = Rect2(0, 0, 256, 256)
 
 [node name="BUFF时间" type="Label" parent="."]
 unique_name_in_owner = true

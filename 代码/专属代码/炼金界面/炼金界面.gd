@@ -13,8 +13,6 @@ var 管理选项卡:TabContainer
 func _ready() -> void:
 	super._ready()
 	管理选项卡=$"内容节点/选项卡"
-	管理选项卡.current_tab=计划.窗口状态_限制(基类窗口名称,"管理选项卡",0,管理选项卡.get_tab_count())
-	管理选项卡.tab_selected.connect(func(序号):计划.窗口状态管理(基类窗口名称,"管理选项卡",null,序号))
 	生成预览描述()
 	生成配方详情文本()
 	配方格子=%"配方格子"
@@ -238,7 +236,7 @@ func 查询图片(图片,尺寸:int):
 		var 图片文本=计划.表格.蓝图字典[图片][计划.表格.蓝图表头["icon"]]
 		return "[img="+str(尺寸)+"x"+str(尺寸)+"]"+图片文本+"[/img]"
 	return
-func 返回处理方法():
+func 返回处理方法(_节点=null):
 	配方=%"配方格子".配方
 	生成配方详情文本()
 

@@ -1,50 +1,91 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkd8k1jonj3lt"]
+[gd_scene load_steps=8 format=3 uid="uid://bkd8k1jonj3lt"]
 
 [ext_resource type="Script" uid="uid://dso83uytjnx2t" path="res://界面/手工系统/烹饪/食材资源条.gd" id="1_3hu5w"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="2_3hu5w"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="3_v0qbg"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="4_c48ug"]
 [ext_resource type="Script" uid="uid://bru7ehuqamvdq" path="res://界面/插件/资源进度条/刻度.gd" id="5_tok8q"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqjhm"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 0.8745098)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("4_c48ug")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flgcg"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.34933117, 0.26748788, 0.100237556, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("4_c48ug")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
 [node name="资源" type="Control"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(80, 120)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 487.0
-offset_bottom = 80.0
+offset_right = 480.0
+offset_bottom = 120.0
 theme = ExtResource("3_v0qbg")
 script = ExtResource("1_3hu5w")
 
+[node name="背景" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sqjhm")
+
 [node name="贴图" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -49.5
+offset_right = 99.0
+offset_bottom = 49.5
+grow_vertical = 2
 texture = ExtResource("2_3hu5w")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="物品标签" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 81.0
-offset_top = -43.0
+offset_left = 106.0
+offset_top = 46.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme_override_constants/paragraph_spacing = -15
 theme_override_font_sizes/font_size = 30
-text = "测试文本"
+text = "测试文本
+文本"
+vertical_alignment = 2
 
 [node name="进度" type="ProgressBar" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.99200004
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 83.0
-offset_top = 1.0
-offset_right = -0.104034424
-offset_bottom = -39.0
+offset_left = 104.0
+offset_top = 5.0
+offset_right = -4.0
+offset_bottom = -68.0
+grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_v0qbg")
 max_value = 5.0
@@ -85,11 +126,23 @@ theme_override_colors/font_color = Color(0.12778333, 0.41, 0.123, 1)
 theme_override_font_sizes/font_size = 25
 text = "刻度10"
 
-[node name="点击范围" type="Control" parent="."]
+[node name="数量标签" type="Label" parent="进度"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="点击范围" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_flgcg")
 metadata/_edit_lock_ = true

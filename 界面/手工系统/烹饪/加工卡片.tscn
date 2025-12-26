@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3kl0tpvu7qas"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_gvhut"]
+[ext_resource type="PackedScene" uid="uid://uh5t35s1wsr5" path="res://界面/插件/配方容器.tscn" id="1_r5r65"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_a85o2"]
+[ext_resource type="Script" uid="uid://c5n8hnky2sc1j" path="res://界面/手工系统/烹饪/加工卡片.gd" id="2_cygus"]
+[ext_resource type="PackedScene" uid="uid://dl4tiwe8q607g" path="res://界面/插件/贴图/贴图.tscn" id="3_w4vel"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8m7qh"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 0.4862745)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.69803923, 0.5529412, 0.25490198, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+script = ExtResource("2_a85o2")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[node name="加工卡片" type="Panel"]
+custom_minimum_size = Vector2(450, 0)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 400.0
+grow_vertical = 2
+theme = ExtResource("1_gvhut")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8m7qh")
+script = ExtResource("2_cygus")
+
+[node name="节点排序" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 12.0
+offset_right = -11.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="名称排序" type="HBoxContainer" parent="节点排序"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="工序名称" type="Label" parent="节点排序/名称排序"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "工序"
+
+[node name="贴图" parent="节点排序/名称排序" instance=ExtResource("3_w4vel")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="工序描述" type="Label" parent="节点排序"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "一段工序的描述
+比方说切割食物"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="配方容器" parent="节点排序" instance=ExtResource("1_r5r65")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+"可修改数量" = false
+"物品数量限制" = Vector2i(1, 1)
+"限制类型" = ["食材"]
+"空置标签" = "食材"
+
+[node name="工序进度" type="ProgressBar" parent="节点排序"]
+custom_minimum_size = Vector2(350, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+step = 1.0
+
+[node name="点击按钮" type="Button" parent="节点排序"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "工序
+"

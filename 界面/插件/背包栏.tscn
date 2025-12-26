@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnjv1qqq3txe4"]
+[gd_scene load_steps=5 format=3 uid="uid://bnjv1qqq3txe4"]
 
 [ext_resource type="Script" uid="uid://cwi4da5b644i0" path="res://界面/插件/背包栏.gd" id="1_e26fh"]
 [ext_resource type="Script" uid="uid://bublnb2wstici" path="res://代码/专属代码/炼金界面/背包.gd" id="1_ygqan"]
 [ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="2_e26fh"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_jyq5j"]
 
 [node name="背包栏" type="FoldableContainer"]
 offset_left = 1550.0
@@ -18,11 +19,14 @@ unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(990, 900)
 layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 
 [node name="背包" type="Control" parent="物品栏"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(990, 1100)
 layout_mode = 2
+theme = ExtResource("2_jyq5j")
 script = ExtResource("1_ygqan")
 container_name = "背包"
 container_columns = 9

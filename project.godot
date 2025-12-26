@@ -18,7 +18,7 @@ config/description="最后一个实验性版本,存档目前状态相对稳定
 游戏基础版本开发总进度(1/7):
 [手工:75%]
 [挂机:5%]"
-config/version="0.1.5.1"
+config/version="0.1.6"
 config/tags=PackedStringArray("梅计划")
 run/main_scene="uid://kifxwq2enhmp"
 config/features=PackedStringArray("4.5", "Mobile")
@@ -189,3 +189,4 @@ common/physics_ticks_per_second=30
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

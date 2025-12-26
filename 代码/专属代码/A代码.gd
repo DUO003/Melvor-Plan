@@ -106,6 +106,9 @@ func 常用功能():
 #self#当前节点
 #super#继承上级节点
 #"整数%d:带0的整数%05d:文本%s:浮点%f:控制精度浮点%.2f:"%[10,123,"文本",3.14,3.1415]
+#"分隔字符".join(含有文本的数组)#文本拼接语法"".join()
+#var fps = Performance.get_monitor(Performance.Monitor.TIME_FPS)
+#var fps: float = Engine.get_frames_per_second()#获取帧率
 	breakpoint#断点
 func BBC语法():
 	var 文本="RichTextLabel 是一种为项目添加文本的灵活方式，

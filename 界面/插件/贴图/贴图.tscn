@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl4tiwe8q607g"]
+
+[ext_resource type="Texture2D" uid="uid://27dm66tguqe7" path="res://素材/豆包AI素材/图标/BUFF栏图标.png" id="1_dbmk6"]
+[ext_resource type="Script" uid="uid://dlb7dq7w46qyo" path="res://界面/插件/贴图/贴图.gd" id="2_6mhse"]
+
+[node name="贴图" type="Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_6mhse")
+
+[node name="贴图" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_dbmk6")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 256)

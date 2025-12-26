@@ -2,15 +2,37 @@ extends Control
 class_name 基类梅窗口#逐渐改使用基类 当前大部分窗口未使用
 @export var 基类窗口名称:String=""#所有继承者必须重写这个
 @export_multiline var 提示文本: Array[String] = []#非强制
-var 生命周期计时器: Array[Timer]
+@export var 选项卡同步: Dictionary[String,TabContainer] = {}
+@export var 滚动区同步: Dictionary[String,ScrollContainer] = {}
+@export var 生命周期计时器: Array[Timer]
 func _ready() -> void:
 	assert(基类窗口名称 != "", "基类窗口名称不能为空，所有继承者必须重写这个属性")
 	计划.节点[基类窗口名称]=self#注册
+	call_deferred("自动加载")
+func 自动加载():
+	for 选项名称:String in 选项卡同步:
+		var 当前选项卡=选项卡同步[选项名称]
+		当前选项卡.current_tab=计划.窗口状态_限制(基类窗口名称,选项名称,0,当前选项卡.get_tab_count(),0)
+		当前选项卡.tab_selected.connect(func(序号):计划.窗口状态管理(基类窗口名称,选项名称,null,序号))
+	for 选项名称:String in 滚动区同步:
+		var 当前滚动区=滚动区同步[选项名称]
+		当前滚动区.scroll_horizontal=计划.窗口状态管理(基类窗口名称,选项名称+"水平",0)
+		当前滚动区.scroll_vertical=计划.窗口状态管理(基类窗口名称,选项名称+"垂直",0)
+		var 水平=当前滚动区.get_h_scroll_bar()
+		var 垂直=当前滚动区.get_v_scroll_bar()
+		水平.mouse_exited.connect(func():保存滚动区(当前滚动区,选项名称))
+		垂直.mouse_exited.connect(func():保存滚动区(当前滚动区,选项名称))
+func 保存滚动区(当前滚动区:ScrollContainer,选项名称:String):
+	计划.窗口状态管理(基类窗口名称,选项名称+"水平",null,当前滚动区.scroll_horizontal)
+	计划.窗口状态管理(基类窗口名称,选项名称+"垂直",null,当前滚动区.scroll_vertical)
+	#print("已保存",当前滚动区.scroll_vertical,当前滚动区.scroll_horizontal)
 func _exit_tree() -> void:
 	if 计划.节点.has(基类窗口名称):# 安全检查：确保字典中存在该键再移除
 		计划.节点.erase(基类窗口名称)
 	for 计时器 in 生命周期计时器:
 		计时器.queue_free()
+	for 选项名称:String in 滚动区同步:
+		保存滚动区(滚动区同步[选项名称],选项名称)
 func 清除子节点(节点容器,保留节点=null):
 	计划.清除子节点(节点容器,保留节点)#用的太多了,移动到全局代码更方便
 func 定期更新提示文本(目标文本节点):

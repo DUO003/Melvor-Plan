@@ -56,4 +56,3 @@ func 更新物品():#先删除后添加
 	await get_tree().process_frame
 	for 道具卡片场景 in 节点容器.get_children():
 		道具卡片场景.调整位置()
-	

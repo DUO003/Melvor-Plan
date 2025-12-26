@@ -206,7 +206,7 @@ script = ExtResource("6_4tae6")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_l2l3n")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
-[node name="炼金主界面" type="Control"]
+[node name="炼金主界面" type="Control" node_paths=PackedStringArray("选项卡同步", "滚动区同步")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -219,6 +219,14 @@ theme = ExtResource("1_nocv6")
 script = ExtResource("2_ex6pc")
 "基类窗口名称" = "炼金界面"
 "提示文本" = Array[String](["温馨提示:左上角打开背包放置物品", "温馨提示:没有更多提示"])
+"选项卡同步" = {
+"管理选项卡": NodePath("内容节点/选项卡")
+}
+"滚动区同步" = {
+"帮助": NodePath("内容节点/选项卡/帮助区域"),
+"滚动区": NodePath("内容节点/配方/滚动区"),
+"滚动区2": NodePath("内容节点/队列/滚动区2")
+}
 metadata/_edit_lock_ = true
 
 [node name="标题" type="ColorRect" parent="."]
@@ -666,6 +674,7 @@ anchor_right = 1.0
 offset_left = -150.0
 offset_right = 0.0
 "白名单" = ["催化", "特殊催化", "炼金"]
+"自动打开背包" = true
 
 [node name="弹窗提示" type="Control" parent="."]
 unique_name_in_owner = true

@@ -1,12 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://cul12q75ouejt"]
+[gd_scene load_steps=17 format=3 uid="uid://cul12q75ouejt"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_7o14l"]
+[ext_resource type="Script" uid="uid://dynypwe3jcahy" path="res://界面/手工系统/烹饪/烹饪界面.gd" id="2_i7jk0"]
 [ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_5fic2"]
 [ext_resource type="PackedScene" uid="uid://bnjv1qqq3txe4" path="res://界面/插件/背包栏.tscn" id="3_rxtf7"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="4_4idlc"]
 [ext_resource type="Script" uid="uid://dlx5x0nlseodb" path="res://界面/手工系统/烹饪/食材处理管理.gd" id="4_45rc1"]
+[ext_resource type="PackedScene" uid="uid://c3kl0tpvu7qas" path="res://界面/手工系统/烹饪/加工卡片.tscn" id="4_pla24"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_1o5mj"]
 [ext_resource type="PackedScene" uid="uid://bkd8k1jonj3lt" path="res://界面/手工系统/烹饪/食材资源条.tscn" id="5_45rc1"]
+[ext_resource type="PackedScene" uid="uid://b21qe2xo4w534" path="res://界面/手工系统/烹饪/料理卡片.tscn" id="5_frisf"]
+[ext_resource type="Texture2D" uid="uid://dmxceaxoayvjy" path="res://素材/自制/教学截图/料理瓶子.png" id="6_7ay8b"]
+[ext_resource type="Texture2D" uid="uid://bjjborvy0ptqq" path="res://素材/自制/教学截图/工序关系.png" id="7_7o14l"]
 
-[node name="原罪界面" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_frisf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7o14l"]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1o5mj"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_1o5mj")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_pla24"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+script = ExtResource("4_4idlc")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_1o5mj")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[node name="烹饪界面" type="Control" node_paths=PackedStringArray("选项卡同步", "滚动区同步")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +48,30 @@ offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_7o14l")
+script = ExtResource("2_i7jk0")
+"基类窗口名称" = "烹饪界面"
+"选项卡同步" = {
+"操作区": NodePath("内容节点/内容节点区域/操作区"),
+"食材标签": NodePath("内容节点/内容节点区域/食材标签")
+}
+"滚动区同步" = {
+"帮助": NodePath("内容节点/内容节点区域/操作区/帮助"),
+"特殊工序": NodePath("内容节点/内容节点区域/操作区/特殊工序"),
+"研制食谱": NodePath("内容节点/内容节点区域/操作区/研制食谱"),
+"预加工": NodePath("内容节点/内容节点区域/操作区/预加工"),
+"预处理食材": NodePath("内容节点/内容节点区域/食材标签/预处理食材")
+}
 metadata/_edit_lock_ = true
+
+[node name="画布" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="资源" parent="画布" instance=ExtResource("5_45rc1")]
+unique_name_in_owner = true
+offset_left = -448.0
+offset_top = 4.0
+offset_right = -54.0
+offset_bottom = 124.0
 
 [node name="标题" type="ColorRect" parent="."]
 layout_mode = 1
@@ -52,43 +107,253 @@ offset_right = 1700.0
 offset_bottom = 1000.0
 metadata/_edit_lock_ = true
 
-[node name="食材处理管理" type="ScrollContainer" parent="内容节点"]
-custom_minimum_size = Vector2(0, 150)
+[node name="内容节点区域" type="VBoxContainer" parent="内容节点"]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 14.0
-offset_top = -150.0
-offset_right = -17.0
 grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("4_45rc1")
+grow_vertical = 2
 
-[node name="食材处理容器" type="HBoxContainer" parent="内容节点/食材处理管理"]
+[node name="操作区" type="TabContainer" parent="内容节点/内容节点区域"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_frisf")
+current_tab = 0
+
+[node name="预加工" type="ScrollContainer" parent="内容节点/内容节点区域/操作区"]
 unique_name_in_owner = true
 layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="工序容器" type="HBoxContainer" parent="内容节点/内容节点区域/操作区/预加工"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = -10
+
+[node name="清洗" parent="内容节点/内容节点区域/操作区/预加工/工序容器" instance=ExtResource("4_pla24")]
+layout_mode = 2
+"工序名称" = "清洗"
+"工序图标" = "水滴"
+"工序描述" = "将任意食材清洗干净"
+"需求标签" = Dictionary[String, String]({
+"": "清洗",
+"清洗并腌制": "反复清洗",
+"腌制": "清洗"
+})
+"点击次数" = 3
+
+[node name="切割" parent="内容节点/内容节点区域/操作区/预加工/工序容器" instance=ExtResource("4_pla24")]
+layout_mode = 2
+"工序名称" = "切割"
+"工序图标" = "剪刀"
+"工序描述" = "将任意食材切割为小块
+可以处理清洗后的食材"
+"需求标签" = Dictionary[String, String]({
+"": "切割",
+"清洗": "清洗并切割"
+})
+
+[node name="腌制" parent="内容节点/内容节点区域/操作区/预加工/工序容器" instance=ExtResource("4_pla24")]
+layout_mode = 2
+"限制属性类型" = {
+"食材": ["肉类", "海鲜"]
+}
+"工序名称" = "腌制"
+"工序图标" = "魔药"
+"工序描述" = "对肉类海鲜进行腌制
+增加食物的风味"
+"需求标签" = Dictionary[String, String]({
+"": "腌制",
+"切割": "切割并腌制",
+"反复清洗": "反复腌制",
+"清洗": "清洗并腌制",
+"清洗并切割": "切割并腌制"
+})
+"点击次数" = 5
+
+[node name="敬请期待" parent="内容节点/内容节点区域/操作区/预加工/工序容器" instance=ExtResource("4_pla24")]
+layout_mode = 2
+"工序名称" = "敬请期待"
+"工序图标" = "沙漏"
+"工序描述" = "后续会有更多预制工序"
+"点击次数" = 0
+
+[node name="特殊工序" type="ScrollContainer" parent="内容节点/内容节点区域/操作区"]
+visible = false
+layout_mode = 2
+vertical_scroll_mode = 0
+metadata/_tab_index = 1
+
+[node name="特殊工序容器" type="HBoxContainer" parent="内容节点/内容节点区域/操作区/特殊工序"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = -10
+
+[node name="删除" parent="内容节点/内容节点区域/操作区/特殊工序/特殊工序容器" instance=ExtResource("4_pla24")]
+layout_mode = 2
+"工序名称" = "删除"
+"工序图标" = "熔炉"
+"工序描述" = "将整个瓶子的食材
+全部倒掉腾出瓶子
+(谨慎操作)"
+"需求标签" = Dictionary[String, String]({})
+"点击次数" = -1
+
+[node name="调料研磨" parent="内容节点/内容节点区域/操作区/特殊工序/特殊工序容器" instance=ExtResource("4_pla24")]
+layout_mode = 2
+"工序名称" = "调料研磨"
+"工序图标" = "锤子"
+"工序描述" = "将调味药水变成粉末
+用于自动化烹饪
++10调味点数"
+"需求标签" = Dictionary[String, String]({
+"": "研磨"
+})
+"点击次数" = 8
+
+[node name="配方容器" parent="内容节点/内容节点区域/操作区/特殊工序/特殊工序容器/调料研磨/节点排序" index="2"]
+"限制类型" = ["调料"]
+"空置标签" = "调味品"
+
+[node name="研制食谱" type="ScrollContainer" parent="内容节点/内容节点区域/操作区"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="料理卡片容器" type="HBoxContainer" parent="内容节点/内容节点区域/操作区/研制食谱"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="料理卡片" parent="内容节点/内容节点区域/操作区/研制食谱/料理卡片容器" instance=ExtResource("5_frisf")]
+layout_mode = 2
+
+[node name="帮助" type="ScrollContainer" parent="内容节点/内容节点区域/操作区"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="内容节点/内容节点区域/操作区/帮助"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="帮助" type="Label" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/paragraph_spacing = -4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7o14l")
+text = "烹饪玩法帮助
+1.能需要打开背包,拿出食材类道具放入工序中
+2.食材预制后可以获取食材瓶,瓶子内保存着食材
+3.部分工序可以处理其他工序处理后的食材,
+点击料理瓶可以将加工过的食材拿到其他工序中.
+4.烹饪时满足基础需求即可完成料理制作."
+
+[node name="贴图2" type="TextureRect" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("6_7ay8b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "食材瓶子
+拥有数量和容量限制
+可以通过废弃工序清空腾出空间"
+
+[node name="Label2" type="Label" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "调料点数
+可以在自动制作时节省调料药水的使用"
+
+[node name="Label3" type="Label" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "敬请期待:
+1.更多工序
+2.自动烹饪"
+
+[node name="贴图" type="TextureRect" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer"]
+custom_minimum_size = Vector2(600, 120)
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("7_7o14l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "
+烹饪设定
+1.你可以通过烹饪代币解锁新的料理食谱
+2.食材通过经过处理的步骤越多提供的美味度越高
+3.料理达到一定美味度条件后可以直接使用原料制作.
+4.工序之间的关系见图2"
+
+[node name="食材标签" type="TabContainer" parent="内容节点/内容节点区域"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_pla24")
+current_tab = 1
+script = ExtResource("4_45rc1")
+
+[node name="预处理食材" type="ScrollContainer" parent="内容节点/内容节点区域/食材标签"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="食材处理容器" type="HBoxContainer" parent="内容节点/内容节点区域/食材标签/预处理食材"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+theme_override_constants/separation = 30
+
+[node name="预处理食材标题" type="Label" parent="内容节点/内容节点区域/食材标签/预处理食材/食材处理容器"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 8
-theme_override_constants/separation = 10
+theme_override_constants/paragraph_spacing = -10
+text = "瓶子容量5
+瓶子限制10
+当前拥有:1"
+
+[node name="调味点数" type="HBoxContainer" parent="内容节点/内容节点区域/食材标签"]
+unique_name_in_owner = true
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="自动制作" type="HBoxContainer" parent="内容节点/内容节点区域/食材标签"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Label" type="Label" parent="内容节点/内容节点区域/食材标签/自动制作"]
+layout_mode = 2
+text = "没做完"
 
 [node name="背包栏" parent="." instance=ExtResource("3_rxtf7")]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -150.0
-offset_top = 106.0
 offset_right = 0.0
-offset_bottom = 163.0
-grow_horizontal = 0
 "白名单" = ["食材", "调料"]
 
-[node name="食材管理器" type="CanvasLayer" parent="."]
-
-[node name="资源" parent="食材管理器" instance=ExtResource("5_45rc1")]
-unique_name_in_owner = true
-offset_left = -298.0
-offset_top = 5.0
-offset_right = -12.0
-offset_bottom = 85.0
+[editable path="内容节点/内容节点区域/操作区/特殊工序/特殊工序容器/调料研磨"]

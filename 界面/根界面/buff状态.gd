@@ -28,15 +28,4 @@ func _更新BUFF名称显示() -> void:
 	新字体大小 = max(新字体大小, 12)
 	名称节点.add_theme_font_size_override("font_size", 新字体大小)
 func 设置BUFF图标(名称: String, 精灵节点: Sprite2D=%"贴图") -> bool:
-	var 映射字典=计划.贴图字典
-	if not 映射字典.has(名称):
-		print("【设置失败】未找到BUFF名称：%s" % 名称)
-		return false
-	if not 精灵节点:
-		print("【设置失败】Sprite2D节点为空")
-		return false
-	var 图标数据 = 映射字典[名称]
-	精灵节点.texture = 图标数据[0]
-	精灵节点.region_enabled = true
-	精灵节点.region_rect = 图标数据[1]
-	return true
+	return 精灵节点.设置BUFF图标(名称)
