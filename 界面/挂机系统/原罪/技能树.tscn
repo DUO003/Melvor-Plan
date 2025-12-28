@@ -140,6 +140,8 @@ size_flags_horizontal = 6
 text = "清空队列"
 
 [node name="技能树节点" type="ScrollContainer" parent="."]
+unique_name_in_owner = true
+clip_contents = false
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -185,6 +187,42 @@ vertical_alignment = 1
 script = ExtResource("6_86x06")
 "线宽" = 5.0
 "线颜色" = Color(0.5294118, 0.37254903, 0.101960786, 1)
+metadata/_edit_lock_ = true
+
+[node name="下限位" type="Label" parent="技能树节点/显示区域/技能中心点/技能树中心点"]
+layout_mode = 0
+offset_left = -89.0
+offset_top = 580.5
+offset_right = 205.0
+offset_bottom = 637.5
+text = "下面什么也没有"
+metadata/_edit_lock_ = true
+
+[node name="上限位" type="Label" parent="技能树节点/显示区域/技能中心点/技能树中心点"]
+layout_mode = 0
+offset_left = -109.0
+offset_top = -612.5
+offset_right = 185.0
+offset_bottom = -555.5
+text = "上面什么也没有"
+metadata/_edit_lock_ = true
+
+[node name="前限位" type="Label" parent="技能树节点/显示区域/技能中心点/技能树中心点"]
+layout_mode = 0
+offset_left = -998.0
+offset_top = 13.5
+offset_right = -683.0
+offset_bottom = 70.5
+text = "再往前什么也没有"
+metadata/_edit_lock_ = true
+
+[node name="前限位2" type="Label" parent="技能树节点/显示区域/技能中心点/技能树中心点"]
+layout_mode = 0
+offset_left = 825.0
+offset_top = 24.5
+offset_right = 1140.0
+offset_bottom = 81.5
+text = "再往前什么也没有"
 metadata/_edit_lock_ = true
 
 [node name="技能" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
@@ -247,37 +285,45 @@ grow_horizontal = 1
 "技能文本" = "研究改良"
 "技能层级" = 1
 
-[node name="下限位" type="Label" parent="技能树节点/显示区域/技能中心点"]
+[node name="技能7" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
 layout_mode = 0
-offset_left = -148.0
-offset_top = 552.0
-offset_right = 146.0
-offset_bottom = 609.0
-text = "下面什么也没有"
+offset_left = 344.0
+offset_top = -340.0
+offset_right = 464.0
+offset_bottom = -220.0
+grow_horizontal = 1
+"技能文本" = "工序优化"
+"技能层级" = 2
 
-[node name="上限位" type="Label" parent="技能树节点/显示区域/技能中心点"]
+[node name="技能8" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
 layout_mode = 0
-offset_left = -168.0
-offset_top = -641.0
-offset_right = 126.0
-offset_bottom = -584.0
-text = "上面什么也没有"
+offset_left = 200.0
+offset_top = -490.0
+offset_right = 320.0
+offset_bottom = -370.0
+grow_horizontal = 1
+"技能文本" = "工序清洗"
+"技能层级" = 3
 
-[node name="前限位" type="Label" parent="技能树节点/显示区域/技能中心点"]
+[node name="技能9" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
 layout_mode = 0
-offset_left = -1057.0
-offset_top = -15.0
-offset_right = -742.0
-offset_bottom = 42.0
-text = "再往前什么也没有"
+offset_left = 344.0
+offset_top = -490.0
+offset_right = 464.0
+offset_bottom = -370.0
+grow_horizontal = 1
+"技能文本" = "工序切割"
+"技能层级" = 3
 
-[node name="前限位2" type="Label" parent="技能树节点/显示区域/技能中心点"]
+[node name="技能10" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
 layout_mode = 0
-offset_left = 766.0
-offset_top = -4.0
-offset_right = 1081.0
-offset_bottom = 53.0
-text = "再往前什么也没有"
+offset_left = 480.0
+offset_top = -490.0
+offset_right = 600.0
+offset_bottom = -370.0
+grow_horizontal = 1
+"技能文本" = "工序腌制"
+"技能层级" = 3
 
 [node name="回到中心" type="Button" parent="技能树节点/显示区域"]
 layout_mode = 1

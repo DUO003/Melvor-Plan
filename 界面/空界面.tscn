@@ -14,31 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://b52t5s6a00r87" path="res://素材/自制/图标/暂停.png" id="11_q2fph"]
 [ext_resource type="Script" uid="uid://cc1j5mukjb2p1" path="res://代码/专属代码/暂停界面/暂停界面.gd" id="11_s3egw"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0p14m"]
-bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.70021564, 0.5527891, 0.25613704, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-script = ExtResource("8_0p14m")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBox" id="StyleBox_s3egw"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = -1.0
-content_margin_top = -1.0
-content_margin_right = -1.0
-content_margin_bottom = -1.0
-script = ExtResource("7_4h1no")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_0p14m")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
-
 [sub_resource type="InputEventKey" id="InputEventKey_0p14m"]
 device = -1
 pressed = true
@@ -66,6 +41,31 @@ content_margin_right = -1.0
 content_margin_bottom = -1.0
 script = ExtResource("7_4h1no")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_s3egw")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0p14m"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.70021564, 0.5527891, 0.25613704, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+script = ExtResource("8_0p14m")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_s3egw"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("7_4h1no")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_0p14m")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [sub_resource type="DPITexture" id="DPITexture_rhqkc"]
@@ -107,6 +107,74 @@ limit_enabled = false
 [node name="场景容器" type="Node" parent="."]
 unique_name_in_owner = true
 
+[node name="功能" type="Node" parent="."]
+
+[node name="展开按钮" type="Button" parent="功能"]
+offset_left = 1550.0
+offset_top = 10.0
+offset_right = 1610.0
+offset_bottom = 90.0
+theme = ExtResource("4_kiae7")
+theme_override_font_sizes/font_size = 50
+shortcut = SubResource("Shortcut_s3egw")
+shortcut_in_tooltip = false
+text = ">"
+script = ExtResource("4_4h1no")
+
+[node name="存档" type="Button" parent="功能/展开按钮"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -270.0
+offset_right = -53.0
+offset_bottom = 74.0
+grow_horizontal = 0
+theme = ExtResource("4_kiae7")
+theme_override_font_sizes/font_size = 50
+text = "手动存档"
+script = ExtResource("7_5a7ci")
+
+[node name="存档时间" type="Panel" parent="功能/展开按钮/存档"]
+layout_mode = 0
+offset_left = -225.0
+offset_bottom = 80.0
+theme_override_styles/panel = SubResource("StyleBox_q2fph")
+
+[node name="时间" type="Label" parent="功能/展开按钮/存档/存档时间"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "10秒前"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="暂停" type="Button" parent="功能/展开按钮"]
+layout_mode = 0
+offset_left = 55.0
+offset_right = 149.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("11_q2fph")
+
+[node name="提示容器" type="VBoxContainer" parent="功能"]
+unique_name_in_owner = true
+z_index = 10
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+
 [node name="悬浮面板" type="Node" parent="."]
 
 [node name="隐藏奖励" type="Button" parent="悬浮面板"]
@@ -130,62 +198,6 @@ offset_bottom = 63.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBox_s3egw")
-
-[node name="存档" type="Node" parent="."]
-
-[node name="展开按钮" type="Button" parent="存档"]
-offset_left = 1550.0
-offset_top = 10.0
-offset_right = 1610.0
-offset_bottom = 90.0
-theme = ExtResource("4_kiae7")
-theme_override_font_sizes/font_size = 50
-shortcut = SubResource("Shortcut_s3egw")
-shortcut_in_tooltip = false
-text = ">"
-script = ExtResource("4_4h1no")
-
-[node name="存档" type="Button" parent="存档/展开按钮"]
-z_index = 1
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -270.0
-offset_right = -53.0
-offset_bottom = 74.0
-grow_horizontal = 0
-theme = ExtResource("4_kiae7")
-theme_override_font_sizes/font_size = 50
-text = "手动存档"
-script = ExtResource("7_5a7ci")
-
-[node name="存档时间" type="Panel" parent="存档/展开按钮/存档"]
-layout_mode = 0
-offset_left = -225.0
-offset_bottom = 80.0
-theme_override_styles/panel = SubResource("StyleBox_q2fph")
-
-[node name="时间" type="Label" parent="存档/展开按钮/存档/存档时间"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 45
-text = "10秒前"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_lock_ = true
-
-[node name="暂停" type="Button" parent="存档/展开按钮"]
-layout_mode = 0
-offset_left = 55.0
-offset_right = 149.0
-offset_bottom = 80.0
-theme_override_font_sizes/font_size = 40
-icon = ExtResource("11_q2fph")
 
 [node name="任务栏分割" type="VSplitContainer" parent="."]
 unique_name_in_owner = true
@@ -276,19 +288,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_constants/separation = 0
-
-[node name="提示容器" type="VBoxContainer" parent="."]
-unique_name_in_owner = true
-z_index = 10
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-mouse_behavior_recursive = 1
 
 [node name="暂停界面" type="CanvasLayer" parent="."]
 unique_name_in_owner = true

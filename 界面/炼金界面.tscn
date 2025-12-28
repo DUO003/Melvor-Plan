@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c3ipvacpavwmu"]
+[gd_scene load_steps=33 format=3 uid="uid://c3ipvacpavwmu"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_nocv6"]
 [ext_resource type="Script" uid="uid://dhlygjpx7m47s" path="res://代码/专属代码/炼金界面/炼金界面.gd" id="2_ex6pc"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="6_4tae6"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="7_1ov6e"]
 [ext_resource type="Texture2D" uid="uid://ctm2escs1vnet" path="res://素材/豆包AI素材/炼金材料1/幻雾凝露.png" id="7_l2l3n"]
+[ext_resource type="PackedScene" uid="uid://blkkbdad7hti1" path="res://界面/插件/物品辅助/代币商店.tscn" id="7_nocv6"]
 [ext_resource type="Texture2D" uid="uid://ct5mx5e3vqyel" path="res://素材/豆包AI素材/炼金材料1/圣盾徽记.png" id="8_c1r7u"]
+[ext_resource type="Script" uid="uid://bivcgv6cvbvln" path="res://界面/插件/物品辅助/商品数据包.gd" id="8_l2l3n"]
 [ext_resource type="Texture2D" uid="uid://c3pf2xcp831y0" path="res://素材/豆包AI素材/图标/背包图标.png" id="9_1enq4"]
 [ext_resource type="Texture2D" uid="uid://b3k5trdwy6ue2" path="res://素材/豆包AI素材/图标/合成图标.png" id="10_wqaqf"]
 [ext_resource type="PackedScene" uid="uid://unn8tlhgiegn" path="res://界面/插件/配方格子.tscn" id="12_l2l3n"]
@@ -131,6 +133,24 @@ script = ExtResource("6_4tae6")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_nocv6")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
+[sub_resource type="Resource" id="Resource_nocv6"]
+script = ExtResource("8_l2l3n")
+"商品名" = "圣盾徽记"
+"代币" = "催化剂代币"
+metadata/_custom_type_script = "uid://bivcgv6cvbvln"
+
+[sub_resource type="Resource" id="Resource_l2l3n"]
+script = ExtResource("8_l2l3n")
+"商品名" = "星纹结晶"
+"代币" = "催化剂代币"
+metadata/_custom_type_script = "uid://bivcgv6cvbvln"
+
+[sub_resource type="Resource" id="Resource_c1r7u"]
+script = ExtResource("8_l2l3n")
+"商品名" = "风翎符片"
+"代币" = "催化剂代币"
+metadata/_custom_type_script = "uid://bivcgv6cvbvln"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5jsc"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
 border_width_left = 5
@@ -240,6 +260,7 @@ metadata/_edit_lock_ = true
 
 [node name="等级显示" parent="标题" instance=ExtResource("3_c1r7u")]
 layout_mode = 1
+"玩法" = "炼金"
 "精通池显示" = null
 
 [node name="背景" type="ColorRect" parent="."]
@@ -265,9 +286,10 @@ custom_minimum_size = Vector2(1290, 500)
 layout_mode = 0
 offset_right = 1290.0
 offset_bottom = 500.0
-current_tab = 0
+current_tab = 2
 
 [node name="炼金台" type="Control" parent="内容节点/选项卡"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -387,10 +409,14 @@ text = "缺少炼金材料[font_size=30]你需要放入至少3种炼金材料[/f
 当前序号0
 连续制作20次可了解配方"
 
+[node name="代币商店" parent="内容节点/选项卡" instance=ExtResource("7_nocv6")]
+layout_mode = 2
+"商品数组" = Array[ExtResource("8_l2l3n")]([SubResource("Resource_nocv6"), SubResource("Resource_l2l3n"), SubResource("Resource_c1r7u")])
+
 [node name="帮助区域" type="ScrollContainer" parent="内容节点/选项卡"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 3
 
 [node name="帮助说明" type="HBoxContainer" parent="内容节点/选项卡/帮助区域"]
 layout_mode = 2

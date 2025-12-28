@@ -33,6 +33,7 @@ var 初始化=false
 func _ready() -> void:
 	if 初始化:
 		初始更新()
+		计划.更新_UI.connect(更新文本)
 ##初始化方法,一步到胃初始化节点
 func 从字典初始化(自定义配置: Dictionary = {}) -> void:
 	可修改物品 = 自定义配置.get("可修改物品", true)

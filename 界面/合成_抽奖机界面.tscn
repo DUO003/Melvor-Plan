@@ -216,6 +216,7 @@ metadata/_edit_lock_ = true
 
 [node name="等级显示" parent="标题" instance=ExtResource("2_bt04l")]
 layout_mode = 1
+"玩法" = "抽奖机"
 
 [node name="背景" type="ColorRect" parent="."]
 layout_mode = 1
@@ -452,7 +453,6 @@ text = "主菜单"
 
 [node name="蓝色图纸" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 position = Vector2(568, 472)
 scale = Vector2(2.3824487, 2.116616)
 texture = ExtResource("9_avrdn")

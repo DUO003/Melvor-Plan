@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2vh3fswditse"]
+
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="1_6fjmu"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_sk5i8"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_sk5i8"]
+[ext_resource type="Script" uid="uid://7cmlmma10s5y" path="res://界面/插件/物品辅助/商品卡.gd" id="3_hn262"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="4_j8t25"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdor2"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.6156863, 0.3529412, 0.09803922, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("2_sk5i8")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_b440g"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("1_6fjmu")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_wdor2")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hn262"]
+content_margin_left = 10.0
+content_margin_top = 2.0
+
+[node name="商品卡" type="Panel"]
+custom_minimum_size = Vector2(240, 350)
+theme = ExtResource("1_sk5i8")
+theme_override_styles/panel = SubResource("StyleBox_b440g")
+script = ExtResource("3_hn262")
+"商品名" = "圣盾徽记"
+"代币" = "催化剂代币"
+
+[node name="图片" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.60300004
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 0.14099121
+grow_horizontal = 2
+texture = ExtResource("4_j8t25")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="价格" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.6090651
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 1.5258789e-05
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/paragraph_separation = -10
+bbcode_enabled = true
+text = "催化剂
+价格"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="文本" type="Label" parent="."]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hn262")
+text = "购买"
