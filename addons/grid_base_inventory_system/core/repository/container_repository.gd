@@ -82,3 +82,9 @@ func remove_quick_move_relation(inv_name: String, target_inv_name: String) -> vo
 ## 获取指定背包的快速移动关系
 func get_quick_move_relations(inv_name: String) -> Array[String]:
 	return _quick_move_relations_map.get(inv_name, [] as Array[String])
+func 更新所有物品堆叠():
+	for 背包 in _container_data_map:
+		var 物品数组=_container_data_map[背包].items
+		for 物品 in 物品数组:
+			if 物品 is 标准物品:
+				物品.更新堆叠()

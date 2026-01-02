@@ -14,11 +14,11 @@ config/name="梅计划"
 config/name_localized={
 "zh": "梅计划"
 }
-config/description="最后一个实验性版本,存档目前状态相对稳定
-游戏基础版本开发总进度(1/7):
-[手工:75%]
-[挂机:5%]"
-config/version="0.1.6.1"
+config/description="游戏手工版本开发中
+总进度(1/7)
+[手工:95%]
+[挂机:10%]"
+config/version="0.1.7"
 config/tags=PackedStringArray("梅计划")
 run/main_scene="uid://kifxwq2enhmp"
 config/features=PackedStringArray("4.5", "Mobile")
@@ -129,6 +129,10 @@ folder_colors={
 "res://界面/插件/": "gray",
 "res://素材/": "blue"
 }
+
+[global]
+
+steam_enabled=false
 
 [input]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c3ipvacpavwmu"]
+[gd_scene load_steps=35 format=3 uid="uid://c3ipvacpavwmu"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_nocv6"]
 [ext_resource type="Script" uid="uid://dhlygjpx7m47s" path="res://代码/专属代码/炼金界面/炼金界面.gd" id="2_ex6pc"]
@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bvvvxfldyr4jw" path="res://素材/豆包AI素材/炼金台.png" id="4_ukucx"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="6_4tae6"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="7_1ov6e"]
-[ext_resource type="Texture2D" uid="uid://ctm2escs1vnet" path="res://素材/豆包AI素材/炼金材料1/幻雾凝露.png" id="7_l2l3n"]
+[ext_resource type="Texture2D" uid="uid://ctm2escs1vnet" path="res://素材/豆包AI素材/炼金材料/幻雾凝露.png" id="7_l2l3n"]
 [ext_resource type="PackedScene" uid="uid://blkkbdad7hti1" path="res://界面/插件/物品辅助/代币商店.tscn" id="7_nocv6"]
-[ext_resource type="Texture2D" uid="uid://ct5mx5e3vqyel" path="res://素材/豆包AI素材/炼金材料1/圣盾徽记.png" id="8_c1r7u"]
+[ext_resource type="Texture2D" uid="uid://ct5mx5e3vqyel" path="res://素材/豆包AI素材/炼金材料/圣盾徽记.png" id="8_c1r7u"]
 [ext_resource type="Script" uid="uid://bivcgv6cvbvln" path="res://界面/插件/物品辅助/商品数据包.gd" id="8_l2l3n"]
 [ext_resource type="Texture2D" uid="uid://c3pf2xcp831y0" path="res://素材/豆包AI素材/图标/背包图标.png" id="9_1enq4"]
 [ext_resource type="Texture2D" uid="uid://b3k5trdwy6ue2" path="res://素材/豆包AI素材/图标/合成图标.png" id="10_wqaqf"]
@@ -136,19 +136,36 @@ metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 [sub_resource type="Resource" id="Resource_nocv6"]
 script = ExtResource("8_l2l3n")
 "商品名" = "圣盾徽记"
+"商品数量" = 5
 "代币" = "催化剂代币"
 metadata/_custom_type_script = "uid://bivcgv6cvbvln"
 
 [sub_resource type="Resource" id="Resource_l2l3n"]
 script = ExtResource("8_l2l3n")
 "商品名" = "星纹结晶"
+"商品数量" = 5
 "代币" = "催化剂代币"
 metadata/_custom_type_script = "uid://bivcgv6cvbvln"
 
 [sub_resource type="Resource" id="Resource_c1r7u"]
 script = ExtResource("8_l2l3n")
 "商品名" = "风翎符片"
+"商品数量" = 5
 "代币" = "催化剂代币"
+metadata/_custom_type_script = "uid://bivcgv6cvbvln"
+
+[sub_resource type="Resource" id="Resource_1enq4"]
+script = ExtResource("8_l2l3n")
+"商品名" = "催化剂代币"
+"商品数量" = 2
+"代币" = "手工精通代币"
+metadata/_custom_type_script = "uid://bivcgv6cvbvln"
+
+[sub_resource type="Resource" id="Resource_wqaqf"]
+script = ExtResource("8_l2l3n")
+"商品名" = "烹饪代币"
+"商品数量" = 2
+"代币" = "手工精通代币"
 metadata/_custom_type_script = "uid://bivcgv6cvbvln"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5jsc"]
@@ -411,7 +428,7 @@ text = "缺少炼金材料[font_size=30]你需要放入至少3种炼金材料[/f
 
 [node name="代币商店" parent="内容节点/选项卡" instance=ExtResource("7_nocv6")]
 layout_mode = 2
-"商品数组" = Array[ExtResource("8_l2l3n")]([SubResource("Resource_nocv6"), SubResource("Resource_l2l3n"), SubResource("Resource_c1r7u")])
+"商品数组" = Array[ExtResource("8_l2l3n")]([SubResource("Resource_nocv6"), SubResource("Resource_l2l3n"), SubResource("Resource_c1r7u"), SubResource("Resource_1enq4"), SubResource("Resource_wqaqf")])
 
 [node name="帮助区域" type="ScrollContainer" parent="内容节点/选项卡"]
 visible = false

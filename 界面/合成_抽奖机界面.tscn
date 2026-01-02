@@ -453,6 +453,7 @@ text = "主菜单"
 
 [node name="蓝色图纸" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(568, 472)
 scale = Vector2(2.3824487, 2.116616)
 texture = ExtResource("9_avrdn")

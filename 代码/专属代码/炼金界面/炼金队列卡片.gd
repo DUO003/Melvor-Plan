@@ -24,10 +24,10 @@ func _ready() -> void:
 	%"配方编号".text=str(序号+1)+"#号配方"
 	%"领取".pressed.connect(func():领取事件.call())
 	%"取消".pressed.connect(func():取消事件.call())
-	计划.梅手工单例.更新_炼金卡片.connect(更新UI事件)
+	计划.手工.更新_炼金卡片.connect(更新UI事件)
 	更新UI事件()
 func 更新UI事件():
-	队列炼金=计划.梅手工单例.队列炼金()
+	队列炼金=计划.手工.队列炼金()
 	if 队列炼金.size()>=序号:
 		缓存队列结果=队列炼金[序号]
 	else :

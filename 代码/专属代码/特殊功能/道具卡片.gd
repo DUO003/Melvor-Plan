@@ -1,7 +1,7 @@
 extends Panel
 class_name 道具卡片类
 var 道具:ItemData#基础类物品StackableData#可堆叠物品
-var 物品名称
+var 物品名称:String
 var 物品贴图
 var 数量
 var 名称详情=false

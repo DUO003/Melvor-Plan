@@ -79,7 +79,8 @@ func 内置信号():
 #
 #func _body_entered(body: Node3D) -> void:#检测到刚体进入碰撞范围时执行（3D碰撞体）
 #func _body_exited(body: Node3D) -> void:#检测到刚体离开碰撞范围时执行（3D碰撞体）
-#func _body_shape_entered(shape_idx: int, body: Node3D, body_shape_idx: int, local_point: Vector3, local_normal: Vector3, impulse: Vector3) -> void:#3D刚体碰撞形状接触时执行
+#func _body_shape_entered(shape_idx: int, body: Node3D, body_shape_idx: int,
+#local_point: Vector3, local_normal: Vector3, impulse: Vector3) -> void:#3D刚体碰撞形状接触时执行
 #func _area_entered(area: Area3D) -> void:#检测到Area进入范围时执行（3D Area节点）
 #func _area_exited(area: Area3D) -> void:#检测到Area离开范围时执行（3D Area节点）
 #

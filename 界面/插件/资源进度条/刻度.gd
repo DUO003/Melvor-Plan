@@ -55,7 +55,9 @@ func _ready():#编辑器预览效果
 	更新文本()
 ##禁止外部修改必须使用方法传入
 func 更新进度条参数(新上限: float=进度条上限, 新长度: float=size.x, 新刻度高度: float=刻度高度) -> void:
-	size.x=新长度
+	var 大小=size
+	大小.x=新长度
+	set_size(大小)
 	刻度高度 = 新刻度高度
 	if 新上限==进度条上限:#如果上限没变但其他值变化需要手动刷新
 		queue_redraw()

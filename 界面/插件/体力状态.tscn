@@ -21,6 +21,7 @@ corner_radius_bottom_left = 10
 [node name="体力状态" type="Control"]
 custom_minimum_size = Vector2(400, 70)
 layout_mode = 3
+anchors_preset = 0
 offset_right = 400.0
 offset_bottom = 70.0
 theme = ExtResource("1_wok3q")

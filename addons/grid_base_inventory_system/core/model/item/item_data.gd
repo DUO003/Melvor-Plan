@@ -27,7 +27,7 @@ var shader_params: Dictionary[String, Variant]
 ## 加载逻辑1 自动加载数据[br]
 ## 加载逻辑2 手动加载 不进行init内处理
 func _init(加载逻辑=0,物品名称: String="默认名称") -> void:
-	if 加载逻辑==0:
+	if 加载逻辑==0 and 计划.就绪():
 		call_deferred("延迟加载")
 		return
 	elif 加载逻辑==1:

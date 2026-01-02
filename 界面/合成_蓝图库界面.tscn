@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dix7n0qjq5fj7"]
+[gd_scene load_steps=6 format=3 uid="uid://dix7n0qjq5fj7"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_7l0eg"]
 [ext_resource type="Script" uid="uid://b5w23ygqwa07f" path="res://代码/专属代码/合成主界面/合成_蓝图库界面.gd" id="2_hair8"]
 [ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_7eb3o"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="4_56o7s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgp4q"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 0.19607843)
+script = ExtResource("4_56o7s")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [node name="合成_蓝图库界面" type="Control"]
 layout_mode = 3
@@ -28,9 +34,6 @@ metadata/_edit_lock_ = true
 
 [node name="等级显示" parent="标题" instance=ExtResource("3_7eb3o")]
 layout_mode = 1
-offset_right = 0.0
-offset_bottom = 0.0
-"精通池显示" = true
 
 [node name="背景" type="ColorRect" parent="."]
 layout_mode = 1
@@ -44,46 +47,86 @@ grow_vertical = 2
 color = Color(0.82, 0.732533, 0.492, 0.705882)
 metadata/_edit_lock_ = true
 
-[node name="内容节点" type="Control" parent="."]
-anchors_preset = 0
+[node name="内容节点" type="HSplitContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
 offset_top = 100.0
 offset_right = 1700.0
 offset_bottom = 1000.0
+theme_override_constants/separation = 5
 
-[node name="主菜单" type="Button" parent="内容节点"]
+[node name="选项卡" type="TabContainer" parent="内容节点"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(220, 0)
-layout_mode = 1
-anchors_preset = -1
-offset_left = 1438.0
-offset_top = 783.0
-offset_right = 1658.0
-offset_bottom = 872.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 60
-text = "主菜单"
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_qgp4q")
+current_tab = 0
+
+[node name="合成蓝图" type="ScrollContainer" parent="内容节点/选项卡"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="图纸容器" type="GridContainer" parent="内容节点/选项卡/合成蓝图"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = -5
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="烹饪菜谱" type="ScrollContainer" parent="内容节点/选项卡"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="菜谱容器" type="GridContainer" parent="内容节点/选项卡/烹饪菜谱"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = -5
+theme_override_constants/v_separation = 0
+columns = 4
+
+[node name="炼金催化剂" type="ScrollContainer" parent="内容节点/选项卡"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="催化剂容器" type="GridContainer" parent="内容节点/选项卡/炼金催化剂"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = -5
+theme_override_constants/v_separation = 0
+columns = 4
 
 [node name="等级信息" type="RichTextLabel" parent="内容节点"]
-layout_mode = 0
-offset_left = 1400.0
-offset_right = 1700.0
-offset_bottom = 777.0
+custom_minimum_size = Vector2(302, 0)
+layout_mode = 2
 theme_override_constants/line_separation = -10
 theme_override_font_sizes/normal_font_size = 35
 bbcode_enabled = true
 text = "当前最高蓝图等阶"
 
-[node name="所有蓝图" type="ScrollContainer" parent="内容节点"]
-layout_mode = 0
+[node name="主菜单" type="Button" parent="内容节点/等级信息"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 80)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -300.0
-
-[node name="图纸容器" type="GridContainer" parent="内容节点/所有蓝图"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
-columns = 4
+offset_left = -261.0
+offset_top = -108.0
+offset_right = -41.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "主菜单"

@@ -16,9 +16,9 @@ func _ready() -> void:
 	_更新进度([任务名称])
 func _更新进度(任务数组:Array=[]) -> void:
 	if 任务名称 in 任务数组:
-		var 任务全局 = 计划.梅任务单例.任务全局
+		var 任务全局 = 计划.任务.任务全局
 		if 任务全局.has(任务名称):
-			value = 计划.梅任务单例.任务全局[任务名称]["完成总进度"]
+			value = 计划.任务.任务全局[任务名称]["完成总进度"]
 			if value>=max_value:
 				if not is_queued_for_deletion() and 功能按钮 is Callable:
 					功能按钮.call()

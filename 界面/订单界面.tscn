@@ -110,7 +110,6 @@ text = "订单筛选器"
 [node name="提交模式" parent="内容节点/控制区/信息排列容器" instance=ExtResource("4_lwtkq")]
 unique_name_in_owner = true
 layout_mode = 2
-ticks_on_borders = true
 "信号选项" = "更新玩法"
 "文本偏移" = Vector2(-250, 1)
 

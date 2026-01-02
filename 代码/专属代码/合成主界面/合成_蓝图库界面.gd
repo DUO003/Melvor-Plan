@@ -1,5 +1,8 @@
 extends 基类梅窗口
 var 所有图纸=[]
+var 合成蓝图节点:Array[蓝图卡片]=[]
+var 烹饪菜谱节点:Array[Panel]=[]
+var 催化剂节点:Array[Panel]=[]
 var 最高等级蓝图=0
 var 最高精通等级=0
 var 总等级=0
@@ -8,13 +11,23 @@ var 固定文本="最高数据统计
 蓝图等阶:{最高等级蓝图}\r研究获取高级图纸
 总等级:{总等级}\r精通等级:{最高精通等级}\r分配精通提高\r图纸精通等级
 强化点:{强化点}\r每25级精通\r可获得1强化点"
+@onready var 内容节点: HSplitContainer = %内容节点
+@onready var 选项卡: TabContainer = %选项卡
 ##加载蓝图库
 func _ready() -> void:#节点进入节点树
 	super._ready()#运行上级节点的方法
 	筛选蓝图()
 	%"主菜单".pressed.connect(func(): 计划.切换场景())
+	内容节点.dragged.connect(func(_偏移):
+		设置宽度(%"图纸容器",合成蓝图节点))
 	生成图纸列表()
+	生成菜谱列表()
+	生成催化剂列表()
 	更新文本()
+	await get_tree().process_frame
+	设置宽度(%"图纸容器",合成蓝图节点)
+	设置宽度(菜谱容器,烹饪菜谱节点)
+	设置宽度(催化剂容器,催化剂节点)
 func 更新文本():
 	var 缓存文本=固定文本
 	缓存文本=缓存文本.replace("{最高等级蓝图}",str(最高等级蓝图))
@@ -32,9 +45,10 @@ func 筛选蓝图():
 		if i >=3 and 图纸信息数组[图纸集索引]!="非图纸":
 			所有图纸+=[计划.表格.获取表格字典(装备蓝图,i)]
 		i+=1
+
 func 生成图纸列表():
 	清除子节点(%"图纸容器")  # 先清空容器
-
+	合成蓝图节点=[]
 	# 1. 声明暂存字典：键为优先级（如1、2），值为该优先级的节点数组
 	var 节点暂存字典: Dictionary = {}
 	var 蓝图字典=计划.手工.统计等级("合成")
@@ -43,7 +57,7 @@ func 生成图纸列表():
 	总等级=蓝图字典["总等级"]
 	强化点=蓝图字典["强化点"]
 	for 字典 in 所有图纸:
-		var 蓝图场景实例:蓝图卡片 = preload("res://界面/蓝图信息.tscn").instantiate()
+		var 蓝图场景实例:蓝图卡片 = preload("res://界面/手工系统/蓝图信息.tscn").instantiate()
 		蓝图场景实例.蓝图字典 = 字典
 		蓝图场景实例.蓝图解析()  # 解析后获取优先级
 		var 当前优先级 = 蓝图场景实例.优先级  # 获取当前节点的优先级
@@ -60,8 +74,37 @@ func 生成图纸列表():
 	var 排序后的优先级: Array = 节点暂存字典.keys()
 	排序后的优先级.sort()# 升序
 	排序后的优先级.reverse()  # 反转数组，得到降序
-
 	# 4. 按排序后的优先级，依次将节点添加到容器
 	for 优先级 in 排序后的优先级:
 		for 节点 in 节点暂存字典[优先级]:
 			%"图纸容器".add_child(节点)
+			合成蓝图节点.append(节点)
+var 菜谱信息 = preload("res://界面/手工系统/菜谱信息.tscn").instantiate()
+@onready var 菜谱容器: GridContainer = %菜谱容器
+func 生成菜谱列表():
+	清除子节点(菜谱容器)  # 先清空容器
+	烹饪菜谱节点=[]
+	var 菜谱数组=计划.获取配方("料理")
+	for 名称 in 菜谱数组:
+		var 克隆=菜谱信息.duplicate()
+		克隆.蓝图解析(名称)
+		菜谱容器.add_child(克隆)
+		烹饪菜谱节点.append(克隆)
+var 催化剂信息 = preload("res://界面/手工系统/催化剂信息.tscn").instantiate()
+@onready var 催化剂容器: GridContainer = %催化剂容器
+func 生成催化剂列表():
+	清除子节点(催化剂容器)  # 先清空容器
+	催化剂节点=[]
+	var 催化剂=计划.获取配方("催化剂")
+	for 名称 in 催化剂:
+		var 克隆=催化剂信息.duplicate()
+		克隆.蓝图解析(名称)
+		催化剂容器.add_child(克隆)
+		催化剂节点.append(克隆)
+func 设置宽度(容器:GridContainer,节点组):
+	var 当前宽度=选项卡.size.x
+	var 卡片最低宽度=350
+	var 数量=max(1,int((当前宽度+10)/卡片最低宽度))
+	容器.columns=数量
+	for 卡片 in 节点组:
+		卡片.custom_minimum_size.x=int(当前宽度/数量)

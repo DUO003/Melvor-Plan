@@ -2,38 +2,40 @@ extends GridContainer
 var 原始配方节点 = null
 func _ready():
 	原始配方节点 = $"配方"
+@onready var 已解锁按钮: CheckButton = %已解锁
+@onready var 检索: LineEdit = %检索
 func 克隆配方节点(配方列表=["铁锭", "纤维", "鞣革"], 原始节点=原始配方节点):# 根据配方列表数量克隆节点
 	var 编号数组= 计划.表格.获取表格信息数组(计划.表格.创世蓝图,配方列表,"名称")
 	#print("编号数组",编号数组)
 	for i in range(配方列表.size()):
 		var 配方名称=配方列表[i]
+		if not 检索.text=="":
+			if not 检索.text in 配方名称:
+				continue
 		var 配方编号=int(编号数组[i])
 		var 克隆节点:Button = 原始节点.duplicate()
 		克隆节点.name = "配方" + str(i + 1)  # 命名为配方1、配方2...
 		克隆节点.visible = true  # 克隆节点设为可见
 		var 配方名标签 = 克隆节点.get_node("配方名")# 获取克隆节点下的"配方名"Label节点并设置文本
-		var 解锁=true
+		var 解锁=false
 		if 配方名标签 != null and 配方名标签 is Label:
 			if 配方解锁(配方名称):
 				配方名标签.text = 配方列表[i]
-				var 配方等级 = 计划.手工.数据合成配方(配方名称,"精通")
+				var 配方等级 = 计划.手工.数据合成配方(配方名称,"等级")
 				var 残缺配方 = 计划.手工.数据合成配方(配方名称,"残缺图纸数量")
 				if 残缺配方==0:
 					克隆节点.text=""
 				else:
-					if 配方等级==0:
+					if 配方等级==-1:
 						克隆节点.text="残缺图纸*"+str(残缺配方)+"\n\n\n\n"
 					else:
 						克隆节点.text="研究残缺*"+str(残缺配方)+"\n\n\n\n"
+				if not 配方等级==-1:
+					解锁=true
 			else :
 				克隆节点.text=""
 				配方名标签.text = "未解锁"
-				解锁=not true
-		var 图片路径 = 计划.表格.获取表格信息(计划.表格.创世蓝图,配方名称,"icon")
-		if 图片路径 == "":
-			print("无法加载图片: ", 图片路径)
-			图片路径="res://素材/像素/框.png"
-		处理样式(克隆节点,图片路径,解锁)
+		处理样式(克隆节点,配方名称,解锁)
 		克隆节点.mouse_entered.connect(func(): 鼠标进入(配方编号))# 连接鼠标进入信号
 		克隆节点.mouse_exited.connect(func(): 鼠标离开(配方编号))# 连接鼠标离开信号
 		克隆节点.gui_input.connect(func(按键信号): # 确保节点可以接收鼠标事件
@@ -41,12 +43,17 @@ func 克隆配方节点(配方列表=["铁锭", "纤维", "鞣革"], 原始节�
 				鼠标点击(配方编号, 按键信号))
 		克隆节点.mouse_filter = Control.MOUSE_FILTER_STOP
 		克隆节点.focus_mode = Control.FOCUS_NONE
-		add_child(克隆节点)
+		if 已解锁按钮.button_pressed:
+			if 解锁:add_child(克隆节点)
+		else :
+			add_child(克隆节点)
+	if get_children().size()==1:
+		计划.语法糖通知("请调整筛选条件,当前没有符合条件的蓝图")
 # 功能：复制 Button 节点的 normal 原始样式，修改后批量赋值给 pressed/hover/focus 状态
 # 参数1：节点 - 目标 Button 节点（如你的“克隆节点”）
 # 参数2：图片 - 要替换的图片路径（例："res://images/btn_bg.png"）
-func 处理样式(节点: Button, 图片: String, 解锁: bool) -> void:
-	var 纹理 = load(图片)# 1. 加载图片
+func 处理样式(节点: Button, 配方名称: String, 解锁: bool) -> void:
+	var 纹理 = 计划.表格.道具贴图(配方名称)# 1. 加载图片
 	var 样式 = 节点.get_theme_stylebox("normal").duplicate(true)# 2. 复制样式模板
 	样式.样式数组[2].texture = 纹理# 3. 修改复制后的基础样式（统一替换图片）
 	if 解锁:# 4. 根据解锁状态设置调制颜色（白色/暗灰色）
@@ -125,7 +132,7 @@ func 制作物品(配方序号):
 		for 材料类型 in 材料类型列表:# 扣除所需材料
 			var 所需数量 = 表格字典.get(材料类型, 0)
 			计划.手工.获得资源(材料类型, -所需数量, true, false)
-		计划.梅手工单例.完成制作(物品名称)
+		计划.手工.完成制作(物品名称)
 		计划.emit_signal("更新_UI")
 		return 1.0  # 制作成功返回1
 	else:

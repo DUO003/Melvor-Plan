@@ -1,6 +1,5 @@
 extends StackableData
 class_name 标准物品
-
 ## 梅尔沃计划定义属性,决定部分抽取道具的随机池
 var 标签: String = "物品"
 ## 梅尔沃计划定义属性,决定鼠标指向物品的提示
@@ -38,8 +37,10 @@ var 物品使用映射:Dictionary = {
 					return 0
 				var 礼盒=字典["礼盒"]
 				var 通知奖励=[]
+				var 礼盒类型=字典.get("礼盒类型","挂机")
+				var 阶级=ceili(计划.数据系统(礼盒类型) / 10.0)
 				for 内容 in 礼盒:
-					通知奖励+=抽取奖励(内容)
+					通知奖励+=抽取奖励(内容,阶级)
 				计划.语法糖奖励显示(通知奖励,"礼包",1)
 				计划.语法糖通知("今天已开启次数:"+str(礼包次数+1)+"/5","物品使用")
 				在线数据["开启次数"]=礼包次数+1
@@ -99,6 +100,7 @@ func 更新属性():
 	if super.更新属性():
 		标签=表格数据[蓝图表头["标签"]]
 		简介=表格数据[蓝图表头["简介"]]
+		更新堆叠()
 ## 物品被使用时调用,自行处理销毁逻辑与变量外观
 func 使用物品(背包) -> String:# 中间函数：处理物品使用流程
 	print("尝试使用物品",self.item_name)
@@ -132,11 +134,11 @@ func 获取消耗量() -> int:
 	push_warning("[Override this function] consumable item [%s] has been consumed" % item_name)
 	print("消耗测试:",item_name)
 	return 1
-func 抽取奖励(内容):
+func 抽取奖励(内容,阶段):
 	var 筛选数组=[]
 	var 通知奖励=[]
 	if 内容[0] is Array:
-		筛选数组=计划.语法糖获取标签组(内容[0])
+		筛选数组=计划.语法糖获取标签组(内容[0],int(阶段))
 	else :
 		筛选数组=[内容[0]]
 	if 筛选数组.size()>=1:
@@ -167,3 +169,7 @@ func 返回简介(背包名):
 	else :
 		简介文本+="\r简介:"+简介
 	return 简介文本
+func 更新堆叠():
+	var 基础堆叠=计划.表格.蓝图数据(item_name,"堆叠")
+	var 额外堆叠=计划.表格.获取额外堆叠上限(item_name)
+	stack_size=基础堆叠+额外堆叠

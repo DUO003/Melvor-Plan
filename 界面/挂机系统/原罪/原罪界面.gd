@@ -5,6 +5,7 @@ var 原罪计时器
 var 管理选项卡:TabContainer
 var 系统选项卡:TabContainer
 func _ready() -> void:
+	super._ready()#注册
 	系统节点={
 		"挂机":%"0_挂机",
 		"木料":%"1_木料",
@@ -28,6 +29,11 @@ func _ready() -> void:
 	原罪计时器=计划.创建计时器(5,更新原罪)
 	更新原罪()
 	%"突破按钮".pressed.connect(突破)
+	%"暴食".gui_input.connect(子界面)
+func 子界面(按键):
+	if 按键 is InputEventMouseButton:
+		if 按键.button_index == MOUSE_BUTTON_LEFT and 按键.pressed:
+			计划.切换场景("原罪_暴食界面","原罪界面")
 func 突破():
 	var 突破结果=计划.数据原罪("尝试突破")
 	if not 突破结果=="成功":
@@ -47,7 +53,7 @@ func 更新原罪():
 	%"原罪值".text=原罪值
 	var 突破等阶=计划.数据原罪("突破")
 	var 突破成功率=计划.数据原罪("突破成功率")*100
-	print("突破成功率",突破成功率)
+	#print("突破成功率",突破成功率)
 	%"突破".text="突破LV:%d
 突破成功率:%.1f%%
 失败将损失20%%熟练度

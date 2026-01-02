@@ -80,10 +80,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2eyov")
-current_tab = 3
+current_tab = 0
 
 [node name="原罪突破" type="Control" parent="内容节点/选项卡"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -157,7 +156,24 @@ texture = ExtResource("4_2eyov")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/傲慢"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.5
+offset_top = 1.0
+offset_right = 98.5
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "未解锁"
+horizontal_alignment = 1
+
 [node name="暴食" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -165,6 +181,22 @@ size_flags_vertical = 0
 texture = ExtResource("8_6nm3x")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/暴食"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.5
+offset_top = 1.0
+offset_right = 98.5
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "暴食"
+horizontal_alignment = 1
 
 [node name="贪婪" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
 custom_minimum_size = Vector2(225, 225)
@@ -175,6 +207,22 @@ texture = ExtResource("10_uhxdx")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/贪婪"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.5
+offset_top = 1.0
+offset_right = 98.5
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "未解锁"
+horizontal_alignment = 1
+
 [node name="懒惰" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
@@ -183,6 +231,22 @@ size_flags_vertical = 0
 texture = ExtResource("6_yuie1")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/懒惰"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.5
+offset_top = 1.0
+offset_right = 98.5
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "未解锁"
+horizontal_alignment = 1
 
 [node name="暴怒" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
 custom_minimum_size = Vector2(225, 225)
@@ -193,6 +257,22 @@ texture = ExtResource("7_wace0")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/暴怒"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.5
+offset_top = 1.0
+offset_right = 98.5
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "未解锁"
+horizontal_alignment = 1
+
 [node name="色欲" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
@@ -202,6 +282,22 @@ texture = ExtResource("9_mrh1p")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/色欲"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.5
+offset_top = 1.0
+offset_right = 98.5
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "未解锁"
+horizontal_alignment = 1
+
 [node name="嫉妒" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
@@ -210,6 +306,22 @@ size_flags_vertical = 0
 texture = ExtResource("5_nhtbf")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/嫉妒"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.5
+offset_top = 1.0
+offset_right = 98.5
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "未解锁"
+horizontal_alignment = 1
 
 [node name="系统管理" type="TabContainer" parent="内容节点/选项卡"]
 unique_name_in_owner = true
@@ -292,6 +404,7 @@ text = "挂机系统升级
 metadata/_tab_index = 2
 
 [node name="技能树" parent="内容节点/选项卡" instance=ExtResource("12_nhtbf")]
+visible = false
 layout_mode = 2
 
 [editable path="内容节点/选项卡/技能树"]

@@ -40,9 +40,20 @@ var 权限介绍: Dictionary = {
 }
 func _ready() -> void:
 	_更新_UI()
-	%"熟练转移".drag_ended.connect(func(编辑):
-		if 编辑:计划.数据原罪("熟练转移",系统,%"熟练转移".value)
-		%"转换进度".text="%.0f%%"%(%"熟练转移".value*100))
+	if 系统=="挂机":
+		%"手工".pressed.connect(func():
+			var 精通值=%"精通转移".value*计划.梅存档["挂机"]["精通"]
+			if 精通值>=1 and 计划.梅存档["挂机"]["精通"]>=精通值:
+				计划.梅存档["手工"]["精通"]+=精通值
+				计划.梅存档["挂机"]["精通"]-=精通值
+				计划.语法糖通知("转移完成手工系统精通增加%d"%精通值,"精通转移")
+				计划.更新_UI.emit()
+			else :
+				计划.语法糖通知("精通不足","精通转移"))
+	else :
+		%"熟练转移".drag_ended.connect(func(编辑):
+			if 编辑:计划.数据原罪("熟练转移",系统,%"熟练转移".value)
+			%"转换进度".text="%.0f%%"%(%"熟练转移".value*100))
 func _更新_UI() -> void:
 	if not has_node("等级显示") or not is_instance_valid($"等级显示"):
 		return
@@ -73,10 +84,12 @@ func _更新_UI() -> void:
 	%"权限介绍".text=权限介绍[系统]
 	if Engine.is_editor_hint():pass
 	if 系统=="挂机":
-		%"熟练转移".visible=false
+		%"转换定位".visible=false
 		%"突破等级".visible=true
+		%"精通容器".visible=true
 	else :
 		%"突破等级".visible=false
-		%"熟练转移".visible=true
+		%"转换定位".visible=true
+		%"精通容器".visible=false
 		%"熟练转移".value=熟练转移
 		%"转换进度".text="%.0f%%"%(%"熟练转移".value*100)

@@ -1,10 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://cbce6ney4ilyo"]
+[gd_scene load_steps=19 format=3 uid="uid://c0oa12yj8147"]
 
-[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_2cx0i"]
-[ext_resource type="Script" uid="uid://m48ei7gqp6lc" path="res://代码/专属代码/合成主界面/蓝图信息.gd" id="1_bgqgx"]
-[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_jx5cv"]
-[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_0s5mh"]
-[ext_resource type="Texture2D" uid="uid://dd02xf54eyo4l" path="res://素材/全息图片AI素材/元素/冰.png" id="3_pimn1"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_gest1"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_fbhfa"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_cwh1t"]
+[ext_resource type="Script" uid="uid://c8mlmp467pyvu" path="res://界面/手工系统/催化剂信息.gd" id="4_gest1"]
+[ext_resource type="Texture2D" uid="uid://dd02xf54eyo4l" path="res://素材/全息图片AI素材/元素/冰.png" id="5_1ctka"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5jsc"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
@@ -17,7 +17,7 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-script = ExtResource("3_0s5mh")
+script = ExtResource("3_cwh1t")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBox" id="StyleBox_mdm2x"]
@@ -27,7 +27,7 @@ content_margin_left = -1.0
 content_margin_top = -1.0
 content_margin_right = -1.0
 content_margin_bottom = -1.0
-script = ExtResource("2_jx5cv")
+script = ExtResource("2_fbhfa")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_y5jsc")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -45,7 +45,7 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
-script = ExtResource("3_0s5mh")
+script = ExtResource("3_cwh1t")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o32f2"]
@@ -59,7 +59,7 @@ corner_radius_top_right = 10
 expand_margin_left = -5.0
 expand_margin_top = -5.0
 expand_margin_right = -5.0
-script = ExtResource("3_0s5mh")
+script = ExtResource("3_cwh1t")
 margin_left = -5
 margin_top = -5
 margin_right = -5
@@ -72,7 +72,7 @@ content_margin_left = 10.0
 content_margin_top = 2.0
 content_margin_right = 10.0
 content_margin_bottom = 0.0
-script = ExtResource("2_jx5cv")
+script = ExtResource("2_fbhfa")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_ly6fy"), SubResource("StyleBoxFlat_o32f2")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -83,7 +83,7 @@ content_margin_left = 10.0
 content_margin_top = 2.0
 content_margin_right = 10.0
 content_margin_bottom = 0.0
-script = ExtResource("2_jx5cv")
+script = ExtResource("2_fbhfa")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_ly6fy"), SubResource("StyleBoxFlat_o32f2")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -97,7 +97,7 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
-script = ExtResource("3_0s5mh")
+script = ExtResource("3_cwh1t")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bn4b"]
@@ -111,7 +111,7 @@ corner_radius_top_right = 10
 expand_margin_left = -5.0
 expand_margin_top = -5.0
 expand_margin_right = -5.0
-script = ExtResource("3_0s5mh")
+script = ExtResource("3_cwh1t")
 margin_left = -5
 margin_top = -5
 margin_right = -5
@@ -124,7 +124,7 @@ content_margin_left = 20.0
 content_margin_top = 2.0
 content_margin_right = 20.0
 content_margin_bottom = 0.0
-script = ExtResource("2_jx5cv")
+script = ExtResource("2_fbhfa")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_fv7pg"), SubResource("StyleBoxFlat_1bn4b")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -139,7 +139,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-script = ExtResource("3_0s5mh")
+script = ExtResource("3_cwh1t")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBox" id="StyleBox_0s5mh"]
@@ -149,17 +149,17 @@ content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
-script = ExtResource("2_jx5cv")
+script = ExtResource("2_fbhfa")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_jx5cv")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
-[node name="蓝图信息" type="Panel"]
+[node name="催化剂信息" type="Panel"]
 custom_minimum_size = Vector2(350, 400)
 offset_right = 350.0
-offset_bottom = 100.0
-theme = ExtResource("1_2cx0i")
+offset_bottom = 400.0
+theme = ExtResource("1_gest1")
 theme_override_styles/panel = SubResource("StyleBox_mdm2x")
-script = ExtResource("1_bgqgx")
+script = ExtResource("4_gest1")
 
 [node name="图片" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(95, 95)
@@ -168,31 +168,36 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = 105.0
 offset_bottom = 100.0
-texture = ExtResource("3_pimn1")
+texture = ExtResource("5_1ctka")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="蓝图名称" type="Label" parent="."]
+[node name="名称" type="Label" parent="."]
 custom_minimum_size = Vector2(230, 60)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
 offset_left = 105.0
-offset_right = 335.0
+offset_right = -15.0
 offset_bottom = 71.0
+grow_horizontal = 2
 size_flags_horizontal = 0
 size_flags_vertical = 1
-theme_override_constants/line_spacing = 0
-theme_override_constants/paragraph_spacing = -15
+theme_override_constants/line_spacing = -15
 theme_override_font_sizes/font_size = 30
 text = "比方说五字
 精通等级LV:100"
 
 [node name="精通条" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(200, 30)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
 offset_left = 100.0
 offset_top = 70.0
-offset_right = 300.0
+offset_right = -50.0
 offset_bottom = 100.0
+grow_horizontal = 2
 step = 1.0
 show_percentage = false
 
@@ -213,19 +218,23 @@ vertical_alignment = 1
 
 [node name="标签" type="TabContainer" parent="."]
 custom_minimum_size = Vector2(340, 290)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 5.0
 offset_top = 100.0
-offset_right = 345.0
-offset_bottom = 390.0
+offset_right = -5.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/panel = SubResource("StyleBoxEmpty_jx5cv")
 theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_0s5mh")
 theme_override_styles/tab_unselected = SubResource("StyleBox_y5jsc")
 theme_override_styles/tab_hovered = SubResource("StyleBox_0dedd")
 theme_override_styles/tab_selected = SubResource("StyleBox_26tgt")
-tab_alignment = 1
-current_tab = 3
+current_tab = 1
 
 [node name="简介" type="RichTextLabel" parent="标签"]
 visible = false
@@ -238,61 +247,28 @@ bbcode_enabled = true
 text = "简介:赤红火纹缠绕符身，触之有跃动光粒，随气息明灭闪烁。"
 metadata/_tab_index = 0
 
-[node name="材料" type="RichTextLabel" parent="标签"]
-visible = false
+[node name="规则" type="RichTextLabel" parent="标签"]
 custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
-theme_override_constants/paragraph_separation = -15
+theme_override_constants/line_separation = -10
+theme_override_constants/paragraph_separation = 0
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "耗时:100秒
-[img=33x33]res://素材/游戏素材/货币/36.png[/img]:100
-[img=33x33]res://素材/游戏素材/货币/36.png[/img]:100
-[img=33x33]res://素材/游戏素材/货币/36.png[/img]:100"
+text = "使用催化剂炼金可以增加精通
+精通等级提高后可以放入更多材料
+更多材料可以增加炼金收益,最佳配方需要你寻找平衡点."
 metadata/_tab_index = 1
 
-[node name="属性" type="RichTextLabel" parent="标签"]
-visible = false
-custom_minimum_size = Vector2(340, 0)
-layout_mode = 2
-theme_override_constants/paragraph_separation = -15
-theme_override_font_sizes/normal_font_size = 30
-bbcode_enabled = true
-text = "攻击:100
-耐久:100
-"
-metadata/_tab_index = 2
-
-[node name="升星" type="RichTextLabel" parent="标签"]
-custom_minimum_size = Vector2(340, 0)
-layout_mode = 2
-theme_override_constants/line_separation = -7
-theme_override_font_sizes/normal_font_size = 28
-bbcode_enabled = true
-text = "升星效果:"
-scroll_active = false
-metadata/_tab_index = 3
-
-[node name="升星按钮" type="Button" parent="标签/升星"]
-layout_mode = 0
-offset_left = 256.0
-offset_top = 5.0
-offset_right = 335.0
-offset_bottom = 41.0
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBox_0s5mh")
-theme_override_styles/pressed = SubResource("StyleBox_0s5mh")
-theme_override_styles/hover = SubResource("StyleBox_0s5mh")
-theme_override_styles/focus = SubResource("StyleBox_0s5mh")
-text = "升星"
-clip_text = true
-
 [node name="精通按钮" type="Button" parent="."]
-layout_mode = 0
-offset_left = 302.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
 offset_top = 68.0
-offset_right = 339.0
+offset_right = -11.0
 offset_bottom = 104.0
+grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBox_0s5mh")
 theme_override_styles/pressed = SubResource("StyleBox_0s5mh")

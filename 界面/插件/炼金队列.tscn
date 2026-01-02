@@ -234,9 +234,12 @@ theme_override_styles/panel = SubResource("StyleBox_c74w5")
 [node name="信息" type="Label" parent="信息区"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_top = 8.0
-offset_right = 107.0
-offset_bottom = 153.0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 135.0
+offset_bottom = 152.0
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = -10
 text = "剩余:
 完成:
 总时间:"

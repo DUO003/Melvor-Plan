@@ -17,22 +17,19 @@ var 当前数量:float=0
 var 上限值:float=0
 var 背包内数量:int=0
 var 类型:String="基础"
+@onready var 回复: Label = $回复
 func _ready():
 	更新贴图()# 节点就绪时初始化
-	if Engine.is_editor_hint():
-		$"进度".size=Vector2(400,50)
-		$"回复".visible=false
-	else :
-		类型=计划.手工.检查资源类(资源名称)
-		更新点击回复量()
-		更新UI()
-		计划.BUFF.BUFF_资源回复.connect(更新点击回复量)
-		$"点击范围".mouse_entered.connect(func():
-			鼠标=true
-			计划.手工.更新_资源.emit(self))
-		$"点击范围".mouse_exited.connect(func():
-			鼠标=false
-			计划.手工.更新_资源.emit())
+	类型=计划.手工.检查资源类(资源名称)
+	更新点击回复量()
+	更新UI()
+	计划.BUFF.BUFF_资源回复.connect(更新点击回复量)
+	$"点击范围".mouse_entered.connect(func():
+		鼠标=true
+		计划.手工.更新_资源.emit(self))
+	$"点击范围".mouse_exited.connect(func():
+		鼠标=false
+		计划.手工.更新_资源.emit())
 	if is_inside_tree():# 编辑器内安全检查：确保节点已加入场景树，避免空引用错误
 		长按计时器 = Timer.new()
 		长按计时器.wait_time = 0.5    # 长按间隔0.5秒
@@ -49,41 +46,57 @@ func 更新点击回复量():
 		基础量+=额外点击回复[资源名称]
 	#print(额外点击回复)
 func 更新UI():
-	var 背包条=$"进度/背包"
+	var 背包条=%"背包"
 	资源回复速度=计划.手工.资源回复
 	当前数量 = 计划.手工.查看资源(资源名称)
 	上限值 = 计划.手工.资源上限字典.get(资源名称,0)
 	背包内数量=计划.检查背包物品数量(资源名称)
+	var 回复速度=资源回复速度.get(资源名称,0)
+	$"进度".show_percentage=false
 	if 类型=="特殊":
+		%"刻度".强制量级=10
+		%"刻度".更新进度条参数(回复速度,400)
 		背包条.value=0
 		背包条.max_value=1
-		$"进度".max_value = 1
-		$"进度".value = 1
-		$"进度".show_percentage=false
-		%"显示数量".text="拥有:"+str(int(背包内数量+当前数量))
-		%"显示数量".visible=true
+		var 大小=$"进度".size
+		大小.x=400
+		$"进度".set_size(大小)
+		if 回复速度>=1:
+			$"进度".max_value = 计划.手工.查看资源(资源名称+"回复")
+			$"进度".value = 回复速度
+		else :
+			$"进度".max_value = 1
+			$"进度".value = 1
+		var 当前值=int(背包内数量+当前数量)
+		if 当前值>=1:
+			%"显示数量".text="拥有:"+str(当前值)
+			%"显示数量".visible=true
+		else :
+			%"显示数量".visible=false
 	else :
 		背包条.value=背包内数量
 		背包条.max_value=上限值
 		$"进度".max_value = 上限值
 		$"进度".value = 当前数量
-		$"进度".show_percentage=false
 		if 背包内数量>=1:
 			%"显示数量".text="存:"+str(背包内数量)
 			%"显示数量".visible=true
 		else :
 			%"显示数量".visible=false
-	var 回复速度=资源回复速度.get(资源名称,0)
-	if 回复速度<=0.01:
-		$"进度".size=Vector2(400,50)
-		$"回复".visible=false
-		%"刻度".更新进度条参数(上限值,400)
-	else :
-		var 宽度=int(%"显示数量".get_combined_minimum_size().x)
-		$"进度".size=Vector2(400-宽度,50)
-		$"回复".visible=true
-		$"回复".text= "+%.1f" % 回复速度
-		%"刻度".更新进度条参数(上限值,400-宽度)
+		if 回复速度<=0.01:
+			var 大小=$"进度".size
+			大小.x=400
+			$"进度".set_size(大小)
+			%"刻度".更新进度条参数(上限值,大小.x)
+			回复.text= ""
+		else :
+			回复.text= "+%.1f" % 回复速度
+			var 宽度=回复.get_theme_font("font").get_string_size(回复.text,
+				HORIZONTAL_ALIGNMENT_LEFT, -1, 回复.get_theme_font_size("font_size")).x-15
+			var 大小=$"进度".size
+			大小.x=400-宽度
+			$"进度".set_size(大小)
+			%"刻度".更新进度条参数(上限值,大小.x)
 func 点击逻辑(event: InputEvent):
 	if is_inside_tree():
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:# 仅响应鼠标左键事件

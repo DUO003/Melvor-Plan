@@ -4,6 +4,7 @@ var 配方容器节点: Array=[]
 var 催化剂:Panel
 @export var 可修改:bool=false
 @export var 配方编号=0
+@export var 格子上限=15
 var 配方: Dictionary=	{"材料名称"=[],
 						"材料数量"=[],
 						"催化剂"=null}
@@ -20,7 +21,7 @@ func _ready() -> void:
 	催化剂.可修改数量=false
 	催化剂.修改返回对象=self
 	催化剂.初始更新()
-
+	更新格子上限()
 func 加载配方信息():
 	for i in 4:
 		var 节点=配方容器节点[i]
@@ -44,6 +45,16 @@ func 返回处理方法(_节点=null):
 			配方["材料数量"].append(材料数量)
 	# 处理催化剂：仅当催化剂节点存在且其名称不为null时记录，否则设为null
 	配方["催化剂"] = 催化剂.道具名称 if (催化剂 != null and 催化剂.道具名称 != null) else null
+	格子上限=15
+	if not 配方["催化剂"]==null:
+		格子上限+=计划.手工.数据炼金催化剂(配方["催化剂"],"材料容量")
+	更新格子上限()
 	if not 修改返回对象==null:
 		修改返回对象.返回处理方法()
 	#print(配方)
+func 更新格子上限():
+	for 节点名称 in 配方容器节点:
+		节点名称.物品数量限制=Vector2i(5,格子上限)
+		if 节点名称.输入:
+			节点名称.输入.min_value=5
+			节点名称.输入.max_value=格子上限

@@ -195,7 +195,7 @@ func 消耗指定数量物品(背包名称: String, 物品名称: String, 消耗
 			if not 消耗数量==-1:
 				剩余需消耗数量 -= 1
 	if 剩余需消耗数量>0:
-		var 鼠标物品=GBIS.item_focus_service.current_item_data
+		var 鼠标物品=GBIS.moving_item_service.moving_item
 		if 鼠标物品 and 鼠标物品.item_name==物品名称:
 			鼠标物品.current_amount-=剩余需消耗数量
 			if 鼠标物品.current_amount<0:#为0不会影响释放代码,但不能直接移物品

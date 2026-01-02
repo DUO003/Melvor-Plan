@@ -1,31 +1,42 @@
-[gd_scene load_steps=12 format=3 uid="uid://fhiod2yd4lhv"]
+[gd_scene load_steps=13 format=3 uid="uid://fhiod2yd4lhv"]
 
 [ext_resource type="Script" uid="uid://c1ef0ysqkbne2" path="res://代码/资源条.gd" id="1_5i305"]
 [ext_resource type="Texture2D" uid="uid://bhhvc44hrv7uq" path="res://素材/游戏素材/货币/36.png" id="1_5uhmg"]
-[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="2_0wsje"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_5i305"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="4_0wsje"]
 [ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="4_b5354"]
 [ext_resource type="Script" uid="uid://bru7ehuqamvdq" path="res://界面/插件/资源进度条/刻度.gd" id="4_unkxt"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unkxt"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43vdm"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.6666667, 0.6039216, 0.43529412, 1)
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("4_0wsje")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3ykc"]
 bg_color = Color(0.5243333, 0.65, 0.52, 0)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="Gradient" id="Gradient_0wsje"]
+[sub_resource type="Gradient" id="Gradient_6xe4i"]
 offsets = PackedFloat32Array(0, 0.02, 0.24, 1)
 colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0.19966345, 0, 1, 1, 1, 0)
 metadata/_snap_count = 50
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_43vdm"]
-gradient = SubResource("Gradient_0wsje")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_152te"]
+gradient = SubResource("Gradient_6xe4i")
 fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u3ykc"]
-texture = SubResource("GradientTexture2D_43vdm")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o12l5"]
+texture = SubResource("GradientTexture2D_152te")
 script = ExtResource("4_b5354")
 metadata/_custom_type_script = "uid://dr0317kuw34um"
 
@@ -39,47 +50,75 @@ scale_min = 0.13
 scale_max = 0.14999999
 
 [node name="资源" type="Control"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(570, 75)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 590.0
-offset_bottom = 80.0
+anchor_right = 0.29700002
+anchor_bottom = 0.069000006
+offset_right = -10.240051
+offset_bottom = 0.47999573
 script = ExtResource("1_5i305")
 
 [node name="贴图" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-texture = ExtResource("2_0wsje")
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -30.0
+offset_right = 60.0
+offset_bottom = 30.0
+grow_vertical = 2
+texture = ExtResource("1_5uhmg")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="进度" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_left = 184.0
-offset_top = 16.0
-offset_right = 584.0
-offset_bottom = 66.0
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.277
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.120010376
+offset_top = 10.0
+offset_bottom = -10.0
+grow_horizontal = 2
 theme = ExtResource("2_5i305")
 value = 100.0
 allow_greater = true
 
-[node name="背包" type="ProgressBar" parent="进度"]
+[node name="蒙版" type="Panel" parent="进度"]
+clip_children = 1
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_unkxt")
-theme_override_styles/fill = SubResource("StyleBoxTexture_u3ykc")
+theme_override_styles/panel = SubResource("StyleBoxFlat_43vdm")
+
+[node name="背包" type="ProgressBar" parent="进度/蒙版"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_u3ykc")
+theme_override_styles/fill = SubResource("StyleBoxTexture_o12l5")
 value = 25.0
 show_percentage = false
 
 [node name="刻度" type="Control" parent="进度"]
 unique_name_in_owner = true
-anchors_preset = 0
-offset_right = 400.0
-offset_bottom = 50.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_unkxt")
 "刻度高度" = 5.0
 "大刻度颜色" = Color(0.43197232, 0.19236407, 0.0024436945, 1)
@@ -109,33 +148,30 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -25.0
-offset_right = 55.0
-offset_bottom = 25.0
+offset_top = -28.5
+offset_right = 69.0
+offset_bottom = 28.5
 grow_vertical = 2
 text = "100"
 
 [node name="回复" type="Label" parent="."]
-visible = false
 layout_mode = 1
-anchors_preset = 6
+anchors_preset = -1
 anchor_left = 1.0
-anchor_top = 0.5
+anchor_top = 0.194
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 0.80600005
 offset_left = -1.0
-offset_top = -24.5
-offset_bottom = 24.5
+offset_top = -0.020000458
+offset_bottom = 0.019996643
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 35
-text = "+1"
 horizontal_alignment = 2
 vertical_alignment = 1
-autowrap_mode = 2
 
 [node name="资源粒子" type="GPUParticles2D" parent="."]
-position = Vector2(131, 73)
+position = Vector2(143, 45)
 emitting = false
 amount = 10
 texture = ExtResource("1_5uhmg")
@@ -144,17 +180,24 @@ speed_scale = 1.5
 process_material = SubResource("ParticleProcessMaterial_5i305")
 
 [node name="文本" type="Label" parent="."]
-layout_mode = 0
-offset_left = 80.0
-offset_right = 180.0
-offset_bottom = 80.0
-theme_override_font_sizes/font_size = 50
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 55.0
+offset_top = -35.5
+offset_right = 155.0
+offset_bottom = 35.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
 text = "木材"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="点击范围" type="Control" parent="."]
-custom_minimum_size = Vector2(590, 80)
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

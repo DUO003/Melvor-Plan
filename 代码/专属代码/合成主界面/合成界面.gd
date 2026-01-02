@@ -9,18 +9,26 @@ var 总时间: float = 0.0
 var 平均帧率: float = 0.0
 var 类型="基础素材"
 var 筛选器条件:Array=[]
-var 筛选器本体:Button
+@onready var 研究方向: OptionButton = %研究方向
+@onready var 等阶: OptionButton = %等阶
+@onready var 检索: LineEdit = %检索
+@onready var 更新: TextureButton = %更新
+@onready var 已解锁: CheckButton = %已解锁
+
 func _ready() -> void:
 	super._ready()#注册
-	筛选器条件=计划.手工.数据灵感("研究方向")
-	if not 筛选器条件.has("基础素材"):
-		筛选器条件+=["基础素材"]
-	if not 筛选器条件.has("特殊"):
-		筛选器条件+=["特殊"]
-	筛选器本体=%"筛选类型"
-	类型=计划.窗口状态管理(基类窗口名称,"类型","基础素材")
-	if not 筛选器条件.has(类型):类型="基础素材"
-	生成筛选器()
+	类型=计划.窗口状态管理(基类窗口名称,"类型","所有类型")
+	研究方向.item_selected.connect(func(_序号):生成配方节点(研究方向.text))
+	已解锁.button_pressed=计划.窗口状态管理(基类窗口名称,"仅显示已解锁",false)
+	已解锁.pressed.connect(func():
+		计划.窗口状态管理(基类窗口名称,"仅显示已解锁",null,已解锁.button_pressed)
+		生成配方节点())
+	检索.text=""
+	更新.pressed.connect(func():生成配方节点())
+	等阶.item_selected.connect(func(_序号):
+		计划.窗口状态管理(基类窗口名称,"阶级条件",null,等阶.selected)
+		生成配方节点())
+	生成筛选器(计划.窗口状态管理(基类窗口名称,"阶级条件",0))
 	计划.手工.处理资源回复()#资源回复逻辑
 	计划.处理时间戳(计划.梅存档["手工"])#熟练度逻辑
 	生命周期计时器+=[计划.创建计时器(1.0, Callable(self, "更新信息"))]#更新在线合成结算的精通熟练显示信息
@@ -31,7 +39,6 @@ func _ready() -> void:
 	%动作进度条.开始动作("资源回复",5.0,self)
 	注册按钮()
 	_更新_UI()
-
 func _process(delta: float) -> void:
 	更新制作队列进度条()
 	帧率数据.append(delta)# 1. 记录当前帧的间隔时间
@@ -44,25 +51,46 @@ func _process(delta: float) -> void:
 		平均帧率 = round(原始帧率 * 10) / 10  # 保留1位小数（精度0.1）
 	else:
 		平均帧率 = 0.0
-func _exit_tree() -> void:#我知道可以省略但防止忘了加"super._exit_tree()"还是规范一下
+func _exit_tree() -> void:
 	super._exit_tree()
-func 生成筛选器():
-	清除子节点(%"筛选器容器",筛选器本体)
-	筛选器本体.visible=false
-	for 条件 in 筛选器条件:
-		var 条件按钮=筛选器本体.duplicate()
-		条件按钮.visible=true
-		条件按钮.text=条件
-		条件按钮.pressed.connect(func():
-			类型=条件
-			生成筛选器())
-		%"筛选器容器".add_child(条件按钮)
+func 生成筛选器(阶级赋值=-1):
+	if 阶级赋值==-1:
+		阶级赋值=等阶.selected
+	筛选器条件=["所有类型", "基础素材", "特殊"]
+	for 项 in 计划.手工.数据灵感("研究方向"):
+		if not 筛选器条件.has(项):
+			筛选器条件.append(项)
+	if not 筛选器条件.has(类型):类型="所有类型"
+	研究方向.clear()
+	等阶.clear()
+	for 内容 in 筛选器条件:
+		研究方向.add_item(内容)
+		if 类型==内容:研究方向.selected=研究方向.get_item_count()-1
+	var 等阶数组=["不限制"]
+	for i in range(ceili(计划.数据系统("手工","等级") / 5.0)):
+		等阶数组.append(str(i+1)+"阶")
+	for 内容 in 等阶数组:
+		等阶.add_item(内容)
+	等阶.selected=阶级赋值
 	生成配方节点()
-func 生成配方节点():
-	计划.窗口状态管理(基类窗口名称,"类型",null,类型)
+func 生成配方节点(类型名称=类型):
+	if not 类型==类型名称:
+		类型=类型名称
+		计划.窗口状态管理(基类窗口名称,"类型",null,类型)
 	清除子节点(%"配方表格",%"配方表格".原始配方节点)
 	%"配方表格".原始配方节点.visible=false
-	var 配方列表 = 计划.获取配方(类型)
+	var 配方列表:Array=[]
+	if 类型=="所有类型":
+		for 项 in 筛选器条件:
+			if 等阶.text=="不限制":
+				配方列表 += 计划.获取配方(项,ceili(计划.数据系统("手工","等级") / 5.0),1)
+			else :
+				配方列表 += 计划.获取配方(项,等阶.selected,等阶.selected)
+	else :
+		if 等阶.text=="不限制":
+			配方列表 = 计划.获取配方(类型,1,ceili(计划.数据系统("手工","等级") / 5.0))
+		else :
+			配方列表 = 计划.获取配方(类型,等阶.selected,等阶.selected)
 	%"配方表格".克隆配方节点(配方列表)
 func 注册按钮():
 	%强化.pressed.connect(计划.无功能方法)
@@ -77,6 +105,7 @@ func 更新信息():
 	pass
 func 注册进度条():
 	var 制造队列 = %圆形进度条
+	var 悬浮面板: Control = %悬浮面板
 	制造队列.visible = false
 	var 队列上限=计划.手工.队列合成("制作队列上限")
 	if 制作队列节点.size()>队列上限:
@@ -97,6 +126,10 @@ func 注册进度条():
 				#克隆节点.name = "制作队列" + str(i + 1)  # 命名为配方1、配方2...
 				克隆节点.visible = true  # 克隆节点设为可见
 				克隆节点.更新进度(0.0)
+				制作队列配方按钮节点.mouse_entered.connect(func():
+					悬浮面板.更新_队列(i))
+				制作队列配方按钮节点.mouse_exited.connect(func():
+					悬浮面板.更新_队列())
 				制作队列配方按钮节点.gui_input.connect(func(按键信号):
 					if 按键信号 is InputEventMouseButton and 按键信号.pressed:
 						制作队列更新(按键信号,i))
@@ -127,7 +160,7 @@ func 处理动作(_动作名称):
 
 
 func 更新制作队列进度条():#仅处理显示效果
-	计划.梅手工单例.更新制作队列进度条()
+	计划.手工.更新制作队列进度条()
 	var 制作参数=计划.手工.队列合成("制作参数")
 	var 序号=0
 	for 节点 in 制作队列节点:

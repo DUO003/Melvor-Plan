@@ -60,7 +60,7 @@ metadata/_edit_lock_ = true
 [node name="等级显示" parent="." instance=ExtResource("3_8vsgt")]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 1
-offset_bottom = 0.0
+offset_bottom = 120.0
 "玩法" = "手工"
 "同时显示" = true
 
@@ -97,16 +97,47 @@ grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_lock_ = true
 
-[node name="熟练转移" type="HSlider" parent="内容区域"]
+[node name="原罪介绍" type="RichTextLabel" parent="内容区域"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -568.0
-offset_top = 9.0
-offset_right = -424.0
-offset_bottom = 64.0
+anchor_right = 0.541
+anchor_bottom = 1.0
+offset_right = 0.2999878
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+text = "懒惰原罪
+基础资源溢出转高级资源
+高级资源(零件)溢出加原罪
+上限增加：蓝图升星提升上限
+当前懒惰原罪:0/10"
+
+[node name="排序容器" type="VBoxContainer" parent="内容区域"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.56600004
+anchor_right = 0.99600005
+anchor_bottom = 1.0
+offset_left = -0.20007324
+offset_right = -0.20007324
+offset_bottom = -2.0
+grow_horizontal = 0
+
+[node name="转换定位" type="Label" parent="内容区域/排序容器"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "熟练转移:"
+
+[node name="熟练转移" type="HSlider" parent="内容区域/排序容器/转换定位"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = 152.0
+offset_top = -3.0
+offset_right = 296.0
+offset_bottom = 52.0
 theme_override_icons/grabber = SubResource("DPITexture_aokyi")
 theme_override_icons/grabber_highlight = SubResource("DPITexture_8vsgt")
 theme_override_icons/grabber_disabled = SubResource("DPITexture_8p6r8")
@@ -115,25 +146,7 @@ theme_override_styles/slider = SubResource("StyleBoxFlat_hrkhn")
 max_value = 0.5
 step = 0.1
 
-[node name="文本" type="Label" parent="内容区域/熟练转移"]
-layout_mode = 0
-offset_left = 164.0
-offset_top = 4.0
-offset_right = 542.0
-offset_bottom = 49.0
-theme_override_font_sizes/font_size = 32
-text = "获得的熟练转移给挂机系统"
-
-[node name="文本2" type="Label" parent="内容区域/熟练转移"]
-layout_mode = 0
-offset_left = -150.0
-offset_top = 7.0
-offset_right = -12.0
-offset_bottom = 52.0
-theme_override_font_sizes/font_size = 32
-text = "熟练转移:"
-
-[node name="转换进度" type="Label" parent="内容区域/熟练转移"]
+[node name="转换进度" type="Label" parent="内容区域/排序容器/转换定位/熟练转移"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -145,44 +158,51 @@ mouse_behavior_recursive = 1
 text = "0%"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
-[node name="突破等级" type="Label" parent="内容区域"]
-unique_name_in_owner = true
-visible = false
+[node name="文本" type="Label" parent="内容区域/排序容器/转换定位"]
 layout_mode = 0
-offset_left = 982.0
-offset_top = 16.0
-offset_right = 1138.0
-offset_bottom = 61.0
+offset_left = 314.0
+offset_right = 692.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 32
+text = "获得的熟练转移给挂机系统"
+
+[node name="突破等级" type="Label" parent="内容区域/排序容器"]
+unique_name_in_owner = true
+layout_mode = 2
 text = "突破等级:0"
 
-[node name="原罪介绍" type="RichTextLabel" parent="内容区域"]
+[node name="精通容器" type="HBoxContainer" parent="内容区域/排序容器"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 965.0
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 45
-bbcode_enabled = true
-text = "懒惰原罪
-基础资源溢出转高级资源
-高级资源(零件)溢出加原罪
-上限增加：蓝图升星提升上限
-当前懒惰原罪:0/10"
+layout_mode = 2
 
-[node name="权限介绍" type="RichTextLabel" parent="内容区域"]
+[node name="标签" type="Label" parent="内容区域/排序容器/精通容器"]
+layout_mode = 2
+text = "转移精通池"
+
+[node name="精通转移" type="HSlider" parent="内容区域/排序容器/精通容器"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 0.123
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -720.0
-offset_top = -0.22800446
-grow_horizontal = 0
-grow_vertical = 2
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_icons/grabber = SubResource("DPITexture_aokyi")
+theme_override_icons/grabber_highlight = SubResource("DPITexture_8vsgt")
+theme_override_icons/grabber_disabled = SubResource("DPITexture_8p6r8")
+theme_override_icons/tick = SubResource("DPITexture_4hnur")
+theme_override_styles/slider = SubResource("StyleBoxFlat_hrkhn")
+max_value = 1.0
+step = 0.1
+
+[node name="手工" type="Button" parent="内容区域/排序容器/精通容器"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "手工"
+
+[node name="权限介绍" type="RichTextLabel" parent="内容区域/排序容器"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "手工等级提升效果1.精通池容量+LV10002.资源容量增加3.资源回复速度增加4.每10级增加1个制作栏位"
+fit_content = true
