@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_no1vw"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="4_ruvb4"]
 [ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="5_xc7x2"]
-[ext_resource type="Texture2D" uid="uid://dpqcwwsve3wgm" path="res://素材/豆包AI素材/像素瓶子.png" id="7_ruvb4"]
+[ext_resource type="Texture2D" uid="uid://cbshigh2a8o3u" path="res://素材/豆包AI素材/像素瓶子宽.png" id="7_xc7x2"]
 [ext_resource type="PackedScene" uid="uid://dx5oki37mgsju" path="res://界面/插件/体力状态.tscn" id="8_xc7x2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqimc"]
@@ -46,7 +46,7 @@ margin_bottom = -5
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ebama"]
-texture = ExtResource("7_ruvb4")
+texture = ExtResource("7_xc7x2")
 expand_margin_left = -90.0
 expand_margin_top = -15.0
 expand_margin_right = -90.0

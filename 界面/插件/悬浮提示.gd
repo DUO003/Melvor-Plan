@@ -1,4 +1,5 @@
 extends Panel
+class_name 梅悬浮提示
 ##最大宽度
 var 宽度上限=800
 var 屏幕尺寸:Vector2
@@ -6,6 +7,9 @@ func _ready() -> void:
 	visible=false
 	屏幕尺寸=计划.游戏分辨率
 func 更新文本(文本内容=""):
+	if 文本内容=="":
+		visible=false
+		return
 	global_position = get_global_mouse_position() + Vector2(10, 10)
 	%"文本".text=文本内容
 	%"文本".autowrap_mode=TextServer.AUTOWRAP_OFF

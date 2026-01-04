@@ -1,11 +1,36 @@
-[gd_scene load_steps=18 format=3 uid="uid://dyci22bapm4g7"]
+[gd_scene load_steps=20 format=3 uid="uid://dyci22bapm4g7"]
 
-[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_kmc5p"]
-[ext_resource type="Texture2D" uid="uid://bvvvxfldyr4jw" path="res://素材/豆包AI素材/炼金台.png" id="1_rh5g5"]
-[ext_resource type="Script" uid="uid://cmrybs4fon4yr" path="res://代码/专属代码/炼金界面/炼金队列卡片.gd" id="2_c74w5"]
-[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_kmc5p"]
-[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_bkfwv"]
-[ext_resource type="Texture2D" uid="uid://nsuvd2wapfva" path="res://素材/豆包AI素材/药水/圣坚药水.png" id="5_bkfwv"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_sns7m"]
+[ext_resource type="Script" uid="uid://cmrybs4fon4yr" path="res://界面/插件/队列卡片.gd" id="2_53ant"]
+[ext_resource type="Texture2D" uid="uid://bvvvxfldyr4jw" path="res://素材/豆包AI素材/炼金台.png" id="3_x2lqy"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="4_ohhtc"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_ikyc5"]
+[ext_resource type="Texture2D" uid="uid://nsuvd2wapfva" path="res://素材/豆包AI素材/药水/圣坚药水.png" id="6_awgn6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sns7m"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_ikyc5")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_53ant"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("4_ohhtc")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_sns7m")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5jsc"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
@@ -18,7 +43,7 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-script = ExtResource("3_bkfwv")
+script = ExtResource("5_ikyc5")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBox" id="StyleBox_o67h5"]
@@ -28,7 +53,7 @@ content_margin_left = -1.0
 content_margin_top = -1.0
 content_margin_right = -1.0
 content_margin_bottom = -1.0
-script = ExtResource("2_kmc5p")
+script = ExtResource("4_ohhtc")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_y5jsc")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -43,7 +68,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-script = ExtResource("3_bkfwv")
+script = ExtResource("5_ikyc5")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kucxn"]
@@ -61,7 +86,7 @@ expand_margin_left = -5.0
 expand_margin_top = -5.0
 expand_margin_right = -5.0
 expand_margin_bottom = -5.0
-script = ExtResource("3_bkfwv")
+script = ExtResource("5_ikyc5")
 margin_left = -5
 margin_top = -5
 margin_right = -5
@@ -79,7 +104,7 @@ expand_margin_left = -5.0
 expand_margin_top = -5.0
 expand_margin_right = -5.0
 expand_margin_bottom = -5.0
-script = ExtResource("3_bkfwv")
+script = ExtResource("5_ikyc5")
 margin_left = -5
 margin_top = -5
 margin_right = -5
@@ -93,7 +118,7 @@ content_margin_left = 10.0
 content_margin_top = 2.0
 content_margin_right = 10.0
 content_margin_bottom = 2.0
-script = ExtResource("2_kmc5p")
+script = ExtResource("4_ohhtc")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -104,7 +129,7 @@ content_margin_left = 10.0
 content_margin_top = 2.0
 content_margin_right = 10.0
 content_margin_bottom = 2.0
-script = ExtResource("2_kmc5p")
+script = ExtResource("4_ohhtc")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -115,7 +140,7 @@ content_margin_left = 10.0
 content_margin_top = 2.0
 content_margin_right = 10.0
 content_margin_bottom = 2.0
-script = ExtResource("2_kmc5p")
+script = ExtResource("4_ohhtc")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -126,7 +151,7 @@ content_margin_left = 10.0
 content_margin_top = 2.0
 content_margin_right = 10.0
 content_margin_bottom = 2.0
-script = ExtResource("2_kmc5p")
+script = ExtResource("4_ohhtc")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -136,7 +161,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-script = ExtResource("3_bkfwv")
+script = ExtResource("5_ikyc5")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBox" id="StyleBox_c74w5"]
@@ -146,24 +171,26 @@ content_margin_left = -1.0
 content_margin_top = -1.0
 content_margin_right = -1.0
 content_margin_bottom = -1.0
-script = ExtResource("2_kmc5p")
+script = ExtResource("4_ohhtc")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_bkfwv")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
-[node name="炼金队列" type="Panel"]
+[node name="队列卡片" type="Panel"]
 custom_minimum_size = Vector2(440, 280)
 offset_right = 427.0
 offset_bottom = 280.0
-theme = ExtResource("1_kmc5p")
-script = ExtResource("2_c74w5")
+theme = ExtResource("1_sns7m")
+theme_override_styles/panel = SubResource("StyleBox_53ant")
+script = ExtResource("2_53ant")
 
-[node name="图片" type="TextureRect" parent="."]
+[node name="玩法图片" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 20.0
 offset_top = 144.0
 offset_right = 96.0
 offset_bottom = 213.0
-texture = ExtResource("1_rh5g5")
+texture = ExtResource("3_x2lqy")
 expand_mode = 1
 stretch_mode = 5
 
@@ -173,10 +200,10 @@ offset_left = 20.0
 offset_top = 64.0
 offset_right = 97.0
 offset_bottom = 140.0
-theme = ExtResource("1_kmc5p")
+theme = ExtResource("1_sns7m")
 theme_override_styles/panel = SubResource("StyleBox_o67h5")
 
-[node name="药水" type="TextureRect" parent="配方容器"]
+[node name="物品贴图" type="TextureRect" parent="配方容器"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -184,7 +211,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_bkfwv")
+texture = ExtResource("6_awgn6")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_lock_ = true
@@ -193,22 +220,20 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -108.0
-offset_top = 10.0
-offset_right = -8.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_left = -101.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 61.0
+grow_horizontal = 0
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBox_c1r7u")
 theme_override_styles/pressed = SubResource("StyleBox_1enq4")
 theme_override_styles/hover = SubResource("StyleBox_wqaqf")
 theme_override_styles/focus = SubResource("StyleBox_y7u36")
 text = "取消"
-metadata/_edit_use_anchors_ = true
 
 [node name="配方编号" type="Label" parent="."]
 unique_name_in_owner = true
@@ -279,10 +304,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -108.0
-offset_top = 83.0
-offset_right = -8.0
-offset_bottom = 137.0
+offset_left = -100.0
+offset_top = 78.0
+offset_bottom = 138.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 35

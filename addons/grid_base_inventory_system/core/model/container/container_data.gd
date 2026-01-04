@@ -162,6 +162,7 @@ func _try_get_empty_grids_by_shape(start: Vector2i, shape: Vector2i) -> Array[Ve
 	return ret
 ## 整理背包物品（物品排列 + 可堆叠物品合并）
 func 整理物品() -> void:
+	GBIS.整理背包.emit()
 	var 备份物品列表: Array[ItemData] = items.duplicate()# 1. 备份当前所有物品
 	if 备份物品列表.is_empty():#背包为空停止逻辑
 		print("背包【", container_name, "】暂无物品需要整理")
@@ -172,7 +173,7 @@ func 整理物品() -> void:
 	var 堆叠上限处理: Array[ItemData]
 	for 待处理物品 in 备份物品列表:
 		if 待处理物品 is StackableData:
-			print("容量",待处理物品.stack_size)
+			#print("容量",待处理物品.stack_size)
 			if 待处理物品.current_amount>=待处理物品.stack_size:
 				var 真实数量=待处理物品.current_amount
 				var 容量:int=待处理物品.stack_size

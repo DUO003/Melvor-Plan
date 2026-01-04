@@ -11,8 +11,8 @@ extends Control
 @export var 需求标签:Dictionary[String,String]={"":"工序"}
 @export var 点击次数:int=10
 
-@onready var 工序进度: ProgressBar = $节点排序/工序进度
-@onready var 点击按钮: Button = $节点排序/点击按钮
+@onready var 工序进度: ProgressBar = %"工序进度"
+@onready var 点击按钮: Button = %"点击按钮"
 @onready var 工序名称节点: Label = $"节点排序/名称排序/工序名称"
 @onready var 贴图: Control = $节点排序/名称排序/贴图
 @onready var 工序描述节点: Label = $节点排序/工序描述

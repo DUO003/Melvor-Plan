@@ -86,7 +86,7 @@ func can_sell() -> bool:
 
 ## 物品是否能购买（检查资源是否足够等）
 func can_buy() -> bool:
-	if 计划.语法糖金币消费(self.价值):return true
+	if 计划.语法糖金币消费(self.价值,"随身商店"):return true
 	计划.语法糖通知("购买失败金币不足","商店信息")
 	return false
 

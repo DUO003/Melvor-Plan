@@ -233,7 +233,6 @@ text = "消耗12体力开启关卡挑战,难度越大奖励越丰富
 
 [node name="体力状态" parent="内容节点" instance=ExtResource("4_qnor1")]
 layout_mode = 0
-anchors_preset = 0
 offset_left = 1272.0
 offset_top = 28.0
 offset_right = 1672.0

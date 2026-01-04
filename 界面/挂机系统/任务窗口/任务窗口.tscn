@@ -155,35 +155,34 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_c5l5k")
 current_tab = 0
 metadata/_tab_index = 1
 
-[node name="介绍" type="Label" parent="内容区域/标签/支线任务"]
+[node name="介绍" type="HSplitContainer" parent="内容区域/标签/支线任务"]
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 60
-text = "你已解锁的玩法会在这里提供引导任务
-并根据以完成任务数量提供一定加成
-"
-horizontal_alignment = 1
+theme_override_constants/separation = 10
+split_offset = 50
+dragging_enabled = false
 metadata/_tab_index = 0
 
 [node name="滚动区" type="ScrollContainer" parent="内容区域/标签/支线任务/介绍"]
-custom_minimum_size = Vector2(1500, 550)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 100.0
-offset_top = 180.0
-offset_right = -80.0
-offset_bottom = 730.0
-grow_horizontal = 2
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="介绍容器" type="VBoxContainer" parent="内容区域/标签/支线任务/介绍/滚动区"]
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="介绍" type="Label" parent="内容区域/标签/支线任务/介绍/滚动区/介绍容器"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "支线任务
+根据系统解锁新任务
+根据完成任务数量提供加成"
+horizontal_alignment = 1
+
 [node name="效果介绍" type="Label" parent="内容区域/标签/支线任务/介绍/滚动区/介绍容器"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 1
-theme_override_font_sizes/font_size = 50
 text = "手工:每完成一个任务增加0.1基础资源回复"
 metadata/_tab_index = 0
 
@@ -191,8 +190,41 @@ metadata/_tab_index = 0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_font_sizes/font_size = 50
 text = "当前完成数量:"
+metadata/_tab_index = 0
+
+[node name="成就滚动区" type="ScrollContainer" parent="内容区域/标签/支线任务/介绍"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="介绍容器" type="VBoxContainer" parent="内容区域/标签/支线任务/介绍/成就滚动区"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="介绍" type="Label" parent="内容区域/标签/支线任务/介绍/成就滚动区/介绍容器"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "成就
+根据解锁的系统解锁新成就
+需要解锁原罪窗口才能领取奖励"
+horizontal_alignment = 1
+
+[node name="成就按钮" type="Button" parent="内容区域/标签/支线任务/介绍/成就滚动区/介绍容器/介绍"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 187.0
+offset_bottom = 67.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "前往成就"
+
+[node name="效果介绍" type="Label" parent="内容区域/标签/支线任务/介绍/成就滚动区/介绍容器"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+text = "不影响steam成就获取
+可以提前查看"
 metadata/_tab_index = 0
 
 [node name="手工" type="ScrollContainer" parent="内容区域/标签/支线任务"]

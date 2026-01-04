@@ -20,16 +20,17 @@ var 类型:String="基础"
 @onready var 回复: Label = $回复
 func _ready():
 	更新贴图()# 节点就绪时初始化
-	类型=计划.手工.检查资源类(资源名称)
-	更新点击回复量()
-	更新UI()
-	计划.BUFF.BUFF_资源回复.connect(更新点击回复量)
-	$"点击范围".mouse_entered.connect(func():
-		鼠标=true
-		计划.手工.更新_资源.emit(self))
-	$"点击范围".mouse_exited.connect(func():
-		鼠标=false
-		计划.手工.更新_资源.emit())
+	if not Engine.is_editor_hint():
+		类型=计划.手工.检查资源类(资源名称)
+		更新点击回复量()
+		更新UI()
+		计划.BUFF.BUFF_资源回复.connect(更新点击回复量)
+		$"点击范围".mouse_entered.connect(func():
+			鼠标=true
+			计划.手工.更新_资源.emit(self))
+		$"点击范围".mouse_exited.connect(func():
+			鼠标=false
+			计划.手工.更新_资源.emit())
 	if is_inside_tree():# 编辑器内安全检查：确保节点已加入场景树，避免空引用错误
 		长按计时器 = Timer.new()
 		长按计时器.wait_time = 0.5    # 长按间隔0.5秒
@@ -62,7 +63,7 @@ func 更新UI():
 		大小.x=400
 		$"进度".set_size(大小)
 		if 回复速度>=1:
-			$"进度".max_value = 计划.手工.查看资源(资源名称+"回复")
+			$"进度".max_value = 计划.手工.精华数量()
 			$"进度".value = 回复速度
 		else :
 			$"进度".max_value = 1

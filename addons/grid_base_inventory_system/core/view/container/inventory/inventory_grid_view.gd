@@ -6,9 +6,11 @@ func _gui_input(event: InputEvent) -> void:
 	if not event.is_pressed():  # 只处理按键按下事件
 		return
 	if not GBIS.moving_item_service.moving_item and has_taken and _container_view.可拿取类型.size()>=1:
-		var 格子里的物品 = GBIS.inventory_service.find_item_data_by_grid(_container_view.container_name, grid_id)
-		if 格子里的物品 and 格子里的物品.item_name in _container_view.可拿取类型:
-			GBIS.moving_item_service.move_item_by_grid(_container_view.container_name, grid_id, offset, _size,_container_view)
+		if (event.is_action_pressed(GBIS.input_click) or 
+		event.is_action_pressed(GBIS.input_use) or event.is_action_pressed(GBIS.input_split)):
+			var 格子里的物品 = GBIS.inventory_service.find_item_data_by_grid(_container_view.container_name, grid_id)
+			if 格子里的物品 and 格子里的物品.item_name in _container_view.可拿取类型:
+				GBIS.moving_item_service.move_item_by_grid(_container_view.container_name, grid_id, offset, _size,_container_view)
 		return
 	GBIS.item_focus_service.item_lose_focus()
 	if event.is_action_pressed(GBIS.input_click):# 处理左键点击动作

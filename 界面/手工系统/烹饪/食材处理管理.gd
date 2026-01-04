@@ -13,12 +13,50 @@ var 格子节点数组:Array=[]
 @onready var 资源: Control = %资源
 @onready var 预处理食材标题: Label = %预处理食材标题
 @onready var 调味点数: HBoxContainer = %调味点数
+@onready var 自动制作: HBoxContainer = $自动制作
+@onready var 自动制作标题: VBoxContainer = %自动制作标题
 
 func _ready() -> void:
 	加载瓶子食材处理区()
 	加载调味点数()
 	计划.更新_UI.connect(加载瓶子食材处理区)
 	计划.更新_UI.connect(加载调味点数)
+	计划.更新玩法.connect(加载制作队列)
+	计划.手工.检查并更新队列("烹饪")
+	加载制作队列()
+func 加载制作队列():
+	var 队列烹饪=计划.手工.队列烹饪()
+	var 配方节点:队列卡片=preload("res://界面/插件/队列卡片.tscn").instantiate()
+	var 序号:int=0
+	计划.清除子节点(自动制作,自动制作标题)
+	for 队列数据 in 队列烹饪:
+		print("加载成功",队列数据)
+		var 克隆节点:队列卡片=配方节点.duplicate()
+		克隆节点.序号=序号
+		克隆节点.领取事件=func():领取奖励(序号)
+		克隆节点.关闭取消事件=true
+		克隆节点.工作模式="烹饪"
+		自动制作.add_child(克隆节点)
+		序号+=1
+func 领取奖励(序号):
+	print("领取被执行",序号)
+	var 制作队列: Array=计划.手工.队列烹饪()
+	if 制作队列.size()>序号:
+		var 配方数据 = 制作队列[序号]
+		if 配方数据["完成"]>0:
+			计划.steam.解锁成就("烹饪自动化")
+			var 烹饪结果=配方数据["配方"]
+			var 统计奖励=[计划.语法糖获得物品(烹饪结果,配方数据["完成"])]
+			var 烹饪精通=计划.手工.烹饪耗时(烹饪结果,false)*配方数据["完成"]
+			计划.手工.数据烹饪菜谱(烹饪结果,"精通",烹饪精通)
+			计划.语法糖奖励显示(统计奖励,"获得料理",1)
+			计划.语法糖通知("%s菜谱精通+%d"%[烹饪结果,烹饪精通])
+			配方数据["完成"]=0
+			if 配方数据["剩余"]<=0:
+				计划.手工.队列烹饪("",1,序号)
+				加载制作队列()
+			计划.更新_UI.emit()
+			计划.保存存档("领取烹饪奖励")
 var 配置字典={"可修改物品":false,"可修改数量":false,"编号":0,"道具名称":"","默认值":5,"修改返回对象": self,"物品不足提示":false}
 func 加载调味点数():
 	var 调料数组:Array=计划.手工.数据调料点数("")
@@ -56,6 +94,9 @@ func 加载瓶子食材处理区() -> void:
 		var 颜色:Color=Color(随机.randf(), 随机.randf(), 随机.randf())
 		瓶子克隆.内容数组.clear()
 		瓶子克隆.内容数组.append({颜色:食材["数量"]})
+		var 瓶子缩放节点 = 瓶子克隆.get_node_or_null("瓶子缩放")
+		if 瓶子缩放节点 is Control:
+			瓶子缩放节点.scale = Vector2(1.2, 1.2)
 		if not Engine.is_editor_hint():
 			瓶子克隆.mouse_entered.connect(func():更新数据(食材,瓶子克隆))
 			瓶子克隆.mouse_exited.connect(func():更新数据())

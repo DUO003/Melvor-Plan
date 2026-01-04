@@ -114,10 +114,12 @@ func _当范围节点接收GUI输入时(事件: InputEvent):
 		elif 事件.button_index == MOUSE_BUTTON_LEFT and not 事件.pressed:
 			是否正在拖动 = false
 			计划.窗口状态管理("技能树","拖动位置",null,范围节点.position)
+		#breakpoint
 	elif 事件 is InputEventMouseMotion and 是否正在拖动:
 		范围节点.global_position = 事件.global_position - 拖动偏移量
 		var 速度倍率=1.0
 		滑动速度 = 速度倍率*事件.velocity
+	
 # 每帧处理惯性滑动逻辑（核心）
 func _process( delta: float):# 非拖动 + 速度（像素/秒）大于阈值
 	if 滑动速度.length() > 停止阈值:

@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bkd8k1jonj3lt" path="res://界面/手工系统/烹饪/食材资源条.tscn" id="5_45rc1"]
 [ext_resource type="PackedScene" uid="uid://b21qe2xo4w534" path="res://界面/手工系统/烹饪/料理卡片.tscn" id="5_frisf"]
 [ext_resource type="Texture2D" uid="uid://dmxceaxoayvjy" path="res://素材/自制/教学截图/料理瓶子.png" id="6_7ay8b"]
-[ext_resource type="Texture2D" uid="uid://bjjborvy0ptqq" path="res://素材/自制/教学截图/工序关系.png" id="7_7o14l"]
+[ext_resource type="Texture2D" uid="uid://b2fom6yy1vxvv" path="res://素材/自制/教学截图/工序关系2.png" id="8_i7jk0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_frisf"]
 
@@ -70,7 +70,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 offset_left = -448.0
 offset_top = 4.0
-offset_right = -54.0
+offset_right = -9.0
 offset_bottom = 124.0
 
 [node name="标题" type="ColorRect" parent="."]
@@ -121,10 +121,11 @@ custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_frisf")
-current_tab = 0
+current_tab = 2
 
 [node name="预加工" type="ScrollContainer" parent="内容节点/内容节点区域/操作区"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -221,7 +222,6 @@ layout_mode = 2
 "空置标签" = "调味品"
 
 [node name="研制食谱" type="ScrollContainer" parent="内容节点/内容节点区域/操作区"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -233,6 +233,7 @@ size_flags_vertical = 3
 
 [node name="料理卡片" parent="内容节点/内容节点区域/操作区/研制食谱/料理卡片容器" instance=ExtResource("5_frisf")]
 layout_mode = 2
+"演示模式" = true
 
 [node name="帮助" type="ScrollContainer" parent="内容节点/内容节点区域/操作区"]
 visible = false
@@ -245,7 +246,8 @@ size_flags_vertical = 3
 
 [node name="帮助" type="Label" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/paragraph_spacing = -4
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = -10
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7o14l")
 text = "烹饪玩法帮助
 1.能需要打开背包,拿出食材类道具放入工序中
@@ -268,6 +270,8 @@ layout_mode = 2
 [node name="Label" type="Label" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = -10
 text = "食材瓶子
 拥有数量和容量限制
 可以通过废弃工序清空腾出空间"
@@ -275,12 +279,16 @@ text = "食材瓶子
 [node name="Label2" type="Label" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = -10
 text = "调料点数
 可以在自动制作时节省调料药水的使用"
 
 [node name="Label3" type="Label" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = -10
 text = "敬请期待:
 1.更多工序
 2.自动烹饪"
@@ -289,7 +297,7 @@ text = "敬请期待:
 custom_minimum_size = Vector2(600, 120)
 layout_mode = 2
 size_flags_horizontal = 2
-texture = ExtResource("7_7o14l")
+texture = ExtResource("8_i7jk0")
 expand_mode = 1
 stretch_mode = 5
 
@@ -308,7 +316,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBox_pla24")
-current_tab = 1
+current_tab = 2
 script = ExtResource("4_45rc1")
 
 [node name="预处理食材" type="ScrollContainer" parent="内容节点/内容节点区域/食材标签"]
@@ -320,32 +328,60 @@ metadata/_tab_index = 0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 10
+size_flags_vertical = 3
 theme_override_constants/separation = 30
 
 [node name="预处理食材标题" type="Label" parent="内容节点/内容节点区域/食材标签/预处理食材/食材处理容器"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 8
+size_flags_vertical = 1
+theme_override_constants/line_spacing = -5
 theme_override_constants/paragraph_spacing = -10
 text = "瓶子容量5
 瓶子限制10
 当前拥有:1"
+vertical_alignment = 1
 
 [node name="调味点数" type="HBoxContainer" parent="内容节点/内容节点区域/食材标签"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="自动制作" type="HBoxContainer" parent="内容节点/内容节点区域/食材标签"]
-visible = false
+custom_minimum_size = Vector2(0, 280)
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="Label" type="Label" parent="内容节点/内容节点区域/食材标签/自动制作"]
+[node name="自动制作标题" type="VBoxContainer" parent="内容节点/内容节点区域/食材标签/自动制作"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "没做完"
+
+[node name="启用自动制作" type="CheckButton" parent="内容节点/内容节点区域/食材标签/自动制作/自动制作标题"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "自动制作"
+
+[node name="制作数量" type="SpinBox" parent="内容节点/内容节点区域/食材标签/自动制作/自动制作标题"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+rounded = true
+suffix = "次"
+
+[node name="说明标签" type="Label" parent="内容节点/内容节点区域/食材标签/自动制作/自动制作标题"]
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = -5
+theme_override_font_sizes/font_size = 30
+text = "启用自动制作后
+会提前扣除基础材料
+最多制作10次
+队列长度1"
 
 [node name="背包栏" parent="." instance=ExtResource("3_rxtf7")]
 layout_mode = 1

@@ -76,6 +76,7 @@ func 初始更新():
 				更新文本())
 	else :
 		输入.visible=false
+	await get_tree().process_frame
 	更新文本()
 func 更新文本():
 	if 道具名称==null:
@@ -108,15 +109,16 @@ func 更新文本():
 			$"标签".text=特殊标签
 			$"标签".visible=true
 ##判断当前数量是否小于等于背包中数量
-func 物品数量判断()->bool:
+func 物品数量判断(倍数:int=1)->bool:
 	if 道具名称==null:return false
 	var 物品数量=0
 	if 特殊标签=="":
 		物品数量=计划.检查背包物品数量(道具名称)
 	elif 计划.表格.蓝图标签检查(道具名称,"食材"):物品数量=计划.手工.烹饪预制(道具名称,特殊标签)
-	return 物品数量>=当前值
+	return 物品数量>=当前值*倍数
 func 鼠标信号处理(鼠标信号):
 	#print(鼠标信号)
+	if not 可修改物品:return
 	if 鼠标信号 is InputEventMouseButton and not 鼠标信号.pressed:
 		if GBIS.has_moving_item():
 			var 正在移动的物品=GBIS.moving_item_service.moving_item

@@ -4,6 +4,7 @@ var 窗口解锁数组: Array
 var 窗口禁用数组: Array
 var 任务文本字典
 var 配置
+@onready var 成就按钮: Button = %成就按钮
 func _ready() -> void:
 	配置={%"任务盒子":["作者","挂机"],%"手工盒子":["手工"]}
 	super._ready()
@@ -22,6 +23,7 @@ func _ready() -> void:
 		刷新任务宽度())
 	%"标签".tab_clicked.connect(func(标签序号):计划.窗口状态管理(基类窗口名称,"标签",null,标签序号))
 	%"支线任务".tab_clicked.connect(func(标签序号):计划.窗口状态管理(基类窗口名称,"支线任务",null,标签序号))
+	成就按钮.pressed.connect(func():计划.切换场景("原罪_傲慢界面","原罪界面"))
 	if 计划.跳转设置:
 		print("跳转设置成功")
 		切换到设置()
@@ -33,7 +35,7 @@ func 切换到设置():
 func 加载任务完成统计():
 	%"当前完成任务数量".text="当前完成数量:"+str(计划.任务.完成任务计数("手工"))
 func 加载窗口状态(选项卡:TabContainer,名称:String):
-	var 标签=计划.窗口状态管理(基类窗口名称,名称,0)#这里的0是假设存档没有数据返回值
+	var 标签=计划.窗口状态管理(基类窗口名称,名称,null)#这里的0是假设存档没有数据返回值
 	if 标签 is int and 标签>=0 and 标签<选项卡.get_tab_count():#检查是合法标签,例如上个版本保存的值
 		选项卡.current_tab=标签
 		return
@@ -83,18 +85,18 @@ func 初始化所有任务容器():
 	for 容器 in 配置:
 		var 场景容器: GridContainer = 容器
 		场景容器.columns=显示任务数量
-		for 主容器名 in 任务字典:
-			if not 主容器名 in 配置[容器]:continue
+		for 任务名称 in 任务字典:
+			var 任务类型=任务字典[任务名称].get("来源",null)
+			if not 任务类型 in 配置[容器]:continue
 			var 序号=1
-			for 任务名称 in 任务字典[主容器名]:
-				var 任务卡=任务的卡片.duplicate()
-				任务卡.custom_minimum_size.x=任务宽度
-				任务卡.任务名称=任务名称
-				任务卡.任务类型=主容器名
-				任务卡.任务详情=任务字典[主容器名][任务名称]
-				任务卡.任务序号=序号
-				任务卡.初始化任务()
-				场景容器.add_child(任务卡)
+			var 任务卡=任务的卡片.duplicate()
+			任务卡.custom_minimum_size.x=任务宽度
+			任务卡.任务名称=任务名称
+			任务卡.任务类型=任务类型
+			任务卡.任务详情=任务字典[任务名称]
+			任务卡.任务序号=序号
+			任务卡.初始化任务()
+			场景容器.add_child(任务卡)
 	刷新任务显示()
 func 任务栏初始化():
 	var 窗口=%"窗口切换按钮模板"

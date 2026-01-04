@@ -83,25 +83,47 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_2eyov")
 current_tab = 0
 
 [node name="原罪突破" type="Control" parent="内容节点/选项卡"]
+unique_name_in_owner = true
 layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="原罪值" type="Label" parent="内容节点/选项卡/原罪突破"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(600, 0)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 1093.0
-offset_top = -72.0
-offset_right = 1693.0
-offset_bottom = -325.0
+offset_left = 889.0
+offset_right = 1225.0
+offset_bottom = -429.0
 grow_vertical = 2
 theme_override_constants/line_spacing = -15
-theme_override_font_sizes/font_size = 50
+theme_override_constants/paragraph_spacing = -5
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxEmpty_riyk3")
-text = "原罪值
-合计:
+text = "原罪值:
+傲慢:100/1000
+傲慢:100/1000
+傲慢:100/1000
+傲慢:100/1000
+傲慢:100/1000
+傲慢:100/1000
+傲慢:100/1000"
+
+[node name="熟练转移" type="Label" parent="内容节点/选项卡/原罪突破"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 1275.0
+offset_top = -6.0
+offset_right = 1611.0
+offset_bottom = -435.0
+grow_vertical = 2
+theme_override_constants/line_spacing = -15
+theme_override_constants/paragraph_spacing = -5
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_riyk3")
+text = "精通转移状态
 傲慢:100/1000
 傲慢:100/1000
 傲慢:100/1000
@@ -113,24 +135,30 @@ text = "原罪值
 [node name="突破" type="Label" parent="内容节点/选项卡/原罪突破"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_top = 10.0
-offset_right = 398.0
-offset_bottom = 153.0
+offset_left = 47.0
+offset_top = 16.0
+offset_right = 605.0
+offset_bottom = 326.0
 theme_override_constants/line_spacing = -10
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4ycnk")
 text = "突破LV:0
 突破成功率:100%
 失败将损失20%熟练度
-突破成功+5挂机等级上限,精通获取乘以1.28"
+突破成功+5挂机等级上限
+精通获取乘以1.28"
 
 [node name="突破按钮" type="Button" parent="内容节点/选项卡/原罪突破/突破"]
 unique_name_in_owner = true
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = 14.0
-offset_top = 259.0
+offset_top = 9.0
 offset_right = 142.0
-offset_bottom = 339.0
+offset_bottom = 89.0
+grow_vertical = 0
 theme_override_font_sizes/font_size = 50
 text = "突破"
 
@@ -148,6 +176,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="傲慢" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -156,9 +185,9 @@ texture = ExtResource("4_2eyov")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/傲慢"]
+[node name="傲慢标签" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/傲慢"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -168,8 +197,8 @@ offset_top = 1.0
 offset_right = 98.5
 offset_bottom = 58.0
 grow_horizontal = 2
-grow_vertical = 0
-text = "未解锁"
+text = "傲慢
+成就功能"
 horizontal_alignment = 1
 
 [node name="暴食" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
@@ -182,9 +211,9 @@ texture = ExtResource("8_6nm3x")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/暴食"]
+[node name="暴食标签" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/暴食"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -194,8 +223,8 @@ offset_top = 1.0
 offset_right = 98.5
 offset_bottom = 58.0
 grow_horizontal = 2
-grow_vertical = 0
-text = "暴食"
+text = "暴食
+暴食里程碑"
 horizontal_alignment = 1
 
 [node name="贪婪" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
@@ -207,7 +236,7 @@ texture = ExtResource("10_uhxdx")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/贪婪"]
+[node name="标签" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/贪婪"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

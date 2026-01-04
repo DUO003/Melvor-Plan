@@ -60,6 +60,8 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = -15
 text = "一段工序的描述
 比方说切割食物"
 horizontal_alignment = 1
@@ -74,14 +76,22 @@ size_flags_vertical = 6
 "限制类型" = ["食材"]
 "空置标签" = "食材"
 
-[node name="工序进度" type="ProgressBar" parent="节点排序"]
-custom_minimum_size = Vector2(350, 20)
+[node name="HBoxContainer" type="HBoxContainer" parent="节点排序"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 10
+size_flags_vertical = 6
+theme_override_constants/separation = 10
+
+[node name="工序进度" type="ProgressBar" parent="节点排序/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
 step = 1.0
 
-[node name="点击按钮" type="Button" parent="节点排序"]
+[node name="点击按钮" type="Button" parent="节点排序/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
