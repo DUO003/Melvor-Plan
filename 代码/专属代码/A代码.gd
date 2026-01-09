@@ -48,7 +48,8 @@ func 语法备忘录(真: bool=true,假: bool=false,
 		#var _三维盒体: AABB = AABB(Vector3(0,0,0), Vector3(10,10,10)) # 3D轴对齐盒体（浮点数），存储位置和大小
 		#var _四元数: Quaternion = Quaternion(Vector3(0,1,0), PI/2) # 3D旋转类型，避免欧拉角万向锁问题
 		#var _基向量矩阵: Basis = Basis(Vector3(0,1,0), PI/2) # 3x3矩阵，表示3D旋转和缩放
-		#var _二维变换矩阵: Transform2D = Transform2D(PI/4, Vector2(100,200),PI/4, Vector2(1,1)) # 2D完整变换，包含旋转角度、缩放向量、倾斜角度,位置向量
+		#var _二维变换矩阵: Transform2D = Transform2D(PI/4, Vector2(100,200),PI/4, Vector2(1,1)) 
+		# 2D完整变换，包含旋转角度、缩放向量、倾斜角度,位置向量
 		#var _三维变换矩阵: Transform3D = Transform3D(Basis(), Vector3(0,1,0)) # 3D完整变换，包含位置、旋转、缩放
 		#var _字符串名称: StringName = StringName("on_click") # 高效字符串类型，适用于信号名、属性名等高频访问场景
 		#var _资源ID: RID = load("res://icon.svg").get_rid() # 底层资源ID，用于引用纹理、声音等底层资源

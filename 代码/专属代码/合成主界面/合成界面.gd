@@ -14,6 +14,9 @@ var 筛选器条件:Array=[]
 @onready var 检索: LineEdit = %检索
 @onready var 更新: TextureButton = %更新
 @onready var 已解锁: CheckButton = %已解锁
+@onready var 资源加点: Button = %资源
+@onready var 悬浮加点弹窗: Panel = %悬浮加点弹窗
+@onready var 关闭加点: Button = %关闭加点
 
 func _ready() -> void:
 	super._ready()#注册
@@ -37,6 +40,14 @@ func _ready() -> void:
 	计划.connect("更新_UI",Callable(self, "_更新_UI"))
 	计划.更新玩法.connect(生成筛选器)
 	%动作进度条.开始动作("资源回复",5.0,self)
+	悬浮加点弹窗.position=计划.窗口状态管理(基类窗口名称,"加点弹窗位置",悬浮加点弹窗.position)
+	资源加点.pressed.connect(func():
+		悬浮加点弹窗.visible=not 悬浮加点弹窗.visible
+		计划.窗口状态管理(基类窗口名称,"加点弹窗",null,悬浮加点弹窗.visible))
+	悬浮加点弹窗.visible=计划.窗口状态管理(基类窗口名称,"加点弹窗",false)
+	关闭加点.pressed.connect(func():
+		计划.窗口状态管理(基类窗口名称,"加点弹窗",null,false)
+		悬浮加点弹窗.visible=false)
 	注册按钮()
 	_更新_UI()
 func _process(delta: float) -> void:
@@ -73,25 +84,31 @@ func 生成筛选器(阶级赋值=-1):
 		等阶.add_item(内容)
 	等阶.selected=阶级赋值
 	生成配方节点()
+@onready var 配方表格: VBoxContainer = %配方表格
 func 生成配方节点(类型名称=类型):
 	if not 类型==类型名称:
 		类型=类型名称
 		计划.窗口状态管理(基类窗口名称,"类型",null,类型)
-	清除子节点(%"配方表格",%"配方表格".原始配方节点)
-	%"配方表格".原始配方节点.visible=false
-	var 配方列表:Array=[]
+	清除子节点(配方表格)
 	if 类型=="所有类型":
 		for 项 in 筛选器条件:
-			if 等阶.text=="不限制":
-				配方列表 += 计划.获取配方(项,ceili(计划.数据系统("手工","等级") / 5.0),1)
-			else :
-				配方列表 += 计划.获取配方(项,等阶.selected,等阶.selected)
+			if not 项=="所有类型":克隆按钮(项)
+	else :克隆按钮(类型)
+func 克隆按钮(项):
+	var 标签=Label.new()
+	标签.text="%s类型"%项
+	配方表格.add_child(标签)
+	var 配方列表:Array=[]
+	var 表格=GridContainer.new()
+	表格.add_theme_constant_override("h_separation", -4)
+	表格.add_theme_constant_override("v_separation", 0)
+	表格.columns=8
+	配方表格.add_child(表格)
+	if 等阶.text=="不限制":
+		配方列表 = 计划.获取配方(项,ceili(计划.数据系统("手工","等级") / 5.0),1)
 	else :
-		if 等阶.text=="不限制":
-			配方列表 = 计划.获取配方(类型,1,ceili(计划.数据系统("手工","等级") / 5.0))
-		else :
-			配方列表 = 计划.获取配方(类型,等阶.selected,等阶.selected)
-	%"配方表格".克隆配方节点(配方列表)
+		配方列表 = 计划.获取配方(项,等阶.selected,等阶.selected)
+	配方表格.克隆配方节点(配方列表,表格)
 func 注册按钮():
 	%强化.pressed.connect(计划.无功能方法)
 	%抽奖机.pressed.connect(func(): 计划.切换场景("合成_抽奖机界面"))

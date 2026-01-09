@@ -23,7 +23,7 @@ func _ready():
 		visible=false
 		)
 	%"保存关闭".pressed.connect(func():
-		计划.保存存档("关闭游戏")
+		计划.保存存档("手动存档")
 		get_tree().quit())
 	%"取消".pressed.connect(func():切换暂停())
 

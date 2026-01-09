@@ -62,10 +62,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_8yxkd")
-current_tab = 1
+current_tab = 0
 
 [node name="基础设置" type="ScrollContainer" parent="设置面板/设置标签"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_tab_index = 0
@@ -89,6 +88,13 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_jxn20")
 text = "测试文本
 测试文本"
 script = ExtResource("3_jepqw")
+
+[node name="自动存档" type="CheckButton" parent="设置面板/设置标签/基础设置/设置"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "启用自动存档"
 
 [node name="标签2" type="Label" parent="设置面板/设置标签/基础设置/设置"]
 layout_mode = 2
@@ -160,6 +166,7 @@ theme_override_font_sizes/font_size = 40
 text = "启用全屏"
 
 [node name="其他" type="ScrollContainer" parent="设置面板/设置标签"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_tab_index = 1

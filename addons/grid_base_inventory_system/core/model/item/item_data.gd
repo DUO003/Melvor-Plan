@@ -57,6 +57,12 @@ func 更新属性()->bool:
 	表格数据=计划.表格.蓝图字典.get(item_name,[])
 	蓝图表头=计划.表格.蓝图表头
 	if 表格数据==[]:
+		var 替换字典={"挂件精通代币":"挂机精通代币"}
+		if 替换字典.has(item_name):
+			item_name=替换字典[item_name]
+			表格数据=计划.表格.蓝图字典.get(item_name,[])
+			蓝图表头=计划.表格.蓝图表头
+	if 表格数据==[]:
 		push_warning("错误[%s]:未能读取到表格信息,表格:" % [item_name],计划.表格.蓝图字典.keys())
 		#breakpoint
 		return false

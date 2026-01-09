@@ -14,7 +14,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="暴食界面" type="Control"]
+[node name="傲慢界面" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

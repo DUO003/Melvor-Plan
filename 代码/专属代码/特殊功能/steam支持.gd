@@ -1,6 +1,5 @@
 extends Node
 class_name 梅steam
-
 ##字典从任务获取
 ##成就标示是steam使用的
 ##成就图标可以是图片或索引文本(通过内部方法获取图片)
@@ -8,17 +7,14 @@ var 原始成就字典 = {}
 ##存档的字典
 var 成就字典 = {}
 var 启用标示=ProjectSettings.get_setting("global/steam_enabled")#后续导出时另外实现切换
+var 插件:steam插件
 func _ready() -> void:
 	if 启用标示:
-		var 初始化状态 = Steam.steamInitEx(4181740, true)
-		print("Steam初始化状态：", 初始化状态)
+		插件=steam插件.new()
+		插件.初始化()
 	else :
 		print("单机逻辑")
-
-func 读取成就存档(存档数据: Dictionary) -> void:
-	var 任务字典=计划.任务.任务字典
-	var 任务全局=计划.任务.任务全局
-	var 成就任务数组=计划.任务.筛选任务来源("成就")
+func 读取成就(成就任务数组,任务字典,存档数据: Dictionary):
 	原始成就字典 = {}
 	for 任务名称 in 成就任务数组:
 		原始成就字典[任务名称]=任务字典[任务名称]
@@ -32,6 +28,8 @@ func 读取成就存档(存档数据: Dictionary) -> void:
 		else :
 			成就字典[成就名称]["解锁状态"]=false
 			成就字典[成就名称]["成就数据"]={}
+	计划.梅存档["挂机"]["成就"]=成就字典
+func 读取成就验证(成就任务数组,任务全局) -> void:
 	for 任务名称 in 成就任务数组:
 		if 任务全局.has(任务名称):#追踪之前的任务进行解锁
 			var 任务完成=计划.梅存档["挂机"].get("任务进度",{}).get(任务名称,0)==1
@@ -41,37 +39,30 @@ func 读取成就存档(存档数据: Dictionary) -> void:
 				print(任务名称,任务完成度)
 				if 任务完成度==任务目标列表.size():
 					解锁成就(任务名称)
-	计划.梅存档["挂机"]["成就"]=成就字典
 func 读取成就图标(成就名称)->Texture2D:
-	if not 原始成就字典.has(成就名称):
-		print("错误：读取成就图标未找到【", 成就名称, "】对应的成就配置")
-		return null
+	if not 成就存在(成就名称,"成就图标"):return null
 	var 成就图标=原始成就字典[成就名称].get("成就图标",null)
 	if 成就图标 is String:成就图标=计划.表格.道具贴图(成就图标)
 	if 成就图标 is Texture2D:return 成就图标
 	else :return null
 ## 根据本地启用标示变量 和【成就名称】获取Steam上或本地的成就状态
 func 检查成就(成就名称: String,同步状态=false) -> bool:
-	if not 原始成就字典.has(成就名称):
-		print("错误：检查成就未找到【", 成就名称, "】对应的成就配置")
-		return false
-	var 成就标识 = 原始成就字典[成就名称].get("成就标识","错误")
-	print(成就标识,成就名称)
-	if 启用标示 and not 成就标识=="错误":#如果没有成就标示当成本地成就处理
-		var 当前成就: Dictionary = Steam.getAchievement(成就标识)
-		print(当前成就,成就名称)
-		if 当前成就['ret']:
-			if 同步状态 and 成就字典[成就名称]["解锁状态"] and not 当前成就['achieved']:
-				Steam.setAchievement(成就标识)
-				Steam.storeStats()
-		else:print("警告：获取【", 成就名称, "】失败，标识：", 成就标识)
+	if not 成就存在(成就名称,"检查成就"):return false
+	if 启用标示:
+		var 成就标识 = 原始成就字典[成就名称].get("成就标识","错误")
+		if 成就标识=="错误":#如果没有成就标示当成本地成就处理
+			return 成就字典[成就名称]["解锁状态"]
+		if 同步状态 and 成就字典[成就名称]["解锁状态"]:
+			var 当前成就: Dictionary = 插件.当前成就(成就标识)
+			if 当前成就['ret'] :
+				if not 当前成就['achieved']:
+					插件.完成成就(成就标识)
+			else:print("警告：获取【", 成就名称, "】失败，标识：", 成就标识)
 		return 成就字典[成就名称]["解锁状态"]#改为本地逻辑
 	return 成就字典[成就名称]["解锁状态"]
 ##检查成就是否可以被领取奖励
 func 检查成就解锁(成就名称)->bool:
-	if not 原始成就字典.has(成就名称):
-		print("错误：检查成就解锁未找到【", 成就名称, "】对应的成就配置")
-		return false
+	if not 成就存在(成就名称,"检查成就可领取"):return false
 	var 窗口解锁数组: Array = 计划.梅存档["挂机"].get("窗口解锁",[])
 	if 窗口解锁数组.has("原罪界面"):
 		var 系统=原始成就字典[成就名称].get("类型","")
@@ -87,43 +78,31 @@ func 统计已完成成就数量() -> int:
 	return 完成数量
 # 根据【成就名称】解锁对应成就
 func 解锁成就(成就名称: String) -> void:
-	# 校验成就名称是否存在
-	if not 成就字典.has(成就名称):
-		print("错误：解锁成就未找到【", 成就名称, "】对应的成就配置")
-		return
+	if not 成就存在(成就名称,"解锁成就"):return
 	# 提取成就标识和当前解锁状态
 	var 成就标识 = 原始成就字典[成就名称].get("成就标识","错误")
 	#print(成就标识)
 	if 启用标示 and not 成就标识=="错误":#如果没有成就标示当成本地成就处理
-		# 调用Steam接口解锁成就
-		var 解锁结果 = Steam.setAchievement(成就标识)
-		成就字典[成就名称]["解锁状态"] = true
-		if 解锁结果:
-			Steam.storeStats()# 同步数据到Steam服务器
-			if not 检查成就(成就名称,false):
-				计划.语法糖通知("【%s】解锁成功，已同步到Steam"%成就名称,"成就"+成就名称)
-		else :
-			if not 检查成就(成就名称,false):
-				计划.语法糖通知("【%s】成就完成，同步Steam错误"%成就名称,"成就"+成就名称)
+		if not 检查成就(成就名称,false):
+			插件.完成成就(成就标识)
+		计划.语法糖通知("【%s】成就解锁成功，同步Steam"%成就名称,"成就"+成就名称)
 	else :
-		成就字典[成就名称]["解锁状态"] = true
 		if not 检查成就(成就名称,false):
 			计划.语法糖通知("【%s】成就完成"%成就名称,"成就"+成就名称)
+	成就字典[成就名称]["解锁状态"] = true
 ##测试专用
 func 清空单个成就(成就名称: String) -> void:
-	if not 原始成就字典.has(成就名称):
-		print("错误：清空单个成就未找到【", 成就名称, "】对应的成就配置")
-		return
+	if not 成就存在(成就名称,"清空单个成就"):return
 	var 成就标识 = 原始成就字典[成就名称].get("成就标识","错误")
 	if 启用标示 and not 成就标识=="错误":#如果没有成就标示当成本地成就处理
 		# 校验Steam连接状态
-		if not Steam.isSteamRunning():
+		if not 插件.连接检查():
 			print("警告：Steam未连接，无法清空成就")
 			return
 		# 调用Steam接口清空单个成就
-		var 清空结果 = Steam.clearAchievement(成就标识)
+		var 清空结果 = 插件.清空成就(成就标识)
 		if 清空结果:
-			Steam.storeStats()# 同步到Steam服务器
+			插件.同步服务器()
 			成就字典[成就名称]["解锁状态"] = false
 			print("【", 成就名称, "】成就进度已清空，同步完成")
 		else:
@@ -135,14 +114,20 @@ func 清空所有成就() -> void:
 	for 成就名称 in 成就字典:
 		成就字典[成就名称]["解锁状态"] = false
 	if 启用标示:# 调用Steam接口重置所有成就（true=包含成就，false=仅统计数据）
-		if not Steam.isSteamRunning():# 校验Steam连接状态
+		if not 插件.连接检查():# 校验Steam连接状态
 			print("警告：Steam未连接，无法清空成就")
 			return
-		var 清空结果 = Steam.resetAllStats(true)
+		var 清空结果 = 插件.清空所有成就()
 		if 清空结果:
 			# 同步到Steam服务器
-			Steam.storeStats()
+			插件.同步服务器()
 			# 批量更新本地成就字典
 			print("所有成就进度已清空，本地字典同步完成")
 		else:
 			print("错误：清空所有成就失败（可能是无成就可清空/接口权限不足）")
+func 成就存在(成就名称,报错)->bool:
+	if 原始成就字典.has(成就名称):
+		return true
+	print("错误：",报错,"未找到【", 成就名称, "】对应的成就配置\r成就字典长度%d"%原始成就字典.size())
+	breakpoint
+	return false

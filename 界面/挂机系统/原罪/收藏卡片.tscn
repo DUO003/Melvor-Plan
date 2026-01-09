@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqxnx6wkd3qvi"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_0h8hx"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_tm7i3"]
+[ext_resource type="Script" uid="uid://b1036qvkjl3ea" path="res://界面/挂机系统/原罪/收藏卡片.gd" id="2_0h8hx"]
+[ext_resource type="Texture2D" uid="uid://1b6ply323inq" path="res://素材/自制/图标/贪婪.svg" id="3_sy2df"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tenw4"]
+bg_color = Color(0.7411765, 0.5568628, 0.19215687, 0.5882353)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.40784314, 0.2901961, 0.078431375, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("1_tm7i3")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nu7ch"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("1_tm7i3")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[node name="收藏卡片" type="Panel"]
+custom_minimum_size = Vector2(400, 415)
+theme = ExtResource("1_0h8hx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_tenw4")
+script = ExtResource("2_0h8hx")
+"物品名称" = "悔恨之痂"
+
+[node name="图标" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 18.0
+offset_right = 117.0
+offset_bottom = 118.0
+size_flags_horizontal = 6
+size_flags_vertical = 0
+texture = ExtResource("3_sy2df")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="数据" type="Label" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 1.0
+offset_right = 377.0
+offset_bottom = 137.0
+theme_override_constants/line_spacing = -12
+theme_override_constants/paragraph_spacing = 0
+theme_override_font_sizes/font_size = 36
+text = "收藏品物品名称
+背包数量:10000
+提交:"
+
+[node name="简介" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 137.0
+offset_right = -11.0
+offset_bottom = -13.0
+theme_override_constants/paragraph_separation = -10
+theme_override_font_sizes/normal_font_size = 30
+text = "这里会显示一段较长的小作文简介内容"
+
+[node name="提交" type="Button" parent="."]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 76.0
+offset_right = 108.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_nu7ch")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nu7ch")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nu7ch")
+theme_override_styles/focus = SubResource("StyleBoxFlat_nu7ch")
+text = "提交"

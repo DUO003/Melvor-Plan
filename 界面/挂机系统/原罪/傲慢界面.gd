@@ -34,6 +34,8 @@ func _ready() -> void:
 	成就进度.max_value=原始成就字典.size()
 	成就进度.value=已完成数
 	成就数值.text="%d/%d"%[已完成数,原始成就字典.size()]
+	print(原始成就字典)
+	print(计划.steam)
 func GUI_检查任务完成(按键信号:InputEvent,成就名称):
 	if 按键信号 is InputEventMouseButton and 按键信号.pressed:
 		if 按键信号.button_index == MOUSE_BUTTON_LEFT:

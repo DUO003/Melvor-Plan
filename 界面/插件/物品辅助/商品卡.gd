@@ -6,8 +6,9 @@ class_name 梅商品卡片
 @onready var 价格: RichTextLabel = $价格
 
 func _ready() -> void:
-	更新界面()
-	$"点击判断区".gui_input.connect(gui点击逻辑)
+	if 商品:
+		更新界面()
+		$"点击判断区".gui_input.connect(gui点击逻辑)
 func 更新界面():
 	if 购买数量*商品.商品数量>1:
 		$"图片/数量".text="*%d"%(购买数量*商品.商品数量)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://blkkbdad7hti1"]
+[gd_scene load_steps=11 format=3 uid="uid://blkkbdad7hti1"]
 
 [ext_resource type="Script" uid="uid://b2x8daf4qepwj" path="res://界面/插件/物品辅助/代币商店.gd" id="1_3ytm5"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_5tqhy"]
+[ext_resource type="PackedScene" uid="uid://b2vh3fswditse" path="res://界面/插件/物品辅助/商品卡.tscn" id="3_5tqhy"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="3_l4s5g"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="4_w7mx3"]
 
@@ -94,6 +95,9 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="商品卡" parent="商店滚动区/商店容器" instance=ExtResource("3_5tqhy")]
+layout_mode = 2
 
 [node name="辅助按钮区" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 80)

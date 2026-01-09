@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c3ipvacpavwmu"]
+[gd_scene load_steps=36 format=3 uid="uid://c3ipvacpavwmu"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_nocv6"]
 [ext_resource type="Script" uid="uid://dhlygjpx7m47s" path="res://代码/专属代码/炼金界面/炼金界面.gd" id="2_ex6pc"]
@@ -152,6 +152,12 @@ script = ExtResource("8_l2l3n")
 "商品名" = "风翎符片"
 "商品数量" = 5
 "代币" = "催化剂代币"
+metadata/_custom_type_script = "uid://bivcgv6cvbvln"
+
+[sub_resource type="Resource" id="Resource_y7u36"]
+script = ExtResource("8_l2l3n")
+"商品名" = "资源回复代币"
+"代币" = "手工精通代币"
 metadata/_custom_type_script = "uid://bivcgv6cvbvln"
 
 [sub_resource type="Resource" id="Resource_1enq4"]
@@ -428,7 +434,7 @@ text = "缺少炼金材料[font_size=30]你需要放入至少3种炼金材料[/f
 
 [node name="代币商店" parent="内容节点/选项卡" instance=ExtResource("7_nocv6")]
 layout_mode = 2
-"商品数组" = Array[ExtResource("8_l2l3n")]([SubResource("Resource_nocv6"), SubResource("Resource_l2l3n"), SubResource("Resource_c1r7u"), SubResource("Resource_1enq4"), SubResource("Resource_wqaqf")])
+"商品数组" = Array[ExtResource("8_l2l3n")]([SubResource("Resource_nocv6"), SubResource("Resource_l2l3n"), SubResource("Resource_c1r7u"), SubResource("Resource_y7u36"), SubResource("Resource_1enq4"), SubResource("Resource_wqaqf")])
 
 [node name="帮助区域" type="ScrollContainer" parent="内容节点/选项卡"]
 visible = false

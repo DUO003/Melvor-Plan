@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2mygwblowgmb"]
+[gd_scene load_steps=17 format=3 uid="uid://b2mygwblowgmb"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_c5l5k"]
 [ext_resource type="Script" uid="uid://dtt0vuu67behi" path="res://界面/挂机系统/任务窗口/任务窗口.gd" id="2_mxxnt"]
@@ -14,6 +14,12 @@ content_margin_left = 10.0
 content_margin_right = 10.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c5l5k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_60vby"]
+content_margin_left = 50.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bl2ja"]
+content_margin_right = 50.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_solxu"]
 bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
@@ -165,6 +171,7 @@ metadata/_tab_index = 0
 [node name="滚动区" type="ScrollContainer" parent="内容区域/标签/支线任务/介绍"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_60vby")
 
 [node name="介绍容器" type="VBoxContainer" parent="内容区域/标签/支线任务/介绍/滚动区"]
 layout_mode = 2
@@ -181,9 +188,11 @@ horizontal_alignment = 1
 
 [node name="效果介绍" type="Label" parent="内容区域/标签/支线任务/介绍/滚动区/介绍容器"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 1
-text = "手工:每完成一个任务增加0.1基础资源回复"
+text = "手工:每完成一个任务
+增加0.05基础资源回复
+增加10资源容量"
 metadata/_tab_index = 0
 
 [node name="当前完成任务数量" type="Label" parent="内容区域/标签/支线任务/介绍/滚动区/介绍容器"]
@@ -196,6 +205,7 @@ metadata/_tab_index = 0
 [node name="成就滚动区" type="ScrollContainer" parent="内容区域/标签/支线任务/介绍"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bl2ja")
 
 [node name="介绍容器" type="VBoxContainer" parent="内容区域/标签/支线任务/介绍/成就滚动区"]
 layout_mode = 2

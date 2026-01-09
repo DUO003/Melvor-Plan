@@ -1,20 +1,17 @@
-extends GridContainer
-var 原始配方节点 = null
-func _ready():
-	原始配方节点 = $"配方"
+extends VBoxContainer
+var 配方 = preload("res://界面/手工系统/配方.tscn").instantiate()
 @onready var 已解锁按钮: CheckButton = %已解锁
 @onready var 检索: LineEdit = %检索
-func 克隆配方节点(配方列表=["铁锭", "纤维", "鞣革"], 原始节点=原始配方节点):# 根据配方列表数量克隆节点
+@onready var 配方表格: VBoxContainer = %配方表格
+func 克隆配方节点(配方列表=["铁锭", "纤维", "鞣革"],节点位置:Control=self):# 根据配方列表数量克隆节点
 	var 编号数组= 计划.表格.获取表格信息数组(计划.表格.创世蓝图,配方列表,"名称")
-	#print("编号数组",编号数组)
 	for i in range(配方列表.size()):
 		var 配方名称=配方列表[i]
 		if not 检索.text=="":
 			if not 检索.text in 配方名称:
 				continue
 		var 配方编号=int(编号数组[i])
-		var 克隆节点:Button = 原始节点.duplicate()
-		克隆节点.name = "配方" + str(i + 1)  # 命名为配方1、配方2...
+		var 克隆节点:Button = 配方.duplicate()
 		克隆节点.visible = true  # 克隆节点设为可见
 		var 配方名标签 = 克隆节点.get_node("配方名")# 获取克隆节点下的"配方名"Label节点并设置文本
 		var 解锁=false
@@ -26,10 +23,7 @@ func 克隆配方节点(配方列表=["铁锭", "纤维", "鞣革"], 原始节�
 				if 残缺配方==0:
 					克隆节点.text=""
 				else:
-					if 配方等级==-1:
-						克隆节点.text="残缺图纸*"+str(残缺配方)+"\n\n\n\n"
-					else:
-						克隆节点.text="研究残缺*"+str(残缺配方)+"\n\n\n\n"
+					克隆节点.text="残缺*"+str(残缺配方)+"\n\n\n"
 				if not 配方等级==-1:
 					解锁=true
 			else :
@@ -44,9 +38,9 @@ func 克隆配方节点(配方列表=["铁锭", "纤维", "鞣革"], 原始节�
 		克隆节点.mouse_filter = Control.MOUSE_FILTER_STOP
 		克隆节点.focus_mode = Control.FOCUS_NONE
 		if 已解锁按钮.button_pressed:
-			if 解锁:add_child(克隆节点)
+			if 解锁:节点位置.add_child(克隆节点)
 		else :
-			add_child(克隆节点)
+			节点位置.add_child(克隆节点)
 	if get_children().size()==1:
 		计划.语法糖通知("请调整筛选条件,当前没有符合条件的蓝图")
 # 功能：复制 Button 节点的 normal 原始样式，修改后批量赋值给 pressed/hover/focus 状态
@@ -83,8 +77,8 @@ func 鼠标点击(配方序号,按键信号):
 			计划.语法糖通知( "配方未解锁，无法制作","手工提示")
 	elif 按键信号.button_index == MOUSE_BUTTON_RIGHT:
 		计划.手工.队列合成("制作队列",装备名称)
-	else :
-		计划.语法糖通知( "中键点击","手工提示")
+	#else :
+		#计划.语法糖通知( "中键点击","手工提示")
 
 func 制作物品检查(表格字典):
 	if 表格字典 == {}:

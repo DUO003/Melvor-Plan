@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://djk25cxay1cfd"]
+
+[ext_resource type="Script" uid="uid://cq4a6aa1tvt8" path="res://界面/挂机系统/背包/随身商店.gd" id="1_vp3kg"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_x8up3"]
+[ext_resource type="PackedScene" uid="uid://dx5oki37mgsju" path="res://界面/插件/体力状态.tscn" id="2_x8up3"]
+[ext_resource type="Script" uid="uid://gqt6pq4lt0gw" path="res://addons/grid_base_inventory_system/core/view/container/shop/shop_view.gd" id="3_le1y4"]
+
+[node name="随身商店" type="VBoxContainer"]
+custom_minimum_size = Vector2(600, 828)
+offset_right = 600.0
+offset_bottom = 828.0
+theme = ExtResource("1_x8up3")
+script = ExtResource("1_vp3kg")
+metadata/_tab_index = 2
+
+[node name="刷新计时" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/line_spacing = -15
+theme_override_font_sizes/font_size = 35
+text = "商店刷新10:00
+手动刷新20体力"
+
+[node name="体力容器" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="体力状态" parent="体力容器" instance=ExtResource("2_x8up3")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="体力刷新" type="Button" parent="体力容器"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "手动刷新"
+
+[node name="商店容器" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+vertical_scroll_mode = 2
+
+[node name="商店" type="Control" parent="商店容器"]
+custom_minimum_size = Vector2(588, 1180)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_le1y4")
+container_name = "随身商店"
+container_columns = 5
+container_rows = 10
+base_size = 117
+grid_border_size = 2
+grid_border_color = Color(0.75, 0.75, 0.75, 0)
+gird_background_color_empty = Color(0.91, 0.862225, 0.7735, 0.54901963)
+gird_background_color_taken = Color(0.468, 0.53400004, 0.6, 0.88235295)
+gird_background_color_conflict = Color(0.8, 0.35999998, 0.35999998, 0.93333334)
+grid_background_color_avilable = Color(0.2769, 0.51510507, 0.71, 0.9411765)
+stack_num_font_size = 32
+stack_num_margin = 0
+stack_num_color = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://gqt6pq4lt0gw"

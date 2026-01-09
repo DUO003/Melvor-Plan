@@ -54,6 +54,8 @@ func 定期更新提示文本(目标文本节点):
 		目标文本节点.text = 提示文本[0]
 func 节点有效性检查(节点名称:String)->bool:
 	return 节点名称 in 计划.节点 and 计划.节点[节点名称] != null
+var 屏幕震动锁定:bool=false
+var 初始位置:Vector2
 func 屏幕震动(摄像机节点: Node2D, 震动频率: int, 震动幅度: int, 震动持续时间: float) -> void:
 	# 参数合法性校验与修正
 	震动频率 = max(震动频率, 1)  # 确保频率至少为1帧
@@ -61,8 +63,9 @@ func 屏幕震动(摄像机节点: Node2D, 震动频率: int, 震动幅度: int,
 	震动持续时间 = max(震动持续时间, 0.1)  # 确保最少0.1秒
 	
 	# 记录摄像机初始位置(用于最终复位)
-	var 初始位置 = 摄像机节点.position
-	
+	if not 屏幕震动锁定:
+		初始位置 = 摄像机节点.position
+		屏幕震动锁定=true
 	# 计算总震动帧数(基于当前帧率)
 	var 帧率 = int(Engine.get_frames_per_second())  # 返回float，表示当前实际FPS
 	var 总震动帧数 = int(震动持续时间 * 帧率)
@@ -85,3 +88,4 @@ func 屏幕震动(摄像机节点: Node2D, 震动频率: int, 震动幅度: int,
 		await get_tree().process_frame
 	# 震动结束后强制复位到初始位置
 	摄像机节点.position = 初始位置
+	屏幕震动锁定=false

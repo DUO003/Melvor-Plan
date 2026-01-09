@@ -2,6 +2,8 @@ extends ScrollContainer
 func _ready() -> void:
 	%"启用全屏".button_pressed=计划.配置文件.get("全屏",false)
 	%"启用全屏".toggled.connect(func(条件):计划.切换全屏(条件))
+	%"自动存档".button_pressed=计划.配置文件.get("自动存档",true)
+	%"自动存档".toggled.connect(func(条件):计划.配置文件["自动存档"]=条件)
 	%"群二维码".visible=计划.窗口状态管理("设置","二维码",true)
 	%"二维码".button_pressed=%"群二维码".visible
 	%"二维码".pressed.connect(func():

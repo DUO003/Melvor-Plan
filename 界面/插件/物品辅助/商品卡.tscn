@@ -36,7 +36,7 @@ content_margin_left = 10.0
 content_margin_top = 2.0
 
 [node name="商品卡" type="Panel"]
-custom_minimum_size = Vector2(240, 350)
+custom_minimum_size = Vector2(270, 350)
 theme = ExtResource("1_sk5i8")
 theme_override_styles/panel = SubResource("StyleBox_b440g")
 script = ExtResource("3_hn262")

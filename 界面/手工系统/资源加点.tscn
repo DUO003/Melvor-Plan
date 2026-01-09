@@ -1,0 +1,158 @@
+[gd_scene load_steps=12 format=3 uid="uid://c0xnyoxa6kefu"]
+
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_6851i"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_r7331"]
+[ext_resource type="Texture2D" uid="uid://bhhvc44hrv7uq" path="res://素材/游戏素材/货币/36.png" id="2_k1gqv"]
+[ext_resource type="Script" uid="uid://bqsxor1nv1pxc" path="res://界面/手工系统/资源加点.gd" id="3_hvqnr"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="3_r7331"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvqnr"]
+bg_color = Color(0.6117647, 0.5137255, 0.30588236, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("1_6851i")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yni8h"]
+content_margin_left = 60.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5lflo"]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqimc"]
+bg_color = Color(0.5254902, 0.6509804, 0.52156866, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("1_6851i")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjp5r"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.41, 0.28822997, 0.0779, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+expand_margin_bottom = -5.0
+script = ExtResource("1_6851i")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+margin_bottom = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_vgh6y"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 20.0
+content_margin_top = 5.0
+content_margin_right = 20.0
+content_margin_bottom = 5.0
+script = ExtResource("3_r7331")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kqimc"), SubResource("StyleBoxFlat_wjp5r")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[node name="资源加点" type="Panel"]
+custom_minimum_size = Vector2(390, 120)
+theme = ExtResource("1_r7331")
+theme_override_styles/panel = SubResource("StyleBoxFlat_hvqnr")
+script = ExtResource("3_hvqnr")
+
+[node name="贴图" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+offset_right = 60.0
+offset_bottom = 60.0
+texture = ExtResource("2_k1gqv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="回复速度" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yni8h")
+text = "资源回复+100.0"
+
+[node name="文本" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -57.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5lflo")
+text = "分配代币"
+
+[node name="+" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.97800004
+anchor_top = 0.96300006
+anchor_right = 0.97800004
+anchor_bottom = 0.96300006
+offset_left = -49.486023
+offset_top = -53.560005
+offset_right = 12.513977
+offset_bottom = 13.439995
+scale = Vector2(0.8, 0.8)
+theme_override_styles/normal = SubResource("StyleBox_vgh6y")
+theme_override_styles/pressed = SubResource("StyleBox_vgh6y")
+theme_override_styles/hover = SubResource("StyleBox_vgh6y")
+theme_override_styles/focus = SubResource("StyleBox_vgh6y")
+text = "+"
+
+[node name="-" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.97200006
+anchor_bottom = 0.97200006
+offset_left = 183.52458
+offset_top = -53.640003
+offset_right = 245.52458
+offset_bottom = 13.359993
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/normal = SubResource("StyleBox_vgh6y")
+theme_override_styles/pressed = SubResource("StyleBox_vgh6y")
+theme_override_styles/hover = SubResource("StyleBox_vgh6y")
+theme_override_styles/focus = SubResource("StyleBox_vgh6y")
+text = "-"
+metadata/_edit_use_anchors_ = true
+
+[node name="点数" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 237.0
+offset_top = -57.0
+offset_right = -73.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5lflo")
+text = "100"
+clip_text = true

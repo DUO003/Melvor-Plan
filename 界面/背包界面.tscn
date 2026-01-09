@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dh41kh8yv8mcw" path="res://素材/游戏素材/货币/2.png" id="5_tjqle"]
 [ext_resource type="Script" uid="uid://dg6xjko3rdcta" path="res://addons/grid_base_inventory_system/core/view/slot/equipment_slot_view.gd" id="7_ggjuy"]
 [ext_resource type="Texture2D" uid="uid://conmhorhmnqpg" path="res://素材/像素/框.png" id="8_sso0e"]
-[ext_resource type="Script" uid="uid://gqt6pq4lt0gw" path="res://addons/grid_base_inventory_system/core/view/container/shop/shop_view.gd" id="9_sxijb"]
+[ext_resource type="PackedScene" uid="uid://djk25cxay1cfd" path="res://界面/挂机系统/背包/随身商店.tscn" id="9_odugo"]
 [ext_resource type="PackedScene" uid="uid://cjsi35bpmr7oo" path="res://界面/插件/玩家.tscn" id="9_wurb6"]
 [ext_resource type="PackedScene" uid="uid://dlf0o8yt0hscg" path="res://界面/插件/悬浮提示.tscn" id="10_odugo"]
 
@@ -212,10 +212,11 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2qtmj")
-current_tab = 0
+current_tab = 2
 
 [node name="物品" type="Control" parent="内容节点/水平排列/状态区"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(600, 828)
 layout_mode = 2
 metadata/_tab_index = 0
@@ -526,32 +527,9 @@ offset_top = 52.0
 offset_right = -196.0
 offset_bottom = -416.0
 
-[node name="随身商店" type="ScrollContainer" parent="内容节点/水平排列/状态区"]
+[node name="随身商店" parent="内容节点/水平排列/状态区" instance=ExtResource("9_odugo")]
 unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(600, 828)
 layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="商店" type="Control" parent="内容节点/水平排列/状态区/随身商店"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource("9_sxijb")
-container_name = "随身商店"
-container_columns = 5
-container_rows = 10
-base_size = 117
-grid_border_size = 2
-grid_border_color = Color(0.75, 0.75, 0.75, 0)
-gird_background_color_empty = Color(0.91, 0.862225, 0.7735, 0.54901963)
-gird_background_color_taken = Color(0.468, 0.53400004, 0.6, 0.88235295)
-gird_background_color_conflict = Color(0.8, 0.35999998, 0.35999998, 0.93333334)
-grid_background_color_avilable = Color(0.2769, 0.51510507, 0.71, 0.9411765)
-stack_num_font_size = 32
-stack_num_margin = 0
-stack_num_color = Color(0, 0, 0, 1)
-metadata/_custom_type_script = "uid://gqt6pq4lt0gw"
 
 [node name="删除确认弹窗" type="ConfirmationDialog" parent="."]
 unique_name_in_owner = true

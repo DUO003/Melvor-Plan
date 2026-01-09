@@ -16,9 +16,9 @@ config/name_localized={
 }
 config/description="游戏手工版本开发中
 总进度(1/7)
-[手工:95%]
-[挂机:10%]"
-config/version="0.1.8"
+[手工:96%]
+[挂机:20%]"
+config/version="0.1.9.1"
 config/tags=PackedStringArray("梅计划")
 run/main_scene="uid://kifxwq2enhmp"
 config/features=PackedStringArray("4.5", "Mobile")

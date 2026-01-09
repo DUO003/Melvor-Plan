@@ -26,9 +26,26 @@ var 固定条件=[["{物品名称}",func():return 订单数据.名称],
 var 固定标题="[img=40x40]{图标}[/img]#{标题}"
 var 提交:Button
 func _ready() -> void:
+	if 订单数据.时限<=Time.get_unix_time_from_system():
+		订单数据.生成订单数据()
+	提交=%"提交"
+	重载订单数据()
+	%"放弃".pressed.connect(放弃)
+	提交.pressed.connect(func(): 
+		if not 订单数据.提交订单(提交数量):
+			计划.语法糖通知("订单提交条件不满足","订单提交")
+			重载订单数据()
+			return
+		if 初始提交==0:计划.更新玩法.emit()
+		计划.更新_UI.emit())
+	计划.更新_UI.connect(全面更新)
+	if not 订单数据.时限==-1:
+		计划.过去一秒.connect(更新计时器)
+	更新计时器()
+func 重载订单数据():
 	初始提交=提交数量
 	if 提交数量==0:
-		var 订单数量=计划.读取数据订单("订单数量",订单数据.订单类型)
+		var 订单数量=计划.读取数据订单("订单数量")+订单数据.额外奖励
 		var 物品数量:int=订单数据.背包数量
 		var 订单量:int=订单数据.订单量
 		while not 订单数量<=提交数量:
@@ -36,25 +53,11 @@ func _ready() -> void:
 			物品数量-=订单量
 			提交数量+=1
 		if 提交数量==0:提交数量=1
-	提交=%"提交"
 	全面更新()
-	%"放弃".pressed.connect(放弃)
-	提交.pressed.connect(func(): 
-		var 提交成功:int=0
-		for i in range(提交数量):
-			if 订单数据.提交订单():提交成功+=1
-		if 提交成功<1:计划.语法糖通知("订单提交条件不满足","订单提交")
-		if 提交成功==1:计划.语法糖通知("订单提交成功","订单提交")
-		else :计划.语法糖通知("订单提交成功%d次"%提交成功,"订单提交")
-		if 初始提交==0:计划.更新玩法.emit()
-		计划.更新_UI.emit())
-	计划.更新_UI.connect(全面更新)
-	if not 订单数据.时限==-1:
-		$"计时器".timeout.connect(func(): 更新计时器())
-func 放弃():
+func 放弃(放弃冷却=true):
 	订单数据.放弃()
 	计划.更新_UI.emit()
-	if 计划.节点有效性检查("订单界面"):
+	if 放弃冷却 and 计划.节点有效性检查("订单界面"):
 		计划.节点["订单界面"].网格容器.mouse_behavior_recursive=MOUSE_BEHAVIOR_DISABLED
 		计划.创建计时器(0.3,func():计划.节点["订单界面"].网格容器.mouse_behavior_recursive=MOUSE_BEHAVIOR_INHERITED,{"是否循环":false})
 func 全面更新():
@@ -87,19 +90,22 @@ func 全面更新():
 		if 初始提交==0:提交.text="全部提交"
 		elif 提交数量==1:提交.text="提交"
 		else:提交.text="提交*%d"%提交数量
-		更新计时器()
 
 func 更新计时器():
 	if 订单数据.时限==-1 or 订单数据.名称=="":
 		$"倒计时".visible=false
 	else :
 		var 当前时间: float=Time.get_unix_time_from_system()
-		var 剩余秒数: int=int(订单数据.时限-当前时间)
-		if 剩余秒数>0:
-			$"倒计时".visible=true
-			$"倒计时".text="剩余："+计划.格式化时间(剩余秒数,2)
-		else :
-			放弃()
+		var 剩余秒数: float=订单数据.时限-当前时间
+		if 剩余秒数<=0:
+			订单数据.生成订单数据()
+			剩余秒数=订单数据.时限-当前时间
+			if 剩余秒数>0:
+				全面更新()
+			else :
+				放弃(false)
+		$"倒计时".visible=true
+		$"倒计时".text="剩余："+计划.格式化时间(ceili(剩余秒数),2)
 
 func 显示或隐藏(显示:bool):
 	if not 显示:

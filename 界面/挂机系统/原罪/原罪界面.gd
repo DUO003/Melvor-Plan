@@ -34,13 +34,11 @@ func _ready() -> void:
 	%"突破按钮".pressed.connect(突破)
 	%"傲慢".gui_input.connect(子界面.bind("傲慢"))
 	%"暴食".gui_input.connect(子界面.bind("暴食"))
+	%"贪婪".gui_input.connect(子界面.bind("贪婪"))
 func 子界面(按键,模式):
 	if 按键 is InputEventMouseButton:
 		if 按键.button_index == MOUSE_BUTTON_LEFT and 按键.pressed:
-			if 模式=="暴食":
-				计划.切换场景("原罪_暴食界面","原罪界面")
-			elif 模式=="傲慢":
-				计划.切换场景("原罪_傲慢界面","原罪界面")
+			计划.切换场景("原罪_%s界面"%模式,"原罪界面")
 func 突破():
 	var 突破结果=计划.数据原罪("尝试突破")
 	计划.steam.解锁成就("原罪突破")

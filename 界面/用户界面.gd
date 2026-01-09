@@ -85,25 +85,30 @@ func 更新BUFF():
 			%BUFF.remove_child(多余节点)
 			多余节点.queue_free()
 func 重载图钉():
-	for 节点 in %"图钉容器".get_children():
-		%"图钉容器".remove_child(节点)
-		节点.queue_free()
+	计划.清除子节点(%"图钉容器")
 	var 图钉场景 = preload("res://界面/插件/图钉.tscn").instantiate()
 	全局图钉=计划.梅存档["挂机"]["全局图钉"]
-	for 图钉 in 全局图钉:
-		var 新图钉=图钉场景.duplicate()
-		新图钉.物品名称=图钉
-		%"图钉容器".add_child(新图钉)
+	if 全局图钉.size()>=1:
+		for 图钉 in 全局图钉:
+			var 新图钉=图钉场景.duplicate()
+			新图钉.物品名称=图钉
+			%"图钉容器".add_child(新图钉)
 	var 当前界面图钉=[]
 	if 打开界面[初始界面]==null:
 		当前界面图钉=界面图钉.get(初始界面,[])
 	else :
 		当前界面图钉=界面图钉.get(打开界面[初始界面],[])
-	for 图钉 in 当前界面图钉:
-		if 图钉 not in 全局图钉:
-			var 新图钉=图钉场景.duplicate()
-			新图钉.物品名称=图钉
-			%"图钉容器".add_child(新图钉)
+	if 当前界面图钉.size()>=1:
+		for 图钉 in 当前界面图钉:
+			if 图钉 not in 全局图钉:
+				var 新图钉=图钉场景.duplicate()
+				新图钉.物品名称=图钉
+				%"图钉容器".add_child(新图钉)
+	if 当前界面图钉.size()==0 and 全局图钉.size()==0:
+		var 标签=Label.new()
+		标签.text="图钉可以在背包添加,固定显示物品数量"
+		标签.add_theme_color_override("font_color", Color(1,1,1))
+		%"图钉容器".add_child(标签)
 func 生成任务栏按钮() -> void:# 生成任务栏所有按钮
 	for 节点 in 任务栏节点.get_children():
 		if 节点!=任务按钮本体:
