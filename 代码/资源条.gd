@@ -112,7 +112,10 @@ func 更新贴图():
 		print("节点未加入节点树")
 		return
 	var 贴图节点 = $贴图
-	$"文本".text=str(资源名称)
+	if Engine.is_editor_hint():
+		$"文本".text=str(资源名称[0])+"物质"
+	else :
+		$"文本".text=计划.手工.返回资源名称(资源名称)
 	if not 贴图节点:# 确保TextureRect节点存在
 		print("警告：未找到「贴图」节点，请检查节点路径")
 		return

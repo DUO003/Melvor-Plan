@@ -111,6 +111,7 @@ func 常用功能():
 #"分隔字符".join(含有文本的数组)#文本拼接语法"".join()
 #var fps = Performance.get_monitor(Performance.Monitor.TIME_FPS)
 #var fps: float = Engine.get_frames_per_second()#获取帧率
+#enum 枚举 {}
 	breakpoint#断点
 func BBC语法():
 	var 文本="RichTextLabel 是一种为项目添加文本的灵活方式，

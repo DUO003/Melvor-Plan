@@ -11,6 +11,10 @@ func _ready() -> void:
 	$"图片背景/点击".pressed.connect(func():
 		计划.全局图钉(物品名称,false))
 	计划.connect("更新_UI",func():更新UI())
+	计划.更新_图钉.connect(更新图钉)
+func 更新图钉(更新物品=物品名称):
+	if 更新物品==物品名称:
+		更新UI()
 func 更新UI():
 	if 物品名称=="金币":
 		%"物品数量".text=str(计划.梅存档["金币"])
