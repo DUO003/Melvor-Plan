@@ -1,0 +1,42 @@
+Copyright (c) 2025-至今 多003
+项目使用MIT协议开源
+项目使用其他开源项目,素材等在此列举需要另外遵守他们的协议
+协议写与20260112,后续有使用新增项目需要协议关注协议更新.
+
+代码插件类开源项目使用情况如下
+dialogic
+对话插件 https://github.com/dialogic-godot/documentation/tree/main/
+script-ide
+代码界面样式修改 来自godot资产库 MIT
+fastnode
+节点目录 来自B站UP 能吃两个西瓜 分享,聊天记录授权
+grid_base_inventory_system
+背包插件 来自B站UP Java已死游戏当立 分享
+背包插件 MIT 开源地址 https://github.com/Cabbage0211/grid-base-inventory-system
+
+图片素材来自网站如下 根据文件夹路径分类管理
+豆包AI素材 来自豆包大模型 https://www.doubao.com/chat/
+全息图片AI素材 来自HolopixAI https://holopix.cn/workspace/explore
+元宝 来自元宝大模型 https://yuanbao.tencent.com/chat/naQivTmsDa
+选用素材+游戏素材 来自https://craftpix.net/categorys/free-icons-for-games/page/22/
+godot内置 来自godot编辑器内置素材再编辑
+MIT 其他协议为MIT的素材包,见具体声明 素材\MIT素材\MIT声明.txt
+
+MIT协议原文部分
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
