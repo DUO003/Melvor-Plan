@@ -127,9 +127,7 @@ func 使用物品(背包) -> String:# 中间函数：处理物品使用流程
 		GBIS.sig_inv_refresh.emit()
 		计划.保存存档("使用背包内道具")
 		return "成功"
-func 物品点击(背包) -> bool:#物品被点击时调用,返回不销毁
-	计划.emit_signal("更新_背包物品信息", self,背包)
-	return false
+
 ## 消耗方法，需重写，返回消耗数量（>=0）
 func 获取消耗量() -> int:
 	push_warning("[Override this function] consumable item [%s] has been consumed" % item_name)
@@ -163,15 +161,15 @@ func 文本预处理()->String:
 	return item_name+"\n数量:"+str(current_amount)+"\n堆叠上限:"+科学计数(stack_size)+"\n"+简介
 func 科学计数(数值, 小数位数: int = 2,免转换范围:int=10000) -> String:
 	return 计划.科学计数(数值,小数位数,免转换范围)
-func 返回简介(背包名):
-	var 简介文本=super.返回简介(背包名)
+func 返回简介(背包名:String,参数:Dictionary={})->String:
+	var 简介文本:String=super.返回简介(背包名,参数)
 	if GBIS.shop_names.has(背包名):
-		简介文本+="\r每次购买数量:"+str(current_amount)
-		简介文本+="\r购买费用:"+str(价值)
-		简介文本+="\r单价:%.0f"%(价值*1.0/current_amount)
-		简介文本+="\r剩余购买次数:"+str(商店剩余数量)
+		简介文本+="\n每次购买数量:"+str(current_amount)
+		简介文本+="\n购买费用:"+str(价值)
+		简介文本+="\n单价:%.0f"%(价值*1.0/current_amount)
+		简介文本+="\n剩余购买次数:"+str(商店剩余数量)
 	else :
-		简介文本+="\r简介:"+简介
+		简介文本+="\n简介:"+简介
 	return 简介文本
 func 更新堆叠():
 	var 基础堆叠=计划.表格.蓝图数据(item_name,"堆叠")

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_6851i"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_r7331"]
-[ext_resource type="Texture2D" uid="uid://bhhvc44hrv7uq" path="res://素材/游戏素材/货币/36.png" id="2_k1gqv"]
 [ext_resource type="Script" uid="uid://bqsxor1nv1pxc" path="res://界面/手工系统/资源加点.gd" id="3_hvqnr"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="3_r7331"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="4_r7331"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvqnr"]
 bg_color = Color(0.6117647, 0.5137255, 0.30588236, 1)
@@ -80,7 +80,7 @@ custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
 offset_right = 60.0
 offset_bottom = 60.0
-texture = ExtResource("2_k1gqv")
+texture = ExtResource("4_r7331")
 expand_mode = 1
 stretch_mode = 5
 
@@ -91,7 +91,7 @@ anchor_right = 1.0
 offset_bottom = 57.0
 grow_horizontal = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yni8h")
-text = "资源回复+100.0"
+text = "木材回复+0.00"
 
 [node name="文本" type="Label" parent="."]
 layout_mode = 1

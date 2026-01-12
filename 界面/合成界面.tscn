@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cxedxm5rt7rt2" path="res://界面/手工系统/配方.tscn" id="8_8sqgc"]
 [ext_resource type="Script" uid="uid://dxqqna74h0y6o" path="res://代码/专属代码/合成主界面/配方选择器代码.gd" id="12_8sqgc"]
 [ext_resource type="Texture2D" uid="uid://k6v4ilcwafef" path="res://素材/豆包AI素材/图标/放大镜.png" id="12_wt2ge"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="12_yntay"]
 [ext_resource type="PackedScene" uid="uid://dlf0o8yt0hscg" path="res://界面/插件/悬浮提示.tscn" id="14_8sqgc"]
-[ext_resource type="Texture2D" uid="uid://cg5lbyhyg8ys3" path="res://素材/像素/标准剑.png" id="14_wt2ge"]
 [ext_resource type="PackedScene" uid="uid://c0xnyoxa6kefu" path="res://界面/手工系统/资源加点.tscn" id="15_u2knn"]
 [ext_resource type="Script" uid="uid://cxb16k33eo7ae" path="res://代码/挂件/拖动自己.gd" id="15_wbi74"]
 [ext_resource type="Script" uid="uid://cy41kvs4h32y8" path="res://代码/专属代码/合成主界面/悬浮面板.gd" id="15_wt2ge"]
@@ -358,7 +358,7 @@ offset_top = 18.0
 offset_right = 188.0
 offset_bottom = 168.0
 scale = Vector2(1.25075, 1.25075)
-texture = ExtResource("14_wt2ge")
+texture = ExtResource("12_yntay")
 expand_mode = 1
 stretch_mode = 5
 

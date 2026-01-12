@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://deum65mqdco6a"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_av3qu"]
-[ext_resource type="Texture2D" uid="uid://ciq26m4nivrqb" path="res://素材/自制/图标/傲慢.svg" id="2_6nkam"]
 [ext_resource type="Script" uid="uid://fmimn6g1kr0c" path="res://界面/挂机系统/原罪/成就卡片.gd" id="2_mnwne"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_s5h4l"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_lehlf"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="5_lehlf"]
 [ext_resource type="FontFile" uid="uid://748o3r00eol" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-75-SemiBold/AlibabaPuHuiTi-3-75-SemiBold.otf" id="6_lehlf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s7xx5"]
@@ -54,7 +54,7 @@ offset_bottom = 170.0
 grow_horizontal = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
-texture = ExtResource("2_6nkam")
+texture = ExtResource("5_lehlf")
 expand_mode = 1
 stretch_mode = 5
 

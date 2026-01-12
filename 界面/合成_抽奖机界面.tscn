@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="2_bt04l"]
 [ext_resource type="PackedScene" uid="uid://byxndkdhqwumw" path="res://界面/插件/圆形进度条.tscn" id="6_7solx"]
 [ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="7_5imkx"]
-[ext_resource type="Texture2D" uid="uid://cg5lbyhyg8ys3" path="res://素材/像素/标准剑.png" id="8_yqcxx"]
-[ext_resource type="Texture2D" uid="uid://biml7dtc81p7b" path="res://素材/豆包AI素材/特殊图纸.png" id="9_avrdn"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="7_7solx"]
+[ext_resource type="Texture2D" uid="uid://3vfhgyg8wo6m" path="res://素材/豆包AI素材/特殊图纸.png" id="9_avrdn"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="11_5imkx"]
 [ext_resource type="PackedScene" uid="uid://xxyqjkn8fefo" path="res://界面/插件/滑块.tscn" id="11_7solx"]
 [ext_resource type="Script" uid="uid://bbi5ojpwx5ouf" path="res://界面/蓝图图片.gd" id="11_yqcxx"]
@@ -388,7 +388,7 @@ offset_top = 16.0
 offset_right = 254.0
 offset_bottom = 236.0
 scale = Vector2(1.25075, 1.25075)
-texture = ExtResource("8_yqcxx")
+texture = ExtResource("7_7solx")
 expand_mode = 1
 
 [node name="标签页" type="TabContainer" parent="内容节点"]
@@ -453,7 +453,6 @@ text = "主菜单"
 
 [node name="蓝色图纸" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 position = Vector2(568, 472)
 scale = Vector2(2.3824487, 2.116616)
 texture = ExtResource("9_avrdn")
@@ -462,9 +461,9 @@ texture = ExtResource("9_avrdn")
 unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(1.1920929e-07, 15.118473)
-scale = Vector2(6.25, 6.25)
+scale = Vector2(1.5625, 1.5625)
 skew = 0.2268928
-texture = ExtResource("8_yqcxx")
+texture = ExtResource("7_7solx")
 script = ExtResource("11_yqcxx")
 
 [node name="倾斜度控制" type="Node2D" parent="蓝色图纸"]

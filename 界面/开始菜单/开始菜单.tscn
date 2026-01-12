@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://kifxwq2enhmp"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_6r68l"]
-[ext_resource type="Texture2D" uid="uid://b6q0o46fjedne" path="res://素材/游戏素材/背景/3.png" id="2_clqjb"]
+[ext_resource type="Texture2D" uid="uid://dxfklw2e15g0s" path="res://素材/游戏素材/背景/3.png" id="2_clqjb"]
 [ext_resource type="Script" uid="uid://blxbxdy28ud5v" path="res://界面/开始菜单/开始菜单.gd" id="2_l8v50"]
-[ext_resource type="Texture2D" uid="uid://b1hn1lg5d5q5l" path="res://素材/全息图片AI素材/元素/火.png" id="3_l8v50"]
+[ext_resource type="Texture2D" uid="uid://bttn4tgkwj4p0" path="res://素材/全息图片AI素材/元素/火.png" id="3_l8v50"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="4_qbyf1"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_btlti"]
-[ext_resource type="Texture2D" uid="uid://cwjp45s27o0yb" path="res://素材/豆包AI素材/图标/地球.png" id="7_l8v50"]
-[ext_resource type="Texture2D" uid="uid://d0hix3kg76sl3" path="res://素材/自制/图标/关闭.png" id="8_qbyf1"]
+[ext_resource type="Texture2D" uid="uid://bkwyexu6ph0l" path="res://素材/豆包AI素材/图标/地球.png" id="7_l8v50"]
+[ext_resource type="Texture2D" uid="uid://cpttn2y0dmq0e" path="res://素材/自制/图标/关闭.png" id="8_qbyf1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s0f7"]
 bg_color = Color(0.55, 0.42716667, 0.18149999, 0.78431374)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://btsgbqm2kx3s1"]
 
 [ext_resource type="Script" uid="uid://5fy5axsca6i2" path="res://界面/用户界面.gd" id="1_1xcs4"]
-[ext_resource type="Texture2D" uid="uid://b6q0o46fjedne" path="res://素材/游戏素材/背景/3.png" id="3_kiae7"]
+[ext_resource type="Texture2D" uid="uid://dxfklw2e15g0s" path="res://素材/游戏素材/背景/3.png" id="3_kiae7"]
 [ext_resource type="Script" uid="uid://qw0gp35xq72b" path="res://代码/专属代码/特殊功能/展开按钮.gd" id="4_4h1no"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="4_kiae7"]
 [ext_resource type="Script" uid="uid://cvqpr44nuhv1h" path="res://界面/根界面/隐藏奖励.gd" id="4_rhqkc"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="8_0p14m"]
 [ext_resource type="PackedScene" uid="uid://bs3xyimmlbfxm" path="res://界面/根界面/测试功能.tscn" id="9_rhqkc"]
 [ext_resource type="PackedScene" uid="uid://cq8y0f7wmpt01" path="res://界面/插件/奖励悬浮面板.tscn" id="10_0p14m"]
-[ext_resource type="Texture2D" uid="uid://b52t5s6a00r87" path="res://素材/自制/图标/暂停.png" id="11_q2fph"]
+[ext_resource type="Texture2D" uid="uid://vkpx0uhvnpn" path="res://素材/自制/图标/暂停.png" id="11_q2fph"]
 [ext_resource type="Script" uid="uid://cc1j5mukjb2p1" path="res://代码/专属代码/暂停界面/暂停界面.gd" id="11_s3egw"]
 [ext_resource type="FontFile" uid="uid://dybtol6821ybd" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-85-Bold/AlibabaPuHuiTi-3-85-Bold.woff2" id="11_yd0tu"]
 

@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="4_s36by"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_o58yo"]
 [ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="6_b3vww"]
-[ext_resource type="Texture2D" uid="uid://dnjae2up6wuam" path="res://素材/豆包AI素材/图标/任务图标.png" id="7_noxnm"]
+[ext_resource type="Texture2D" uid="uid://c72diouqec74j" path="res://素材/豆包AI素材/图标/任务图标.png" id="7_noxnm"]
 [ext_resource type="PackedScene" uid="uid://dron5fg7jasw2" path="res://界面/挂机系统/任务窗口/设置面板.tscn" id="8_60vby"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mxxnt"]

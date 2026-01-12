@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_cn4lc"]
 [ext_resource type="Script" uid="uid://dt22h1unrvos7" path="res://界面/挂机系统/原罪/贪婪界面.gd" id="2_cn4lc"]
 [ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_0utu1"]
-[ext_resource type="Texture2D" uid="uid://1b6ply323inq" path="res://素材/自制/图标/贪婪.svg" id="4_3kl80"]
+[ext_resource type="Texture2D" uid="uid://yygcd26urbqk" path="res://素材/自制/图标/贪婪.svg" id="4_3kl80"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_cn4lc"]
 [ext_resource type="Script" uid="uid://dkksnkt351tme" path="res://代码/专属代码/特殊功能/里程碑进度条.gd" id="6_3kl80"]
 [ext_resource type="FontFile" uid="uid://dybtol6821ybd" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-85-Bold/AlibabaPuHuiTi-3-85-Bold.woff2" id="7_3kl80"]

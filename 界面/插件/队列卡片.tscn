@@ -1,11 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://dyci22bapm4g7"]
+[gd_scene load_steps=19 format=3 uid="uid://dyci22bapm4g7"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_sns7m"]
 [ext_resource type="Script" uid="uid://cmrybs4fon4yr" path="res://界面/插件/队列卡片.gd" id="2_53ant"]
-[ext_resource type="Texture2D" uid="uid://bvvvxfldyr4jw" path="res://素材/豆包AI素材/炼金台.png" id="3_x2lqy"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="4_ohhtc"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="5_2orqw"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_ikyc5"]
-[ext_resource type="Texture2D" uid="uid://nsuvd2wapfva" path="res://素材/豆包AI素材/药水/圣坚药水.png" id="6_awgn6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sns7m"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
@@ -190,7 +189,7 @@ offset_left = 20.0
 offset_top = 144.0
 offset_right = 96.0
 offset_bottom = 213.0
-texture = ExtResource("3_x2lqy")
+texture = ExtResource("5_2orqw")
 expand_mode = 1
 stretch_mode = 5
 
@@ -211,7 +210,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_awgn6")
+texture = ExtResource("5_2orqw")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_lock_ = true

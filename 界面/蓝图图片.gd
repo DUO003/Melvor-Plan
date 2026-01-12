@@ -10,7 +10,8 @@ extends Sprite2D
 	set(值):
 		目标高度=值
 		应用纹理(texture)
-
+func _ready() -> void:
+	应用纹理(texture)
 # 从文件路径加载纹理并适配尺寸
 func 从路径加载纹理(纹理路径: String) -> void:
 	print("尝试从路径加载纹理：", 纹理路径)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://fhiod2yd4lhv"]
+[gd_scene load_steps=14 format=3 uid="uid://fhiod2yd4lhv"]
 
 [ext_resource type="Script" uid="uid://c1ef0ysqkbne2" path="res://代码/资源条.gd" id="1_5i305"]
-[ext_resource type="Texture2D" uid="uid://bhhvc44hrv7uq" path="res://素材/游戏素材/货币/36.png" id="1_5uhmg"]
+[ext_resource type="Texture2D" uid="uid://c507b5pqpy727" path="res://素材/游戏素材/货币/36.png" id="1_5uhmg"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_5i305"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="3_43vdm"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="4_0wsje"]
 [ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="4_b5354"]
 [ext_resource type="Script" uid="uid://bru7ehuqamvdq" path="res://界面/插件/资源进度条/刻度.gd" id="4_unkxt"]
@@ -69,7 +70,7 @@ offset_top = -25.0
 offset_right = 50.0
 offset_bottom = 25.0
 grow_vertical = 2
-texture = ExtResource("1_5uhmg")
+texture = ExtResource("3_43vdm")
 expand_mode = 1
 stretch_mode = 5
 

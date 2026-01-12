@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dron5fg7jasw2"]
 
-[ext_resource type="Texture2D" uid="uid://s1sv26if4s6i" path="res://素材/自制/QQ群.png" id="1_1lv0b"]
+[ext_resource type="Texture2D" uid="uid://db5tn75ulvc28" path="res://素材/自制/QQ群.png" id="1_1lv0b"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ar4cj"]
 [ext_resource type="Script" uid="uid://cnoic7mbi3ks1" path="res://界面/挂机系统/任务窗口/设置面板.gd" id="2_xx283"]
 [ext_resource type="Script" uid="uid://b7ri82yh6cfx1" path="res://界面/挂机系统/任务窗口/重置倒计时.gd" id="3_jepqw"]

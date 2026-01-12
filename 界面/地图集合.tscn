@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=4 uid="uid://b7f5rep4w6ias"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_7jg7c"]
-[ext_resource type="Texture2D" uid="uid://btb6j2xujb4ar" path="res://素材/MIT素材/tiles.webp" id="1_nuvop"]
+[ext_resource type="Texture2D" uid="uid://b0qriwc03uon" path="res://素材/MIT素材/tiles.webp" id="1_nuvop"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7jg7c"]
 resource_name = "黄色森林"

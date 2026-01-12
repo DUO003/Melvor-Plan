@@ -19,24 +19,26 @@ var 恢复量: int = 1
 var 窗口: 梅窗口=梅窗口.new()
 ##打印调试信息开发阶段使用,仅调用方法
 var 打印: 梅打印=梅打印.new()
-##简短名称的 音效/声音数据支持
+##音效/声音数据支持
 var 声音: 梅声音
-##简短名称的 红点逻辑/数据支持
+##红点逻辑/数据支持
 var 红点: 梅红点
-##简短名称的 任务完成/缓存数据支持
+##任务完成/缓存数据支持
 var 任务: 梅任务
-##简短名称的 任务完成/缓存数据支持
+##任务完成/缓存数据支持
 var 技能树: 梅技能树
-##简短名称的 管理BUFF
+##管理BUFF
 var BUFF: 梅BUFF
-##简短名称的 表格数据支持
+##表格数据支持
 var 表格: 梅表格
-##简短名称的
+##成就支持
 var steam:梅steam
+##装备管理器
+var 装备:梅装备
 ##简短:系统玩法支持
-##只读:简短名称的 游历系统相关支持
+##只读:游历系统相关支持
 var 游历: 梅游历
-##只读:简短名称的 手工系统相关支持
+##只读:手工系统相关支持
 var 手工: 梅手工
 #endregion 简短单例
 #region 运行数据
@@ -82,7 +84,7 @@ signal 更新红点(指定更新)
 signal 购买物品(物品: ItemData, 容器名: String)
 @warning_ignore("unused_signal")
 ##背包内物品被检查的信号
-signal 更新_背包物品信息(物品:标准物品,背包名称)
+signal 更新_背包物品信息(物品: ItemData,背包名称)
 @warning_ignore("unused_signal")
 ##场景被打开刚加入场景的信号
 signal 场景更新(当前场景:String)
@@ -94,6 +96,9 @@ signal 删除强调通知(通知名:String)
 signal 技能点击信号(技能名称:String)
 ##计时器过去一秒
 signal 过去一秒()
+@warning_ignore("unused_signal")
+##更新悬浮提示文本,传入需文本方法,节点
+signal 全局悬浮提示(文本方法:Callable,节点实例:Node,默认字体:int)
 #endregion
 #region 节点就绪
 # 节点初始化完成时自动调用
@@ -125,11 +130,12 @@ func 正式加载() -> void:
 	任务=附加代码("梅任务")#加载顺序,存档之后
 	BUFF=附加代码("梅BUFF")#玩法计算数据需要先加载BUFF以防错误
 	BUFF.初始化BUFF()
+	装备=附加代码("梅装备")
+	装备.更新属性()
 	手工=附加代码("梅手工")
 	if 系统解锁("手工"):
 		手工.手工系统上线()
 	游历=附加代码("梅游历")
-	游历.更新属性()
 	GBIS.sig_inv_refresh.emit()###GBIS三连_背包商店装备栏
 	GBIS.sig_slot_refresh.emit()
 	GBIS.sig_shop_refresh.emit()
@@ -175,12 +181,13 @@ func 附加代码(类型:String):
 		"梅声音" :	梅声音,
 		"梅红点" :	梅红点,
 		"梅任务" :	梅任务,
-		"梅技能树" :	梅技能树,
+		"梅技能树":	梅技能树,
 		"梅表格" :	梅表格,
 		"梅手工" :	梅手工,
 		"梅游历" :	梅游历,
 		"梅BUFF" :	梅BUFF,
-		"梅steam":	梅steam}
+		"梅steam":	梅steam,
+		"梅装备":	梅装备}
 	if not 资源映射.has(类型):
 		print("加载代码错误：类型不存在 -> ", 类型)
 		return null
@@ -193,6 +200,7 @@ func _配置背包() -> void:
 	GBIS.current_save_name = 存档名称# 设置存档名称
 	GBIS.inventory_service.regist("背包", 9, 10, false, ["ANY"])
 	GBIS.inventory_service.regist("装备", 8, 4, false, ["装备"])
+	GBIS.inventory_service.regist("宝石", 12, 2, false, ["宝石"])
 	GBIS.inventory_service.regist("随身商店", 5, 10, true, ["ANY"])
 
 # 生成唯一装备名称的工具函数
@@ -464,6 +472,9 @@ func 获得物品语法糖(物品名称, 数量=1,  类型="标准物品",_参�
 	if 类型=="装备物品":
 		道具 = 物品装备.new(1,物品名称)
 		背包类型 = "装备"
+	elif 类型=="物品宝石":
+		道具 = 物品宝石.new(1,物品名称)
+		背包类型 = "宝石"
 	else:
 		道具 = 标准物品.new(1,物品名称)
 	if 道具.item_name=="金币":

@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_0h8hx"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_tm7i3"]
 [ext_resource type="Script" uid="uid://b1036qvkjl3ea" path="res://界面/挂机系统/原罪/收藏卡片.gd" id="2_0h8hx"]
-[ext_resource type="Texture2D" uid="uid://1b6ply323inq" path="res://素材/自制/图标/贪婪.svg" id="3_sy2df"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="4_0h8hx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tenw4"]
 bg_color = Color(0.7411765, 0.5568628, 0.19215687, 0.5882353)
@@ -48,7 +48,7 @@ offset_right = 117.0
 offset_bottom = 118.0
 size_flags_horizontal = 6
 size_flags_vertical = 0
-texture = ExtResource("3_sy2df")
+texture = ExtResource("4_0h8hx")
 expand_mode = 1
 stretch_mode = 5
 

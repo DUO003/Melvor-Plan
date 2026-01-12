@@ -41,6 +41,7 @@ func add_item(inv_name: String, item_data: ItemData) -> bool:
 				if new_item_data.current_amount <= 0:
 					return true
 	
+	
 	# 处理两种情况：
 	# 1. 不可堆叠物品
 	# 2. 可堆叠物品堆叠后仍有剩余数量
@@ -84,7 +85,7 @@ func use_item(inv_name: String, grid_id: Vector2i) -> bool:
 	var item_data = find_item_data_by_grid(inv_name, grid_id)
 	if not item_data:
 		return false
-	if item_data is 标准物品:
+	if item_data is 标准物品 or item_data is 物品宝石 or item_data is 物品装备:
 		if item_data.物品点击(inv_name):
 			remove_item_by_data(inv_name, item_data)
 		else:

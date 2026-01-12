@@ -20,7 +20,7 @@ class_name ContainerData
 
 ## 构造函数
 @warning_ignore("shadowed_variable")
-func _init(container_name: String = GBIS.DEFAULT_INVENTORY_NAME, columns: int = 0, rows: int = 0, avilable_types: Array[String] = []) -> void:
+func _init(container_name: String = GBIS.DEFAULT_INVENTORY_NAME, columns: int = 1, rows: int = 1, avilable_types: Array[String] = []) -> void:
 	self.container_name = container_name
 	self.avilable_types = avilable_types
 	self.columns = columns
@@ -29,7 +29,12 @@ func _init(container_name: String = GBIS.DEFAULT_INVENTORY_NAME, columns: int = 
 		for col in columns:
 			var pos = Vector2i(col, row)
 			grid_item_map[pos] = null
-
+func 更新背包参数():
+	for row in rows:
+		for col in columns:
+			var pos = Vector2i(col, row)
+			if not grid_item_map.has(pos):
+				grid_item_map[pos] = null
 # 背包Y轴扩容方法（仅增加行数，纯数据层面，不处理UI）
 # 参数：扩容数量 - 必须≥1，代表要新增的行数
 func 扩容_增加行数(扩容数量: int) -> void:
@@ -96,7 +101,9 @@ func remove_item(item: ItemData) -> bool:
 ## 检查物品是否可以被放入当前库存
 func is_item_avilable(item_data: ItemData) -> bool:
 	if item_data is 物品装备:
-		return avilable_types.has(item_data.type)
+		return avilable_types.has("装备")
+	if item_data is 物品宝石:
+		return avilable_types.has("宝石")
 	return avilable_types.has("ANY") or avilable_types.has(item_data.type)
 
 ## 根据物品数据查找其占用的网格坐标列表
@@ -135,6 +142,7 @@ func _add_item_to_grids(item_data: ItemData, grids: Array[Vector2i]) -> bool:
 		for grid in grids:
 			grid_item_map[grid] = item_data
 		return true
+	计划.语法糖通知("物品%s添加失败"%item_data.item_name,"物品添加%s"%item_data.item_name)
 	return false
 
 ## 查找第一个可用的网格位置来放置物品

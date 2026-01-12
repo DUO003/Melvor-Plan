@@ -70,6 +70,7 @@ func 更新属性()->bool:
 	columns = int(表格数据[蓝图表头["列"]])
 ## 物品占的行数
 	rows = int(表格数据[蓝图表头["行"]])
+#	if self is 物品装备:breakpoint#断点
 	return true
 ## 获取货品形状
 func get_shape() -> Vector2i:
@@ -141,7 +142,11 @@ func 排序值()->int:
 	else :
 		排序缓存 =-1
 	return 排序缓存
-func 返回简介(背包名):
-	var 简介="物品名称:"+item_name
+func 返回简介(背包名:String,参数:Dictionary={})->String:
+	var 简介:String="物品名称:"+item_name
 	if GBIS.shop_names.has(背包名):简介+="(商品)"
 	return 简介
+func 物品点击(背包) -> bool:#物品被点击时调用,返回不销毁
+	print("背包",背包)
+	计划.更新_背包物品信息.emit(self,背包)
+	return false

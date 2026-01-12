@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjsi35bpmr7oo"]
 
-[ext_resource type="Texture2D" uid="uid://vxjb37d82tme" path="res://素材/豆包AI素材/绘制简笔画小人.png" id="1_5p087"]
+[ext_resource type="Texture2D" uid="uid://cewcotgea3gr5" path="res://素材/豆包AI素材/绘制简笔画小人.png" id="1_5p087"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_hje0u"]
 [ext_resource type="Script" uid="uid://87l6457hgm5e" path="res://界面/插件/玩家.gd" id="2_2gbtp"]
 
@@ -18,11 +18,16 @@ theme = ExtResource("1_hje0u")
 script = ExtResource("2_2gbtp")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 208.0
-offset_bottom = 360.0
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_5p087")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -36,7 +41,7 @@ offset_right = -0.08000183
 offset_bottom = 0.039993286
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 20
 text = "测试小人"
 horizontal_alignment = 1
 text_overrun_behavior = 1

@@ -1,0 +1,714 @@
+[gd_scene load_steps=35 format=3 uid="uid://c2jq16mbnhyo8"]
+
+[ext_resource type="Script" uid="uid://dg6xjko3rdcta" path="res://addons/grid_base_inventory_system/core/view/slot/equipment_slot_view.gd" id="1_7vht8"]
+[ext_resource type="Script" uid="uid://bsj3qj4hsie1" path="res://界面/挂机系统/背包/装备槽.gd" id="1_cktd2"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_e64v6"]
+[ext_resource type="PackedScene" uid="uid://cjsi35bpmr7oo" path="res://界面/插件/玩家.tscn" id="3_e64v6"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_j8cvi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wo6i4"]
+bg_color = Color(0.81960785, 0.7294118, 0.4862745, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e64v6"]
+bg_color = Color(0, 1, 0, 0.502)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p61hc"]
+bg_color = Color(1, 0, 0, 0.5)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gdyh"]
+bg_color = Color(0.81960785, 0.7294118, 0.4862745, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8cvi"]
+bg_color = Color(0, 1, 0, 0.502)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocbc2"]
+bg_color = Color(1, 0, 0, 0.5)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cgl7"]
+bg_color = Color(0, 1, 0, 0.502)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0w2qd"]
+bg_color = Color(1, 0, 0, 0.5)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uh1bl"]
+bg_color = Color(0, 1, 0, 0.502)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qf1y8"]
+bg_color = Color(1, 0, 0, 0.5)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujutf"]
+bg_color = Color(0, 1, 0, 0.502)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1abau"]
+bg_color = Color(1, 0, 0, 0.5)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ac8ug"]
+bg_color = Color(0, 1, 0, 0.502)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thyqr"]
+bg_color = Color(1, 0, 0, 0.5)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfgf5"]
+bg_color = Color(0, 1, 0, 0.502)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgqg3"]
+bg_color = Color(1, 0, 0, 0.5)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gemx3"]
+bg_color = Color(0, 1, 0, 0.502)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvbm6"]
+bg_color = Color(1, 0, 0, 0.5)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykhal"]
+bg_color = Color(0, 1, 0, 0.502)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrifk"]
+bg_color = Color(1, 0, 0, 0.5)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5i8yr"]
+bg_color = Color(0, 1, 0, 0.502)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tf5nk"]
+bg_color = Color(1, 0, 0, 0.5)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4w6x8"]
+bg_color = Color(0, 1, 0, 0.502)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmo2h"]
+bg_color = Color(1, 0, 0, 0.5)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32iko"]
+bg_color = Color(0, 1, 0, 0.502)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81fow"]
+bg_color = Color(1, 0, 0, 0.5)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d85rx"]
+bg_color = Color(0, 1, 0, 0.502)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7oto"]
+bg_color = Color(1, 0, 0, 0.5)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_j8cvi")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e64v6"]
+content_margin_left = 10.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[node name="装备" type="VBoxContainer"]
+custom_minimum_size = Vector2(600, 828)
+offset_right = 610.0
+offset_bottom = 828.0
+theme = ExtResource("1_e64v6")
+script = ExtResource("1_cktd2")
+metadata/_tab_index = 1
+metadata/_edit_lock_ = true
+
+[node name="系统装备槽" type="TabContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+current_tab = 0
+metadata/_edit_lock_ = true
+
+[node name="手工" type="Control" parent="系统装备槽"]
+custom_minimum_size = Vector2(600, 250)
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="GridContainer" parent="系统装备槽/手工"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 180
+theme_override_constants/v_separation = 5
+columns = 2
+
+[node name="手杖" type="Control" parent="系统装备槽/手工/VBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("1_7vht8")
+slot_name = "手杖"
+"宝石槽方向" = 4
+"宝石槽数量" = 4
+base_size = 120
+columns = 1
+rows = 1
+"背景图" = SubResource("StyleBoxFlat_wo6i4")
+"可用背景" = SubResource("StyleBoxFlat_e64v6")
+"不可用背景" = SubResource("StyleBoxFlat_p61hc")
+avilable_types = Array[String](["手杖"])
+"宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="炼金" type="Control" parent="系统装备槽/手工/VBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("1_7vht8")
+slot_name = "炼金"
+"宝石槽方向" = 4
+"宝石槽数量" = 4
+base_size = 120
+columns = 1
+rows = 1
+"背景图" = SubResource("StyleBoxFlat_wo6i4")
+"可用背景" = SubResource("StyleBoxFlat_j8cvi")
+"不可用背景" = SubResource("StyleBoxFlat_ocbc2")
+avilable_types = Array[String](["炼金台"])
+"宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="厨具" type="Control" parent="系统装备槽/手工/VBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("1_7vht8")
+slot_name = "厨具"
+"宝石槽方向" = 4
+"宝石槽数量" = 4
+base_size = 120
+columns = 1
+rows = 1
+"背景图" = SubResource("StyleBoxFlat_wo6i4")
+"可用背景" = SubResource("StyleBoxFlat_1cgl7")
+"不可用背景" = SubResource("StyleBoxFlat_0w2qd")
+avilable_types = Array[String](["厨具"])
+"宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="游历" type="Control" parent="系统装备槽"]
+visible = false
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="游历装备" type="HBoxContainer" parent="系统装备槽/游历"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -206.0
+offset_right = 206.0
+offset_bottom = 400.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+metadata/_edit_lock_ = true
+
+[node name="饰品栏" type="VBoxContainer" parent="系统装备槽/游历/游历装备"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+metadata/_edit_lock_ = true
+
+[node name="项链" type="Control" parent="系统装备槽/游历/游历装备/饰品栏"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_7vht8")
+slot_name = "项链"
+"宝石槽方向" = 3
+"宝石槽数量" = 4
+base_size = 100
+columns = 1
+rows = 1
+"背景图" = SubResource("StyleBoxFlat_wo6i4")
+"可用背景" = SubResource("StyleBoxFlat_uh1bl")
+"不可用背景" = SubResource("StyleBoxFlat_qf1y8")
+avilable_types = Array[String](["项链", "光环"])
+"宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="披挂" type="Control" parent="系统装备槽/游历/游历装备/饰品栏"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_7vht8")
+slot_name = "披挂"
+"宝石槽方向" = 3
+"宝石槽数量" = 4
+base_size = 100
+columns = 1
+rows = 1
+"背景图" = SubResource("StyleBoxFlat_wo6i4")
+"可用背景" = SubResource("StyleBoxFlat_ujutf")
+"不可用背景" = SubResource("StyleBoxFlat_1abau")
+avilable_types = Array[String](["披风", "宠物"])
+"宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="戒指A" type="Control" parent="系统装备槽/游历/游历装备/饰品栏"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_7vht8")
+slot_name = "戒指A"
+"宝石槽方向" = 3
+"宝石槽数量" = 4
+base_size = 100
+columns = 1
+rows = 1
+"背景图" = SubResource("StyleBoxFlat_wo6i4")
+"可用背景" = SubResource("StyleBoxFlat_ac8ug")
+"不可用背景" = SubResource("StyleBoxFlat_thyqr")
+avilable_types = Array[String](["戒指"])
+"宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="戒指B" type="Control" parent="系统装备槽/游历/游历装备/饰品栏"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_7vht8")
+slot_name = "戒指B"
+"宝石槽方向" = 3
+"宝石槽数量" = 4
+base_size = 100
+columns = 1
+rows = 1
+"背景图" = SubResource("StyleBoxFlat_wo6i4")
+"可用背景" = SubResource("StyleBoxFlat_lfgf5")
+"不可用背景" = SubResource("StyleBoxFlat_qgqg3")
+avilable_types = Array[String](["戒指"])
+"宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="主手" type="Control" parent="系统装备槽/游历/游历装备"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 8
+script = ExtResource("1_7vht8")
+slot_name = "主手"
+"宝石槽方向" = 1
+"宝石槽数量" = 4
+base_size = 100
+columns = 1
+rows = 1
+"背景图" = SubResource("StyleBoxFlat_wo6i4")
+"可用背景" = SubResource("StyleBoxFlat_gemx3")
+"不可用背景" = SubResource("StyleBoxFlat_mvbm6")
+avilable_types = Array[String](["长剑", "斧头", "匕首", "战锤", "矛", "弓", "法杖", "魔杖", "手弩", "火枪"])
+"宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="副手" type="Control" parent="系统装备槽/游历/游历装备"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 8
+script = ExtResource("1_7vht8")
+slot_name = "副手"
+"宝石槽方向" = 1
+"宝石槽数量" = 4
+base_size = 100
+columns = 1
+rows = 1
+"背景图" = SubResource("StyleBoxFlat_wo6i4")
+"可用背景" = SubResource("StyleBoxFlat_ykhal")
+"不可用背景" = SubResource("StyleBoxFlat_qrifk")
+avilable_types = Array[String](["盾牌", "乐器", "卷轴", "箭袋", "护手", "手套"])
+"宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="盔甲栏" type="VBoxContainer" parent="系统装备槽/游历/游历装备"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+metadata/_edit_lock_ = true
+
+[node name="头盔" type="Control" parent="系统装备槽/游历/游历装备/盔甲栏"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_7vht8")
+slot_name = "头盔"
+"宝石槽方向" = 4
+"宝石槽数量" = 4
+base_size = 100
+columns = 1
+rows = 1
+"背景图" = SubResource("StyleBoxFlat_wo6i4")
+"可用背景" = SubResource("StyleBoxFlat_5i8yr")
+"不可用背景" = SubResource("StyleBoxFlat_tf5nk")
+avilable_types = Array[String](["头盔", "盗贼帽", "法师帽"])
+"宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="衣服" type="Control" parent="系统装备槽/游历/游历装备/盔甲栏"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_7vht8")
+slot_name = "衣服"
+"宝石槽方向" = 4
+"宝石槽数量" = 4
+base_size = 100
+columns = 1
+rows = 1
+"背景图" = SubResource("StyleBoxFlat_wo6i4")
+"可用背景" = SubResource("StyleBoxFlat_4w6x8")
+"不可用背景" = SubResource("StyleBoxFlat_gmo2h")
+avilable_types = Array[String](["重甲", "轻甲", "法袍"])
+"宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="裤子" type="Control" parent="系统装备槽/游历/游历装备/盔甲栏"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_7vht8")
+slot_name = "裤子"
+"宝石槽方向" = 4
+"宝石槽数量" = 4
+base_size = 100
+columns = 1
+rows = 1
+"背景图" = SubResource("StyleBoxFlat_wo6i4")
+"可用背景" = SubResource("StyleBoxFlat_32iko")
+"不可用背景" = SubResource("StyleBoxFlat_81fow")
+avilable_types = Array[String](["裤子", "腿甲", "法裤"])
+"宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="鞋子" type="Control" parent="系统装备槽/游历/游历装备/盔甲栏"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_7vht8")
+slot_name = "鞋子"
+"宝石槽方向" = 4
+"宝石槽数量" = 4
+base_size = 100
+columns = 1
+rows = 1
+"背景图" = SubResource("StyleBoxFlat_wo6i4")
+"可用背景" = SubResource("StyleBoxFlat_d85rx")
+"不可用背景" = SubResource("StyleBoxFlat_g7oto")
+avilable_types = Array[String](["靴子", "鞋子", "法鞋"])
+"宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
+metadata/_custom_type_script = "uid://dg6xjko3rdcta"
+
+[node name="玩家" parent="系统装备槽/游历" instance=ExtResource("3_e64v6")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38666666
+anchor_top = 0.015357149
+anchor_right = 0.5883333
+anchor_bottom = 0.51535714
+offset_right = 0.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="玩家属性" type="HSplitContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+dragging_enabled = false
+
+[node name="属性左" type="RichTextLabel" parent="玩家属性"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/line_separation = -5
+theme_override_constants/paragraph_separation = 0
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 35
+theme_override_font_sizes/bold_italics_font_size = 35
+theme_override_font_sizes/italics_font_size = 35
+theme_override_font_sizes/mono_font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxEmpty_e64v6")
+text = "游历 LV:0"
+
+[node name="属性右" type="RichTextLabel" parent="玩家属性"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/line_separation = -5
+theme_override_constants/paragraph_separation = 0
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 35
+theme_override_font_sizes/bold_italics_font_size = 35
+theme_override_font_sizes/italics_font_size = 35
+theme_override_font_sizes/mono_font_size = 35
+text = "游历 LV:0"

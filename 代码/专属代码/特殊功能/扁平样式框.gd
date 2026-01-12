@@ -34,3 +34,12 @@ class_name 扩展的扁平样式框
 	set(value):
 		margin_bottom = value
 		expand_margin_bottom = value
+enum 构建枚举{自动,梅主题}
+func _init(构建参数:构建枚举=构建枚举.自动) -> void:
+	if 构建参数==构建枚举.梅主题:
+		bg_color=Color(0.529, 0.373, 0.102)
+		border_color=Color(0.0, 0.0, 0.0, 1.0)
+		border_width_left=5
+		border_width_top=5
+		border_width_right=5
+		border_width_bottom=5

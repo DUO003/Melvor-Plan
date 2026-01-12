@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxedxm5rt7rt2"]
+[gd_scene load_steps=11 format=3 uid="uid://cxedxm5rt7rt2"]
 
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_73tot"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="1_dfwyy"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_73tot"]
 [ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="3_gepfs"]
-[ext_resource type="Texture2D" uid="uid://cg5lbyhyg8ys3" path="res://素材/像素/标准剑.png" id="4_fkaik"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="5_gepfs"]
 [ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="5_ka82c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqimc"]
@@ -43,7 +44,7 @@ margin_bottom = -5
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wjp5r"]
-texture = ExtResource("4_fkaik")
+texture = ExtResource("5_gepfs")
 expand_margin_left = -20.0
 expand_margin_top = -5.0
 expand_margin_right = -20.0
@@ -70,6 +71,7 @@ metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 custom_minimum_size = Vector2(142, 140)
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme = ExtResource("1_73tot")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBox_wjp5r")
 text = "测试文本

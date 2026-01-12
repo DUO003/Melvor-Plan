@@ -58,6 +58,13 @@ func add_container(inv_name: String, columns: int, rows: int, avilable_types: Ar
 		var new_container = ContainerData.new(inv_name, columns, rows, avilable_types)
 		_container_data_map[inv_name] = new_container
 		return new_container
+	else :
+		#更新背包参数
+		if inv is ContainerData:
+			inv.columns=columns
+			inv.rows=rows
+			inv.avilable_types=avilable_types
+			inv.更新背包参数()
 	return inv
 
 ## 获取背包数据

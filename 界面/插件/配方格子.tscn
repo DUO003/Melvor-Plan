@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://unn8tlhgiegn"]
 
-[ext_resource type="Texture2D" uid="uid://bvvvxfldyr4jw" path="res://素材/豆包AI素材/炼金台.png" id="1_40qvo"]
+[ext_resource type="Texture2D" uid="uid://cbt75iqrmydyl" path="res://素材/豆包AI素材/炼金台.png" id="1_40qvo"]
 [ext_resource type="Script" uid="uid://bb2mf7tund7hy" path="res://代码/专属代码/炼金界面/配方格子.gd" id="1_p2uem"]
 [ext_resource type="PackedScene" uid="uid://uh5t35s1wsr5" path="res://界面/插件/配方容器.tscn" id="2_p2uem"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="3_fsm1n"]

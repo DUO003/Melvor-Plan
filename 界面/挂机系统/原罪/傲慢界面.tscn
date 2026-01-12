@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_iwukf"]
 [ext_resource type="Script" uid="uid://dx8yylfqt2n2l" path="res://界面/挂机系统/原罪/傲慢界面.gd" id="2_eumwo"]
 [ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_ee1lr"]
-[ext_resource type="Texture2D" uid="uid://ciq26m4nivrqb" path="res://素材/自制/图标/傲慢.svg" id="3_x2j7v"]
+[ext_resource type="Texture2D" uid="uid://b5816q0b3ific" path="res://素材/自制/图标/傲慢.svg" id="3_x2j7v"]
 [ext_resource type="PackedScene" uid="uid://deum65mqdco6a" path="res://界面/挂机系统/原罪/成就卡片.tscn" id="4_q5scx"]
 [ext_resource type="PackedScene" uid="uid://dlf0o8yt0hscg" path="res://界面/插件/悬浮提示.tscn" id="6_iwukf"]
 

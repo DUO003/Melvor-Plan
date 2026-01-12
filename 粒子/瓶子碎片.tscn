@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://o0a1frdo3wdp"]
 
-[ext_resource type="Texture2D" uid="uid://dpqcwwsve3wgm" path="res://素材/豆包AI素材/像素瓶子.png" id="1_udplu"]
+[ext_resource type="Texture2D" uid="uid://bloqknsb4ed5l" path="res://素材/豆包AI素材/像素瓶子.png" id="1_udplu"]
 
 [sub_resource type="Gradient" id="Gradient_udplu"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)

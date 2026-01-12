@@ -10,8 +10,8 @@
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_1o5mj"]
 [ext_resource type="PackedScene" uid="uid://bkd8k1jonj3lt" path="res://界面/手工系统/烹饪/食材资源条.tscn" id="5_45rc1"]
 [ext_resource type="PackedScene" uid="uid://b21qe2xo4w534" path="res://界面/手工系统/烹饪/料理卡片.tscn" id="5_frisf"]
-[ext_resource type="Texture2D" uid="uid://dmxceaxoayvjy" path="res://素材/自制/教学截图/料理瓶子.png" id="6_7ay8b"]
-[ext_resource type="Texture2D" uid="uid://b2fom6yy1vxvv" path="res://素材/自制/教学截图/工序关系2.png" id="8_i7jk0"]
+[ext_resource type="Texture2D" uid="uid://c5i2vkg65mw4l" path="res://素材/自制/教学截图/料理瓶子.png" id="6_7ay8b"]
+[ext_resource type="Texture2D" uid="uid://c8sotfim3w8kk" path="res://素材/自制/教学截图/工序关系2.png" id="8_i7jk0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_frisf"]
 
@@ -121,7 +121,7 @@ custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_frisf")
-current_tab = 2
+current_tab = 3
 
 [node name="预加工" type="ScrollContainer" parent="内容节点/内容节点区域/操作区"]
 unique_name_in_owner = true
@@ -222,6 +222,7 @@ layout_mode = 2
 "空置标签" = "调味品"
 
 [node name="研制食谱" type="ScrollContainer" parent="内容节点/内容节点区域/操作区"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -236,7 +237,6 @@ layout_mode = 2
 "演示模式" = true
 
 [node name="帮助" type="ScrollContainer" parent="内容节点/内容节点区域/操作区"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 

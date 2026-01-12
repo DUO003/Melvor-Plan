@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_wok3q"]
 [ext_resource type="Script" uid="uid://3qbuxr56jjr6" path="res://代码/专属代码/特殊功能/体力系统.gd" id="2_n7kj1"]
-[ext_resource type="Texture2D" uid="uid://c0i2q8rgobytr" path="res://素材/游戏素材/食品包/体力蛋糕.png" id="3_0tcwq"]
+[ext_resource type="Texture2D" uid="uid://ctqv4hb3llh2n" path="res://素材/游戏素材/食品包/体力蛋糕.png" id="3_0tcwq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxrpf"]
 bg_color = Color(0.91764706, 0.60784316, 0.24705882, 1)

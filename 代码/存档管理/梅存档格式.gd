@@ -100,6 +100,10 @@ func 读档(存档名: String = "",覆盖用户名: String="")->bool:
 			var 装备栏单例:EquipmentSlotRepository=EquipmentSlotRepository.instance
 			if 挂机.has("装备栏")	and 装备栏单例:
 				装备栏单例._slot_data_map=梅存档["挂机"]["装备栏"].duplicate(true)
+				for 装备栏名称 in 装备栏单例._slot_data_map:
+					var 装备= 装备栏单例._slot_data_map[装备栏名称].equipped_item
+					if  装备 is 物品装备:
+						装备.更新属性()
 			var 背包单例:ContainerRepository=ContainerRepository.instance
 			if 挂机.has("背包与商店") and 背包单例:
 				背包单例._container_data_map.clear()

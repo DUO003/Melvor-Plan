@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_iwm3t"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_xbj00"]
 [ext_resource type="Script" uid="uid://m48ei7gqp6lc" path="res://界面/手工系统/蓝图信息.gd" id="4_gmgml"]
-[ext_resource type="Texture2D" uid="uid://dd02xf54eyo4l" path="res://素材/全息图片AI素材/元素/冰.png" id="5_x00w8"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="5_b1agn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5jsc"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
@@ -168,7 +168,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = 105.0
 offset_bottom = 100.0
-texture = ExtResource("5_x00w8")
+texture = ExtResource("5_b1agn")
 expand_mode = 1
 stretch_mode = 5
 

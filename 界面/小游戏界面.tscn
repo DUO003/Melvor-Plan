@@ -91,6 +91,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ebama")
 script = ExtResource("2_ruvb4")
+"基类窗口名称" = "小游戏"
 
 [node name="标题" type="ColorRect" parent="."]
 layout_mode = 1

@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://4eblwtbjnhi6"]
+[gd_scene load_steps=12 format=3 uid="uid://4eblwtbjnhi6"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_slx84"]
 [ext_resource type="Script" uid="uid://c77f2k8dadqp1" path="res://界面/挂机系统/原罪/技能.gd" id="2_0lakc"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_ny2e3"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_p0ww4"]
 [ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="4_7htay"]
-[ext_resource type="Texture2D" uid="uid://dekwh3xgl6s1w" path="res://素材/游戏素材/货币/1.png" id="5_e2j5k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7htay"]
 bg_color = Color(0.5254902, 0.6509804, 0.52156866, 1)
@@ -39,7 +38,6 @@ content_margin_left = 20.0
 content_margin_top = 20.0
 content_margin_right = 20.0
 content_margin_bottom = 20.0
-texture = ExtResource("5_e2j5k")
 expand_margin_left = -20.0
 expand_margin_top = -20.0
 expand_margin_right = -20.0
@@ -83,8 +81,9 @@ content_margin_right = 10.0
 
 [node name="技能" type="Button"]
 custom_minimum_size = Vector2(120, 120)
+offset_top = 110.0
 offset_right = 120.0
-offset_bottom = 120.0
+offset_bottom = 230.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -92,7 +91,6 @@ theme = ExtResource("1_slx84")
 theme_override_styles/normal = SubResource("StyleBox_11y5x")
 text_overrun_behavior = 1
 script = ExtResource("2_0lakc")
-"技能层级" = null
 
 [node name="标签" type="Label" parent="."]
 unique_name_in_owner = true
@@ -111,6 +109,7 @@ vertical_alignment = 2
 
 [node name="名称" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -123,6 +122,6 @@ grow_horizontal = 2
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_6f2fb")
-text = "技能名称"
+text = "默认技能"
 horizontal_alignment = 1
 vertical_alignment = 1

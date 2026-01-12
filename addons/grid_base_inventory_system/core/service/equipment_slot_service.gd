@@ -22,13 +22,12 @@ func get_slot(slot_name: String) -> EquipmentSlotData:
 func regist_slot(slot_name: String, avilable_types: Array[String]) -> bool:
 	var slot_data = _equipment_slot_repository.get_slot(slot_name)
 	if slot_data:
-		var is_same_avilable_types = avilable_types.size() == slot_data.avilable_types.size()
-		if is_same_avilable_types:
-			for i in range(avilable_types.size()):
-				is_same_avilable_types = avilable_types[i] == slot_data.avilable_types[i]
-				if not is_same_avilable_types:
-					break
-		return is_same_avilable_types
+		if slot_data is EquipmentSlotData:
+			if avilable_types.size()>=1 and not slot_data.avilable_types==avilable_types:#没有数据禁止更新.
+				#print("更新%s数据\r"%[slot_name],slot_data.avilable_types,"\r",avilable_types)
+				slot_data.avilable_types=avilable_types
+			return true
+		return false
 	else:
 		return _equipment_slot_repository.add_slot(slot_name, avilable_types)
 

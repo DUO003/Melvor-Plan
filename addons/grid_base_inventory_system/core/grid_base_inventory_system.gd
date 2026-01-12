@@ -3,35 +3,35 @@ extends Node
 ## 全局名称必须配置为：GBIS
 ## ========= 重要 ==========
 
+@warning_ignore("unused_signal")
 ## 物品已添加
-@warning_ignore("unused_signal")
 signal sig_inv_item_added(inv_name: String, item_data: ItemData, grids: Array[Vector2i])
+@warning_ignore("unused_signal")
 ## 物品已移除
-@warning_ignore("unused_signal")
 signal sig_inv_item_removed(inv_name: String, item_data: ItemData)
+@warning_ignore("unused_signal")
 ## 物品已更新
-@warning_ignore("unused_signal")
 signal sig_inv_item_updated(inv_name: String, grid_id: Vector2i)
+@warning_ignore("unused_signal")
 ## 刷新所有背包
-@warning_ignore("unused_signal")
 signal sig_inv_refresh
+@warning_ignore("unused_signal")
 ## 刷新所有商店
-@warning_ignore("unused_signal")
 signal sig_shop_refresh
+@warning_ignore("unused_signal")
 ## 刷新所有装备槽
-@warning_ignore("unused_signal")
 signal sig_slot_refresh
+@warning_ignore("unused_signal")
 ## 物品已装备
-@warning_ignore("unused_signal")
 signal sig_slot_item_equipped(slot_name: String, item_data: ItemData)
+@warning_ignore("unused_signal")
 ## 物品已脱下
-@warning_ignore("unused_signal")
 signal sig_slot_item_unequipped(slot_name: String, item_data: ItemData)
+@warning_ignore("unused_signal")
 ## 焦点物品：监听这个信号以处理信息显示
-@warning_ignore("unused_signal")
 signal sig_item_focused(item_data: ItemData, container_name: String)
-## 物品丢失焦点：监听这个信号以清除物品信息显示
 @warning_ignore("unused_signal")
+## 物品丢失焦点：监听这个信号以清除物品信息显示
 signal sig_item_focus_lost(item_data: ItemData)
 ## 物品被拿到鼠标上信号
 signal 鼠标物品(有物品)

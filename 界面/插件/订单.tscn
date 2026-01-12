@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_skso8"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_8p7xd"]
 [ext_resource type="Script" uid="uid://dueahcbj86bbe" path="res://代码/专属代码/订单界面/订单.gd" id="4_8p7xd"]
-[ext_resource type="Texture2D" uid="uid://dd02xf54eyo4l" path="res://素材/全息图片AI素材/元素/冰.png" id="5_m1b3w"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="5_m1b3w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1b3w"]
 bg_color = Color(0.4117647, 0.28627452, 0.078431375, 1)
@@ -313,7 +313,7 @@ theme_override_font_sizes/normal_font_size = 37
 bbcode_enabled = true
 text = "{物品名称}
 金币{倍率}%
-合计:{金币数量}[img=40x40]res://素材/游戏素材/货币/2.png[/img]
+合计:{金币数量}[图片]
 剩余{}次:{}[图片]"
 scroll_active = false
 

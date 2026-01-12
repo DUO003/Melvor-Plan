@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://c6cchk6o37m7f"]
 
-[ext_resource type="Texture2D" uid="uid://drl3b4ixps46r" path="res://素材/MIT素材/robot.webp" id="1_6d0go"]
+[ext_resource type="Texture2D" uid="uid://4iap8211ewi8" path="res://素材/MIT素材/robot.webp" id="1_6d0go"]
 [ext_resource type="Script" uid="uid://bo6t0vrjk00cr" path="res://代码/专属代码/特殊功能/副本玩家.gd" id="1_ix7mf"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="3_6w31l"]
 

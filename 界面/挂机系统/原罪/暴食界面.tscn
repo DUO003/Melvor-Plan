@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://wkifikrsb7a1" path="res://界面/挂机系统/原罪/暴食界面.gd" id="2_pxug6"]
 [ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_gqqu2"]
 [ext_resource type="PackedScene" uid="uid://bnjv1qqq3txe4" path="res://界面/插件/背包栏.tscn" id="4_a7kw1"]
-[ext_resource type="Texture2D" uid="uid://cun3m5fqw1jf2" path="res://素材/自制/图标/暴食.svg" id="4_n75ih"]
+[ext_resource type="Texture2D" uid="uid://bvtyt8f700c8q" path="res://素材/自制/图标/暴食.svg" id="4_n75ih"]
 [ext_resource type="PackedScene" uid="uid://uh5t35s1wsr5" path="res://界面/插件/配方容器.tscn" id="5_c3a8x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3a8x"]
