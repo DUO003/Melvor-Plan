@@ -6,6 +6,12 @@ var 标签字典: Dictionary = {
 	#"空界面": "res://界面/空界面.tscn"
 }
 #代码字典
+@onready var 水平分割: HSplitContainer = %水平分割
+@onready var 标签: TabContainer = %标签
+@onready var 重新载入: Button = %重新载入
+@onready var 载入脚本: Button = %载入脚本
+@onready var 文件路径: LineEdit = %文件路径
+@onready var 导入表格: Button = %导入表格
 var 代码字典: Dictionary={
 	"代码教程":["res://代码/专属代码/A代码.gd",""],
 	"GBIS":["res://addons/grid_base_inventory_system/core/grid_base_inventory_system.gd",""],
@@ -20,16 +26,19 @@ var 代码字典: Dictionary={
 var 按钮宽度:=163
 var 按钮高度:=60
 func _ready() -> void:
-	visibility_changed.connect(func(): 重新分配区域())
+	visibility_changed.connect(重新分配区域)
+	resized.connect(重新分配区域)
+	水平分割.drag_ended.connect(重新分配区域)
+	水平分割.dragged.connect(func(_序号):重新分配区域())
 	场景页=%"场景页"
 	代码页=%"代码页"
-	%"重新载入".pressed.connect(func():
+	重新载入.pressed.connect(func():
 		重新载入场景()
 		重新分配区域())
-	%"载入脚本".pressed.connect(func():打开代码文件("res://代码/梅计划.gd","#region 简短单例"))
-	%"导入表格".pressed.connect(func():
+	载入脚本.pressed.connect(func():打开代码文件("res://代码/梅计划.gd","#region 简短单例"))
+	导入表格.pressed.connect(func():
 		var 转移表格:快速转移表格=快速转移表格.new()
-		if 转移表格.剪切文件("梅尔沃计划重制数据 - 创世蓝图.csv","res://表格/"):
+		if 转移表格.剪切文件("梅尔沃计划重制数据 - 创世蓝图.csv","res://表格/",文件路径.text):
 			var 表格检查:json检查器=json检查器.new()
 			表格检查.表格初始化()
 			表格检查.批量检查JSON格式())
@@ -38,8 +47,9 @@ func 重新分配区域():
 	if visible:
 		await get_tree().process_frame
 		await get_tree().process_frame
-		场景页.columns=int(size.x/按钮宽度)-1
-		代码页.columns=int(size.x/按钮宽度)-1
+		var 真实宽度=(标签.size.x-10)
+		场景页.columns=int(真实宽度/按钮宽度)
+		代码页.columns=int(真实宽度/按钮宽度)
 func 重新载入场景():
 	_加载外部界面路径字典()
 	for 节点 in 场景页.get_children():
@@ -67,6 +77,8 @@ func 返回按钮()->Button:
 	按钮.size=Vector2(按钮宽度,按钮高度)
 	按钮.text_overrun_behavior=TextServer.OVERRUN_TRIM_CHAR
 	按钮.clip_text=true
+	按钮.clip_contents=true
+	按钮.size_flags_horizontal=Control.SIZE_EXPAND
 	return 按钮
 ##读取字典失败则使用默认值
 func _加载外部界面路径字典() -> void:
