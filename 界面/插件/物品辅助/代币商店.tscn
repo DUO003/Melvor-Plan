@@ -77,7 +77,7 @@ metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 custom_minimum_size = Vector2(0, 430)
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 80.0
+offset_bottom = 430.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_5tqhy")
@@ -86,17 +86,21 @@ script = ExtResource("1_3ytm5")
 metadata/_tab_index = 2
 
 [node name="商店滚动区" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 350)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="商店容器" type="HBoxContainer" parent="商店滚动区"]
+[node name="多商店容器" type="VBoxContainer" parent="商店滚动区"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="商店容器" type="GridContainer" parent="商店滚动区/多商店容器"]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="商品卡" parent="商店滚动区/商店容器" instance=ExtResource("3_5tqhy")]
+[node name="商品卡" parent="商店滚动区/多商店容器/商店容器" instance=ExtResource("3_5tqhy")]
 layout_mode = 2
 
 [node name="辅助按钮区" type="Panel" parent="."]

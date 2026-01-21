@@ -53,7 +53,7 @@ func 倍率()->float:
 	var 倍率=1.0
 	for 宝石 in 装备栏宝石:
 		倍率+=max(0.0,宝石.倍率()*0.01)
-	print(slot_name,"当前倍率",倍率)
+	#print(slot_name,"当前倍率",倍率)
 	return 倍率
 ## 脱掉装备，返回被脱掉的物品
 func unequip() -> ItemData:
@@ -67,13 +67,13 @@ func unequip() -> ItemData:
 ## 检查是否可装备这个物品
 func is_item_avilable(item_data: ItemData) -> bool:
 	# 新逻辑：如果是物品装备类，使用类型属性判断
+	if item_data is 物品宝石:
+		return true
 	if item_data is 物品装备:
 		#print(item_data.类型,"/",avilable_types)
+		if avilable_types.size()==0:
+			return true
 		if avilable_types.has(item_data.类型):
-			return item_data.test_need(slot_name)
-	else:
-		# 原逻辑：其他类使用type属性判断
-		if avilable_types.has("ANY") or avilable_types.has(item_data.type):
 			return item_data.test_need(slot_name)
 	return false
 

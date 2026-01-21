@@ -36,7 +36,7 @@ signal sig_item_focus_lost(item_data: ItemData)
 ## 物品被拿到鼠标上信号
 signal 鼠标物品(有物品)
 signal 整理背包()
-
+signal 更新移动物品()
 ## 默认角色
 var DEFAULT_PLAYER: String = "player_1"
 ## 默认背包名称

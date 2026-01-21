@@ -12,6 +12,7 @@ var 滚动计时器:Timer
 var 图钉区光标=false
 @onready var 任务栏节点: VBoxContainer = %"任务栏"
 @onready var 任务按钮本体: Button = %"任务"  # 明确为Button节点
+@onready var 其他容器: Control = %其他容器
 signal 场景更新(当前场景)# 场景变化时会发出信号,首次加载也会发出
 func _ready():
 	super._ready()
@@ -29,6 +30,7 @@ func _ready():
 	%"任务栏分割".split_offset=分割长度
 	%"任务栏分割".drag_ended.connect(func():计划.窗口状态管理("根节点","分割长度",null,%"任务栏分割".split_offset))
 	计划.提示容器=%"提示容器"#仅空窗口注册
+	计划.其他容器=其他容器
 	生成任务栏按钮()# 在节点加载完成后生成任务栏按钮
 	更新BUFF()
 	计划.BUFF.更新_BUFF.connect(更新BUFF)

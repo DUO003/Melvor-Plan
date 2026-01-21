@@ -16,15 +16,15 @@ config/name_localized={
 }
 config/description="游戏手工版本开发中
 总进度(1/7)
-[手工:96%]
+[手工:99%]
 [挂机:20%]"
-config/version="0.1.9.1"
+config/version="0.1.10.2"
 config/tags=PackedStringArray("梅计划")
 run/main_scene="uid://kifxwq2enhmp"
 config/features=PackedStringArray("4.5", "Mobile")
 run/max_fps=60
 boot_splash/bg_color=Color(0.39, 0.3289, 0.20669998, 1)
-boot_splash/image="uid://b6jdxhylrmsvu"
+boot_splash/image="uid://bttn4tgkwj4p0"
 config/icon="uid://bttn4tgkwj4p0"
 
 [autoload]

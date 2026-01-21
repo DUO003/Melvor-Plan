@@ -125,7 +125,7 @@ offset_top = 79.0
 offset_right = 467.0
 offset_bottom = 143.0
 theme_override_font_sizes/font_size = 38
-text = "手动刷新"
+text = "增加次数"
 
 [node name="文本" type="Label" parent="内容节点/控制区/信息排列容器/体力状态/手动刷新"]
 layout_mode = 1

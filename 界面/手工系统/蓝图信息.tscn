@@ -235,7 +235,7 @@ theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_0s5mh")
 theme_override_styles/tab_unselected = SubResource("StyleBox_y5jsc")
 theme_override_styles/tab_hovered = SubResource("StyleBox_0dedd")
 theme_override_styles/tab_selected = SubResource("StyleBox_26tgt")
-current_tab = 3
+current_tab = 2
 
 [node name="简介" type="RichTextLabel" parent="标签"]
 visible = false
@@ -261,18 +261,6 @@ text = "耗时:100秒
 [img=33x33]res://素材/游戏素材/货币/36.png[/img]:100"
 metadata/_tab_index = 1
 
-[node name="属性" type="RichTextLabel" parent="标签"]
-visible = false
-custom_minimum_size = Vector2(340, 0)
-layout_mode = 2
-theme_override_constants/paragraph_separation = -15
-theme_override_font_sizes/normal_font_size = 30
-bbcode_enabled = true
-text = "攻击:100
-耐久:100
-"
-metadata/_tab_index = 2
-
 [node name="升星" type="RichTextLabel" parent="标签"]
 custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
@@ -281,7 +269,7 @@ theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "升星效果:"
 scroll_active = false
-metadata/_tab_index = 3
+metadata/_tab_index = 2
 
 [node name="升星按钮" type="Button" parent="标签/升星"]
 layout_mode = 1

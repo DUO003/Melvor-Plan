@@ -1,7 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhucfadbhtaq6"]
+[gd_scene load_steps=6 format=3 uid="uid://bhucfadbhtaq6"]
 
 [ext_resource type="Script" uid="uid://coq0o0dl80roa" path="res://界面/插件/通知.gd" id="1_0iigp"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_73lfj"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_yu3sx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbuvi"]
+bg_color = Color(0.55, 0.42716667, 0.18149999, 0.8627451)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("2_yu3sx")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0iigp"]
 content_margin_left = 10.0
@@ -17,15 +28,20 @@ offset_right = -0.5600128
 offset_bottom = 0.11999893
 mouse_filter = 2
 theme = ExtResource("1_73lfj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_nbuvi")
 script = ExtResource("1_0iigp")
 
 [node name="文本" type="RichTextLabel" parent="."]
 layout_mode = 1
-offset_right = 59.0
+offset_right = 69.0
 offset_bottom = 55.0
 size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0iigp")
 bbcode_enabled = true
 text = "测试"

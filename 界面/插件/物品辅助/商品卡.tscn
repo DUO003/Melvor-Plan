@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2vh3fswditse"]
+[gd_scene load_steps=10 format=3 uid="uid://b2vh3fswditse"]
 
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="1_6fjmu"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_sk5i8"]
@@ -31,25 +31,35 @@ script = ExtResource("1_6fjmu")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_wdor2")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sk5i8"]
+bg_color = Color(0.55, 0.42716667, 0.18149999, 0.5882353)
+expand_margin_top = -10.0
+script = ExtResource("2_sk5i8")
+margin_top = -10
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hn262"]
 content_margin_left = 10.0
 content_margin_top = 2.0
 
 [node name="商品卡" type="Panel"]
-custom_minimum_size = Vector2(270, 350)
+custom_minimum_size = Vector2(220, 190)
+offset_right = 220.0
+offset_bottom = 190.0
 theme = ExtResource("1_sk5i8")
 theme_override_styles/panel = SubResource("StyleBox_b440g")
 script = ExtResource("3_hn262")
+"尺寸" = Vector2(220, 190)
 
 [node name="图片" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.60300004
+anchor_bottom = 0.605
 offset_left = 10.0
 offset_top = 10.0
-offset_right = -10.0
-offset_bottom = 0.14099121
+offset_right = -9.0
+offset_bottom = -4.9500046
 grow_horizontal = 2
 texture = ExtResource("4_j8t25")
 expand_mode = 1
@@ -57,32 +67,43 @@ stretch_mode = 5
 
 [node name="数量" type="Label" parent="图片"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.97400004
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.97400004
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -57.0
+offset_left = -34.904007
+offset_top = -43.0
+offset_right = 0.09599304
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_font_sizes/font_size = 30
 
 [node name="价格" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.6090651
+anchor_top = 0.5556667
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 1.5258789e-05
-offset_right = -10.0
+offset_left = 6.0
+offset_top = -0.020004272
+offset_right = -6.6666718
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/line_separation = -5
 theme_override_constants/paragraph_separation = -10
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/italics_font_size = 28
+theme_override_font_sizes/mono_font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_sk5i8")
 bbcode_enabled = true
 text = "催化剂
 价格"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -91,6 +112,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hn262")
 text = "购买"
 
@@ -99,5 +121,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = -12.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true

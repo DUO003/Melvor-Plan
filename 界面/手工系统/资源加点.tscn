@@ -62,27 +62,20 @@ metadata/_custom_type_script = "uid://dyet4yfov8by1"
 resource_local_to_scene = false
 resource_name = ""
 content_margin_left = 20.0
-content_margin_top = 5.0
+content_margin_top = 0.0
 content_margin_right = 20.0
-content_margin_bottom = 5.0
+content_margin_bottom = 0.0
 script = ExtResource("3_r7331")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kqimc"), SubResource("StyleBoxFlat_wjp5r")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [node name="资源加点" type="Panel"]
 custom_minimum_size = Vector2(390, 120)
+offset_right = 390.0
+offset_bottom = 116.0
 theme = ExtResource("1_r7331")
 theme_override_styles/panel = SubResource("StyleBoxFlat_hvqnr")
 script = ExtResource("3_hvqnr")
-
-[node name="贴图" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 1
-offset_right = 60.0
-offset_bottom = 60.0
-texture = ExtResource("4_r7331")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="回复速度" type="Label" parent="."]
 layout_mode = 1
@@ -90,8 +83,22 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 57.0
 grow_horizontal = 2
+theme_override_constants/line_spacing = -12
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yni8h")
-text = "木材回复+0.00"
+text = "木材回复+0.00
+上限"
+vertical_alignment = 1
+
+[node name="贴图" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+offset_top = 9.0
+offset_right = 60.0
+offset_bottom = 69.0
+texture = ExtResource("4_r7331")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="文本" type="Label" parent="."]
 layout_mode = 1
@@ -99,24 +106,27 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -57.0
+offset_top = -52.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_5lflo")
 text = "分配代币"
+vertical_alignment = 1
 
 [node name="+" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.97800004
+anchor_left = 1.0
 anchor_top = 0.96300006
-anchor_right = 0.97800004
-anchor_bottom = 0.96300006
-offset_left = -49.486023
-offset_top = -53.560005
-offset_right = 12.513977
-offset_bottom = 13.439995
-scale = Vector2(0.8, 0.8)
+anchor_right = 1.0
+anchor_bottom = 0.97700006
+offset_left = -58.06604
+offset_top = -41.060005
+offset_right = 3.93396
+offset_bottom = 14.2599945
+scale = Vector2(0.75, 0.75)
 theme_override_styles/normal = SubResource("StyleBox_vgh6y")
 theme_override_styles/pressed = SubResource("StyleBox_vgh6y")
 theme_override_styles/hover = SubResource("StyleBox_vgh6y")
@@ -126,15 +136,15 @@ text = "+"
 [node name="-" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.97200006
-anchor_bottom = 0.97200006
-offset_left = 183.52458
-offset_top = -53.640003
-offset_right = 245.52458
-offset_bottom = 13.359993
+anchor_top = 1.0011666
+anchor_bottom = 1.0011666
+offset_left = 140.52458
+offset_top = -43.63999
+offset_right = 202.52458
+offset_bottom = 13.360016
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.75, 0.75)
 theme_override_styles/normal = SubResource("StyleBox_vgh6y")
 theme_override_styles/pressed = SubResource("StyleBox_vgh6y")
 theme_override_styles/hover = SubResource("StyleBox_vgh6y")
@@ -148,11 +158,13 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 237.0
-offset_top = -57.0
-offset_right = -73.0
+offset_left = 189.0
+offset_top = -52.0
+offset_right = -64.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_5lflo")
 text = "100"
+horizontal_alignment = 1
 clip_text = true

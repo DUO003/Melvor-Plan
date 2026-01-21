@@ -78,7 +78,10 @@ func 生成筛选器(阶级赋值=-1):
 		研究方向.add_item(内容)
 		if 类型==内容:研究方向.selected=研究方向.get_item_count()-1
 	var 等阶数组=["不限制"]
-	for i in range(ceili(计划.数据系统("手工","等级") / 5.0)):
+	var 阶级=计划.数据系统("手工","阶级")
+	if 计划.装备.制作力>=阶级*(阶级+1):
+		阶级+=1
+	for i in range(min(20,阶级)):
 		等阶数组.append(str(i+1)+"阶")
 	for 内容 in 等阶数组:
 		等阶.add_item(内容)
@@ -110,9 +113,9 @@ func 克隆按钮(项):
 		配方列表 = 计划.获取配方(项,等阶.selected,等阶.selected)
 	配方表格.克隆配方节点(配方列表,表格)
 func 注册按钮():
-	%强化.pressed.connect(计划.无功能方法)
-	%抽奖机.pressed.connect(func(): 计划.切换场景("合成_抽奖机界面"))
-	%蓝图库.pressed.connect(func(): 计划.切换场景("合成_蓝图库界面"))
+	%强化.pressed.connect(func(): 计划.切换场景("合成_强化界面","合成界面"))
+	%抽奖机.pressed.connect(func(): 计划.切换场景("合成_抽奖机界面","合成界面"))
+	%蓝图库.pressed.connect(func(): 计划.切换场景("合成_蓝图库界面","合成界面"))
 	#print("按钮已注册")
 func 更新信息():
 	#print ("更新信息触发")

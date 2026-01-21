@@ -1,28 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnjv1qqq3txe4"]
+[gd_scene load_steps=6 format=3 uid="uid://bnjv1qqq3txe4"]
 
 [ext_resource type="Script" uid="uid://cwi4da5b644i0" path="res://界面/插件/背包栏.gd" id="1_e26fh"]
 [ext_resource type="Script" uid="uid://bublnb2wstici" path="res://代码/专属代码/炼金界面/背包.gd" id="1_ygqan"]
 [ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="2_e26fh"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_jyq5j"]
+[ext_resource type="Script" uid="uid://b3x4mwtjmm4tp" path="res://addons/grid_base_inventory_system/core/view/container/inventory/inventory_view.gd" id="5_vo5ye"]
 
 [node name="背包栏" type="FoldableContainer"]
-offset_left = 1550.0
-offset_top = 100.0
-offset_right = 1700.0
-offset_bottom = 160.0
+offset_right = 180.0
+offset_bottom = 60.0
+theme = ExtResource("2_jyq5j")
 folded = true
 title = "背包"
 script = ExtResource("1_e26fh")
 
-[node name="物品栏" type="ScrollContainer" parent="."]
-unique_name_in_owner = true
+[node name="选项卡" type="TabContainer" parent="."]
 visible = false
 custom_minimum_size = Vector2(990, 900)
 layout_mode = 2
+current_tab = 1
+
+[node name="物品栏" type="ScrollContainer" parent="选项卡"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(990, 850)
+layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
+metadata/_tab_index = 0
 
-[node name="背包" type="Control" parent="物品栏"]
+[node name="背包" type="Control" parent="选项卡/物品栏"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(990, 1100)
 layout_mode = 2
@@ -39,6 +46,64 @@ gird_background_color_taken = Color(0.49, 0.444267, 0.3185, 0.862745)
 gird_background_color_conflict = Color(0.94, 0.68103, 0.6674, 0.784314)
 grid_background_color_avilable = Color(0.4, 0.362667, 0.26, 0.784314)
 stack_num_font = ExtResource("2_e26fh")
+stack_num_font_size = 32
+stack_num_margin = 0
+stack_num_color = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
+
+[node name="装备栏" type="ScrollContainer" parent="选项卡"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(990, 850)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+metadata/_tab_index = 1
+
+[node name="装备排列容器" type="VBoxContainer" parent="选项卡/装备栏"]
+layout_mode = 2
+
+[node name="文本" type="Label" parent="选项卡/装备栏/装备排列容器"]
+layout_mode = 2
+text = "已鉴定装备"
+
+[node name="装备" type="Control" parent="选项卡/装备栏/装备排列容器"]
+custom_minimum_size = Vector2(1080, 540)
+layout_mode = 2
+script = ExtResource("5_vo5ye")
+avilable_types = Array[String](["装备"])
+container_name = "装备"
+container_columns = 8
+container_rows = 4
+base_size = 135
+grid_border_size = 2
+grid_border_color = Color(0.75, 0.75, 0.75, 0)
+gird_background_color_empty = Color(0.49, 0.444267, 0.3185, 0.784314)
+gird_background_color_taken = Color(0.49, 0.444267, 0.3185, 0.862745)
+gird_background_color_conflict = Color(0.94, 0.68103, 0.6674, 0.784314)
+grid_background_color_avilable = Color(0.4, 0.362667, 0.26, 0.784314)
+stack_num_font_size = 32
+stack_num_margin = 0
+stack_num_color = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
+
+[node name="文本2" type="Label" parent="选项卡/装备栏/装备排列容器"]
+layout_mode = 2
+text = "已鉴定宝石"
+
+[node name="宝石" type="Control" parent="选项卡/装备栏/装备排列容器"]
+custom_minimum_size = Vector2(1080, 180)
+layout_mode = 2
+script = ExtResource("5_vo5ye")
+avilable_types = Array[String](["宝石"])
+container_name = "宝石"
+container_columns = 12
+base_size = 90
+grid_border_size = 2
+grid_border_color = Color(0.75, 0.75, 0.75, 0)
+gird_background_color_empty = Color(0.49, 0.444267, 0.3185, 0.784314)
+gird_background_color_taken = Color(0.49, 0.444267, 0.3185, 0.862745)
+gird_background_color_conflict = Color(0.94, 0.68103, 0.6674, 0.784314)
+grid_background_color_avilable = Color(0.4, 0.362667, 0.26, 0.784314)
 stack_num_font_size = 32
 stack_num_margin = 0
 stack_num_color = Color(0, 0, 0, 1)

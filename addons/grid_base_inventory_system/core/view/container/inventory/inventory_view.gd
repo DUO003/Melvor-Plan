@@ -147,7 +147,6 @@ func _on_inv_item_updated(inv_name: String, grid_id: Vector2i) -> void:
 		return
 	if not is_visible_in_tree():
 		return
-	
 	_grid_item_map[grid_id].queue_redraw()
 
 ## 绘制物品

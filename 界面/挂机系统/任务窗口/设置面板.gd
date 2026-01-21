@@ -2,8 +2,11 @@ extends ScrollContainer
 func _ready() -> void:
 	%"启用全屏".button_pressed=计划.配置文件.get("全屏",false)
 	%"启用全屏".toggled.connect(func(条件):计划.切换全屏(条件))
-	%"自动存档".button_pressed=计划.配置文件.get("自动存档",true)
-	%"自动存档".toggled.connect(func(条件):计划.配置文件["自动存档"]=条件)
+	绑定按钮(%"自动存档","自动存档")
+	绑定按钮(%"制作通知","制作通知")
+	绑定按钮(%"精通通知","精通通知")
+	绑定按钮(%"熟练通知","熟练通知")
+	绑定整数数值框(%"通知数量","最大通知",20)
 	%"群二维码".visible=计划.窗口状态管理("设置","二维码",true)
 	%"二维码".button_pressed=%"群二维码".visible
 	%"二维码".pressed.connect(func():
@@ -19,6 +22,14 @@ func _ready() -> void:
 			计划.节点["空节点"].重新载入存档缓存()
 		计划.语法糖通知("缓存已清空","通知"))
 	%"打开存档文件夹".pressed.connect(func():计划.打开存档目录())
+func 绑定按钮(节点:Button,条件名:String,默认值:bool=true):
+	节点.button_pressed=计划.配置文件.get(条件名,默认值)
+	节点.toggled.connect(func(条件):计划.配置文件[条件名]=条件)
+## 绑定数值框（SpinBox）
+func 绑定整数数值框(节点:SpinBox,条件名:String,默认值:int=0):
+	节点.value = 计划.配置文件.get(条件名, 默认值)
+	节点.value_changed.connect(func(数值):# 绑定值变化信号，同步整数到配置文件
+		计划.配置文件[条件名] = int(数值))
 # 通用下拉框配置绑定方法（从节点自动生成映射 + 兼容新旧存档）
 # 参数说明：
 # - 节点: 下拉选择节点（OptionButton，如%("通知显示位置")）

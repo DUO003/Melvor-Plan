@@ -22,6 +22,10 @@ class_name 梅物品格子
 @export var 物品不足提示:bool=true
 ##物品被替换或初始化后自动设置一个数量的值
 @export var 默认值:int=1
+##没有对应处理逻辑,需要另外实现
+@export var 上次放入的物品:ItemData
+##禁止放入例如装备
+@export var 仅限标准物品:bool=true
 var 当前值=默认值
 var 道具名称=null
 var 特殊标签=""
@@ -56,8 +60,9 @@ func 从字典初始化(自定义配置: Dictionary = {}) -> void:
 	特殊标签=自定义配置.get("特殊标签", "")
 	修改返回对象=自定义配置.get("修改返回对象", null)
 	初始化=true
-	
 func 初始更新():
+	if not GBIS.sig_inv_item_removed.is_connected(监听移除物品):
+		GBIS.sig_inv_item_removed.connect(监听移除物品)
 	if 可修改物品:
 		gui_input.connect(鼠标信号处理)
 	当前值=默认值
@@ -111,6 +116,7 @@ func 更新文本():
 ##判断当前数量是否小于等于背包中数量
 func 物品数量判断(倍数:int=1)->bool:
 	if 道具名称==null:return false
+	if not 上次放入的物品 is 标准物品:return true
 	var 物品数量=0
 	if 特殊标签=="":
 		物品数量=计划.检查背包物品数量(道具名称)
@@ -122,6 +128,9 @@ func 鼠标信号处理(鼠标信号):
 	if 鼠标信号 is InputEventMouseButton and not 鼠标信号.pressed:
 		if GBIS.has_moving_item():
 			var 正在移动的物品=GBIS.moving_item_service.moving_item
+			if 仅限标准物品 and not 正在移动的物品 is 标准物品:
+				计划.语法糖通知(标签警告,"炼金容器")
+				return
 			#print("正在移动的物品",正在移动的物品)
 			var 缓存道具名=正在移动的物品.item_name
 			if 物品白名单.size()>=1:
@@ -152,15 +161,26 @@ func 鼠标信号处理(鼠标信号):
 				修改返回对象.返回处理方法(self)
 			GBIS.moving_item_service.安全清除移动物品()
 	elif 鼠标信号 is InputEventMouseButton and 鼠标信号.button_index == MOUSE_BUTTON_RIGHT and 鼠标信号.pressed:
-		if not 道具名称==null:
-			道具名称=null
-			当前值=默认值
-			更新文本()
-			if not 修改返回对象==null:
-				修改返回对象.返回处理方法(self)
+		清空设置物品()
+func 清空设置物品():
+	上次放入的物品=null
+	if not 道具名称==null:
+		道具名称=null
+		当前值=默认值
+		更新文本()
+		if not 修改返回对象==null:
+			修改返回对象.返回处理方法(self)
+	
 func 设置物品(物品:ItemData):
+	上次放入的物品=物品
 	道具名称=物品.item_name
 	当前值=默认值
 	if 物品 is 标准物品:
 		特殊标签=物品.特殊标签
 	更新文本()
+## 监听移除物品
+func 监听移除物品(_背包名:String, 物品: ItemData) -> void:
+	if not is_visible_in_tree():
+		return
+	if 上次放入的物品==物品:
+		清空设置物品()

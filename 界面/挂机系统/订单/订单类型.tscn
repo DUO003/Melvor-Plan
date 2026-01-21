@@ -59,11 +59,11 @@ custom_minimum_size = Vector2(200, 55)
 layout_mode = 0
 offset_left = 209.0
 offset_top = 52.0
-offset_right = 409.0
+offset_right = 440.0
 offset_bottom = 107.0
 fit_to_longest_item = false
 
-[node name="Label" type="Label" parent="配置选项"]
+[node name="文本2" type="Label" parent="配置选项"]
 layout_mode = 0
 offset_left = -190.0
 offset_right = -150.0

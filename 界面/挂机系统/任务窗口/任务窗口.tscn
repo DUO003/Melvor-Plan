@@ -138,7 +138,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_mxxnt")
-current_tab = 1
+current_tab = 3
 
 [node name="主线任务" type="ScrollContainer" parent="内容区域/标签"]
 visible = false
@@ -156,6 +156,7 @@ columns = 2
 
 [node name="支线任务" type="TabContainer" parent="内容区域/标签"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_c5l5k")
 current_tab = 0
@@ -321,9 +322,30 @@ offset_bottom = 137.0
 theme_override_styles/disabled = SubResource("StyleBox_jrtx1")
 disabled = true
 
+[node name="通知历史" type="VBoxContainer" parent="内容区域/标签"]
+unique_name_in_owner = true
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="最大通知文本" type="Label" parent="内容区域/标签/通知历史"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "最多保留,本次游戏中,最新的20条通知"
+
+[node name="滚动区" type="ScrollContainer" parent="内容区域/标签/通知历史"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="提示" type="VBoxContainer" parent="内容区域/标签/通知历史/滚动区"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
 [node name="设置面板" parent="内容区域/标签" instance=ExtResource("8_60vby")]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 4
 
 [node name="任务功能" type="HBoxContainer" parent="内容区域"]
 layout_mode = 1

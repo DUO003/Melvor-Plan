@@ -164,7 +164,7 @@ func _on_slot_hover() -> void:
 		# 执行完场景1逻辑后直接返回，不再执行后续代码
 		return
 	# 场景2：存在正在拖拽的物品，且拖拽的是装备数据类型
-	elif GBIS.moving_item_service.moving_item is EquipmentData:
+	elif GBIS.moving_item_service.moving_item is EquipmentData or  GBIS.moving_item_service.moving_item is 物品宝石:
 		# 适配拖拽物品的显示尺寸：将拖拽物品的视图基础尺寸设为当前槽位的基础尺寸
 		GBIS.moving_item_service.moving_item_view.base_size = base_size
 		# 检查当前装备槽是否可装备该拖拽物品（获取槽位实例并调用可用性检测方法）
@@ -183,7 +183,10 @@ func 返回装备栏显示文本()->String:
 	var 文本:String=""
 	var 倍率:float=装备槽.倍率()
 	if 物品:
-		文本=物品.返回简介(slot_name,{"倍率":倍率})
+		if 物品 is 物品装备:
+			文本=物品.返回简介(slot_name,{"倍率":倍率})
+		else :
+			文本="装备错误"
 	else :
 		文本="没有装备"
 	var 宝石物品数组=计划.装备.获得装备槽宝石(slot_name,false)
@@ -218,8 +221,8 @@ func 读取宝石槽():
 func _on_item_unequipped(slot_name: String, _item_data: ItemData):
 	if slot_name != self.slot_name:
 		return
-	
 	_clear_slot()
+
 
 ## 绘制装备
 func _draw_item(item_data: ItemData) -> ItemView:

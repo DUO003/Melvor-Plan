@@ -62,8 +62,9 @@ func 更新UI():
 		var 大小=$"进度".size
 		大小.x=400
 		$"进度".set_size(大小)
-		if 回复速度>=1:
-			$"进度".max_value = 计划.手工.精华数量()
+		var 自动制作=计划.手工.精华数量()
+		if 自动制作>=1:
+			$"进度".max_value = 自动制作
 			$"进度".value = 回复速度
 		else :
 			$"进度".max_value = 1
@@ -115,7 +116,7 @@ func 更新贴图():
 	if Engine.is_editor_hint():
 		$"文本".text=str(资源名称[0])+"物质"
 	else :
-		$"文本".text=计划.手工.返回资源名称(资源名称)
+		$"文本".text=计划.手工.返回资源信息(资源名称,"显示名")
 	if not 贴图节点:# 确保TextureRect节点存在
 		print("警告：未找到「贴图」节点，请检查节点路径")
 		return

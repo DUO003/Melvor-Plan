@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dr3p3f8wbo87d"]
+[gd_scene load_steps=20 format=3 uid="uid://dr3p3f8wbo87d"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_loe2l"]
 [ext_resource type="Script" uid="uid://mkdbh1ljjonw" path="res://代码/专属代码/背包界面/背包界面.gd" id="2_tb4we"]
@@ -16,6 +16,8 @@ content_margin_bottom = 5.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2qtmj"]
 content_margin_top = 5.0
 content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ggjuy"]
 
 [sub_resource type="DPITexture" id="DPITexture_sxijb"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"24\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\"/></svg>
@@ -111,12 +113,12 @@ offset_bottom = 1000.0
 [node name="水平排列" type="HBoxContainer" parent="内容节点"]
 custom_minimum_size = Vector2(1700, 900)
 layout_mode = 0
-offset_right = 1700.0
+offset_right = 1710.0
 offset_bottom = 900.0
 theme_override_constants/separation = 0
 
 [node name="垂直排列" type="VBoxContainer" parent="内容节点/水平排列"]
-custom_minimum_size = Vector2(1100, 900)
+custom_minimum_size = Vector2(1080, 900)
 layout_mode = 2
 
 [node name="物品栏选项卡" type="TabContainer" parent="内容节点/水平排列/垂直排列"]
@@ -242,6 +244,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2qtmj")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_ggjuy")
 current_tab = 1
 
 [node name="物品简介" type="Control" parent="内容节点/水平排列/状态区"]
@@ -380,6 +383,7 @@ text = "整理"
 [node name="装备槽" parent="内容节点/水平排列/状态区" instance=ExtResource("6_ggjuy")]
 unique_name_in_owner = true
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="随身商店" parent="内容节点/水平排列/状态区" instance=ExtResource("9_odugo")]
 unique_name_in_owner = true

@@ -28,6 +28,8 @@ func 安全清除移动物品() -> void:
 		var 背包类型 = "背包"
 		if moving_item is 物品装备:
 			背包类型 = "装备"
+		if moving_item is 物品宝石:
+			背包类型 = "宝石"
 		if moving_item is StackableData:
 			if moving_item.current_amount<=0:
 				clear_moving_item()
@@ -41,7 +43,7 @@ func clear_moving_item() -> void:
 	moving_item_view = null
 	if drop_area_view:
 		drop_area_view.hide()
-
+	GBIS.更新移动物品.emit()
 # 根据物品数据执行物品移动逻辑（用于鼠标拖拽物品等交互场景）
 # 参数说明：
 # item_data: 要移动的物品核心数据对象（ItemData类型）
@@ -56,8 +58,10 @@ func move_item_by_data(item_data: ItemData, offset: Vector2i, base_size: int,背
 	# 创建移动物品的可视化视图实例，传入物品数据和基础尺寸
 	self.moving_item_view = ItemView.new(item_data, base_size)
 	#print("背包本体",背包本体)
-	# 通过GBIS单例发送"鼠标持有物品"的信号，参数true表示开始持有物品
+	# 通过GBIS单例发送"鼠标持有物品"的信号，参数true表示开始持有物品,与背包隐藏相关
 	GBIS.鼠标物品.emit(true)
+	#通用信号
+	GBIS.更新移动物品.emit()
 	# 判断背包本体不为空，且是基础容器视图（BaseContainerView）的实例
 	if 背包本体!=null and 背包本体 is BaseContainerView:
 		# 同步背包本体的基础尺寸到移动物品视图
@@ -70,6 +74,9 @@ func move_item_by_data(item_data: ItemData, offset: Vector2i, base_size: int,背
 		moving_item_view.stack_num_font_size = 背包本体.stack_num_font_size
 		# 同步背包本体的物品堆叠数量文字边距
 		moving_item_view.stack_num_margin = 背包本体.stack_num_margin
+	else :
+		moving_item_view.stack_num_font_size =20
+		moving_item_view.stack_num_color =Color(0,0,0)
 	# 获取移动物品的专属显示层级，并将物品视图添加到该层级（确保在最上层显示）
 	get_moving_item_layer().add_child(moving_item_view)
 	get_moving_item_layer().add_child(右键取消物品.new())

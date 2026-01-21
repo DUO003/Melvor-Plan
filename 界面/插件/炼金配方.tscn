@@ -1,17 +1,16 @@
-[gd_scene load_steps=46 format=3 uid="uid://bv36ac0k5rwo"]
+[gd_scene load_steps=44 format=3 uid="uid://bv36ac0k5rwo"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_usgc3"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_f8lap"]
 [ext_resource type="Script" uid="uid://bv43rur7rji2w" path="res://代码/专属代码/炼金界面/炼金配方.gd" id="2_t1sfb"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_6h5q0"]
 [ext_resource type="PackedScene" uid="uid://unn8tlhgiegn" path="res://界面/插件/配方格子.tscn" id="5_gujam"]
+[ext_resource type="Texture2D" uid="uid://caxwmgfreys4p" path="res://素材/自制/图标/移动.png" id="6_t1sfb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1sfb"]
 bg_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 script = ExtResource("3_6h5q0")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
@@ -19,8 +18,6 @@ metadata/_custom_type_script = "uid://dyet4yfov8by1"
 bg_color = Color(0.6901961, 0.5568628, 0.27058825, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 expand_margin_left = -5.0
 expand_margin_top = -5.0
 expand_margin_right = -5.0
@@ -110,12 +107,9 @@ metadata/_custom_type_script = "uid://dyet4yfov8by1"
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gujam"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
 border_width_left = 5
-border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.6901961, 0.5568628, 0.27058825, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
+border_color = Color(0, 0, 0, 1)
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 script = ExtResource("3_6h5q0")
@@ -130,42 +124,6 @@ content_margin_right = -1.0
 content_margin_bottom = -1.0
 script = ExtResource("2_f8lap")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_gujam")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgk5h"]
-bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_color = Color(0, 0, 0, 1)
-script = ExtResource("3_6h5q0")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06t5k"]
-bg_color = Color(0.53, 0.41339996, 0.21199998, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.40784314, 0.2901961, 0.078431375, 1)
-expand_margin_left = -5.0
-expand_margin_top = -5.0
-expand_margin_right = -5.0
-script = ExtResource("3_6h5q0")
-margin_left = -5
-margin_top = -5
-margin_right = -5
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBox" id="StyleBox_07wse"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = 20.0
-content_margin_top = 2.0
-content_margin_right = 20.0
-content_margin_bottom = 0.0
-script = ExtResource("2_f8lap")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kgk5h"), SubResource("StyleBoxFlat_06t5k")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [sub_resource type="ImageTexture" id="ImageTexture_gujam"]
@@ -330,6 +288,8 @@ metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [node name="炼金配方卡片" type="FoldableContainer"]
 custom_minimum_size = Vector2(385, 0)
+offset_right = 385.0
+offset_bottom = 357.0
 theme = ExtResource("1_usgc3")
 theme_override_styles/title_panel = SubResource("StyleBox_n2weh")
 theme_override_styles/title_hover_panel = SubResource("StyleBox_n2weh")
@@ -340,67 +300,49 @@ title = "配方1"
 script = ExtResource("2_t1sfb")
 
 [node name="炼金配方" type="Panel" parent="."]
-custom_minimum_size = Vector2(385, 350)
+custom_minimum_size = Vector2(385, 300)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBox_t1sfb")
 
-[node name="信息" type="TabContainer" parent="炼金配方"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -5.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-theme_override_styles/tab_unselected = SubResource("StyleBox_07wse")
-current_tab = 0
-
-[node name="配方" type="Control" parent="炼金配方/信息"]
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="配方格子" parent="炼金配方/信息/配方" instance=ExtResource("5_gujam")]
+[node name="配方格子" parent="炼金配方" instance=ExtResource("5_gujam")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(375, 240)
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 385.0
-offset_bottom = 251.0
+offset_left = 7.0000033
+offset_right = 382.0
+offset_bottom = 240.0
+scale = Vector2(0.8, 0.8)
 
-[node name="还不够了解" type="Label" parent="炼金配方/信息/配方"]
-layout_mode = 0
-offset_left = 112.0
-offset_top = -39.0
-offset_right = 372.0
-offset_bottom = 6.0
+[node name="了解" type="Label" parent="炼金配方"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -377.0
+offset_top = -102.0
+offset_right = -8.0
+offset_bottom = -57.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_font_sizes/font_size = 28
 text = "还不够了解:100/200"
 
-[node name="查看" type="Button" parent="炼金配方/信息/配方"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = -0.125
-anchor_right = 1.0
-anchor_bottom = -0.125
-offset_left = -201.0
-offset_top = -58.875
-offset_right = -101.0
-offset_bottom = 0.125
-theme_override_font_sizes/font_size = 35
-text = "查看"
-
 [node name="制作数量" type="SpinBox" parent="炼金配方"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 68.0
-offset_top = 292.0
-offset_right = 206.0
-offset_bottom = 344.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 89.0
+offset_top = -57.0
+offset_right = 210.0
+offset_bottom = -5.0
+grow_vertical = 0
 theme_override_constants/field_and_buttons_separation = 0
 theme_override_constants/buttons_width = 0
 theme_override_icons/updown = SubResource("ImageTexture_gujam")
@@ -431,12 +373,28 @@ select_all_on_focus = true
 
 [node name="提示" type="Label" parent="炼金配方/制作数量"]
 layout_mode = 0
-offset_left = -61.0
+offset_left = -74.0
 offset_top = 5.0
-offset_right = 5.0
+offset_right = 2.0
 offset_bottom = 50.0
 theme_override_font_sizes/font_size = 28
 text = "炼制:"
+
+[node name="查看" type="Button" parent="炼金配方"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -114.0
+offset_bottom = -54.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "查看"
 
 [node name="使用" type="Button" parent="炼金配方"]
 custom_minimum_size = Vector2(100, 0)
@@ -451,26 +409,59 @@ offset_top = -61.0
 offset_right = 193.5
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "开始制作"
 
 [node name="删除" type="Button" parent="炼金配方"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 91.5
-offset_top = -407.0
-offset_right = 191.5
-offset_bottom = -348.0
-grow_horizontal = 2
-grow_vertical = 0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_top = -56.0
+offset_bottom = 3.0
+grow_horizontal = 0
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBox_gujam")
 theme_override_styles/pressed = SubResource("StyleBox_7ik2p")
 theme_override_styles/hover = SubResource("StyleBox_kgk5h")
 theme_override_styles/focus = SubResource("StyleBox_tqll5")
 text = "删除"
+
+[node name="上移" type="Button" parent="炼金配方"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.303
+anchor_right = 1.0
+anchor_bottom = 0.303
+offset_left = -73.0
+offset_top = -60.9
+offset_right = -9.0
+offset_bottom = 3.0999985
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+icon = ExtResource("6_t1sfb")
+expand_icon = true
+
+[node name="下移" type="Button" parent="炼金配方"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.303
+anchor_right = 1.0
+anchor_bottom = 0.303
+offset_left = -9.0
+offset_top = 71.7033
+offset_right = 55.0
+offset_bottom = 135.70331
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 3.1415927
+theme_override_font_sizes/font_size = 35
+icon = ExtResource("6_t1sfb")
+expand_icon = true

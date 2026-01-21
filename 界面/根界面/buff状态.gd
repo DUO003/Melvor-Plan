@@ -27,5 +27,5 @@ func _更新BUFF名称显示() -> void:
 	var 新字体大小: int = int(原始字体大小 * 缩放比例)
 	新字体大小 = max(新字体大小, 12)
 	名称节点.add_theme_font_size_override("font_size", 新字体大小)
-func 设置BUFF图标(名称: String, 精灵节点: Sprite2D=%"贴图") -> bool:
+func 设置BUFF图标(名称: String, 精灵节点: Control=%"贴图") -> bool:
 	return 精灵节点.设置BUFF图标(名称)

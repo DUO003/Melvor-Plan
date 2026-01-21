@@ -254,7 +254,8 @@ text = "烹饪玩法帮助
 2.食材预制后可以获取食材瓶,瓶子内保存着食材
 3.部分工序可以处理其他工序处理后的食材,
 点击料理瓶可以将加工过的食材拿到其他工序中.
-4.烹饪时满足基础需求即可完成料理制作."
+4.烹饪时满足基础需求即可完成料理制作.
+装备的烹饪属性可以提高完成制作时的快速反应得分"
 
 [node name="贴图2" type="TextureRect" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer"]
 custom_minimum_size = Vector2(120, 120)
@@ -264,10 +265,10 @@ texture = ExtResource("6_7ay8b")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_constants/line_spacing = 0
@@ -275,6 +276,19 @@ theme_override_constants/paragraph_spacing = -10
 text = "食材瓶子
 拥有数量和容量限制
 可以通过废弃工序清空腾出空间"
+
+[node name="帮助2" type="Label" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = -10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7o14l")
+text = "装备的烹饪属性
+可以提高完成制作时
+快速反应得分"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer"]
+layout_mode = 2
 
 [node name="Label2" type="Label" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -290,8 +304,7 @@ size_flags_vertical = 6
 theme_override_constants/line_spacing = 0
 theme_override_constants/paragraph_spacing = -10
 text = "敬请期待:
-1.更多工序
-2.自动烹饪"
+1.更多工序"
 
 [node name="贴图" type="TextureRect" parent="内容节点/内容节点区域/操作区/帮助/HBoxContainer"]
 custom_minimum_size = Vector2(600, 120)

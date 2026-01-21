@@ -13,16 +13,18 @@ class_name InventoryService
 ##    - 可堆叠物品堆叠成功 → 发射 sig_inv_item_updated 信号
 ##    - 不可堆叠物品/堆叠后剩余物品添加成功 → 发射 sig_inv_item_added 信号
 func add_item(inv_name: String, item_data: ItemData) -> bool:
-	# 复用传入的物品数据对象（避免复制丢失堆叠上限等关键数据）
-	var new_item_data = item_data#不能复制,会丢失上限数据
+	var new_item_data = item_data
 	# 处理可堆叠物品的逻辑分支
+		# 根据物品名称查找容器中已存在的同类型可堆叠物品
+	var items = find_item_data_by_item_name(inv_name, new_item_data.item_name)
+	# 遍历已存在的同类型物品，尝试堆叠
+	if items.has(item_data):
+		#如果存在自己就无需继续
+		return true
 	if new_item_data is StackableData:
 		# 校验并修正堆叠数量：超过上限则重置为堆叠最大值
 		if new_item_data.current_amount > new_item_data.stack_size:
 			new_item_data.current_amount = new_item_data.stack_size
-		# 根据物品名称查找容器中已存在的同类型可堆叠物品
-		var items = find_item_data_by_item_name(inv_name, new_item_data.item_name)
-		# 遍历已存在的同类型物品，尝试堆叠
 		for item in items:
 			# 仅处理未堆满的物品槽位
 			if not item.is_full():

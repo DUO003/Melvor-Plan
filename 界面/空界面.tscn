@@ -176,6 +176,12 @@ grow_vertical = 0
 mouse_filter = 2
 mouse_behavior_recursive = 1
 
+[node name="其他容器" type="Control" parent="功能"]
+unique_name_in_owner = true
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+
 [node name="悬浮面板" type="Node" parent="."]
 
 [node name="隐藏奖励" type="Button" parent="悬浮面板"]
@@ -203,11 +209,14 @@ theme_override_styles/panel = SubResource("StyleBox_s3egw")
 [node name="任务栏分割" type="VSplitContainer" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 990)
-layout_mode = 0
-offset_left = 1700.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
 offset_top = 10.0
-offset_right = 1920.0
 offset_bottom = 990.0
+grow_horizontal = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 5
@@ -280,10 +289,14 @@ theme_override_constants/separation = 5
 [node name="图钉" type="ScrollContainer" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
-layout_mode = 0
-offset_top = 1000.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="图钉容器" type="HBoxContainer" parent="图钉"]
 unique_name_in_owner = true

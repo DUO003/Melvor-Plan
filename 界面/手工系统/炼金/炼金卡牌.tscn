@@ -1,0 +1,322 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3bab6sblnpnj"]
+
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_7ywc6"]
+[ext_resource type="Script" uid="uid://dn1qpel44xw" path="res://界面/手工系统/炼金/炼金卡牌.gd" id="1_ckx02"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_f48tf"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="3_f48tf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvh6a"]
+bg_color = Color(0.70684254, 0.6228245, 0.39927918, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.6156863, 0.3529412, 0.09803922, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("1_7ywc6")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="Animation" id="Animation_dvh6a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("卡牌:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("卡牌:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("卡牌/背面:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("卡牌/正面:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7ywc6"]
+resource_name = "卡牌翻面"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("卡牌:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("卡牌:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(110, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("卡牌/背面:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("卡牌/正面:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ckx02"]
+_data = {
+&"RESET": SubResource("Animation_dvh6a"),
+&"卡牌翻面": SubResource("Animation_7ywc6")
+}
+
+[node name="炼金卡牌" type="Control"]
+custom_minimum_size = Vector2(220, 320)
+layout_mode = 3
+anchor_right = 0.115
+anchor_bottom = 0.296
+offset_right = -0.80000305
+offset_bottom = 0.32000732
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_f48tf")
+script = ExtResource("1_ckx02")
+
+[node name="卡牌" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -160.0
+offset_right = 110.00012
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dvh6a")
+
+[node name="背面" type="Control" parent="卡牌"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0000305
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="背面图标" type="TextureRect" parent="卡牌/背面"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -76.0
+offset_right = 40.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_f48tf")
+expand_mode = 1
+
+[node name="提示文本" type="Label" parent="卡牌/背面/背面图标"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -6.9999847
+offset_top = 5.0
+offset_right = 5.0000153
+offset_bottom = 33.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "未解锁"
+horizontal_alignment = 1
+
+[node name="正面" type="Control" parent="卡牌"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0000305
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="正面图标" type="TextureRect" parent="卡牌/正面"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -69.0
+offset_right = 40.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_f48tf")
+expand_mode = 1
+
+[node name="名称文本" type="Label" parent="卡牌/正面/正面图标"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -6.9999847
+offset_top = 5.0
+offset_right = 5.0000153
+offset_bottom = 33.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "物品名称"
+horizontal_alignment = 1
+
+[node name="小图标上" type="TextureRect" parent="卡牌/正面"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 35.0
+offset_bottom = 36.0
+texture = ExtResource("3_f48tf")
+expand_mode = 1
+
+[node name="文本" type="Label" parent="卡牌/正面/小图标上"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.51000005
+anchor_right = 1.0
+anchor_bottom = 0.51000005
+offset_left = 3.0
+offset_top = -28.500002
+offset_right = 26.0
+offset_bottom = 28.499998
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "1"
+
+[node name="小图标下" type="TextureRect" parent="卡牌/正面"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -35.99997
+offset_top = -36.0
+offset_right = -5.9999695
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_f48tf")
+expand_mode = 1
+
+[node name="文本" type="Label" parent="卡牌/正面/小图标下"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.563
+anchor_bottom = 0.563
+offset_left = -24.99997
+offset_top = -28.490002
+offset_right = -1.9999695
+offset_bottom = 28.509998
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "1"
+metadata/_edit_use_anchors_ = true
+
+[node name="动画" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ckx02")
+}
+
+[node name="动画计时器" type="Timer" parent="."]
+one_shot = true
+
+[node name="点击响应" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true

@@ -10,7 +10,6 @@ func _ready() -> void:
 		if 类型=="课题订单":
 			订单选项=计划.数据订单("课题订单范围")
 		订单参数=计划.订单参数[类型]
-	更新UI()
 	配置信息=$"配置选项"
 	if Engine.is_editor_hint():
 		订单参数={}
@@ -24,9 +23,12 @@ func _ready() -> void:
 		if not Engine.is_editor_hint():
 			配置信息.item_selected.connect(func(选中索引: int):
 				计划.数据订单(类型,配置信息.get_item_text(选中索引)))
+	更新UI()
 func 更新UI():
 	配置信息=$"配置选项"#OptionButton
 	if 订单选项.size()>=1:#与节点内的一致,本地数组会在_ready()赋值给节点
+		if not 订单选项.has(配置文本):
+			配置文本=计划.数据订单(类型,订单选项[0])
 		配置信息.visible=true
 		for i in range(配置信息.get_item_count()):
 			if 配置文本 == 配置信息.get_item_text(i):

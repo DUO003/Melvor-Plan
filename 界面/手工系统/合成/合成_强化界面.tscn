@@ -1,0 +1,355 @@
+[gd_scene load_steps=13 format=3 uid="uid://d1tu2l5vc6rcu"]
+
+[ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_1irxy"]
+[ext_resource type="Script" uid="uid://d2uujpygd8b6b" path="res://界面/手工系统/合成/合成_强化界面.gd" id="2_f5s88"]
+[ext_resource type="PackedScene" uid="uid://uh5t35s1wsr5" path="res://界面/插件/配方容器.tscn" id="3_1c5dw"]
+[ext_resource type="Script" uid="uid://bd2lo24v7cyb2" path="res://界面/手工系统/合成/新背包.gd" id="4_mdl74"]
+[ext_resource type="Script" uid="uid://o6odfxe2u8tk" path="res://界面/插件/物品辅助/背包.gd" id="4_pxfyn"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_pxfyn"]
+[ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="6_mdl74"]
+[ext_resource type="Texture2D" uid="uid://b1ep2nj8rob3c" path="res://素材/自制/图标/嫉妒.svg" id="8_7xhl6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdl74"]
+bg_color = Color(0.69556814, 0.5488749, 0.25356284, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_pxfyn")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mdl74"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7xhl6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v813g"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[node name="强化界面" node_paths=PackedStringArray("选项卡同步") instance=ExtResource("1_1irxy")]
+script = ExtResource("2_f5s88")
+"基类窗口名称" = "合成_强化界面"
+"选项卡同步" = {
+"强化选项卡": NodePath("内容节点/内容/选项卡")
+}
+
+[node name="等级显示" parent="标题" index="0"]
+"系统" = "手工"
+"玩法" = "强化"
+
+[node name="内容" type="HBoxContainer" parent="内容节点" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="选项卡" type="TabContainer" parent="内容节点/内容" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 2
+
+[node name="物品鉴定" type="Control" parent="内容节点/内容/选项卡" index="1"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="配方容器" parent="内容节点/内容/选项卡/物品鉴定" index="0" instance=ExtResource("3_1c5dw")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 0
+offset_left = 244.0
+offset_top = 147.0
+offset_right = 404.0
+offset_bottom = 307.0
+"可修改数量" = false
+"物品数量限制" = Vector2i(1, 1)
+"限制类型" = ["装备", "宝石"]
+"空置标签" = "未鉴定物品"
+
+[node name="鉴定价格" type="Label" parent="内容节点/内容/选项卡/物品鉴定" index="1"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 214.0
+offset_top = 316.0
+offset_right = 598.0
+offset_bottom = 373.0
+text = "鉴定价格200金币"
+
+[node name="鉴定" type="Button" parent="内容节点/内容/选项卡/物品鉴定" index="2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 1
+offset_left = 425.0
+offset_top = 236.0
+offset_right = 605.0
+offset_bottom = 303.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "鉴定"
+
+[node name="创造宝石" type="Control" parent="内容节点/内容/选项卡" index="2"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="符文容器" parent="内容节点/内容/选项卡/创造宝石" index="0" instance=ExtResource("3_1c5dw")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 0
+offset_left = 145.0
+offset_top = 105.0
+offset_right = 305.0
+offset_bottom = 265.0
+"可修改数量" = false
+"物品数量限制" = Vector2i(5, 5)
+"限制类型" = ["符文"]
+"空置标签" = "符文"
+"默认值" = 5
+
+[node name="标签" type="Label" parent="内容节点/内容/选项卡/创造宝石" index="1"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 109.0
+offset_top = 323.0
+offset_right = 792.0
+offset_bottom = 380.0
+text = "放入5个相同符文,创造一个未鉴定宝石"
+
+[node name="创造" type="Button" parent="内容节点/内容/选项卡/创造宝石" index="2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 0
+offset_left = 577.0
+offset_top = 193.0
+offset_right = 757.0
+offset_bottom = 260.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "创造"
+
+[node name="创造数量" type="SpinBox" parent="内容节点/内容/选项卡/创造宝石" index="3"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 325.0
+offset_top = 208.0
+offset_right = 566.0
+offset_bottom = 255.0
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+rounded = true
+prefix = "创造"
+suffix = "个"
+
+[node name="装备升级" type="Control" parent="内容节点/内容/选项卡" index="3"]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="装备栏" parent="内容节点/内容/选项卡/装备升级" index="0" instance=ExtResource("3_1c5dw")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 0
+offset_left = 48.0
+offset_top = 80.0
+offset_right = 208.0
+offset_bottom = 240.0
+"可修改数量" = false
+"物品数量限制" = Vector2i(1, 1)
+"空置标签" = "装备"
+"仅限标准物品" = false
+
+[node name="装备信息" type="Label" parent="内容节点/内容/选项卡/装备升级" index="1"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -593.0
+offset_top = 62.0
+offset_right = -179.0
+offset_bottom = -64.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "装备信息
+LV1/20"
+
+[node name="升级" type="Button" parent="内容节点/内容/选项卡/装备升级" index="2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 0
+offset_left = 405.0
+offset_top = 171.0
+offset_right = 585.0
+offset_bottom = 238.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "升级"
+
+[node name="材料滚动区" type="ScrollContainer" parent="内容节点/内容/选项卡/装备升级" index="3"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 38.0
+offset_top = 259.0
+offset_right = 662.0
+offset_bottom = 785.0
+
+[node name="材料选择" type="VBoxContainer" parent="内容节点/内容/选项卡/装备升级/材料滚动区" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_lock_ = true
+
+[node name="材料信息" type="RichTextLabel" parent="内容节点/内容/选项卡/装备升级/材料滚动区/材料选择" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/line_separation = -5
+theme_override_constants/paragraph_separation = -5
+bbcode_enabled = true
+text = "固定材料+1个任意材料"
+fit_content = true
+scroll_active = false
+
+[node name="装备分解" parent="内容节点/内容/选项卡/装备升级" index="4" instance=ExtResource("3_1c5dw")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 1
+offset_left = 1094.0
+offset_right = 1214.0
+offset_bottom = 120.0
+"可修改数量" = false
+"物品数量限制" = Vector2i(1, 1)
+"空置标签" = "分解装备"
+"仅限标准物品" = false
+
+[node name="分解" type="Button" parent="内容节点/内容/选项卡/装备升级" index="5"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1066.0
+offset_top = 132.0
+offset_right = 1253.0
+offset_bottom = 199.0
+text = "确认分解"
+
+[node name="Label" type="Label" parent="内容节点/内容/选项卡/装备升级" index="6"]
+layout_mode = 0
+offset_left = 1037.0
+offset_top = 216.0
+offset_right = 1273.0
+offset_bottom = 273.0
+text = "分解清理背包
+不会获得物品"
+
+[node name="物品背包" type="VBoxContainer" parent="内容节点/内容" index="1"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("4_mdl74")
+
+[node name="标签" type="Label" parent="内容节点/内容/物品背包" index="0"]
+layout_mode = 2
+text = "待鉴定物品"
+
+[node name="背包滚动区" type="ScrollContainer" parent="内容节点/内容/物品背包" index="1"]
+clip_contents = false
+custom_minimum_size = Vector2(410, 0)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="背包" type="GridContainer" parent="内容节点/内容/物品背包/背包滚动区" index="0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(409, 0)
+layout_mode = 2
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 3
+columns = 4
+script = ExtResource("4_pxfyn")
+"背包来源" = Array[String](["背包"])
+"筛选标签" = ["装备", "宝石"]
+"排数" = 4
+"格子尺寸" = 100
+"背景图" = SubResource("StyleBoxFlat_mdl74")
+"字体" = ExtResource("6_mdl74")
+
+[node name="背包排序2" type="VBoxContainer" parent="内容节点/内容" index="2"]
+layout_mode = 2
+
+[node name="标签" type="Label" parent="内容节点/内容/背包排序2" index="0"]
+layout_mode = 2
+text = "已鉴定物品"
+
+[node name="背包滚动区" type="ScrollContainer" parent="内容节点/内容/背包排序2" index="1"]
+clip_contents = false
+custom_minimum_size = Vector2(410, 0)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="背包" type="GridContainer" parent="内容节点/内容/背包排序2/背包滚动区" index="0"]
+custom_minimum_size = Vector2(409, 0)
+layout_mode = 2
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 3
+columns = 4
+script = ExtResource("4_pxfyn")
+"背包来源" = ["装备", "宝石"]
+"排数" = 4
+"格子尺寸" = 100
+"背景图" = SubResource("StyleBoxFlat_mdl74")
+"字体" = ExtResource("6_mdl74")
+
+[node name="Control" type="Control" parent="内容节点/内容/背包排序2" index="2"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="主菜单" type="Button" parent="内容节点" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 1
+offset_left = 1517.0
+offset_top = 825.0
+offset_right = 1697.0
+offset_bottom = 892.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "主菜单"
+
+[node name="复选框示例" type="CheckBox" parent="." index="3"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 43.0
+offset_top = 418.0
+offset_right = 667.0
+offset_bottom = 490.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mdl74")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7xhl6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_v813g")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mdl74")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v813g")
+text = "铁锭"
+icon = ExtResource("8_7xhl6")
+expand_icon = true

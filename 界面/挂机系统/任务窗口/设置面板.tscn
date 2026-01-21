@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dron5fg7jasw2"]
+[gd_scene load_steps=16 format=3 uid="uid://dron5fg7jasw2"]
 
 [ext_resource type="Texture2D" uid="uid://db5tn75ulvc28" path="res://素材/自制/QQ群.png" id="1_1lv0b"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ar4cj"]
@@ -29,6 +29,8 @@ content_margin_left = 25.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_26hf3"]
 content_margin_left = 25.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_376va"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_leojc"]
 content_margin_left = 25.0
@@ -144,13 +146,115 @@ offset_top = -3.0
 offset_right = 424.0
 offset_bottom = 54.0
 selected = 2
-item_count = 3
+item_count = 4
 popup/item_0/text = "左"
 popup/item_0/id = 0
 popup/item_1/text = "中"
 popup/item_1/id = 1
 popup/item_2/text = "右"
 popup/item_2/id = 2
+popup/item_3/text = "悬浮"
+popup/item_3/id = 3
+
+[node name="功能说明6" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_26hf3")
+text = "最大通知数量"
+
+[node name="通知数量" type="SpinBox" parent="设置面板/设置标签/基础设置/设置/功能说明6"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = -23.5
+offset_right = 214.0
+offset_bottom = 23.5
+grow_horizontal = 0
+grow_vertical = 2
+value = 20.0
+
+[node name="功能说明3" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_26hf3")
+text = "手工系统自动制作通知"
+
+[node name="制作通知" type="CheckButton" parent="设置面板/设置标签/基础设置/设置/功能说明3"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -29.0
+offset_right = 127.0
+offset_bottom = 29.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_376va")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_376va")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_376va")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_376va")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_376va")
+
+[node name="功能说明4" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_26hf3")
+text = "全局精通通知"
+
+[node name="精通通知" type="CheckButton" parent="设置面板/设置标签/基础设置/设置/功能说明4"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -29.0
+offset_right = 127.0
+offset_bottom = 29.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_376va")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_376va")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_376va")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_376va")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_376va")
+
+[node name="功能说明5" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_26hf3")
+text = "全局熟练通知"
+
+[node name="熟练通知" type="CheckButton" parent="设置面板/设置标签/基础设置/设置/功能说明5"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -29.0
+offset_right = 127.0
+offset_bottom = 29.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_376va")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_376va")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_376va")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_376va")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_376va")
 
 [node name="标签3" type="Label" parent="设置面板/设置标签/基础设置/设置"]
 layout_mode = 2

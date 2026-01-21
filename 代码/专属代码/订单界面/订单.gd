@@ -5,11 +5,12 @@ class_name 订单卡片
 @export var 提交数量:int=1
 var 初始提交
 @export_group("固定文本")
-@export_multiline var 固定文本:String="[font_size=47][b]{物品名称}[/b][/font_size]
-倍率{倍率}%
+#[font_size=47][b]{物品名称}[/b][/font_size]
+@export_multiline var 固定文本:String="倍率{倍率}%
 合计:{金币数量}[img=40x40]res://素材/游戏素材/货币/2.png[/img]
 剩余{额外奖励}次赠品+{额外奖励数量}[img=40x40]{额外奖励图片}[/img]"
-var 固定条件=[["{物品名称}",func():return 订单数据.名称],
+var 固定条件=[
+	#["{物品名称}",func():return 订单数据.名称],
 ["{倍率}",func():return "%.1f"%(100*订单数据.单价)],
 ["{金币数量}",func():
 	var 金币:int=0
@@ -24,13 +25,14 @@ var 固定条件=[["{物品名称}",func():return 订单数据.名称],
 ["{额外奖励数量}",func():return 订单数据.额外物品数量],
 ["{额外奖励图片}",func():return 计划.表格.道具贴图(订单数据.额外物品).resource_path]]
 var 固定标题="[img=40x40]{图标}[/img]#{标题}"
-var 提交:Button
+@onready var 提交: Button = %提交
+@onready var 物品名称: OptionButton = %物品名称
 func _ready() -> void:
 	if 订单数据.时限<=Time.get_unix_time_from_system():
 		订单数据.生成订单数据()
-	提交=%"提交"
 	重载订单数据()
 	%"放弃".pressed.connect(放弃)
+	物品名称.item_selected.connect(重设订单)
 	提交.pressed.connect(func(): 
 		if not 订单数据.提交订单(提交数量):
 			计划.语法糖通知("订单提交条件不满足","订单提交")
@@ -39,9 +41,13 @@ func _ready() -> void:
 		if 初始提交==0:计划.更新玩法.emit()
 		计划.更新_UI.emit())
 	计划.更新_UI.connect(全面更新)
+	计划.更新玩法.connect(全面更新)
 	if not 订单数据.时限==-1:
 		计划.过去一秒.connect(更新计时器)
 	更新计时器()
+func 重设订单(_序号):
+	订单数据.名称=物品名称.text
+	重载订单数据()
 func 重载订单数据():
 	初始提交=提交数量
 	if 提交数量==0:
@@ -90,7 +96,15 @@ func 全面更新():
 		if 初始提交==0:提交.text="全部提交"
 		elif 提交数量==1:提交.text="提交"
 		else:提交.text="提交*%d"%提交数量
-
+	物品名称.clear()
+	var 序号:int=0
+	for 功能名称 in 订单数据.物品数组:
+		物品名称.add_item(功能名称)
+		if 订单数据.名称==功能名称:
+			物品名称.selected=序号
+		序号+=1
+	物品名称.disabled=订单数据.物品数组.size()<=1
+	#print("订单",订单数据.名称,订单数据.物品数组)
 func 更新计时器():
 	if 订单数据.时限==-1 or 订单数据.名称=="":
 		$"倒计时".visible=false

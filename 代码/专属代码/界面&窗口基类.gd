@@ -6,6 +6,8 @@ class_name 基类梅窗口#逐渐改使用基类 当前大部分窗口未使用
 @export var 滚动区同步: Dictionary[String,ScrollContainer] = {}
 @export var 生命周期计时器: Array[Timer]
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	assert(基类窗口名称 != "", "基类窗口名称不能为空，所有继承者必须重写这个属性")
 	计划.节点[基类窗口名称]=self#注册
 	call_deferred("自动加载")

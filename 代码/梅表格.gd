@@ -24,12 +24,6 @@ func 表格初始化():
 	加载所有表格()
 	创世蓝图=处理表格数据(所有表格字典["创世蓝图"])
 	字典加载()
-	标签加载()
-func 标签加载():
-	缓存蓝图标签={}
-	var 图纸标签=创世蓝图[0].find("标签")
-	for 蓝图 in 创世蓝图:
-		缓存蓝图标签[蓝图[0]]=蓝图[图纸标签]
 func 字典加载():
 	蓝图表头={}
 	var 缓存序号=0
@@ -37,9 +31,12 @@ func 字典加载():
 		蓝图表头[表头]=缓存序号
 		缓存序号+=1
 	蓝图字典={}
+	缓存蓝图标签={}
+	var 图纸标签=创世蓝图[0].find("标签")
 	var 格式标准=创世蓝图[1]
 	for 蓝图 in 创世蓝图:
 		if not 蓝图==创世蓝图[0] and not 蓝图==创世蓝图[1]:
+			缓存蓝图标签[蓝图[0]]=蓝图[图纸标签].split("/")
 			蓝图字典[蓝图[0]]=蓝图
 			var 处理后的蓝图行 = []
 			for 序号 in range(蓝图.size()):
@@ -83,14 +80,17 @@ func 蓝图数据(道具名称,读取值,强制类型="自动"):
 	return null
 func 蓝图标签检查(道具名称,标签,匹配数量:int=1)->bool:
 	if 缓存蓝图标签.has(道具名称):
-		var 物品标签=缓存蓝图标签[道具名称]
-		if 标签 is Array:
-			var 成功匹配:int=0
-			for 标签内容 in 标签:
-				if 标签内容 in 物品标签:成功匹配+=1
-			return 成功匹配>=匹配数量
-		elif 标签 is String:return 标签 in 物品标签
-		else :return false
+		var 标签数组=缓存蓝图标签[道具名称]
+		if 标签数组 is PackedStringArray:#标签类型
+			if 标签 is Array:
+				var 成功匹配:int=0
+				for 标签内容 in 标签:
+					if 标签数组.has(标签内容):成功匹配+=1
+				return 成功匹配>=匹配数量
+			elif 标签 is String:return 标签数组.has(标签)
+			else :return false
+		else :
+			print("错误",道具名称,":",标签,标签数组,)
 	return false
 var 额外堆叠上限缓存={}
 func 获取额外堆叠上限(物品名称)->int:

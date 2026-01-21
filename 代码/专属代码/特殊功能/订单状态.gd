@@ -58,6 +58,12 @@ var 订单参数=计划.订单参数
 		额外物品数量=max(1,ceili(额外数量倍率*订单量))
 ##时间戳
 @export var 时限: float = -1
+@export var 物品数组:Array[String]=[]:
+	get:
+		if 物品数组==[]:
+			var 缓存数组:Array[String]=[]
+			缓存数组.append(名称)
+		return 物品数组
 ##订单标记 只读,兼容旧数据
 var 订单标记: int:
 	get:
@@ -95,6 +101,8 @@ var 图标:String:
 		if 订单参数.has(订单类型) and 订单参数[订单类型].has("图标"):
 			return 订单参数[订单类型]["图标"]
 		else:return "res://素材/豆包AI素材/图标/订单图标.png"
+##同步存档和订单卡片,订单卡片更新时发现订单删除会跟随删除
+var 删除标记:bool=false
 func 提交订单(提交订单量:int=1)->bool:
 	var 订单数量:int=计划.读取数据订单("订单数量")
 	if 订单数量+额外奖励<=0:
@@ -132,15 +140,25 @@ func _init(订单数据=null) -> void:
 ##随机生成订单
 func 生成订单数据(订单数据: String=订单类型) -> bool:
 	订单类型=订单数据
-	var 道具池:Array=获取指定类型图纸(计划.订单对应方向(订单类型))
+	var 道具池:Array=获取指定类型图纸(计划.订单对应方向(订单类型),2+计划.数据系统("挂机","阶级"))
 	时限=Time.get_unix_time_from_system()+3000+randi() % 600
+	物品数组=[]
 	if 订单参数.has(订单类型) and 订单参数[订单类型].has("订单量"):
 		订单量 = 订单参数[订单类型]["订单量"].call()
 	else:
 		订单量 = 15 + 5 * (randi() % 6)
 		道具池=计划.表格.蓝图数组
 	if 道具池.size()>=1:
-		名称=道具池.pick_random()
+		道具池.shuffle()
+		名称=道具池[0]
+		var 抽取次数:int=max(2,randi()%6)
+		if 订单类型=="资源订单":
+			抽取次数=1
+		for 物品名 in 道具池:
+			if 抽取次数>=1:
+				抽取次数-=1
+				物品数组.append(物品名)
+		print(名称,物品数组)
 	else :
 		名称=""#找不到物品
 		return false
@@ -182,5 +200,5 @@ func 获取指定类型图纸(研究方向: Array=[],最大阶级=1)->Array:
 	图纸数组 = 图纸数组.filter(func(图纸名称):
 		var 阶级=计划.表格.蓝图数据(图纸名称,"阶级")
 		return 阶级<=最大阶级)
-	print("执行成功",图纸数组)
+	#print("执行成功",图纸数组)
 	return 图纸数组

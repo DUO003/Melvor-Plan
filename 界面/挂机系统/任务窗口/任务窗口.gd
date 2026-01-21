@@ -24,14 +24,36 @@ func _ready() -> void:
 	%"标签".tab_clicked.connect(func(标签序号):计划.窗口状态管理(基类窗口名称,"标签",null,标签序号))
 	%"支线任务".tab_clicked.connect(func(标签序号):计划.窗口状态管理(基类窗口名称,"支线任务",null,标签序号))
 	成就按钮.pressed.connect(func():计划.切换场景("原罪_傲慢界面","原罪界面"))
+	加载通知()
+	计划.通知更新.connect(加载通知)
+	计划.过去一秒.connect(func():
+		if 通知更新冷却>0:
+			通知更新冷却=0
+			加载通知()
+		)
 	if 计划.跳转设置:
 		print("跳转设置成功")
 		切换到设置()
+@onready var 提示: VBoxContainer = %提示
+@onready var 最大通知文本: Label = %最大通知文本
+var 通知更新冷却:int=0
+func 加载通知():
+	if 通知更新冷却>2:
+		return
+	计划.清除子节点(提示)
+	最大通知文本.text="最多保留,本次游戏中,最新的%d条通知"%[计划.配置文件.get("最大通知",20)]
+	通知更新冷却=true
+	var 序号=0
+	for 文本 in 计划.历史通知文本列表:
+		序号+=1
+		var 节点=Label.new()
+		节点.text="第%d条通知:"%序号+文本
+		提示.add_child(节点)
 func _exit_tree() -> void:
 	super._exit_tree()
 	计划.跳转设置=false
 func 切换到设置():
-	%"标签".current_tab=3
+	%"标签".current_tab=4
 func 加载任务完成统计():
 	%"当前完成任务数量".text="当前完成数量:"+str(计划.任务.完成任务计数("手工"))
 func 加载窗口状态(选项卡:TabContainer,名称:String):
