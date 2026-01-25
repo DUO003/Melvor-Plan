@@ -58,7 +58,11 @@ func 节点有效性检查(节点名称:String)->bool:
 	return 节点名称 in 计划.节点 and 计划.节点[节点名称] != null
 var 屏幕震动锁定:bool=false
 var 初始位置:Vector2
+@onready var 场景容器: CanvasLayer
 func 屏幕震动(摄像机节点: Node2D, 震动频率: int, 震动幅度: int, 震动持续时间: float) -> void:
+	if 场景容器:
+		场景容器.follow_viewport_enabled=true
+	print("屏幕震动")
 	# 参数合法性校验与修正
 	震动频率 = max(震动频率, 1)  # 确保频率至少为1帧
 	震动幅度 = max(震动幅度, 1)  # 确保幅度至少为1像素
@@ -91,3 +95,5 @@ func 屏幕震动(摄像机节点: Node2D, 震动频率: int, 震动幅度: int,
 	# 震动结束后强制复位到初始位置
 	摄像机节点.position = 初始位置
 	屏幕震动锁定=false
+	if 场景容器:
+		场景容器.follow_viewport_enabled=false

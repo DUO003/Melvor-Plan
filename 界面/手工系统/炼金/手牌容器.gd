@@ -31,7 +31,7 @@ func 排列子节点() -> void:
 	print("排序测试")
 	var 子节点列表: Array[Control] = []
 	for 子节点 in 卡片区节点数组:
-		if 子节点 is Control and 子节点.visible:
+		if 子节点 and 子节点 is Control and 子节点.visible:
 			子节点.scale = 缩放子节点
 			子节点列表.append(子节点)
 	
@@ -80,9 +80,10 @@ func 排列子节点() -> void:
 	for 卡片 in 子节点列表:
 		if 选中卡片 and 选中卡片.has(卡片):
 			排序结果.append(卡片)
-	for i in range(排序结果.size()):
-		var 卡片 = 排序结果[i]
-		move_child(卡片, i)  # 移动到第i个位置
+	if 排序结果.size()>1:
+		for i in range(排序结果.size()):
+			var 卡片 = 排序结果[i]
+			move_child(卡片, i)  # 移动到第i个位置
 # 封装垂直对齐位置计算逻辑，简化代码
 func 计算垂直对齐位置(卡片: Control) -> float:
 	var 卡片高度: float=获取卡片真实高度(卡片)

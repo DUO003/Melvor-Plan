@@ -57,13 +57,13 @@ margin_right = -5
 margin_bottom = -5
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
-[sub_resource type="StyleBox" id="StyleBox_vglet"]
+[sub_resource type="StyleBox" id="StyleBox_lif0j"]
 resource_local_to_scene = false
 resource_name = ""
 content_margin_left = 15.0
 content_margin_top = 5.0
 content_margin_right = 15.0
-content_margin_bottom = 15.0
+content_margin_bottom = -1.0
 script = ExtResource("1_kb01l")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kqimc"), SubResource("StyleBoxFlat_012bm")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
@@ -976,7 +976,7 @@ AcceptDialog/styles/panel = SubResource("StyleBoxFlat_csmyg")
 Button/constants/outline_size = 10
 Button/font_sizes/font_size = 40
 Button/fonts/font = ExtResource("1_csmyg")
-Button/styles/disabled = SubResource("StyleBox_vglet")
+Button/styles/disabled = SubResource("StyleBox_lif0j")
 Button/styles/focus = SubResource("StyleBox_cgrsc")
 Button/styles/hover = SubResource("StyleBox_ly6fy")
 Button/styles/normal = SubResource("StyleBox_o32f2")

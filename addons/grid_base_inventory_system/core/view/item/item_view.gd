@@ -10,6 +10,8 @@ var stack_num_font_size: int
 var stack_num_margin: int = 4
 ## 堆叠数字的颜色
 var stack_num_color: Color = Color.WHITE
+## 堆叠数字的描边
+var 数字描边: Color = Color(0.64, 0.579, 0.499, 0.882)
 
 ## 物品数据
 var data: ItemData
@@ -124,7 +126,21 @@ func _draw() -> void:
 			size.x - text_size.x - stack_num_margin,
 			size.y - stack_num_font.get_descent(stack_num_font_size) - stack_num_margin)
 		# 绘制堆叠数量文本：使用指定字体、位置、文本内容、右对齐、不限制宽度、指定字号和颜色
-		draw_string(stack_num_font, pos, str(data.current_amount), HORIZONTAL_ALIGNMENT_RIGHT, -1, stack_num_font_size, stack_num_color)
+		draw_string_outline(
+		stack_num_font,          # font：字体资源
+		pos,                     # pos：绘制位置（和主体文字同位置）
+		str(data.current_amount),# text：要绘制的文本内容
+		HORIZONTAL_ALIGNMENT_RIGHT,  # alignment：水平对齐方式（和主体保持一致）
+		-1,                      # width：文本宽度（-1表示无限制）
+		stack_num_font_size,     # font_size：字体大小（和主体保持一致）
+		10,                # size：描边粗细
+		数字描边,                # modulate：描边颜色
+		3,                       # justification_flags：默认值，新手无需修改
+		0,                       # direction：文本方向，默认从左到右
+		0,                       # orientation：水平排版，默认值
+		0.0)                      # oversampling：过采样，默认值
+		draw_string(stack_num_font, pos, str(data.current_amount),
+		 HORIZONTAL_ALIGNMENT_RIGHT, -1, stack_num_font_size, stack_num_color)
 	#text_size = stack_num_font.get_string_size(罗马数字, HORIZONTAL_ALIGNMENT_RIGHT, -1, stack_num_font_size)
 	#pos = Vector2(
 		#size.x - 5-text_size.x - stack_num_margin,

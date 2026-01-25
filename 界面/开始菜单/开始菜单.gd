@@ -7,7 +7,14 @@ var 语言映射表: Dictionary = {
 	"中文": "",  # 空字符串=显示原始Key（中文）
 	"英文": "EN" # 对应翻译文件的EN locale
 }
+@onready var 感谢名单: Button = %感谢名单
+@onready var 名单容器: Panel = $开始菜单/名单容器
+@onready var 游戏图标: TextureRect = %游戏图标
 func _ready() -> void:
+	名单容器.visible=false
+	感谢名单.pressed.connect(func():
+		名单容器.visible=not 名单容器.visible
+		游戏图标.visible=not 名单容器.visible)
 	%"开始游戏".pressed.connect(开始)
 	%"新建".pressed.connect(新建)
 	%"设置".pressed.connect(设置)
@@ -17,8 +24,15 @@ func _ready() -> void:
 	%"确认弹窗".visible=false
 	计划.提示容器=%"提示容器"
 	存档单例=梅存档格式.单例
-	存档单例.基础存档()
 	重新加载存档()
+	var 有效序号=0
+	var 序号=0
+	var 有效显示名称=存档单例.优先使用存档名称
+	for 名称 in 存档字典:
+		if 名称==有效显示名称:
+			有效序号=序号
+		序号+=1
+	%"存档选择".current_tab=有效序号
 	%"版本号".text=游戏版本
 	多语言=$"开始菜单/多语言功能区/语言下拉菜单"
 	多语言.clear()
@@ -115,13 +129,16 @@ func 重新加载存档():
 	var 存档样式=preload("res://界面/开始菜单/存档样式.tscn").instantiate()
 	for 存档名称 in 存档字典:
 		var 存档=存档样式.duplicate()
-		var 梅存档数据=存档字典[存档名称]
-		var 挂机等级=梅存档数据.梅存档.get("挂机",{}).get("等级",0)
-		var 用户名称=梅存档数据.梅存档.get("挂机",{}).get("用户信息",{}).get("用户名","新存档")
-		var 测试状态="\r启用测试"if 梅存档数据.启用测试 else ""
-		var 等级文本="挂机:%d\r"%挂机等级 if 挂机等级>0 else ""
-		var 保存时间=梅存档数据.保存时间
-		存档.文本信息="用户名:%s\r%s保存时间:%s%s"%[用户名称,等级文本,时间文本(保存时间),测试状态]
+		var 梅存档数据:梅存档格式=存档字典[存档名称]
+		if 梅存档数据.可用:
+			var 挂机等级=梅存档数据.梅存档.get("挂机",{}).get("等级",0)
+			var 用户名称=梅存档数据.梅存档.get("挂机",{}).get("用户信息",{}).get("用户名","新存档")
+			var 测试状态="\r启用测试"if 梅存档数据.启用测试 else ""
+			var 等级文本="挂机:%d\r"%挂机等级 if 挂机等级>0 else ""
+			var 保存时间=梅存档数据.保存时间
+			存档.文本信息="用户名:%s\r%s保存时间:%s%s\r版本号:%s"%[用户名称,等级文本,时间文本(保存时间),测试状态,梅存档数据.版本号]
+		else :
+			存档.文本信息="版本号:%s\r<游戏版本低于存档版本,不能读取>"%梅存档数据.版本号
 		存档.name=存档名称
 		存档.visibility_changed.connect(func():设置用户名(存档名称, 存档))
 		%"存档选择".add_child(存档)
@@ -131,9 +148,7 @@ func 设置用户名(存档名称,存档):
 		%"玩家名".text=梅存档数据.梅存档.get("挂机",{}).get("用户信息",{}).get("用户名",存档单例.用户名)
 		if not 存档单例.存档命名 == 存档名称:
 			%"自定义存档名".text=存档名称
-		else :
-			%"自定义存档名".text=""
-			
+		else :%"自定义存档名".text=""
 func 开始():
 	#print("哈希A:","78&9".hash())
 	#print("哈希B:","9%87".hash())

@@ -21,8 +21,10 @@ func _ready() -> void:
 	配方=炼金数据.配方字典
 	配方格子.配方编号=配方编号
 	配方格子.配方=配方
+	folded=not 炼金数据.展开
+	folding_changed.connect(func(折叠):炼金数据.展开=not 折叠)
 	加载配方信息()
-	$"炼金配方/使用".pressed.connect(使用事件.bind(int(%"制作数量".value)))
+	$"炼金配方/使用".pressed.connect(使用药水)
 	$"炼金配方/删除".pressed.connect(删除事件)
 	%"查看".pressed.connect(查看事件)
 	下移.pressed.connect(移动配方.bind(true))
@@ -30,6 +32,8 @@ func _ready() -> void:
 	计划.更新_UI.connect(更新UI)
 	更新UI()
 @onready var 了解: Label = $炼金配方/了解
+func 使用药水():
+	使用事件.call(int(%"制作数量".value))
 func 更新UI():
 	var 炼金次数=炼金数据.炼金数量
 	var 药水数量=炼金数据.药水序列.size()

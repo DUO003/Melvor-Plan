@@ -10,6 +10,7 @@ var 存档命名: String="默认存档"
 @export_storage var 版本号: String=""
 @export_storage var 启用测试:bool=false
 var 用户名: String="玩家"#默认为玩家,可以在开始菜单随时修改
+var 可用:bool=true
 #@export_storage var 测试
 
 #ContainerRepository
@@ -19,7 +20,9 @@ static var 单例:梅存档格式:
 		if not 单例:
 			单例 = 梅存档格式.new()
 		return 单例
-func 加载所有存档():
+var 优先使用存档名称=""
+func 加载所有存档()->Dictionary:
+	var 有效存档:int=0
 	var 存档字典:={}
 	var 目录 = DirAccess.open(存档配置路径)
 	if 目录 == null:
@@ -27,7 +30,7 @@ func 加载所有存档():
 		路径.make_dir_recursive(存档配置路径)
 		目录 = DirAccess.open(存档配置路径)
 		if 目录 == null:
-			return
+			return {}
 	目录.list_dir_begin()# 开始枚举目录中的文件
 	var 文件名 = 目录.get_next()
 	while 文件名 != "":# 仅处理 .tres 文件（排除 .tres.import 等衍生文件）
@@ -36,16 +39,49 @@ func 加载所有存档():
 			var 基础文件名 = 文件名.get_basename()  # "存档1.tres" → "存档1"
 			var 完整加载路径 = 存档配置路径 + 文件名# 拼接完整加载路径
 			var 加载结果 = load(完整加载路径)# 加载文件并验证是否为「梅存档格式」
-			if 加载结果 != null and 加载结果 is 梅存档格式:
-				# 验证通过：键=基础文件名，值=梅存档格式
-				存档字典[基础文件名] = 加载结果
-				#print("成功加载存档文件: ", 文件名, " 键名: ", 基础文件名)
+			if 加载结果 != null:
+				if 加载结果 is 梅存档格式:
+					if 加载结果.版本比较():
+						if 优先使用存档名称=="":
+							优先使用存档名称=基础文件名
+						存档字典[基础文件名] = 加载结果
+						有效存档+=1
+					else :
+						存档字典[基础文件名]=错误存档创建(加载结果.版本号)
+				else :
+					存档字典[基础文件名]=错误存档创建()
 			else:
 				print("文件格式错误，非梅存档格式: ", 文件名)# 格式验证失败（非梅存档格式）
-				breakpoint#断点
+				#breakpoint#断点
 		文件名 = 目录.get_next()# 遍历下一个文件
 	目录.list_dir_end()# 结束目录枚举
+	if 有效存档==0:
+		var 有效存档名称=存档命名
+		if 存档字典.has(有效存档名称):
+			var 序号: int = 2
+			while 序号 <= 100:
+				有效存档名称 = 存档命名 + "(%d)" % 序号
+				if not 存档字典.has(有效存档名称):
+					break  # 找到可用名称，退出循环
+				序号 += 1  # 名称仍被占用，尝试下一个序号
+			if 序号 > 100:
+				计划.语法糖通知("没有存档数据,重建失败")
+				return {}
+		if 优先使用存档名称=="":
+			优先使用存档名称=有效存档名称
+		存档(有效存档名称)
+		存档字典[有效存档名称]=self
+		计划.语法糖通知("没有存档数据,已重建")
+		print("没有存档数据,已重建")
+	if 优先使用存档名称=="" and 存档字典.size()>=1:
+		优先使用存档名称=存档字典.keys()[0]
+	print("优先使用存档名称",优先使用存档名称)
 	return 存档字典
+func 错误存档创建(显示版本号:String="兼容性错误")->梅存档格式:
+	var 错误存档=梅存档格式.new()
+	错误存档.版本号=显示版本号
+	错误存档.可用=false
+	return 错误存档
 ## 新建或保存存档[br]
 ## 返回是否保存成功
 func 存档(存档名: String = "",存档数据:Dictionary={}) -> bool:
@@ -86,7 +122,13 @@ func 读档(存档名: String = "",覆盖用户名: String="")->bool:
 	计划.梅存档={"正在加载":0}
 	var 完整路径 = 存档配置路径 + 最终存档名 + ".tres"
 	加载结果 = load(完整路径)
-	if 加载结果 != null and 加载结果 is 梅存档格式:
+	if 加载结果 != null:
+		if not 加载结果 is 梅存档格式:
+			计划.语法糖通知("存档数据错误")
+			return false
+		if not 加载结果.版本比较():
+			计划.语法糖通知("不能打开新版本创建或修改后的存档,游戏可能已经更新")
+			return false
 		启用测试=加载结果.启用测试
 		计划.存档路径=存档配置路径
 		计划.存档名称=最终存档名
@@ -119,34 +161,6 @@ func 读档(存档名: String = "",覆盖用户名: String="")->bool:
 	else:
 		print("文件格式错误，非梅存档格式: ", 存档名)# 格式验证失败（非梅存档格式）
 		return false
-# Godot 4.5 存档路径文件检测函数
-func 基础存档():
-	# 1. 尝试打开存档目录（处理目录不存在/无法访问的情况）
-	var 目录 = DirAccess.open(存档配置路径)
-	if 目录 == null:
-		var 路径 = DirAccess.open("user://")
-		路径.make_dir_recursive(存档配置路径)
-		目录 = DirAccess.open(存档配置路径)
-		if 目录 == null:
-			return
-	# 2. 开始枚举目录中的所有条目（文件/子目录）
-	目录.list_dir_begin()
-	var 当前条目 = 目录.get_next()
-	# 3. 遍历所有目录条目
-	while 当前条目 != "":
-		# 排除系统默认的 "."（当前目录）和 ".."（上级目录）
-		if 当前条目 != "." and 当前条目 != "..":
-			# 检查当前条目是否是「文件」（而非子目录）
-			if not 目录.current_is_dir():
-				# 找到任意文件 → 结束枚举并返回 true
-				目录.list_dir_end()
-				return true
-		# 继续遍历下一个条目
-		当前条目 = 目录.get_next()
-	# 4. 遍历结束未找到任何文件 → 结束枚举并返回 false
-	目录.list_dir_end()
-	存档()
-	return false
 func 删除存档(存档名: String = "")->bool:
 	var dir = DirAccess.open(存档配置路径)# 创建 DirAccess 实例
 	if dir:
@@ -160,3 +174,31 @@ func 删除存档(存档名: String = "")->bool:
 	else:
 		print("无法访问目录")
 	return false
+func 解析版本号(版本字符串: String) -> Array[int]:
+	# 过滤空字符串（防止多小数点/首尾小数点等异常输入）
+	var 分割后的部分 = 版本字符串.split(".", true)
+	var 数字版本部分: Array[int] = []
+	for 单部分:String in 分割后的部分:
+		# 去除首尾空格
+		var 清理后的部分:String = 单部分.strip_edges()
+		if 清理后的部分.is_empty():
+			continue
+		if 清理后的部分.is_valid_int():
+			数字版本部分.append(清理后的部分.to_int())
+		else :数字版本部分.append(0)
+	return 数字版本部分
+func 版本比较():
+	var 游戏版本号:Array[int]=解析版本号(游戏版本)
+	var 存档版本号:Array[int]=解析版本号(self.版本号)
+	for i in 游戏版本号.size():
+		var 游戏位数值 = 游戏版本号[i]
+		var 存档位数值
+		if i>=存档版本号.size():存档位数值=0
+		else :存档位数值=存档版本号[i]
+		if 存档位数值 > 游戏位数值:
+			return false
+		elif 存档位数值 < 游戏位数值:
+			return true
+	if 游戏版本号.size()<存档版本号.size():
+		return false
+	return true

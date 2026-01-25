@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=3 uid="uid://usn54yfbl0y"]
+
+[ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_pvvye"]
+[ext_resource type="Script" uid="uid://dtsglboj3dvn2" path="res://界面/挂机系统/故事/故事界面.gd" id="2_67qny"]
+[ext_resource type="Script" uid="uid://b25kif3hjc6is" path="res://界面/挂机系统/故事/玩家.gd" id="3_0hb8c"]
+[ext_resource type="Texture2D" uid="uid://qgbdeihy2mp7" path="res://素材/游戏素材/背景/1.png" id="3_6idjf"]
+[ext_resource type="PackedScene" uid="uid://c0q7oed58pqte" path="res://界面/挂机系统/故事/地图.tscn" id="4_6idty"]
+[ext_resource type="PackedScene" uid="uid://cjsi35bpmr7oo" path="res://界面/插件/玩家.tscn" id="4_67qny"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="5_1dupq"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="6_3qxj1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jywjc"]
+bg_color = Color(0.67, 0.5605667, 0.3417, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("6_3qxj1")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6idty"]
+size = Vector2(65, 140)
+
+[node name="故事界面" instance=ExtResource("1_pvvye")]
+script = ExtResource("2_67qny")
+"基类窗口名称" = "故事界面"
+metadata/_edit_vertical_guides_ = [2411.0]
+
+[node name="大地图" type="CanvasLayer" parent="." index="2"]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="地图容器" type="SubViewportContainer" parent="大地图" index="0"]
+offset_top = 100.0
+offset_right = 1700.0
+offset_bottom = 1000.0
+stretch = true
+
+[node name="地图渲染层" type="SubViewport" parent="大地图/地图容器" index="0"]
+handle_input_locally = false
+size = Vector2i(1700, 900)
+render_target_update_mode = 4
+
+[node name="视差背景" type="Parallax2D" parent="大地图/地图容器/地图渲染层" index="0"]
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(3840, 0)
+
+[node name="图片" type="Sprite2D" parent="大地图/地图容器/地图渲染层/视差背景" index="0"]
+position = Vector2(724.4445, 57.5)
+scale = Vector2(2, 2)
+texture = ExtResource("3_6idjf")
+
+[node name="地图" parent="大地图/地图容器/地图渲染层" index="1" instance=ExtResource("4_6idty")]
+position = Vector2(0, 100)
+
+[node name="界面提示" type="Control" parent="大地图/地图容器/地图渲染层/地图" index="1"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("5_1dupq")
+
+[node name="提示框" type="Panel" parent="大地图/地图容器/地图渲染层/地图/界面提示" index="0"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 266.0
+offset_right = 696.0
+offset_bottom = 437.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jywjc")
+
+[node name="Label" type="Label" parent="大地图/地图容器/地图渲染层/地图/界面提示/提示框" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "WASD或鼠标点击移动
+空格跳跃"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="玩家" type="CharacterBody2D" parent="大地图/地图容器/地图渲染层" index="2"]
+position = Vector2(697, 605)
+script = ExtResource("3_0hb8c")
+
+[node name="玩家卡片" parent="大地图/地图容器/地图渲染层/玩家" index="0" instance=ExtResource("4_67qny")]
+offset_left = -127.0
+offset_top = -366.0
+offset_right = 133.0
+offset_bottom = -6.0
+scale = Vector2(0.5, 0.5)
+metadata/_edit_lock_ = true
+
+[node name="碰撞范围" type="CollisionShape2D" parent="大地图/地图容器/地图渲染层/玩家" index="1"]
+position = Vector2(1.5, -76)
+shape = SubResource("RectangleShape2D_6idty")
+metadata/_edit_lock_ = true
+
+[node name="摄像机" type="Camera2D" parent="大地图/地图容器/地图渲染层/玩家" index="2"]
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="内容节点" parent="." index="3"]
+metadata/_edit_lock_ = true

@@ -28,6 +28,8 @@ func 传入参数(名称: String="",数量: int= 1,解锁: bool=false,结果: bo
 	显示延迟=延迟
 	if 就绪:
 		更新显示内容()
+		if 解锁:
+			准备播放动画(false)
 @onready var 点击响应: Control = $点击响应
 func _ready() -> void:
 	if 资源名称=="":

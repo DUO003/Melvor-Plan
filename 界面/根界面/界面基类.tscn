@@ -26,7 +26,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 100.0
 grow_horizontal = 2
-color = Color(0.75, 0.67, 0.45, 0.705882)
+color = Color(0.5254902, 0.6509804, 0.5176471, 1)
 metadata/_edit_lock_ = true
 
 [node name="等级显示" parent="标题" instance=ExtResource("3_06j3o")]

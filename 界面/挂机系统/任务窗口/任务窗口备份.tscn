@@ -1,13 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://b2mygwblowgmb"]
+[gd_scene load_steps=17 format=3 uid="uid://dl6n4dgs1geur"]
 
-[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_c5l5k"]
-[ext_resource type="Script" uid="uid://dtt0vuu67behi" path="res://界面/挂机系统/任务窗口/任务窗口.gd" id="2_mxxnt"]
-[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_5x4j5"]
-[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="4_s36by"]
-[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_o58yo"]
-[ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="6_b3vww"]
-[ext_resource type="Texture2D" uid="uid://c72diouqec74j" path="res://素材/豆包AI素材/图标/任务图标.png" id="7_noxnm"]
-[ext_resource type="PackedScene" uid="uid://dron5fg7jasw2" path="res://界面/挂机系统/任务窗口/设置面板.tscn" id="8_60vby"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_2frqu"]
+[ext_resource type="Script" uid="uid://dtt0vuu67behi" path="res://界面/挂机系统/任务窗口/任务界面.gd" id="2_flm1w"]
+[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_3nkml"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="4_giwcx"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_2tvok"]
+[ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="6_ajou0"]
+[ext_resource type="Texture2D" uid="uid://c72diouqec74j" path="res://素材/豆包AI素材/图标/任务图标.png" id="7_muhy6"]
+[ext_resource type="PackedScene" uid="uid://dron5fg7jasw2" path="res://界面/挂机系统/任务窗口/设置面板.tscn" id="8_3sjma"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mxxnt"]
 content_margin_left = 10.0
@@ -32,7 +32,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-script = ExtResource("5_o58yo")
+script = ExtResource("5_2tvok")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5gyb"]
@@ -50,7 +50,7 @@ expand_margin_left = -5.0
 expand_margin_top = -5.0
 expand_margin_right = -5.0
 expand_margin_bottom = -5.0
-script = ExtResource("5_o58yo")
+script = ExtResource("5_2tvok")
 margin_left = -5
 margin_top = -5
 margin_right = -5
@@ -58,12 +58,12 @@ margin_bottom = -5
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x08yf"]
-texture = ExtResource("7_noxnm")
+texture = ExtResource("7_muhy6")
 expand_margin_left = -10.0
 expand_margin_top = -10.0
 expand_margin_right = -10.0
 expand_margin_bottom = -10.0
-script = ExtResource("6_b3vww")
+script = ExtResource("6_ajou0")
 margin_left = -10
 margin_top = -10
 margin_right = -10
@@ -77,7 +77,7 @@ content_margin_left = -1.0
 content_margin_top = -1.0
 content_margin_right = -1.0
 content_margin_bottom = -1.0
-script = ExtResource("4_s36by")
+script = ExtResource("4_giwcx")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_solxu"), SubResource("StyleBoxFlat_k5gyb"), SubResource("StyleBoxTexture_x08yf")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -86,8 +86,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1700.0
 offset_bottom = 1000.0
-theme = ExtResource("1_c5l5k")
-script = ExtResource("2_mxxnt")
+theme = ExtResource("1_2frqu")
+script = ExtResource("2_flm1w")
 "基类窗口名称" = "任务界面"
 "滚动区同步" = {
 "主线滚动区": NodePath("内容区域/标签/主线任务"),
@@ -105,7 +105,7 @@ grow_horizontal = 2
 color = Color(0.75, 0.67, 0.45, 0.705882)
 metadata/_edit_lock_ = true
 
-[node name="等级显示" parent="标题" instance=ExtResource("3_5x4j5")]
+[node name="等级显示" parent="标题" instance=ExtResource("3_3nkml")]
 layout_mode = 1
 "系统" = "挂机"
 "玩法" = "任务"
@@ -342,7 +342,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="设置面板" parent="内容区域/标签" instance=ExtResource("8_60vby")]
+[node name="设置面板" parent="内容区域/标签" instance=ExtResource("8_3sjma")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 4

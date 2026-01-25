@@ -71,28 +71,18 @@ func change_data_source(new_container_name: String) -> void:
 
 ## 初始化
 func _ready() -> void:
-	custom_minimum_size=Vector2(container_columns,container_rows)*Vector2(base_size,base_size)
 	if Engine.is_editor_hint():
+		custom_minimum_size=Vector2(container_columns,container_rows)*Vector2(base_size,base_size)
 		call_deferred("_recalculate_size")
 		return
-	
 	if not container_name:
 		push_error("Inventory must have a name.")
 		return
-	
-	var ret = GBIS.inventory_service.regist(container_name, container_columns, container_rows, false, avilable_types)
-	
+	加载背包数据()
 	if visible:
 		GBIS.opened_containers.append(container_name)
-	
 	if not GBIS.inventory_names.has(container_name):
 		GBIS.inventory_names.append(container_name)
-	
-	# 使用已注册的信息覆盖View设置
-	avilable_types = ret.avilable_types
-	container_columns = ret.columns
-	container_rows = ret.rows
-	
 	mouse_filter = Control.MOUSE_FILTER_PASS
 	_init_grid_container()
 	_init_item_container()
@@ -106,9 +96,18 @@ func _ready() -> void:
 	
 	if not stack_num_font:
 		stack_num_font = get_theme_font("font")
-	
 	call_deferred("refresh")
-
+func 加载背包数据():
+	var 背包数据:Dictionary=计划.梅存档.挂机.背包数据
+	if 背包数据.has(container_name):
+		container_rows=int(背包数据[container_name].get("行数"))
+	var ret = GBIS.inventory_service.regist(container_name, container_columns, container_rows, false, avilable_types)
+	# 使用已注册的信息覆盖View设置
+	#avilable_types = ret.avilable_types
+	#container_columns = ret.columns
+	#container_rows = ret.rows
+	custom_minimum_size=Vector2(container_columns,container_rows)*Vector2(base_size,base_size)
+	return ret
 ## 监听添加物品
 func _on_item_added(inv_name:String, item_data: ItemData, grids: Array[Vector2i]) -> void:
 	if not inv_name == container_name:
@@ -166,33 +165,3 @@ func _init_grids() -> void:
 				gird_background_color_empty, gird_background_color_taken, gird_background_color_conflict, grid_background_color_avilable)
 			_grid_container.add_child(grid)
 			_grid_map[grid_id] = grid
-			
-#region 中文调用方法
-# 新增的中文方法，不影响原有方法调用
-func 梅背包_格子悬停(格子ID: Vector2i) -> void:
-	grid_hover(格子ID)
- 
-func 梅背包_格子失去悬停(格子ID: Vector2i) -> void:
-	grid_lose_hover(格子ID)
- 
-func 梅背包_处理格子悬停(格子ID: Vector2i, 是否悬停: bool) -> void:
-	_handle_grid_hover(格子ID, 是否悬停)
-
-func 梅背包_更改数据源(新容器名称: String) -> void:
-	change_data_source(新容器名称)
-
-func 梅背包_物品添加时(背包名称: String, 物品数据: ItemData, 格子列表: Array[Vector2i]) -> void:
-	_on_item_added(背包名称, 物品数据, 格子列表)
-
-func 梅背包_物品移除时(背包名称: String, 物品数据: ItemData) -> void:
-	_on_item_removed(背包名称, 物品数据)
-
-func 梅背包_物品更新时(背包名称: String, 格子ID: Vector2i) -> void:
-	_on_inv_item_updated(背包名称, 格子ID)
-
-func 梅背包_绘制物品(物品数据: ItemData, 首个格子: Vector2i) -> ItemView:
-	return _draw_item(物品数据, 首个格子)
-
-func 梅背包_初始化格子视图() -> void:
-	_init_grids()
-#endregion

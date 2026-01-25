@@ -18,8 +18,8 @@ func _ready() -> void:
 		%"物品贴图".texture=计划.表格.道具贴图(贴图名称)
 		%"玩法图片".texture=preload("res://素材/豆包AI素材/炼金台.png")
 		print("炼金数据已加载")
-	elif 队列数据 is 梅队列数据:#未完成
-		#%"物品贴图".texture=计划.表格.道具贴图(队列数据.料理)
+	elif 队列数据 is 梅烹饪数据:#未完成
+		%"物品贴图".texture=计划.表格.道具贴图(队列数据.烹饪菜谱)
 		%"玩法图片".texture=preload("res://素材/豆包AI素材/图标/铁锅.png")
 	计划.过去一秒.connect(更新UI事件)
 	%"配方编号".text=str(序号+1)+"#号配方"

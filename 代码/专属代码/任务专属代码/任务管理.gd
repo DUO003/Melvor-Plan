@@ -440,6 +440,7 @@ func _ready() -> void:
 	任务全局更新(true)
 	结算任务完成()
 	计划.steam.读取成就验证(成就,任务全局)
+	#breakpoint#断点
 func 任务全局更新(初始化=false):
 	for 任务名称 in 任务字典:
 		var 任务完成=计划.梅存档["挂机"].get("任务进度",{}).get(任务名称,0)==1
@@ -467,6 +468,7 @@ func 任务检查(任务名称):
 		return 0
 	var 来源=任务字典[任务名称].get("来源","其他")
 	if not 来源=="成就" and 任务领取状态.get(任务名称,false):
+		print("任务",任务名称)
 		return 0
 	if not 检查前置任务(任务字典[任务名称]):
 		return 0
@@ -550,7 +552,8 @@ func 完成任务计数(任务)->int:
 func 检查任务有效性(任务名称:String, 条件序号:int) -> bool:
 	if 任务名称 not in 任务全局:
 		return false# 1. 任务不在全局字典 → 无效
-	if not 任务领取状态.get(任务名称,false):
+	var 来源=任务字典[任务名称].get("来源","其他")
+	if not 来源=="成就" and 任务领取状态.get(任务名称,false):
 		return false#任务未领取,无效
 	var 任务数据:Dictionary = 任务全局[任务名称]
 	if 条件序号 < 0 or 条件序号 >= 任务数据["任务目标列表"].size():

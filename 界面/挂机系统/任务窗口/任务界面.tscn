@@ -1,0 +1,345 @@
+[gd_scene load_steps=16 format=3 uid="uid://bnwuvd40fi6vj"]
+
+[ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_b8rbp"]
+[ext_resource type="Script" uid="uid://dtt0vuu67behi" path="res://界面/挂机系统/任务窗口/任务界面.gd" id="2_6nxmh"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_v87ku"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_6nxmh"]
+[ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="4_a8cn4"]
+[ext_resource type="Texture2D" uid="uid://c72diouqec74j" path="res://素材/豆包AI素材/图标/任务图标.png" id="5_1c56y"]
+[ext_resource type="PackedScene" uid="uid://dron5fg7jasw2" path="res://界面/挂机系统/任务窗口/设置面板.tscn" id="6_dkiwk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qydom"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vf5w6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hcf6d"]
+content_margin_left = 50.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3n646"]
+content_margin_right = 50.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_solxu"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("3_6nxmh")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5gyb"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.41, 0.28822997, 0.0779, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+expand_margin_bottom = -5.0
+script = ExtResource("3_6nxmh")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+margin_bottom = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x08yf"]
+texture = ExtResource("5_1c56y")
+expand_margin_left = -10.0
+expand_margin_top = -10.0
+expand_margin_right = -10.0
+expand_margin_bottom = -10.0
+script = ExtResource("4_a8cn4")
+margin_left = -10
+margin_top = -10
+margin_right = -10
+margin_bottom = -10
+metadata/_custom_type_script = "uid://dr0317kuw34um"
+
+[sub_resource type="StyleBox" id="StyleBox_xbyi3"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("2_v87ku")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_solxu"), SubResource("StyleBoxFlat_k5gyb"), SubResource("StyleBoxTexture_x08yf")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[node name="任务界面" node_paths=PackedStringArray("滚动区同步") instance=ExtResource("1_b8rbp")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1700.0
+offset_bottom = 1000.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource("2_6nxmh")
+"基类窗口名称" = "任务界面"
+"滚动区同步" = {
+"主线滚动区": NodePath("内容节点/标签/主线任务"),
+"任务栏": NodePath("内容节点/标签/快捷面板/任务栏"),
+"支线手工": NodePath("内容节点/标签/支线任务/手工"),
+"设置面板": NodePath("内容节点/标签/设置面板")
+}
+
+[node name="标签" type="TabContainer" parent="内容节点" index="0"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qydom")
+current_tab = 2
+
+[node name="主线任务" type="ScrollContainer" parent="内容节点/标签" index="1"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="任务盒子" type="GridContainer" parent="内容节点/标签/主线任务" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 5
+columns = 2
+
+[node name="支线任务" type="TabContainer" parent="内容节点/标签" index="2"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vf5w6")
+current_tab = 0
+metadata/_tab_index = 1
+
+[node name="介绍" type="HSplitContainer" parent="内容节点/标签/支线任务" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+split_offset = 50
+dragging_enabled = false
+metadata/_tab_index = 0
+
+[node name="滚动区" type="ScrollContainer" parent="内容节点/标签/支线任务/介绍" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hcf6d")
+
+[node name="介绍容器" type="VBoxContainer" parent="内容节点/标签/支线任务/介绍/滚动区" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="介绍" type="Label" parent="内容节点/标签/支线任务/介绍/滚动区/介绍容器" index="0"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "支线任务
+根据系统解锁新任务
+根据完成任务数量提供加成"
+horizontal_alignment = 1
+
+[node name="效果介绍" type="Label" parent="内容节点/标签/支线任务/介绍/滚动区/介绍容器" index="1"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+text = "手工:每完成一个任务
+增加0.05基础资源回复
+增加10资源容量"
+metadata/_tab_index = 0
+
+[node name="当前完成任务数量" type="Label" parent="内容节点/标签/支线任务/介绍/滚动区/介绍容器" index="2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "当前完成数量:"
+metadata/_tab_index = 0
+
+[node name="成就滚动区" type="ScrollContainer" parent="内容节点/标签/支线任务/介绍" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3n646")
+
+[node name="介绍容器" type="VBoxContainer" parent="内容节点/标签/支线任务/介绍/成就滚动区" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="介绍" type="Label" parent="内容节点/标签/支线任务/介绍/成就滚动区/介绍容器" index="0"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "成就
+根据解锁的系统解锁新成就
+需要解锁原罪窗口才能领取奖励"
+horizontal_alignment = 1
+
+[node name="成就按钮" type="Button" parent="内容节点/标签/支线任务/介绍/成就滚动区/介绍容器/介绍" index="0"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 187.0
+offset_bottom = 67.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "前往成就"
+
+[node name="效果介绍" type="Label" parent="内容节点/标签/支线任务/介绍/成就滚动区/介绍容器" index="1"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+text = "不影响steam成就获取
+可以提前查看"
+metadata/_tab_index = 0
+
+[node name="手工" type="ScrollContainer" parent="内容节点/标签/支线任务" index="2"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="手工盒子" type="GridContainer" parent="内容节点/标签/支线任务/手工" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 5
+columns = 2
+
+[node name="快捷面板" type="HBoxContainer" parent="内容节点/标签" index="3"]
+layout_mode = 2
+theme_override_constants/separation = 0
+metadata/_tab_index = 2
+
+[node name="任务栏" type="ScrollContainer" parent="内容节点/标签/快捷面板" index="0"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="任务栏盒子" type="VBoxContainer" parent="内容节点/标签/快捷面板/任务栏" index="0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 10
+
+[node name="窗口切换按钮模板" type="CheckButton" parent="内容节点/标签/快捷面板/任务栏/任务栏盒子" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+button_pressed = true
+text = "任务"
+alignment = 1
+
+[node name="窗口介绍" type="Control" parent="内容节点/标签/快捷面板" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="窗口名" type="Label" parent="内容节点/标签/快捷面板/窗口介绍" index="0"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 153.0
+offset_top = 33.0
+offset_right = 589.0
+offset_bottom = 118.0
+theme_override_font_sizes/font_size = 60
+text = "窗口名称:未选中"
+
+[node name="窗口介绍" type="Label" parent="内容节点/标签/快捷面板/窗口介绍" index="1"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 13.0
+offset_top = 160.0
+offset_right = 603.0
+offset_bottom = 337.0
+theme_override_font_sizes/font_size = 40
+text = "简介:
+将光标放到左侧选项查看选项信息
+管理任务栏中显示的按钮"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="内容节点/标签/快捷面板/窗口介绍" index="2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 48.0
+
+[node name="展示按钮" type="Button" parent="内容节点/标签/快捷面板/窗口介绍" index="3"]
+unique_name_in_owner = true
+editor_description = "保持禁用状态,用于显示图片"
+layout_mode = 0
+offset_left = 13.0
+offset_top = 17.0
+offset_right = 133.0
+offset_bottom = 137.0
+theme_override_styles/disabled = SubResource("StyleBox_xbyi3")
+disabled = true
+
+[node name="通知历史" type="VBoxContainer" parent="内容节点/标签" index="4"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="最大通知文本" type="Label" parent="内容节点/标签/通知历史" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "最多保留,本次游戏中,最新的20条通知"
+
+[node name="滚动区" type="ScrollContainer" parent="内容节点/标签/通知历史" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="提示" type="VBoxContainer" parent="内容节点/标签/通知历史/滚动区" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="设置面板" parent="内容节点/标签" index="5" instance=ExtResource("6_dkiwk")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="任务功能" type="HBoxContainer" parent="内容节点" index="1"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -187.0
+offset_bottom = 58.0
+grow_horizontal = 0
+
+[node name="以完成任务" type="CheckButton" parent="内容节点/任务功能" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+action_mode = 0
+text = "已完成"
+
+[node name="显示任务" type="OptionButton" parent="内容节点/任务功能" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "显示1个"
+popup/item_0/id = 0
+popup/item_1/text = "显示2个"
+popup/item_1/id = 1
+popup/item_2/text = "显示3个"
+popup/item_2/id = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bv36ac0k5rwo"]
+[gd_scene load_steps=45 format=3 uid="uid://bv36ac0k5rwo"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_usgc3"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_f8lap"]
@@ -98,6 +98,23 @@ content_margin_bottom = -1.0
 script = ExtResource("2_f8lap")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_tqll5"), SubResource("StyleBoxFlat_07wse")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgk5h"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.6039216)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2weh"]
 bg_color = Color(0.82, 0.73253334, 0.492, 0)
@@ -295,6 +312,7 @@ theme_override_styles/title_panel = SubResource("StyleBox_n2weh")
 theme_override_styles/title_hover_panel = SubResource("StyleBox_n2weh")
 theme_override_styles/title_collapsed_panel = SubResource("StyleBox_06t5k")
 theme_override_styles/title_collapsed_hover_panel = SubResource("StyleBox_7trn3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kgk5h")
 theme_override_styles/panel = SubResource("StyleBoxFlat_n2weh")
 title = "配方1"
 script = ExtResource("2_t1sfb")

@@ -1,5 +1,11 @@
 extends 基类梅窗口
-#真实字典位于"梅窗口"此处运行时会覆盖
+##关于显示层级
+#0层功能区
+#1层游戏主场景
+#2地图(部分窗口内,跟随摄像机移动)
+#3提示信息
+#4层暂停界面
+##真实字典位于"梅窗口"此处运行时会覆盖
 var 跳转:梅窗口
 var 界面路径映射: Dictionary = {}#数组参数1.场景路径,参数2.场景对应的系统
 var 界面父子关系: Dictionary = {}#界面父子关系字典，键为主界面名称，值为子界面名称数组
@@ -10,11 +16,13 @@ var 全局图钉=["金币"]
 var 界面图钉={}
 var 滚动计时器:Timer
 var 图钉区光标=false
+@onready var 摄像机: Camera2D = %摄像机
 @onready var 任务栏节点: VBoxContainer = %"任务栏"
 @onready var 任务按钮本体: Button = %"任务"  # 明确为Button节点
 @onready var 其他容器: Control = %其他容器
 signal 场景更新(当前场景)# 场景变化时会发出信号,首次加载也会发出
 func _ready():
+	场景容器= %场景容器
 	super._ready()
 	场景更新.connect(func(场景名称):计划.emit_signal("场景更新",场景名称))
 	%"图钉".mouse_entered.connect(func(): 图钉区光标=true)
@@ -132,6 +140,8 @@ func 生成任务栏按钮() -> void:# 生成任务栏所有按钮
 		任务按钮.show()#防止节点为隐藏
 		任务按钮.text = 界面名称.replace("界面", "").replace("窗口", "")
 		if 任务按钮.text =="小游戏":任务按钮.text ="游戏"
+		if 界面路径映射[界面名称].size()<2:
+			界面路径映射[界面名称].append("")
 		var 路径=界面路径映射[界面名称][1]
 		var 纹理=load(路径) if 路径!="" else null
 		if 纹理:
@@ -169,7 +179,6 @@ func 重载场景(场景名称: String, 子场景名称 = null,强制重载=fals
 	if not 界面路径映射.has(场景字典名):
 		print("错误: 场景名称 '", 场景字典名, "' 不存在于路径映射中")
 		return
-	var 场景容器: Node = %场景容器
 	for 子节点 in 场景容器.get_children():# 清空场景容器下的所有节点
 		场景容器.remove_child(子节点)
 		子节点.queue_free()  # 释放节点资源
@@ -206,7 +215,7 @@ func 移动节点到最后(容器节点: Node) -> void:
 		print("子节点数量不足，不执行移动")
 func 便利摄像机效果(效果参数=""):
 	if 效果参数=="":
-		屏幕震动(%"摄像机",3,10,0.5)
+		屏幕震动(摄像机,3,10,0.5)
 #快捷方法
 	#计划.节点["空节点"].重载场景("合成界面",null)
 # 简洁版本

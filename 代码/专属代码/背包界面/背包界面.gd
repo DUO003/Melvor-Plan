@@ -3,25 +3,21 @@ var 金币=计划.梅存档["金币"]
 var 物品:ItemData=null
 var 背包="背包"
 var 上次查看:={}
-var 物品栏选项卡:TabContainer
-var 状态区:TabContainer
+@onready var 物品栏选项卡: TabContainer = %物品栏选项卡
+@onready var 状态区: TabContainer = %状态区
+@onready var 背包_容器: InventoryView = %背包
+@onready var 背包扩容费用: Label = %背包扩容费用
+@onready var 扩容按钮: Button = %扩容
+@onready var 物品简介: Control = %物品简介
 @onready var 装备槽: Control = %装备槽
+@onready var 随身商店: VBoxContainer = %随身商店
 func _ready():
 	super._ready()
-	状态区=%"状态区"
-	物品栏选项卡=%"物品栏选项卡"
-	物品栏选项卡.set_tab_title(0, "物品栏")
-	物品栏选项卡.current_tab=计划.窗口状态_限制(基类窗口名称,"物品栏选项卡",0,物品栏选项卡.get_tab_count())
-	状态区.current_tab=计划.窗口状态_限制(基类窗口名称,"状态区",0,状态区.get_tab_count())
 	计划.connect("更新_UI", Callable(self, "_更新_UI"))
 	计划.更新_背包物品信息.connect(_背包物品信息)
 	_更新_UI()
 	%"无选中".visible=true
 	%"选中".visible=false
-	%"随身商店".visibility_changed.connect(func():if %"随身商店".visible:切换物品栏(0))
-	装备槽.visibility_changed.connect(func():if 装备槽.visible:切换物品栏(1))
-	%"物品简介".visibility_changed.connect(func():if %"物品简介".visible:切换物品栏(0))
-	物品栏选项卡.tab_selected.connect(func(序号):计划.窗口状态管理(基类窗口名称,"物品栏选项卡",null,序号))
 	GBIS.sig_slot_item_unequipped.connect(func(_1,_2):装备槽.更新属性())
 	GBIS.sig_slot_item_equipped.connect(func(_1,_2):装备槽.更新属性())
 	GBIS.sig_item_focused.connect(func(物品实例:ItemData,背包名):#当鼠标获得物品焦点信号
@@ -48,11 +44,44 @@ func _ready():
 	%"整理".pressed.connect(整理物品)
 	#%"玩家".mouse_entered.connect(func(): %"玩家属性".text=战力文本)
 	#%"玩家".mouse_exited.connect(func():%"玩家属性".text=属性文本)
-
-
+	var 列数:int=背包_容器.container_rows
+	var 消耗数量:int=((列数-8)*160)
+	var 挂机阶级=计划.数据系统("挂机","阶级")
+	if 列数>=15+挂机阶级*2:
+		if 挂机阶级==20:
+			背包扩容费用.text="达到上限"
+		else :
+			var 需求等级=int(1 + (列数 - 15) / 2.0) * 5
+			背包扩容费用.text="提高等级增加扩容上限,需要%d挂机等级"%[需求等级]
+	else :
+		背包扩容费用.text="扩容背包第%d行,需要%d个绿色电路板"%[列数,消耗数量]
+	扩容按钮.pressed.connect(扩容背包)
+	await get_tree().process_frame
+	call_deferred("便利性切换")
+func 扩容背包():
+	var 背包数量=计划.检查背包物品数量("绿色电路板")
+	var 列数:int=背包_容器.container_rows
+	var 挂机阶级=计划.数据系统("挂机","阶级")
+	if 列数>=15+挂机阶级*2:
+		计划.语法糖通知("已达到扩容上限","背包提示")
+		return
+	var 消耗数量:int=((列数-8)*160)
+	if not 背包数量>=消耗数量:
+		计划.语法糖通知("背包扩容失败,绿色电路板不足","背包提示")
+		return
+	计划.语法糖消耗物品("绿色电路板",消耗数量)
+	var 背包数据:Dictionary=计划.梅存档.挂机.背包数据
+	if not 背包数据.has("背包"):
+		背包数据["背包"]={}
+	背包数据["背包"].行数=背包_容器.container_rows+1
+	计划.语法糖通知("背包扩容成功")
+	计划.切换场景(null,"背包界面",true)
+func 便利性切换():
+	随身商店.visibility_changed.connect(func():if 随身商店.visible:切换物品栏(0))
+	装备槽.visibility_changed.connect(func():if 装备槽.visible:切换物品栏(1))
+	物品简介.visibility_changed.connect(func():if 物品简介.visible:切换物品栏(0))
 func 切换物品栏(物品栏:int):
 	物品栏选项卡.current_tab=物品栏
-	计划.窗口状态管理(基类窗口名称,"状态区",null,状态区.current_tab)
 	解除提示占用()
 	
 func 整理物品():

@@ -14,12 +14,12 @@ func load() -> void:
 	_container_repository.load()
 
 ## 注册容器，如果重名，则返回已存在的容器
-func regist(container_name: String, columns: int, rows: int, is_shop: bool, avilable_types: Array[String] = ["ANY"]) -> ContainerData:
-	if is_shop and not GBIS.shop_names.has(container_name):
-		GBIS.shop_names.append(container_name)
-	elif not is_shop and not GBIS.inventory_names.has(container_name):
-		GBIS.inventory_names.append(container_name)
-	return _container_repository.add_container(container_name, columns, rows, avilable_types)
+func regist(名称: String, columns: int, rows: int, 商店: bool, avilable_types: Array[String] = ["ANY"]) -> ContainerData:
+	if 商店 and not GBIS.shop_names.has(名称):
+		GBIS.shop_names.append(名称)
+	elif not 商店 and not GBIS.inventory_names.has(名称):
+		GBIS.inventory_names.append(名称)
+	return _container_repository.add_container(名称, columns, rows, avilable_types)
 
 ## 通过物品名称找所有物品（同名物品可能有多个实例）
 func find_item_data_by_item_name(container_name: String, item_name: String) -> Array[ItemData]:

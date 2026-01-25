@@ -42,15 +42,19 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 vertical_scroll_mode = 2
 
-[node name="商店" type="Control" parent="商店容器"]
-custom_minimum_size = Vector2(588, 1180)
+[node name="商店滚动区" type="VBoxContainer" parent="商店容器"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="商店" type="Control" parent="商店容器/商店滚动区"]
+custom_minimum_size = Vector2(585, 234)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("3_le1y4")
 container_name = "随身商店"
 container_columns = 5
-container_rows = 10
 base_size = 117
 grid_border_size = 2
 grid_border_color = Color(0.75, 0.75, 0.75, 0)
@@ -62,3 +66,22 @@ stack_num_font_size = 32
 stack_num_margin = 0
 stack_num_color = Color(0, 0, 0, 1)
 metadata/_custom_type_script = "uid://gqt6pq4lt0gw"
+
+[node name="背包按钮区" type="HBoxContainer" parent="商店容器/商店滚动区"]
+layout_mode = 2
+
+[node name="扩容费用" type="Label" parent="商店容器/商店滚动区/背包按钮区"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/line_spacing = -15
+theme_override_font_sizes/font_size = 35
+text = "扩容需要"
+
+[node name="扩容" type="Button" parent="商店容器/商店滚动区/背包按钮区"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 70)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 40
+text = "扩容"

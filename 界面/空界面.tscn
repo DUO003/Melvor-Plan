@@ -15,14 +15,22 @@
 [ext_resource type="Script" uid="uid://cc1j5mukjb2p1" path="res://代码/专属代码/暂停界面/暂停界面.gd" id="11_s3egw"]
 [ext_resource type="FontFile" uid="uid://dybtol6821ybd" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-85-Bold/AlibabaPuHuiTi-3-85-Bold.woff2" id="11_yd0tu"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_0p14m"]
+[sub_resource type="DPITexture" id="DPITexture_rhqkc"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"30\"><rect width=\"58\" height=\"28\" x=\"1\" y=\"1\" fill=\"#e0e0e0\" fill-opacity=\".6\" stroke=\"#000\" stroke-width=\".8\" rx=\"7\"/></svg>
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhqkc"]
+bg_color = Color(0.55, 0.42716667, 0.18149999, 0.2509804)
+script = ExtResource("8_0p14m")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="InputEventKey" id="InputEventKey_yd0tu"]
 device = -1
-pressed = true
-keycode = 32
-unicode = 32
+keycode = 96
+unicode = 96
 
 [sub_resource type="Shortcut" id="Shortcut_s3egw"]
-events = [SubResource("InputEventKey_0p14m")]
+events = [SubResource("InputEventKey_yd0tu")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3egw"]
 bg_color = Color(0.55, 0.42716667, 0.18149999, 0.78431374)
@@ -69,15 +77,6 @@ script = ExtResource("7_4h1no")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_0p14m")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
-[sub_resource type="DPITexture" id="DPITexture_rhqkc"]
-_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"30\"><rect width=\"58\" height=\"28\" x=\"1\" y=\"1\" fill=\"#e0e0e0\" fill-opacity=\".6\" stroke=\"#000\" stroke-width=\".8\" rx=\"7\"/></svg>
-"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhqkc"]
-bg_color = Color(0.55, 0.42716667, 0.18149999, 0.2509804)
-script = ExtResource("8_0p14m")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
 [node name="空节点" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -90,8 +89,10 @@ script = ExtResource("1_1xcs4")
 "基类窗口名称" = "空节点"
 metadata/_edit_lock_ = true
 
-[node name="背景" type="NinePatchRect" parent="."]
-layout_mode = 1
+[node name="功能" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="背景" type="NinePatchRect" parent="功能"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -100,17 +101,115 @@ grow_vertical = 2
 texture = ExtResource("3_kiae7")
 metadata/_edit_lock_ = true
 
-[node name="摄像机" type="Camera2D" parent="背景"]
+[node name="摄像机" type="Camera2D" parent="功能/背景"]
 unique_name_in_owner = true
 offset = Vector2(960, 540)
 limit_enabled = false
 
-[node name="场景容器" type="Node" parent="."]
+[node name="任务栏分割" type="VSplitContainer" parent="功能"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 990)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_top = 10.0
+offset_bottom = 1000.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+theme_override_constants/minimum_grab_thickness = 2
+theme_override_icons/grabber = SubResource("DPITexture_rhqkc")
+split_offset = 200
+drag_area_margin_begin = 10
+drag_area_margin_end = 10
+drag_area_highlight_in_editor = true
 
-[node name="功能" type="Node" parent="."]
+[node name="任务栏滚动区" type="ScrollContainer" parent="功能/任务栏分割"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_kiae7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_rhqkc")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 
-[node name="展开按钮" type="Button" parent="功能"]
+[node name="任务栏" type="VBoxContainer" parent="功能/任务栏分割/任务栏滚动区"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("4_kiae7")
+theme_override_constants/separation = -5
+
+[node name="任务" type="Button" parent="功能/任务栏分割/任务栏滚动区/任务栏"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("4_kiae7")
+theme_override_constants/outline_size = 8
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 60
+theme_override_constants/align_to_largest_stylebox = 1
+theme_override_fonts/font = ExtResource("11_yd0tu")
+theme_override_font_sizes/font_size = 35
+text = "合成"
+expand_icon = true
+
+[node name="红点提示" parent="功能/任务栏分割/任务栏滚动区/任务栏/任务" instance=ExtResource("5_5a7ci")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="BUFF滚动区" type="ScrollContainer" parent="功能/任务栏分割"]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_kiae7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_rhqkc")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="BUFF" type="VBoxContainer" parent="功能/任务栏分割/BUFF滚动区"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="图钉" type="ScrollContainer" parent="功能"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="图钉容器" type="HBoxContainer" parent="功能/图钉"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="场景容器" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+follow_viewport_enabled = true
+
+[node name="悬浮面板" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="展开按钮" type="Button" parent="悬浮面板"]
 offset_left = 1550.0
 offset_top = 10.0
 offset_right = 1610.0
@@ -122,7 +221,7 @@ shortcut_in_tooltip = false
 text = ">"
 script = ExtResource("4_4h1no")
 
-[node name="存档" type="Button" parent="功能/展开按钮"]
+[node name="存档" type="Button" parent="悬浮面板/展开按钮"]
 z_index = 1
 layout_mode = 1
 anchors_preset = 1
@@ -137,13 +236,13 @@ theme_override_font_sizes/font_size = 50
 text = "手动存档"
 script = ExtResource("7_5a7ci")
 
-[node name="存档时间" type="Panel" parent="功能/展开按钮/存档"]
+[node name="存档时间" type="Panel" parent="悬浮面板/展开按钮/存档"]
 layout_mode = 0
 offset_left = -225.0
 offset_bottom = 80.0
 theme_override_styles/panel = SubResource("StyleBox_q2fph")
 
-[node name="时间" type="Label" parent="功能/展开按钮/存档/存档时间"]
+[node name="时间" type="Label" parent="悬浮面板/展开按钮/存档/存档时间"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -156,7 +255,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="暂停" type="Button" parent="功能/展开按钮"]
+[node name="暂停" type="Button" parent="悬浮面板/展开按钮"]
 layout_mode = 0
 offset_left = 55.0
 offset_right = 149.0
@@ -164,7 +263,7 @@ offset_bottom = 80.0
 theme_override_font_sizes/font_size = 40
 icon = ExtResource("11_q2fph")
 
-[node name="提示容器" type="VBoxContainer" parent="功能"]
+[node name="提示容器" type="VBoxContainer" parent="悬浮面板"]
 unique_name_in_owner = true
 z_index = 10
 anchors_preset = 12
@@ -176,13 +275,11 @@ grow_vertical = 0
 mouse_filter = 2
 mouse_behavior_recursive = 1
 
-[node name="其他容器" type="Control" parent="功能"]
+[node name="其他容器" type="Control" parent="悬浮面板"]
 unique_name_in_owner = true
 z_index = 10
 layout_mode = 3
 anchors_preset = 0
-
-[node name="悬浮面板" type="Node" parent="."]
 
 [node name="隐藏奖励" type="Button" parent="悬浮面板"]
 self_modulate = Color(1, 1, 1, 0)
@@ -206,106 +303,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBox_s3egw")
 
-[node name="任务栏分割" type="VSplitContainer" parent="."]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(220, 990)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -220.0
-offset_top = 10.0
-offset_bottom = 990.0
-grow_horizontal = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 5
-theme_override_constants/minimum_grab_thickness = 2
-theme_override_icons/grabber = SubResource("DPITexture_rhqkc")
-split_offset = 200
-drag_area_margin_begin = 10
-drag_area_margin_end = 10
-drag_area_highlight_in_editor = true
-
-[node name="任务栏滚动区" type="ScrollContainer" parent="任务栏分割"]
-custom_minimum_size = Vector2(0, 400)
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("4_kiae7")
-theme_override_styles/panel = SubResource("StyleBoxFlat_rhqkc")
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
-
-[node name="任务栏" type="VBoxContainer" parent="任务栏分割/任务栏滚动区"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("4_kiae7")
-theme_override_constants/separation = -5
-
-[node name="任务" type="Button" parent="任务栏分割/任务栏滚动区/任务栏"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("4_kiae7")
-theme_override_constants/outline_size = 8
-theme_override_constants/h_separation = 0
-theme_override_constants/icon_max_width = 60
-theme_override_constants/align_to_largest_stylebox = 1
-theme_override_fonts/font = ExtResource("11_yd0tu")
-theme_override_font_sizes/font_size = 35
-text = "合成"
-expand_icon = true
-
-[node name="红点提示" parent="任务栏分割/任务栏滚动区/任务栏/任务" instance=ExtResource("5_5a7ci")]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_bottom = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 0
-grow_vertical = 1
-
-[node name="BUFF滚动区" type="ScrollContainer" parent="任务栏分割"]
-custom_minimum_size = Vector2(0, 280)
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("4_kiae7")
-theme_override_styles/panel = SubResource("StyleBoxFlat_rhqkc")
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
-
-[node name="BUFF" type="VBoxContainer" parent="任务栏分割/BUFF滚动区"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 5
-
-[node name="图钉" type="ScrollContainer" parent="."]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -80.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="图钉容器" type="HBoxContainer" parent="图钉"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-theme_override_constants/separation = 0
-
 [node name="暂停界面" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+layer = 4
 visible = false
 follow_viewport_scale = 0.4
 script = ExtResource("11_s3egw")

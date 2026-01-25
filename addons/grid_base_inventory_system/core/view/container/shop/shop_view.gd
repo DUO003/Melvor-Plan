@@ -34,14 +34,11 @@ func _ready() -> void:
 		push_error("Shop must have a name.")
 		return
 	
-	var ret = GBIS.shop_service.regist(container_name, container_columns, container_rows, true)
+	加载背包数据()
 	
 	if visible:
 		GBIS.opened_containers.append(container_name)
 	
-	# 使用已注册的信息覆盖View设置
-	container_columns = ret.columns
-	container_rows = ret.rows
 	
 	# 加载货物
 	GBIS.shop_service.get_container(container_name)#.clear()
@@ -59,7 +56,16 @@ func _ready() -> void:
 		stack_num_font = get_theme_font("font")
 	
 	call_deferred("refresh")
-
+func 加载背包数据():
+	var 背包数据:Dictionary=计划.梅存档.挂机.背包数据
+	if 背包数据.has(container_name):
+		container_rows=int(背包数据[container_name].get("行数"))
+	var ret = GBIS.shop_service.regist(container_name, container_columns, container_rows, true)
+	# 使用已注册的信息覆盖View设置
+	#container_columns = ret.columns
+	#container_rows = ret.rows
+	custom_minimum_size=Vector2(container_columns,container_rows)*Vector2(base_size,base_size)
+	return ret
 ## 初始化格子View
 func _init_grids() -> void:
 	for row in container_rows:

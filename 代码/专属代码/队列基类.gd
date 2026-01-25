@@ -1,5 +1,6 @@
 extends Resource
 class_name 梅队列数据
+var 子类型:Array=[梅炼金数据,梅烹饪数据]
 var 队列版本号:int=1
 @export var 版本号:int=1
 @export var 创建版本号:int=1

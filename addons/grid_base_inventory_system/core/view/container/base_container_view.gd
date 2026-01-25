@@ -221,6 +221,7 @@ func _draw() -> void:
 ## 重新计算大小
 func _recalculate_size() -> void:
 		var new_size = Vector2(container_columns * base_size, container_rows * base_size)
+		custom_minimum_size=Vector2(container_columns,container_rows)*Vector2(base_size,base_size)
 		if size != new_size:
 			size = new_size
 		queue_redraw()

@@ -18,7 +18,7 @@ config/description="游戏手工版本开发中
 总进度(1/7)
 [手工:99%]
 [挂机:20%]"
-config/version="0.1.10.2"
+config/version="0.2"
 config/tags=PackedStringArray("梅计划")
 run/main_scene="uid://kifxwq2enhmp"
 config/features=PackedStringArray("4.5", "Mobile")
@@ -132,7 +132,7 @@ folder_colors={
 
 [global]
 
-steam_enabled=false
+steam_enabled=true
 
 [input]
 
@@ -168,6 +168,31 @@ dialogic_default_action={
 "显示控制台"={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+"移动_左"={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":65,"location":0,"echo":false,"script":null)
+]
+}
+"移动_右"={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":68,"location":0,"echo":false,"script":null)
+]
+}
+"移动_上"={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":87,"location":0,"echo":false,"script":null)
+]
+}
+"移动_下"={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":83,"location":0,"echo":false,"script":null)
+]
+}
+"移动_跳"={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 ]
 }
 
