@@ -16,6 +16,7 @@
 script = ExtResource("2_3ndi7")
 scene = ExtResource("1_q5qm0")
 overrides = {
+"canvas_layer": "4.0",
 "global_bg_color": "Color(0.5294118, 0.37254903, 0.101960786, 0.7058824)",
 "global_font": "\"res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/AlibabaPuHuiTi-3-55-Regular.ttf\"",
 "global_font_size": "30.0"

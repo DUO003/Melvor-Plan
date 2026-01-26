@@ -305,7 +305,7 @@ theme_override_styles/panel = SubResource("StyleBox_s3egw")
 
 [node name="暂停界面" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-layer = 4
+layer = 5
 visible = false
 follow_viewport_scale = 0.4
 script = ExtResource("11_s3egw")

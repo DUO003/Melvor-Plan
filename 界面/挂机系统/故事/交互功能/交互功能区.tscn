@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqgw7u1a66wsa"]
+
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="1_agx8v"]
+[ext_resource type="Script" uid="uid://5gkemvlgktmn" path="res://界面/挂机系统/故事/交互功能/交互功能区.gd" id="2_xxhfm"]
+[ext_resource type="Script" uid="uid://cuepwfcdxx5kf" path="res://界面/挂机系统/故事/交互区.gd" id="3_d7y0m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agx8v"]
+size = Vector2(97, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eit8p"]
+size = Vector2(80, 130)
+
+[node name="交互功能区" type="Sprite2D"]
+scale = Vector2(3.0351563, 3.0351563)
+texture = ExtResource("1_agx8v")
+script = ExtResource("2_xxhfm")
+
+[node name="进入判断区" type="Area2D" parent="."]
+collision_layer = 8
+script = ExtResource("3_d7y0m")
+
+[node name="范围" type="CollisionShape2D" parent="进入判断区"]
+shape = SubResource("RectangleShape2D_agx8v")
+
+[node name="强制判断区" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("3_d7y0m")
+"强制" = true
+
+[node name="范围" type="CollisionShape2D" parent="强制判断区"]
+shape = SubResource("RectangleShape2D_eit8p")
+debug_color = Color(0.69144154, 0.4965471, 0.08179394, 0.41960785)

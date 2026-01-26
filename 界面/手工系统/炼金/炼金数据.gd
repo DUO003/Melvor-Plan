@@ -187,6 +187,7 @@ func 计算配方(检查结果:bool=配方格式检查())->bool:
 	var 属性总和字典 = 计算配方点数()
 	if 权重数据=={}:
 		权重数据=计算药水权重(属性总和字典)
+		#print("权重数据",权重数据)
 	var 项目列表: Array = 权重数据["项目列表"]
 	var 权重列表: Array = 权重数据["权重列表"]
 	var 随机 = RandomNumberGenerator.new()

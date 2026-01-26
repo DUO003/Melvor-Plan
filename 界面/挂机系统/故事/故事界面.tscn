@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://usn54yfbl0y"]
+[gd_scene load_steps=12 format=3 uid="uid://usn54yfbl0y"]
 
 [ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_pvvye"]
 [ext_resource type="Script" uid="uid://dtsglboj3dvn2" path="res://界面/挂机系统/故事/故事界面.gd" id="2_67qny"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cjsi35bpmr7oo" path="res://界面/插件/玩家.tscn" id="4_67qny"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="5_1dupq"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="6_3qxj1"]
+[ext_resource type="Script" uid="uid://coasluhyitkgv" path="res://界面/挂机系统/故事/点击屏幕.gd" id="9_1dupq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jywjc"]
 bg_color = Color(0.67, 0.5605667, 0.3417, 1)
@@ -51,6 +52,7 @@ scroll_scale = Vector2(0.3, 0.3)
 repeat_size = Vector2(3840, 0)
 
 [node name="图片" type="Sprite2D" parent="大地图/地图容器/地图渲染层/视差背景" index="0"]
+z_index = -10
 position = Vector2(724.4445, 57.5)
 scale = Vector2(2, 2)
 texture = ExtResource("3_6idjf")
@@ -67,18 +69,18 @@ theme = ExtResource("5_1dupq")
 layout_mode = 0
 offset_left = 260.0
 offset_top = 266.0
-offset_right = 696.0
+offset_right = 765.0
 offset_bottom = 437.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_jywjc")
 
-[node name="Label" type="Label" parent="大地图/地图容器/地图渲染层/地图/界面提示/提示框" index="0"]
+[node name="文本" type="Label" parent="大地图/地图容器/地图渲染层/地图/界面提示/提示框" index="0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "WASD或鼠标点击移动
+text = "WASD或鼠标点击地面移动
 空格跳跃"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -86,9 +88,23 @@ metadata/_edit_lock_ = true
 
 [node name="玩家" type="CharacterBody2D" parent="大地图/地图容器/地图渲染层" index="2"]
 position = Vector2(697, 605)
+collision_layer = 9
+collision_mask = 9
+safe_margin = 1.0
 script = ExtResource("3_0hb8c")
 
-[node name="玩家卡片" parent="大地图/地图容器/地图渲染层/玩家" index="0" instance=ExtResource("4_67qny")]
+[node name="按钮" type="Button" parent="大地图/地图容器/地图渲染层/玩家" index="0"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.5
+offset_right = 54.5
+offset_bottom = 67.0
+grow_horizontal = 2
+theme = ExtResource("5_1dupq")
+text = "进入"
+
+[node name="玩家卡片" parent="大地图/地图容器/地图渲染层/玩家" index="1" instance=ExtResource("4_67qny")]
 offset_left = -127.0
 offset_top = -366.0
 offset_right = 133.0
@@ -96,19 +112,29 @@ offset_bottom = -6.0
 scale = Vector2(0.5, 0.5)
 metadata/_edit_lock_ = true
 
-[node name="碰撞范围" type="CollisionShape2D" parent="大地图/地图容器/地图渲染层/玩家" index="1"]
+[node name="碰撞范围" type="CollisionShape2D" parent="大地图/地图容器/地图渲染层/玩家" index="2"]
 position = Vector2(1.5, -76)
 shape = SubResource("RectangleShape2D_6idty")
 metadata/_edit_lock_ = true
 
-[node name="摄像机" type="Camera2D" parent="大地图/地图容器/地图渲染层/玩家" index="2"]
+[node name="摄像机" type="Camera2D" parent="大地图/地图容器/地图渲染层/玩家" index="3"]
 process_callback = 0
+limit_left = -1300
+limit_bottom = 900
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="点击屏幕" type="Button" parent="大地图" index="1"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_top = 100.0
+offset_right = 1700.0
+offset_bottom = 1000.0
+script = ExtResource("9_1dupq")
 
 [node name="内容节点" parent="." index="3"]
 metadata/_edit_lock_ = true

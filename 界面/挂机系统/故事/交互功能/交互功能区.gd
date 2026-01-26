@@ -1,0 +1,55 @@
+@tool
+extends Sprite2D
+class_name 交互功能区
+@export var 交互代码:String=""
+@export var 检查:bool=true
+@export var 检查范围:Rect2=Rect2(0,0,0,0):
+	set(值):
+		检查范围 = 值
+		if 检查:
+			修改判断区(进入判断区,检查范围)
+@export var 强制:bool=false
+@export var 强制范围:Rect2=Rect2(0,0,0,0):
+	set(值):
+		强制范围 = 值
+		if 检查 and 强制:
+			修改判断区(强制判断区,强制范围)
+@onready var 进入判断区: 通用交互区域 = $进入判断区
+@onready var 强制判断区: 通用交互区域 = $强制判断区
+func _ready() -> void:
+	if 检查:
+		修改判断区(进入判断区,检查范围)
+	if 检查 and 强制:
+		修改判断区(强制判断区,强制范围)
+##修改判定范围
+func 修改判断区(节点: Area2D, 范围: Rect2) -> void:
+	if not 节点:# 安全校验：确保传入的节点不为空
+		print("错误：传入的Area2D节点为空")
+		return
+	var 范围节点: CollisionShape2D = 节点.get_node_or_null("范围")
+	if not 范围节点:# 尝试获取名为"范围"的CollisionShape2D子节点
+		print("错误：未找到名为'范围'的CollisionShape2D子节点")
+		return
+	var 判定范围区: RectangleShape2D = 范围节点.shape as RectangleShape2D
+	if not 判定范围区:# 校验Shape是否为RectangleShape2D类型
+		print("错误：CollisionShape2D的Shape不是RectangleShape2D类型")
+		return
+	判定范围区.size = 范围.size
+	范围节点.position = 范围.position
+func 执行方法():
+	
+	if 交互代码=="星空图书馆":
+		启动对话("新手任务")
+		call_deferred("延迟切换","任务窗口")
+	print(交互代码)
+func 延迟切换(窗口):
+	计划.切换场景(null,窗口)
+func 启动对话(对话时间线):
+	if Dialogic.current_timeline != null:
+		return
+	var 剧情进度=计划.梅存档["挂机"].get("任务进度",{}).get(对话时间线,0)
+	if 剧情进度==0:
+		Dialogic.VAR.set("SCJQ", true)#首次剧情=真
+	else :
+		Dialogic.VAR.set("SCJQ", false)#首次剧情=假
+	Dialogic.start(对话时间线)

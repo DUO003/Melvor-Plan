@@ -80,9 +80,9 @@ func 刷新任务宽度():
 	if 显示任务数量<1:显示任务数量=1
 	var 任务宽度=(1680-显示任务数量*10+10)/显示任务数量#水平间距10
 	for 容器 in 配置:
-		var 场景容器: GridContainer = 容器
-		场景容器.columns=显示任务数量
-		for 任务卡 in 场景容器.get_children():
+		var 任务卡片容器: GridContainer = 容器
+		任务卡片容器.columns=显示任务数量
+		for 任务卡 in 任务卡片容器.get_children():
 			任务卡.custom_minimum_size.x=任务宽度
 func 刷新任务显示():
 	#print("以完成任务隐藏逻辑触发")
@@ -105,8 +105,8 @@ func 初始化所有任务容器():
 	if 显示任务数量<1:显示任务数量=1
 	var 任务宽度=(1660-显示任务数量*10+10)/显示任务数量#水平间距10
 	for 容器 in 配置:
-		var 场景容器: GridContainer = 容器
-		场景容器.columns=显示任务数量
+		var 任务卡片容器: GridContainer = 容器
+		任务卡片容器.columns=显示任务数量
 		for 任务名称 in 任务字典:
 			var 任务类型=任务字典[任务名称].get("来源",null)
 			if not 任务类型 in 配置[容器]:continue
@@ -118,7 +118,7 @@ func 初始化所有任务容器():
 			任务卡.任务详情=任务字典[任务名称]
 			任务卡.任务序号=序号
 			任务卡.初始化任务()
-			场景容器.add_child(任务卡)
+			任务卡片容器.add_child(任务卡)
 	刷新任务显示()
 func 任务栏初始化():
 	var 窗口=%"窗口切换按钮模板"

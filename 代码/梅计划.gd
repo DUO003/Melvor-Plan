@@ -31,6 +31,8 @@ var 技能树: 梅技能树
 var BUFF: 梅BUFF
 ##表格数据支持
 var 表格: 梅表格
+##装备管理器
+var 地图:梅地图
 ##成就支持
 var steam:梅steam
 ##装备管理器
@@ -141,6 +143,7 @@ func 正式加载() -> void:
 	if 系统解锁("手工"):
 		手工.手工系统上线()
 	游历=附加代码("梅游历")
+	地图=附加代码("梅地图")
 	GBIS.sig_inv_refresh.emit()###GBIS三连_背包商店装备栏
 	GBIS.sig_slot_refresh.emit()
 	GBIS.sig_shop_refresh.emit()
@@ -192,7 +195,8 @@ func 附加代码(类型:String):
 		"梅游历" :	梅游历,
 		"梅BUFF" :	梅BUFF,
 		"梅steam":	梅steam,
-		"梅装备":	梅装备}
+		"梅装备":		梅装备,
+		"梅地图":		梅地图}
 	if not 资源映射.has(类型):
 		print("加载代码错误：类型不存在 -> ", 类型)
 		return null
