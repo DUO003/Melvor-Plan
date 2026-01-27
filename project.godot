@@ -8,6 +8,10 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="梅计划"
@@ -21,7 +25,7 @@ config/description="游戏手工版本开发中
 config/version="0.2"
 config/tags=PackedStringArray("梅计划")
 run/main_scene="uid://kifxwq2enhmp"
-config/features=PackedStringArray("4.5", "Mobile")
+config/features=PackedStringArray("4.6", "Mobile")
 run/max_fps=60
 boot_splash/bg_color=Color(0.39, 0.3289, 0.20669998, 1)
 boot_splash/image="uid://bttn4tgkwj4p0"

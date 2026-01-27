@@ -17,7 +17,7 @@ var type: String = "ANY"
 var icon: Texture2D=null
 ## 物品占的列数
 var columns: int = 1
-## 物品占的行数
+## 物品占的行/排数
 var rows: int = 1
 ## view 上的材质，如果为空，则尝试获取 GBIS.material
 var material: ShaderMaterial

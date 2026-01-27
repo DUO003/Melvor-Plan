@@ -20,7 +20,7 @@ func 获取背包消息():
 	方块背包=背包单利.get_container("方块背包")
 	var 物品数据:=方块背包.items
 	快捷键字典={}
-	var 序号=0
+	var 序号=1
 	for 物品 in 物品数据:
 		if 物品 and 物品 is 物品方块:
 			快捷键字典[序号]=物品
@@ -33,9 +33,10 @@ func 交互保存(增加:bool,内容:String,节点:Node,_强制:bool):
 		交互字典.erase(节点)
 func 返回快捷键物品()->物品方块:
 	return 快捷键字典.get(快捷栏编号,null)
-##
-func 快捷键物品变化(数量:int):
+##放置物品
+func 放置快捷键物品():
 	var 快捷物品:=返回快捷键物品()
 	if 快捷物品:
-		快捷物品.current_amount+=数量
+		快捷物品.current_amount+=-1
+	var 物品数据:=方块背包.items
 	更新_快捷键栏.emit()

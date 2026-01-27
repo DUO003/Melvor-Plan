@@ -12,52 +12,38 @@ class_name InventoryService
 ## 2. 信号发射规则：
 ##    - 可堆叠物品堆叠成功 → 发射 sig_inv_item_updated 信号
 ##    - 不可堆叠物品/堆叠后剩余物品添加成功 → 发射 sig_inv_item_added 信号
-func add_item(inv_name: String, item_data: ItemData) -> bool:
-	var new_item_data = item_data
-	# 处理可堆叠物品的逻辑分支
-		# 根据物品名称查找容器中已存在的同类型可堆叠物品
-	var items = find_item_data_by_item_name(inv_name, new_item_data.item_name)
-	# 遍历已存在的同类型物品，尝试堆叠
-	if items.has(item_data):
-		#如果存在自己就无需继续
-		return true
-	if new_item_data is StackableData:
+func add_item(inv_name: String, 物品: ItemData) -> bool:
+	var 同名数组 = find_item_data_by_item_name(inv_name, 物品.item_name)#通过物品名称找所有同名物品
+	if 同名数组.has(物品):return true#如果存在自己就无需继续
+	if 物品 is StackableData:# 处理可堆叠物品的逻辑分支
 		# 校验并修正堆叠数量：超过上限则重置为堆叠最大值
-		if new_item_data.current_amount > new_item_data.stack_size:
-			new_item_data.current_amount = new_item_data.stack_size
-		for item in items:
+		if 物品.current_amount > 物品.stack_size:
+			物品.current_amount = 物品.stack_size
+			print("错误,物品添加方法不能处理超出物品数量的逻辑")
+		var 背包数据:ContainerData=_container_repository.get_container(inv_name)
+		for 同名物品 in 同名数组:# 遍历已存在的同类型物品，尝试堆叠
 			# 仅处理未堆满的物品槽位
-			if not item.is_full():
-				# 执行堆叠操作：返回堆叠后剩余的物品数量
-				new_item_data.current_amount = item.add_amount(new_item_data.current_amount)
-				
-				# 获取该物品所在的容器格子信息（用于信号传参）
-				var new_item_grids = _container_repository.get_container(inv_name).find_grids_by_item_data(item)
-				# 断言：确保能找到物品对应的格子（防止逻辑异常）
-				assert(not new_item_grids.is_empty())
-				
-				# 堆叠成功，发射物品更新信号
-				GBIS.sig_inv_item_updated.emit(inv_name, new_item_grids[0])
-				
-				# 若堆叠后无剩余物品，直接返回添加成功
-				if new_item_data.current_amount <= 0:
-					return true
-	
-	
+			if 同名物品 is StackableData:
+				if not 同名物品.满堆叠():
+					# 执行堆叠操作：返回堆叠后剩余的物品数量
+					物品.current_amount = 同名物品.add_amount(物品.current_amount)
+					# 获取该物品所在的容器格子信息（用于信号传参）
+					var 物品格子:Array[Vector2i]= 背包数据.find_grids_by_item_data(同名物品)
+					assert(not 物品格子.is_empty())# 断言：确保能找到物品对应的格子
+					GBIS.sig_inv_item_updated.emit(inv_name, 物品格子[0])#发射物品更新信号
+					if 物品.current_amount <= 0:
+						return true#堆叠无剩余返回成功
 	# 处理两种情况：
 	# 1. 不可堆叠物品
-	# 2. 可堆叠物品堆叠后仍有剩余数量
-	var grids = _container_repository.get_container(inv_name).add_item(new_item_data)
-	
+	# 2. 剩余数量
+	var grids = _container_repository.get_container(inv_name).add_item(物品)
 	# 若成功找到可放置的格子并添加物品
 	if not grids.is_empty():
 		# 发射物品新增信号
-		GBIS.sig_inv_item_added.emit(inv_name, new_item_data, grids)
+		GBIS.sig_inv_item_added.emit(inv_name, 物品, grids)
 		return true
-	
 	# 无可用格子/堆叠失败，返回添加失败
 	return false
-
 ## 尝试把正在移动的物品堆叠到这个格子上
 func stack_moving_item(inv_name: String, grid_id: Vector2i) -> void:
 	if not GBIS.moving_item_service.moving_item:

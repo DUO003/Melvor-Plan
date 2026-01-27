@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2gr7d7fkhc8o"]
+[gd_scene format=3 uid="uid://c2gr7d7fkhc8o"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_u2cep"]
 [ext_resource type="Script" uid="uid://bupoa6no2o1xc" path="res://界面/挂机系统/故事/快捷格子.gd" id="1_wxvg8"]
@@ -42,13 +42,13 @@ unicode = 48
 [sub_resource type="Shortcut" id="Shortcut_wxvg8"]
 events = [SubResource("InputEventKey_u2cep")]
 
-[node name="快捷格子" type="Panel"]
+[node name="快捷格子" type="Panel" unique_id=2029343227]
 custom_minimum_size = Vector2(100, 100)
 theme = ExtResource("1_u2cep")
 theme_override_styles/panel = SubResource("StyleBoxFlat_1xg3l")
 script = ExtResource("1_wxvg8")
 
-[node name="贴图" type="TextureRect" parent="."]
+[node name="贴图" type="TextureRect" parent="." unique_id=1382102074]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = -1
@@ -64,7 +64,7 @@ texture = ExtResource("3_1xg3l")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="快捷键" type="Label" parent="."]
+[node name="快捷键" type="Label" parent="." unique_id=594470040]
 layout_mode = 1
 offset_right = 17.0
 offset_bottom = 43.0
@@ -72,7 +72,7 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_wxvg8")
 text = "0"
 
-[node name="物品数量" type="Label" parent="."]
+[node name="物品数量" type="Label" parent="." unique_id=42450772]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -90,7 +90,7 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_556mn")
 text = "0"
 
-[node name="按钮" type="Button" parent="."]
+[node name="按钮" type="Button" parent="." unique_id=94240506]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15

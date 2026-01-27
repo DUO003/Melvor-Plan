@@ -19,6 +19,8 @@ var 所有表格字典:Dictionary = {}
 var 缓存蓝图标签:Dictionary={}
 ##载入所有表格信息到字典,单独保存蓝图信息到创世蓝图
 var 方块字典:Dictionary={}
+##可以反向定位方块名称
+var 方块检索字典:Dictionary[Vector3i,String]
 func _ready():
 	表格初始化()
 func 表格初始化():
@@ -60,6 +62,15 @@ func 方块字典加载():
 						当前值=int(当前值)
 				内容字典[方块表头[i]]=当前值
 			方块字典[方块数据[0]]=内容字典
+	方块检索字典={}
+	for 方块名称 in 方块字典:
+		var 当前字典:Dictionary=方块字典[方块名称]
+		if 当前字典.has_all(["瓦片集","瓦片列","瓦片排"]):
+			var 瓦片集:int=当前字典.瓦片集
+			var 瓦片列:int=当前字典.瓦片列
+			var 瓦片排:int=当前字典.瓦片排
+			var 访问坐标:Vector3i=Vector3i(瓦片集,瓦片列,瓦片排)
+			方块检索字典[访问坐标]=方块名称
 	#print(方块字典)
 func _转换格式(值:String,目标类型:String) -> Variant:
 	if 目标类型=="整数" and 值.is_valid_int():

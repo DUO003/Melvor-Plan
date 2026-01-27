@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://lcxf26dcxd0m"]
+[gd_resource type="TileSet" format=3 uid="uid://lcxf26dcxd0m"]
 
 [ext_resource type="Texture2D" uid="uid://da6yfajw6oh6u" path="res://素材/MIT素材/黄色森林.png" id="1_wpjec"]
 [ext_resource type="Texture2D" uid="uid://ci62nea0msnva" path="res://素材/自制/图标/瓦片集.png" id="2_drt0m"]
@@ -134,6 +134,9 @@ texture = ExtResource("2_drt0m")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0thvp"]
 texture = ExtResource("3_ikw3u")

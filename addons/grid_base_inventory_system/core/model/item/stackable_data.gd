@@ -11,12 +11,12 @@ func 更新属性()->bool:
 		return true
 	return false
 ## 是否堆叠满了
-func is_full() -> bool:
+func 满堆叠() -> bool:
 	return current_amount >= stack_size
 
 ## 增加堆叠数量，返回剩余数量
 func add_amount(amount: int) -> int:
-	if is_full():
+	if 满堆叠():
 		return amount
 	var amount_left = stack_size - current_amount
 	if amount_left < amount:

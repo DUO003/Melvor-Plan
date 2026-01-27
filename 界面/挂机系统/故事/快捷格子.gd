@@ -5,6 +5,7 @@ extends Panel
 @onready var 物品数量: Label = $物品数量
 @onready var 按钮: Button = $按钮
 @onready var 贴图: TextureRect = $贴图
+var 光标图标=preload("res://素材/豆包AI素材/图标/光标.png")
 func _ready() -> void:
 	var 按键数组:Array=按钮.shortcut.events
 	if not 按键数组.size()==0:
@@ -26,6 +27,9 @@ func 更新物品栏():
 		var 物品:物品方块=快捷键字典[快捷编号]
 		贴图.texture=物品.icon
 		物品数量.text=str(物品.current_amount)
+	elif 快捷编号==0 :
+		贴图.texture=光标图标
+		物品数量.text=""
 	else :
 		贴图.texture=null
 		物品数量.text=""

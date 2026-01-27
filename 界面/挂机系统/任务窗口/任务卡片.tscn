@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctj6nfk62fcsg"]
+[gd_scene format=3 uid="uid://ctj6nfk62fcsg"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ca8jx"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_7pife"]
@@ -57,7 +57,7 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
-[node name="任务卡片" type="Panel"]
+[node name="任务卡片" type="Panel" unique_id=1829936911]
 custom_minimum_size = Vector2(350, 500)
 offset_right = 305.0
 offset_bottom = 500.0
@@ -65,7 +65,7 @@ theme = ExtResource("1_ca8jx")
 theme_override_styles/panel = SubResource("StyleBox_0r0a7")
 script = ExtResource("2_k6e0v")
 
-[node name="任务名称" type="Label" parent="."]
+[node name="任务名称" type="Label" parent="." unique_id=1601016198]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -76,7 +76,7 @@ grow_horizontal = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_7pife")
 text = "任务名称"
 
-[node name="任务内容区" type="ScrollContainer" parent="."]
+[node name="任务内容区" type="ScrollContainer" parent="." unique_id=711353377]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 1
@@ -89,18 +89,18 @@ offset_bottom = 207.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gxfu4")
 
-[node name="垂直排列" type="VBoxContainer" parent="任务内容区"]
+[node name="垂直排列" type="VBoxContainer" parent="任务内容区" unique_id=943066554]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="任务描述" type="RichTextLabel" parent="任务内容区/垂直排列"]
+[node name="任务描述" type="RichTextLabel" parent="任务内容区/垂直排列" unique_id=450365595]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/selection_color = Color(0.05750011, 0, 0.69, 0.6039216)
 theme_override_constants/line_separation = -10
-theme_override_constants/paragraph_separation = -10
+theme_override_constants/paragraph_separation = 0
 theme_override_font_sizes/normal_font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_k6e0v")
 theme_override_styles/focus = SubResource("StyleBoxFlat_0r0a7")
@@ -108,13 +108,13 @@ bbcode_enabled = true
 text = "一段测试文本"
 fit_content = true
 
-[node name="前置任务进度条" type="ProgressBar" parent="任务内容区/垂直排列"]
+[node name="前置任务进度条" type="ProgressBar" parent="任务内容区/垂直排列" unique_id=1612605427]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 0.0
 step = 1.0
 
-[node name="红点提示" parent="." instance=ExtResource("3_wwkkq")]
+[node name="红点提示" parent="." unique_id=1406894713 instance=ExtResource("3_wwkkq")]
 custom_minimum_size = Vector2(40, 50)
 layout_mode = 1
 anchors_preset = 1
@@ -127,7 +127,7 @@ offset_bottom = 5.0
 grow_horizontal = 0
 grow_vertical = 1
 
-[node name="按钮区" type="ScrollContainer" parent="."]
+[node name="按钮区" type="ScrollContainer" parent="." unique_id=1651999179]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 1
@@ -142,13 +142,13 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="真实区" type="HBoxContainer" parent="按钮区"]
+[node name="真实区" type="HBoxContainer" parent="按钮区" unique_id=1937981695]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="示例按钮" type="Button" parent="按钮区/真实区"]
+[node name="示例按钮" type="Button" parent="按钮区/真实区" unique_id=822251343]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

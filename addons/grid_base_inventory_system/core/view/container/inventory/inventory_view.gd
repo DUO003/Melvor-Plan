@@ -46,7 +46,7 @@ func _handle_grid_hover(grid_id: Vector2i, is_hover: bool) -> void:
 			var item_data: ItemData = GBIS.inventory_service.find_item_data_by_grid(container_name, grid_id)
 			if has_conflict and item_data:
 				if item_data is StackableData:
-					if item_data.item_name == GBIS.moving_item_service.moving_item.item_name and not item_data.is_full():
+					if item_data.item_name == GBIS.moving_item_service.moving_item.item_name and not item_data.满堆叠():
 						has_conflict = false
 	
 	for grid in grids:
