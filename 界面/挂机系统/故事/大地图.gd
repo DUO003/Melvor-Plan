@@ -28,19 +28,19 @@ func _physics_process(_间隔: float) -> void:
 	鼠标层.clear()
 	if 无方块 and 平方距离<128**2:
 		return
+	var 鼠标节点: Node = get_viewport().gui_get_hovered_control()
+	if not 鼠标节点==null:
+		return
+	var 物品:物品方块=计划.地图.返回快捷键物品()
 	if Input.is_action_just_pressed("放置"):
-		var 鼠标节点: Node = get_viewport().gui_get_hovered_control()
-		#print("鼠标节点",鼠标节点)
-		if not 鼠标节点==null:
-			return
-		if 无方块:
-			家具层.set_cell(方块坐标,0,Vector2i(0, 1))
+		if 物品 and 无方块:
+			家具层.set_cell(方块坐标,物品.瓦片集,Vector2i(物品.瓦片列, 物品.瓦片排))
 		else :
+			if 家具层.get_cell_source_id(方块坐标)!=-1:
+				家具层.erase_cell(方块坐标)
 			if 地图层.get_cell_source_id(方块坐标)!=-1:
 				玩家.启用自动前进=true
 				玩家.自动前进目标=鼠标全局.x
-			if 家具层.get_cell_source_id(方块坐标)!=-1:
-				家具层.erase_cell(方块坐标)
 	else :
 		鼠标层.set_cell(方块坐标,1,Vector2i(0, 0)if 无方块 else Vector2i(1, 0))
 func 鼠标位置无方块(鼠标全局)->bool:

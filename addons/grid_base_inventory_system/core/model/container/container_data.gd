@@ -104,6 +104,8 @@ func is_item_avilable(item_data: ItemData) -> bool:
 		return avilable_types.has("装备")
 	if item_data is 物品宝石:
 		return avilable_types.has("宝石")
+	if item_data is 物品方块:
+		return avilable_types.has("方块")
 	return avilable_types.has("ANY") or avilable_types.has(item_data.type)
 
 ## 根据物品数据查找其占用的网格坐标列表

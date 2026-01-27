@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=3 uid="uid://c2gr7d7fkhc8o"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_u2cep"]
+[ext_resource type="Script" uid="uid://bupoa6no2o1xc" path="res://界面/挂机系统/故事/快捷格子.gd" id="1_wxvg8"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_xhwk3"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="3_1xg3l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xg3l"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.4509804, 0.32941177, 0.08627451, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("1_xhwk3")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxvg8"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
+corner_radius_top_left = 10
+script = ExtResource("1_xhwk3")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_556mn"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+script = ExtResource("1_xhwk3")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="InputEventKey" id="InputEventKey_u2cep"]
+device = -1
+keycode = 48
+unicode = 48
+
+[sub_resource type="Shortcut" id="Shortcut_wxvg8"]
+events = [SubResource("InputEventKey_u2cep")]
+
+[node name="快捷格子" type="Panel"]
+custom_minimum_size = Vector2(100, 100)
+theme = ExtResource("1_u2cep")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1xg3l")
+script = ExtResource("1_wxvg8")
+
+[node name="贴图" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_1xg3l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="快捷键" type="Label" parent="."]
+layout_mode = 1
+offset_right = 17.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_wxvg8")
+text = "0"
+
+[node name="物品数量" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -43.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.7827262, 0.5838405, 0.19064778, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_556mn")
+text = "0"
+
+[node name="按钮" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_wxvg8")
+shortcut_in_tooltip = false

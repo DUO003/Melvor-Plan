@@ -25,6 +25,7 @@ var 代码字典: Dictionary={
 	"窗口管理":["res://代码/专属代码/特殊功能/窗口管理.gd",""]}
 var 按钮宽度:=163
 var 按钮高度:=60
+@onready var 导入文件名: OptionButton = $水平分割/功能按钮/导入文件名
 func _ready() -> void:
 	visibility_changed.connect(重新分配区域)
 	resized.connect(重新分配区域)
@@ -38,10 +39,15 @@ func _ready() -> void:
 	载入脚本.pressed.connect(func():打开代码文件("res://代码/梅计划.gd","#region 简短单例"))
 	导入表格.pressed.connect(func():
 		var 转移表格:快速转移表格=快速转移表格.new()
-		if 转移表格.剪切文件("梅尔沃计划重制数据 - 创世蓝图.csv","res://表格/",文件路径.text):
-			var 表格检查:json检查器=json检查器.new()
-			表格检查.表格初始化()
-			表格检查.批量检查JSON格式())
+		var 文件名:String=导入文件名.text
+		if 转移表格.剪切文件("梅尔沃计划重制数据 - %s.csv"%文件名,"res://表格/",文件路径.text):
+			if 文件名=="创世蓝图":
+				var 表格检查:json检查器=json检查器.new()
+				表格检查.表格初始化()
+				表格检查.批量检查JSON格式()
+			else :
+				print("导入文件",文件名))
+			
 	重新载入场景()
 func 重新分配区域():
 	if visible:

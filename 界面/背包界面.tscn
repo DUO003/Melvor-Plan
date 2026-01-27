@@ -130,10 +130,11 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_odugo")
-current_tab = 0
+current_tab = 2
 
 [node name="物品栏" type="ScrollContainer" parent="内容节点/水平排列/垂直排列/物品栏选项卡"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(1100, 750)
 layout_mode = 2
 scroll_vertical = 100
@@ -238,6 +239,37 @@ stack_num_font_size = 32
 stack_num_margin = 0
 stack_num_color = Color(0, 0, 0, 1)
 metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
+
+[node name="方块背包" type="ScrollContainer" parent="内容节点/水平排列/垂直排列/物品栏选项卡"]
+custom_minimum_size = Vector2(1100, 750)
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="方块滚动区" type="VBoxContainer" parent="内容节点/水平排列/垂直排列/物品栏选项卡/方块背包"]
+layout_mode = 2
+
+[node name="方块背包" type="Control" parent="内容节点/水平排列/垂直排列/物品栏选项卡/方块背包/方块滚动区"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1080, 600)
+layout_mode = 2
+script = ExtResource("5_tb4we")
+avilable_types = Array[String](["方块"])
+container_name = "方块背包"
+container_columns = 18
+container_rows = 10
+base_size = 60
+grid_border_size = 2
+grid_border_color = Color(0, 0, 0, 0)
+gird_background_color_empty = Color(0.49, 0.444267, 0.3185, 0.784314)
+gird_background_color_taken = Color(0.49, 0.444267, 0.3185, 0.862745)
+gird_background_color_conflict = Color(0.94, 0.68103, 0.6674, 0.784314)
+grid_background_color_avilable = Color(0.4, 0.362667, 0.26, 0.784314)
+stack_num_font = ExtResource("5_sso0e")
+stack_num_font_size = 35
+stack_num_margin = 0
+stack_num_color = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
+metadata/_edit_lock_ = true
 
 [node name="金币节点" type="Control" parent="内容节点/水平排列/垂直排列"]
 unique_name_in_owner = true

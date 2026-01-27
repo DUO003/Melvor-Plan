@@ -4,6 +4,7 @@ var 商品数组:Array[梅商品数据包]=[]
 @export var 商品数组数据:Array[梅商品数据包]=[]
 @export var 每次购买量:int=1
 @export var 启用药水出售:bool=false
+@export var 启用图纸出售:bool=false
 @onready var 按钮1: Button = $辅助按钮区/按钮区/按钮1
 @onready var 按钮2: Button = $辅助按钮区/按钮区/按钮2
 @onready var 按钮3: Button = $辅助按钮区/按钮区/按钮3

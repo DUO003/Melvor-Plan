@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cuepwfcdxx5kf" path="res://界面/挂机系统/故事/交互区.gd" id="3_d7y0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_agx8v"]
-size = Vector2(97, 67)
+size = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eit8p"]
 size = Vector2(80, 130)

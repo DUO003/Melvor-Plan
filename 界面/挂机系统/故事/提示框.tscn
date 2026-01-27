@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdajho7m5cn1e"]
+
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_1bk0h"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_p3xag"]
+[ext_resource type="Texture2D" uid="uid://cpttn2y0dmq0e" path="res://素材/自制/图标/关闭.png" id="2_ht2x6"]
+[ext_resource type="Script" uid="uid://dmjqjy78jcudf" path="res://界面/挂机系统/故事/提示框.gd" id="3_3kjhc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jywjc"]
+bg_color = Color(0.67, 0.5605667, 0.3417, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("1_1bk0h")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_drdiy"]
+
+[node name="提示框" type="Panel"]
+offset_left = 203.0
+offset_top = 178.0
+offset_right = 765.0
+offset_bottom = 437.0
+theme = ExtResource("1_p3xag")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jywjc")
+script = ExtResource("3_3kjhc")
+
+[node name="文本" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "移动操作提示
+WASD或鼠标点击地面移动
+空格跳跃,点击高处平台传送"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="关闭" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_drdiy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_drdiy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_drdiy")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_drdiy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_drdiy")
+icon = ExtResource("2_ht2x6")

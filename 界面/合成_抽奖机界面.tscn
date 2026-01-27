@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://q3a6w73vn7xj"]
+[gd_scene load_steps=23 format=3 uid="uid://q3a6w73vn7xj"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_o0hed"]
 [ext_resource type="Script" uid="uid://bns6tdw6v66fp" path="res://代码/专属代码/合成主界面/合成_抽奖机界面.gd" id="2_7yrbw"]
@@ -7,6 +7,8 @@
 [ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="7_5imkx"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="7_7solx"]
 [ext_resource type="Texture2D" uid="uid://3vfhgyg8wo6m" path="res://素材/豆包AI素材/特殊图纸.png" id="9_avrdn"]
+[ext_resource type="PackedScene" uid="uid://blkkbdad7hti1" path="res://界面/插件/物品辅助/代币商店.tscn" id="9_yqcxx"]
+[ext_resource type="Script" uid="uid://bivcgv6cvbvln" path="res://界面/插件/物品辅助/商品数据包.gd" id="10_xnxwr"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="11_5imkx"]
 [ext_resource type="PackedScene" uid="uid://xxyqjkn8fefo" path="res://界面/插件/滑块.tscn" id="11_7solx"]
 [ext_resource type="Script" uid="uid://bbi5ojpwx5ouf" path="res://界面/蓝图图片.gd" id="11_yqcxx"]
@@ -17,6 +19,29 @@ content_margin_left = 10.0
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 0.25490198)
 script = ExtResource("12_yqcxx")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="Resource" id="Resource_y7u36"]
+script = ExtResource("10_xnxwr")
+"商品名" = "资源回复代币"
+"代币" = "手工精通代币"
+"商店名称" = "代币"
+metadata/_custom_type_script = "uid://bivcgv6cvbvln"
+
+[sub_resource type="Resource" id="Resource_1enq4"]
+script = ExtResource("10_xnxwr")
+"商品名" = "催化剂代币"
+"商品数量" = 2
+"代币" = "手工精通代币"
+"商店名称" = "代币"
+metadata/_custom_type_script = "uid://bivcgv6cvbvln"
+
+[sub_resource type="Resource" id="Resource_wqaqf"]
+script = ExtResource("10_xnxwr")
+"商品名" = "烹饪代币"
+"商品数量" = 2
+"代币" = "手工精通代币"
+"商店名称" = "代币"
+metadata/_custom_type_script = "uid://bivcgv6cvbvln"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5imkx"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
@@ -398,10 +423,11 @@ layout_mode = 0
 offset_left = 520.0
 offset_right = 1670.0
 offset_bottom = 763.0
-current_tab = 0
+current_tab = 2
 
 [node name="抽取说明" type="RichTextLabel" parent="内容节点/标签页"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 mouse_behavior_recursive = 1
 theme_override_constants/paragraph_separation = 0
@@ -432,6 +458,16 @@ bbcode_enabled = true
 drag_and_drop_selection_enabled = false
 metadata/_tab_index = 1
 
+[node name="兑换图纸" type="ScrollContainer" parent="内容节点/标签页"]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="代币商店" parent="内容节点/标签页/兑换图纸" instance=ExtResource("9_yqcxx")]
+layout_mode = 2
+size_flags_vertical = 3
+"商品数组数据" = Array[ExtResource("10_xnxwr")]([SubResource("Resource_y7u36"), SubResource("Resource_1enq4"), SubResource("Resource_wqaqf")])
+"启用图纸出售" = true
+
 [node name="主菜单" type="Button" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
@@ -453,6 +489,7 @@ text = "主菜单"
 
 [node name="蓝色图纸" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(568, 472)
 scale = Vector2(2.3824487, 2.116616)
 texture = ExtResource("9_avrdn")

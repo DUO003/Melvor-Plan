@@ -33,7 +33,8 @@ func _init(加载逻辑=0,物品名称: String="默认名称") -> void:
 	elif 加载逻辑==1:
 		item_name=物品名称
 		if not item_name in 计划.表格.蓝图字典:
-			push_warning("错误[%s]:未能读取到表格" % item_name)
+			if not self is 物品方块:
+				push_warning("错误[%s]:未能读取到表格" % item_name)
 		更新属性()
 var 延迟计数器=0
 func 延迟加载():

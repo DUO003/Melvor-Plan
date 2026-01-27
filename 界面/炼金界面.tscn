@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c3ipvacpavwmu"]
+[gd_scene load_steps=36 format=3 uid="uid://c3ipvacpavwmu"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_nocv6"]
 [ext_resource type="Script" uid="uid://dhlygjpx7m47s" path="res://代码/专属代码/炼金界面/炼金界面.gd" id="2_ex6pc"]
@@ -190,29 +190,6 @@ script = ExtResource("8_l2l3n")
 "商店名称" = "催化剂"
 metadata/_custom_type_script = "uid://bivcgv6cvbvln"
 
-[sub_resource type="Resource" id="Resource_y7u36"]
-script = ExtResource("8_l2l3n")
-"商品名" = "资源回复代币"
-"代币" = "手工精通代币"
-"商店名称" = "代币"
-metadata/_custom_type_script = "uid://bivcgv6cvbvln"
-
-[sub_resource type="Resource" id="Resource_1enq4"]
-script = ExtResource("8_l2l3n")
-"商品名" = "催化剂代币"
-"商品数量" = 2
-"代币" = "手工精通代币"
-"商店名称" = "代币"
-metadata/_custom_type_script = "uid://bivcgv6cvbvln"
-
-[sub_resource type="Resource" id="Resource_wqaqf"]
-script = ExtResource("8_l2l3n")
-"商品名" = "烹饪代币"
-"商品数量" = 2
-"代币" = "手工精通代币"
-"商店名称" = "代币"
-metadata/_custom_type_script = "uid://bivcgv6cvbvln"
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5jsc"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
 border_width_left = 5
@@ -329,7 +306,7 @@ offset_right = 2.5
 offset_bottom = -75.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 2
+current_tab = 1
 
 [node name="炼金台" type="HBoxContainer" parent="内容节点/选项卡"]
 visible = false
@@ -507,7 +484,6 @@ layout_mode = 2
 
 [node name="预览配方" type="VBoxContainer" parent="内容节点/选项卡"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -585,6 +561,7 @@ layout_mode = 2
 size_flags_vertical = 8
 
 [node name="点数兑换" type="VBoxContainer" parent="内容节点/选项卡"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -592,7 +569,7 @@ metadata/_tab_index = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-"商品数组数据" = Array[ExtResource("8_l2l3n")]([SubResource("Resource_nocv6"), SubResource("Resource_l2l3n"), SubResource("Resource_c1r7u"), SubResource("Resource_y7u36"), SubResource("Resource_1enq4"), SubResource("Resource_wqaqf")])
+"商品数组数据" = Array[ExtResource("8_l2l3n")]([SubResource("Resource_nocv6"), SubResource("Resource_l2l3n"), SubResource("Resource_c1r7u")])
 "启用药水出售" = true
 
 [node name="帮助区域" type="ScrollContainer" parent="内容节点/选项卡"]

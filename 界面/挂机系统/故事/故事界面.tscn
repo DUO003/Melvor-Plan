@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://usn54yfbl0y"]
+[gd_scene load_steps=11 format=3 uid="uid://usn54yfbl0y"]
 
 [ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_pvvye"]
 [ext_resource type="Script" uid="uid://dtsglboj3dvn2" path="res://界面/挂机系统/故事/故事界面.gd" id="2_67qny"]
@@ -7,22 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c0q7oed58pqte" path="res://界面/挂机系统/故事/地图.tscn" id="4_6idty"]
 [ext_resource type="PackedScene" uid="uid://cjsi35bpmr7oo" path="res://界面/插件/玩家.tscn" id="4_67qny"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="5_1dupq"]
-[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="6_3qxj1"]
-[ext_resource type="Script" uid="uid://coasluhyitkgv" path="res://界面/挂机系统/故事/点击屏幕.gd" id="9_1dupq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jywjc"]
-bg_color = Color(0.67, 0.5605667, 0.3417, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-script = ExtResource("6_3qxj1")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
+[ext_resource type="PackedScene" uid="uid://bdajho7m5cn1e" path="res://界面/挂机系统/故事/提示框.tscn" id="6_1dupq"]
+[ext_resource type="PackedScene" uid="uid://c2gr7d7fkhc8o" path="res://界面/挂机系统/故事/快捷格子.tscn" id="9_1dupq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6idty"]
 size = Vector2(65, 140)
@@ -31,6 +17,9 @@ size = Vector2(65, 140)
 script = ExtResource("2_67qny")
 "基类窗口名称" = "故事界面"
 metadata/_edit_vertical_guides_ = [2411.0]
+
+[node name="等级显示" parent="标题" index="0"]
+"玩法" = "故事"
 
 [node name="大地图" type="CanvasLayer" parent="." index="2"]
 layer = 2
@@ -65,32 +54,17 @@ layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("5_1dupq")
 
-[node name="提示框" type="Panel" parent="大地图/地图容器/地图渲染层/地图/界面提示" index="0"]
+[node name="提示框" parent="大地图/地图容器/地图渲染层/地图/界面提示" index="0" instance=ExtResource("6_1dupq")]
 layout_mode = 0
-offset_left = 260.0
-offset_top = 266.0
-offset_right = 765.0
-offset_bottom = 437.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_jywjc")
-
-[node name="文本" type="Label" parent="大地图/地图容器/地图渲染层/地图/界面提示/提示框" index="0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "WASD或鼠标点击地面移动
-空格跳跃"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_lock_ = true
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 562.0
+offset_bottom = 259.0
 
 [node name="玩家" type="CharacterBody2D" parent="大地图/地图容器/地图渲染层" index="2"]
 position = Vector2(697, 605)
-collision_layer = 9
-collision_mask = 9
-safe_margin = 1.0
+collision_layer = 15
+collision_mask = 15
 script = ExtResource("3_0hb8c")
 
 [node name="按钮" type="Button" parent="大地图/地图容器/地图渲染层/玩家" index="0"]
@@ -125,16 +99,40 @@ limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-editor_draw_limits = true
-editor_draw_drag_margin = true
 
-[node name="点击屏幕" type="Button" parent="大地图" index="1"]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-offset_top = 100.0
-offset_right = 1700.0
-offset_bottom = 1000.0
-script = ExtResource("9_1dupq")
+[node name="物品快捷栏" type="CanvasLayer" parent="大地图/地图容器/地图渲染层" index="3"]
+layer = 3
+
+[node name="物品栏" type="HBoxContainer" parent="大地图/地图容器/地图渲染层/物品快捷栏" index="0"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 73.0
+offset_top = -132.0
+offset_right = 485.0
+offset_bottom = -32.0
+grow_vertical = 0
+theme = ExtResource("5_1dupq")
+
+[node name="格子0" parent="大地图/地图容器/地图渲染层/物品快捷栏/物品栏" index="0" instance=ExtResource("9_1dupq")]
+layout_mode = 2
+"快捷编号" = 0
+
+[node name="格子1" parent="大地图/地图容器/地图渲染层/物品快捷栏/物品栏" index="1" instance=ExtResource("9_1dupq")]
+layout_mode = 2
+"快捷键" = 49
+"快捷编号" = 1
+
+[node name="格子2" parent="大地图/地图容器/地图渲染层/物品快捷栏/物品栏" index="2" instance=ExtResource("9_1dupq")]
+layout_mode = 2
+"快捷键" = 50
+"快捷编号" = 2
+
+[node name="格子3" parent="大地图/地图容器/地图渲染层/物品快捷栏/物品栏" index="3" instance=ExtResource("9_1dupq")]
+layout_mode = 2
+"快捷键" = 51
+"快捷编号" = 3
 
 [node name="内容节点" parent="." index="3"]
 metadata/_edit_lock_ = true

@@ -6,13 +6,13 @@ class_name 交互功能区
 @export var 检查范围:Rect2=Rect2(0,0,0,0):
 	set(值):
 		检查范围 = 值
-		if 检查:
+		if Engine.is_editor_hint() and is_inside_tree() and 检查:
 			修改判断区(进入判断区,检查范围)
 @export var 强制:bool=false
 @export var 强制范围:Rect2=Rect2(0,0,0,0):
 	set(值):
 		强制范围 = 值
-		if 检查 and 强制:
+		if Engine.is_editor_hint() and is_inside_tree() and  检查 and 强制:
 			修改判断区(强制判断区,强制范围)
 @onready var 进入判断区: 通用交互区域 = $进入判断区
 @onready var 强制判断区: 通用交互区域 = $强制判断区

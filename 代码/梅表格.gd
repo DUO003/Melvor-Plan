@@ -18,12 +18,15 @@ var 所有表格字典:Dictionary = {}
 ##预先加载标签
 var 缓存蓝图标签:Dictionary={}
 ##载入所有表格信息到字典,单独保存蓝图信息到创世蓝图
+var 方块字典:Dictionary={}
 func _ready():
 	表格初始化()
 func 表格初始化():
 	加载所有表格()
 	创世蓝图=处理表格数据(所有表格字典["创世蓝图"])
 	字典加载()
+	方块字典加载()
+	#print("表格字典",所有表格字典.方块)
 func 字典加载():
 	蓝图表头={}
 	var 缓存序号=0
@@ -43,7 +46,21 @@ func 字典加载():
 				处理后的蓝图行.append(_转换格式(蓝图[序号],格式标准[序号]))
 			处理的蓝图字典[蓝图[0]] = 处理后的蓝图行
 	蓝图数组=蓝图字典.keys()
-	#print(蓝图数组)
+func 方块字典加载():
+	方块字典={}
+	var 方块表格=所有表格字典.方块
+	var 方块表头=方块表格[0]
+	for 方块数据:Array in 方块表格:
+		if not 方块数据==方块表头:
+			var 内容字典:Dictionary={}
+			for i in 方块数据.size():
+				var 当前值=方块数据[i]
+				if 当前值 is String:
+					if 当前值.is_valid_int():
+						当前值=int(当前值)
+				内容字典[方块表头[i]]=当前值
+			方块字典[方块数据[0]]=内容字典
+	#print(方块字典)
 func _转换格式(值:String,目标类型:String) -> Variant:
 	if 目标类型=="整数" and 值.is_valid_int():
 		return int(值)

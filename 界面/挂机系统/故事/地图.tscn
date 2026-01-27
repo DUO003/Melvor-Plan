@@ -31,11 +31,17 @@ navigation_visibility_mode = 2
 
 [node name="家具" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAD7/wQAAgAAAAAAAAD9/wQABAACAAAAAAA=")
+tile_set = ExtResource("2_30b55")
+collision_visibility_mode = 2
+
+[node name="鼠标" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
 tile_set = ExtResource("2_30b55")
 collision_visibility_mode = 2
 navigation_visibility_mode = 2
 
-[node name="鼠标" type="TileMapLayer" parent="."]
+[node name="碰撞" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
 tile_set = ExtResource("2_30b55")
 collision_visibility_mode = 2

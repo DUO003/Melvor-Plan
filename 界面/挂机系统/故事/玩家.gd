@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name 大地图玩家
 var 重力加速度:float=ProjectSettings.get("physics/2d/default_gravity") as float
 var 玩家速度:float=500.0
-var 玩家跳跃高度:float=-800
+var 玩家跳跃高度:float=-870
 @onready var 按钮: Button = $按钮
 @onready var 玩家图片: 玩家卡片 = $玩家卡片
 var 动画: AnimationPlayer
@@ -33,7 +33,7 @@ func _physics_process(间隔: float) -> void:
 			else :
 				移动=-1
 			if abs(玩家全局-自动前进目标)<=10:
-				print(自动前进目标,"/",玩家全局)
+				#print(自动前进目标,"/",玩家全局)
 				启用自动前进=false
 	velocity.x=move_toward(velocity.x,玩家速度*移动,50)
 	velocity.y+=间隔*重力加速度

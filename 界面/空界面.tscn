@@ -118,6 +118,7 @@ offset_bottom = 1000.0
 grow_horizontal = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("4_kiae7")
 theme_override_constants/separation = 5
 theme_override_constants/minimum_grab_thickness = 2
 theme_override_icons/grabber = SubResource("DPITexture_rhqkc")
@@ -195,6 +196,7 @@ anchor_bottom = 1.0
 offset_top = -80.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("4_kiae7")
 
 [node name="图钉容器" type="HBoxContainer" parent="功能/图钉"]
 unique_name_in_owner = true
@@ -274,12 +276,14 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 mouse_behavior_recursive = 1
+theme = ExtResource("4_kiae7")
 
 [node name="其他容器" type="Control" parent="悬浮面板"]
 unique_name_in_owner = true
 z_index = 10
 layout_mode = 3
 anchors_preset = 0
+theme = ExtResource("4_kiae7")
 
 [node name="隐藏奖励" type="Button" parent="悬浮面板"]
 self_modulate = Color(1, 1, 1, 0)
