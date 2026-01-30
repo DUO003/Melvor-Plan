@@ -55,8 +55,8 @@ func _draw():
 	if 物品 and 显示物品:
 		var 物品贴图:Texture2D=物品.icon
 		draw_texture_rect(物品贴图, 矩形, false)
-		if 物品 is StackableData and 物品.current_amount>1:
-			var 文本:String=str(物品.current_amount)
+		if 物品 is StackableData and 物品.数量>1:
+			var 文本:String=str(物品.数量)
 			var 宽度:Vector2 = 字体.get_string_size(文本, HORIZONTAL_ALIGNMENT_RIGHT, -1,字号)
 			var 起点:Vector2 = Vector2(矩形.size.x-宽度.x-间隔,矩形.size.y-字体.get_descent(字号)-间隔)
 			# 绘制堆叠数量文本：使用指定字体、位置、文本内容、对齐、限制宽度、指定字号 颜色

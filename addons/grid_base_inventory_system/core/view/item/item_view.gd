@@ -118,7 +118,7 @@ func _draw() -> void:
 	# 如果物品数据是可堆叠类型（StackableData），则绘制堆叠数量文本
 	if data is StackableData:
 				# 计算堆叠数量文本的尺寸：使用指定字体和字号，文本右对齐，不限制最大宽度
-		var text_size = stack_num_font.get_string_size(str(data.current_amount), HORIZONTAL_ALIGNMENT_RIGHT, -1, stack_num_font_size)
+		var text_size = stack_num_font.get_string_size(str(data.数量), HORIZONTAL_ALIGNMENT_RIGHT, -1, stack_num_font_size)
 		# 计算文本绘制位置：
 		# X坐标：节点宽度减去文本宽度再减去边缘间距（靠右对齐并留边距）
 		# Y坐标：节点高度减去字体 descent（字体基线到最低点的距离）再减去边缘间距（靠下对齐并留边距）
@@ -129,7 +129,7 @@ func _draw() -> void:
 		draw_string_outline(
 		stack_num_font,          # font：字体资源
 		pos,                     # pos：绘制位置（和主体文字同位置）
-		str(data.current_amount),# text：要绘制的文本内容
+		str(data.数量),# text：要绘制的文本内容
 		HORIZONTAL_ALIGNMENT_RIGHT,  # alignment：水平对齐方式（和主体保持一致）
 		-1,                      # width：文本宽度（-1表示无限制）
 		stack_num_font_size,     # font_size：字体大小（和主体保持一致）
@@ -139,7 +139,7 @@ func _draw() -> void:
 		0,                       # direction：文本方向，默认从左到右
 		0,                       # orientation：水平排版，默认值
 		0.0)                      # oversampling：过采样，默认值
-		draw_string(stack_num_font, pos, str(data.current_amount),
+		draw_string(stack_num_font, pos, str(data.数量),
 		 HORIZONTAL_ALIGNMENT_RIGHT, -1, stack_num_font_size, stack_num_color)
 	#text_size = stack_num_font.get_string_size(罗马数字, HORIZONTAL_ALIGNMENT_RIGHT, -1, stack_num_font_size)
 	#pos = Vector2(

@@ -2,12 +2,13 @@ extends ItemData
 ## 装备数据基类，你的装备数据类应该继承此类
 class_name EquipmentData
 
+func 拷贝方法():#所有继承方法如果希望被正确拷贝都需要重写
+	return EquipmentData.new(1,item_name)
 ## 检测装备是否可用，需重写
 func test_need(slot_name: String) -> bool:
 	# 标记_可用装备
 	#push_warning("[Override this function] [%s] test passed." % slot_name)
 	return true
-
 ## 装备时调用，需重写；也可以使用 GBIS.sig_slot_item_equipped 信号行处理
 func equipped(slot_name: String) -> void:
 	push_warning("[Override this function] equipped item [%s] at slot [%s]" % [item_name, slot_name])

@@ -14,7 +14,7 @@ func _ready() -> void:
 		if 缓存贴图:
 			物品贴图=缓存贴图
 		if 道具 is StackableData:
-			数量=道具.current_amount
+			数量=道具.数量
 		else :
 			数量=1
 		$"范围/图片".texture=物品贴图

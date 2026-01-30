@@ -5,6 +5,7 @@ var 瓦片列:int
 var 瓦片排:int
 var 瓦片功能:String
 var 功能参数:String
+var 简介:String
 var 瓦片集对应字典:Dictionary[int,Texture2D]={
 	0:preload("res://素材/MIT素材/黄色森林.png"),
 	1:preload("res://素材/自制/图标/瓦片集.png"),
@@ -16,14 +17,15 @@ func 更新属性():
 	if 方块字典.has(item_name):
 		var 方块数据:Dictionary=方块字典[item_name]
 		var 瓦片资源:TileSet=load("res://代码/地图集/地图.tres")
-		stack_size=64
+		堆叠上限=5
+		简介=方块数据["简介"]
 		columns=方块数据["列"]
 		rows=方块数据["排"]
 		瓦片集=方块数据["瓦片集"]
 		瓦片列=方块数据["瓦片列"]
 		瓦片排=方块数据["瓦片排"]
-		瓦片功能="解锁窗口"
-		功能参数=方块数据["解锁窗口"]
+		瓦片功能=方块数据["功能"]
+		功能参数=方块数据["功能参数"]
 		if 瓦片资源 != null:
 			# 1. 根据瓦片集序号获取对应的源纹理（大图）
 			var 源纹理: = 瓦片集对应字典[瓦片集]
@@ -43,3 +45,5 @@ func 更新属性():
 				单个瓦片纹理.region = 瓦片区域
 				# 6. 赋值给icon，背包即可显示
 				icon = 单个瓦片纹理
+func 拷贝方法():#所有继承方法如果希望被正确拷贝都需要重写
+	return 物品方块.new(1,item_name)

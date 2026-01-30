@@ -850,6 +850,34 @@ metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 content_margin_left = 10.0
 content_margin_right = 10.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgrsc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mh2qh"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.33, 0.2761, 0.1683, 0.36862746)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gl82m"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.33, 0.2761, 0.1683, 0.36862746)
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7qdb"]
 content_margin_left = 4.0
 content_margin_top = 4.0
@@ -1132,7 +1160,12 @@ TabContainer/styles/tab_hovered = SubResource("StyleBox_mh2qh")
 TabContainer/styles/tab_selected = SubResource("StyleBox_gl82m")
 TabContainer/styles/tab_unselected = SubResource("StyleBox_p26vh")
 TabContainer/styles/tabbar_background = SubResource("StyleBoxEmpty_r1b8a")
+TextEdit/colors/caret_background_color = Color(1, 1, 1, 0)
+TextEdit/font_sizes/font_size = 30
 TextEdit/fonts/font = ExtResource("1_csmyg")
+TextEdit/styles/focus = SubResource("StyleBoxEmpty_cgrsc")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_mh2qh")
+TextEdit/styles/read_only = SubResource("StyleBoxFlat_gl82m")
 Tree/fonts/font = ExtResource("1_csmyg")
 Tree/fonts/title_button_font = ExtResource("1_csmyg")
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_r7qdb")

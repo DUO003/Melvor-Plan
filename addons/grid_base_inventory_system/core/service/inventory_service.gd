@@ -2,48 +2,29 @@ extends BaseContainerService
 ## 背包业务类
 class_name InventoryService
 
-## 向背包/容器中添加物品的核心函数
-## 参数说明：
-## - inv_name: 容器/背包的名称（唯一标识）
-## - item_data: 要添加的物品数据对象（包含物品名称、数量、堆叠属性等）
-## 返回值：bool - 添加成功返回true，失败返回false
-## 核心逻辑规则：
-## 1. 可堆叠物品：若当前数量超过堆叠上限，先重置为堆叠最大值；堆叠后有剩余则按新物品添加
-## 2. 信号发射规则：
-##    - 可堆叠物品堆叠成功 → 发射 sig_inv_item_updated 信号
-##    - 不可堆叠物品/堆叠后剩余物品添加成功 → 发射 sig_inv_item_added 信号
+## 向背包添加物品返回添加成功
 func add_item(inv_name: String, 物品: ItemData) -> bool:
 	var 同名数组 = find_item_data_by_item_name(inv_name, 物品.item_name)#通过物品名称找所有同名物品
 	if 同名数组.has(物品):return true#如果存在自己就无需继续
 	if 物品 is StackableData:# 处理可堆叠物品的逻辑分支
-		# 校验并修正堆叠数量：超过上限则重置为堆叠最大值
-		if 物品.current_amount > 物品.stack_size:
-			物品.current_amount = 物品.stack_size
+		if 物品.数量 > 物品.堆叠上限:# 校验并修正堆叠数量：超过上限则重置为堆叠最大值
+			物品.数量 = 物品.堆叠上限
 			print("错误,物品添加方法不能处理超出物品数量的逻辑")
 		var 背包数据:ContainerData=_container_repository.get_container(inv_name)
 		for 同名物品 in 同名数组:# 遍历已存在的同类型物品，尝试堆叠
-			# 仅处理未堆满的物品槽位
 			if 同名物品 is StackableData:
-				if not 同名物品.满堆叠():
-					# 执行堆叠操作：返回堆叠后剩余的物品数量
-					物品.current_amount = 同名物品.add_amount(物品.current_amount)
-					# 获取该物品所在的容器格子信息（用于信号传参）
-					var 物品格子:Array[Vector2i]= 背包数据.find_grids_by_item_data(同名物品)
+				if not 同名物品.满堆叠():# 仅处理未堆满的物品槽位
+					物品.数量 = 同名物品.add_amount(物品.数量)# 执行堆叠操作：返回堆叠后剩余的物品数量
+					var 物品格子:Array[Vector2i]= 背包数据.find_grids_by_item_data(同名物品)# 获取该物品所在的容器格子信息
 					assert(not 物品格子.is_empty())# 断言：确保能找到物品对应的格子
 					GBIS.sig_inv_item_updated.emit(inv_name, 物品格子[0])#发射物品更新信号
-					if 物品.current_amount <= 0:
+					if 物品.数量 <= 0:
 						return true#堆叠无剩余返回成功
-	# 处理两种情况：
-	# 1. 不可堆叠物品
-	# 2. 剩余数量
-	var grids = _container_repository.get_container(inv_name).add_item(物品)
-	# 若成功找到可放置的格子并添加物品
-	if not grids.is_empty():
-		# 发射物品新增信号
-		GBIS.sig_inv_item_added.emit(inv_name, 物品, grids)
+	var 可用格 = _container_repository.get_container(inv_name).add_item(物品)
+	if not 可用格.is_empty():# 若成功找到可放置的格子并添加物品
+		GBIS.sig_inv_item_added.emit(inv_name, 物品, 可用格)# 发射物品新增信号
 		return true
-	# 无可用格子/堆叠失败，返回添加失败
-	return false
+	return false# 无可用格子/堆叠失败，返回添加失败
 ## 尝试把正在移动的物品堆叠到这个格子上
 func stack_moving_item(inv_name: String, grid_id: Vector2i) -> void:
 	if not GBIS.moving_item_service.moving_item:
@@ -52,9 +33,9 @@ func stack_moving_item(inv_name: String, grid_id: Vector2i) -> void:
 	if not item_data is StackableData:
 		return
 	if item_data.item_name == GBIS.moving_item_service.moving_item.item_name:
-		var amount_left = item_data.add_amount(GBIS.moving_item_service.moving_item.current_amount)
+		var amount_left = item_data.add_amount(GBIS.moving_item_service.moving_item.数量)
 		if amount_left > 0:
-			GBIS.moving_item_service.moving_item.current_amount = amount_left
+			GBIS.moving_item_service.moving_item.数量 = amount_left
 		else:
 			GBIS.moving_item_service.clear_moving_item()
 		GBIS.sig_inv_item_updated.emit(inv_name, grid_id)
@@ -96,15 +77,15 @@ func split_item(inv_name: String, grid_id: Vector2i, offset: Vector2i, base_size
 	var inv = _container_repository.get_container(inv_name)
 	if inv:
 		var item = inv.find_item_data_by_grid(grid_id)
-		if item and item is StackableData and item.stack_size > 1 and item.current_amount > 1:
-			var origin_amount = item.current_amount
+		if item and item is StackableData and item.堆叠上限 > 1 and item.数量 > 1:
+			var origin_amount = item.数量
 			var new_amount_1 = origin_amount / 2
 			var new_amount_2 = origin_amount - new_amount_1
-			item.current_amount = new_amount_1
+			item.数量 = new_amount_1
 			GBIS.sig_inv_item_updated.emit(inv_name, grid_id)
 			
 			var new_item = item.duplicate()
-			new_item.current_amount = new_amount_2
+			new_item.数量 = new_amount_2
 			GBIS.moving_item_service.move_item_by_data(new_item, offset, base_size,背包本体)
 			return new_item
 	return null
@@ -164,9 +145,9 @@ func 消耗指定数量物品(背包名称: String, 物品名称: String, 消耗
 				remove_item_by_data(背包名称, 物品)
 				是否有消耗 = true
 			else:
-				if 物品.current_amount > 剩余需消耗数量:
+				if 物品.数量 > 剩余需消耗数量:
 					# 数量充足，仅减少数量
-					物品.current_amount -= 剩余需消耗数量
+					物品.数量 -= 剩余需消耗数量
 					var 物品格子 = _container_repository.get_container(背包名称).find_grids_by_item_data(物品)
 					if not 物品格子.is_empty():
 						GBIS.sig_inv_item_updated.emit(背包名称, 物品格子[0])
@@ -174,7 +155,7 @@ func 消耗指定数量物品(背包名称: String, 物品名称: String, 消耗
 					是否有消耗 = true
 				else:
 					# 数量不足，移除整个物品
-					剩余需消耗数量 -= 物品.current_amount
+					剩余需消耗数量 -= 物品.数量
 					remove_item_by_data(背包名称, 物品)
 					是否有消耗 = true
 		else:
@@ -186,9 +167,9 @@ func 消耗指定数量物品(背包名称: String, 物品名称: String, 消耗
 	if 剩余需消耗数量>0:
 		var 鼠标物品=GBIS.moving_item_service.moving_item
 		if 鼠标物品 and 鼠标物品.item_name==物品名称:
-			鼠标物品.current_amount-=剩余需消耗数量
-			if 鼠标物品.current_amount<0:#为0不会影响释放代码,但不能直接移物品
-				鼠标物品.current_amount=0
+			鼠标物品.数量-=剩余需消耗数量
+			if 鼠标物品.数量<0:#为0不会影响释放代码,但不能直接移物品
+				鼠标物品.数量=0
 	return 是否有消耗  # 返回是否实际消耗了物品
 	
 	

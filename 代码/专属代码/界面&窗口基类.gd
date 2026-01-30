@@ -14,7 +14,8 @@ func _ready() -> void:
 func 自动加载():
 	for 选项名称:String in 选项卡同步:
 		var 当前选项卡=选项卡同步[选项名称]
-		当前选项卡.current_tab=计划.窗口状态_限制(基类窗口名称,选项名称,0,当前选项卡.get_tab_count(),0)
+		#当前选项卡.current_tab=计划.窗口状态_限制(基类窗口名称,选项名称,0,当前选项卡.get_tab_count(),0)
+		加载选项卡状态(当前选项卡,选项名称)
 		当前选项卡.tab_selected.connect(func(序号):计划.窗口状态管理(基类窗口名称,选项名称,null,序号))
 	for 选项名称:String in 滚动区同步:
 		var 当前滚动区=滚动区同步[选项名称]
@@ -24,6 +25,25 @@ func 自动加载():
 		var 垂直=当前滚动区.get_v_scroll_bar()
 		水平.mouse_exited.connect(func():保存滚动区(当前滚动区,选项名称))
 		垂直.mouse_exited.connect(func():保存滚动区(当前滚动区,选项名称))
+func 加载选项卡状态(选项卡:TabContainer,名称:String):
+	var 标签=计划.窗口状态管理(基类窗口名称,名称,null)
+	if 标签 is int and 标签>=0 and 标签<选项卡.get_tab_count():#检查是合法标签,例如上个版本保存的值
+		选项卡.current_tab=标签
+		return
+	elif 标签 is String:
+		var 匹配失败 = true
+		for i in range(选项卡.get_tab_count()):
+			var 当前标签名 = 选项卡.get_tab_title(i)
+			if 当前标签名 == 标签:
+				标签 = i
+				匹配失败 = false
+				break
+		if 匹配失败:
+			print(选项卡,名称,"标签匹配失败:",标签)
+			标签 = 0#文本不合法
+	else :标签 = 0#标签超出合法范围
+	计划.窗口状态管理(基类窗口名称,名称,null,标签)
+	选项卡.current_tab=标签#非法值默认参数
 func 保存滚动区(当前滚动区:ScrollContainer,选项名称:String):
 	计划.窗口状态管理(基类窗口名称,选项名称+"水平",null,当前滚动区.scroll_horizontal)
 	计划.窗口状态管理(基类窗口名称,选项名称+"垂直",null,当前滚动区.scroll_vertical)

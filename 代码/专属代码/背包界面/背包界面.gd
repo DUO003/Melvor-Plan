@@ -99,7 +99,7 @@ func 使用物品():
 		if 物品 is 标准物品:
 			var 结果=物品.使用物品(背包)
 			if 结果=="成功":
-				if 物品==null or 物品.current_amount<=0:
+				if 物品==null or 物品.数量<=0:
 					物品=null
 					%"无选中".visible=true
 					%"选中".visible=false

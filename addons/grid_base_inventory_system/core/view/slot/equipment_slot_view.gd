@@ -168,7 +168,7 @@ func _on_slot_hover() -> void:
 		# 适配拖拽物品的显示尺寸：将拖拽物品的视图基础尺寸设为当前槽位的基础尺寸
 		GBIS.moving_item_service.moving_item_view.base_size = base_size
 		# 检查当前装备槽是否可装备该拖拽物品（获取槽位实例并调用可用性检测方法）
-		var is_avilable = GBIS.equipment_slot_service.get_slot(slot_name).is_item_avilable(GBIS.moving_item_service.moving_item)
+		var is_avilable = GBIS.equipment_slot_service.get_slot(slot_name).检查物品类型(GBIS.moving_item_service.moving_item)
 		# 更新装备槽状态：仅当物品可用且槽位为空时设为"可用"，否则设为"不可用"
 		_state = State.AVILABLE if is_avilable and is_empty() else State.INVILABLE
 	else:

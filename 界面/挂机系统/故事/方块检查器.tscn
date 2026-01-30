@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://be1uar8pmksb2"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_vjq16"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_jo7p8"]
+[ext_resource type="Script" uid="uid://jj40xckuu4xm" path="res://界面/挂机系统/故事/方块检查器.gd" id="3_objmx"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="4_a31v6"]
+[ext_resource type="Texture2D" uid="uid://cpttn2y0dmq0e" path="res://素材/自制/图标/关闭.png" id="5_ivq2p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jywjc"]
+bg_color = Color(0.67058825, 0.56078434, 0.34117648, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+script = ExtResource("2_jo7p8")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jo7p8"]
+
+[node name="方块检查器" type="Panel" unique_id=738261662]
+anchors_preset = -1
+anchor_left = 0.6617647
+anchor_top = 0.0066666645
+anchor_right = 0.9899585
+anchor_bottom = 0.8566667
+grow_horizontal = 0
+mouse_behavior_recursive = 2
+theme = ExtResource("1_vjq16")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jywjc")
+script = ExtResource("3_objmx")
+metadata/_edit_use_anchors_ = true
+
+[node name="贴图" type="TextureRect" parent="." unique_id=942937933]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02631579
+anchor_top = 0.01861702
+anchor_right = 0.31781375
+anchor_bottom = 0.21808511
+texture = ExtResource("4_a31v6")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="文本" type="Label" parent="." unique_id=1059943209]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.34117737
+anchor_top = 0.03568262
+anchor_right = 0.96849686
+anchor_bottom = 0.20523049
+grow_horizontal = 0
+theme_override_constants/line_spacing = 10
+text = "测试方块
+坐标(100,100)"
+metadata/_edit_use_anchors_ = true
+
+[node name="关闭" type="Button" parent="." unique_id=1231541275]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8609564
+anchor_top = 0.01130319
+anchor_right = 0.9756662
+anchor_bottom = 0.08222517
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jo7p8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jo7p8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jo7p8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jo7p8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jo7p8")
+icon = ExtResource("5_ivq2p")
+metadata/_edit_use_anchors_ = true
+
+[node name="滚动区" type="ScrollContainer" parent="." unique_id=133263896]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02688512
+anchor_top = 0.22745098
+anchor_right = 0.9786184
+anchor_bottom = 0.9895425
+metadata/_edit_use_anchors_ = true
+
+[node name="容器" type="VBoxContainer" parent="滚动区" unique_id=1679572591]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="方块简介" type="RichTextLabel" parent="滚动区/容器" unique_id=1797035860]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/line_separation = -10
+theme_override_constants/paragraph_separation = 0
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+bbcode_enabled = true
+text = "简介:
+一段文本内容"
+fit_content = true
+
+[node name="文本编辑器" type="TextEdit" parent="滚动区/容器" unique_id=1702210592]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+placeholder_text = "空的文本输入框"
+emoji_menu_enabled = false
+
+[node name="按钮组合" type="HBoxContainer" parent="滚动区/容器" unique_id=642520984]
+layout_mode = 2
+
+[node name="进度条" type="ProgressBar" parent="滚动区/容器/按钮组合" unique_id=681561350]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+show_percentage = false
+
+[node name="进度条标签" type="Label" parent="滚动区/容器/按钮组合/进度条" unique_id=1555143539]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="确认" type="Button" parent="滚动区/容器/按钮组合" unique_id=1040523149]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "确认"
+
+[node name="切换" type="CheckButton" parent="滚动区/容器/按钮组合" unique_id=2072227834]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "窗口"

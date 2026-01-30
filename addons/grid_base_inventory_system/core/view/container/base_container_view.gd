@@ -83,9 +83,6 @@ class_name BaseContainerView
 	set(值):
 		可拿取类型 = 值
 		queue_redraw()
-
-
-
 ## 格子容器
 var _grid_container: GridContainer
 ## 物品容器
@@ -113,7 +110,7 @@ func refresh() -> void:
 	# 遍历所有格子（_grid_map的键为格子标识）
 	for grid in _grid_map.keys():
 		# 获取当前格子对应的物品数据
-		var item_data = container_data.grid_item_map[grid]
+		var item_data = container_data.背包_格子_物品映射[grid]
 		# 若存在物品数据且未处理过该物品
 		if item_data and not handled_item.has(item_data):
 			#print("背包未处理",grid)

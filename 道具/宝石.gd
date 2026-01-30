@@ -119,6 +119,8 @@ func 更新属性(设定种子:int=randi()):
 		随机抽取宝石词条(随机词条数量,"手工",随机)
 		创建数据=true
 	type = "宝石"
+func 拷贝方法():#所有继承方法如果希望被正确拷贝都需要重写
+	return 物品宝石.new(1,item_name)
 func 随机抽取宝石词条(抽取数量:int, 词条方向:String,随机:RandomNumberGenerator) -> void:
 	if 抽取数量 <= 0:return
 	var 候选词条列表:Array = []

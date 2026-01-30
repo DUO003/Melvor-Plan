@@ -17,14 +17,14 @@ var 是否销毁=true
 ##已字典形式保存方法,可以被物品的 属性["使用"]访问解析
 var 物品使用映射:Dictionary = {
 	"标准示例":(func(_字典):# 示例：使用1个治疗药水（成功，消耗1个）
-		if self.current_amount >= 1:
+		if self.数量 >= 1:
 			print("使用治疗药水，恢复生命值")
 			return 1  # 消耗1个
 		else:
 			print("治疗药水数量不足，无法使用")
 		return -1),  # 失败
 	"礼盒":(func(字典):
-		if self.current_amount >= 1:
+		if self.数量 >= 1:
 			if 计划.节点有效性检查("空节点"):
 				计划.节点["空节点"].便利摄像机效果()
 			var 在线数据: Dictionary=计划.梅存档["挂机"]["在线时间"]
@@ -51,29 +51,29 @@ var 物品使用映射:Dictionary = {
 			return 0
 		return -1),  # 失败
 	"资源":(func(_字典):
-		if self.current_amount >= 1:
-			计划.手工.获得资源(self.item_name,self.current_amount,false)
-			return self.current_amount
+		if self.数量 >= 1:
+			计划.手工.获得资源(self.item_name,self.数量,false)
+			return self.数量
 		else:
 			print("不足，无法使用")
 		return -1),  # 失败
 	"金币":(func(_字典):
-		if self.current_amount >= 1:
-			计划.梅存档["金币"]+=self.current_amount
-			return self.current_amount
+		if self.数量 >= 1:
+			计划.梅存档["金币"]+=self.数量
+			return self.数量
 		else:
 			print("不足，无法使用")
 		return -1),  # 失败
 	"体力":(func(_字典):
-		if self.current_amount >= 1:
-			var 获得量=计划.获得体力(self.current_amount,true)
+		if self.数量 >= 1:
+			var 获得量=计划.获得体力(self.数量,true)
 			return 获得量
 		else:
 			print("不足，无法使用")
 		return -1),  # 失败,  # 失败
 	"药水":(func(_字典):
 		if not 计划.BUFF.BUFF配置字典.has(self.item_name):return -1#没有药水的BUFF状态
-		if self.current_amount >= 1:
+		if self.数量 >= 1:
 			if 计划.BUFF.创建BUFF(self.item_name,"使用药水",1.0):
 				计划.语法糖通知(self.item_name+"使用成功")
 				return 1
@@ -82,7 +82,7 @@ var 物品使用映射:Dictionary = {
 			print("不足，无法使用")
 		return -1),  # 失败
 	"精通代币":(func(字典):
-		if self.current_amount >= 1:
+		if self.数量 >= 1:
 			if not 字典.has("系统"):return -1#如果没有系统键
 			var 系统=字典["系统"]
 			if not 计划.梅存档[系统].has("精通"):
@@ -102,6 +102,8 @@ func 更新属性():
 		标签=表格数据[蓝图表头["标签"]]
 		简介=表格数据[蓝图表头["简介"]]
 		更新堆叠()
+func 拷贝方法():#所有继承方法如果希望被正确拷贝都需要重写
+	return 标准物品.new(1,item_name)
 ## 物品被使用时调用,自行处理销毁逻辑与变量外观
 func 使用物品(背包) -> String:# 中间函数：处理物品使用流程
 	print("尝试使用物品",self.item_name)
@@ -120,8 +122,8 @@ func 使用物品(背包) -> String:# 中间函数：处理物品使用流程
 		return "条件错误"
 	else:
 		if 使用数量 > 0:# 使用成功，根据返回值扣除数量（使用数量 >=0）
-			self.current_amount-=使用数量
-			if self.current_amount<=0:
+			self.数量-=使用数量
+			if self.数量<=0:
 				GBIS.inventory_service.remove_item_by_data(背包, self)
 		计划.更新_UI.emit()
 		GBIS.sig_inv_refresh.emit()
@@ -158,15 +160,15 @@ func 随机数量(最低: int, 最高: int, 步进: int) -> int:
 	var 随机倍数 = randi() % (最大倍数 + 1)
 	return clampi(最低 + 随机倍数 * 步进, 最低, 最高)
 func 文本预处理()->String:
-	return item_name+"\n数量:"+str(current_amount)+"\n堆叠上限:"+科学计数(stack_size)+"\n"+简介
+	return item_name+"\n数量:"+str(数量)+"\n堆叠上限:"+科学计数(堆叠上限)+"\n"+简介
 func 科学计数(数值, 小数位数: int = 2,免转换范围:int=10000) -> String:
 	return 计划.科学计数(数值,小数位数,免转换范围)
 func 返回简介(背包名:String,参数:Dictionary={})->String:
 	var 简介文本:String=super.返回简介(背包名,参数)
 	if GBIS.shop_names.has(背包名):
-		简介文本+="\n每次购买数量:"+str(current_amount)
+		简介文本+="\n每次购买数量:"+str(数量)
 		简介文本+="\n购买费用:"+str(价值)
-		简介文本+="\n单价:%.0f"%(价值*1.0/current_amount)
+		简介文本+="\n单价:%.0f"%(价值*1.0/数量)
 		简介文本+="\n剩余购买次数:"+str(商店剩余数量)
 	else :
 		简介文本+="\n简介:"+简介
@@ -174,4 +176,4 @@ func 返回简介(背包名:String,参数:Dictionary={})->String:
 func 更新堆叠():
 	var 基础堆叠=计划.表格.蓝图数据(item_name,"堆叠")
 	var 额外堆叠=计划.表格.获取额外堆叠上限(item_name)
-	stack_size=基础堆叠+额外堆叠
+	堆叠上限=基础堆叠+额外堆叠

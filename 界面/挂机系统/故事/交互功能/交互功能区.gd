@@ -37,19 +37,6 @@ func 修改判断区(节点: Area2D, 范围: Rect2) -> void:
 	判定范围区.size = 范围.size
 	范围节点.position = 范围.position
 func 执行方法():
-	
-	if 交互代码=="星空图书馆":
-		启动对话("新手任务")
-		call_deferred("延迟切换","任务窗口")
 	print(交互代码)
 func 延迟切换(窗口):
 	计划.切换场景(null,窗口)
-func 启动对话(对话时间线):
-	if Dialogic.current_timeline != null:
-		return
-	var 剧情进度=计划.梅存档["挂机"].get("任务进度",{}).get(对话时间线,0)
-	if 剧情进度==0:
-		Dialogic.VAR.set("SCJQ", true)#首次剧情=真
-	else :
-		Dialogic.VAR.set("SCJQ", false)#首次剧情=假
-	Dialogic.start(对话时间线)

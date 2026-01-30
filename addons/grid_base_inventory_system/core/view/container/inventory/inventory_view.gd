@@ -6,6 +6,7 @@ class_name InventoryView
 
 ## 允许存放的物品类型，如果背包名字重复，可存放的物品类型需要一样
 @export var avilable_types: Array[String] = ["ANY"]
+signal 背包内容更新()
 func grid_hover(grid_id: Vector2i) -> void:
 	_handle_grid_hover(grid_id, true)
  
@@ -38,7 +39,7 @@ func _handle_grid_hover(grid_id: Vector2i, is_hover: bool) -> void:
 	
 	var has_conflict = false
 	if is_hover:
-		has_conflict = item_shape.x * item_shape.y != grids.size() or not GBIS.inventory_service.get_container(container_name).is_item_avilable(moving_item)
+		has_conflict = item_shape.x * item_shape.y != grids.size() or not GBIS.inventory_service.get_container(container_name).检查物品类型(moving_item)
 		for grid in grids:
 			if has_conflict:
 				break 
@@ -114,13 +115,14 @@ func _on_item_added(inv_name:String, item_data: ItemData, grids: Array[Vector2i]
 		return
 	if not is_visible_in_tree():
 		return
-	
 	var item = _draw_item(item_data, grids[0])
 	_items.append(item)
 	_item_grids_map[item] = grids
 	for grid in grids:
 		_grid_map[grid].taken(grid - grids[0])
 		_grid_item_map[grid] = item
+	背包内容更新.emit()
+	print("监听")
 
 ## 监听移除物品
 func _on_item_removed(inv_name:String, item_data: ItemData) -> void:
@@ -128,7 +130,6 @@ func _on_item_removed(inv_name:String, item_data: ItemData) -> void:
 		return
 	if not is_visible_in_tree():
 		return
-	
 	for i in range(_items.size() - 1, -1, -1):
 		var item = _items[i]
 		if item.data == item_data:
@@ -138,6 +139,8 @@ func _on_item_removed(inv_name:String, item_data: ItemData) -> void:
 				_grid_item_map[grid] = null
 			item.queue_free()
 			_items.remove_at(i)
+			背包内容更新.emit()
+			print("移除")
 			break
 
 ## 监听更新物品
@@ -147,7 +150,8 @@ func _on_inv_item_updated(inv_name: String, grid_id: Vector2i) -> void:
 	if not is_visible_in_tree():
 		return
 	_grid_item_map[grid_id].queue_redraw()
-
+	背包内容更新.emit()
+	print("更新")
 ## 绘制物品
 func _draw_item(item_data: ItemData, first_grid: Vector2i) -> ItemView:
 	var item = ItemView.new(item_data, base_size, stack_num_font, stack_num_font_size, stack_num_margin, stack_num_color)

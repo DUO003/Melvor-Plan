@@ -129,7 +129,7 @@ func 更新手牌(炼金数据:梅炼金数据):
 			add_child(克隆节点)
 			if 下次解锁:
 				选中卡片[克隆节点]=true
-	#排列子节点()
+	计划.显示后执行(排列子节点,self)
 func 选中更改(选中:String,节点:Control):
 	var 清空:bool=false
 	if 选中=="切换":
@@ -152,6 +152,8 @@ func _ready() -> void:
 	for 节点 in 节点数组:
 		if 节点 is Control:
 			卡片区节点数组.append(节点)
-	排列子节点()
+	计划.显示后执行(延迟信号,self)
+func 延迟信号():
 	item_rect_changed.connect(排列子节点)
-	
+	resized.connect(排列子节点)
+	排列子节点()

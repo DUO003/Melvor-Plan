@@ -36,6 +36,8 @@ func _init(加载逻辑=0,物品名称: String="默认名称") -> void:
 			if not self is 物品方块:
 				push_warning("错误[%s]:未能读取到表格" % item_name)
 		更新属性()
+func 拷贝方法():#所有继承方法如果希望被正确拷贝都需要重写
+	return ItemData.new(1,item_name)
 var 延迟计数器=0
 func 延迟加载():
 	if item_name=="Item Name":
@@ -123,7 +125,7 @@ func buy(背包) -> bool:
 		return false
 	var 资源 = self.duplicate()
 	if 资源 is StackableData:
-		资源.stack_size=self.stack_size#必须保留,因为这个不是存档变量.
+		资源.堆叠上限=self.堆叠上限#必须保留,因为这个不是存档变量.
 	if 资源 is 标准物品:#可选,这些值仅作为商品生效,删掉可以少一行存档数据
 		资源.价值=0
 		资源.商店剩余数量=0

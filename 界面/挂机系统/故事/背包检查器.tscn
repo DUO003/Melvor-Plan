@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://c8xt474cuqbfc"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_1bdiu"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_x7eiq"]
+[ext_resource type="Script" uid="uid://b5tfvlpr74jn2" path="res://界面/挂机系统/故事/背包检查器.gd" id="3_t8dyq"]
+[ext_resource type="Script" uid="uid://b3x4mwtjmm4tp" path="res://addons/grid_base_inventory_system/core/view/container/inventory/inventory_view.gd" id="4_s41ld"]
+[ext_resource type="FontFile" uid="uid://ba8mauhrxpxeg" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-85-Bold/AlibabaPuHuiTi-3-85-Bold.otf" id="5_1u8xf"]
+[ext_resource type="Texture2D" uid="uid://cpttn2y0dmq0e" path="res://素材/自制/图标/关闭.png" id="6_g2auh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jywjc"]
+bg_color = Color(0.67058825, 0.56078434, 0.34117648, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+script = ExtResource("2_x7eiq")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jo7p8"]
+
+[node name="背包检查器" type="Panel" unique_id=571608455]
+anchors_preset = -1
+anchor_left = 0.6617647
+anchor_top = 0.0066666645
+anchor_right = 0.99941176
+anchor_bottom = 0.8566667
+offset_left = -1104.0
+offset_right = -1104.0
+grow_horizontal = 0
+mouse_behavior_recursive = 2
+theme = ExtResource("1_1bdiu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jywjc")
+script = ExtResource("3_t8dyq")
+metadata/_edit_use_anchors_ = true
+
+[node name="背包滚动区" type="ScrollContainer" parent="." unique_id=1808552343]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.017923413
+anchor_top = 0.014379085
+anchor_right = 0.9929571
+anchor_bottom = 0.9856209
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="背包容器" type="VBoxContainer" parent="背包滚动区" unique_id=1604521100]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="选项卡" type="TabContainer" parent="背包滚动区/背包容器" unique_id=1368018489]
+layout_mode = 2
+current_tab = 0
+
+[node name="背包" type="Control" parent="背包滚动区/背包容器/选项卡" unique_id=274384899]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(540, 600)
+layout_mode = 2
+script = ExtResource("4_s41ld")
+container_name = "背包"
+container_columns = 9
+container_rows = 10
+base_size = 60
+grid_border_size = 2
+grid_border_color = Color(0, 0, 0, 0)
+gird_background_color_empty = Color(0.49, 0.444267, 0.3185, 0.784314)
+gird_background_color_taken = Color(0.49, 0.444267, 0.3185, 0.862745)
+gird_background_color_conflict = Color(0.94, 0.68103, 0.6674, 0.784314)
+grid_background_color_avilable = Color(0.4, 0.362667, 0.26, 0.784314)
+stack_num_font = ExtResource("5_1u8xf")
+stack_num_font_size = 35
+stack_num_margin = 0
+stack_num_color = Color(0, 0, 0, 1)
+metadata/_tab_index = 0
+metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
+metadata/_edit_lock_ = true
+
+[node name="方块背包" type="Control" parent="背包滚动区/背包容器/选项卡" unique_id=619927277]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(540, 300)
+layout_mode = 2
+script = ExtResource("4_s41ld")
+avilable_types = Array[String](["方块"])
+container_name = "方块背包"
+container_columns = 18
+container_rows = 10
+base_size = 30
+grid_border_size = 2
+grid_border_color = Color(0, 0, 0, 0)
+gird_background_color_empty = Color(0.49, 0.444267, 0.3185, 0.784314)
+gird_background_color_taken = Color(0.49, 0.444267, 0.3185, 0.862745)
+gird_background_color_conflict = Color(0.94, 0.68103, 0.6674, 0.784314)
+grid_background_color_avilable = Color(0.4, 0.362667, 0.26, 0.784314)
+stack_num_font = ExtResource("5_1u8xf")
+stack_num_font_size = 35
+stack_num_margin = 0
+stack_num_color = Color(0, 0, 0, 1)
+metadata/_tab_index = 1
+metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
+metadata/_edit_lock_ = true
+
+[node name="关闭" type="Button" parent="." unique_id=1774752286]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8609564
+anchor_top = 0.01130319
+anchor_right = 0.9756662
+anchor_bottom = 0.08222517
+offset_left = -11.284546
+offset_top = 2.3530598
+offset_right = -11.284546
+offset_bottom = 12.097744
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jo7p8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jo7p8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jo7p8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jo7p8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jo7p8")
+icon = ExtResource("6_g2auh")
+metadata/_edit_use_anchors_ = true

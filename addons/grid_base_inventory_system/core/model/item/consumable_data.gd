@@ -4,14 +4,15 @@ class_name ConsumableData
 
 ## 当数量为0时，是否摧毁物品
 @export var destroy_if_empty: bool = true
-
+func 拷贝方法():#所有继承方法如果希望被正确拷贝都需要重写
+	return ConsumableData.new(1,item_name)
 ## 物品被使用时调用
 func use() -> bool:
-	if current_amount > 0:
+	if 数量 > 0:
 		var 消耗量 = consume()
 		if 消耗量 > 0:
-			current_amount -= 消耗量
-			if current_amount <= 0:
+			数量 -= 消耗量
+			if 数量 <= 0:
 				return destroy_if_empty
 	return false
 

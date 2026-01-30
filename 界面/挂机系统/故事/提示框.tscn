@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdajho7m5cn1e"]
+[gd_scene format=3 uid="uid://bdajho7m5cn1e"]
 
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_1bk0h"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_p3xag"]
@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_drdiy"]
 
-[node name="提示框" type="Panel"]
+[node name="提示框" type="Panel" unique_id=1670535735]
 offset_left = 203.0
 offset_top = 178.0
 offset_right = 765.0
@@ -30,7 +30,7 @@ theme = ExtResource("1_p3xag")
 theme_override_styles/panel = SubResource("StyleBoxFlat_jywjc")
 script = ExtResource("3_3kjhc")
 
-[node name="文本" type="Label" parent="."]
+[node name="文本" type="Label" parent="." unique_id=1879601841]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,7 +44,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="关闭" type="Button" parent="."]
+[node name="关闭" type="Button" parent="." unique_id=1659977150]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

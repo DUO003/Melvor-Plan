@@ -44,7 +44,7 @@ func equip(item_data: ItemData) -> bool:
 			计划.语法糖通知("替换随机已打孔宝石")
 		return true
 	if not equipped_item:
-		if is_item_avilable(item_data):
+		if 检查物品类型(item_data):
 			equipped_item = item_data
 			equipped_item.equipped(slot_name)
 			return true
@@ -65,7 +65,7 @@ func unequip() -> ItemData:
 	return ret
 
 ## 检查是否可装备这个物品
-func is_item_avilable(item_data: ItemData) -> bool:
+func 检查物品类型(item_data: ItemData) -> bool:
 	# 新逻辑：如果是物品装备类，使用类型属性判断
 	if item_data is 物品宝石:
 		return true

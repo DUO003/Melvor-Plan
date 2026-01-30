@@ -94,7 +94,7 @@ func 加载瓶子食材处理区() -> void:
 func 选择物品(食材:Dictionary={}):
 	var 新建物品:标准物品=标准物品.new(1,食材["物品类型"])
 	新建物品.特殊标签=食材["标签"]
-	新建物品.current_amount=0
+	新建物品.数量=0
 	GBIS.moving_item_service.move_item_by_data(新建物品, Vector2i.ZERO, 128)
 func 更新数据(食材:Dictionary={},节点=null):
 	if 食材 and 节点:

@@ -2,21 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_pvvye"]
 [ext_resource type="Script" uid="uid://dtsglboj3dvn2" path="res://界面/挂机系统/故事/故事界面.gd" id="2_67qny"]
-[ext_resource type="Script" uid="uid://b25kif3hjc6is" path="res://界面/挂机系统/故事/玩家.gd" id="3_0hb8c"]
-[ext_resource type="Texture2D" uid="uid://qgbdeihy2mp7" path="res://素材/游戏素材/背景/1.png" id="3_6idjf"]
-[ext_resource type="PackedScene" uid="uid://c0q7oed58pqte" path="res://界面/挂机系统/故事/地图.tscn" id="4_6idty"]
-[ext_resource type="PackedScene" uid="uid://cjsi35bpmr7oo" path="res://界面/插件/玩家.tscn" id="4_67qny"]
-[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="5_1dupq"]
-[ext_resource type="PackedScene" uid="uid://bdajho7m5cn1e" path="res://界面/挂机系统/故事/提示框.tscn" id="6_1dupq"]
-[ext_resource type="PackedScene" uid="uid://c2gr7d7fkhc8o" path="res://界面/挂机系统/故事/快捷格子.tscn" id="9_1dupq"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6idty"]
-size = Vector2(65, 140)
+[ext_resource type="PackedScene" uid="uid://cs1ww6pfowmmb" path="res://界面/挂机系统/故事/地图渲染层.tscn" id="3_ycshr"]
 
 [node name="故事界面" unique_id=1005476284 instance=ExtResource("1_pvvye")]
 script = ExtResource("2_67qny")
 "基类窗口名称" = "故事界面"
 metadata/_edit_vertical_guides_ = [2411.0]
+metadata/_edit_lock_ = true
 
 [node name="等级显示" parent="标题" index="0"]
 "玩法" = "故事"
@@ -25,114 +17,7 @@ metadata/_edit_vertical_guides_ = [2411.0]
 layer = 2
 follow_viewport_enabled = true
 
-[node name="地图容器" type="SubViewportContainer" parent="大地图" index="0" unique_id=287508129]
-offset_top = 100.0
-offset_right = 1700.0
-offset_bottom = 1000.0
-stretch = true
-
-[node name="地图渲染层" type="SubViewport" parent="大地图/地图容器" index="0" unique_id=845510745]
-handle_input_locally = false
-size = Vector2i(1700, 900)
-render_target_update_mode = 4
-
-[node name="视差背景" type="Parallax2D" parent="大地图/地图容器/地图渲染层" index="0" unique_id=566591089]
-scroll_scale = Vector2(0.3, 0.3)
-repeat_size = Vector2(3840, 0)
-
-[node name="图片" type="Sprite2D" parent="大地图/地图容器/地图渲染层/视差背景" index="0" unique_id=1048732339]
-z_index = -10
-position = Vector2(724.4445, 57.5)
-scale = Vector2(2, 2)
-texture = ExtResource("3_6idjf")
-
-[node name="地图" parent="大地图/地图容器/地图渲染层" index="1" unique_id=936049608 instance=ExtResource("4_6idty")]
-position = Vector2(0, 100)
-
-[node name="界面提示" type="Control" parent="大地图/地图容器/地图渲染层/地图" index="1" unique_id=1154884812]
-layout_mode = 3
-anchors_preset = 0
-theme = ExtResource("5_1dupq")
-
-[node name="提示框" parent="大地图/地图容器/地图渲染层/地图/界面提示" index="0" unique_id=294148524 instance=ExtResource("6_1dupq")]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 562.0
-offset_bottom = 259.0
-
-[node name="玩家" type="CharacterBody2D" parent="大地图/地图容器/地图渲染层" index="2" unique_id=1174999800]
-position = Vector2(697, 605)
-collision_layer = 15
-collision_mask = 15
-script = ExtResource("3_0hb8c")
-
-[node name="按钮" type="Button" parent="大地图/地图容器/地图渲染层/玩家" index="0" unique_id=1992173977]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -54.5
-offset_right = 54.5
-offset_bottom = 67.0
-grow_horizontal = 2
-theme = ExtResource("5_1dupq")
-text = "进入"
-
-[node name="玩家卡片" parent="大地图/地图容器/地图渲染层/玩家" index="1" unique_id=910595484 instance=ExtResource("4_67qny")]
-offset_left = -127.0
-offset_top = -366.0
-offset_right = 133.0
-offset_bottom = -6.0
-scale = Vector2(0.5, 0.5)
-metadata/_edit_lock_ = true
-
-[node name="碰撞范围" type="CollisionShape2D" parent="大地图/地图容器/地图渲染层/玩家" index="2" unique_id=1072532002]
-position = Vector2(1.5, -76)
-shape = SubResource("RectangleShape2D_6idty")
-metadata/_edit_lock_ = true
-
-[node name="摄像机" type="Camera2D" parent="大地图/地图容器/地图渲染层/玩家" index="3" unique_id=1195028628]
-process_callback = 0
-limit_left = -1300
-limit_bottom = 900
-limit_smoothed = true
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-
-[node name="物品快捷栏" type="CanvasLayer" parent="大地图/地图容器/地图渲染层" index="3" unique_id=791976540]
-layer = 3
-
-[node name="物品栏" type="HBoxContainer" parent="大地图/地图容器/地图渲染层/物品快捷栏" index="0" unique_id=586286132]
-custom_minimum_size = Vector2(100, 100)
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 73.0
-offset_top = -132.0
-offset_right = 485.0
-offset_bottom = -32.0
-grow_vertical = 0
-theme = ExtResource("5_1dupq")
-
-[node name="格子0" parent="大地图/地图容器/地图渲染层/物品快捷栏/物品栏" index="0" unique_id=1819549676 instance=ExtResource("9_1dupq")]
-layout_mode = 2
-"快捷编号" = 0
-
-[node name="格子1" parent="大地图/地图容器/地图渲染层/物品快捷栏/物品栏" index="1" unique_id=1033412610 instance=ExtResource("9_1dupq")]
-layout_mode = 2
-"快捷键" = 49
-"快捷编号" = 1
-
-[node name="格子2" parent="大地图/地图容器/地图渲染层/物品快捷栏/物品栏" index="2" unique_id=1397257746 instance=ExtResource("9_1dupq")]
-layout_mode = 2
-"快捷键" = 50
-"快捷编号" = 2
-
-[node name="格子3" parent="大地图/地图容器/地图渲染层/物品快捷栏/物品栏" index="3" unique_id=1675412873 instance=ExtResource("9_1dupq")]
-layout_mode = 2
-"快捷键" = 51
-"快捷编号" = 3
+[node name="地图容器" parent="大地图" index="0" unique_id=155001563 instance=ExtResource("3_ycshr")]
 
 [node name="内容节点" parent="." index="3"]
 metadata/_edit_lock_ = true

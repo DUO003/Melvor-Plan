@@ -28,10 +28,14 @@ func 安全清除移动物品() -> void:
 		var 背包类型 = "背包"
 		if moving_item is 物品装备:
 			背包类型 = "装备"
-		if moving_item is 物品宝石:
+		elif moving_item is 物品宝石:
 			背包类型 = "宝石"
+		elif moving_item is 物品方块:
+			背包类型 = "方块背包"
+		else :
+			背包类型 = "背包"
 		if moving_item is StackableData:
-			if moving_item.current_amount<=0:
+			if moving_item.数量<=0:
 				clear_moving_item()
 				return
 		GBIS.add_item(背包类型, moving_item)

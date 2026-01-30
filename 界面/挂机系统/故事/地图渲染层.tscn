@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://cs1ww6pfowmmb"]
+
+[ext_resource type="Texture2D" uid="uid://qgbdeihy2mp7" path="res://素材/游戏素材/背景/1.png" id="1_rs58p"]
+[ext_resource type="PackedScene" uid="uid://c0q7oed58pqte" path="res://界面/挂机系统/故事/地图.tscn" id="2_73r62"]
+[ext_resource type="Script" uid="uid://b25kif3hjc6is" path="res://界面/挂机系统/故事/玩家.gd" id="3_0ubns"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="4_jmi07"]
+[ext_resource type="PackedScene" uid="uid://cjsi35bpmr7oo" path="res://界面/插件/玩家.tscn" id="5_m444s"]
+[ext_resource type="PackedScene" uid="uid://dvv8grnr0717i" path="res://界面/挂机系统/故事/物品栏.tscn" id="6_cbxf4"]
+[ext_resource type="PackedScene" uid="uid://be1uar8pmksb2" path="res://界面/挂机系统/故事/方块检查器.tscn" id="7_lgj7u"]
+[ext_resource type="PackedScene" uid="uid://c8xt474cuqbfc" path="res://界面/挂机系统/故事/背包检查器.tscn" id="8_em1jn"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_1dupq"]
+device = -1
+keycode = 69
+unicode = 69
+
+[sub_resource type="Shortcut" id="Shortcut_3qxj1"]
+events = [SubResource("InputEventKey_1dupq")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6idty"]
+size = Vector2(65, 140)
+
+[node name="地图容器" type="SubViewportContainer" unique_id=155001563]
+offset_top = 100.0
+offset_right = 1700.0
+offset_bottom = 1000.0
+stretch = true
+metadata/_edit_lock_ = true
+
+[node name="地图渲染层" type="SubViewport" parent="." unique_id=1502266320]
+handle_input_locally = false
+size = Vector2i(1700, 900)
+render_target_update_mode = 4
+
+[node name="视差背景" type="Parallax2D" parent="地图渲染层" unique_id=466200518]
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(3840, 0)
+
+[node name="图片" type="Sprite2D" parent="地图渲染层/视差背景" unique_id=1665610795]
+z_index = -10
+position = Vector2(724.4445, 57.5)
+scale = Vector2(2, 2)
+texture = ExtResource("1_rs58p")
+metadata/_edit_lock_ = true
+
+[node name="地图管理器" parent="地图渲染层" unique_id=650144343 instance=ExtResource("2_73r62")]
+unique_name_in_owner = true
+
+[node name="玩家" type="CharacterBody2D" parent="地图渲染层" unique_id=694321896]
+position = Vector2(697, 605)
+collision_layer = 15
+collision_mask = 15
+script = ExtResource("3_0ubns")
+
+[node name="按钮" type="Button" parent="地图渲染层/玩家" unique_id=1823511476]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.5
+offset_right = 54.5
+offset_bottom = 67.0
+grow_horizontal = 2
+theme = ExtResource("4_jmi07")
+shortcut = SubResource("Shortcut_3qxj1")
+text = "进入"
+
+[node name="玩家卡片" parent="地图渲染层/玩家" unique_id=2031541571 instance=ExtResource("5_m444s")]
+offset_left = -127.0
+offset_top = -366.0
+offset_right = 133.0
+offset_bottom = -6.0
+scale = Vector2(0.5, 0.5)
+metadata/_edit_lock_ = true
+
+[node name="碰撞范围" type="CollisionShape2D" parent="地图渲染层/玩家" unique_id=47745095]
+position = Vector2(1.5, -76)
+shape = SubResource("RectangleShape2D_6idty")
+metadata/_edit_lock_ = true
+
+[node name="摄像机" type="Camera2D" parent="地图渲染层/玩家" unique_id=890725580]
+process_callback = 0
+limit_left = -1300
+limit_bottom = 850
+limit_smoothed = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="物品快捷栏" type="CanvasLayer" parent="地图渲染层" unique_id=295523468]
+layer = 3
+
+[node name="内容节点" type="Control" parent="地图渲染层/物品快捷栏" unique_id=77558350]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_behavior_recursive = 1
+theme = ExtResource("4_jmi07")
+metadata/_edit_lock_ = true
+
+[node name="物品栏" parent="地图渲染层/物品快捷栏/内容节点" unique_id=1509395123 instance=ExtResource("6_cbxf4")]
+layout_mode = 1
+anchor_left = 0.033529412
+anchor_top = 0.86444443
+anchor_right = 0.9747059
+anchor_bottom = 0.97555554
+grow_vertical = 1
+
+[node name="方块检查器" parent="地图渲染层/物品快捷栏/内容节点" unique_id=738261662 instance=ExtResource("7_lgj7u")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.70117646
+anchor_top = 0.0022222223
+anchor_right = 0.9929412
+anchor_bottom = 0.8511111
+offset_left = -2.0
+offset_top = 8.0
+offset_right = 2.0
+offset_bottom = 4.0
+
+[node name="背包检查器" parent="地图渲染层/物品快捷栏/内容节点" unique_id=571608455 instance=ExtResource("8_em1jn")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(580, 760)
+layout_mode = 1
+anchor_left = 0.005882353
+anchor_top = 0.01
+anchor_right = 0.34705883
+anchor_bottom = 0.8466667
+offset_left = 0.0
+offset_right = 0.0
+grow_horizontal = 1

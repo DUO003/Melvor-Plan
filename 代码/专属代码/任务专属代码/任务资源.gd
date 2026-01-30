@@ -5,6 +5,7 @@ class_name 任务资源
 @export var 任务完成:bool=false
 @export var 任务数据:Array=[]
 @export var 任务状态:bool=false
+@export var 任务目标:Dictionary={}
 func _init(名称:String="",类型:String="") -> void:
 	if not 名称=="":
 		任务名称=名称
@@ -25,3 +26,5 @@ func 任务完成逻辑(附加值=[]):
 		elif 方法参数==0:任务奖励方法.call()  # 执行匿名方法
 		else :breakpoint#错误
 	else :计划.语法糖通知("任务已完成但没有定义的奖励")
+func 任务目标检查()->bool:
+	return false

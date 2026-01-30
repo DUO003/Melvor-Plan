@@ -17,3 +17,5 @@ mono_crash.*.json
 # 忽略根目录下的测试文件夹
 测试/
 *.import
+# 忽略 Godot 安卓调试版 AAR 库（单个文件）
+android/build/libs/debug/godot-lib.template_debug.aar
