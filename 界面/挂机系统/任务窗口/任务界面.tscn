@@ -28,6 +28,9 @@ script = ExtResource("2_6nxmh")
 "支线手工": NodePath("内容节点/任务/手工")
 }
 
+[node name="等级显示" parent="标题" index="0"]
+"玩法" = "任务"
+
 [node name="任务" type="TabContainer" parent="内容节点" index="0" unique_id=68321431]
 unique_name_in_owner = true
 layout_mode = 1
@@ -37,9 +40,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vf5w6")
-current_tab = 0
+current_tab = 2
 
 [node name="主线任务" type="ScrollContainer" parent="内容节点/任务" index="1" unique_id=312356181]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -67,7 +71,6 @@ theme_override_constants/v_separation = 5
 columns = 2
 
 [node name="统计" type="HSplitContainer" parent="内容节点/任务" index="3" unique_id=740929435]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 split_offsets = PackedInt32Array(50)
@@ -84,29 +87,26 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_hcf6d")
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="介绍" type="Label" parent="内容节点/任务/统计/滚动区/介绍容器" index="0" unique_id=371367694]
+[node name="介绍" type="RichTextLabel" parent="内容节点/任务/统计/滚动区/介绍容器" index="0" unique_id=280043975]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 50
-text = "支线任务
-根据系统解锁新任务
-根据完成任务数量提供加成"
+theme_override_constants/paragraph_separation = 0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "任务
+根据解锁的系统开放任务分支
+完成任务获取{熟练}"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 
-[node name="效果介绍" type="Label" parent="内容节点/任务/统计/滚动区/介绍容器" index="1" unique_id=1588998558]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 1
-text = "手工:每完成一个任务
-增加0.05基础资源回复
-增加10资源容量"
-metadata/_tab_index = 0
-
-[node name="当前完成任务数量" type="Label" parent="内容节点/任务/统计/滚动区/介绍容器" index="2" unique_id=918786289]
+[node name="当前完成任务数量" type="RichTextLabel" parent="内容节点/任务/统计/滚动区/介绍容器" index="1" unique_id=70923421]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 1
+bbcode_enabled = true
 text = "当前完成数量:"
+fit_content = true
+scroll_active = false
 metadata/_tab_index = 0
 
 [node name="成就滚动区" type="ScrollContainer" parent="内容节点/任务/统计" index="1" unique_id=1501423397]

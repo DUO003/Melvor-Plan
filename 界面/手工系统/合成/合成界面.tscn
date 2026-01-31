@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ci2ab2cr3fmcx"]
+[gd_scene format=3 uid="uid://ci2ab2cr3fmcx"]
 
 [ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_qg4nq"]
 [ext_resource type="Script" uid="uid://v0yytth2tqx2" path="res://代码/专属代码/合成主界面/合成界面.gd" id="2_2y0d5"]
@@ -54,7 +54,7 @@ corner_radius_bottom_left = 10
 script = ExtResource("5_wuv0d")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
-[node name="合成界面" node_paths=PackedStringArray("滚动区同步") instance=ExtResource("1_qg4nq")]
+[node name="合成界面" unique_id=707097301 node_paths=PackedStringArray("滚动区同步") instance=ExtResource("1_qg4nq")]
 script = ExtResource("2_2y0d5")
 "基类窗口名称" = "合成界面"
 "提示文本" = Array[String](["温馨提示:左键蓝图加入合成队列", "温馨提示:长按资源加快回复", "温馨提示:物品在背包窗口查看", "温馨提示:自动制作速度与资源回复速度和图纸需求有关", "温馨提示:作者正在努力开发新功能"])
@@ -67,24 +67,24 @@ metadata/_edit_lock_ = true
 "系统" = "手工"
 "玩法" = "合成"
 
-[node name="内容区" type="VBoxContainer" parent="内容节点" index="0"]
+[node name="内容区" type="VBoxContainer" parent="内容节点" index="0" unique_id=1076456070]
 custom_minimum_size = Vector2(1700, 0)
 layout_mode = 0
 offset_right = 1700.0
 offset_bottom = 902.0
 
-[node name="第一内容区" type="HBoxContainer" parent="内容节点/内容区" index="0"]
+[node name="第一内容区" type="HBoxContainer" parent="内容节点/内容区" index="0" unique_id=778120685]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="内容节点/内容区/第一内容区" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="内容节点/内容区/第一内容区" index="0" unique_id=458950717]
 layout_mode = 2
 
-[node name="资源条" type="ScrollContainer" parent="内容节点/内容区/第一内容区/VBoxContainer" index="0"]
+[node name="资源条" type="ScrollContainer" parent="内容节点/内容区/第一内容区/VBoxContainer" index="0" unique_id=2120726923]
 custom_minimum_size = Vector2(570, 450)
 layout_mode = 2
 
-[node name="资源管理器" type="VBoxContainer" parent="内容节点/内容区/第一内容区/VBoxContainer/资源条" index="0"]
+[node name="资源管理器" type="VBoxContainer" parent="内容节点/内容区/第一内容区/VBoxContainer/资源条" index="0" unique_id=120082394]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -92,34 +92,34 @@ theme_override_constants/separation = 0
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="木材" parent="内容节点/内容区/第一内容区/VBoxContainer/资源条/资源管理器" index="0" instance=ExtResource("3_x1q8i")]
+[node name="木材" parent="内容节点/内容区/第一内容区/VBoxContainer/资源条/资源管理器" index="0" unique_id=409040931 instance=ExtResource("3_x1q8i")]
 layout_mode = 2
 
-[node name="矿石" parent="内容节点/内容区/第一内容区/VBoxContainer/资源条/资源管理器" index="1" instance=ExtResource("3_x1q8i")]
+[node name="矿石" parent="内容节点/内容区/第一内容区/VBoxContainer/资源条/资源管理器" index="1" unique_id=983392694 instance=ExtResource("3_x1q8i")]
 layout_mode = 2
 "资源名称" = "矿石"
 
-[node name="皮革" parent="内容节点/内容区/第一内容区/VBoxContainer/资源条/资源管理器" index="2" instance=ExtResource("3_x1q8i")]
+[node name="皮革" parent="内容节点/内容区/第一内容区/VBoxContainer/资源条/资源管理器" index="2" unique_id=713464390 instance=ExtResource("3_x1q8i")]
 layout_mode = 2
 "资源名称" = "皮革"
 
-[node name="药草" parent="内容节点/内容区/第一内容区/VBoxContainer/资源条/资源管理器" index="3" instance=ExtResource("3_x1q8i")]
+[node name="药草" parent="内容节点/内容区/第一内容区/VBoxContainer/资源条/资源管理器" index="3" unique_id=972100419 instance=ExtResource("3_x1q8i")]
 layout_mode = 2
 "资源名称" = "药草"
 
-[node name="零件" parent="内容节点/内容区/第一内容区/VBoxContainer/资源条/资源管理器" index="4" instance=ExtResource("3_x1q8i")]
+[node name="零件" parent="内容节点/内容区/第一内容区/VBoxContainer/资源条/资源管理器" index="4" unique_id=1815340253 instance=ExtResource("3_x1q8i")]
 layout_mode = 2
 "资源名称" = "零件"
 
-[node name="精华" parent="内容节点/内容区/第一内容区/VBoxContainer/资源条/资源管理器" index="5" instance=ExtResource("3_x1q8i")]
+[node name="精华" parent="内容节点/内容区/第一内容区/VBoxContainer/资源条/资源管理器" index="5" unique_id=666040459 instance=ExtResource("3_x1q8i")]
 layout_mode = 2
 "资源名称" = "精华"
 
-[node name="进度条" type="Control" parent="内容节点/内容区/第一内容区/VBoxContainer" index="1"]
+[node name="进度条" type="Control" parent="内容节点/内容区/第一内容区/VBoxContainer" index="1" unique_id=642609015]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="动作进度条" parent="内容节点/内容区/第一内容区/VBoxContainer/进度条" index="0" instance=ExtResource("4_rm5mq")]
+[node name="动作进度条" parent="内容节点/内容区/第一内容区/VBoxContainer/进度条" index="0" unique_id=280147648 instance=ExtResource("4_rm5mq")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 6
@@ -134,7 +134,7 @@ offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="资源" type="Button" parent="内容节点/内容区/第一内容区/VBoxContainer/进度条" index="1"]
+[node name="资源" type="Button" parent="内容节点/内容区/第一内容区/VBoxContainer/进度条" index="1" unique_id=379226833]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 4
@@ -147,43 +147,43 @@ offset_bottom = 33.5
 grow_vertical = 2
 text = "资源加点"
 
-[node name="配方区" type="VBoxContainer" parent="内容节点/内容区/第一内容区" index="1"]
+[node name="配方区" type="VBoxContainer" parent="内容节点/内容区/第一内容区" index="1" unique_id=667484725]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="配方滚动区" type="ScrollContainer" parent="内容节点/内容区/第一内容区/配方区" index="0"]
+[node name="配方滚动区" type="ScrollContainer" parent="内容节点/内容区/第一内容区/配方区" index="0" unique_id=607050618]
 custom_minimum_size = Vector2(915, 400)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_4vc24")
 
-[node name="配方表格" type="VBoxContainer" parent="内容节点/内容区/第一内容区/配方区/配方滚动区" index="0"]
+[node name="配方表格" type="VBoxContainer" parent="内容节点/内容区/第一内容区/配方区/配方滚动区" index="0" unique_id=363597032]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("6_jkk5k")
 
-[node name="测试标题" type="Label" parent="内容节点/内容区/第一内容区/配方区/配方滚动区/配方表格" index="0"]
+[node name="测试标题" type="Label" parent="内容节点/内容区/第一内容区/配方区/配方滚动区/配方表格" index="0" unique_id=340304417]
 layout_mode = 2
 text = "描述文本"
 
-[node name="格子" type="GridContainer" parent="内容节点/内容区/第一内容区/配方区/配方滚动区/配方表格" index="1"]
+[node name="格子" type="GridContainer" parent="内容节点/内容区/第一内容区/配方区/配方滚动区/配方表格" index="1" unique_id=2028966106]
 layout_mode = 2
 
-[node name="配方" parent="内容节点/内容区/第一内容区/配方区/配方滚动区/配方表格/格子" index="0" instance=ExtResource("7_mdowl")]
+[node name="配方" parent="内容节点/内容区/第一内容区/配方区/配方滚动区/配方表格/格子" index="0" unique_id=1362694623 instance=ExtResource("7_mdowl")]
 layout_mode = 2
 
-[node name="更多筛选" type="HBoxContainer" parent="内容节点/内容区/第一内容区/配方区" index="1"]
+[node name="更多筛选" type="HBoxContainer" parent="内容节点/内容区/第一内容区/配方区" index="1" unique_id=1649304420]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="标签" type="Label" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="0"]
+[node name="标签" type="Label" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="0" unique_id=364648997]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "类型"
 
-[node name="研究方向" type="OptionButton" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="1"]
+[node name="研究方向" type="OptionButton" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="1" unique_id=1008295700]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
@@ -193,12 +193,12 @@ item_count = 1
 popup/item_0/text = "所有类型"
 popup/item_0/id = 0
 
-[node name="标签3" type="Label" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="2"]
+[node name="标签3" type="Label" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="2" unique_id=188610384]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "等阶"
 
-[node name="等阶" type="OptionButton" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="3"]
+[node name="等阶" type="OptionButton" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="3" unique_id=2017852204]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
@@ -207,7 +207,7 @@ item_count = 1
 popup/item_0/text = "不限制"
 popup/item_0/id = 0
 
-[node name="已解锁" type="CheckButton" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="4"]
+[node name="已解锁" type="CheckButton" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="4" unique_id=842982248]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -233,14 +233,14 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_x1gr2")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_x1gr2")
 text = "解锁"
 
-[node name="检索" type="LineEdit" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="5"]
+[node name="检索" type="LineEdit" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="5" unique_id=912468593]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 35
 placeholder_text = "搜索"
 
-[node name="更新" type="TextureButton" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="6"]
+[node name="更新" type="TextureButton" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="6" unique_id=465636052]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
@@ -248,23 +248,23 @@ texture_normal = ExtResource("8_mkxb5")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="第二内容区" type="HBoxContainer" parent="内容节点/内容区" index="1"]
+[node name="第二内容区" type="HBoxContainer" parent="内容节点/内容区" index="1" unique_id=1600027705]
 layout_mode = 2
 
-[node name="切割分区" type="VBoxContainer" parent="内容节点/内容区/第二内容区" index="0"]
+[node name="切割分区" type="VBoxContainer" parent="内容节点/内容区/第二内容区" index="0" unique_id=1461959451]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="制作滚动队列" type="ScrollContainer" parent="内容节点/内容区/第二内容区/切割分区" index="0"]
+[node name="制作滚动队列" type="ScrollContainer" parent="内容节点/内容区/第二内容区/切割分区" index="0" unique_id=144467115]
 custom_minimum_size = Vector2(1470, 255)
 layout_mode = 2
 
-[node name="制作队列" type="HBoxContainer" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列" index="0"]
+[node name="制作队列" type="HBoxContainer" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列" index="0" unique_id=1690442090]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1460, 255)
 layout_mode = 2
 
-[node name="圆形进度条" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列" index="0" instance=ExtResource("9_30npi")]
+[node name="圆形进度条" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列" index="0" unique_id=1834537578 instance=ExtResource("9_30npi")]
 unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(242, 242)
@@ -272,7 +272,7 @@ layout_mode = 2
 "半径" = 105.0
 "线条宽度" = 22.0
 
-[node name="配方" type="Button" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条" index="0"]
+[node name="配方" type="Button" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条" index="0" unique_id=849169504]
 z_as_relative = false
 custom_minimum_size = Vector2(230, 200)
 layout_mode = 1
@@ -287,7 +287,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_jjtem")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_wui7s")
 theme_override_styles/focus = SubResource("StyleBoxFlat_wui7s")
 
-[node name="配方名" type="Label" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方" index="0"]
+[node name="配方名" type="Label" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方" index="0" unique_id=1062047866]
 z_index = 1
 layout_mode = 1
 anchors_preset = 7
@@ -307,7 +307,7 @@ text = "道具名称"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="配方贴图" type="TextureRect" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方" index="1"]
+[node name="配方贴图" type="TextureRect" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方" index="1" unique_id=1408470933]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 18.0
@@ -318,11 +318,11 @@ texture = ExtResource("11_kfy0o")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="按钮区" type="HBoxContainer" parent="内容节点/内容区/第二内容区/切割分区" index="1"]
+[node name="按钮区" type="HBoxContainer" parent="内容节点/内容区/第二内容区/切割分区" index="1" unique_id=1561492679]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="温馨提示" type="Label" parent="内容节点/内容区/第二内容区/切割分区/按钮区" index="0"]
+[node name="温馨提示" type="Label" parent="内容节点/内容区/第二内容区/切割分区/按钮区" index="0" unique_id=397493928]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(788, 90)
 layout_mode = 2
@@ -335,7 +335,7 @@ text = "温馨提示:左键加入合成队列
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="强化" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区" index="1"]
+[node name="强化" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区" index="1" unique_id=1308279776]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(178, 80)
 layout_mode = 2
@@ -345,7 +345,7 @@ theme_override_font_sizes/font_size = 50
 text = "强化器"
 alignment = 0
 
-[node name="抽奖机" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区" index="2"]
+[node name="抽奖机" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区" index="2" unique_id=1543547215]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -353,7 +353,7 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 50
 text = "抽奖机"
 
-[node name="蓝图库" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区" index="3"]
+[node name="蓝图库" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区" index="3" unique_id=920955997]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -361,7 +361,7 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 50
 text = "蓝图库"
 
-[node name="提示文本" type="Label" parent="内容节点/内容区/第二内容区" index="1"]
+[node name="提示文本" type="Label" parent="内容节点/内容区/第二内容区" index="1" unique_id=1216419486]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 340)
 layout_mode = 2
@@ -375,7 +375,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 script = ExtResource("12_dgdup")
 
-[node name="悬浮加点弹窗" type="Panel" parent="悬浮面板" index="1" node_paths=PackedStringArray("拖动目标节点")]
+[node name="悬浮加点弹窗" type="Panel" parent="悬浮面板" index="1" unique_id=680142620 node_paths=PackedStringArray("拖动目标节点")]
 unique_name_in_owner = true
 visible = false
 z_index = 1
@@ -390,7 +390,7 @@ script = ExtResource("13_0g4ir")
 "基类窗口名称" = "合成界面"
 "保存名称" = "加点弹窗位置"
 
-[node name="加点标题" type="Label" parent="悬浮面板/悬浮加点弹窗" index="0"]
+[node name="加点标题" type="Label" parent="悬浮面板/悬浮加点弹窗" index="0" unique_id=1670962166]
 custom_minimum_size = Vector2(424, 57)
 layout_mode = 1
 anchors_preset = 10
@@ -402,36 +402,36 @@ text = "资源回复"
 horizontal_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="加点滚动区" type="ScrollContainer" parent="悬浮面板/悬浮加点弹窗" index="1"]
+[node name="加点滚动区" type="ScrollContainer" parent="悬浮面板/悬浮加点弹窗" index="1" unique_id=2069153881]
 layout_mode = 0
 offset_top = 62.0
 offset_right = 424.0
 offset_bottom = 578.0
 
-[node name="加点容器" type="VBoxContainer" parent="悬浮面板/悬浮加点弹窗/加点滚动区" index="0"]
+[node name="加点容器" type="VBoxContainer" parent="悬浮面板/悬浮加点弹窗/加点滚动区" index="0" unique_id=1786367521]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="资源加点" parent="悬浮面板/悬浮加点弹窗/加点滚动区/加点容器" index="0" instance=ExtResource("14_swdfc")]
+[node name="资源加点" parent="悬浮面板/悬浮加点弹窗/加点滚动区/加点容器" index="0" unique_id=1862336201 instance=ExtResource("14_swdfc")]
 layout_mode = 2
 
-[node name="资源加点2" parent="悬浮面板/悬浮加点弹窗/加点滚动区/加点容器" index="1" instance=ExtResource("14_swdfc")]
+[node name="资源加点2" parent="悬浮面板/悬浮加点弹窗/加点滚动区/加点容器" index="1" unique_id=425932756 instance=ExtResource("14_swdfc")]
 layout_mode = 2
 "资源名称" = "矿石"
 
-[node name="资源加点3" parent="悬浮面板/悬浮加点弹窗/加点滚动区/加点容器" index="2" instance=ExtResource("14_swdfc")]
+[node name="资源加点3" parent="悬浮面板/悬浮加点弹窗/加点滚动区/加点容器" index="2" unique_id=719280413 instance=ExtResource("14_swdfc")]
 layout_mode = 2
 "资源名称" = "皮革"
 
-[node name="资源加点4" parent="悬浮面板/悬浮加点弹窗/加点滚动区/加点容器" index="3" instance=ExtResource("14_swdfc")]
+[node name="资源加点4" parent="悬浮面板/悬浮加点弹窗/加点滚动区/加点容器" index="3" unique_id=1755895142 instance=ExtResource("14_swdfc")]
 layout_mode = 2
 "资源名称" = "药草"
 
-[node name="资源加点5" parent="悬浮面板/悬浮加点弹窗/加点滚动区/加点容器" index="4" instance=ExtResource("14_swdfc")]
+[node name="资源加点5" parent="悬浮面板/悬浮加点弹窗/加点滚动区/加点容器" index="4" unique_id=1955389100 instance=ExtResource("14_swdfc")]
 layout_mode = 2
 "资源名称" = "精华"
 
-[node name="关闭加点" type="Button" parent="悬浮面板/悬浮加点弹窗" index="2"]
+[node name="关闭加点" type="Button" parent="悬浮面板/悬浮加点弹窗" index="2" unique_id=2120834797]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1

@@ -67,12 +67,9 @@ func 更新属性()->bool:
 			蓝图表头=计划.表格.蓝图表头
 	if 表格数据==[]:
 		push_warning("错误[%s]:未能读取到表格信息,表格:" % [item_name],计划.表格.蓝图字典.keys())
-		#breakpoint
 		return false
-## 物品占的列数
-	columns = int(表格数据[蓝图表头["列"]])
-## 物品占的行数
-	rows = int(表格数据[蓝图表头["行"]])
+	columns = 1#物品占的列数
+	rows = 1#物品占的行数
 #	if self is 物品装备:breakpoint#断点
 	return true
 ## 获取货品形状
@@ -82,24 +79,20 @@ func get_shape() -> Vector2i:
 func can_drop() -> bool:
 	push_warning("[Override this function] check if the item [%s] can drop" % item_name)
 	return true
-
 ## 丢弃物品时调用，需重写
 func drop() -> void:
 	push_warning("[Override this function] item [%s] dropped" % item_name)
-
 ## 物品是否能出售（是否贵重物品等）
 func can_sell() -> bool:
-	if self is 物品装备:
+	if self is 物品装备 or self is 物品宝石:
 		return true
 	计划.语法糖通知("当前类型物品暂时不能直接出售","商店信息")
 	return false
-
 ## 物品是否能购买（检查资源是否足够等）
 func can_buy() -> bool:
 	if 计划.语法糖金币消费(self.价值,"随身商店"):return true
 	计划.语法糖通知("购买失败金币不足","商店信息")
 	return false
-
 ## 购买后逻辑
 func cost(背包) -> void:
 	self.商店剩余数量-=1
@@ -113,7 +106,7 @@ func cost(背包) -> void:
 
 ## 出售后增加资源
 func sold() -> void:
-	if self is 物品装备:
+	if self is 物品装备 or self is 物品宝石:
 		计划.梅存档["金币"]+=100
 		计划.语法糖通知("出售成功获取金币+100","商店信息")
 		计划.emit_signal("更新_UI")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk4u705i4hop"]
+[gd_scene format=3 uid="uid://bk4u705i4hop"]
 
 [ext_resource type="Script" uid="uid://lscsq5yonm2v" path="res://代码/等级显示.gd" id="1_t1bs0"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_brtdv"]
@@ -20,7 +20,7 @@ corner_radius_bottom_left = 10
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_brtdv"]
 content_margin_left = 10.0
 
-[node name="等级显示" type="Control"]
+[node name="等级显示" type="Control" unique_id=1257429001]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 3
 anchors_preset = 10
@@ -30,9 +30,8 @@ grow_horizontal = 2
 size_flags_horizontal = 3
 script = ExtResource("1_t1bs0")
 "玩法" = "挂机"
-"精通池显示" = true
 
-[node name="进度条" type="VBoxContainer" parent="."]
+[node name="进度条" type="VBoxContainer" parent="." unique_id=821845558]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 10
@@ -41,9 +40,9 @@ offset_bottom = 100.0
 grow_horizontal = 2
 theme_override_constants/separation = -1
 
-[node name="精通进度条" type="ProgressBar" parent="进度条"]
+[node name="精通进度条" type="ProgressBar" parent="进度条" unique_id=497548190]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 70)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme = ExtResource("2_brtdv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_brtdv")
@@ -51,9 +50,9 @@ step = 1.0
 value = 33.0
 show_percentage = false
 
-[node name="熟练进度条" type="ProgressBar" parent="进度条"]
+[node name="熟练进度条" type="ProgressBar" parent="进度条" unique_id=2038560541]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme = ExtResource("2_brtdv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_in4vb")
@@ -61,36 +60,52 @@ step = 1.0
 value = 66.0
 show_percentage = false
 
-[node name="文本" type="Label" parent="."]
+[node name="玩法文本" type="Label" parent="." unique_id=1860998728]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.14600001
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-offset_right = -152.32004
-grow_vertical = 2
+offset_top = -57.0
+offset_right = 298.0
+grow_vertical = 0
 theme = ExtResource("2_brtdv")
-theme_override_font_sizes/font_size = 50
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_brtdv")
-text = "挂机 LV:100"
+text = "挂机手工 LV:100"
 vertical_alignment = 1
 
-[node name="文本2" type="Label" parent="."]
+[node name="系统文本" type="Label" parent="." unique_id=770788327]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 1
+offset_right = 298.0
+offset_bottom = 57.0
+theme = ExtResource("2_brtdv")
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_brtdv")
+text = "挂机手工 LV:100"
+vertical_alignment = 1
+
+[node name="文本数值" type="RichTextLabel" parent="." unique_id=1431180209]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-offset_left = 290.0
-offset_right = 1921.0
-offset_bottom = 70.0
+offset_left = 381.0
+offset_right = 1920.0
+offset_bottom = 100.0
 grow_horizontal = 2
 theme = ExtResource("2_brtdv")
-theme_override_constants/line_spacing = -10
-theme_override_font_sizes/font_size = 45
-text = "精通:"
+theme_override_constants/line_separation = -10
+theme_override_constants/paragraph_separation = 0
+bbcode_enabled = true
+text = "熟练:精通:"
 vertical_alignment = 1
 
-[node name="上层" type="Control" parent="."]
+[node name="上层" type="Control" parent="." unique_id=1079524228]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15

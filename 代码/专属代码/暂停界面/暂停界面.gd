@@ -14,14 +14,8 @@ func _ready():
 	else :
 		%"显示测试".visible=false
 	%"跳转设置".pressed.connect(func():
-		print($"..".初始界面)
-		if $"..".初始界面=="任务窗口" and 计划.节点有效性检查("任务界面"):
-			计划.节点["任务界面"].切换到设置()
-		else :
-			计划.跳转设置=true
-			计划.切换场景(null,"任务窗口")
-		visible=false
-		)
+		计划.切换场景(null,"设置界面")
+		visible=false)
 	%"保存关闭".pressed.connect(func():
 		await 计划.保存存档("手动存档")
 		get_tree().quit())

@@ -120,10 +120,7 @@ func 更新贴图():
 	if not 贴图节点:# 确保TextureRect节点存在
 		print("警告：未找到「贴图」节点，请检查节点路径")
 		return
-	if Engine.is_editor_hint():
-		var 纹理 = 梅手工.new().资源字典.get(资源名称,{"贴图":null})["贴图"]
-		贴图节点.texture = 纹理
-	else :
+	if not Engine.is_editor_hint():
 		var 纹理 = 计划.表格.道具贴图(资源名称)
 		if 纹理:
 			$"资源粒子".emitting=false

@@ -26,8 +26,12 @@ func _ready() -> void:
 	成就按钮.pressed.connect(func():计划.切换场景("原罪_傲慢界面","原罪界面"))
 func _exit_tree() -> void:
 	super._exit_tree()
-@onready var 任务完成数标签: Label = %当前完成任务数量
+@onready var 任务完成数标签: RichTextLabel = %当前完成任务数量
+@onready var 任务介绍: RichTextLabel = $内容节点/任务/统计/滚动区/介绍容器/介绍
 func 加载任务完成统计():
+	任务介绍.text="任务
+根据解锁的系统开放任务分支
+完成任务获取[img]%s[/img]"%[计划.表格.道具贴图("熟练").resource_path]
 	任务完成数标签.text="当前完成数量:"+str(计划.任务.完成任务计数("手工"))
 func 刷新任务宽度():
 	var 显示任务数量:int=下拉任务.selected+1
@@ -45,7 +49,7 @@ func 刷新任务显示():
 		for 任务卡 in 容器.get_children():
 			if 任务卡 is 任务卡片:
 				if 以完成任务:任务卡.visible=true
-				else:if 任务卡.数据.任务完成:任务卡.visible=false
+				else:if 任务卡.任务数据.任务完成:任务卡.visible=false
 				else :任务卡.visible=true
 func 初始化所有任务容器():
 	for 容器 in 配置:
@@ -65,7 +69,7 @@ func 初始化所有任务容器():
 			var 序号=1
 			var 任务卡=任务的卡片.duplicate()
 			任务卡.custom_minimum_size.x=任务宽度
-			任务卡.数据=唯一任务字典.get(任务名称,null)
+			任务卡.任务数据=唯一任务字典.get(任务名称,null)
 			任务卡.任务序号=序号
 			任务卡.初始化任务()
 			任务卡片容器.add_child(任务卡)
