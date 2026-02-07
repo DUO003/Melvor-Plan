@@ -17,7 +17,7 @@ var 固定文本="最高数据统计
 func _ready() -> void:#节点进入节点树
 	super._ready()#运行上级节点的方法
 	筛选蓝图()
-	%"主菜单".pressed.connect(func(): 计划.切换场景())
+	%"主菜单".pressed.connect(func(): 计划.切换场景("合成界面"))
 	内容节点.dragged.connect(func(_偏移):
 		设置宽度(%"图纸容器",合成蓝图节点))
 	生成图纸列表()

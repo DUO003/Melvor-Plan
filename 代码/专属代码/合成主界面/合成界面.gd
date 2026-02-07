@@ -14,9 +14,7 @@ var 筛选器条件:Array=[]
 @onready var 检索: LineEdit = %检索
 @onready var 更新: TextureButton = %更新
 @onready var 已解锁: CheckButton = %已解锁
-@onready var 资源加点: Button = %资源
-@onready var 悬浮加点弹窗: Panel = %悬浮加点弹窗
-@onready var 关闭加点: Button = %关闭加点
+@onready var 物质加点:ScrollContainer = %物质加点
 
 func _ready() -> void:
 	super._ready()#注册
@@ -37,17 +35,9 @@ func _ready() -> void:
 	生命周期计时器+=[计划.创建计时器(1.0, Callable(self, "更新信息"))]#更新在线合成结算的精通熟练显示信息
 	生命周期计时器+=[计划.创建计时器(8,func(): 定期更新提示文本(%"温馨提示"))]#每隔8秒更新一次文本
 	定期更新提示文本(%"温馨提示")
-	计划.connect("更新_UI",Callable(self, "_更新_UI"))
+	计划.更新_UI.connect(_更新_UI)
 	计划.更新玩法.connect(生成筛选器)
 	%动作进度条.开始动作("资源回复",5.0,self)
-	悬浮加点弹窗.position=计划.窗口状态管理(基类窗口名称,"加点弹窗位置",悬浮加点弹窗.position)
-	资源加点.pressed.connect(func():
-		悬浮加点弹窗.visible=not 悬浮加点弹窗.visible
-		计划.窗口状态管理(基类窗口名称,"加点弹窗",null,悬浮加点弹窗.visible))
-	悬浮加点弹窗.visible=计划.窗口状态管理(基类窗口名称,"加点弹窗",false)
-	关闭加点.pressed.connect(func():
-		计划.窗口状态管理(基类窗口名称,"加点弹窗",null,false)
-		悬浮加点弹窗.visible=false)
 	注册按钮()
 	_更新_UI()
 func _process(delta: float) -> void:
@@ -113,9 +103,9 @@ func 克隆按钮(项):
 		配方列表 = 计划.获取配方(项,等阶.selected,等阶.selected)
 	配方表格.克隆配方节点(配方列表,表格)
 func 注册按钮():
-	%强化.pressed.connect(func(): 计划.切换场景("合成_强化界面","合成界面"))
-	%抽奖机.pressed.connect(func(): 计划.切换场景("合成_抽奖机界面","合成界面"))
-	%蓝图库.pressed.connect(func(): 计划.切换场景("合成_蓝图库界面","合成界面"))
+	%强化.pressed.connect(func(): 计划.切换场景("合成_强化界面"))
+	%抽奖机.pressed.connect(func(): 计划.切换场景("合成_抽奖机界面"))
+	%蓝图库.pressed.connect(func(): 计划.切换场景("合成_蓝图库界面"))
 	#print("按钮已注册")
 func 更新信息():
 	#print ("更新信息触发")
@@ -125,7 +115,6 @@ func 更新信息():
 	pass
 func 注册进度条():
 	var 制造队列 = %圆形进度条
-	var 悬浮面板: Control = %悬浮面板
 	制造队列.visible = false
 	var 队列上限=计划.手工.队列合成("制作队列上限")
 	if 制作队列节点.size()>队列上限:
@@ -147,9 +136,9 @@ func 注册进度条():
 				克隆节点.visible = true  # 克隆节点设为可见
 				克隆节点.更新进度(0.0)
 				制作队列配方按钮节点.mouse_entered.connect(func():
-					悬浮面板.更新_队列(i))
+					计划.全局悬浮提示.emit(加载队列文本(i),制作队列配方按钮节点,30))
 				制作队列配方按钮节点.mouse_exited.connect(func():
-					悬浮面板.更新_队列())
+					计划.全局悬浮提示.emit("",制作队列配方按钮节点,30))
 				制作队列配方按钮节点.gui_input.connect(func(按键信号):
 					if 按键信号 is InputEventMouseButton and 按键信号.pressed:
 						制作队列更新(按键信号,i))
@@ -168,7 +157,21 @@ func 注册进度条():
 				制作队列配方名节点.text=""
 			var 制作队列贴图节点 = 制作队列配方按钮节点.get_node("配方贴图")
 			制作队列贴图节点.texture = 纹理
-
+func 加载队列文本(队列序号):
+	var 文本=""
+	var 制作参数=计划.手工.队列合成("制作参数")
+	if 队列序号+1>制作参数.size():文本="空的制作格子"
+	else :
+		var 制作时长=制作参数[队列序号]["制作时长"]
+		var 制作物品名=制作参数[队列序号]["名称"]
+		#Color("402200ff")
+		var 消耗精华:int=int(计划.表格.蓝图数据(制作物品名,"精华"))
+		var 精华文本:String=""
+		if 消耗精华>=1:
+			精华文本="\r需要占用[color=#402200]%d[/color]/%d个制作精华"%[消耗精华,int(计划.手工.查看资源("精华回复"))]
+		文本="[font_size=40]<%s>[/font_size]\r需要[color=#402200]%.1f[/color]秒制作(最低%.0f秒)\r增加物质回复速度可以减少制作时间\r%s%s"%[制作物品名,
+		制作时长,计划.表格.蓝图数据(制作物品名,"冷却"),精华文本,计划.表格.蓝图数据(制作物品名,"简介")]
+	return 文本
 func _更新_UI():
 	更新信息()
 	注册进度条()
@@ -199,6 +202,9 @@ func 制作队列更新(按键信号,i):
 		if i >= 0 and i < 制作队列.size():# 检查索引是否有效（在数组范围内）
 			var 装备名称 = 制作队列[i]
 			计划.手工.队列合成("制作队列",装备名称)
+			if 制作队列节点.size()>i:
+				var 配方节点 = 制作队列节点[i].get_node("配方")
+				计划.全局悬浮提示.emit(加载队列文本(i),配方节点,30)
 		# 索引无效时什么也不做
 	else :
 		pass

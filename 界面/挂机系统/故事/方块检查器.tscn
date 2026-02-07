@@ -5,6 +5,10 @@
 [ext_resource type="Script" uid="uid://jj40xckuu4xm" path="res://界面/挂机系统/故事/方块检查器.gd" id="3_objmx"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="4_a31v6"]
 [ext_resource type="Texture2D" uid="uid://cpttn2y0dmq0e" path="res://素材/自制/图标/关闭.png" id="5_ivq2p"]
+[ext_resource type="PackedScene" uid="uid://uh5t35s1wsr5" path="res://界面/插件/配方容器.tscn" id="6_jo7p8"]
+[ext_resource type="Script" uid="uid://dc5cy7eyyh64b" path="res://界面/挂机系统/故事/小商店.gd" id="7_objmx"]
+[ext_resource type="Script" uid="uid://cm2sbuun23g0p" path="res://界面/挂机系统/故事/小商品.gd" id="8_a31v6"]
+[ext_resource type="Script" uid="uid://bivcgv6cvbvln" path="res://界面/插件/物品辅助/商品数据包.gd" id="9_ivq2p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jywjc"]
 bg_color = Color(0.67058825, 0.56078434, 0.34117648, 1)
@@ -21,6 +25,19 @@ script = ExtResource("2_jo7p8")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jo7p8"]
+
+[sub_resource type="Resource" id="Resource_bftlr"]
+script = ExtResource("9_ivq2p")
+"商品类型" = "物品方块"
+"代币类型" = "点数"
+"代币" = "故事"
+metadata/_custom_type_script = "uid://bivcgv6cvbvln"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ivq2p"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
 
 [node name="方块检查器" type="Panel" unique_id=738261662]
 anchors_preset = -1
@@ -41,8 +58,8 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02631579
 anchor_top = 0.01861702
-anchor_right = 0.31781375
-anchor_bottom = 0.21808511
+anchor_right = 0.25031322
+anchor_bottom = 0.17189543
 texture = ExtResource("4_a31v6")
 expand_mode = 1
 stretch_mode = 5
@@ -51,10 +68,10 @@ metadata/_edit_use_anchors_ = true
 [node name="文本" type="Label" parent="." unique_id=1059943209]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.34117737
-anchor_top = 0.03568262
-anchor_right = 0.96849686
-anchor_bottom = 0.20523049
+anchor_left = 0.26885134
+anchor_top = 0.02374728
+anchor_right = 0.89617085
+anchor_bottom = 0.16318083
 grow_horizontal = 0
 theme_override_constants/line_spacing = 10
 text = "测试方块
@@ -80,9 +97,9 @@ metadata/_edit_use_anchors_ = true
 [node name="滚动区" type="ScrollContainer" parent="." unique_id=133263896]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.02688512
-anchor_top = 0.22745098
-anchor_right = 0.9786184
+anchor_left = 0.026885118
+anchor_top = 0.17080611
+anchor_right = 0.9786183
 anchor_bottom = 0.9895425
 metadata/_edit_use_anchors_ = true
 
@@ -94,7 +111,6 @@ size_flags_vertical = 3
 [node name="方块简介" type="RichTextLabel" parent="滚动区/容器" unique_id=1797035860]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_constants/line_separation = -10
 theme_override_constants/paragraph_separation = 0
 theme_override_font_sizes/normal_font_size = 32
@@ -107,13 +123,147 @@ text = "简介:
 一段文本内容"
 fit_content = true
 
+[node name="物品处理逻辑" type="HBoxContainer" parent="滚动区/容器" unique_id=1880125361]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="配方容器" parent="滚动区/容器/物品处理逻辑" unique_id=752347411 instance=ExtResource("6_jo7p8")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 10
+"可修改数量" = false
+"空置标签" = "消耗材料"
+"物品不足提示" = false
+"禁用放回背包" = true
+
+[node name="箭头" type="RichTextLabel" parent="滚动区/容器/物品处理逻辑" unique_id=118317974]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "加工->"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="目标容器" parent="滚动区/容器/物品处理逻辑" unique_id=2133714125 instance=ExtResource("6_jo7p8")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 2
+"可修改物品" = false
+"可修改数量" = false
+"空置标签" = "生产物品"
+
 [node name="文本编辑器" type="TextEdit" parent="滚动区/容器" unique_id=1702210592]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 0
 placeholder_text = "空的文本输入框"
 emoji_menu_enabled = false
+
+[node name="小商店容器" type="VBoxContainer" parent="滚动区/容器" unique_id=1400534451]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("7_objmx")
+
+[node name="小商品" type="HBoxContainer" parent="滚动区/容器/小商店容器" unique_id=840322832]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("8_a31v6")
+"商品" = SubResource("Resource_bftlr")
+
+[node name="商品贴图" type="TextureRect" parent="滚动区/容器/小商店容器/小商品" unique_id=231439751]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 100)
+layout_mode = 2
+texture = ExtResource("4_a31v6")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="价格描述" type="RichTextLabel" parent="滚动区/容器/小商店容器/小商品" unique_id=1418276990]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = -12
+theme_override_constants/paragraph_separation = 0
+theme_override_font_sizes/normal_font_size = 27
+theme_override_font_sizes/bold_font_size = 27
+theme_override_font_sizes/bold_italics_font_size = 27
+theme_override_font_sizes/italics_font_size = 27
+theme_override_font_sizes/mono_font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ivq2p")
+bbcode_enabled = true
+text = "XX方块
+创造费用XX点数
+功能XX"
+
+[node name="制作" type="Button" parent="滚动区/容器/小商店容器/小商品/价格描述" unique_id=832912070]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -99.0
+offset_bottom = 60.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 35
+text = "制作"
+
+[node name="小商店" type="ScrollContainer" parent="滚动区/容器/小商店容器" unique_id=1563462796]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="商品图标" type="GridContainer" parent="滚动区/容器/小商店容器/小商店" unique_id=2354158]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 6
+
+[node name="贴图" type="TextureRect" parent="滚动区/容器/小商店容器/小商店/商品图标" unique_id=2054903692]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("4_a31v6")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="贴图2" type="TextureRect" parent="滚动区/容器/小商店容器/小商店/商品图标" unique_id=1955754925]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("4_a31v6")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="贴图3" type="TextureRect" parent="滚动区/容器/小商店容器/小商店/商品图标" unique_id=752831369]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("4_a31v6")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="贴图4" type="TextureRect" parent="滚动区/容器/小商店容器/小商店/商品图标" unique_id=1546263175]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("4_a31v6")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="按钮组合" type="HBoxContainer" parent="滚动区/容器" unique_id=642520984]
 layout_mode = 2
@@ -123,6 +273,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+step = 1.0
 show_percentage = false
 
 [node name="进度条标签" type="Label" parent="滚动区/容器/按钮组合/进度条" unique_id=1555143539]
@@ -141,10 +292,12 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 35
 text = "确认"
 
 [node name="切换" type="CheckButton" parent="滚动区/容器/按钮组合" unique_id=2072227834]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 35
 text = "窗口"

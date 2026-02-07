@@ -14,10 +14,16 @@ metadata/_edit_lock_ = true
 "玩法" = "故事"
 
 [node name="大地图" type="CanvasLayer" parent="." index="2" unique_id=342671919]
-layer = 2
 follow_viewport_enabled = true
 
 [node name="地图容器" parent="大地图" index="0" unique_id=155001563 instance=ExtResource("3_ycshr")]
 
 [node name="内容节点" parent="." index="3"]
 metadata/_edit_lock_ = true
+
+[node name="悬浮提示" parent="悬浮面板" index="0"]
+offset_left = -66.0
+offset_top = 74.0
+offset_right = 34.0
+offset_bottom = 174.0
+"禁用" = true

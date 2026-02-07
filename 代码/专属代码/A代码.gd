@@ -111,6 +111,9 @@ func 常用功能():
 	#self#当前节点
 	#super#继承上级节点
 	#for i in range(整数):#执行 整数 次
+		#continue#跳过一次本次循环
+		#break#跳过剩余本次循环
+		#return#返回值,然后中止当前方法
 	#"整数%d:带0的整数%05d:文本%s:浮点%f:控制精度浮点%.2f:"%[10,123,"文本",3.14,3.1415]
 	#"分隔字符".join(含有文本的数组)#文本拼接语法"".join()
 	#var fps = Performance.get_monitor(Performance.Monitor.TIME_FPS)
@@ -119,10 +122,8 @@ func 常用功能():
 	breakpoint#断点
 func BBC语法():
 	var 文本="RichTextLabel 是一种为项目添加文本的灵活方式，
-支持[i]斜体[/i],[b]粗体[/b],[i][b]斜粗体[/b][/i][u]下划线[/u],[s]删除线[/s]
-组合使用[u][i]斜体[/i][/u],[u][b]粗体[/b][/u],[u][i][b]斜粗体[/b][/i][/u]。
-[color=#4cf]颜色[/color],[fgcolor=#49c9]前景[color=#4cf]颜色[/color][/fgcolor]
-[bgcolor=#49c9]背景 [color=#4cf]颜色[/color][/bgcolor]
+支持[i]斜体[/i],[b]粗体[/b],[u]下划线[/u],[s]删除线[/s]
+[color=#4cf]颜色[/color],[fgcolor=#49c9]前景[/fgcolor],[bgcolor=#49c9]背景[/bgcolor]
 图片:[img]res://unicorn_icon.png[/img],[font_size=24]字号[/font_size]
 [color=aqua][url=https://godotengine.org]自定义链接[/url][/color]。[hint=这会显示一个提示。]悬停此处可显示工具提示！[/hint]
 默认左对齐，[center]但也支持居中对齐，[/center][right]以及右对齐。[/right]

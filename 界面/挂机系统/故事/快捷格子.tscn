@@ -44,6 +44,7 @@ events = [SubResource("InputEventKey_u2cep")]
 
 [node name="快捷格子" type="Panel" unique_id=2029343227]
 custom_minimum_size = Vector2(100, 100)
+mouse_behavior_recursive = 2
 theme = ExtResource("1_u2cep")
 theme_override_styles/panel = SubResource("StyleBoxFlat_1xg3l")
 script = ExtResource("1_wxvg8")

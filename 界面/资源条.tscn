@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://fhiod2yd4lhv"]
+[gd_scene format=3 uid="uid://fhiod2yd4lhv"]
 
 [ext_resource type="Script" uid="uid://c1ef0ysqkbne2" path="res://代码/资源条.gd" id="1_5i305"]
 [ext_resource type="Texture2D" uid="uid://c507b5pqpy727" path="res://素材/游戏素材/货币/36.png" id="1_5uhmg"]
@@ -50,17 +50,17 @@ gravity = Vector3(0, 200, 0)
 scale_min = 0.13
 scale_max = 0.14999999
 
-[node name="资源" type="Control"]
-custom_minimum_size = Vector2(570, 75)
+[node name="资源" type="Control" unique_id=864247123]
+custom_minimum_size = Vector2(570, 65)
 layout_mode = 3
 anchor_right = 0.29700002
-anchor_bottom = 0.069000006
-offset_right = -10.240051
-offset_bottom = 0.47999573
+anchor_bottom = 0.060000002
+offset_right = -0.24005127
+offset_bottom = 0.19999695
 theme = ExtResource("2_5i305")
 script = ExtResource("1_5i305")
 
-[node name="贴图" type="TextureRect" parent="."]
+[node name="贴图" type="TextureRect" parent="." unique_id=1996000880]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 4
@@ -74,22 +74,21 @@ texture = ExtResource("3_43vdm")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="进度" type="ProgressBar" parent="."]
+[node name="进度" type="ProgressBar" parent="." unique_id=171008741]
 clip_contents = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.277
+anchor_left = 0.27678946
+anchor_top = 0.06153846
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -0.120010376
-offset_top = 10.0
-offset_bottom = -10.0
+anchor_bottom = 0.9230769
 grow_horizontal = 2
 theme = ExtResource("2_5i305")
 value = 100.0
 allow_greater = true
+metadata/_edit_use_anchors_ = true
 
-[node name="蒙版" type="Panel" parent="进度"]
+[node name="蒙版" type="Panel" parent="进度" unique_id=1312851151]
 clip_children = 1
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 1
@@ -99,8 +98,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_43vdm")
+metadata/_edit_lock_ = true
 
-[node name="背包" type="ProgressBar" parent="进度/蒙版"]
+[node name="背包" type="ProgressBar" parent="进度/蒙版" unique_id=1397719948]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -112,8 +112,9 @@ theme_override_styles/background = SubResource("StyleBoxFlat_u3ykc")
 theme_override_styles/fill = SubResource("StyleBoxTexture_o12l5")
 value = 25.0
 show_percentage = false
+metadata/_edit_lock_ = true
 
-[node name="刻度" type="Control" parent="进度"]
+[node name="刻度" type="Control" parent="进度" unique_id=2099994570]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -129,8 +130,9 @@ script = ExtResource("4_unkxt")
 "启用刻度" = true
 "刻度偏移" = Vector2(-10, -2)
 "测试上限" = 100.0
+metadata/_edit_lock_ = true
 
-[node name="刻度单位" type="Label" parent="进度/刻度"]
+[node name="刻度单位" type="Label" parent="进度/刻度" unique_id=1225333974]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -144,7 +146,7 @@ theme_override_colors/font_color = Color(0.12778333, 0.41, 0.123, 1)
 theme_override_font_sizes/font_size = 25
 text = "刻度10"
 
-[node name="显示数量" type="Label" parent="进度"]
+[node name="显示数量" type="Label" parent="进度" unique_id=1075723280]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 4
@@ -156,7 +158,7 @@ offset_bottom = 28.5
 grow_vertical = 2
 text = "100"
 
-[node name="回复" type="Label" parent="."]
+[node name="回复" type="Label" parent="." unique_id=1167373922]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -172,7 +174,7 @@ theme_override_font_sizes/font_size = 35
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="资源粒子" type="GPUParticles2D" parent="."]
+[node name="资源粒子" type="GPUParticles2D" parent="." unique_id=1305846107]
 position = Vector2(143, 45)
 emitting = false
 amount = 10
@@ -181,7 +183,7 @@ one_shot = true
 speed_scale = 1.5
 process_material = SubResource("ParticleProcessMaterial_5i305")
 
-[node name="文本" type="Label" parent="."]
+[node name="文本" type="Label" parent="." unique_id=574306005]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -196,10 +198,11 @@ text = "木物质"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="点击范围" type="Control" parent="."]
+[node name="点击范围" type="Control" parent="." unique_id=1248853139]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true

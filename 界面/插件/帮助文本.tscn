@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dusyum2t63uiv"]
+
+[ext_resource type="Script" uid="uid://whx18qwvds3q" path="res://界面/插件/帮助文本.gd" id="1_7jt8i"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_u2bie"]
+[ext_resource type="FontFile" uid="uid://ba8mauhrxpxeg" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-85-Bold/AlibabaPuHuiTi-3-85-Bold.otf" id="2_7jt8i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7w4q"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+script = ExtResource("1_u2bie")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[node name="帮助文本" type="Control" unique_id=1882497651]
+custom_minimum_size = Vector2(59.999996, 60)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_behavior_recursive = 2
+script = ExtResource("1_7jt8i")
+
+[node name="背景" type="Panel" parent="." unique_id=1136773271]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_u7w4q")
+
+[node name="文本" type="Label" parent="." unique_id=1700045973]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_7jt8i")
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="碰撞范围" type="Control" parent="." unique_id=570681048]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpy28xhwxt1eg"]
+[gd_scene format=3 uid="uid://dpy28xhwxt1eg"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_dkn4r"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_5mr8j"]
@@ -31,31 +31,46 @@ script = ExtResource("2_5mr8j")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_y5jsc")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
-[node name="道具卡片" type="Panel"]
+[node name="道具卡片" type="Panel" unique_id=755261002]
 offset_right = 124.0
 offset_bottom = 127.0
 theme = ExtResource("1_dkn4r")
 theme_override_styles/panel = SubResource("StyleBox_mdm2x")
 script = ExtResource("4_g8e1h")
 
-[node name="范围" type="VBoxContainer" parent="."]
+[node name="范围" type="VBoxContainer" parent="." unique_id=43344961]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 0
 offset_right = 121.0
-offset_bottom = 120.0
+offset_bottom = 115.0
 theme_override_constants/separation = -15
 
-[node name="图片" type="TextureRect" parent="范围"]
+[node name="图片" type="TextureRect" parent="范围" unique_id=914791787]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 texture = ExtResource("5_dkn4r")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="名称" type="Label" parent="范围"]
+[node name="特殊标签" type="Label" parent="范围/图片" unique_id=1721830741]
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 1
+offset_right = 70.0
+offset_bottom = 40.0
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0.69803923, 0.5529412, 0.25490198, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+text = "标签"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="名称" type="Label" parent="范围" unique_id=1817346813]
 custom_minimum_size = Vector2(100, 35)
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0.69803923, 0.5529412, 0.25490198, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 22
 text = "物品的名称是"
 horizontal_alignment = 1
@@ -63,12 +78,14 @@ vertical_alignment = 1
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="数量" type="Label" parent="范围"]
+[node name="数量" type="Label" parent="范围" unique_id=359530221]
 custom_minimum_size = Vector2(70, 40)
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0.69803923, 0.5529412, 0.25490198, 1)
 theme_override_constants/line_spacing = 0
 theme_override_constants/paragraph_spacing = -15
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 28
 text = "100"
 horizontal_alignment = 1

@@ -11,13 +11,14 @@ var 鼠标:bool=false
 var 基础量: float = 1
 var 是否长按: bool = false        # 标记是否处于长按状态
 var 长按计时器: Timer            # 用于长按周期性回复的计时器
-
 var 资源回复速度:Dictionary#如果没有当前资源名称,表示回复量=0.0
 var 当前数量:float=0
 var 上限值:float=0
 var 背包内数量:int=0
 var 类型:String="基础"
 @onready var 回复: Label = $回复
+var 需要关闭提示:bool=false
+var 需要更新提示:bool=false
 func _ready():
 	更新贴图()# 节点就绪时初始化
 	if not Engine.is_editor_hint():
@@ -27,10 +28,12 @@ func _ready():
 		计划.BUFF.BUFF_资源回复.connect(更新点击回复量)
 		$"点击范围".mouse_entered.connect(func():
 			鼠标=true
-			计划.手工.更新_资源.emit(self))
+			需要更新提示=true
+			检查更新提示())
 		$"点击范围".mouse_exited.connect(func():
 			鼠标=false
-			计划.手工.更新_资源.emit())
+			关闭提示())
+		计划.更新_UI.connect(检查更新提示)
 	if is_inside_tree():# 编辑器内安全检查：确保节点已加入场景树，避免空引用错误
 		长按计时器 = Timer.new()
 		长按计时器.wait_time = 0.5    # 长按间隔0.5秒
@@ -38,6 +41,15 @@ func _ready():
 		长按计时器.timeout.connect(长按超时处理)
 	add_child(长按计时器)
 	$"点击范围".gui_input.connect(点击逻辑)
+func 关闭提示():
+	if 需要关闭提示:
+		需要关闭提示=false
+		需要更新提示=false
+		计划.全局悬浮提示.emit("",self)
+func 检查更新提示():
+	if 需要更新提示:
+		需要关闭提示=true
+		计划.全局悬浮提示.emit(提示文本(),self,30)
 func 更新点击回复量():
 	if 类型=="特殊":基础量=1
 	elif 类型=="高级":基础量=0.1
@@ -104,6 +116,7 @@ func 点击逻辑(event: InputEvent):
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:# 仅响应鼠标左键事件
 			if event.pressed:
 				# 鼠标按下时处理
+				关闭提示()
 				处理按下()
 			else:
 				# 鼠标释放时处理
@@ -155,3 +168,20 @@ func 长按超时处理():
 		计划.手工.获得资源(资源名称, 基础量, true, true)# 每0.5秒回复一次基础量资源
 	else :
 		长按计时器.stop()
+func 提示文本()->String:
+	if not 资源名称:return ""
+	var 上限文本= 计划.科学计数(上限值,2)
+	if not 资源回复速度.has(资源名称):
+		资源回复速度[资源名称]=0.0
+	var 资源回复文本=("%.2f"%资源回复速度[资源名称]).replace(".00", "")
+	if 类型=="特殊":
+		var 文本="%s资源 [font_size=40]%s[/font_size]:%d\r消耗50金币点击购买1\r背包:%d\r自动制作%s/%.0f\r%s"%[
+			类型,计划.手工.返回资源信息(资源名称,"显示名"),int(当前数量+背包内数量),背包内数量,
+			资源回复文本,计划.手工.精华数量(),计划.手工.返回资源信息(资源名称,"简介")]
+		return 文本
+	else :
+		var 文本="%s资源 [font_size=40]%s[/font_size]:%d\r资源条%.0f/%s\r自动回复+%s(平均每分钟)\r背包:%d\r点击回复量:%.1f\r%s"%[
+			类型,计划.手工.返回资源信息(资源名称,"显示名"),int(当前数量+背包内数量),
+			当前数量,上限文本,资源回复文本,
+			背包内数量,基础量,计划.手工.返回资源信息(资源名称,"简介")]
+		return 文本

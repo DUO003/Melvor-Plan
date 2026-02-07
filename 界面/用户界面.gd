@@ -5,16 +5,16 @@ extends 基类梅窗口
 #2地图(部分窗口内,跟随摄像机移动)
 #3提示信息,物品栏
 #4层对话
-#5层暂停界面
+#5层暂停/测试界面
 ##真实字典位于"梅窗口"此处运行时会覆盖
-var 跳转:梅窗口
-var 界面路径映射: Dictionary = {}#数组参数1.场景路径,参数2.场景对应的系统
-var 界面父子关系: Dictionary = {}#界面父子关系字典，键为主界面名称，值为子界面名称数组
-var 打开界面: Dictionary ={}#键为主界面名称，值为当前显示的子界面名称（null表示显示主界面）
+var 窗口:梅窗口=计划.窗口
+#var 界面路径映射: Dictionary = {}#数组参数1.场景路径,参数2.场景对应的系统
+#var 界面父子关系: Dictionary = {}#界面父子关系字典，键为主界面名称，值为子界面名称数组
+#var 打开界面: Dictionary ={}#键为主界面名称，值为当前显示的子界面名称（null表示显示主界面）
+#var 映射字典:Dictionary={}
 var 初始界面="初始"#缓存当前窗口名称
 var 任务栏数组: Array = []# 任务栏需要显示的界面名称数组,从存档加载
 var 全局图钉=["金币"]
-var 界面图钉={}
 var 滚动计时器:Timer
 var 图钉区光标=false
 @onready var 摄像机: Camera2D = %摄像机
@@ -31,10 +31,6 @@ func _ready():
 	滚动计时器=计划.创建计时器(2,func():
 		if not 图钉区光标 and %"图钉容器".size.x>1920 :
 			移动节点到最后(%"图钉容器"))
-	界面路径映射=计划.窗口.界面路径映射#加载
-	界面父子关系=计划.窗口.界面父子关系
-	界面图钉=计划.窗口.界面图钉
-	重新载入存档缓存()
 	var 分割长度:int=int(计划.窗口状态管理("根节点","分割长度",200))
 	%"任务栏分割".split_offset=分割长度
 	%"任务栏分割".drag_ended.connect(func():计划.窗口状态管理("根节点","分割长度",null,%"任务栏分割".split_offset))
@@ -44,35 +40,11 @@ func _ready():
 	更新BUFF()
 	计划.BUFF.更新_BUFF.connect(更新BUFF)
 	if 初始界面=="初始":
-		if 计划.跳转设置:
-			重载场景("故事界面")
-		else :
-			var 打开场景=计划.窗口状态管理("根场景","初始",任务栏数组[0])
-			if 打开界面.has(打开场景):
-				重载场景(打开场景,打开界面[打开场景])
-			else :
-				重载场景(打开场景)
-				
-func 重新载入存档缓存():
-	打开界面={}
-	for 键 in 界面父子关系.keys():
-		var 存档值=计划.窗口状态管理(键,"界面显示","<null>")
-		if 存档值=="<null>" :
-			打开界面[键] = null
-		else:
-			打开界面[键] = 存档值
-
+		var 打开场景=计划.窗口状态管理("根场景","初始",任务栏数组[0])
+		重载场景(打开场景)
 func _exit_tree():#理论上不会执行
 	生命周期计时器+=[滚动计时器]
 	super._exit_tree()
-#func 更新BUFF():
-	#清除子节点(%BUFF)
-	#var BUFF栏:Array[梅BUFF数据]=计划.BUFF.所有BUFF
-	#var BUFF提示=preload("res://界面/根界面/buff状态.tscn").instantiate()
-	#for BUFF in BUFF栏:
-		#var BUFF克隆=BUFF提示.duplicate()
-		#BUFF克隆.BUFF数据=BUFF
-		#%BUFF.add_child(BUFF克隆)
 var BUFF提示模板 = preload("res://界面/根界面/buff状态.tscn")
 func 更新BUFF():
 	var 新BUFF列表:Array[梅BUFF数据] = 计划.BUFF.所有BUFF
@@ -104,11 +76,7 @@ func 重载图钉():
 			var 新图钉=图钉场景.duplicate()
 			新图钉.物品名称=图钉
 			%"图钉容器".add_child(新图钉)
-	var 当前界面图钉=[]
-	if 打开界面[初始界面]==null:
-		当前界面图钉=界面图钉.get(初始界面,[])
-	else :
-		当前界面图钉=界面图钉.get(打开界面[初始界面],[])
+	var 当前界面图钉=窗口.窗口数据[初始界面].图钉
 	if 当前界面图钉.size()>=1:
 		for 图钉 in 当前界面图钉:
 			if 图钉 not in 全局图钉:
@@ -131,59 +99,46 @@ func 生成任务栏按钮() -> void:# 生成任务栏所有按钮
 	if 窗口解锁数组.has("默认窗口"):
 		窗口解锁数组.erase("默认窗口")
 	任务栏数组 = []
-	for 窗口 in 窗口解锁数组:
-		if not 窗口禁用数组.has(窗口):# 其他窗口：必须不在禁用数组中才保留
-			任务栏数组.append(窗口)
+	for 窗口名 in 窗口解锁数组:
+		if not 窗口禁用数组.has(窗口名):# 其他窗口：必须不在禁用数组中才保留
+			任务栏数组.append(窗口名)
 	if not 任务栏数组.has("故事界面"):
 		任务栏数组.insert(0, "故事界面")
 	for 界面名称 in 任务栏数组:
 		var 任务按钮: Button = 任务按钮本体.duplicate()
 		任务按钮.show()#防止节点为隐藏
-		任务按钮.text = 界面名称.replace("界面", "").replace("窗口", "")
+		任务按钮.text = 窗口.窗口数据[界面名称].显示名
 		if 任务按钮.text =="小游戏":任务按钮.text ="游戏"
-		if 界面路径映射[界面名称].size()<2:
-			界面路径映射[界面名称].append("")
-		var 路径=界面路径映射[界面名称][1]
+		var 路径=窗口.窗口数据[界面名称].贴图
 		var 纹理=load(路径) if 路径!="" else null
 		if 纹理:
 			任务按钮.icon=纹理
 			var 文本字数:int=任务按钮.text.length()#获取长度
 			if 文本字数>=2:
-				@warning_ignore("integer_division")
-				任务按钮.add_theme_font_size_override("font_size", max(20,120/文本字数))
-		任务按钮.pressed.connect(func(): _任务栏(界面名称))
+				任务按钮.add_theme_font_size_override("font_size", max(20,120.0/文本字数))
+		任务按钮.pressed.connect(重载场景.bind(界面名称))
 		var 红点提示 = 任务按钮.get_node("红点提示")
 		红点提示.红点条目=界面名称
 		任务栏节点.add_child(任务按钮)
 	任务按钮本体.hide()# 按钮本体初始隐藏
 
 ## 参数: 场景名称(例如 "背包界面")
-func 重载场景(场景名称: String, 子场景名称 = null,强制重载=false) -> void:
+func 重载场景(场景名称: String,强制重载=false) -> void:
+	if not 窗口.窗口数据.has(场景名称):
+		print("错误: 场景%s不存在于路径映射中"%场景名称)
+		return
 	if GBIS.has_moving_item():
 		GBIS.moving_item_service.安全清除移动物品()
 	if 计划.节点有效性检查("奖励悬浮面板"):
 		var 节点:奖励悬浮面板=计划.节点["奖励悬浮面板"]
 		节点.清空界面()
-	if not 强制重载 and 初始界面!="初始" and 初始界面==场景名称 and 打开界面[场景名称] == 子场景名称:
+	if not 强制重载 and 初始界面!="初始" and 初始界面==场景名称:
 		print("当前场景已经为",str(场景名称))
-		return
-	if 子场景名称 != null:#验证子场景有效性
-		if 界面父子关系.has(场景名称) and not 界面父子关系[场景名称].has(子场景名称):
-			print(场景名称,"的子场景错误",子场景名称)
-			子场景名称 = null
-	# 检查场景名称是否在映射表中
-	var 场景字典名
-	if 子场景名称 == null:
-		场景字典名=场景名称
-	else :
-		场景字典名=子场景名称
-	if not 界面路径映射.has(场景字典名):
-		print("错误: 场景名称 '", 场景字典名, "' 不存在于路径映射中")
 		return
 	for 子节点 in 场景容器.get_children():# 清空场景容器下的所有节点
 		场景容器.remove_child(子节点)
 		子节点.queue_free()  # 释放节点资源
-	var 场景路径: String = 界面路径映射[场景字典名][0]# 从字典中获取场景路径
+	var 场景路径: String = 窗口.窗口数据[场景名称].场景路径
 	var 场景加载器: PackedScene = load(场景路径)
 	if 场景加载器 == null:
 		print("无法加载场景: ", 场景路径)
@@ -192,17 +147,10 @@ func 重载场景(场景名称: String, 子场景名称 = null,强制重载=fals
 	var 场景实例: Node = 场景加载器.instantiate()
 	场景容器.add_child(场景实例)
 	初始界面=场景名称
-	打开界面[场景名称] = 子场景名称
-	计划.窗口状态管理(场景名称,"界面显示",null,str(子场景名称))
 	计划.窗口状态管理("根场景","初始",null,场景名称)
+	计划.红点.消除红点(场景名称,"",-1)
 	重载图钉()
 	emit_signal("场景更新",场景名称)
-
-func _任务栏(界面名称) -> void:
-	重载场景(界面名称,打开界面[界面名称])
-	#print(打开界面)
-	计划.红点.消除红点(界面名称,"",-1)
-	pass # Replace with function body.
 # 传入容器节点，检查是否有2个以上子节点，如果是则将第一个节点移到最后
 func 移动节点到最后(容器节点: Node) -> void:
 	if 容器节点 == null:

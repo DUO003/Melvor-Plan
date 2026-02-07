@@ -2,14 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_b8rbp"]
 [ext_resource type="Script" uid="uid://dtt0vuu67behi" path="res://界面/挂机系统/任务窗口/任务界面.gd" id="2_6nxmh"]
+[ext_resource type="Script" uid="uid://cobelyi1jgx8e" path="res://界面/插件/任务栏.gd" id="3_rbe4m"]
+[ext_resource type="PackedScene" uid="uid://dusyum2t63uiv" path="res://界面/插件/帮助文本.tscn" id="4_yje00"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vf5w6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hcf6d"]
-content_margin_left = 50.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3n646"]
-content_margin_right = 50.0
 
 [node name="任务界面" unique_id=1197979266 node_paths=PackedStringArray("滚动区同步") instance=ExtResource("1_b8rbp")]
 anchors_preset = 0
@@ -25,7 +21,7 @@ script = ExtResource("2_6nxmh")
 "基类窗口名称" = "任务界面"
 "滚动区同步" = {
 "主线滚动区": NodePath("内容节点/任务/主线任务"),
-"支线手工": NodePath("内容节点/任务/手工")
+"循环任务": NodePath("内容节点/任务/循环任务")
 }
 
 [node name="等级显示" parent="标题" index="0"]
@@ -47,7 +43,7 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="任务盒子" type="GridContainer" parent="内容节点/任务/主线任务" index="0" unique_id=1498165928]
+[node name="任务盒子" type="GridContainer" parent="内容节点/任务/主线任务" index="0" unique_id=1498165928 node_paths=PackedStringArray("场景")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -55,13 +51,16 @@ size_flags_vertical = 3
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 5
 columns = 2
+script = ExtResource("3_rbe4m")
+"来源" = Array[String](["作者", "手工", "挂机"])
+"场景" = NodePath("../../../..")
 
-[node name="手工" type="ScrollContainer" parent="内容节点/任务" index="2" unique_id=578245508]
+[node name="循环任务" type="ScrollContainer" parent="内容节点/任务" index="2" unique_id=1467090887]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="手工盒子" type="GridContainer" parent="内容节点/任务/手工" index="0" unique_id=1971753804]
+[node name="循环盒子" type="GridContainer" parent="内容节点/任务/循环任务" index="0" unique_id=1422282698]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -69,80 +68,42 @@ size_flags_vertical = 3
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 5
 columns = 2
+script = ExtResource("3_rbe4m")
 
-[node name="统计" type="HSplitContainer" parent="内容节点/任务" index="3" unique_id=740929435]
+[node name="任务统计" type="VBoxContainer" parent="内容节点/任务" index="3" unique_id=1327568261]
 layout_mode = 2
-theme_override_constants/separation = 10
-split_offsets = PackedInt32Array(50)
-dragging_enabled = false
-split_offset = 50
 metadata/_tab_index = 2
 
-[node name="滚动区" type="ScrollContainer" parent="内容节点/任务/统计" index="0" unique_id=87433662]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_hcf6d")
-
-[node name="介绍容器" type="VBoxContainer" parent="内容节点/任务/统计/滚动区" index="0" unique_id=1839204435]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="介绍" type="RichTextLabel" parent="内容节点/任务/统计/滚动区/介绍容器" index="0" unique_id=280043975]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/paragraph_separation = 0
-theme_override_font_sizes/normal_font_size = 50
-bbcode_enabled = true
-text = "任务
-根据解锁的系统开放任务分支
-完成任务获取{熟练}"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-
-[node name="当前完成任务数量" type="RichTextLabel" parent="内容节点/任务/统计/滚动区/介绍容器" index="1" unique_id=70923421]
+[node name="任务数量" type="RichTextLabel" parent="内容节点/任务/任务统计" index="0" unique_id=70923421]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/paragraph_separation = -15
 bbcode_enabled = true
 text = "当前完成数量:"
 fit_content = true
 scroll_active = false
 metadata/_tab_index = 0
 
-[node name="成就滚动区" type="ScrollContainer" parent="内容节点/任务/统计" index="1" unique_id=1501423397]
+[node name="任务类型" type="HBoxContainer" parent="内容节点/任务/任务统计" index="1" unique_id=720657565]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_3n646")
+size_flags_horizontal = 8
+theme_override_constants/separation = 10
 
-[node name="介绍容器" type="VBoxContainer" parent="内容节点/任务/统计/成就滚动区" index="0" unique_id=2069594962]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="介绍" type="Label" parent="内容节点/任务/统计/成就滚动区/介绍容器" index="0" unique_id=568776667]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 50
-text = "成就
-根据解锁的系统解锁新成就
-需要解锁原罪窗口才能领取奖励"
-horizontal_alignment = 1
-
-[node name="成就按钮" type="Button" parent="内容节点/任务/统计/成就滚动区/介绍容器/介绍" index="0" unique_id=601994939]
+[node name="成就按钮" type="Button" parent="内容节点/任务/任务统计/任务类型" index="0" unique_id=601994939]
 unique_name_in_owner = true
-layout_mode = 1
-offset_right = 187.0
-offset_bottom = 67.0
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "前往成就"
 
-[node name="效果介绍" type="Label" parent="内容节点/任务/统计/成就滚动区/介绍容器" index="1" unique_id=541247959]
+[node name="占位" type="Control" parent="内容节点/任务/任务统计/任务类型" index="1" unique_id=1242668051]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 1
-text = "不影响steam成就获取
-可以提前查看"
-metadata/_tab_index = 0
+
+[node name="占位" type="Control" parent="内容节点/任务/任务统计" index="2" unique_id=707258307]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 
 [node name="任务功能" type="HBoxContainer" parent="内容节点" index="1" unique_id=1826273315]
 layout_mode = 1
@@ -170,3 +131,13 @@ popup/item_1/text = "显示2个"
 popup/item_1/id = 1
 popup/item_2/text = "显示3个"
 popup/item_2/id = 2
+
+[node name="帮助文本" parent="内容节点/任务功能" index="2" unique_id=1882497651 instance=ExtResource("4_yje00")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+"提示" = "提示说明
+1.主线任务的解锁条件是消耗循环任务完成次数
+2.完成主线任务可以解锁更多循环任务
+3.任务方块在故事玩法使用
+"

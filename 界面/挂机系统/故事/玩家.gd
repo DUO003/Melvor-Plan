@@ -10,7 +10,6 @@ var 出生点:Vector2
 var 地图外判断:int=1100#Y大于这个值视为掉出地图
 @onready var 地图: 大地图管理 = $"../地图管理器"
 func _ready() -> void:
-	出生点=position
 	动画=玩家图片.动画
 	玩家图片.z_index=-1
 	按钮.visible=false

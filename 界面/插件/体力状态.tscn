@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx5oki37mgsju"]
+[gd_scene format=3 uid="uid://dx5oki37mgsju"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_wok3q"]
 [ext_resource type="Script" uid="uid://3qbuxr56jjr6" path="res://代码/专属代码/特殊功能/体力系统.gd" id="2_n7kj1"]
@@ -18,7 +18,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="体力状态" type="Control"]
+[node name="体力状态" type="Control" unique_id=776025947]
 custom_minimum_size = Vector2(400, 70)
 layout_mode = 3
 anchors_preset = 0
@@ -27,7 +27,7 @@ offset_bottom = 70.0
 theme = ExtResource("1_wok3q")
 script = ExtResource("2_n7kj1")
 
-[node name="触发显示范围" type="Control" parent="."]
+[node name="触发显示范围" type="Control" parent="." unique_id=229266800]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 70)
 layout_mode = 1
@@ -35,7 +35,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="体力贴图" type="TextureRect" parent="触发显示范围"]
+[node name="体力贴图" type="TextureRect" parent="触发显示范围" unique_id=1993709324]
 layout_mode = 1
 offset_right = 95.0
 offset_bottom = 70.0
@@ -43,7 +43,7 @@ mouse_behavior_recursive = 1
 texture = ExtResource("3_0tcwq")
 expand_mode = 1
 
-[node name="体力值" type="ProgressBar" parent="触发显示范围"]
+[node name="体力值" type="ProgressBar" parent="触发显示范围" unique_id=9058171]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -57,7 +57,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_rxrpf")
 value = 50.0
 show_percentage = false
 
-[node name="体力" type="Label" parent="触发显示范围/体力值"]
+[node name="体力" type="Label" parent="触发显示范围/体力值" unique_id=294831868]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -74,7 +74,7 @@ text = "120/240"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="扩展内容" type="Panel" parent="."]
+[node name="扩展内容" type="Panel" parent="." unique_id=1720184831]
 unique_name_in_owner = true
 visible = false
 z_index = 1
@@ -84,7 +84,7 @@ offset_right = 392.0
 offset_bottom = 160.0
 mouse_behavior_recursive = 1
 
-[node name="体力回复条" type="ProgressBar" parent="扩展内容"]
+[node name="体力回复条" type="ProgressBar" parent="扩展内容" unique_id=1586824540]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 392.0
@@ -95,7 +95,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_okb3m")
 value = 50.0
 show_percentage = false
 
-[node name="扩展信息" type="RichTextLabel" parent="扩展内容"]
+[node name="扩展信息" type="RichTextLabel" parent="扩展内容" unique_id=478492076]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(374, 0)
 layout_mode = 1

@@ -15,7 +15,7 @@ func _ready() -> void:
 		min_value = 0  # 最小值
 		step = 0.01  # 步长
 		max_value = 目标值  # 最大值
-		计划.任务更新.connect(_更新进度)
+		计划.任务.任务更新.connect(_更新进度)
 		_更新进度()
 func _更新进度(更新任务:Array[任务资源]=[]) -> void:
 	if 更新任务.is_empty() or 更新任务.has(任务数据):

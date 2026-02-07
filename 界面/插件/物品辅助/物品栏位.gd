@@ -29,9 +29,9 @@ func 更新判断(物品名:String):
 	if 物品 and 物品.item_name==物品名:
 		queue_redraw()
 func 显示简介():
-	计划.全局悬浮提示.emit(返回格子物品简介,self,30)
+	计划.全局悬浮提示.emit(返回格子物品简介(),self,30)
 func 隐藏简介():
-	计划.全局悬浮提示.emit(func():return "",self)
+	计划.全局悬浮提示.emit("",self)
 func 返回格子物品简介()->String:
 	if 显示物品 and 物品:
 		return 物品.返回简介("")

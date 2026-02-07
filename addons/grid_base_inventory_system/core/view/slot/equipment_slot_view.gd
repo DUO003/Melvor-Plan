@@ -160,7 +160,7 @@ func _on_slot_hover() -> void:
 		#if item_data:
 			# 让物品焦点服务聚焦该物品（显示物品详情、高亮等），并关联槽位名称
 			#GBIS.item_focus_service.focus_item(item_data, slot_name)
-		计划.全局悬浮提示.emit(返回装备栏显示文本,self,30)
+		计划.全局悬浮提示.emit(返回装备栏显示文本(),self,30)
 		# 执行完场景1逻辑后直接返回，不再执行后续代码
 		return
 	# 场景2：存在正在拖拽的物品，且拖拽的是装备数据类型
@@ -199,7 +199,7 @@ func 返回装备栏显示文本()->String:
 func _on_slot_lose_hover() -> void:
 	_state = State.NORMAL
 	#GBIS.item_focus_service.item_lose_focus()
-	计划.全局悬浮提示.emit(func():return "",self)
+	计划.全局悬浮提示.emit("",self)
 	queue_redraw()
 
 ## 监听穿装备

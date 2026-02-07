@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://d225buqtym477"]
+
+[ext_resource type="Script" uid="uid://cobelyi1jgx8e" path="res://界面/插件/任务栏.gd" id="1_lv6te"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ugbwj"]
+[ext_resource type="PackedScene" uid="uid://dx5oki37mgsju" path="res://界面/插件/体力状态.tscn" id="2_ugbwj"]
+
+[node name="循环任务" type="ScrollContainer" unique_id=901319443]
+custom_minimum_size = Vector2(570, 495)
+anchors_preset = -1
+anchor_right = 0.29700002
+anchor_bottom = 0.45800003
+offset_right = -570.24005
+offset_bottom = -494.64005
+theme = ExtResource("1_ugbwj")
+script = ExtResource("1_lv6te")
+metadata/_tab_index = 2
+
+[node name="任务容器" type="VBoxContainer" parent="." unique_id=551189033]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="标签" type="Label" parent="任务容器" unique_id=249152579]
+layout_mode = 2
+text = "被隐藏的任务数量:%d"
+horizontal_alignment = 1
+
+[node name="体力状态" parent="任务容器" unique_id=406622978 instance=ExtResource("2_ugbwj")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="任务栏" type="GridContainer" parent="任务容器" unique_id=1314753486]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

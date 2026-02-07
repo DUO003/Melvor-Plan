@@ -14,7 +14,7 @@ func _ready():
 	else :
 		%"显示测试".visible=false
 	%"跳转设置".pressed.connect(func():
-		计划.切换场景(null,"设置界面")
+		计划.切换场景("设置界面")
 		visible=false)
 	%"保存关闭".pressed.connect(func():
 		await 计划.保存存档("手动存档")

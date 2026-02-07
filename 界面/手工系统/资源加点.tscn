@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0xnyoxa6kefu"]
+[gd_scene format=3 uid="uid://c0xnyoxa6kefu"]
 
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_6851i"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_r7331"]
@@ -18,9 +18,6 @@ metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yni8h"]
 content_margin_left = 60.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5lflo"]
-content_margin_left = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqimc"]
 bg_color = Color(0.5254902, 0.6509804, 0.52156866, 1)
@@ -69,28 +66,31 @@ script = ExtResource("3_r7331")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kqimc"), SubResource("StyleBoxFlat_wjp5r")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
-[node name="资源加点" type="Panel"]
-custom_minimum_size = Vector2(390, 120)
-offset_right = 390.0
-offset_bottom = 116.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5lflo"]
+content_margin_left = 10.0
+
+[node name="资源加点" type="Panel" unique_id=515521803]
+custom_minimum_size = Vector2(390, 80)
+offset_right = 550.0
+offset_bottom = 80.0
 theme = ExtResource("1_r7331")
 theme_override_styles/panel = SubResource("StyleBoxFlat_hvqnr")
 script = ExtResource("3_hvqnr")
 
-[node name="回复速度" type="Label" parent="."]
+[node name="回复速度" type="Label" parent="." unique_id=1309244495]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 57.0
+offset_bottom = 74.0
 grow_horizontal = 2
 theme_override_constants/line_spacing = -12
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yni8h")
-text = "木材回复+0.00
-上限"
+text = "回复+%.2f
+上限:%d,费用:1"
 vertical_alignment = 1
 
-[node name="贴图" type="TextureRect" parent="."]
+[node name="贴图" type="TextureRect" parent="." unique_id=1665336503]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
 offset_top = 9.0
@@ -100,32 +100,15 @@ texture = ExtResource("4_r7331")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="文本" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -52.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxEmpty_5lflo")
-text = "分配代币"
-vertical_alignment = 1
-
-[node name="+" type="Button" parent="."]
+[node name="+" type="Button" parent="." unique_id=531392461]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
-anchor_top = 0.96300006
 anchor_right = 1.0
-anchor_bottom = 0.97700006
-offset_left = -58.06604
-offset_top = -41.060005
-offset_right = 3.93396
-offset_bottom = 14.2599945
+offset_left = -51.0
+offset_top = 20.0
+offset_right = 11.0
+offset_bottom = 77.0
 scale = Vector2(0.75, 0.75)
 theme_override_styles/normal = SubResource("StyleBox_vgh6y")
 theme_override_styles/pressed = SubResource("StyleBox_vgh6y")
@@ -133,15 +116,13 @@ theme_override_styles/hover = SubResource("StyleBox_vgh6y")
 theme_override_styles/focus = SubResource("StyleBox_vgh6y")
 text = "+"
 
-[node name="-" type="Button" parent="."]
+[node name="-" type="Button" parent="." unique_id=2140569160]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 1.0011666
-anchor_bottom = 1.0011666
-offset_left = 140.52458
-offset_top = -43.63999
-offset_right = 202.52458
-offset_bottom = 13.360016
+offset_left = 304.0
+offset_top = 21.0
+offset_right = 366.0
+offset_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.75, 0.75)
@@ -150,20 +131,16 @@ theme_override_styles/pressed = SubResource("StyleBox_vgh6y")
 theme_override_styles/hover = SubResource("StyleBox_vgh6y")
 theme_override_styles/focus = SubResource("StyleBox_vgh6y")
 text = "-"
-metadata/_edit_use_anchors_ = true
 
-[node name="点数" type="Label" parent="."]
+[node name="点数" type="Label" parent="." unique_id=1126823509]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 189.0
-offset_top = -52.0
-offset_right = -64.0
-offset_bottom = 5.0
+offset_left = 356.0
+offset_top = 11.0
+offset_right = -53.0
+offset_bottom = 68.0
 grow_horizontal = 2
-grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_5lflo")
 text = "100"
 horizontal_alignment = 1

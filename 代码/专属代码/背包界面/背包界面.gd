@@ -75,7 +75,7 @@ func 扩容背包():
 		背包数据["背包"]={}
 	背包数据["背包"].行数=背包_容器.container_rows+1
 	计划.语法糖通知("背包扩容成功")
-	计划.切换场景(null,"背包界面",true)
+	计划.切换场景("背包界面",true)
 func 便利性切换():
 	随身商店.visibility_changed.connect(func():if 随身商店.visible:切换物品栏(0))
 	装备槽.visibility_changed.connect(func():if 装备槽.visible:切换物品栏(1))

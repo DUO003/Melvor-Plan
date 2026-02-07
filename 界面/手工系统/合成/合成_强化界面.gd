@@ -15,7 +15,7 @@ extends 基类梅窗口
 @onready var 材料信息: RichTextLabel = %材料信息
 func  _ready() -> void:
 	super._ready()#注册
-	主菜单.pressed.connect(func():计划.切换场景(null,"合成界面"))
+	主菜单.pressed.connect(func():计划.切换场景("合成界面"))
 	配方容器.修改返回对象=self
 	配方容器.初始更新()
 	符文容器.修改返回对象=self

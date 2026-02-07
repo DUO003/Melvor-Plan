@@ -22,6 +22,8 @@ class_name 梅物品格子
 @export var 物品不足提示:bool=true
 ##物品被替换或初始化后自动设置一个数量的值
 @export var 默认值:int=1
+##启用禁用放回后如果不额外处理物品保存逻辑,物品将消失
+@export var 禁用放回背包:bool=false
 ##没有对应处理逻辑,需要另外实现
 @export var 上次放入的物品:ItemData
 ##禁止放入例如装备
@@ -81,6 +83,7 @@ func 初始更新():
 				更新文本())
 	else :
 		输入.visible=false
+	更新文本()
 	await get_tree().process_frame
 	更新文本()
 func 更新文本():
@@ -129,14 +132,14 @@ func 鼠标信号处理(鼠标信号):
 		if GBIS.has_moving_item():
 			var 正在移动的物品=GBIS.moving_item_service.moving_item
 			if 仅限标准物品 and not 正在移动的物品 is 标准物品:
-				计划.语法糖通知(标签警告,"炼金容器")
+				计划.语法糖通知(标签警告,"物品容器")
 				return
 			#print("正在移动的物品",正在移动的物品)
 			var 缓存道具名=正在移动的物品.item_name
 			if 物品白名单.size()>=1:
 				if 物品白名单.has(缓存道具名):
 					设置物品(正在移动的物品)
-				else :计划.语法糖通知(标签警告,"炼金容器")
+				else :计划.语法糖通知(标签警告,"物品容器")
 			else :
 				if 计划.表格.蓝图标签检查(缓存道具名,限制类型) or 限制类型.size()==0:
 					if 限制属性类型.keys().size()==0:
@@ -151,18 +154,23 @@ func 鼠标信号处理(鼠标信号):
 									完成条件=true
 									break
 							if not 完成条件:
-								计划.语法糖通知(标签警告,"炼金容器")
-				else :计划.语法糖通知("标签"+标签警告,"炼金容器")
+								计划.语法糖通知(标签警告,"物品容器")
+				else :计划.语法糖通知("标签"+标签警告,"物品容器")
 			$"输入".value=当前值
 			if 正在移动的物品 is 标准物品:
 				if 正在移动的物品.特殊标签=="":
 					GBIS.鼠标物品.emit(false)
 			if not 修改返回对象==null:
 				修改返回对象.返回处理方法(self)
-			GBIS.moving_item_service.安全清除移动物品()
+			if 禁用放回背包:
+				GBIS.moving_item_service.clear_moving_item()
+			else :
+				GBIS.moving_item_service.安全清除移动物品()
 	elif 鼠标信号 is InputEventMouseButton and 鼠标信号.button_index == MOUSE_BUTTON_RIGHT and 鼠标信号.pressed:
 		清空设置物品()
 func 清空设置物品():
+	if 禁用放回背包 and 上次放入的物品:
+		GBIS.moving_item_service.安全清除移动物品(上次放入的物品)
 	上次放入的物品=null
 	if not 道具名称==null:
 		道具名称=null

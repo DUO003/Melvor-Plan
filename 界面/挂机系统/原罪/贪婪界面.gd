@@ -20,7 +20,7 @@ const 停止阈值: float = 1.0
 func _ready() -> void:
 	super._ready()#注册
 	var 主菜单=%"主菜单"
-	主菜单.pressed.connect(func():计划.切换场景(null,"原罪界面"))
+	主菜单.pressed.connect(func():计划.切换场景("原罪界面"))
 	var 奖池:Array=[]
 	奖池=计划.卡包配置.keys()
 	收藏卡包.clear()

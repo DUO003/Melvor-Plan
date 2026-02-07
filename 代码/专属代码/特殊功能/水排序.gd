@@ -53,7 +53,7 @@ func _ready():
 	for 关卡数 in range(1, 9):
 		var 按钮节点 = get_node("%测试按钮" + str(关卡数))
 		按钮节点.pressed.connect(func(): 初始化关卡(关卡数))
-	%主菜单.pressed.connect(func(): 计划.切换场景(null,"小游戏界面"))
+	%主菜单.pressed.connect(func(): 计划.切换场景("小游戏界面"))
 	瓶子位置 = %瓶子位置
 	%关卡.text="水排序"
 	%隐藏瓶子数量.visible=false

@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="4_kiae7"]
 [ext_resource type="Script" uid="uid://cvqpr44nuhv1h" path="res://界面/根界面/隐藏奖励.gd" id="4_rhqkc"]
 [ext_resource type="PackedScene" uid="uid://c51gx8des8nv1" path="res://界面/插件/红点提示.tscn" id="5_5a7ci"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="6_rxn41"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="7_4h1no"]
 [ext_resource type="Script" uid="uid://dbhilkborreev" path="res://代码/专属代码/特殊功能/手动存档.gd" id="7_5a7ci"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="8_0p14m"]
@@ -147,7 +148,7 @@ theme_override_constants/separation = -5
 
 [node name="任务" type="Button" parent="功能/任务栏分割/任务栏滚动区/任务栏" unique_id=1808832397]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("4_kiae7")
@@ -156,8 +157,9 @@ theme_override_constants/h_separation = 0
 theme_override_constants/icon_max_width = 60
 theme_override_constants/align_to_largest_stylebox = 1
 theme_override_fonts/font = ExtResource("11_yd0tu")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 30
 text = "合成"
+icon = ExtResource("6_rxn41")
 expand_icon = true
 
 [node name="红点提示" parent="功能/任务栏分割/任务栏滚动区/任务栏/任务" unique_id=469257100 instance=ExtResource("5_5a7ci")]
@@ -368,6 +370,7 @@ alignment = 1
 
 [node name="测试功能" type="CanvasLayer" parent="暂停界面" unique_id=1072495816]
 unique_name_in_owner = true
+layer = 5
 visible = false
 
 [node name="测试" parent="暂停界面/测试功能" unique_id=416459043 node_paths=PackedStringArray("空节点") instance=ExtResource("9_rhqkc")]

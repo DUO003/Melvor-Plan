@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlf0o8yt0hscg"]
+[gd_scene format=3 uid="uid://dlf0o8yt0hscg"]
 
 [ext_resource type="Script" uid="uid://d3rwtrc1l2mml" path="res://界面/插件/悬浮提示.gd" id="1_dekp0"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_fxf10"]
@@ -25,7 +25,7 @@ script = ExtResource("2_3acc5")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_nxlpm")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
-[node name="悬浮提示" type="Panel"]
+[node name="悬浮提示" type="Panel" unique_id=644603075]
 z_index = 1
 offset_right = 200.0
 offset_bottom = 200.0
@@ -33,7 +33,7 @@ theme = ExtResource("1_fxf10")
 theme_override_styles/panel = SubResource("StyleBox_ydj0l")
 script = ExtResource("1_dekp0")
 
-[node name="文本" type="RichTextLabel" parent="."]
+[node name="文本" type="RichTextLabel" parent="." unique_id=85689410]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -46,7 +46,7 @@ offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_separation = -5
-theme_override_constants/paragraph_separation = -20
+theme_override_constants/paragraph_separation = -15
 bbcode_enabled = true
 fit_content = true
 scroll_active = false

@@ -23,7 +23,7 @@ func get_moving_item_layer() -> CanvasLayer:
 	return _moving_item_layer
 
 ## 清除正在移动的物品(不会删除版)
-func 安全清除移动物品() -> void:
+func 安全清除移动物品(物品:ItemData=null) -> void:
 	if moving_item != null:
 		var 背包类型 = "背包"
 		if moving_item is 物品装备:
@@ -34,15 +34,16 @@ func 安全清除移动物品() -> void:
 			背包类型 = "方块背包"
 		else :
 			背包类型 = "背包"
-		if moving_item is StackableData:
-			if moving_item.数量<=0:
-				clear_moving_item()
-				return
-		GBIS.add_item(背包类型, moving_item)
+		if not moving_item is StackableData or moving_item.数量>=1:
+			GBIS.add_item(背包类型, moving_item)
 		clear_moving_item()
+	if 物品:
+		moving_item=物品
+		安全清除移动物品()
 func clear_moving_item() -> void:
-	for o in _moving_item_layer.get_children():
-		o.queue_free()
+	if _moving_item_layer:
+		for 节点 in _moving_item_layer.get_children():
+			节点.queue_free()
 	moving_item = null
 	moving_item_view = null
 	if drop_area_view:

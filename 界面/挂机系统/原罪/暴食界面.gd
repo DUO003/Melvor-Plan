@@ -12,7 +12,7 @@ func _ready() -> void:
 	super._ready()#注册
 	配方容器.修改返回对象=self
 	配方容器.初始更新()
-	主菜单.pressed.connect(func():计划.切换场景(null,"原罪界面"))
+	主菜单.pressed.connect(func():计划.切换场景("原罪界面"))
 	吃掉.pressed.connect(判断吃掉)
 	计划.过去一秒.connect(更新卡路里)
 	卡路里标题.item_selected.connect(更新卡路里)

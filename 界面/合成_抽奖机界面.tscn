@@ -255,52 +255,6 @@ grow_vertical = 2
 color = Color(0.82, 0.732533, 0.492, 0.705882)
 metadata/_edit_lock_ = true
 
-[node name="解锁界面" type="Control" parent="." unique_id=1811161438]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="提交" type="Button" parent="解锁界面" unique_id=433546617]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(220, 0)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -514.0
-offset_top = -139.0
-offset_right = -294.0
-offset_bottom = -50.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 60
-text = "提交"
-
-[node name="解锁提示" type="Label" parent="解锁界面" unique_id=218580702]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -112.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 60
-text = "抽奖机状态:损坏
-修复条件
-1.手工系统LV:3或以上
-2.金币2000"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="内容节点" type="Control" parent="." unique_id=1281590365]
 anchors_preset = 0
 offset_top = 100.0

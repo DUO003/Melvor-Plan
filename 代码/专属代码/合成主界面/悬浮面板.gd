@@ -41,7 +41,7 @@ func _处理鼠标悬浮逻辑(延迟: float,代码: Callable) -> void:
 	上一帧鼠标位置=当前鼠标位置
 func 重置():
 	鼠标停留时间 = 0.0
-	if 悬浮提示节点.visible:悬浮提示节点.visible=false
+	#if 悬浮提示节点.visible:悬浮提示节点.visible=false
 func 资源回复()->String:
 	if not 资源名称:return ""
 	var 资源回复速度=计划.手工.资源回复

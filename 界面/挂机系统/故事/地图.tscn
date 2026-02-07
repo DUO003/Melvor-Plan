@@ -1,11 +1,36 @@
 [gd_scene format=4 uid="uid://c0q7oed58pqte"]
 
 [ext_resource type="Script" uid="uid://b46p1ja2qfyh0" path="res://界面/挂机系统/故事/大地图.gd" id="1_30b55"]
+[ext_resource type="TileMapPattern" uid="uid://dxc03n2p256oe" path="res://界面/挂机系统/故事/地图编辑器/起始之地.tres" id="2_8i28v"]
 [ext_resource type="TileSet" uid="uid://lcxf26dcxd0m" path="res://代码/地图集/地图.tres" id="2_30b55"]
+[ext_resource type="Script" uid="uid://cirr0xaf2mmiq" path="res://代码/专属代码/故事窗口/建筑数据.gd" id="2_yjm38"]
+[ext_resource type="Script" uid="uid://fcwto8ogpj0n" path="res://道具/标准物品.gd" id="3_4iidt"]
+[ext_resource type="TileMapPattern" uid="uid://kowsscn5fhiv" path="res://界面/挂机系统/故事/地图编辑器/起始之地_家具.tres" id="3_5bbqs"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="3_g8sqc"]
+[ext_resource type="Script" uid="uid://drm3ebawdtn51" path="res://界面/挂机系统/故事/地图编辑器/保存地图.gd" id="4_eit8p"]
+
+[sub_resource type="Resource" id="Resource_t0d0h"]
+script = ExtResource("2_yjm38")
+"方块名称" = "告示牌"
+"文本数据" = "移动操作提示
+WASD或鼠标点击地面移动
+空格跳跃"
+metadata/_custom_type_script = "uid://cirr0xaf2mmiq"
 
 [node name="地图" type="Node2D" unique_id=650144343]
 script = ExtResource("1_30b55")
+"地图资源字典" = Dictionary[String, Dictionary]({
+"起始之地": {
+"图块": ExtResource("2_8i28v"),
+"坐标": Vector2i(-11, 4),
+"家具": ExtResource("3_5bbqs"),
+"家具坐标": Vector2i(1, 4),
+"建筑": {
+Vector2i(1, 4): SubResource("Resource_t0d0h")
+},
+"玩家": Vector2(700, 600)
+}
+})
 metadata/_edit_vertical_guides_ = [-1304.0]
 metadata/_edit_horizontal_guides_ = [809.0]
 
@@ -15,12 +40,17 @@ tile_map_data = PackedByteArray("AAANAAYAAAAHAAEAAAANAAUAAAAHAAAAAAAMAAYAAAAHAAE
 tile_set = ExtResource("2_30b55")
 collision_visibility_mode = 2
 navigation_visibility_mode = 2
+script = ExtResource("4_eit8p")
+"地图资源" = ExtResource("2_8i28v")
+"图案起点坐标" = Vector2i(-11, 4)
 
 [node name="家具" type="TileMapLayer" parent="." unique_id=996986366]
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAABAAQABAAGAAUAAAA=")
 tile_set = ExtResource("2_30b55")
 collision_visibility_mode = 2
+script = ExtResource("4_eit8p")
+"图案起点坐标" = Vector2i(1, 4)
 
 [node name="鼠标" type="TileMapLayer" parent="." unique_id=2145927548]
 scale = Vector2(2, 2)
@@ -29,6 +59,7 @@ collision_visibility_mode = 2
 navigation_visibility_mode = 2
 
 [node name="碰撞" type="TileMapLayer" parent="." unique_id=1149172268]
+self_modulate = Color(1, 1, 1, 0.3137255)
 scale = Vector2(2, 2)
 tile_set = ExtResource("2_30b55")
 collision_visibility_mode = 2

@@ -1,9 +1,10 @@
 extends Control
+class_name 体力插件
 var 固定文本
 var 体力上限:int=240
 var 体力值:int=100
-var 体力恢复速度:int=360
-var 恢复量:int=1
+var 体力恢复速度:int=计划.体力恢复速度
+var 恢复量:int=计划.恢复量
 var 计时器:Timer=null
 func _ready() -> void:
 	%"扩展内容".visible=false

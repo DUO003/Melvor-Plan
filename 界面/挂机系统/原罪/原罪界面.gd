@@ -38,7 +38,7 @@ func _ready() -> void:
 func 子界面(按键,模式):
 	if 按键 is InputEventMouseButton:
 		if 按键.button_index == MOUSE_BUTTON_LEFT and 按键.pressed:
-			计划.切换场景("原罪_%s界面"%模式,"原罪界面")
+			计划.切换场景("原罪_%s界面"%模式)
 func 突破():
 	var 突破结果=计划.数据原罪("尝试突破")
 	计划.steam.解锁成就("原罪突破")

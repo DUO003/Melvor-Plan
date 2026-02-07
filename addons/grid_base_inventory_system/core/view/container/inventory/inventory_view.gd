@@ -97,7 +97,12 @@ func _ready() -> void:
 	
 	if not stack_num_font:
 		stack_num_font = get_theme_font("font")
-	call_deferred("refresh")
+	await get_tree().process_frame
+	计划.显示后执行(refresh,self)
+	#call_deferred("refresh")
+func refresh():
+	super.refresh()
+	背包内容更新.emit()
 func 加载背包数据():
 	var 背包数据:Dictionary=计划.梅存档.挂机.背包数据
 	if 背包数据.has(container_name):

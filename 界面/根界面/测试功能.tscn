@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bs3xyimmlbfxm"]
+[gd_scene format=3 uid="uid://bs3xyimmlbfxm"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_bddln"]
 [ext_resource type="Script" uid="uid://bmlc8vpbcln8u" path="res://代码/专属代码/合成主界面/测试.gd" id="2_ps03r"]
@@ -494,7 +494,7 @@ script = ExtResource("5_ir1tg")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_34pbr")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
-[node name="测试" type="Button"]
+[node name="测试" type="Button" unique_id=410456558]
 z_index = 1
 offset_right = 128.0
 offset_bottom = 80.0
@@ -504,7 +504,7 @@ theme_override_font_sizes/font_size = 50
 text = "测试"
 script = ExtResource("2_ps03r")
 
-[node name="测试功能" type="OptionButton" parent="."]
+[node name="测试功能" type="OptionButton" parent="." unique_id=2099431875]
 clip_contents = true
 layout_mode = 0
 offset_left = -320.0
@@ -531,7 +531,7 @@ item_count = 1
 popup/item_0/text = "测试功能"
 popup/item_0/id = 0
 
-[node name="测试参数" type="OptionButton" parent="."]
+[node name="测试参数" type="OptionButton" parent="." unique_id=1633630564]
 clip_contents = true
 layout_mode = 0
 offset_left = -320.0
@@ -561,7 +561,7 @@ item_count = 1
 popup/item_0/text = "测试参数"
 popup/item_0/id = 0
 
-[node name="测试数量" type="OptionButton" parent="."]
+[node name="测试数量" type="OptionButton" parent="." unique_id=1604313324]
 clip_contents = true
 layout_mode = 0
 offset_left = -120.0
@@ -606,7 +606,7 @@ popup/item_7/id = 7
 popup/item_8/text = "1000"
 popup/item_8/id = 8
 
-[node name="红点提示" parent="." instance=ExtResource("4_34pbr")]
+[node name="红点提示" parent="." unique_id=1565101298 instance=ExtResource("4_34pbr")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = 1
@@ -618,7 +618,7 @@ grow_horizontal = 0
 grow_vertical = 1
 "红点条目" = "测试红点"
 
-[node name="拖动手柄" type="Panel" parent="."]
+[node name="拖动手柄" type="Panel" parent="." unique_id=122074389]
 layout_mode = 0
 offset_left = 134.0
 offset_top = 4.0
@@ -627,7 +627,7 @@ offset_bottom = 75.0
 theme_override_styles/panel = SubResource("StyleBox_scm1d")
 script = ExtResource("5_ps03r")
 
-[node name="参数筛选器" type="LineEdit" parent="."]
+[node name="参数筛选器" type="LineEdit" parent="." unique_id=980416086]
 layout_mode = 1
 offset_left = -320.0
 offset_top = 80.0

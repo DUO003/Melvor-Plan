@@ -14,6 +14,13 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return  # 直接返回，不执行后续可能出错的代码
 	计划.connect("更新_UI", Callable(self, "_更新_UI"))
+	文本数值.size.y=100
+	%"精通进度条".custom_minimum_size.y=50
+	%"熟练进度条".custom_minimum_size.y=50
+	%"熟练进度条".position.y=50
+	custom_minimum_size.y=100
+	position=Vector2(0,0)
+	文本数值.position.y=0
 func _更新_UI():
 	if not has_node("玩法文本") or not is_instance_valid(玩法文本):
 		return
@@ -47,17 +54,11 @@ func _更新_UI():
 		if 熟练上限==-1:
 			熟练=0
 			熟练上限=1
-		%精通进度条.max_value=精通上限
-		%精通进度条.value=精通
 		%熟练进度条.max_value=熟练上限
+		%精通进度条.max_value=精通上限
 		%熟练进度条.value=熟练
-	文本数值.size.y=100
-	%"精通进度条".custom_minimum_size.y=50
-	%"熟练进度条".custom_minimum_size.y=50
-	%"熟练进度条".position.y=50
-	custom_minimum_size.y=100
-	position=Vector2(0,0)
-	文本数值.position.y=0
+		%精通进度条.value=精通
+		#print(%精通进度条.value,"/",%精通进度条.max_value)
 
 func 文本节点宽度(文本节点,对齐方式:HorizontalAlignment=HORIZONTAL_ALIGNMENT_LEFT)->Vector2:
 	if 文本节点 is RichTextLabel or 文本节点 is Label:
