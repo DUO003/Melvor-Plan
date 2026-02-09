@@ -32,9 +32,10 @@ func 更新文本(文本内容:String="",节点实例:Node=self,默认字体:int
 		富文本.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 		富文本.custom_minimum_size=Vector2(宽度上限, 50)
 	富文本.size=富文本.get_minimum_size()
-	#富文本.size=富文本.get_minimum_size()
+	await get_tree().process_frame
+	富文本.size=富文本.get_minimum_size()
 	size = 富文本.size + Vector2(16, 16)
-	富文本.position=Vector2(8, 8)
+	富文本.position=Vector2(8, 5)
 	visible=true
 func _process(_delta: float) -> void:
 	if visible:

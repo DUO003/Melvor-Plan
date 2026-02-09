@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://blkkbdad7hti1"]
+[gd_scene format=3 uid="uid://blkkbdad7hti1"]
 
 [ext_resource type="Script" uid="uid://b2x8daf4qepwj" path="res://界面/插件/物品辅助/代币商店.gd" id="1_3ytm5"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_5tqhy"]
@@ -73,7 +73,7 @@ script = ExtResource("3_l4s5g")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_5tqhy"), SubResource("StyleBoxFlat_l4s5g")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
-[node name="代币商店" type="VBoxContainer"]
+[node name="代币商店" type="VBoxContainer" unique_id=403135558]
 custom_minimum_size = Vector2(0, 430)
 anchors_preset = 10
 anchor_right = 1.0
@@ -85,30 +85,30 @@ theme_override_constants/separation = 0
 script = ExtResource("1_3ytm5")
 metadata/_tab_index = 2
 
-[node name="商店滚动区" type="ScrollContainer" parent="."]
+[node name="商店滚动区" type="ScrollContainer" parent="." unique_id=1224421014]
 custom_minimum_size = Vector2(0, 350)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="多商店容器" type="VBoxContainer" parent="商店滚动区"]
+[node name="多商店容器" type="VBoxContainer" parent="商店滚动区" unique_id=1101989170]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="商店容器" type="GridContainer" parent="商店滚动区/多商店容器"]
+[node name="商店容器" type="GridContainer" parent="商店滚动区/多商店容器" unique_id=122699246]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="商品卡" parent="商店滚动区/多商店容器/商店容器" instance=ExtResource("3_5tqhy")]
+[node name="商品卡" parent="商店滚动区/多商店容器/商店容器" unique_id=255799657 instance=ExtResource("3_5tqhy")]
 layout_mode = 2
 
-[node name="辅助按钮区" type="Panel" parent="."]
+[node name="辅助按钮区" type="Panel" parent="." unique_id=170089501]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBox_1enq4")
 
-[node name="按钮区" type="HBoxContainer" parent="辅助按钮区"]
+[node name="按钮区" type="HBoxContainer" parent="辅助按钮区" unique_id=1760712794]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,7 +116,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="按钮1" type="Button" parent="辅助按钮区/按钮区"]
+[node name="按钮1" type="Button" parent="辅助按钮区/按钮区" unique_id=1207841611]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -126,7 +126,7 @@ theme_override_styles/hover = SubResource("StyleBox_w7mx3")
 theme_override_styles/focus = SubResource("StyleBox_w7mx3")
 text = "=1"
 
-[node name="按钮2" type="Button" parent="辅助按钮区/按钮区"]
+[node name="按钮2" type="Button" parent="辅助按钮区/按钮区" unique_id=716117479]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -136,7 +136,7 @@ theme_override_styles/hover = SubResource("StyleBox_w7mx3")
 theme_override_styles/focus = SubResource("StyleBox_w7mx3")
 text = "=5"
 
-[node name="按钮3" type="Button" parent="辅助按钮区/按钮区"]
+[node name="按钮3" type="Button" parent="辅助按钮区/按钮区" unique_id=444302003]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -146,12 +146,12 @@ theme_override_styles/hover = SubResource("StyleBox_w7mx3")
 theme_override_styles/focus = SubResource("StyleBox_w7mx3")
 text = "=10"
 
-[node name="标签" type="Label" parent="辅助按钮区/按钮区"]
+[node name="标签" type="Label" parent="辅助按钮区/按钮区" unique_id=1159947137]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "每次购买1"
 
-[node name="按钮4" type="Button" parent="辅助按钮区/按钮区"]
+[node name="按钮4" type="Button" parent="辅助按钮区/按钮区" unique_id=1389314934]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -161,7 +161,7 @@ theme_override_styles/hover = SubResource("StyleBox_w7mx3")
 theme_override_styles/focus = SubResource("StyleBox_w7mx3")
 text = "+1"
 
-[node name="按钮5" type="Button" parent="辅助按钮区/按钮区"]
+[node name="按钮5" type="Button" parent="辅助按钮区/按钮区" unique_id=2019120947]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -171,7 +171,7 @@ theme_override_styles/hover = SubResource("StyleBox_w7mx3")
 theme_override_styles/focus = SubResource("StyleBox_w7mx3")
 text = "-1"
 
-[node name="按钮6" type="Button" parent="辅助按钮区/按钮区"]
+[node name="按钮6" type="Button" parent="辅助按钮区/按钮区" unique_id=9026231]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

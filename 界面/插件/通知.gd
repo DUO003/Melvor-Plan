@@ -4,14 +4,15 @@ class_name 通知场景
 @export var 标签=""
 var 前辈:通知场景
 var 点击动作=null
-var 文本 = ""
+var 文本:String = ""
 var 鼠标位置:Vector2
 signal 跟随前进(距离:float)
 const 鼠标位置误差阈值:float = 10.0
 var 动画进度条:float=0
 var 通知位置
-@onready var 文本节点: RichTextLabel = $文本
+var 文本节点: RichTextLabel
 func _ready() -> void:
+	文本节点 = $文本
 	文本节点.text=文本
 	await get_tree().process_frame
 	文本节点.set_size(文本节点.get_combined_minimum_size())

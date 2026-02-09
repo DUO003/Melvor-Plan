@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_b8rbp"]
 [ext_resource type="Script" uid="uid://dtt0vuu67behi" path="res://界面/挂机系统/任务窗口/任务界面.gd" id="2_6nxmh"]
-[ext_resource type="Script" uid="uid://cobelyi1jgx8e" path="res://界面/插件/任务栏.gd" id="3_rbe4m"]
+[ext_resource type="PackedScene" uid="uid://d225buqtym477" path="res://界面/挂机系统/任务窗口/任务容器.tscn" id="3_yje00"]
 [ext_resource type="PackedScene" uid="uid://dusyum2t63uiv" path="res://界面/插件/帮助文本.tscn" id="4_yje00"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vf5w6"]
 
-[node name="任务界面" unique_id=1197979266 node_paths=PackedStringArray("滚动区同步") instance=ExtResource("1_b8rbp")]
+[node name="任务界面" unique_id=1197979266 node_paths=PackedStringArray("选项卡同步") instance=ExtResource("1_b8rbp")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -19,9 +19,8 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource("2_6nxmh")
 "基类窗口名称" = "任务界面"
-"滚动区同步" = {
-"主线滚动区": NodePath("内容节点/任务/主线任务"),
-"循环任务": NodePath("内容节点/任务/循环任务")
+"选项卡同步" = {
+"任务": NodePath("内容节点/任务")
 }
 
 [node name="等级显示" parent="标题" index="0"]
@@ -36,41 +35,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vf5w6")
-current_tab = 2
+current_tab = 0
 
-[node name="主线任务" type="ScrollContainer" parent="内容节点/任务" index="1" unique_id=312356181]
-visible = false
+[node name="主线任务" parent="内容节点/任务" index="1" unique_id=901319443 node_paths=PackedStringArray("场景") instance=ExtResource("3_yje00")]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+"来源" = Array[String](["作者", "手工", "挂机"])
+"显示跳转任务" = false
+"显示任务数量" = 3
+"场景" = NodePath("../../..")
 metadata/_tab_index = 0
 
-[node name="任务盒子" type="GridContainer" parent="内容节点/任务/主线任务" index="0" unique_id=1498165928 node_paths=PackedStringArray("场景")]
+[node name="循环任务" parent="内容节点/任务" index="2" unique_id=2142129779 instance=ExtResource("3_yje00")]
 unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 5
-columns = 2
-script = ExtResource("3_rbe4m")
-"来源" = Array[String](["作者", "手工", "挂机"])
-"场景" = NodePath("../../../..")
-
-[node name="循环任务" type="ScrollContainer" parent="内容节点/任务" index="2" unique_id=1467090887]
 visible = false
 layout_mode = 2
+"显示体力" = true
+"显示跳转任务" = false
 metadata/_tab_index = 1
 
-[node name="循环盒子" type="GridContainer" parent="内容节点/任务/循环任务" index="0" unique_id=1422282698]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 5
-columns = 2
-script = ExtResource("3_rbe4m")
-
 [node name="任务统计" type="VBoxContainer" parent="内容节点/任务" index="3" unique_id=1327568261]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -139,5 +126,4 @@ size_flags_vertical = 4
 "提示" = "提示说明
 1.主线任务的解锁条件是消耗循环任务完成次数
 2.完成主线任务可以解锁更多循环任务
-3.任务方块在故事玩法使用
-"
+3.任务方块在故事玩法使用"

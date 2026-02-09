@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ckt6ddn43ltxg" path="res://素材/豆包AI素材/图标/合成图标.png" id="10_wqaqf"]
 [ext_resource type="PackedScene" uid="uid://unn8tlhgiegn" path="res://界面/插件/配方格子.tscn" id="12_l2l3n"]
 [ext_resource type="PackedScene" uid="uid://bnjv1qqq3txe4" path="res://界面/插件/背包栏.tscn" id="12_wdor2"]
+[ext_resource type="PackedScene" uid="uid://d225buqtym477" path="res://界面/挂机系统/任务窗口/任务容器.tscn" id="12_wqaqf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5aig"]
 bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
@@ -275,7 +276,6 @@ metadata/_edit_lock_ = true
 [node name="等级显示" parent="标题" unique_id=171134313 instance=ExtResource("3_c1r7u")]
 layout_mode = 1
 "玩法" = "炼金"
-"精通池显示" = null
 
 [node name="背景" type="ColorRect" parent="." unique_id=449654330]
 layout_mode = 1
@@ -572,10 +572,18 @@ size_flags_vertical = 3
 "商品数组数据" = Array[ExtResource("8_l2l3n")]([SubResource("Resource_nocv6"), SubResource("Resource_l2l3n"), SubResource("Resource_c1r7u")])
 "启用药水出售" = true
 
+[node name="循环任务" parent="内容节点/选项卡" unique_id=901319443 instance=ExtResource("12_wqaqf")]
+visible = false
+layout_mode = 2
+"循环筛选" = ["炼金"]
+"显示体力" = true
+"显示任务数量" = 2
+metadata/_tab_index = 3
+
 [node name="帮助区域" type="ScrollContainer" parent="内容节点/选项卡" unique_id=1954655902]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 3
+metadata/_tab_index = 4
 
 [node name="帮助" type="VBoxContainer" parent="内容节点/选项卡/帮助区域" unique_id=1431611544]
 layout_mode = 2

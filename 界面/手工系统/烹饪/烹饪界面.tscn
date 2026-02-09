@@ -1,8 +1,7 @@
-[gd_scene format=3 uid="uid://cul12q75ouejt"]
+[gd_scene format=3 uid="uid://baq0tod6tq8qi"]
 
-[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_7o14l"]
+[ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_i7jk0"]
 [ext_resource type="Script" uid="uid://dynypwe3jcahy" path="res://界面/手工系统/烹饪/烹饪界面.gd" id="2_i7jk0"]
-[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_5fic2"]
 [ext_resource type="PackedScene" uid="uid://bnjv1qqq3txe4" path="res://界面/插件/背包栏.tscn" id="3_rxtf7"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="4_4idlc"]
 [ext_resource type="Script" uid="uid://dlx5x0nlseodb" path="res://界面/手工系统/烹饪/食材处理管理.gd" id="4_45rc1"]
@@ -12,10 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://b21qe2xo4w534" path="res://界面/手工系统/烹饪/料理卡片.tscn" id="5_frisf"]
 [ext_resource type="Texture2D" uid="uid://c5i2vkg65mw4l" path="res://素材/自制/教学截图/料理瓶子.png" id="6_7ay8b"]
 [ext_resource type="Texture2D" uid="uid://c8sotfim3w8kk" path="res://素材/自制/教学截图/工序关系2.png" id="8_i7jk0"]
+[ext_resource type="PackedScene" uid="uid://d225buqtym477" path="res://界面/挂机系统/任务窗口/任务容器.tscn" id="9_5fic2"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_frisf"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1d64t"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7o14l"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hbjmq"]
 content_margin_left = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1o5mj"]
@@ -27,7 +27,7 @@ corner_radius_bottom_left = 10
 script = ExtResource("5_1o5mj")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
-[sub_resource type="StyleBox" id="StyleBox_pla24"]
+[sub_resource type="StyleBox" id="StyleBox_i5msj"]
 resource_local_to_scene = false
 resource_name = ""
 content_margin_left = 10.0
@@ -38,16 +38,9 @@ script = ExtResource("4_4idlc")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_1o5mj")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
-[node name="烹饪界面" type="Control" unique_id=989645690 node_paths=PackedStringArray("选项卡同步", "滚动区同步")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -220.0
-offset_bottom = -80.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_7o14l")
+[node name="基类界面" unique_id=1620346040 node_paths=PackedStringArray("选项卡同步", "滚动区同步") instance=ExtResource("1_i7jk0")]
+size_flags_horizontal = 1
+size_flags_vertical = 1
 script = ExtResource("2_i7jk0")
 "基类窗口名称" = "烹饪界面"
 "选项卡同步" = {
@@ -63,51 +56,10 @@ script = ExtResource("2_i7jk0")
 }
 metadata/_edit_lock_ = true
 
-[node name="画布" type="CanvasLayer" parent="." unique_id=1823838723]
-unique_name_in_owner = true
-
-[node name="资源" parent="画布" unique_id=1867842395 instance=ExtResource("5_45rc1")]
-unique_name_in_owner = true
-offset_left = -448.0
-offset_top = 4.0
-offset_right = -9.0
-offset_bottom = 124.0
-
-[node name="标题" type="ColorRect" parent="." unique_id=1680851187]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 100.0
-grow_horizontal = 2
-color = Color(0.75, 0.67, 0.45, 0.705882)
-metadata/_edit_lock_ = true
-
-[node name="等级显示" parent="标题" unique_id=587619370 instance=ExtResource("3_5fic2")]
-layout_mode = 1
+[node name="等级显示" parent="标题" index="0"]
 "玩法" = "烹饪"
-"同时显示" = null
-metadata/_edit_lock_ = true
 
-[node name="背景" type="ColorRect" parent="." unique_id=1519495746]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.004
-offset_top = 100.0
-offset_bottom = -3.99994
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.82, 0.732533, 0.492, 0.705882)
-metadata/_edit_lock_ = true
-
-[node name="内容节点" type="Control" parent="." unique_id=356237530]
-anchors_preset = 0
-offset_top = 100.0
-offset_right = 1700.0
-offset_bottom = 1000.0
-metadata/_edit_lock_ = true
-
-[node name="内容节点区域" type="VBoxContainer" parent="内容节点" unique_id=260182536]
+[node name="内容节点区域" type="VBoxContainer" parent="内容节点" index="0" unique_id=2124447524]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -115,26 +67,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="操作区" type="TabContainer" parent="内容节点/内容节点区域" unique_id=843906427]
+[node name="操作区" type="TabContainer" parent="内容节点/内容节点区域" index="0" unique_id=772391682]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_frisf")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1d64t")
 current_tab = 0
 
-[node name="预加工" type="ScrollContainer" parent="内容节点/内容节点区域/操作区" unique_id=233398597]
+[node name="预加工" type="ScrollContainer" parent="内容节点/内容节点区域/操作区" index="1" unique_id=970115788]
 unique_name_in_owner = true
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="工序容器" type="HBoxContainer" parent="内容节点/内容节点区域/操作区/预加工" unique_id=1322393081]
+[node name="工序容器" type="HBoxContainer" parent="内容节点/内容节点区域/操作区/预加工" index="0" unique_id=772263783]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = -10
 
-[node name="清洗" parent="内容节点/内容节点区域/操作区/预加工/工序容器" unique_id=527387539 instance=ExtResource("4_pla24")]
+[node name="清洗" parent="内容节点/内容节点区域/操作区/预加工/工序容器" index="0" unique_id=1977553123 instance=ExtResource("4_pla24")]
 layout_mode = 2
 "工序名称" = "清洗"
 "工序图标" = "水滴"
@@ -146,7 +98,7 @@ layout_mode = 2
 })
 "点击次数" = 3
 
-[node name="切割" parent="内容节点/内容节点区域/操作区/预加工/工序容器" unique_id=358331013 instance=ExtResource("4_pla24")]
+[node name="切割" parent="内容节点/内容节点区域/操作区/预加工/工序容器" index="1" unique_id=1948982914 instance=ExtResource("4_pla24")]
 layout_mode = 2
 "工序名称" = "切割"
 "工序图标" = "剪刀"
@@ -157,7 +109,7 @@ layout_mode = 2
 "清洗": "清洗并切割"
 })
 
-[node name="腌制" parent="内容节点/内容节点区域/操作区/预加工/工序容器" unique_id=846463230 instance=ExtResource("4_pla24")]
+[node name="腌制" parent="内容节点/内容节点区域/操作区/预加工/工序容器" index="2" unique_id=11886808 instance=ExtResource("4_pla24")]
 layout_mode = 2
 "限制属性类型" = {
 "食材": ["肉类", "海鲜"]
@@ -175,26 +127,26 @@ layout_mode = 2
 })
 "点击次数" = 5
 
-[node name="敬请期待" parent="内容节点/内容节点区域/操作区/预加工/工序容器" unique_id=876653847 instance=ExtResource("4_pla24")]
+[node name="敬请期待" parent="内容节点/内容节点区域/操作区/预加工/工序容器" index="3" unique_id=1606720537 instance=ExtResource("4_pla24")]
 layout_mode = 2
 "工序名称" = "敬请期待"
 "工序图标" = "沙漏"
 "工序描述" = "后续会有更多预制工序"
 "点击次数" = 0
 
-[node name="特殊工序" type="ScrollContainer" parent="内容节点/内容节点区域/操作区" unique_id=1476808659]
+[node name="特殊工序" type="ScrollContainer" parent="内容节点/内容节点区域/操作区" index="2" unique_id=381641478]
 visible = false
 layout_mode = 2
 vertical_scroll_mode = 0
 metadata/_tab_index = 1
 
-[node name="特殊工序容器" type="HBoxContainer" parent="内容节点/内容节点区域/操作区/特殊工序" unique_id=1319497070]
+[node name="特殊工序容器" type="HBoxContainer" parent="内容节点/内容节点区域/操作区/特殊工序" index="0" unique_id=1572142222]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = -10
 
-[node name="删除" parent="内容节点/内容节点区域/操作区/特殊工序/特殊工序容器" unique_id=81234105 instance=ExtResource("4_pla24")]
+[node name="删除" parent="内容节点/内容节点区域/操作区/特殊工序/特殊工序容器" index="0" unique_id=1402664512 instance=ExtResource("4_pla24")]
 layout_mode = 2
 "工序名称" = "删除"
 "工序图标" = "熔炉"
@@ -204,7 +156,7 @@ layout_mode = 2
 "需求标签" = Dictionary[String, String]({})
 "点击次数" = -1
 
-[node name="调料研磨" parent="内容节点/内容节点区域/操作区/特殊工序/特殊工序容器" unique_id=1705255638 instance=ExtResource("4_pla24")]
+[node name="调料研磨" parent="内容节点/内容节点区域/操作区/特殊工序/特殊工序容器" index="1" unique_id=407158640 instance=ExtResource("4_pla24")]
 layout_mode = 2
 "工序名称" = "调料研磨"
 "工序图标" = "锤子"
@@ -220,35 +172,43 @@ layout_mode = 2
 "限制类型" = ["调料"]
 "空置标签" = "调味品"
 
-[node name="研制食谱" type="ScrollContainer" parent="内容节点/内容节点区域/操作区" unique_id=1939044719]
+[node name="研制食谱" type="ScrollContainer" parent="内容节点/内容节点区域/操作区" index="3" unique_id=1752910701]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="料理卡片容器" type="HBoxContainer" parent="内容节点/内容节点区域/操作区/研制食谱" unique_id=1011743424]
+[node name="料理卡片容器" type="HBoxContainer" parent="内容节点/内容节点区域/操作区/研制食谱" index="0" unique_id=241508202]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="料理卡片" parent="内容节点/内容节点区域/操作区/研制食谱/料理卡片容器" unique_id=1962817797 instance=ExtResource("5_frisf")]
+[node name="料理卡片" parent="内容节点/内容节点区域/操作区/研制食谱/料理卡片容器" index="0" unique_id=1115209096 instance=ExtResource("5_frisf")]
 layout_mode = 2
 "演示模式" = true
 
-[node name="帮助" type="ScrollContainer" parent="内容节点/内容节点区域/操作区" unique_id=735839139]
+[node name="循环任务" parent="内容节点/内容节点区域/操作区" index="4" unique_id=901319443 instance=ExtResource("9_5fic2")]
 visible = false
 layout_mode = 2
+"循环筛选" = Array[String](["烹饪", "预制"])
+"显示体力" = true
+"显示任务数量" = 2
 metadata/_tab_index = 3
 
-[node name="帮助容器" type="HBoxContainer" parent="内容节点/内容节点区域/操作区/帮助" unique_id=1083216786]
+[node name="帮助" type="ScrollContainer" parent="内容节点/内容节点区域/操作区" index="5" unique_id=289632593]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="帮助容器" type="HBoxContainer" parent="内容节点/内容节点区域/操作区/帮助" index="0" unique_id=1181121046]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="帮助" type="Label" parent="内容节点/内容节点区域/操作区/帮助/帮助容器" unique_id=1394212413]
+[node name="帮助" type="Label" parent="内容节点/内容节点区域/操作区/帮助/帮助容器" index="0" unique_id=271856911]
 layout_mode = 2
 theme_override_constants/line_spacing = 0
 theme_override_constants/paragraph_spacing = -10
-theme_override_styles/normal = SubResource("StyleBoxEmpty_7o14l")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hbjmq")
 text = "烹饪玩法帮助
 1.能需要打开背包,拿出食材类道具放入工序中
 2.食材预制后可以获取食材瓶,瓶子内保存着食材
@@ -257,7 +217,7 @@ text = "烹饪玩法帮助
 4.烹饪时满足基础需求即可完成料理制作.
 装备的烹饪属性可以提高完成制作时的快速反应得分"
 
-[node name="贴图2" type="TextureRect" parent="内容节点/内容节点区域/操作区/帮助/帮助容器" unique_id=626196194]
+[node name="贴图2" type="TextureRect" parent="内容节点/内容节点区域/操作区/帮助/帮助容器" index="1" unique_id=1770326169]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -265,10 +225,10 @@ texture = ExtResource("6_7ay8b")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="容器1" type="VBoxContainer" parent="内容节点/内容节点区域/操作区/帮助/帮助容器" unique_id=94715954]
+[node name="容器1" type="VBoxContainer" parent="内容节点/内容节点区域/操作区/帮助/帮助容器" index="2" unique_id=214394176]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="内容节点/内容节点区域/操作区/帮助/帮助容器/容器1" unique_id=461014231]
+[node name="Label" type="Label" parent="内容节点/内容节点区域/操作区/帮助/帮助容器/容器1" index="0" unique_id=1223250979]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_constants/line_spacing = 0
@@ -277,20 +237,20 @@ text = "食材瓶子
 拥有数量和容量限制
 可以通过废弃工序清空腾出空间"
 
-[node name="帮助2" type="Label" parent="内容节点/内容节点区域/操作区/帮助/帮助容器/容器1" unique_id=416390684]
+[node name="帮助2" type="Label" parent="内容节点/内容节点区域/操作区/帮助/帮助容器/容器1" index="1" unique_id=1213819185]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_constants/line_spacing = 0
 theme_override_constants/paragraph_spacing = -10
-theme_override_styles/normal = SubResource("StyleBoxEmpty_7o14l")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hbjmq")
 text = "装备的烹饪属性
 可以提高完成制作时
 快速反应得分"
 
-[node name="容器2" type="VBoxContainer" parent="内容节点/内容节点区域/操作区/帮助/帮助容器" unique_id=1011719615]
+[node name="容器2" type="VBoxContainer" parent="内容节点/内容节点区域/操作区/帮助/帮助容器" index="3" unique_id=263851966]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="内容节点/内容节点区域/操作区/帮助/帮助容器/容器2" unique_id=1139570630]
+[node name="Label2" type="Label" parent="内容节点/内容节点区域/操作区/帮助/帮助容器/容器2" index="0" unique_id=394067999]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_constants/line_spacing = 0
@@ -298,7 +258,7 @@ theme_override_constants/paragraph_spacing = -10
 text = "调料点数
 可以在自动制作时节省调料药水的使用"
 
-[node name="Label3" type="Label" parent="内容节点/内容节点区域/操作区/帮助/帮助容器/容器2" unique_id=712253426]
+[node name="Label3" type="Label" parent="内容节点/内容节点区域/操作区/帮助/帮助容器/容器2" index="1" unique_id=2071342119]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_constants/line_spacing = 0
@@ -306,7 +266,7 @@ theme_override_constants/paragraph_spacing = -10
 text = "敬请期待:
 1.更多工序"
 
-[node name="贴图" type="TextureRect" parent="内容节点/内容节点区域/操作区/帮助/帮助容器" unique_id=1563814667]
+[node name="贴图" type="TextureRect" parent="内容节点/内容节点区域/操作区/帮助/帮助容器" index="4" unique_id=1086164903]
 custom_minimum_size = Vector2(600, 120)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -314,7 +274,7 @@ texture = ExtResource("8_i7jk0")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="内容节点/内容节点区域/操作区/帮助/帮助容器" unique_id=1562607912]
+[node name="Label" type="Label" parent="内容节点/内容节点区域/操作区/帮助/帮助容器" index="5" unique_id=295219645]
 layout_mode = 2
 size_flags_vertical = 6
 text = "
@@ -324,27 +284,26 @@ text = "
 3.料理达到一定美味度条件后可以直接使用原料制作.
 4.工序之间的关系见图2"
 
-[node name="食材标签" type="TabContainer" parent="内容节点/内容节点区域" unique_id=62821278]
+[node name="食材标签" type="TabContainer" parent="内容节点/内容节点区域" index="1" unique_id=513281933]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBox_pla24")
-current_tab = 2
+theme_override_styles/panel = SubResource("StyleBox_i5msj")
+current_tab = 0
 script = ExtResource("4_45rc1")
 
-[node name="预处理食材" type="ScrollContainer" parent="内容节点/内容节点区域/食材标签" unique_id=19415730]
-visible = false
+[node name="预处理食材" type="ScrollContainer" parent="内容节点/内容节点区域/食材标签" index="1" unique_id=1100032721]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="食材处理容器" type="HBoxContainer" parent="内容节点/内容节点区域/食材标签/预处理食材" unique_id=945464237]
+[node name="食材处理容器" type="HBoxContainer" parent="内容节点/内容节点区域/食材标签/预处理食材" index="0" unique_id=343507876]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 30
 
-[node name="预处理食材标题" type="Label" parent="内容节点/内容节点区域/食材标签/预处理食材/食材处理容器" unique_id=1484531652]
+[node name="预处理食材标题" type="Label" parent="内容节点/内容节点区域/食材标签/预处理食材/食材处理容器" index="0" unique_id=40099991]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -356,28 +315,29 @@ text = "瓶子容量5
 当前拥有:1"
 vertical_alignment = 1
 
-[node name="调味点数" type="HBoxContainer" parent="内容节点/内容节点区域/食材标签" unique_id=438926455]
+[node name="调味点数" type="HBoxContainer" parent="内容节点/内容节点区域/食材标签" index="2" unique_id=1397966894]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="自动制作" type="HBoxContainer" parent="内容节点/内容节点区域/食材标签" unique_id=1601281594]
+[node name="自动制作" type="HBoxContainer" parent="内容节点/内容节点区域/食材标签" index="3" unique_id=1570142718]
+visible = false
 custom_minimum_size = Vector2(0, 280)
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="自动制作标题" type="VBoxContainer" parent="内容节点/内容节点区域/食材标签/自动制作" unique_id=1963692248]
+[node name="自动制作标题" type="VBoxContainer" parent="内容节点/内容节点区域/食材标签/自动制作" index="0" unique_id=596564036]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="启用自动制作" type="CheckButton" parent="内容节点/内容节点区域/食材标签/自动制作/自动制作标题" unique_id=639943637]
+[node name="启用自动制作" type="CheckButton" parent="内容节点/内容节点区域/食材标签/自动制作/自动制作标题" index="0" unique_id=1585266960]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 text = "自动制作"
 
-[node name="制作数量" type="SpinBox" parent="内容节点/内容节点区域/食材标签/自动制作/自动制作标题" unique_id=545050992]
+[node name="制作数量" type="SpinBox" parent="内容节点/内容节点区域/食材标签/自动制作/自动制作标题" index="1" unique_id=2063480094]
 unique_name_in_owner = true
 layout_mode = 2
 min_value = 1.0
@@ -386,7 +346,7 @@ value = 1.0
 rounded = true
 suffix = "次"
 
-[node name="说明标签" type="Label" parent="内容节点/内容节点区域/食材标签/自动制作/自动制作标题" unique_id=1425695077]
+[node name="说明标签" type="Label" parent="内容节点/内容节点区域/食材标签/自动制作/自动制作标题" index="2" unique_id=1042237517]
 layout_mode = 2
 theme_override_constants/line_spacing = 0
 theme_override_constants/paragraph_spacing = -5
@@ -396,13 +356,23 @@ text = "启用自动制作后
 最多制作10次
 队列长度1"
 
-[node name="背包栏" parent="." unique_id=667803744 instance=ExtResource("3_rxtf7")]
+[node name="资源" parent="悬浮面板" index="1" unique_id=1017963845 instance=ExtResource("5_45rc1")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -448.0
+offset_top = 4.0
+offset_right = -9.0
+offset_bottom = 124.0
+
+[node name="背包栏" parent="." index="4" unique_id=203455018 instance=ExtResource("3_rxtf7")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -150.0
-offset_right = 0.0
+offset_left = -146.0
+offset_top = 99.0
+offset_right = 4.0
+offset_bottom = 159.0
 "白名单" = ["食材", "调料"]
 
 [editable path="内容节点/内容节点区域/操作区/特殊工序/特殊工序容器/调料研磨"]

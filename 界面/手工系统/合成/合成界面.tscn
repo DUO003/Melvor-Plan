@@ -4,12 +4,11 @@
 [ext_resource type="Script" uid="uid://v0yytth2tqx2" path="res://代码/专属代码/合成主界面/合成界面.gd" id="2_2y0d5"]
 [ext_resource type="PackedScene" uid="uid://fhiod2yd4lhv" path="res://界面/资源条.tscn" id="3_x1q8i"]
 [ext_resource type="PackedScene" uid="uid://ooiwqu3875ea" path="res://界面/插件/动作进度条.tscn" id="4_rm5mq"]
-[ext_resource type="Script" uid="uid://cobelyi1jgx8e" path="res://界面/插件/任务栏.gd" id="5_2y0d5"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_wuv0d"]
 [ext_resource type="PackedScene" uid="uid://dusyum2t63uiv" path="res://界面/插件/帮助文本.tscn" id="5_x1q8i"]
 [ext_resource type="Script" uid="uid://dxqqna74h0y6o" path="res://代码/专属代码/合成主界面/配方选择器代码.gd" id="6_jkk5k"]
-[ext_resource type="PackedScene" uid="uid://dx5oki37mgsju" path="res://界面/插件/体力状态.tscn" id="7_2y0d5"]
 [ext_resource type="PackedScene" uid="uid://cxedxm5rt7rt2" path="res://界面/手工系统/配方.tscn" id="7_mdowl"]
+[ext_resource type="PackedScene" uid="uid://d225buqtym477" path="res://界面/挂机系统/任务窗口/任务容器.tscn" id="7_qg4nq"]
 [ext_resource type="Texture2D" uid="uid://k6v4ilcwafef" path="res://素材/豆包AI素材/图标/放大镜.png" id="8_mkxb5"]
 [ext_resource type="PackedScene" uid="uid://byxndkdhqwumw" path="res://界面/插件/圆形进度条.tscn" id="9_30npi"]
 [ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="10_h4fwj"]
@@ -169,27 +168,10 @@ layout_mode = 2
 layout_mode = 2
 "资源名称" = "精华"
 
-[node name="循环任务" type="ScrollContainer" parent="内容节点/内容区/第一内容区/选项卡" index="3" unique_id=382353594]
-custom_minimum_size = Vector2(570, 495)
+[node name="循环任务" parent="内容节点/内容区/第一内容区/选项卡" index="3" unique_id=901319443 instance=ExtResource("7_qg4nq")]
 layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="内容节点/内容区/第一内容区/选项卡/循环任务" index="0" unique_id=820329272]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="体力状态" parent="内容节点/内容区/第一内容区/选项卡/循环任务/VBoxContainer" index="0" unique_id=624939679 instance=ExtResource("7_2y0d5")]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="任务栏" type="GridContainer" parent="内容节点/内容区/第一内容区/选项卡/循环任务/VBoxContainer" index="1" unique_id=1482963135 node_paths=PackedStringArray("场景")]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource("5_2y0d5")
-"场景" = NodePath("../../../../../../..")
+"循环筛选" = Array[String](["合成"])
+"显示体力" = true
 
 [node name="配方区" type="VBoxContainer" parent="内容节点/内容区/第一内容区" index="1" unique_id=667484725]
 layout_mode = 2

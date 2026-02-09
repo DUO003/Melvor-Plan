@@ -18,7 +18,5 @@ func _ready() -> void:
 	计划.更新_UI.connect(更新成就状态)
 @onready var 已领取: Label = $已领取
 func 更新成就状态():
-	var 任务进度=计划.梅存档["挂机"].get("任务进度",{})
-	var 完成状态=任务进度.get(成就名称,0)==1
-	已领取.visible=完成状态
+	已领取.visible=计划.任务.检查任务进度(成就名称)
 	

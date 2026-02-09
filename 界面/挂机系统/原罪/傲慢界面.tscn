@@ -63,18 +63,18 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -243.0
-offset_top = 53.0
-offset_right = -23.0
-offset_bottom = 148.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -254.0
+offset_top = 76.0
+offset_right = -34.0
+offset_bottom = 143.0
+grow_horizontal = 0
+size_flags_horizontal = 8
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 60
-text = "主菜单"
+theme_override_font_sizes/font_size = 40
+text = "原罪窗口"
 
 [node name="暴食" type="TextureRect" parent="内容节点" unique_id=527244839]
 unique_name_in_owner = true

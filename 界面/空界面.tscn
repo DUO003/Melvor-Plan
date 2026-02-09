@@ -148,7 +148,7 @@ theme_override_constants/separation = -5
 
 [node name="任务" type="Button" parent="功能/任务栏分割/任务栏滚动区/任务栏" unique_id=1808832397]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 70)
+custom_minimum_size = Vector2(220, 70)
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("4_kiae7")

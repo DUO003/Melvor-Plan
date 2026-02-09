@@ -69,7 +69,9 @@ func 重新载入场景():
 	for 键名称 in 标签字典:
 		var 按钮:Button =返回按钮()
 		按钮.text = 键名称
-		按钮.pressed.connect(func(): 打开场景(标签字典[键名称]))
+		按钮.icon=标签字典[键名称].贴图
+		按钮.expand_icon=true
+		按钮.pressed.connect(func(): 打开场景(标签字典[键名称].路径))
 		场景页.add_child(按钮)
 	for 键名称 in 代码字典:
 		var 按钮:Button =返回按钮()
@@ -91,7 +93,8 @@ func _加载外部界面路径字典() -> void:
 	var 窗口:梅窗口 = 梅窗口.new()
 	标签字典={}
 	for 界面名称 in 窗口.窗口数据:
-		标签字典[窗口.窗口数据[界面名称].显示名] = 窗口.窗口数据[界面名称].场景路径
+		var 字典:Dictionary=窗口.窗口数据[界面名称]
+		标签字典[字典.显示名] = {"路径":字典.场景路径,"贴图":load(字典.贴图)}
 # 按钮点击事件：打开指定场景
 func 打开场景(路径: String) -> void:
 	if not ResourceLoader.exists(路径):# 增加路径有效性校验

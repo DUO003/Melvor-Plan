@@ -1,34 +1,35 @@
-[gd_scene format=3 uid="uid://q3a6w73vn7xj"]
+[gd_scene format=3 uid="uid://cqxwibsmo1yw0"]
 
-[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_o0hed"]
-[ext_resource type="Script" uid="uid://bns6tdw6v66fp" path="res://代码/专属代码/合成主界面/合成_抽奖机界面.gd" id="2_7yrbw"]
-[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="2_bt04l"]
-[ext_resource type="PackedScene" uid="uid://byxndkdhqwumw" path="res://界面/插件/圆形进度条.tscn" id="6_7solx"]
-[ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="7_5imkx"]
-[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="7_7solx"]
-[ext_resource type="Texture2D" uid="uid://3vfhgyg8wo6m" path="res://素材/豆包AI素材/特殊图纸.png" id="9_avrdn"]
-[ext_resource type="PackedScene" uid="uid://blkkbdad7hti1" path="res://界面/插件/物品辅助/代币商店.tscn" id="9_yqcxx"]
-[ext_resource type="Script" uid="uid://bivcgv6cvbvln" path="res://界面/插件/物品辅助/商品数据包.gd" id="10_xnxwr"]
-[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="11_5imkx"]
-[ext_resource type="PackedScene" uid="uid://xxyqjkn8fefo" path="res://界面/插件/滑块.tscn" id="11_7solx"]
-[ext_resource type="Script" uid="uid://bbi5ojpwx5ouf" path="res://界面/蓝图图片.gd" id="11_yqcxx"]
-[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="12_yqcxx"]
+[ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_2x5gq"]
+[ext_resource type="Script" uid="uid://bns6tdw6v66fp" path="res://界面/手工系统/合成/合成_抽奖机界面.gd" id="2_0lnvh"]
+[ext_resource type="PackedScene" uid="uid://xxyqjkn8fefo" path="res://界面/插件/滑块.tscn" id="2_6nf3n"]
+[ext_resource type="PackedScene" uid="uid://byxndkdhqwumw" path="res://界面/插件/圆形进度条.tscn" id="3_0lnvh"]
+[ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="4_k2qxs"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="5_ulomb"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="6_kl4kr"]
+[ext_resource type="PackedScene" uid="uid://blkkbdad7hti1" path="res://界面/插件/物品辅助/代币商店.tscn" id="7_urdgg"]
+[ext_resource type="Script" uid="uid://bivcgv6cvbvln" path="res://界面/插件/物品辅助/商品数据包.gd" id="8_tdurk"]
+[ext_resource type="PackedScene" uid="uid://d225buqtym477" path="res://界面/挂机系统/任务窗口/任务容器.tscn" id="9_jm6af"]
+[ext_resource type="Texture2D" uid="uid://3vfhgyg8wo6m" path="res://素材/豆包AI素材/特殊图纸.png" id="10_aj8fg"]
+[ext_resource type="Script" uid="uid://bbi5ojpwx5ouf" path="res://界面/蓝图图片.gd" id="11_12j2d"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="12_xbsbx"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="13_tddqe"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7solx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6kji"]
 content_margin_left = 10.0
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 0.25490198)
-script = ExtResource("12_yqcxx")
+script = ExtResource("6_kl4kr")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="Resource" id="Resource_y7u36"]
-script = ExtResource("10_xnxwr")
+script = ExtResource("8_tdurk")
 "商品名" = "资源回复代币"
 "代币" = "手工精通代币"
 "商店名称" = "代币"
 metadata/_custom_type_script = "uid://bivcgv6cvbvln"
 
 [sub_resource type="Resource" id="Resource_1enq4"]
-script = ExtResource("10_xnxwr")
+script = ExtResource("8_tdurk")
 "商品名" = "催化剂代币"
 "商品数量" = 2
 "代币" = "手工精通代币"
@@ -36,7 +37,7 @@ script = ExtResource("10_xnxwr")
 metadata/_custom_type_script = "uid://bivcgv6cvbvln"
 
 [sub_resource type="Resource" id="Resource_wqaqf"]
-script = ExtResource("10_xnxwr")
+script = ExtResource("8_tdurk")
 "商品名" = "烹饪代币"
 "商品数量" = 2
 "代币" = "手工精通代币"
@@ -54,17 +55,17 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-script = ExtResource("12_yqcxx")
+script = ExtResource("6_kl4kr")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
-[sub_resource type="StyleBox" id="StyleBox_yqcxx"]
+[sub_resource type="StyleBox" id="StyleBox_cteq2"]
 resource_local_to_scene = false
 resource_name = ""
 content_margin_left = -1.0
 content_margin_top = -1.0
 content_margin_right = -1.0
 content_margin_bottom = -1.0
-script = ExtResource("11_5imkx")
+script = ExtResource("13_tddqe")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_5imkx")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
@@ -211,74 +212,40 @@ tracks/5/keys = {
 "values": [0.0, 0.0, 0.17453292519943295]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5imkx"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f4fr3"]
 _data = {
 &"RESET": SubResource("Animation_7solx"),
 &"研究": SubResource("Animation_avrdn")
 }
 
-[node name="合成_抽奖机界面" type="Control" unique_id=1584161090]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -220.0
-offset_bottom = -80.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_o0hed")
-script = ExtResource("2_7yrbw")
+[node name="基类界面" unique_id=1586690555 node_paths=PackedStringArray("选项卡同步") instance=ExtResource("1_2x5gq")]
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource("2_0lnvh")
 "基类窗口名称" = "合成_抽奖机界面"
+"选项卡同步" = {
+"标签页": NodePath("内容节点/界面布局/标签页")
+}
 
-[node name="标题" type="ColorRect" parent="." unique_id=274676733]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 100.0
-grow_horizontal = 2
-color = Color(0.75, 0.67, 0.45, 0.705882)
-metadata/_edit_lock_ = true
+[node name="等级显示" parent="标题" index="0"]
+"玩法" = "抽奖"
 
-[node name="等级显示" parent="标题" unique_id=145230032 instance=ExtResource("2_bt04l")]
-layout_mode = 1
-"玩法" = "抽奖机"
-
-[node name="背景" type="ColorRect" parent="." unique_id=52299618]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.004
-offset_top = 100.0
-offset_bottom = -3.99994
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.82, 0.732533, 0.492, 0.705882)
-metadata/_edit_lock_ = true
-
-[node name="内容节点" type="Control" parent="." unique_id=1281590365]
-anchors_preset = 0
-offset_top = 100.0
-offset_right = 1700.0
-offset_bottom = 1000.0
-
-[node name="研究" type="Button" parent="内容节点" unique_id=773438602]
+[node name="研究" type="Button" parent="内容节点" index="0" unique_id=1647928484]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 150.0
-offset_top = -140.0
-offset_right = 350.0
-offset_bottom = -51.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 159.0
+offset_top = -117.0
+offset_right = 359.0
+offset_bottom = -22.0
+grow_vertical = 0
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "研究"
-metadata/_edit_use_anchors_ = true
 
-[node name="研究方向" type="OptionButton" parent="内容节点" unique_id=109948781]
+[node name="研究方向" type="OptionButton" parent="内容节点" index="1" unique_id=1769902389]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -293,7 +260,7 @@ item_count = 1
 popup/item_0/text = "符文"
 popup/item_0/id = 0
 
-[node name="文本" type="Label" parent="内容节点/研究方向" unique_id=1748465866]
+[node name="文本" type="Label" parent="内容节点/研究方向" index="1" unique_id=1839904195]
 layout_mode = 0
 offset_top = -65.0
 offset_right = 400.0
@@ -301,7 +268,7 @@ offset_bottom = -1.0
 theme_override_font_sizes/font_size = 45
 text = "研究方向:"
 
-[node name="滑块" parent="内容节点" unique_id=623185200 instance=ExtResource("11_7solx")]
+[node name="滑块" parent="内容节点" index="2" unique_id=921848942 instance=ExtResource("2_6nf3n")]
 layout_mode = 0
 offset_left = 59.0
 offset_top = 279.0
@@ -319,7 +286,7 @@ offset_right = 172.49048
 offset_bottom = -3.0
 theme_override_font_sizes/font_size = 45
 
-[node name="研究进度条" parent="内容节点" unique_id=253302264 instance=ExtResource("6_7solx")]
+[node name="研究进度条" parent="内容节点" index="3" unique_id=1795264555 instance=ExtResource("3_0lnvh")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(335, 335)
 layout_mode = 1
@@ -336,7 +303,7 @@ size_flags_horizontal = 4
 "半径" = 150.0
 "线条宽度" = 25.0
 
-[node name="研究配方名" type="Label" parent="内容节点/研究进度条" unique_id=28349811]
+[node name="研究配方名" type="Label" parent="内容节点/研究进度条" index="0" unique_id=1846937128]
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 1
@@ -351,7 +318,7 @@ offset_right = 105.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("7_5imkx")
+theme = ExtResource("4_k2qxs")
 theme_override_colors/font_shadow_color = Color(0.5, 0.5, 0.5, 1)
 theme_override_constants/shadow_outline_size = 10
 theme_override_font_sizes/font_size = 40
@@ -359,7 +326,7 @@ text = "道具名称"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="研究配方贴图" type="TextureRect" parent="内容节点/研究进度条" unique_id=901931358]
+[node name="研究配方贴图" type="TextureRect" parent="内容节点/研究进度条" index="1" unique_id=92316656]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 14.0
@@ -367,26 +334,29 @@ offset_top = 16.0
 offset_right = 254.0
 offset_bottom = 236.0
 scale = Vector2(1.25075, 1.25075)
-texture = ExtResource("7_7solx")
+texture = ExtResource("5_ulomb")
 expand_mode = 1
 
-[node name="标签页" type="TabContainer" parent="内容节点" unique_id=260134774]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(1150, 763)
+[node name="界面布局" type="VBoxContainer" parent="内容节点" index="4" unique_id=273123555]
 layout_mode = 0
 offset_left = 520.0
 offset_right = 1670.0
-offset_bottom = 763.0
-current_tab = 2
+offset_bottom = 884.0
 
-[node name="抽取说明" type="RichTextLabel" parent="内容节点/标签页" unique_id=864951528]
+[node name="标签页" type="TabContainer" parent="内容节点/界面布局" index="0" unique_id=736239058]
 unique_name_in_owner = true
-visible = false
+custom_minimum_size = Vector2(1150, 763)
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="抽取说明" type="RichTextLabel" parent="内容节点/界面布局/标签页" index="1" unique_id=1741232635]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_behavior_recursive = 1
-theme_override_constants/paragraph_separation = 0
+theme_override_constants/paragraph_separation = -10
 theme_override_font_sizes/bold_font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_7solx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_m6kji")
 bbcode_enabled = true
 text = "[b]蓝图抽取说明	[/b]示例文本,实际修改见游戏内
 75%获得残缺蓝图
@@ -401,86 +371,85 @@ fit_content = true
 drag_and_drop_selection_enabled = false
 metadata/_tab_index = 0
 
-[node name="抽取记录" type="RichTextLabel" parent="内容节点/标签页" unique_id=1877962691]
+[node name="抽取记录" type="RichTextLabel" parent="内容节点/界面布局/标签页" index="2" unique_id=197457263]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_constants/line_separation = -15
 theme_override_constants/paragraph_separation = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_7solx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_m6kji")
 bbcode_enabled = true
 drag_and_drop_selection_enabled = false
 metadata/_tab_index = 1
 
-[node name="兑换图纸" type="ScrollContainer" parent="内容节点/标签页" unique_id=870292778]
+[node name="兑换图纸" type="ScrollContainer" parent="内容节点/界面布局/标签页" index="3" unique_id=2130760202]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="代币商店" parent="内容节点/标签页/兑换图纸" unique_id=1234214935 instance=ExtResource("9_yqcxx")]
+[node name="代币商店" parent="内容节点/界面布局/标签页/兑换图纸" index="0" unique_id=403135558 instance=ExtResource("7_urdgg")]
 layout_mode = 2
 size_flags_vertical = 3
-"商品数组数据" = Array[ExtResource("10_xnxwr")]([SubResource("Resource_y7u36"), SubResource("Resource_1enq4"), SubResource("Resource_wqaqf")])
+"商品数组数据" = Array[ExtResource("8_tdurk")]([SubResource("Resource_y7u36"), SubResource("Resource_1enq4"), SubResource("Resource_wqaqf")])
 "启用图纸出售" = true
 
-[node name="主菜单" type="Button" parent="." unique_id=161468910]
+[node name="循环任务" parent="内容节点/界面布局/标签页" index="4" unique_id=901319443 instance=ExtResource("9_jm6af")]
+visible = false
+layout_mode = 2
+"循环筛选" = Array[String](["研究"])
+"显示体力" = true
+"显示任务数量" = 2
+metadata/_tab_index = 3
+
+[node name="主菜单" type="Button" parent="内容节点/界面布局" index="1" unique_id=1705940604]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 580.0
-offset_top = 360.0
-offset_right = 800.0
-offset_bottom = 449.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+size_flags_horizontal = 8
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 60
-text = "主菜单"
+theme_override_font_sizes/font_size = 40
+text = "合成窗口"
 
-[node name="蓝色图纸" type="Sprite2D" parent="." unique_id=1253942956]
+[node name="蓝色图纸" type="Sprite2D" parent="悬浮面板" index="1" unique_id=1850642334]
 unique_name_in_owner = true
 visible = false
 position = Vector2(568, 472)
 scale = Vector2(2.3824487, 2.116616)
-texture = ExtResource("9_avrdn")
+texture = ExtResource("10_aj8fg")
 
-[node name="蓝图图片" type="Sprite2D" parent="蓝色图纸" unique_id=1326655610]
+[node name="蓝图图片" type="Sprite2D" parent="悬浮面板/蓝色图纸" index="0" unique_id=1706136841]
 unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(1.1920929e-07, 15.118473)
 scale = Vector2(1.5625, 1.5625)
 skew = 0.2268928
-texture = ExtResource("7_7solx")
-script = ExtResource("11_yqcxx")
+texture = ExtResource("5_ulomb")
+script = ExtResource("11_12j2d")
 
-[node name="倾斜度控制" type="Node2D" parent="蓝色图纸" unique_id=2103758737]
+[node name="倾斜度控制" type="Node2D" parent="悬浮面板/蓝色图纸" index="1" unique_id=1184465287]
 position = Vector2(214.90494, -151.18474)
 scale = Vector2(0.5, 0.5)
 skew = -0.14835298
 
-[node name="蓝图属性容器" type="Control" parent="蓝色图纸/倾斜度控制" unique_id=1837609494]
+[node name="蓝图属性容器" type="Control" parent="悬浮面板/蓝色图纸/倾斜度控制" index="0" unique_id=331332743]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -46.647327
 offset_top = 3.0517578e-05
 offset_right = 423.45724
 offset_bottom = 612.2981
-theme = ExtResource("1_o0hed")
+theme = ExtResource("12_xbsbx")
 
-[node name="属性背景" type="Panel" parent="蓝色图纸/倾斜度控制/蓝图属性容器" unique_id=39575887]
+[node name="属性背景" type="Panel" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器" index="0" unique_id=1632466872]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBox_yqcxx")
+theme_override_styles/panel = SubResource("StyleBox_cteq2")
 
-[node name="蓝图属性" type="RichTextLabel" parent="蓝色图纸/倾斜度控制/蓝图属性容器" unique_id=430197828]
+[node name="蓝图属性" type="RichTextLabel" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器" index="1" unique_id=235956103]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(450, 530)
 layout_mode = 1
@@ -503,7 +472,7 @@ text = "简介:一些测试的内容
 简介:一些测试的内容"
 autowrap_mode = 2
 
-[node name="关闭蓝图展示" type="Button" parent="蓝色图纸/倾斜度控制/蓝图属性容器" unique_id=1725652627]
+[node name="关闭蓝图展示" type="Button" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器" index="2" unique_id=1702110813]
 custom_minimum_size = Vector2(80, 60)
 layout_mode = 0
 offset_left = 385.4047
@@ -513,13 +482,13 @@ offset_bottom = 606.32166
 theme_override_font_sizes/font_size = 20
 text = "关闭"
 
-[node name="切换按钮节点" type="Control" parent="蓝色图纸/倾斜度控制/蓝图属性容器" unique_id=1003883990]
+[node name="切换按钮节点" type="Control" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器" index="3" unique_id=1727507409]
 unique_name_in_owner = true
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="蓝图下一页" type="Button" parent="蓝色图纸/倾斜度控制/蓝图属性容器/切换按钮节点" unique_id=311944904]
+[node name="蓝图下一页" type="Button" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器/切换按钮节点" index="0" unique_id=1917979701]
 custom_minimum_size = Vector2(80, 60)
 layout_mode = 0
 offset_left = -315.88647
@@ -529,7 +498,7 @@ offset_bottom = 535.86926
 theme_override_font_sizes/font_size = 20
 text = "下一页"
 
-[node name="蓝图上一页" type="Button" parent="蓝色图纸/倾斜度控制/蓝图属性容器/切换按钮节点" unique_id=1206991743]
+[node name="蓝图上一页" type="Button" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器/切换按钮节点" index="1" unique_id=1809821203]
 custom_minimum_size = Vector2(80, 60)
 layout_mode = 0
 offset_left = -711.8726
@@ -539,12 +508,8 @@ offset_bottom = 536.2319
 theme_override_font_sizes/font_size = 20
 text = "上一页"
 
-[node name="动画" type="AnimationPlayer" parent="." unique_id=831485881]
+[node name="动画" type="AnimationPlayer" parent="悬浮面板" index="2" unique_id=175068924]
 unique_name_in_owner = true
-libraries/ = SubResource("AnimationLibrary_5imkx")
-
-[connection signal="pressed" from="蓝色图纸/倾斜度控制/蓝图属性容器/关闭蓝图展示" to="." method="_关闭蓝图展示"]
-[connection signal="pressed" from="蓝色图纸/倾斜度控制/蓝图属性容器/切换按钮节点/蓝图下一页" to="." method="_蓝图下一页"]
-[connection signal="pressed" from="蓝色图纸/倾斜度控制/蓝图属性容器/切换按钮节点/蓝图上一页" to="." method="_蓝图上一页"]
+libraries/ = SubResource("AnimationLibrary_f4fr3")
 
 [editable path="内容节点/滑块"]

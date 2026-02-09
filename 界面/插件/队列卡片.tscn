@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dyci22bapm4g7"]
+[gd_scene format=3 uid="uid://dyci22bapm4g7"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_sns7m"]
 [ext_resource type="Script" uid="uid://cmrybs4fon4yr" path="res://界面/插件/队列卡片.gd" id="2_53ant"]
@@ -174,7 +174,7 @@ script = ExtResource("4_ohhtc")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_bkfwv")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
-[node name="队列卡片" type="Panel"]
+[node name="队列卡片" type="Panel" unique_id=1873053218]
 custom_minimum_size = Vector2(440, 280)
 offset_right = 427.0
 offset_bottom = 280.0
@@ -182,7 +182,7 @@ theme = ExtResource("1_sns7m")
 theme_override_styles/panel = SubResource("StyleBox_53ant")
 script = ExtResource("2_53ant")
 
-[node name="玩法图片" type="TextureRect" parent="."]
+[node name="玩法图片" type="TextureRect" parent="." unique_id=1570135199]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 20.0
@@ -193,7 +193,7 @@ texture = ExtResource("5_2orqw")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="配方容器" type="Panel" parent="."]
+[node name="配方容器" type="Panel" parent="." unique_id=66823135]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 64.0
@@ -202,7 +202,7 @@ offset_bottom = 140.0
 theme = ExtResource("1_sns7m")
 theme_override_styles/panel = SubResource("StyleBox_o67h5")
 
-[node name="物品贴图" type="TextureRect" parent="配方容器"]
+[node name="物品贴图" type="TextureRect" parent="配方容器" unique_id=1550523175]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -215,7 +215,7 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_lock_ = true
 
-[node name="取消" type="Button" parent="."]
+[node name="取消" type="Button" parent="." unique_id=840609396]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
@@ -234,7 +234,7 @@ theme_override_styles/hover = SubResource("StyleBox_wqaqf")
 theme_override_styles/focus = SubResource("StyleBox_y7u36")
 text = "取消"
 
-[node name="配方编号" type="Label" parent="."]
+[node name="配方编号" type="Label" parent="." unique_id=755571803]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 20.0
@@ -243,7 +243,7 @@ offset_right = 215.0
 offset_bottom = 55.0
 text = "1#号配方"
 
-[node name="信息区" type="Panel" parent="."]
+[node name="信息区" type="Panel" parent="." unique_id=542510143]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -255,7 +255,7 @@ offset_right = -8.0
 offset_bottom = -63.0
 theme_override_styles/panel = SubResource("StyleBox_c74w5")
 
-[node name="信息" type="Label" parent="信息区"]
+[node name="信息" type="Label" parent="信息区" unique_id=2078411512]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 2.0
@@ -268,7 +268,7 @@ text = "剩余:
 完成:
 总时间:"
 
-[node name="剩余数量" type="SpinBox" parent="信息区"]
+[node name="剩余数量" type="SpinBox" parent="信息区" unique_id=22273240]
 visible = false
 layout_mode = 0
 offset_left = 85.0
@@ -281,7 +281,7 @@ update_on_text_changed = true
 suffix = "次"
 select_all_on_focus = true
 
-[node name="进度条" type="ProgressBar" parent="."]
+[node name="进度条" type="ProgressBar" parent="." unique_id=1458351511]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 10
@@ -294,7 +294,7 @@ grow_horizontal = 2
 step = 1.0
 rounded = true
 
-[node name="领取" type="Button" parent="."]
+[node name="领取" type="Button" parent="." unique_id=769072639]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1

@@ -28,10 +28,15 @@ func _ready() -> void:
 		点击判断区.mouse_exited.connect(接触反馈.bind(false))
 		接触反馈(false)
 func 更新界面():
-	if 购买数量*商品.商品数量>1:
-		$"图片/数量".text="*%d"%(购买数量*商品.商品数量)
+	if 商品.限购==0:
+		$"图片/数量".text="售罄"
+		图片.self_modulate=Color(0.3,0.3,0.3)
 	else :
-		$"图片/数量".text=""
+		图片.self_modulate=Color(1,1,1)
+		if 购买数量*商品.商品数量>1:
+			$"图片/数量".text="*%d"%(购买数量*商品.商品数量)
+		else :
+			$"图片/数量".text=""
 	图片.texture=计划.表格.道具贴图(商品.商品名)
 	价格.text="%s\r%d[img=40x40]%s[/img]"%[商品.商品名,商品.费用*购买数量,计划.表格.道具贴图(商品.代币).resource_path]
 func 接触反馈(启用:bool):

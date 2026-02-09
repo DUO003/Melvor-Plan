@@ -8,9 +8,8 @@ var 初始提交
 #[font_size=47][b]{物品名称}[/b][/font_size]
 @export_multiline var 固定文本:String="倍率{倍率}%
 合计:{金币数量}[img=40x40]res://素材/游戏素材/货币/2.png[/img]
-剩余{额外奖励}次赠品+{额外奖励数量}[img=40x40]{额外奖励图片}[/img]"
+提交次数{额外奖励}次"
 var 固定条件=[
-	#["{物品名称}",func():return 订单数据.名称],
 ["{倍率}",func():return "%.1f"%(100*订单数据.单价)],
 ["{金币数量}",func():
 	var 金币:int=0
@@ -21,9 +20,7 @@ var 固定条件=[
 			金币+=int(基础价格)#存在非常微小的差异
 			基础价格=单价损失*基础价格
 	return 金币],
-["{额外奖励}",func():return 订单数据.额外奖励],
-["{额外奖励数量}",func():return 订单数据.额外物品数量],
-["{额外奖励图片}",func():return 计划.表格.道具贴图(订单数据.额外物品).resource_path]]
+["{额外奖励}",func():return 订单数据.额外奖励]]
 var 固定标题="[img=40x40]{图标}[/img]#{标题}"
 @onready var 提交: Button = %提交
 @onready var 物品名称: OptionButton = %物品名称

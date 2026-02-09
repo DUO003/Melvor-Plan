@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://wk8j61u2rm2u"]
+[gd_scene format=3 uid="uid://wk8j61u2rm2u"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_0blbr"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_skso8"]
@@ -258,20 +258,15 @@ metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q5aig"]
 
-[node name="订单" type="Panel"]
-custom_minimum_size = Vector2(400, 400)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1520.0
-offset_bottom = -680.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="订单" type="Panel" unique_id=104401684]
+custom_minimum_size = Vector2(400, 370)
+offset_right = 400.0
+offset_bottom = 370.0
 theme = ExtResource("1_0blbr")
 theme_override_styles/panel = SubResource("StyleBox_m1b3w")
 script = ExtResource("4_8p7xd")
 
-[node name="订单类型" type="RichTextLabel" parent="."]
+[node name="订单类型" type="RichTextLabel" parent="." unique_id=1688299]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 2.0
@@ -283,7 +278,7 @@ theme_override_constants/outline_size = 10
 bbcode_enabled = true
 text = "[img=40x40]res://素材/豆包AI素材/图标/合成图标.png[/img]#资源订单"
 
-[node name="贴图" type="TextureRect" parent="."]
+[node name="贴图" type="TextureRect" parent="." unique_id=1744275475]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = -1
@@ -297,7 +292,7 @@ texture = ExtResource("5_m1b3w")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="装饰文本" type="RichTextLabel" parent="."]
+[node name="装饰文本" type="RichTextLabel" parent="." unique_id=1270707574]
 layout_mode = 0
 offset_left = 317.0
 offset_top = -5.000004
@@ -313,7 +308,7 @@ text = "词条"
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="倒计时" type="Label" parent="."]
+[node name="倒计时" type="Label" parent="." unique_id=1340193957]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 8.0
@@ -326,7 +321,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "剩余：01:23:45"
 
-[node name="按钮区" type="HBoxContainer" parent="."]
+[node name="按钮区" type="HBoxContainer" parent="." unique_id=1836424271]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -339,22 +334,22 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="占位" type="Control" parent="按钮区"]
+[node name="占位" type="Control" parent="按钮区" unique_id=322077394]
 layout_mode = 2
 size_flags_horizontal = 6
 
-[node name="提交" type="Button" parent="按钮区"]
+[node name="提交" type="Button" parent="按钮区" unique_id=969320712]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 40
 text = "提交*10"
 
-[node name="占位2" type="Control" parent="按钮区"]
+[node name="占位2" type="Control" parent="按钮区" unique_id=1068012224]
 layout_mode = 2
 size_flags_horizontal = 6
 
-[node name="放弃" type="Button" parent="按钮区"]
+[node name="放弃" type="Button" parent="按钮区" unique_id=986243226]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
@@ -365,11 +360,11 @@ theme_override_styles/hover = SubResource("StyleBox_kucxn")
 theme_override_styles/focus = SubResource("StyleBox_drq84")
 text = "放弃"
 
-[node name="占位3" type="Control" parent="按钮区"]
+[node name="占位3" type="Control" parent="按钮区" unique_id=862066782]
 layout_mode = 2
 size_flags_horizontal = 6
 
-[node name="物品名称" type="OptionButton" parent="."]
+[node name="物品名称" type="OptionButton" parent="." unique_id=333916739]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 5.0
@@ -397,14 +392,14 @@ item_count = 1
 popup/item_0/text = "{物品名称}"
 popup/item_0/id = 0
 
-[node name="报酬" type="RichTextLabel" parent="."]
+[node name="报酬" type="RichTextLabel" parent="." unique_id=1101451077]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 15.0
-offset_top = 128.0
+offset_top = 117.0
 offset_right = -11.0
-offset_bottom = 282.0
+offset_bottom = 235.0
 grow_horizontal = 2
 theme_override_constants/line_separation = -15
 theme_override_constants/paragraph_separation = -5
@@ -415,20 +410,21 @@ text = "金币{倍率}%
 剩余{}次:{}[图片]"
 scroll_active = false
 
-[node name="进度条" type="ProgressBar" parent="."]
+[node name="进度条" type="ProgressBar" parent="." unique_id=473176912]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = -1
-offset_left = 11.0
-offset_top = 283.0
-offset_right = 388.0
-offset_bottom = 323.0
+anchor_left = 0.0275
+anchor_top = 0.6628571
+anchor_right = 0.97
+anchor_bottom = 0.7771429
 grow_vertical = 2
 step = 1.0
 value = 50.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
-[node name="进度" type="Label" parent="进度条"]
+[node name="进度" type="Label" parent="进度条" unique_id=869435663]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -441,5 +437,5 @@ text = "50/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="计时器" type="Timer" parent="."]
+[node name="计时器" type="Timer" parent="." unique_id=1743075543]
 autostart = true

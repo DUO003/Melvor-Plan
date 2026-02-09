@@ -36,7 +36,10 @@ func _更新_UI():
 		文本数值.text="熟练:\r精通:"
 	else :
 		等级=计划.数据系统(系统,"等级")
-		玩法文本.text= "%s"%[玩法]
+		if 玩法==系统:
+			玩法文本.text= ""
+		else :
+			玩法文本.text= "%s"%[玩法]
 		系统文本.text= "%s LV:%d"%[系统,等级]
 		文本数值.position.x=文本节点宽度(系统文本).x+20
 		文本数值.size.x=size.x-文本数值.position.x

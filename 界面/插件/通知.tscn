@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhucfadbhtaq6"]
+[gd_scene format=3 uid="uid://bhucfadbhtaq6"]
 
 [ext_resource type="Script" uid="uid://coq0o0dl80roa" path="res://界面/插件/通知.gd" id="1_0iigp"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_73lfj"]
@@ -20,7 +20,7 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 
-[node name="通知" type="Panel"]
+[node name="通知" type="Panel" unique_id=1298103377]
 anchors_preset = -1
 anchor_right = 0.11800001
 anchor_bottom = 0.036000002
@@ -31,7 +31,7 @@ theme = ExtResource("1_73lfj")
 theme_override_styles/panel = SubResource("StyleBoxFlat_nbuvi")
 script = ExtResource("1_0iigp")
 
-[node name="文本" type="RichTextLabel" parent="."]
+[node name="文本" type="RichTextLabel" parent="." unique_id=1640017311]
 layout_mode = 1
 offset_right = 69.0
 offset_bottom = 55.0
@@ -50,7 +50,7 @@ scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="按钮" type="Button" parent="."]
+[node name="按钮" type="Button" parent="." unique_id=188511221]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15

@@ -4,14 +4,27 @@
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ugbwj"]
 [ext_resource type="PackedScene" uid="uid://dx5oki37mgsju" path="res://界面/插件/体力状态.tscn" id="2_ugbwj"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ugbwj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tf23w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2h0ry"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ltnd1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qwvpf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ou75q"]
+
 [node name="循环任务" type="ScrollContainer" unique_id=901319443]
-custom_minimum_size = Vector2(570, 495)
 anchors_preset = -1
 anchor_right = 0.29700002
 anchor_bottom = 0.45800003
-offset_right = -570.24005
-offset_bottom = -494.64005
+offset_right = -0.24005127
+offset_bottom = 0.35995483
 theme = ExtResource("1_ugbwj")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 script = ExtResource("1_lv6te")
 metadata/_tab_index = 2
 
@@ -20,18 +33,51 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 
-[node name="标签" type="Label" parent="任务容器" unique_id=249152579]
+[node name="隐藏任务" type="HBoxContainer" parent="任务容器" unique_id=996902426]
+unique_name_in_owner = true
 layout_mode = 2
-text = "被隐藏的任务数量:%d"
+
+[node name="隐藏" type="CheckButton" parent="任务容器/隐藏任务" unique_id=1985427059]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ugbwj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tf23w")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2h0ry")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ltnd1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qwvpf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ou75q")
+text = "隐藏其他任务"
+
+[node name="标签" type="Label" parent="任务容器/隐藏任务" unique_id=249152579]
+unique_name_in_owner = true
+layout_mode = 2
+text = "隐藏数量:%d"
 horizontal_alignment = 1
 
-[node name="体力状态" parent="任务容器" unique_id=406622978 instance=ExtResource("2_ugbwj")]
+[node name="跳转容器" type="HBoxContainer" parent="任务容器" unique_id=1520277326]
 layout_mode = 2
-size_flags_horizontal = 4
+
+[node name="跳转任务" type="Button" parent="任务容器/跳转容器" unique_id=1294498289]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 8
+text = "任务"
+
+[node name="体力状态" parent="任务容器/跳转容器" unique_id=406622978 instance=ExtResource("2_ugbwj")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
 
 [node name="任务栏" type="GridContainer" parent="任务容器" unique_id=1314753486]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[connection signal="pressed" from="任务容器/隐藏任务/隐藏" to="." method="_隐藏任务"]
+[connection signal="pressed" from="任务容器/跳转容器/跳转任务" to="." method="_跳转任务"]

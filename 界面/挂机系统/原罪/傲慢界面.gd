@@ -10,12 +10,7 @@ var 成就卡片 = preload("res://界面/挂机系统/原罪/成就卡片.tscn")
 var 鼠标选中
 func _ready() -> void:
 	鼠标选中=""
-	主菜单.pressed.connect(func():
-		var 窗口解锁数组: Array = 计划.梅存档["挂机"].get("窗口解锁",[])
-		if 窗口解锁数组.has("原罪界面"):
-			计划.切换场景("原罪界面")
-		else :
-			计划.切换场景("任务窗口"))
+	主菜单.pressed.connect(计划.切换场景.bind("原罪界面"))
 	计划.清除子节点(成就容器)
 	成就字典 =计划.梅存档["挂机"]["成就"]
 	原始成就字典=计划.steam.原始成就字典
@@ -40,11 +35,7 @@ func GUI_检查任务完成(按键信号:InputEvent,成就名称):
 	if 按键信号 is InputEventMouseButton and 按键信号.pressed:
 		if 按键信号.button_index == MOUSE_BUTTON_LEFT:
 			if 计划.steam.检查成就(成就名称):
-				if not 计划.steam.检查成就解锁(成就名称):
-					计划.语法糖通知("奖励已领取过","成就")
-					return
-				var 任务数据:任务资源=计划.任务.唯一任务字典.get(成就名称,null)
-				if not 任务数据 or 任务数据.任务完成:
+				if 计划.任务.检查任务进度(成就名称):
 					计划.语法糖通知("奖励已领取过","成就")
 					return
 				完成任务(成就名称)
@@ -59,11 +50,12 @@ func 获取成就文本(成就名称)->String:
 	var 前缀=""
 	if not 任务数据 or 任务数据.任务完成:
 		前缀="以领取\r"
-	else :
-		if 任务数据 and not 任务数据.任务本地.is_empty():
+	elif 任务数据:
+		if not 任务数据.任务本地.is_empty():
 			var 任务信息=任务数据.任务本地
 			前缀="完成%.0f%%\r"%(100.0*任务信息["完成总进度"]/任务信息["当前进度列表"].size())
-			print(任务信息)
+		elif 计划.steam.检查成就(成就名称):
+			前缀="可领取奖励\r"
 		else :前缀="前置未满足\r"
 	var 启用标示=计划.steam.启用标示
 	if 启用标示 and 成就数据.has("成就标识"):
@@ -78,4 +70,6 @@ func 获取成就文本(成就名称)->String:
 		return ""
 func 完成任务(任务代号):
 	计划.删除强调通知.emit(任务代号)
-	计划.任务完成处理(任务代号,"null",1)
+	var 唯一任务字典:=计划.任务.唯一任务字典
+	if 唯一任务字典.has(任务代号):
+		唯一任务字典[任务代号].任务完成逻辑()

@@ -8,10 +8,6 @@ extends 基类梅窗口
 #5层暂停/测试界面
 ##真实字典位于"梅窗口"此处运行时会覆盖
 var 窗口:梅窗口=计划.窗口
-#var 界面路径映射: Dictionary = {}#数组参数1.场景路径,参数2.场景对应的系统
-#var 界面父子关系: Dictionary = {}#界面父子关系字典，键为主界面名称，值为子界面名称数组
-#var 打开界面: Dictionary ={}#键为主界面名称，值为当前显示的子界面名称（null表示显示主界面）
-#var 映射字典:Dictionary={}
 var 初始界面="初始"#缓存当前窗口名称
 var 任务栏数组: Array = []# 任务栏需要显示的界面名称数组,从存档加载
 var 全局图钉=["金币"]
@@ -69,6 +65,7 @@ func 更新BUFF():
 			多余节点.queue_free()
 func 重载图钉():
 	计划.清除子节点(%"图钉容器")
+	%"图钉容器".add_child(生成任务栏节点("背包界面",true))
 	var 图钉场景 = preload("res://界面/插件/图钉.tscn").instantiate()
 	全局图钉=计划.梅存档["挂机"]["全局图钉"]
 	if 全局图钉.size()>=1:
@@ -94,34 +91,39 @@ func 生成任务栏按钮() -> void:# 生成任务栏所有按钮
 			节点.queue_free()
 	var 窗口解锁数组: Array = 计划.梅存档.挂机.窗口解锁
 	var 窗口禁用数组: Array = 计划.梅存档.挂机.窗口禁用
-	if not 窗口解锁数组.has("故事界面"):
-		窗口解锁数组.append("故事界面")
+	if not 窗口解锁数组.has("任务窗口"):
+		窗口解锁数组.append("任务窗口")
 	if 窗口解锁数组.has("默认窗口"):
 		窗口解锁数组.erase("默认窗口")
 	任务栏数组 = []
 	for 窗口名 in 窗口解锁数组:
 		if not 窗口禁用数组.has(窗口名):# 其他窗口：必须不在禁用数组中才保留
 			任务栏数组.append(窗口名)
-	if not 任务栏数组.has("故事界面"):
-		任务栏数组.insert(0, "故事界面")
+	if not 任务栏数组.has("任务窗口"):
+		任务栏数组.insert(0,"任务窗口")
 	for 界面名称 in 任务栏数组:
-		var 任务按钮: Button = 任务按钮本体.duplicate()
-		任务按钮.show()#防止节点为隐藏
-		任务按钮.text = 窗口.窗口数据[界面名称].显示名
-		if 任务按钮.text =="小游戏":任务按钮.text ="游戏"
-		var 路径=窗口.窗口数据[界面名称].贴图
-		var 纹理=load(路径) if 路径!="" else null
-		if 纹理:
-			任务按钮.icon=纹理
-			var 文本字数:int=任务按钮.text.length()#获取长度
-			if 文本字数>=2:
-				任务按钮.add_theme_font_size_override("font_size", max(20,120.0/文本字数))
-		任务按钮.pressed.connect(重载场景.bind(界面名称))
-		var 红点提示 = 任务按钮.get_node("红点提示")
-		红点提示.红点条目=界面名称
-		任务栏节点.add_child(任务按钮)
+		任务栏节点.add_child(生成任务栏节点(界面名称))
 	任务按钮本体.hide()# 按钮本体初始隐藏
-
+func 生成任务栏节点(界面名称,隐藏文本:bool=false):
+	var 任务按钮: Button = 任务按钮本体.duplicate()
+	任务按钮.show()#防止节点为隐藏
+	if 隐藏文本:
+		任务按钮.text = ""
+		任务按钮.custom_minimum_size=Vector2(80,80)
+	else :
+		任务按钮.text = 窗口.窗口数据[界面名称].显示名
+		任务按钮.custom_minimum_size=Vector2(220,70)
+	var 路径=窗口.窗口数据[界面名称].贴图
+	var 纹理=load(路径) if 路径!="" else null
+	if 纹理:
+		任务按钮.icon=纹理
+		var 文本字数:int=任务按钮.text.length()#获取长度
+		if 文本字数>=2:
+			任务按钮.add_theme_font_size_override("font_size", max(20,100.0/文本字数))
+	任务按钮.pressed.connect(重载场景.bind(界面名称))
+	var 红点提示 = 任务按钮.get_node("红点提示")
+	红点提示.红点条目=界面名称
+	return 任务按钮
 ## 参数: 场景名称(例如 "背包界面")
 func 重载场景(场景名称: String,强制重载=false) -> void:
 	if not 窗口.窗口数据.has(场景名称):
