@@ -45,12 +45,7 @@ var 生成修饰词权重数组:PackedFloat32Array:
 @export var 额外奖励: int = 10
 ##时间戳
 @export var 时限: float = -1
-@export var 物品数组:Array[String]=[]:
-	get:
-		if 物品数组==[]:
-			var 缓存数组:Array[String]=[]
-			缓存数组.append(名称)
-		return 物品数组
+@export var 物品数组:Array[String]=[]
 var 背包数量: int:
 	get:return 计划.检查背包物品数量(名称)
 var 价格: int:
@@ -97,13 +92,11 @@ func 提交订单(提交订单量:int=1)->bool:
 		return true
 	return false
 func 放弃():
-	if 额外奖励>0:
-		var 订单数量=计划.读取数据订单("订单数量")
-		if 订单数量<=0:
-			计划.语法糖通知("放弃订单需要扣除一次提交次数","订单")
-			return false
-		计划.数据订单("订单数量",-1)
+	var 新时限:float=Time.get_unix_time_from_system()+120
+	if 新时限<时限 or 时限==-1:
+		时限=新时限
 	名称=""
+	物品数组=[]
 ##随机生成订单
 func 生成订单数据() -> bool:
 	var 道具池:Array=获取指定类型图纸()

@@ -259,8 +259,8 @@ metadata/_custom_type_script = "uid://dyet4yfov8by1"
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q5aig"]
 
 [node name="订单" type="Panel" unique_id=104401684]
-custom_minimum_size = Vector2(400, 370)
-offset_right = 400.0
+custom_minimum_size = Vector2(390, 370)
+offset_right = 390.0
 offset_bottom = 370.0
 theme = ExtResource("1_0blbr")
 theme_override_styles/panel = SubResource("StyleBox_m1b3w")
@@ -282,9 +282,11 @@ text = "[img=40x40]res://素材/豆包AI素材/图标/合成图标.png[/img]#资
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = -1
-offset_left = 278.0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -121.0
 offset_top = 74.0
-offset_right = 392.0
+offset_right = -7.0
 offset_bottom = 184.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -366,11 +368,14 @@ size_flags_horizontal = 6
 
 [node name="物品名称" type="OptionButton" parent="." unique_id=333916739]
 unique_name_in_owner = true
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
 offset_left = 5.0
 offset_top = 75.0
-offset_right = 278.0
+offset_right = -121.0
 offset_bottom = 128.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)

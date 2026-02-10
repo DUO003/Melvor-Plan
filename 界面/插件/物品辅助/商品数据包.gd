@@ -19,6 +19,8 @@ var 方法标志位:bool=false
 @export var 限购:int=-1
 ##该商品会出现在那个商店分区里
 @export var 商店名称:String="其他"
+##通知
+@export var 额外通知:String=""
 func 更新商品数量():
 	if 方法标志位:
 		商品数量方法.call()

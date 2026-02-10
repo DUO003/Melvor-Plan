@@ -26,10 +26,11 @@ func 克隆配方节点(配方列表=["铁锭", "纤维", "鞣革"],节点位置
 					克隆节点.text="残缺*"+str(残缺配方)+"\n\n\n"
 				if not 配方等级==-1:
 					解锁=true
+				处理样式(克隆节点,配方名称,解锁,false)
 			else :
 				克隆节点.text=""
 				配方名标签.text = "未解锁"
-		处理样式(克隆节点,配方名称,解锁)
+				处理样式(克隆节点,配方名称,解锁,true)
 		克隆节点.mouse_entered.connect(func(): 鼠标进入(配方编号))# 连接鼠标进入信号
 		克隆节点.mouse_exited.connect(func(): 鼠标离开(配方编号))# 连接鼠标离开信号
 		克隆节点.gui_input.connect(func(按键信号): # 确保节点可以接收鼠标事件
@@ -46,14 +47,19 @@ func 克隆配方节点(配方列表=["铁锭", "纤维", "鞣革"],节点位置
 # 功能：复制 Button 节点的 normal 原始样式，修改后批量赋值给 pressed/hover/focus 状态
 # 参数1：节点 - 目标 Button 节点（如你的“克隆节点”）
 # 参数2：图片 - 要替换的图片路径（例："res://images/btn_bg.png"）
-func 处理样式(节点: Button, 配方名称: String, 解锁: bool) -> void:
+func 处理样式(节点: Button, 配方名称: String, 解锁: bool,无蓝图:bool) -> void:
 	var 纹理 = 计划.表格.道具贴图(配方名称)# 1. 加载图片
 	var 样式 = 节点.get_theme_stylebox("normal").duplicate(true)# 2. 复制样式模板
 	样式.样式数组[2].texture = 纹理# 3. 修改复制后的基础样式（统一替换图片）
 	if 解锁:# 4. 根据解锁状态设置调制颜色（白色/暗灰色）
 		样式.样式数组[2].modulate_color =Color(1, 1, 1)
+		样式.样式数组[1].texture=preload("res://素材/豆包AI素材/蓝色图纸.png")
 	else :
 		样式.样式数组[2].modulate_color =Color(0.2, 0.2, 0.2)
+		if 无蓝图:
+			样式.样式数组[1].texture=null
+		else :
+			样式.样式数组[1].texture=preload("res://素材/豆包AI素材/残缺图纸.png")
 	for state in ["normal", "pressed", "hover", "focus"]:# 5. 批量将修改后的基础样式，赋值给所有需要同步的状态
 		节点.add_theme_stylebox_override(state, 样式)
 var 信号序号:int=-1

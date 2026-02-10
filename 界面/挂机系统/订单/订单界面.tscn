@@ -32,7 +32,6 @@ theme_override_constants/v_separation = -2
 columns = 3
 
 [node name="信息排列容器" type="VBoxContainer" parent="内容节点/分组容器" index="1" unique_id=1539848306]
-custom_minimum_size = Vector2(500, 495)
 layout_mode = 2
 theme_override_constants/separation = 10
 

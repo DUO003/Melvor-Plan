@@ -70,10 +70,9 @@ theme_override_constants/separation = 5
 [node name="选项卡" type="TabContainer" parent="内容节点/内容区/第一内容区" index="0" unique_id=26525890]
 custom_minimum_size = Vector2(580, 0)
 layout_mode = 2
-current_tab = 2
+current_tab = 0
 
 [node name="物质" type="VBoxContainer" parent="内容节点/内容区/第一内容区/选项卡" index="1" unique_id=458950717]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -169,6 +168,7 @@ layout_mode = 2
 "资源名称" = "精华"
 
 [node name="循环任务" parent="内容节点/内容区/第一内容区/选项卡" index="3" unique_id=901319443 instance=ExtResource("7_qg4nq")]
+visible = false
 layout_mode = 2
 "循环筛选" = Array[String](["合成"])
 "显示体力" = true

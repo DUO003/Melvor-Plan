@@ -17,16 +17,16 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ou75q"]
 
 [node name="循环任务" type="ScrollContainer" unique_id=901319443]
+custom_minimum_size = Vector2(520, 0)
 anchors_preset = -1
-anchor_right = 0.29700002
-anchor_bottom = 0.45800003
-offset_right = -0.24005127
-offset_bottom = 0.35995483
+anchor_right = 0.27083334
+anchor_bottom = 0.45833334
 theme = ExtResource("1_ugbwj")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 script = ExtResource("1_lv6te")
 metadata/_tab_index = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="任务容器" type="VBoxContainer" parent="." unique_id=551189033]
 unique_name_in_owner = true
@@ -54,6 +54,7 @@ text = "隐藏其他任务"
 
 [node name="标签" type="Label" parent="任务容器/隐藏任务" unique_id=249152579]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "隐藏数量:%d"
 horizontal_alignment = 1
@@ -64,14 +65,15 @@ layout_mode = 2
 [node name="跳转任务" type="Button" parent="任务容器/跳转容器" unique_id=1294498289]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "任务"
 
 [node name="体力状态" parent="任务容器/跳转容器" unique_id=406622978 instance=ExtResource("2_ugbwj")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 3
 
 [node name="任务栏" type="GridContainer" parent="任务容器" unique_id=1314753486]
 unique_name_in_owner = true

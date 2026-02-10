@@ -35,10 +35,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vf5w6")
-current_tab = 0
+current_tab = 2
 
 [node name="主线任务" parent="内容节点/任务" index="1" unique_id=901319443 node_paths=PackedStringArray("场景") instance=ExtResource("3_yje00")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -57,13 +58,35 @@ layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="任务统计" type="VBoxContainer" parent="内容节点/任务" index="3" unique_id=1327568261]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="任务数量" type="RichTextLabel" parent="内容节点/任务/任务统计" index="0" unique_id=70923421]
-unique_name_in_owner = true
+[node name="占位" type="Control" parent="内容节点/任务/任务统计" index="0" unique_id=707258307]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+
+[node name="文本容器" type="ScrollContainer" parent="内容节点/任务/任务统计" index="1" unique_id=799054270]
+custom_minimum_size = Vector2(1300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="任务文本" type="GridContainer" parent="内容节点/任务/任务统计/文本容器" index="0" unique_id=1762942851]
+custom_minimum_size = Vector2(1300, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="主线任务文本" type="RichTextLabel" parent="内容节点/任务/任务统计/文本容器/任务文本" index="0" unique_id=70923421]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/line_separation = 0
 theme_override_constants/paragraph_separation = -15
@@ -73,22 +96,117 @@ fit_content = true
 scroll_active = false
 metadata/_tab_index = 0
 
-[node name="任务类型" type="HBoxContainer" parent="内容节点/任务/任务统计" index="1" unique_id=720657565]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_constants/separation = 10
-
-[node name="成就按钮" type="Button" parent="内容节点/任务/任务统计/任务类型" index="0" unique_id=601994939]
+[node name="循环任务文本" type="RichTextLabel" parent="内容节点/任务/任务统计/文本容器/任务文本" index="1" unique_id=2116347273]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/paragraph_separation = -15
+bbcode_enabled = true
+text = "当前完成数量:"
+fit_content = true
+scroll_active = false
+metadata/_tab_index = 0
+
+[node name="订单任务文本" type="RichTextLabel" parent="内容节点/任务/任务统计/文本容器/任务文本" index="2" unique_id=1990385023]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/paragraph_separation = -15
+bbcode_enabled = true
+text = "当前完成数量:"
+fit_content = true
+scroll_active = false
+metadata/_tab_index = 0
+
+[node name="订单按钮" type="Button" parent="内容节点/任务/任务统计/文本容器/任务文本/订单任务文本" index="2" unique_id=1894784963]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -187.0
+offset_bottom = 67.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "前往订单"
+
+[node name="成就任务文本" type="RichTextLabel" parent="内容节点/任务/任务统计/文本容器/任务文本" index="3" unique_id=175289211]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/paragraph_separation = -15
+bbcode_enabled = true
+text = "当前完成数量:"
+fit_content = true
+scroll_active = false
+metadata/_tab_index = 0
+
+[node name="成就按钮" type="Button" parent="内容节点/任务/任务统计/文本容器/任务文本/成就任务文本" index="2" unique_id=601994939]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -187.0
+offset_bottom = 67.0
+grow_horizontal = 0
+size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "前往成就"
 
-[node name="占位" type="Control" parent="内容节点/任务/任务统计/任务类型" index="1" unique_id=1242668051]
+[node name="子界面跳转" type="HBoxContainer" parent="内容节点/任务/任务统计" index="2" unique_id=82878510]
+custom_minimum_size = Vector2(1300, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 100
 
-[node name="占位" type="Control" parent="内容节点/任务/任务统计" index="2" unique_id=707258307]
+[node name="背包" type="Label" parent="内容节点/任务/任务统计/子界面跳转" index="0" unique_id=1778899568]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "背包:查看,商店,装备等"
+
+[node name="背包按钮" type="Button" parent="内容节点/任务/任务统计/子界面跳转/背包" index="0" unique_id=1071766261]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -187.0
+offset_bottom = 67.0
+grow_horizontal = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "前往背包"
+
+[node name="设置" type="Label" parent="内容节点/任务/任务统计/子界面跳转" index="1" unique_id=2008943643]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "设置:任务栏,通知等"
+
+[node name="设置按钮" type="Button" parent="内容节点/任务/任务统计/子界面跳转/设置" index="0" unique_id=1947486639]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -187.0
+offset_bottom = 67.0
+grow_horizontal = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "前往设置"
+
+[node name="占位2" type="Control" parent="内容节点/任务/任务统计" index="3" unique_id=1941904807]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 

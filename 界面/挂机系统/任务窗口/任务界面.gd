@@ -5,7 +5,10 @@ var 任务字典:Dictionary=计划.任务.任务字典
 @onready var 下拉任务: OptionButton = %显示任务
 @onready var 切换以完成: CheckButton = %以完成任务
 @onready var 任务选项卡: TabContainer = %任务
+@onready var 订单按钮: Button = %订单按钮
 @onready var 成就按钮: Button = %成就按钮
+@onready var 背包按钮: Button = %背包按钮
+@onready var 设置按钮: Button = %设置按钮
 var 任务的卡片:任务卡片=preload("res://界面/挂机系统/任务窗口/任务卡片.tscn").instantiate()
 func _ready() -> void:
 	super._ready()
@@ -19,19 +22,41 @@ func _ready() -> void:
 	下拉任务.item_selected.connect(func(序号):
 		计划.窗口状态管理(基类窗口名称,"显示任务数量",null,序号)
 		初始化所有任务容器(true))
-	成就按钮.pressed.connect(func():计划.切换场景("原罪_傲慢界面"))
+	订单按钮.pressed.connect(计划.切换场景.bind("订单界面"))
+	成就按钮.pressed.connect(计划.切换场景.bind("原罪_傲慢界面"))
+	背包按钮.pressed.connect(计划.切换场景.bind("背包界面"))
+	设置按钮.pressed.connect(计划.切换场景.bind("设置界面"))
 	初始化所有任务容器()
 func _exit_tree() -> void:
 	super._exit_tree()
-@onready var 任务数量: RichTextLabel = %任务数量
+@onready var 主线任务文本: RichTextLabel = %主线任务文本
+@onready var 循环任务文本: RichTextLabel = %循环任务文本
+@onready var 订单任务文本: RichTextLabel = %订单任务文本
+@onready var 成就任务文本: RichTextLabel = %成就任务文本
 func 加载任务完成统计():
+	var 打包数据:任务打包资源=计划.任务.打包数据
+	var 点数:=计划.点数
 	var 统计任务完成:Array=[]
 	for 任务 in ["作者","挂机","手工"]:
 		统计任务完成.append(完成任务计数(任务))
-	任务数量.text="主线任务\n[font_size=35]消耗循环任务次数\n完成主线任务解锁新玩法[/font_size]
-[font_size=30]%s[/font_size]\r循环任务
-[font_size=35]完成任务获取[img=35x35]%s[/img][/font_size]\r订单任务"%["\n".join(统计任务完成),
-计划.表格.道具贴图("熟练").resource_path]
+	主线任务文本.text="[font_size=60]主线任务[/font_size]\n消耗任务点数完成主线任务\n解锁新玩法,提升任务容量难度等
+[font_size=35]%s[/font_size]"%["\n".join(统计任务完成),]
+	循环任务文本.text="[font_size=60]循环任务[/font_size]
+完成任务获取[img=35x35]%s[/img]
+提高难度获得任务点数增加
+	[font_size=35]已完成循环任务数量:%d
+	当前任务%d个,难度:%d
+	任务点数:%d[/font_size]"%[计划.表格.道具贴图("熟练").resource_path,
+打包数据.已完成循环任务,打包数据.循环任务数量,打包数据.循环任务难度,点数.查看点数("任务")]
+	订单任务文本.text="[font_size=60]订单任务[/font_size]\n提交物品获得金币\n可消耗体力额外提交
+	[font_size=35]订单已解锁标签:%s
+	当前订单容量%d个
+	具体情况进入订单界面查看[/font_size]"%[",".join(打包数据.订单解锁标签),打包数据.订单任务数量]
+	成就任务文本.text="[font_size=60]成就任务[/font_size]
+完成任务增加[img=35x35]%s[/img]傲慢上限
+完成成就有一次性的奖励
+	[font_size=35]当前成就数量:%d
+	具体情况进入傲慢界面查看[/font_size]"%[计划.表格.道具贴图("傲慢").resource_path,计划.steam.成就字典.size()]
 func 完成任务计数(任务)->String:
 	var 来源数组:Array[任务资源]=计划.任务.筛选任务来源资源(任务)
 	var 完成次数:int = 0  # 统计满足条件的任务数量

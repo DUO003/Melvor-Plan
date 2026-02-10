@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c2jq16mbnhyo8"]
+[gd_scene format=3 uid="uid://c2jq16mbnhyo8"]
 
 [ext_resource type="Script" uid="uid://dg6xjko3rdcta" path="res://addons/grid_base_inventory_system/core/view/slot/equipment_slot_view.gd" id="1_7vht8"]
 [ext_resource type="Script" uid="uid://bsj3qj4hsie1" path="res://界面/挂机系统/背包/装备槽.gd" id="1_cktd2"]
@@ -382,7 +382,7 @@ content_margin_bottom = 0.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j8cvi"]
 content_margin_right = 10.0
 
-[node name="装备槽" type="ScrollContainer"]
+[node name="装备槽" type="ScrollContainer" unique_id=858360469]
 custom_minimum_size = Vector2(600, 0)
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -391,7 +391,7 @@ grow_vertical = 2
 horizontal_scroll_mode = 0
 script = ExtResource("1_cktd2")
 
-[node name="装备" type="VBoxContainer" parent="."]
+[node name="装备" type="VBoxContainer" parent="." unique_id=1399434938]
 custom_minimum_size = Vector2(600, 828)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -400,20 +400,20 @@ theme = ExtResource("1_e64v6")
 metadata/_tab_index = 1
 metadata/_edit_lock_ = true
 
-[node name="系统装备槽" type="TabContainer" parent="装备"]
+[node name="系统装备槽" type="TabContainer" parent="装备" unique_id=1314458744]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_4gdyh")
 current_tab = 1
 metadata/_edit_lock_ = true
 
-[node name="手工" type="Control" parent="装备/系统装备槽"]
+[node name="手工" type="Control" parent="装备/系统装备槽" unique_id=1096858944]
 visible = false
 custom_minimum_size = Vector2(590, 250)
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="GridContainer" parent="装备/系统装备槽/手工"]
+[node name="VBoxContainer" type="GridContainer" parent="装备/系统装备槽/手工" unique_id=1862190504]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -425,7 +425,7 @@ theme_override_constants/h_separation = 180
 theme_override_constants/v_separation = 5
 columns = 2
 
-[node name="手杖" type="Control" parent="装备/系统装备槽/手工/VBoxContainer"]
+[node name="手杖" type="Control" parent="装备/系统装备槽/手工/VBoxContainer" unique_id=838477418]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -443,7 +443,7 @@ avilable_types = Array[String](["手杖"])
 "宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="炼金" type="Control" parent="装备/系统装备槽/手工/VBoxContainer"]
+[node name="炼金" type="Control" parent="装备/系统装备槽/手工/VBoxContainer" unique_id=971398774]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -461,7 +461,7 @@ avilable_types = Array[String](["炼金台"])
 "宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="厨具" type="Control" parent="装备/系统装备槽/手工/VBoxContainer"]
+[node name="厨具" type="Control" parent="装备/系统装备槽/手工/VBoxContainer" unique_id=663662620]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -479,12 +479,12 @@ avilable_types = Array[String](["厨具"])
 "宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="游历" type="Control" parent="装备/系统装备槽"]
+[node name="游历" type="Control" parent="装备/系统装备槽" unique_id=602558303]
 custom_minimum_size = Vector2(590, 400)
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="游历装备" type="HBoxContainer" parent="装备/系统装备槽/游历"]
+[node name="游历装备" type="HBoxContainer" parent="装备/系统装备槽/游历" unique_id=1547265004]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -496,13 +496,13 @@ grow_horizontal = 2
 theme_override_constants/separation = 0
 metadata/_edit_lock_ = true
 
-[node name="饰品栏" type="VBoxContainer" parent="装备/系统装备槽/游历/游历装备"]
+[node name="饰品栏" type="VBoxContainer" parent="装备/系统装备槽/游历/游历装备" unique_id=1021582927]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 0
 metadata/_edit_lock_ = true
 
-[node name="项链" type="Control" parent="装备/系统装备槽/游历/游历装备/饰品栏"]
+[node name="项链" type="Control" parent="装备/系统装备槽/游历/游历装备/饰品栏" unique_id=449525748]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 script = ExtResource("1_7vht8")
@@ -519,7 +519,7 @@ avilable_types = Array[String](["项链", "光环"])
 "宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="披挂" type="Control" parent="装备/系统装备槽/游历/游历装备/饰品栏"]
+[node name="披挂" type="Control" parent="装备/系统装备槽/游历/游历装备/饰品栏" unique_id=1067735291]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 script = ExtResource("1_7vht8")
@@ -536,7 +536,7 @@ avilable_types = Array[String](["披风", "宠物"])
 "宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="戒指A" type="Control" parent="装备/系统装备槽/游历/游历装备/饰品栏"]
+[node name="戒指A" type="Control" parent="装备/系统装备槽/游历/游历装备/饰品栏" unique_id=1432254201]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 script = ExtResource("1_7vht8")
@@ -553,7 +553,7 @@ avilable_types = Array[String](["戒指"])
 "宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="戒指B" type="Control" parent="装备/系统装备槽/游历/游历装备/饰品栏"]
+[node name="戒指B" type="Control" parent="装备/系统装备槽/游历/游历装备/饰品栏" unique_id=628540757]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 script = ExtResource("1_7vht8")
@@ -570,7 +570,7 @@ avilable_types = Array[String](["戒指"])
 "宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="主手" type="Control" parent="装备/系统装备槽/游历/游历装备"]
+[node name="主手" type="Control" parent="装备/系统装备槽/游历/游历装备" unique_id=2088024850]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 8
@@ -588,7 +588,7 @@ avilable_types = Array[String](["长剑", "斧头", "匕首", "战锤", "矛", "
 "宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="副手" type="Control" parent="装备/系统装备槽/游历/游历装备"]
+[node name="副手" type="Control" parent="装备/系统装备槽/游历/游历装备" unique_id=1620113448]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 8
@@ -606,13 +606,13 @@ avilable_types = Array[String](["盾牌", "乐器", "卷轴", "箭袋", "护手"
 "宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="盔甲栏" type="VBoxContainer" parent="装备/系统装备槽/游历/游历装备"]
+[node name="盔甲栏" type="VBoxContainer" parent="装备/系统装备槽/游历/游历装备" unique_id=467443451]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 0
 metadata/_edit_lock_ = true
 
-[node name="头盔" type="Control" parent="装备/系统装备槽/游历/游历装备/盔甲栏"]
+[node name="头盔" type="Control" parent="装备/系统装备槽/游历/游历装备/盔甲栏" unique_id=1568716586]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 script = ExtResource("1_7vht8")
@@ -629,7 +629,7 @@ avilable_types = Array[String](["头盔", "盗贼帽", "法师帽"])
 "宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="衣服" type="Control" parent="装备/系统装备槽/游历/游历装备/盔甲栏"]
+[node name="衣服" type="Control" parent="装备/系统装备槽/游历/游历装备/盔甲栏" unique_id=1738855283]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 script = ExtResource("1_7vht8")
@@ -646,7 +646,7 @@ avilable_types = Array[String](["重甲", "轻甲", "法袍"])
 "宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="裤子" type="Control" parent="装备/系统装备槽/游历/游历装备/盔甲栏"]
+[node name="裤子" type="Control" parent="装备/系统装备槽/游历/游历装备/盔甲栏" unique_id=1632923407]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 script = ExtResource("1_7vht8")
@@ -663,7 +663,7 @@ avilable_types = Array[String](["裤子", "腿甲", "法裤"])
 "宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="鞋子" type="Control" parent="装备/系统装备槽/游历/游历装备/盔甲栏"]
+[node name="鞋子" type="Control" parent="装备/系统装备槽/游历/游历装备/盔甲栏" unique_id=1451253356]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 script = ExtResource("1_7vht8")
@@ -680,7 +680,7 @@ avilable_types = Array[String](["靴子", "鞋子", "法鞋"])
 "宝石槽样式" = SubResource("StyleBoxFlat_4gdyh")
 metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 
-[node name="玩家" parent="装备/系统装备槽/游历" instance=ExtResource("3_e64v6")]
+[node name="玩家" parent="装备/系统装备槽/游历" unique_id=134630347 instance=ExtResource("3_e64v6")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 200)
 layout_mode = 1
@@ -693,28 +693,28 @@ offset_top = -162.0
 offset_right = 58.5
 scale = Vector2(0.55, 0.55)
 
-[node name="属性" type="RichTextLabel" parent="装备"]
+[node name="属性" type="RichTextLabel" parent="装备" unique_id=988785958]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/line_separation = -5
 theme_override_constants/paragraph_separation = 0
-theme_override_font_sizes/normal_font_size = 35
-theme_override_font_sizes/bold_font_size = 35
-theme_override_font_sizes/bold_italics_font_size = 35
-theme_override_font_sizes/italics_font_size = 35
-theme_override_font_sizes/mono_font_size = 35
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_e64v6")
 fit_content = true
 scroll_active = false
 
-[node name="玩家属性" type="HSplitContainer" parent="装备"]
+[node name="玩家属性" type="HSplitContainer" parent="装备" unique_id=843312805]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 dragging_enabled = false
 
-[node name="属性左" type="RichTextLabel" parent="装备/玩家属性"]
+[node name="属性左" type="RichTextLabel" parent="装备/玩家属性" unique_id=1428889425]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -729,7 +729,7 @@ theme_override_font_sizes/mono_font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxEmpty_e64v6")
 text = "游历 LV:0"
 
-[node name="属性右" type="RichTextLabel" parent="装备/玩家属性"]
+[node name="属性右" type="RichTextLabel" parent="装备/玩家属性" unique_id=410152381]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -743,7 +743,7 @@ theme_override_font_sizes/italics_font_size = 35
 theme_override_font_sizes/mono_font_size = 35
 text = "游历 LV:0"
 
-[node name="属性详情" type="CheckButton" parent="装备"]
+[node name="属性详情" type="CheckButton" parent="装备" unique_id=1252390099]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8

@@ -19,21 +19,22 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="体力状态" type="Control" unique_id=776025947]
-custom_minimum_size = Vector2(400, 70)
+custom_minimum_size = Vector2(320, 70)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 400.0
+offset_right = 300.0
 offset_bottom = 70.0
 theme = ExtResource("1_wok3q")
 script = ExtResource("2_n7kj1")
 
 [node name="触发显示范围" type="Control" parent="." unique_id=229266800]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(400, 70)
 layout_mode = 1
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="体力贴图" type="TextureRect" parent="触发显示范围" unique_id=1993709324]
 layout_mode = 1
@@ -49,8 +50,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.99000007
 offset_left = 96.0
+offset_top = 10.0
 offset_right = -3.0517578e-05
-offset_bottom = 70.0
+offset_bottom = 62.0
 mouse_behavior_recursive = 1
 theme = ExtResource("1_wok3q")
 theme_override_styles/fill = SubResource("StyleBoxFlat_rxrpf")
@@ -66,29 +68,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 1
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.5529556, 0.55295557, 0.55295557, 0.4627451)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
 text = "120/240"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="扩展内容" type="Panel" parent="." unique_id=1720184831]
 unique_name_in_owner = true
-visible = false
 z_index = 1
-layout_mode = 0
-offset_top = 72.0
-offset_right = 392.0
-offset_bottom = 160.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.25299996
+offset_top = 2.0
+offset_right = -2.770996
+offset_bottom = 90.0
+grow_horizontal = 2
 mouse_behavior_recursive = 1
 
 [node name="体力回复条" type="ProgressBar" parent="扩展内容" unique_id=1586824540]
 unique_name_in_owner = true
-layout_mode = 0
-offset_right = 392.0
-offset_bottom = 10.0
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
 mouse_behavior_recursive = 1
 theme = ExtResource("1_wok3q")
 theme_override_styles/fill = SubResource("StyleBoxFlat_okb3m")
@@ -97,25 +106,26 @@ show_percentage = false
 
 [node name="扩展信息" type="RichTextLabel" parent="扩展内容" unique_id=478492076]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(374, 0)
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -188.0
-offset_top = 10.0
-offset_right = 186.0
-offset_bottom = 111.0
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 0.25299978
+offset_top = 14.0
+offset_right = -1.2290039
+offset_bottom = 84.0
 grow_horizontal = 2
 mouse_behavior_recursive = 1
 theme = ExtResource("1_wok3q")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.32172796, 0.32172796, 0.32172796, 1)
 theme_override_colors/font_shadow_color = Color(0.5529556, 0.55295557, 0.55295557, 0.4627451)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/normal_font_size = 22
+theme_override_constants/paragraph_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[img=50x33]res://素材/游戏素材/食品包/体力蛋糕.png[/img]体力恢复速度1点/6分钟
 [img=40x30]res://素材/游戏素材/货币/17.png[/img]门票总库存:
 "
 fit_content = true
 scroll_active = false
+horizontal_alignment = 1

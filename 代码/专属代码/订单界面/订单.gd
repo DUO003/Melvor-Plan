@@ -103,7 +103,7 @@ func 全面更新():
 	物品名称.disabled=订单数据.物品数组.size()<=1
 	#print("订单",订单数据.名称,订单数据.物品数组)
 func 更新计时器():
-	if 订单数据.时限==-1 or 订单数据.名称=="":
+	if 订单数据.时限==-1:
 		$"倒计时".visible=false
 	else :
 		var 当前时间: float=Time.get_unix_time_from_system()
@@ -119,8 +119,6 @@ func 更新计时器():
 		$"倒计时".text="剩余："+计划.格式化时间(ceili(剩余秒数),2)
 
 func 显示或隐藏(显示:bool):
-	if not 显示:
-		$"倒计时".visible=false
 	$"订单类型".visible=true
 	$"贴图".visible=显示
 	$"装饰文本".visible=显示
@@ -128,3 +126,4 @@ func 显示或隐藏(显示:bool):
 	%"放弃".visible=显示
 	$"报酬".visible=显示
 	$"进度条".visible=显示
+	物品名称.visible=显示

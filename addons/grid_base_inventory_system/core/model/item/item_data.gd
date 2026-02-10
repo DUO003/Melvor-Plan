@@ -139,7 +139,7 @@ func 排序值()->int:
 		排序缓存 =-1
 	return 排序缓存
 func 返回简介(背包名:String,参数:Dictionary={})->String:
-	var 简介:String="物品名称:"+item_name
+	var 简介:String="名称:"+item_name
 	if GBIS.shop_names.has(背包名):简介+="(商品)"
 	return 简介
 func 物品点击(背包) -> bool:#物品被点击时调用,返回不销毁

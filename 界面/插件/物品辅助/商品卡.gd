@@ -38,18 +38,25 @@ func 更新界面():
 		else :
 			$"图片/数量".text=""
 	图片.texture=计划.表格.道具贴图(商品.商品名)
+	var 商品样式:嵌套数组样式=get_theme_stylebox("panel").duplicate(true)
+	if 商品.商品类型=="蓝图":
+		#print("商品蓝图",商品.商品名)
+		商品样式.样式数组[1].texture=preload("res://素材/豆包AI素材/蓝色图纸.png")
+	else :
+		#print("商品%s"%商品.商品类型,商品.商品名)
+		商品样式.样式数组[1].texture=null
+	add_theme_stylebox_override("panel",商品样式)
 	价格.text="%s\r%d[img=40x40]%s[/img]"%[商品.商品名,商品.费用*购买数量,计划.表格.道具贴图(商品.代币).resource_path]
 func 接触反馈(启用:bool):
 	if 启用:
-		if 商品.限购==-1:
-			文本.text="点击购买"
-		else :
-			文本.text="剩余:%d"%商品.限购
+		if 商品.限购==-1:文本.text="点击购买"
+		else :文本.text="剩余:%d"%商品.限购
+		计划.全局悬浮提示.emit("商品:%s(%s)%s\n价格:%d %s(%s)"%[
+			商品.商品名,商品.商品类型,商品.额外通知,商品.费用,商品.代币,商品.代币类型],self,30)
 	else :
-		if 商品.限购==-1:
-			文本.text="商品"
-		else :
-			文本.text="限购%d"%商品.限购
+		if 商品.限购==-1:文本.text="商品"
+		else :文本.text="限购%d"%商品.限购
+		计划.全局悬浮提示.emit("",self)
 func gui点击逻辑(按键):
 	if 按键 is InputEventMouseButton and 按键.pressed:
 		更新界面()

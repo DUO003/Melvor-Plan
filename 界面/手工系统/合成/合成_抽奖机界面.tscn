@@ -158,14 +158,50 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0.9160833, 0.8138671), Vector2(2.3824487, 2.116616), Vector2(2.3824487, 2.116616)]
 }
-tracks/2/type = "method"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".")
+tracks/2/path = NodePath("蓝色图纸/倾斜度控制/蓝图属性容器:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("蓝色图纸/倾斜度控制/蓝图属性容器:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("蓝色图纸:skew")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.17453292519943295]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0009999999, 1),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [true],
@@ -174,42 +210,6 @@ tracks/2/keys = {
 "args": [false],
 "method": &"设置动画"
 }]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("蓝色图纸/倾斜度控制/蓝图属性容器:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("蓝色图纸/倾斜度控制/蓝图属性容器:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("蓝色图纸:skew")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 0.17453292519943295]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f4fr3"]
@@ -473,6 +473,7 @@ text = "简介:一些测试的内容
 autowrap_mode = 2
 
 [node name="关闭蓝图展示" type="Button" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器" index="2" unique_id=1702110813]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 60)
 layout_mode = 0
 offset_left = 385.4047
@@ -489,6 +490,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="蓝图下一页" type="Button" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器/切换按钮节点" index="0" unique_id=1917979701]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 60)
 layout_mode = 0
 offset_left = -315.88647
@@ -499,6 +501,7 @@ theme_override_font_sizes/font_size = 20
 text = "下一页"
 
 [node name="蓝图上一页" type="Button" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器/切换按钮节点" index="1" unique_id=1809821203]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 60)
 layout_mode = 0
 offset_left = -711.8726

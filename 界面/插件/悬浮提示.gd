@@ -20,7 +20,7 @@ func 更新文本(文本内容:String="",节点实例:Node=self,默认字体:int
 		return
 	节点=节点实例
 	富文本.add_theme_font_size_override("normal_font_size",默认字体)
-	富文本.add_theme_constant_override("paragraph_separation",int(默认字体*-0.5))
+	富文本.add_theme_constant_override("paragraph_separation",int(默认字体*-0.1))
 	富文本.add_theme_constant_override("line_separation",int(默认字体*-0.1))
 	global_position = get_global_mouse_position() + Vector2(10, 10)
 	富文本.text=文本内容
