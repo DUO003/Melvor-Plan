@@ -152,7 +152,7 @@ func 点数工作台简介():
 		进度条.max_value=max(1,建筑.耗时)
 		进度条.value=建筑.耗时计算()
 	else :
-		方块简介.text="放入物品加工为对应点数"
+		方块简介.text=方块道具.简介
 		进度条标签.text="等待"
 		进度条.max_value=1
 		进度条.value=0
@@ -172,7 +172,7 @@ func 点击逻辑():
 	elif 方块道具.瓦片功能=="图书馆":
 		地图管理器.保存地图数据()
 		await get_tree().process_frame
-		启动对话("新手任务")
+		计划.任务.启动对话("新手任务")
 	elif 方块道具.瓦片功能=="点数加工":
 		领取点数()
 func 切换逻辑():
@@ -197,15 +197,6 @@ func 窗口切换():
 		计划.节点["空节点"].生成任务栏按钮()
 func 建筑升级():
 	pass
-func 启动对话(对话任务):
-	if Dialogic.current_timeline != null:
-		return
-	var 首次剧情:=not 计划.任务.检查主线任务完成(对话任务)
-	if 首次剧情:
-		Dialogic.VAR.set("SCJQ", 首次剧情)#首次剧情=真
-		Dialogic.start(对话任务)
-	else :
-		计划.语法糖通知("任务已完成","任务完成")
 func 领取点数():
 	if not 建筑数据.has(方块坐标):
 		print("错误找不到建筑数据")

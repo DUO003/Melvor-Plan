@@ -47,7 +47,6 @@ func _ready() -> void:
 				表格检查.批量检查JSON格式()
 			else :
 				print("导入文件",文件名))
-			
 	重新载入场景()
 func 重新分配区域():
 	if visible:

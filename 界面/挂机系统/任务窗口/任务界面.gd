@@ -27,6 +27,7 @@ func _ready() -> void:
 	背包按钮.pressed.connect(计划.切换场景.bind("背包界面"))
 	设置按钮.pressed.connect(计划.切换场景.bind("设置界面"))
 	初始化所有任务容器()
+	计划.更新_UI.connect(加载任务完成统计)
 func _exit_tree() -> void:
 	super._exit_tree()
 @onready var 主线任务文本: RichTextLabel = %主线任务文本
@@ -49,7 +50,7 @@ func 加载任务完成统计():
 	任务点数:%d[/font_size]"%[计划.表格.道具贴图("熟练").resource_path,
 打包数据.已完成循环任务,打包数据.循环任务数量,打包数据.循环任务难度,点数.查看点数("任务")]
 	订单任务文本.text="[font_size=60]订单任务[/font_size]\n提交物品获得金币\n可消耗体力额外提交
-	[font_size=35]订单已解锁标签:%s
+	[font_size=35]订单范围:[font_size=30]%s[/font_size]
 	当前订单容量%d个
 	具体情况进入订单界面查看[/font_size]"%[",".join(打包数据.订单解锁标签),打包数据.订单任务数量]
 	成就任务文本.text="[font_size=60]成就任务[/font_size]

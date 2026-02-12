@@ -19,6 +19,7 @@ var 类型:String="基础"
 @onready var 回复: Label = $回复
 var 需要关闭提示:bool=false
 var 需要更新提示:bool=false
+@onready var 资源粒子: GPUParticles2D = $资源粒子
 func _ready():
 	更新贴图()# 节点就绪时初始化
 	if not Engine.is_editor_hint():
@@ -136,9 +137,9 @@ func 更新贴图():
 	if not Engine.is_editor_hint():
 		var 纹理 = 计划.表格.道具贴图(资源名称)
 		if 纹理:
-			$"资源粒子".emitting=false
+			资源粒子.emitting=false
 		贴图节点.texture = 纹理
-		$"资源粒子".texture = 纹理
+		资源粒子.texture = 纹理
 
 func 处理按下():
 	#更新点击回复量()
@@ -151,20 +152,20 @@ func 处理按下():
 		if not 类型=="特殊":
 			是否长按 = true# 标记为长按状态并启动计时器
 			长按计时器.start()
-			$"资源粒子".amount=10
-			$"资源粒子".amount_ratio=0.25
-			$"资源粒子".preprocess=0.5
-			$"资源粒子".emitting=true
+			资源粒子.amount=10
+			资源粒子.amount_ratio=0.25
+			资源粒子.preprocess=0.5
+			资源粒子.emitting=true
 	else :计划.语法糖通知("不能通过点击回复:"+资源名称,"资源回复")
 func 处理释放():# 结束长按状态但不停止计时器
 	是否长按 = false
 func 长按超时处理():
 	#print(资源名称,"长按超时处理",是否长按)
 	if 是否长按:# 长按期间每0.5秒回复1倍基础量资源
-		if not $"资源粒子".emitting:
-			$"资源粒子".emitting=true
-			$"资源粒子".preprocess=0
-			$"资源粒子".amount_ratio=0.3
+		if not 资源粒子.emitting:
+			资源粒子.emitting=true
+			资源粒子.preprocess=0
+			资源粒子.amount_ratio=0.3
 		计划.手工.获得资源(资源名称, 基础量, true, true)# 每0.5秒回复一次基础量资源
 	else :
 		长按计时器.stop()

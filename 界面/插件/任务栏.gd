@@ -21,6 +21,8 @@ var 任务的卡片:任务卡片=preload("res://界面/挂机系统/任务窗口
 var 筛选失效:int=0
 
 func _ready() -> void:
+	if not 循环筛选.is_empty():
+		隐藏.button_pressed=计划.窗口状态管理("任务插件","隐藏循环",false)
 	任务栏.columns=显示任务数量
 	初始化所有任务容器()
 	if 场景:
@@ -43,7 +45,7 @@ func 初始化所有任务容器():
 	if not 显示体力:
 		if 体力状态:体力状态.queue_free()
 	if 隐藏.button_pressed:
-		隐藏.text="已启用隐藏"
+		隐藏.text="已隐藏"
 		标签.text="隐藏数量:%d"%筛选失效
 		标签.visible=true
 	else :
@@ -53,7 +55,7 @@ func 初始化所有任务容器():
 func 加载检查(任务数据:任务资源)->bool:
 	if not 来源.has(任务数据.任务类型):
 		return false
-	if 循环筛选.is_empty() or 隐藏.button_pressed:
+	if 循环筛选.is_empty() or not 隐藏.button_pressed:
 		return true
 	for 条件:String in 任务数据.循环来源:
 		if 循环筛选.has(条件):
@@ -84,4 +86,5 @@ func 刷新任务显示():
 func _跳转任务() -> void:
 	计划.切换场景("任务窗口")
 func _隐藏任务() -> void:
+	计划.窗口状态管理("任务插件","隐藏循环",null,隐藏.button_pressed)
 	更新_任务UI()

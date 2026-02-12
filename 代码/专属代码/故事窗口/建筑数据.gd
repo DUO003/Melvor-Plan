@@ -19,6 +19,10 @@ func _init(名称:String="") -> void:
 func 点数加工(物品:标准物品=null)->标准物品:
 	var 当前时间:float=Time.get_unix_time_from_system()
 	if 物品:
+		if not 产物产量.has(物品.item_name):
+			GBIS.moving_item_service.安全清除移动物品(物品)
+			计划.语法糖通知("该物品不能作为点数材料")
+			return
 		if not 储物空间.is_empty() and not 储物空间[0]==物品:
 			GBIS.moving_item_service.安全清除移动物品(储物空间[0])
 			储物空间.clear()

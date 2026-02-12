@@ -65,7 +65,9 @@ func 更新BUFF():
 			多余节点.queue_free()
 func 重载图钉():
 	计划.清除子节点(%"图钉容器")
-	%"图钉容器".add_child(生成任务栏节点("背包界面",true))
+	var 背包按钮:=生成任务栏节点("背包界面",true)
+	%"图钉容器".add_child(背包按钮)
+	计划.背包坐标=背包按钮.global_position+Vector2(背包按钮.size)*0.5
 	var 图钉场景 = preload("res://界面/插件/图钉.tscn").instantiate()
 	全局图钉=计划.梅存档["挂机"]["全局图钉"]
 	if 全局图钉.size()>=1:
@@ -104,7 +106,7 @@ func 生成任务栏按钮() -> void:# 生成任务栏所有按钮
 	for 界面名称 in 任务栏数组:
 		任务栏节点.add_child(生成任务栏节点(界面名称))
 	任务按钮本体.hide()# 按钮本体初始隐藏
-func 生成任务栏节点(界面名称,隐藏文本:bool=false):
+func 生成任务栏节点(界面名称,隐藏文本:bool=false)->Button:
 	var 任务按钮: Button = 任务按钮本体.duplicate()
 	任务按钮.show()#防止节点为隐藏
 	if 隐藏文本:

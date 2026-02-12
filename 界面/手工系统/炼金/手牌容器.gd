@@ -152,7 +152,10 @@ func _ready() -> void:
 	for 节点 in 节点数组:
 		if 节点 is Control:
 			卡片区节点数组.append(节点)
-	计划.显示后执行(延迟信号,self)
+	if Engine.is_editor_hint():
+		排列子节点()
+	else :
+		计划.显示后执行(延迟信号,self)
 func 延迟信号():
 	item_rect_changed.connect(排列子节点)
 	resized.connect(排列子节点)

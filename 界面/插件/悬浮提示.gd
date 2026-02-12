@@ -36,6 +36,7 @@ func 更新文本(文本内容:String="",节点实例:Node=self,默认字体:int
 	富文本.size=富文本.get_minimum_size()
 	size = 富文本.size + Vector2(16, 16)
 	富文本.position=Vector2(8, 5)
+	样式调整(默认字体+15)
 	visible=true
 func _process(_delta: float) -> void:
 	if visible:
@@ -45,7 +46,6 @@ func _process(_delta: float) -> void:
 		else :
 			visible=false
 			print("节点被销毁,提示隐藏")
-
 func 限制屏幕范围():
 	if global_position.x+size.x>屏幕尺寸.x:
 		global_position.x=屏幕尺寸.x-size.x
@@ -130,3 +130,8 @@ func 限制屏幕范围():
 		#索引+=1
 #
 	#return 最终拼接文本
+func 样式调整(标题高度:float=60):
+	var 样式:嵌套数组样式=get_theme_stylebox("panel").duplicate(true)
+	样式.样式数组[0].margin_bottom=标题高度-size.y
+	样式.样式数组[1].margin_top=-标题高度
+	add_theme_stylebox_override("panel",样式)

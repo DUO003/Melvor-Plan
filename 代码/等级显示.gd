@@ -21,6 +21,8 @@ func _ready() -> void:
 	custom_minimum_size.y=100
 	position=Vector2(0,0)
 	文本数值.position.y=0
+	await get_tree().process_frame
+	_更新_UI()
 func _更新_UI():
 	if not has_node("玩法文本") or not is_instance_valid(玩法文本):
 		return

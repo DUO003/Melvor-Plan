@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bj1tkjnkv0q6"]
+
+[ext_resource type="Script" uid="uid://c4inugc8h1tij" path="res://粒子/自定义粒子.gd" id="1_c0w12"]
+
+[node name="粒子" type="Node2D" unique_id=816697472]
+script = ExtResource("1_c0w12")
+
+[node name="精灵" type="Sprite2D" parent="." unique_id=753133909]

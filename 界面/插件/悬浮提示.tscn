@@ -5,8 +5,31 @@
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_3acc5"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_mcqd1"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxlpm"]
-bg_color = Color(0.55, 0.42716667, 0.18149999, 0.8627451)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcqd1"]
+bg_color = Color(0.56, 0.43493333, 0.18479998, 0.8627451)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+expand_margin_bottom = -140.0
+script = ExtResource("3_mcqd1")
+margin_bottom = -140
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxf10"]
+bg_color = Color(0.7, 0.5506667, 0.252, 0.8627451)
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = -60.0
+script = ExtResource("3_mcqd1")
+margin_top = -60
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3acc5"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.48292035, 0.3740945, 0.15240756, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -22,7 +45,7 @@ content_margin_top = -1.0
 content_margin_right = -1.0
 content_margin_bottom = -1.0
 script = ExtResource("2_3acc5")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_nxlpm")])
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_mcqd1"), SubResource("StyleBoxFlat_fxf10"), SubResource("StyleBoxFlat_3acc5")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [node name="悬浮提示" type="Panel" unique_id=644603075]

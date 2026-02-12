@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c64xayrsf6jhw"]
+[gd_scene format=3 uid="uid://c64xayrsf6jhw"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_6kgjp"]
 [ext_resource type="Script" uid="uid://dl4d3306j5yd2" path="res://addons/tab_saver/快捷跳转.gd" id="2_u6nr5"]
@@ -8,7 +8,7 @@ _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"12\">
 "
 base_scale = 2.0
 
-[node name="快捷跳转" type="ScrollContainer"]
+[node name="快捷跳转" type="ScrollContainer" unique_id=1659365029]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,7 +19,7 @@ size_flags_vertical = 3
 theme = ExtResource("1_6kgjp")
 script = ExtResource("2_u6nr5")
 
-[node name="水平分割" type="HSplitContainer" parent="."]
+[node name="水平分割" type="HSplitContainer" parent="." unique_id=1462586680]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 200)
 layout_mode = 2
@@ -27,18 +27,18 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="标签" type="TabContainer" parent="水平分割"]
+[node name="标签" type="TabContainer" parent="水平分割" unique_id=1013909608]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 current_tab = 0
 
-[node name="场景" type="ScrollContainer" parent="水平分割/标签"]
+[node name="场景" type="ScrollContainer" parent="水平分割/标签" unique_id=1701168259]
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_tab_index = 0
 
-[node name="场景页" type="GridContainer" parent="水平分割/标签/场景"]
+[node name="场景页" type="GridContainer" parent="水平分割/标签/场景" unique_id=1665264954]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -47,13 +47,13 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 10
 
-[node name="代码" type="ScrollContainer" parent="水平分割/标签"]
+[node name="代码" type="ScrollContainer" parent="水平分割/标签" unique_id=2135470845]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_tab_index = 1
 
-[node name="代码页" type="GridContainer" parent="水平分割/标签/代码"]
+[node name="代码页" type="GridContainer" parent="水平分割/标签/代码" unique_id=994689391]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -62,49 +62,49 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 10
 
-[node name="功能按钮" type="VBoxContainer" parent="水平分割"]
+[node name="功能按钮" type="VBoxContainer" parent="水平分割" unique_id=1924258293]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 theme_override_constants/separation = -1
 
-[node name="文本" type="Label" parent="水平分割/功能按钮"]
+[node name="文本" type="Label" parent="水平分割/功能按钮" unique_id=39081052]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 20
 text = "刷新插件"
 
-[node name="重新载入" type="Button" parent="水平分割/功能按钮"]
+[node name="重新载入" type="Button" parent="水平分割/功能按钮" unique_id=611550602]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 text = "刷新"
 
-[node name="文本2" type="Label" parent="水平分割/功能按钮"]
+[node name="文本2" type="Label" parent="水平分割/功能按钮" unique_id=537812821]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 20
 text = "打开全局代码"
 
-[node name="载入脚本" type="Button" parent="水平分割/功能按钮"]
+[node name="载入脚本" type="Button" parent="水平分割/功能按钮" unique_id=24454369]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 text = "计划"
 
-[node name="文本3" type="Label" parent="水平分割/功能按钮"]
+[node name="文本3" type="Label" parent="水平分割/功能按钮" unique_id=1309642394]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 20
 text = "导入表格"
 
-[node name="文件路径" type="LineEdit" parent="水平分割/功能按钮"]
+[node name="文件路径" type="LineEdit" parent="水平分割/功能按钮" unique_id=257302843]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "H:/下载/Edge2026/"
 placeholder_text = "从哪导入表格?"
 
-[node name="导入文件名" type="OptionButton" parent="水平分割/功能按钮"]
+[node name="导入文件名" type="OptionButton" parent="水平分割/功能按钮" unique_id=1049768131]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -117,7 +117,7 @@ popup/item_0/id = 0
 popup/item_1/text = "方块"
 popup/item_1/id = 1
 
-[node name="导入表格" type="Button" parent="水平分割/功能按钮"]
+[node name="导入表格" type="Button" parent="水平分割/功能按钮" unique_id=430829620]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8

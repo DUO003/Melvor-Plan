@@ -22,8 +22,8 @@ follow_viewport_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="悬浮提示" parent="悬浮面板" index="0"]
-offset_left = -66.0
-offset_top = 74.0
-offset_right = 34.0
-offset_bottom = 174.0
+offset_left = -122.0
+offset_top = 6.0
+offset_right = -22.0
+offset_bottom = 106.0
 "禁用" = true

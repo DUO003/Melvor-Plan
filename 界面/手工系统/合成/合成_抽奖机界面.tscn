@@ -34,6 +34,8 @@ script = ExtResource("8_tdurk")
 "商品数量" = 2
 "代币" = "手工精通代币"
 "商店名称" = "代币"
+"额外通知" = "
+催化剂代币可以兑换炼金玩法的催化剂"
 metadata/_custom_type_script = "uid://bivcgv6cvbvln"
 
 [sub_resource type="Resource" id="Resource_wqaqf"]
@@ -42,6 +44,35 @@ script = ExtResource("8_tdurk")
 "商品数量" = 2
 "代币" = "手工精通代币"
 "商店名称" = "代币"
+"额外通知" = "
+烹饪代币可以解锁烹饪菜谱"
+metadata/_custom_type_script = "uid://bivcgv6cvbvln"
+
+[sub_resource type="Resource" id="Resource_0lnvh"]
+script = ExtResource("8_tdurk")
+"商品名" = "手工精通代币"
+"代币" = "挂机精通代币"
+"商店名称" = "代币"
+"额外通知" = "
+挂机精通代币可以兑换其他系统代币"
+metadata/_custom_type_script = "uid://bivcgv6cvbvln"
+
+[sub_resource type="Resource" id="Resource_k2qxs"]
+script = ExtResource("8_tdurk")
+"商品名" = "蓝图纸"
+"代币类型" = "点数"
+"代币" = "蓝图纸"
+"费用" = 100
+"商店名称" = "蓝图纸合成"
+metadata/_custom_type_script = "uid://bivcgv6cvbvln"
+
+[sub_resource type="Resource" id="Resource_6nf3n"]
+script = ExtResource("8_tdurk")
+"商品名" = "蓝图纸"
+"商品数量" = 160
+"代币" = "手工精通代币"
+"费用" = 5
+"商店名称" = "蓝图纸合成"
 metadata/_custom_type_script = "uid://bivcgv6cvbvln"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5imkx"]
@@ -390,7 +421,7 @@ metadata/_tab_index = 2
 [node name="代币商店" parent="内容节点/界面布局/标签页/兑换图纸" index="0" unique_id=403135558 instance=ExtResource("7_urdgg")]
 layout_mode = 2
 size_flags_vertical = 3
-"商品数组数据" = Array[ExtResource("8_tdurk")]([SubResource("Resource_y7u36"), SubResource("Resource_1enq4"), SubResource("Resource_wqaqf")])
+"商品数组数据" = Array[ExtResource("8_tdurk")]([SubResource("Resource_y7u36"), SubResource("Resource_1enq4"), SubResource("Resource_wqaqf"), SubResource("Resource_0lnvh"), SubResource("Resource_k2qxs"), SubResource("Resource_6nf3n")])
 "启用图纸出售" = true
 
 [node name="循环任务" parent="内容节点/界面布局/标签页" index="4" unique_id=901319443 instance=ExtResource("9_jm6af")]

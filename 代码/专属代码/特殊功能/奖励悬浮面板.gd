@@ -36,7 +36,7 @@ func 更新物品():#先删除后添加
 		var 实际列数 = clamp(ceil((4 * sqrt(节点数量)) / 3), 3, 15)
 		节点容器.columns = int(实际列数)# 转换为整数（GridContainer.columns要求int类型）
 	for 物品数据 in 物品数组:
-		if not 物品数据 in 已加载道具:
+		if not 物品数据 in 已加载道具 and 物品数据 is ItemData:
 			var 道具卡片场景:道具卡片类 = preload("res://界面/道具卡片.tscn").instantiate()
 			if 详情>=1:
 				道具卡片场景.名称详情=true

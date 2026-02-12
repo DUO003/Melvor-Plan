@@ -248,6 +248,15 @@ texture_region_size = Vector2i(64, 64)
 8:11/0/texture_origin = Vector2i(-32, 0)
 8:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-26.666666, -5.333332, 58.66667, -5.333332, 58.66667, 58.66667, -26.666666, 58.66667)
 8:11/0/physics_layer_0/polygon_0/one_way = true
+8:11/0/custom_data_0 = "点数工作台"
+10:11/size_in_atlas = Vector2i(2, 2)
+10:11/0 = 0
+10:11/0/texture_origin = Vector2i(-32, 20)
+10:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-26.666666, -48, 32, -80, 90.66667, -48, 90.66667, -32, -26.666666, -32)
+10:11/0/physics_layer_0/polygon_0/one_way = true
+10:11/0/physics_layer_0/polygon_1/points = PackedVector2Array(-16, 10.666668, 80, 10.666668, 80, 16, -16, 16)
+10:11/0/physics_layer_0/polygon_1/one_way = true
+10:11/0/custom_data_0 = "销售商店"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ikw3u"]
 texture = ExtResource("3_j4yqu")

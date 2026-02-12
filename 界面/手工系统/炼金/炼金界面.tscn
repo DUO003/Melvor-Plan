@@ -167,6 +167,25 @@ script = ExtResource("4_vshoq")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_7ik2p")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
+[sub_resource type="Resource" id="Resource_m6wnm"]
+script = ExtResource("10_ngcgj")
+"商品名" = "催化剂代币"
+"商品数量" = 2
+"代币" = "手工精通代币"
+"商店名称" = "代币"
+"额外通知" = "
+催化剂代币可以兑换炼金玩法的催化剂"
+metadata/_custom_type_script = "uid://bivcgv6cvbvln"
+
+[sub_resource type="Resource" id="Resource_r40sw"]
+script = ExtResource("10_ngcgj")
+"商品名" = "手工精通代币"
+"代币" = "挂机精通代币"
+"商店名称" = "代币"
+"额外通知" = "
+挂机精通代币可以兑换其他系统代币"
+metadata/_custom_type_script = "uid://bivcgv6cvbvln"
+
 [sub_resource type="Resource" id="Resource_nocv6"]
 script = ExtResource("10_ngcgj")
 "商品名" = "圣盾徽记"
@@ -534,7 +553,7 @@ metadata/_tab_index = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-"商品数组数据" = Array[ExtResource("10_ngcgj")]([SubResource("Resource_nocv6"), SubResource("Resource_l2l3n"), SubResource("Resource_c1r7u")])
+"商品数组数据" = Array[ExtResource("10_ngcgj")]([SubResource("Resource_m6wnm"), SubResource("Resource_r40sw"), SubResource("Resource_nocv6"), SubResource("Resource_l2l3n"), SubResource("Resource_c1r7u")])
 "启用药水出售" = true
 
 [node name="循环任务" parent="内容节点/选项卡" index="4" unique_id=901319443 instance=ExtResource("11_d0ejy")]

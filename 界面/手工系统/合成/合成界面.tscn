@@ -52,11 +52,11 @@ script = ExtResource("2_2y0d5")
 }
 metadata/_edit_lock_ = true
 
-[node name="等级显示" parent="标题" index="0"]
+[node name="等级显示" parent="标题" parent_id_path=PackedInt32Array(2049886415) index="0" unique_id=2041357675]
 "系统" = "手工"
 "玩法" = "合成"
 
-[node name="内容区" type="VBoxContainer" parent="内容节点" index="0" unique_id=1076456070]
+[node name="内容区" type="VBoxContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=1076456070]
 custom_minimum_size = Vector2(1700, 0)
 layout_mode = 0
 offset_right = 1700.0
@@ -403,5 +403,5 @@ text = "累计精通
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="悬浮面板" parent="." index="3"]
+[node name="悬浮面板" parent="." index="3" unique_id=1473741879]
 unique_name_in_owner = true
