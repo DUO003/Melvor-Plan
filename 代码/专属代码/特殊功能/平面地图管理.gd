@@ -6,6 +6,9 @@ signal 更新_交互(增加:bool,内容:String,节点:Node,强制:bool)
 @warning_ignore("unused_signal")
 ##快捷栏物品更新后发出
 signal 更新_快捷键栏()
+@warning_ignore("unused_signal")
+##期望玩家前往到当前坐标
+signal 玩家导航(目标:float)
 var 交互字典:Dictionary={}
 ##编号从0计数默认快捷键1
 var 快捷栏编号:int=0

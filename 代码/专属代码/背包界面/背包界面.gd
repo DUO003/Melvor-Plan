@@ -11,6 +11,7 @@ var 上次查看:={}
 @onready var 物品简介: Control = %物品简介
 @onready var 装备槽: Control = %装备槽
 @onready var 随身商店: VBoxContainer = %随身商店
+@onready var 悬浮提示: 梅悬浮提示 = %悬浮提示
 func _ready():
 	super._ready()
 	计划.connect("更新_UI", Callable(self, "_更新_UI"))
@@ -23,7 +24,9 @@ func _ready():
 	GBIS.sig_item_focused.connect(func(物品实例:ItemData,背包名):#当鼠标获得物品焦点信号
 		上次查看["物品实例"]=物品实例
 		上次查看["背包名"]=背包名
-		%"悬浮提示".更新文本(物品实例.返回简介(背包名,{"富文本":40})))
+		var 数据:梅提示数据=梅提示数据.new()
+		数据.通用解析(物品实例,{"背包名":背包名})
+		计划.数据包提示.emit(数据))
 	GBIS.sig_item_focus_lost.connect(func(物品实例:ItemData):解除提示占用(物品实例))#当鼠标失去物品焦点信号(不安全概率失效)
 	计划.购买物品.connect(func(物品实例:ItemData,_背包名):#购买物品后需要刷新显示
 		if 上次查看.has("物品实例")and 上次查看["物品实例"] is ItemData and 物品实例==上次查看["物品实例"]:

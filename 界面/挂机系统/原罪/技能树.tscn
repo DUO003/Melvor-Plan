@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://hropdpl5f686"]
+[gd_scene format=3 uid="uid://hropdpl5f686"]
 
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_5fqhb"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_wgu8q"]
@@ -18,7 +18,7 @@ script = ExtResource("1_5fqhb")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nm3x"]
-bg_color = Color(0.6666667, 0.6039216, 0.43529412, 1)
+bg_color = Color(0.67, 0.6074667, 0.4355, 0.9019608)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -31,7 +31,7 @@ bg_color = Color(0.5294118, 0.37254903, 0.101960786, 0.19607843)
 script = ExtResource("1_5fqhb")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
-[node name="技能树" type="HSplitContainer"]
+[node name="技能树" type="HSplitContainer" unique_id=1253908715]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -45,12 +45,12 @@ script = ExtResource("2_vnvyc")
 metadata/_tab_index = 3
 metadata/_edit_lock_ = true
 
-[node name="技能面板" type="Panel" parent="."]
+[node name="技能面板" type="Panel" parent="." unique_id=1173977508]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6nm3x")
 
-[node name="排序容器" type="VBoxContainer" parent="技能面板"]
+[node name="排序容器" type="VBoxContainer" parent="技能面板" unique_id=851549361]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,7 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="显示的技能" type="RichTextLabel" parent="技能面板/排序容器"]
+[node name="显示的技能" type="RichTextLabel" parent="技能面板/排序容器" unique_id=62021639]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
@@ -80,32 +80,32 @@ text = "【研究改良】
 fit_content = true
 scroll_active = false
 
-[node name="动作进度条" parent="技能面板/排序容器" instance=ExtResource("4_vnvyc")]
+[node name="动作进度条" parent="技能面板/排序容器" unique_id=914418988 instance=ExtResource("4_vnvyc")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="研究队列" type="ScrollContainer" parent="技能面板/排序容器"]
+[node name="研究队列" type="ScrollContainer" parent="技能面板/排序容器" unique_id=409104898]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="研究队列" type="VBoxContainer" parent="技能面板/排序容器/研究队列"]
+[node name="研究队列" type="VBoxContainer" parent="技能面板/排序容器/研究队列" unique_id=1948905993]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="示例文本" type="Label" parent="技能面板/排序容器/研究队列/研究队列"]
+[node name="示例文本" type="Label" parent="技能面板/排序容器/研究队列/研究队列" unique_id=241029622]
 layout_mode = 2
 text = "1.研究XX"
 
-[node name="示例文本2" type="Label" parent="技能面板/排序容器/研究队列/研究队列"]
+[node name="示例文本2" type="Label" parent="技能面板/排序容器/研究队列/研究队列" unique_id=498221641]
 layout_mode = 2
 text = "2.研究XX"
 
-[node name="研究倍率" parent="技能面板/排序容器" instance=ExtResource("5_wsdai")]
+[node name="研究倍率" parent="技能面板/排序容器" unique_id=1220470569 instance=ExtResource("5_wsdai")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 40)
 layout_mode = 2
@@ -115,7 +115,7 @@ min_value = 1.0
 "零点标签" = "最大费用"
 "文本偏移" = Vector2(240, -10)
 
-[node name="研究经费" type="Label" parent="技能面板/排序容器"]
+[node name="研究经费" type="Label" parent="技能面板/排序容器" unique_id=1874224606]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/line_spacing = -12
@@ -123,23 +123,23 @@ theme_override_font_sizes/font_size = 35
 text = "每秒消耗%d金币
 获取%d的研究进度"
 
-[node name="按键区" type="HBoxContainer" parent="技能面板/排序容器"]
+[node name="按键区" type="HBoxContainer" parent="技能面板/排序容器" unique_id=1483754679]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="加入队列" type="Button" parent="技能面板/排序容器/按键区"]
+[node name="加入队列" type="Button" parent="技能面板/排序容器/按键区" unique_id=947821514]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 text = "加入队列"
 
-[node name="清空队列" type="Button" parent="技能面板/排序容器/按键区"]
+[node name="清空队列" type="Button" parent="技能面板/排序容器/按键区" unique_id=483054988]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 text = "清空队列"
 
-[node name="技能树节点" type="ScrollContainer" parent="."]
+[node name="技能树节点" type="ScrollContainer" parent="." unique_id=341161895]
 unique_name_in_owner = true
 clip_contents = false
 custom_minimum_size = Vector2(1000, 0)
@@ -148,14 +148,14 @@ size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mrh1p")
 metadata/_edit_lock_ = true
 
-[node name="显示区域" type="Control" parent="技能树节点"]
+[node name="显示区域" type="Control" parent="技能树节点" unique_id=1416213059]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 metadata/_edit_lock_ = true
 
-[node name="技能中心点" type="Control" parent="技能树节点/显示区域"]
+[node name="技能中心点" type="Control" parent="技能树节点/显示区域" unique_id=1365925304]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -167,7 +167,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="技能树中心点" type="Label" parent="技能树节点/显示区域/技能中心点"]
+[node name="技能树中心点" type="Label" parent="技能树节点/显示区域/技能中心点" unique_id=1025650920]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -189,7 +189,7 @@ script = ExtResource("6_86x06")
 "线颜色" = Color(0.5294118, 0.37254903, 0.101960786, 1)
 metadata/_edit_lock_ = true
 
-[node name="下限位" type="Label" parent="技能树节点/显示区域/技能中心点/技能树中心点"]
+[node name="下限位" type="Label" parent="技能树节点/显示区域/技能中心点/技能树中心点" unique_id=2015140300]
 layout_mode = 0
 offset_left = -89.0
 offset_top = 200.0
@@ -198,7 +198,7 @@ offset_bottom = 257.0
 text = "下面什么也没有"
 metadata/_edit_lock_ = true
 
-[node name="上限位" type="Label" parent="技能树节点/显示区域/技能中心点/技能树中心点"]
+[node name="上限位" type="Label" parent="技能树节点/显示区域/技能中心点/技能树中心点" unique_id=1249279994]
 layout_mode = 0
 offset_left = -109.0
 offset_top = -612.5
@@ -207,7 +207,7 @@ offset_bottom = -555.5
 text = "上面什么也没有"
 metadata/_edit_lock_ = true
 
-[node name="前限位" type="Label" parent="技能树节点/显示区域/技能中心点/技能树中心点"]
+[node name="前限位" type="Label" parent="技能树节点/显示区域/技能中心点/技能树中心点" unique_id=176031612]
 layout_mode = 0
 offset_left = -998.0
 offset_top = 13.5
@@ -216,7 +216,7 @@ offset_bottom = 70.5
 text = "再往前什么也没有"
 metadata/_edit_lock_ = true
 
-[node name="前限位2" type="Label" parent="技能树节点/显示区域/技能中心点/技能树中心点"]
+[node name="前限位2" type="Label" parent="技能树节点/显示区域/技能中心点/技能树中心点" unique_id=730098204]
 layout_mode = 0
 offset_left = 825.0
 offset_top = 24.5
@@ -225,7 +225,7 @@ offset_bottom = 81.5
 text = "再往前什么也没有"
 metadata/_edit_lock_ = true
 
-[node name="挂机核心" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+[node name="挂机核心" parent="技能树节点/显示区域/技能中心点" unique_id=1621827476 instance=ExtResource("2_dm3ti")]
 layout_mode = 0
 offset_left = -342.0
 offset_top = -40.0
@@ -235,7 +235,7 @@ grow_horizontal = 1
 "技能文本" = "挂机核心"
 "技能层级" = 0
 
-[node name="订单提交改良" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+[node name="订单提交改良" parent="技能树节点/显示区域/技能中心点" unique_id=2143123288 instance=ExtResource("2_dm3ti")]
 layout_mode = 0
 offset_left = -432.0
 offset_top = -190.0
@@ -245,7 +245,7 @@ grow_horizontal = 1
 "技能文本" = "订单提交改良"
 "技能层级" = 1
 
-[node name="额外的订单" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+[node name="额外的订单" parent="技能树节点/显示区域/技能中心点" unique_id=1194406010 instance=ExtResource("2_dm3ti")]
 layout_mode = 0
 offset_left = -254.0
 offset_top = -190.0
@@ -255,7 +255,7 @@ grow_horizontal = 1
 "技能文本" = "额外的订单"
 "技能层级" = 1
 
-[node name="仓储材料" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+[node name="仓储材料" parent="技能树节点/显示区域/技能中心点" unique_id=2136213603 instance=ExtResource("2_dm3ti")]
 layout_mode = 0
 offset_left = -200.0
 offset_top = -340.0
@@ -265,7 +265,7 @@ grow_horizontal = 1
 "技能文本" = "仓储材料"
 "技能层级" = 2
 
-[node name="仓储炼金" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+[node name="仓储炼金" parent="技能树节点/显示区域/技能中心点" unique_id=1300262912 instance=ExtResource("2_dm3ti")]
 layout_mode = 0
 offset_left = -280.0
 offset_top = -490.0
@@ -275,7 +275,7 @@ grow_horizontal = 1
 "技能文本" = "仓储炼金"
 "技能层级" = 3
 
-[node name="仓储食材" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+[node name="仓储食材" parent="技能树节点/显示区域/技能中心点" unique_id=1874383520 instance=ExtResource("2_dm3ti")]
 layout_mode = 0
 offset_left = -112.0
 offset_top = -490.0
@@ -285,7 +285,7 @@ grow_horizontal = 1
 "技能文本" = "仓储食材"
 "技能层级" = 3
 
-[node name="手工核心" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+[node name="手工核心" parent="技能树节点/显示区域/技能中心点" unique_id=599353267 instance=ExtResource("2_dm3ti")]
 layout_mode = 0
 offset_left = 186.0
 offset_top = -40.0
@@ -295,7 +295,7 @@ grow_horizontal = 1
 "技能文本" = "手工核心"
 "技能层级" = 0
 
-[node name="研究残缺图纸" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+[node name="研究残缺图纸" parent="技能树节点/显示区域/技能中心点" unique_id=231534028 instance=ExtResource("2_dm3ti")]
 layout_mode = 0
 offset_left = 96.0
 offset_top = -190.0
@@ -305,7 +305,7 @@ grow_horizontal = 1
 "技能文本" = "研究残缺图纸"
 "技能层级" = 1
 
-[node name="研究改良" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+[node name="研究改良" parent="技能树节点/显示区域/技能中心点" unique_id=2046212748 instance=ExtResource("2_dm3ti")]
 layout_mode = 0
 offset_left = 276.0
 offset_top = -190.0
@@ -315,7 +315,7 @@ grow_horizontal = 1
 "技能文本" = "研究改良"
 "技能层级" = 1
 
-[node name="残缺灵感" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+[node name="残缺灵感" parent="技能树节点/显示区域/技能中心点" unique_id=1728469589 instance=ExtResource("2_dm3ti")]
 layout_mode = 0
 offset_left = 96.0
 offset_top = -340.0
@@ -325,7 +325,7 @@ grow_horizontal = 1
 "技能文本" = "残缺灵感"
 "技能层级" = 2
 
-[node name="工序优化" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+[node name="工序优化" parent="技能树节点/显示区域/技能中心点" unique_id=1798264726 instance=ExtResource("2_dm3ti")]
 layout_mode = 0
 offset_left = 396.0
 offset_top = -340.0
@@ -335,7 +335,7 @@ grow_horizontal = 1
 "技能文本" = "工序优化"
 "技能层级" = 2
 
-[node name="工序清洗" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+[node name="工序清洗" parent="技能树节点/显示区域/技能中心点" unique_id=979314245 instance=ExtResource("2_dm3ti")]
 layout_mode = 0
 offset_left = 252.0
 offset_top = -490.0
@@ -345,7 +345,7 @@ grow_horizontal = 1
 "技能文本" = "工序清洗"
 "技能层级" = 3
 
-[node name="工序切割" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+[node name="工序切割" parent="技能树节点/显示区域/技能中心点" unique_id=1914004232 instance=ExtResource("2_dm3ti")]
 layout_mode = 0
 offset_left = 396.0
 offset_top = -490.0
@@ -355,7 +355,7 @@ grow_horizontal = 1
 "技能文本" = "工序切割"
 "技能层级" = 3
 
-[node name="工序腌制" parent="技能树节点/显示区域/技能中心点" instance=ExtResource("2_dm3ti")]
+[node name="工序腌制" parent="技能树节点/显示区域/技能中心点" unique_id=453724342 instance=ExtResource("2_dm3ti")]
 layout_mode = 0
 offset_left = 532.0
 offset_top = -490.0
@@ -365,7 +365,7 @@ grow_horizontal = 1
 "技能文本" = "工序腌制"
 "技能层级" = 3
 
-[node name="回到中心" type="Button" parent="技能树节点/显示区域"]
+[node name="回到中心" type="Button" parent="技能树节点/显示区域" unique_id=1449109093]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

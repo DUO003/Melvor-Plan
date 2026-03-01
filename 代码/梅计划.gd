@@ -112,6 +112,9 @@ signal 更新_背包物品信息(物品: ItemData,背包名称)
 ##场景被打开刚加入场景的信号
 signal 场景更新(当前场景:String)
 @warning_ignore("unused_signal")
+##背景色等
+signal 场景全局样式()
+@warning_ignore("unused_signal")
 ##强调通知的删除消耗,为""时移除所有
 signal 删除强调通知(通知名:String)
 @warning_ignore("unused_signal")
@@ -124,6 +127,9 @@ signal 通知更新()
 @warning_ignore("unused_signal")
 ##更新悬浮提示文本,传入需文本方法,节点
 signal 全局悬浮提示(文本内容:String,节点实例:Node,默认字体:int)
+@warning_ignore("unused_signal")
+##支持更多显示效果的悬浮提示
+signal 数据包提示(数据:梅提示数据)
 ##部分功能需要单独处理保存
 signal 全局保存()
 enum 修改枚举{无,添加,删除}
@@ -164,6 +170,8 @@ func 正式加载() -> void:
 	if 系统解锁("手工"):手工.手工系统上线()
 	else :手工.初始化手工系统()
 	游历=附加代码("梅游历")
+	if 系统解锁("游历"):游历.游历系统上线()
+	else :游历.初始化游历系统()
 	地图=附加代码("梅地图")
 	任务.任务创建()
 	GBIS.sig_inv_refresh.emit()###GBIS三连_背包商店装备栏
@@ -877,8 +885,9 @@ func 获取标签(类型参数="材料",最大阶级=20):
 ## 参数: 整数 （范围1-3999）[br]
 ## 返回: 对应的罗马数字字符串，若输入无效则返回空字符串
 func 罗马数字(整数: int) -> String:
-	if 整数 <= 0 or 整数 > 3999:# 检查输入有效性（装备等级通常为正整数）
+	if 整数 < 0 or 整数 > 3999:# 检查输入有效性（装备等级通常为正整数）
 		return ""
+	if 整数 == 0:return "零"
 	var 罗马数组 = [# 罗马数字数值与符号映射表（从大到小排列）
 		[1000, "M"],  # 千位
 		[900, "CM"],
@@ -970,7 +979,12 @@ func 打开存档目录(存档的路径=存档路径) -> bool:
 		print("输出：", 输出数组)
 		return false
 func 文本节点宽度(文本节点,对齐方式:HorizontalAlignment=HORIZONTAL_ALIGNMENT_LEFT)->Vector2:
-	if 文本节点 is RichTextLabel or 文本节点 is Label:
+	if 文本节点 is RichTextLabel :
+		var 字体:Font=文本节点.get_theme_font("normal_font")
+		var 文本内容:String=文本节点.text
+		var 字体大小:int=文本节点.get_theme_font_size("normal_font_size")
+		return 字体.get_string_size(文本内容,对齐方式, -1,字体大小)
+	elif 文本节点 is Label:
 		var 字体:Font=文本节点.get_theme_font("font")
 		var 文本内容:String=文本节点.text
 		var 字体大小:int=文本节点.get_theme_font_size("font_size")
@@ -1140,7 +1154,9 @@ func 语法糖粒子(图片文本: String,数量: int=3) -> void:
 	var 缩放倍率_x: float = 目标精灵尺寸.x / 图片原始尺寸.x
 	var 缩放倍率_y: float = 目标精灵尺寸.y / 图片原始尺寸.y
 	var 最终缩放倍率: Vector2 = Vector2(min(缩放倍率_x, 缩放倍率_y), min(缩放倍率_x, 缩放倍率_y))
-	for i in min(10,数量):
+	# 公式：实际粒子数 = ceil(log2(数量 + 1))，但不超过10
+	var 实际粒子数: int = ceil(log(数量 + 1) / log(2))
+	for i in clampi(实际粒子数, 1, 10):
 		var 移动精灵: Sprite2D = Sprite2D.new()
 		移动精灵.texture = 图片
 		移动精灵.centered = true  # 精灵锚点居中

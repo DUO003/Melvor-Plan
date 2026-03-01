@@ -276,10 +276,10 @@ script = ExtResource("2_r40sw")
 }
 metadata/_edit_lock_ = true
 
-[node name="等级显示" parent="标题" index="0"]
+[node name="等级显示" parent="标题" parent_id_path=PackedInt32Array(2049886415) index="0" unique_id=2041357675]
 "玩法" = "炼金"
 
-[node name="选项卡" type="TabContainer" parent="内容节点" index="0" unique_id=1174841282]
+[node name="选项卡" type="TabContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=1174841282]
 custom_minimum_size = Vector2(1290, 500)
 layout_mode = 1
 anchors_preset = 15
@@ -792,7 +792,7 @@ grow_vertical = 2
 text = "材料4"
 metadata/_edit_lock_ = true
 
-[node name="温馨提示" type="Label" parent="内容节点" index="1" unique_id=1595101079]
+[node name="温馨提示" type="Label" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="1" unique_id=1595101079]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 1

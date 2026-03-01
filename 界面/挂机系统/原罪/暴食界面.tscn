@@ -1,74 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://m2pe1aer11lg"]
+[gd_scene format=3 uid="uid://odh3uh423s02"]
 
+[ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_n75ih"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ti4dd"]
 [ext_resource type="Script" uid="uid://wkifikrsb7a1" path="res://界面/挂机系统/原罪/暴食界面.gd" id="2_pxug6"]
-[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_gqqu2"]
 [ext_resource type="PackedScene" uid="uid://bnjv1qqq3txe4" path="res://界面/插件/背包栏.tscn" id="4_a7kw1"]
 [ext_resource type="Texture2D" uid="uid://bvtyt8f700c8q" path="res://素材/自制/图标/暴食.svg" id="4_n75ih"]
 [ext_resource type="PackedScene" uid="uid://uh5t35s1wsr5" path="res://界面/插件/配方容器.tscn" id="5_c3a8x"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3a8x"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k2j2"]
 bg_color = Color(0.74, 0.557467, 0.1924, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n75ih"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3a8x"]
 bg_color = Color(0.1924, 0.557467, 0.74, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="暴食界面" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -220.0
-offset_bottom = -80.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_ti4dd")
+[node name="暴食界面" unique_id=166508811 instance=ExtResource("1_n75ih")]
 script = ExtResource("2_pxug6")
 "基类窗口名称" = "原罪_暴食界面"
 
-[node name="标题" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 100.0
-grow_horizontal = 2
-color = Color(0.75, 0.67, 0.45, 0.705882)
-metadata/_edit_lock_ = true
-
-[node name="等级显示" parent="标题" instance=ExtResource("3_gqqu2")]
-layout_mode = 1
-"系统" = "挂机"
-"玩法" = "暴食"
-"同时显示" = null
-
-[node name="背景" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.004
-offset_top = 100.0
-offset_bottom = -3.99994
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.82, 0.732533, 0.492, 0.705882)
-metadata/_edit_lock_ = true
-
-[node name="内容节点" type="Control" parent="."]
-anchors_preset = 0
-offset_top = 100.0
-offset_right = 1700.0
-offset_bottom = 1000.0
-metadata/_edit_lock_ = true
-
-[node name="主菜单" type="Button" parent="内容节点"]
+[node name="主菜单" type="Button" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=2057371183]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 1
@@ -87,7 +44,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "主菜单"
 
-[node name="暴食" type="TextureRect" parent="内容节点"]
+[node name="暴食" type="TextureRect" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="1" unique_id=486695974]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 0
@@ -101,7 +58,7 @@ texture = ExtResource("4_n75ih")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="标签" type="Label" parent="内容节点/暴食"]
+[node name="标签" type="Label" parent="内容节点/暴食" index="0" unique_id=885251880]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -117,7 +74,7 @@ grow_vertical = 0
 text = "暴食"
 horizontal_alignment = 1
 
-[node name="卡路里条" type="ProgressBar" parent="内容节点"]
+[node name="卡路里条" type="ProgressBar" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="2" unique_id=843973686]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 0
@@ -126,12 +83,12 @@ offset_top = 69.0
 offset_right = 1612.0
 offset_bottom = 156.0
 theme = ExtResource("1_ti4dd")
-theme_override_styles/fill = SubResource("StyleBoxFlat_c3a8x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1k2j2")
 step = 1.0
 value = 66.0
 show_percentage = false
 
-[node name="卡路里标题" type="Label" parent="内容节点/卡路里条"]
+[node name="卡路里标题" type="Label" parent="内容节点/卡路里条" index="0" unique_id=1784640864]
 layout_mode = 0
 offset_left = -201.0
 offset_top = 5.0
@@ -140,7 +97,7 @@ offset_bottom = 90.0
 theme_override_font_sizes/font_size = 60
 text = "卡路里"
 
-[node name="卡路数值" type="Label" parent="内容节点/卡路里条"]
+[node name="卡路数值" type="Label" parent="内容节点/卡路里条" index="1" unique_id=1868065953]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -152,7 +109,7 @@ text = "100/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="美味度条" type="ProgressBar" parent="内容节点"]
+[node name="美味度条" type="ProgressBar" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="3" unique_id=2037800685]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 0
@@ -161,12 +118,12 @@ offset_top = 159.0
 offset_right = 1612.0
 offset_bottom = 225.0
 theme = ExtResource("1_ti4dd")
-theme_override_styles/fill = SubResource("StyleBoxFlat_n75ih")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c3a8x")
 step = 1.0
 value = 66.0
 show_percentage = false
 
-[node name="卡路里标题" type="OptionButton" parent="内容节点/美味度条"]
+[node name="卡路里标题" type="OptionButton" parent="内容节点/美味度条" index="0" unique_id=1554374407]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = -245.0
@@ -181,7 +138,7 @@ popup/item_0/id = 0
 popup/item_1/text = "手工"
 popup/item_1/id = 1
 
-[node name="里程碑等级" type="Label" parent="内容节点/美味度条"]
+[node name="里程碑等级" type="Label" parent="内容节点/美味度条" index="1" unique_id=109161195]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = -248.0
@@ -194,7 +151,7 @@ text = "手工里程碑LV:0
 每级+1自动制作精华
 +10卡路里上限"
 
-[node name="美味数值" type="Label" parent="内容节点/美味度条"]
+[node name="美味数值" type="Label" parent="内容节点/美味度条" index="2" unique_id=458281186]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -206,8 +163,8 @@ text = "100/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="介绍" type="RichTextLabel" parent="内容节点"]
-layout_mode = 1
+[node name="介绍" type="RichTextLabel" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="4" unique_id=2037151202]
+layout_mode = 0
 offset_left = 834.0
 offset_top = 239.0
 offset_right = 1628.0
@@ -219,7 +176,7 @@ text = "吃掉食物会增加暴食值,和卡路里,美味里程碑
 [img=80x80]res://素材/豆包AI素材/图标/挂机.png[/img]50点回复1点体力
 [img=80x80]res://素材/豆包AI素材/图标/手工.png[/img]20点回复1精华"
 
-[node name="配方容器" parent="内容节点" instance=ExtResource("5_c3a8x")]
+[node name="配方容器" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="5" unique_id=1033077760 instance=ExtResource("5_c3a8x")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 107.0
@@ -231,7 +188,7 @@ offset_bottom = 625.0
 "限制类型" = ["食物"]
 "空置标签" = "食物"
 
-[node name="吃掉" type="Button" parent="内容节点/配方容器"]
+[node name="吃掉" type="Button" parent="内容节点/配方容器" index="4" unique_id=1256666525]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 26.0
@@ -240,7 +197,7 @@ offset_right = 154.0
 offset_bottom = 239.0
 text = "吃掉"
 
-[node name="食物属性" type="Label" parent="内容节点/配方容器"]
+[node name="食物属性" type="Label" parent="内容节点/配方容器" index="5" unique_id=573083188]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 190.0
@@ -252,11 +209,13 @@ text = "库存:
 卡路里:
 暴食值:"
 
-[node name="背包栏" parent="." instance=ExtResource("4_a7kw1")]
+[node name="背包栏" parent="." index="3" unique_id=76147203 instance=ExtResource("4_a7kw1")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -150.0
+offset_top = 100.0
 offset_right = 0.0
+offset_bottom = 160.0
 "白名单" = ["食物"]

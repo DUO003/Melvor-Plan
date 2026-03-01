@@ -160,9 +160,12 @@ func _on_slot_hover() -> void:
 		#if item_data:
 			# 让物品焦点服务聚焦该物品（显示物品详情、高亮等），并关联槽位名称
 			#GBIS.item_focus_service.focus_item(item_data, slot_name)
-		计划.全局悬浮提示.emit(返回装备栏显示文本(),self,30)
-		# 执行完场景1逻辑后直接返回，不再执行后续代码
-		return
+		#计划.全局悬浮提示.emit(返回装备栏显示文本(),self,30)
+		var 数据包:梅提示数据=梅提示数据.new()
+		数据包.通用解析(GBIS.equipment_slot_service.get_slot(slot_name))
+		数据包.节点=self
+		计划.数据包提示.emit(数据包)
+		return#不再执行后续代码
 	# 场景2：存在正在拖拽的物品，且拖拽的是装备数据类型
 	elif GBIS.moving_item_service.moving_item is EquipmentData or  GBIS.moving_item_service.moving_item is 物品宝石:
 		# 适配拖拽物品的显示尺寸：将拖拽物品的视图基础尺寸设为当前槽位的基础尺寸
@@ -177,24 +180,6 @@ func _on_slot_hover() -> void:
 	
 	# 标记控件需要重绘（触发_draw函数，更新装备槽的视觉状态，如可用/不可用的颜色提示）
 	queue_redraw()
-func 返回装备栏显示文本()->String:
-	var 装备槽:EquipmentSlotData=GBIS.equipment_slot_service.get_slot(slot_name)
-	var 物品 = 装备槽.equipped_item
-	var 文本:String=""
-	var 倍率:float=装备槽.倍率()
-	if 物品:
-		if 物品 is 物品装备:
-			文本=物品.返回简介(slot_name,{"倍率":倍率})
-		else :
-			文本="装备错误"
-	else :
-		文本="没有装备"
-	var 宝石物品数组=计划.装备.获得装备槽宝石(slot_name,false)
-	var 文本数组:Array=[]
-	for 宝石 in 宝石物品数组:
-		if 宝石 is 物品宝石:
-			文本数组.append(宝石.返回简介(slot_name,{"富文本":30,"简化":0}))
-	return 文本+"\r"+"\r".join(文本数组)
 ## 失去高亮
 func _on_slot_lose_hover() -> void:
 	_state = State.NORMAL

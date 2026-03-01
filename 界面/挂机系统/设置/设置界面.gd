@@ -3,6 +3,7 @@ extends 基类梅窗口
 @onready var 最大通知文本: Label = %最大通知文本
 @onready var 标签: TabContainer = %标签
 @onready var 展示按钮: Button = %展示按钮
+@onready var 排序按钮: Button = %排序
 @onready var 置顶: Button = %置顶
 @onready var 前移: Button = %前移
 @onready var 后移: Button = %后移
@@ -10,6 +11,7 @@ extends 基类梅窗口
 var 窗口:=计划.窗口
 var 选中窗口:String=""
 func _ready() -> void:
+	super._ready()
 	加载通知()
 	计划.通知更新.connect(加载通知)
 	计划.过去一秒.connect(func():
@@ -20,6 +22,7 @@ func _ready() -> void:
 	后移.icon=垂直翻转图片(后移.icon)
 	展示按钮.pressed.connect(窗口切换)
 	置顶.pressed.connect(_处理窗口排序.bind("置顶"))
+	排序按钮.pressed.connect(_处理窗口排序.bind("排序"))
 	前移.pressed.connect(_处理窗口排序.bind("前移"))
 	后移.pressed.connect(_处理窗口排序.bind("后移"))
 	跳转.pressed.connect(切换场景)
@@ -105,6 +108,8 @@ func _处理窗口排序(操作类型: String):
 	var 元素索引 = 解锁数组.find(选中窗口)#检查选中状态并获取索引
 	if 元素索引 == -1:return
 	match 操作类型:# 3. 根据操作类型执行对应逻辑
+		"排序":
+			计划.梅存档.挂机.窗口解锁=重排序数组(计划.梅存档.挂机.窗口解锁,计划.窗口.窗口数据.keys())
 		"置顶":
 			if 元素索引 == 0:
 				计划.语法糖通知("提示：【%s】已是第一个元素，无需置顶" % 选中窗口,"窗口提示")
@@ -112,7 +117,6 @@ func _处理窗口排序(操作类型: String):
 			# 置顶逻辑：移除后插入到首位
 			解锁数组.erase(选中窗口)
 			解锁数组.insert(0, 选中窗口)
-		
 		"前移":
 			if 元素索引 == 0:
 				计划.语法糖通知("提示：【%s】已是第一个元素，无法前移" % 选中窗口,"窗口提示")
@@ -137,6 +141,33 @@ func _处理窗口排序(操作类型: String):
 	任务栏初始化()
 	if 计划.节点有效性检查("空节点"):
 		计划.节点["空节点"].生成任务栏按钮()
+func 重排序数组(待排序数组: Array, 标准顺序数组: Array) -> Array:
+	# 步骤2：去重处理（利用字典的键唯一性，保留元素首次出现的顺序）
+	var 去重后的待排序数组: Array = []
+	var 临时去重字典: Dictionary = {}
+	for 元素 in 待排序数组:
+		# 仅保留文本类型元素，且未重复的元素
+		if typeof(元素) == TYPE_STRING and not 临时去重字典.has(元素):
+			临时去重字典[元素] = true
+			去重后的待排序数组.append(元素)
+	
+	# 步骤3：按标准顺序筛选并排列元素
+	var 排序结果数组: Array = []
+	var 已添加元素字典: Dictionary = {}  # 标记已添加的元素，避免重复
+	
+	# 先添加标准顺序中存在的元素（按标准顺序排列）
+	for 标准元素 in 标准顺序数组:
+		if 标准元素 in 去重后的待排序数组 and not 已添加元素字典.has(标准元素):
+			排序结果数组.append(标准元素)
+			已添加元素字典[标准元素] = true
+	
+	# 再添加待排序数组中不在标准顺序里的新增元素（保留其原有相对顺序）
+	for 待排序元素 in 去重后的待排序数组:
+		if not 已添加元素字典.has(待排序元素):
+			排序结果数组.append(待排序元素)
+			已添加元素字典[待排序元素] = true
+	
+	return 排序结果数组
 func 切换场景():
 	if 选中窗口=="":
 		计划.语法糖通知("未选中窗口","窗口提示")

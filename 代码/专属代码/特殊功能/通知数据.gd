@@ -1,2 +1,2 @@
 extends Resource
-class_name 梅通知数据
+#class_name 梅通知数据

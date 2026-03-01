@@ -29,7 +29,11 @@ func 更新判断(物品名:String):
 	if 物品 and 物品.item_name==物品名:
 		queue_redraw()
 func 显示简介():
-	计划.全局悬浮提示.emit(返回格子物品简介(),self,30)
+	var 数据:梅提示数据=梅提示数据.new()
+	数据.通用解析(物品)
+	数据.节点=self
+	计划.数据包提示.emit(数据)
+	#计划.全局悬浮提示.emit(返回格子物品简介(),self,30)
 func 隐藏简介():
 	计划.全局悬浮提示.emit("",self)
 func 返回格子物品简介()->String:

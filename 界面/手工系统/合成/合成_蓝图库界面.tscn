@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://btc3rxupddpeg"]
+
+[ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_aqrhg"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_j6ghi"]
+[ext_resource type="Script" uid="uid://b5w23ygqwa07f" path="res://代码/专属代码/合成主界面/合成_蓝图库界面.gd" id="2_rr1bm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rr1bm"]
+bg_color = Color(0.5294118, 0.37254903, 0.101960786, 0.19607843)
+script = ExtResource("2_j6ghi")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[node name="合成_蓝图库界面" unique_id=166508811 instance=ExtResource("1_aqrhg")]
+script = ExtResource("2_rr1bm")
+"基类窗口名称" = "合成_蓝图库"
+
+[node name="分栏节点" type="HSplitContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=385587209]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 1700.0
+offset_bottom = 900.0
+theme_override_constants/separation = 5
+
+[node name="选项卡" type="TabContainer" parent="内容节点/分栏节点" index="0" unique_id=721438073]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_rr1bm")
+current_tab = 0
+
+[node name="合成蓝图" type="ScrollContainer" parent="内容节点/分栏节点/选项卡" index="1" unique_id=1558877696]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="图纸容器" type="GridContainer" parent="内容节点/分栏节点/选项卡/合成蓝图" index="0" unique_id=1301484593]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = -5
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="烹饪菜谱" type="ScrollContainer" parent="内容节点/分栏节点/选项卡" index="2" unique_id=1065737073]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="菜谱容器" type="GridContainer" parent="内容节点/分栏节点/选项卡/烹饪菜谱" index="0" unique_id=224718663]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = -5
+theme_override_constants/v_separation = 0
+columns = 4
+
+[node name="炼金催化剂" type="ScrollContainer" parent="内容节点/分栏节点/选项卡" index="3" unique_id=1542220829]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="催化剂容器" type="GridContainer" parent="内容节点/分栏节点/选项卡/炼金催化剂" index="0" unique_id=1259697241]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = -5
+theme_override_constants/v_separation = 0
+columns = 4
+
+[node name="等级信息" type="RichTextLabel" parent="内容节点/分栏节点" index="1" unique_id=806616675]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(302, 0)
+layout_mode = 2
+theme_override_constants/line_separation = -10
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "当前最高蓝图等阶"
+
+[node name="主菜单" type="Button" parent="内容节点/分栏节点/等级信息" index="2" unique_id=1928054871]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 80)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -261.0
+offset_top = -108.0
+offset_right = -41.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "主菜单"

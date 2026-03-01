@@ -1,4 +1,4 @@
-extends Control
+extends 基类梅窗口
 @onready var 主菜单: Button = %主菜单
 @onready var 成就容器: GridContainer = %成就容器
 @onready var 成就进度: ProgressBar = %成就进度
@@ -9,6 +9,7 @@ var 成就卡片 = preload("res://界面/挂机系统/原罪/成就卡片.tscn")
 @onready var 悬浮提示: 梅悬浮提示 = %悬浮提示
 var 鼠标选中
 func _ready() -> void:
+	super._ready()
 	鼠标选中=""
 	主菜单.pressed.connect(计划.切换场景.bind("原罪界面"))
 	计划.清除子节点(成就容器)

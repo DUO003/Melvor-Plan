@@ -17,9 +17,12 @@ class_name ContainerData
 var items: Array[ItemData] = []
 ## 格子到物品的映射
 var 背包_格子_物品映射: Dictionary[Vector2i, ItemData] = {}
-## 保存所有空格子
-var 空格子数组:Array[Vector2i]=[]
-
+### 保存所有空格子
+#var 空格子数组:Array[Vector2i]=[]
+# 每行的空位数，索引=行号，值=空位数
+var 行空位: Array[int] = []
+# 每列的空位数，索引=列号，值=空位数
+var 列空位: Array[int] = []
 ## 构造函数
 @warning_ignore("shadowed_variable")
 func _init(默认名:String = GBIS.DEFAULT_INVENTORY_NAME, 宽度: int = 1, 高度: int = 1,标签: Array[String] = []) -> void:
@@ -34,7 +37,6 @@ func 更新背包参数():
 			var 格 = Vector2i(col, row)
 			if not 背包_格子_物品映射.has(格):
 				背包_格子_物品映射[格] = null
-				空格子数组.append(格)
 # 背包Y轴扩容方法（仅增加行数，纯数据层面，不处理UI）
 # 参数：扩容数量 - 必须≥1，代表要新增的行数
 func 扩容_增加行数(扩容数量: int) -> void:
@@ -50,7 +52,6 @@ func 扩容_增加行数(扩容数量: int) -> void:
 			var 新格子坐标 = Vector2i(列索引, 新增行索引)# 生成新格子的坐标
 			if not 背包_格子_物品映射.has(新格子坐标):# 安全校验：避免重复初始化已有格子
 				背包_格子_物品映射[新格子坐标] = null# 初始化新格子为null
-				空格子数组.append(新格子坐标)
 	rows = 新总行数
 	print("背包【", container_name, "】扩容完成：原有行数=", 原有总行数, "，新行数=", 新总行数, "，新增行数=", 扩容数量)
 ##清空背包
@@ -61,7 +62,7 @@ func clear() -> void:
 		for col in columns:
 			var 格 = Vector2i(col, row)
 			背包_格子_物品映射[格] = null
-	更新空格子数组()
+	初始化行列空位数组()
 ## 深度复制当前库存数据_初始化会使用
 func deep_duplicate() -> ContainerData:#创建新的容器数据实例
 	var ret = ContainerData.new(container_name, columns, rows, avilable_types)
@@ -83,22 +84,22 @@ func add_item(物品: ItemData) -> Array[Vector2i]:
 	return 占用网格
 
 ## 从库存中移除物品，返回是否移除成功
-func 从库存移除(物品: ItemData,禁用排序:bool=false) -> bool:
+func 从库存移除(物品: ItemData) -> bool:
 	if items.has(物品):
 		var 格组 = item_grids_map[物品]
 		for 格 in 格组:
 			背包_格子_物品映射[格] = null
+		更新行列空位(item_grids_map.get(物品,[]),false)
 		items.erase(物品)
 		item_grids_map.erase(物品)
-		if not 禁用排序:更新空格子数组()
 		return true
 	return false
 ## 移除大量物品时,降低排序的消耗,返回成功次数
 func 从库存批量移除物品(物品数组:Array[ItemData])->int:
 	var 移除次数:int=0
 	for 物品 in 物品数组:
-		if 从库存移除(物品,true):移除次数+=1
-	更新空格子数组()
+		if 从库存移除(物品):移除次数+=1
+	初始化行列空位数组()
 	return 移除次数
 ## 从库存中移除物品，返回是否移除成功
 func remove_item(物品: ItemData) -> bool:#旧方法名称
@@ -146,43 +147,91 @@ func _add_item_to_grids(item_data: ItemData, 占用网格: Array[Vector2i]) -> b
 	if not 占用网格.is_empty():
 		items.append(item_data)
 		item_grids_map[item_data] = 占用网格
+		更新行列空位(占用网格,true)
 		for 格 in 占用网格:
 			背包_格子_物品映射[格] = item_data
-			空格子数组.erase(格)
 		return true
 	计划.语法糖通知("物品%s添加失败"%item_data.item_name,"物品添加%s"%item_data.item_name)
 	return false
-func 更新空格子数组():
-	var 所有空格子:Array[Vector2i] = []
-	for row in rows:
-		for col in columns:
-			var 当前格子 = Vector2i(col, row)
-			if 背包_格子_物品映射[当前格子] == null:
-				所有空格子.append(当前格子)
-	空格子数组=所有空格子
+##增量更新行列空位数组（物品添加/移除时调用）
+func 更新行列空位(物品占用格子数组: Array[Vector2i], 是否添加物品: bool) -> void:
+	# 校验输入合法性
+	if 物品占用格子数组.is_empty():
+		print("警告：物品占用格子数组为空，无需更新")
+		return
+	行列检查()
+	# 定义操作增量：添加物品=占用格子，空位-1；移除物品=释放格子，空位+1
+	var 增量: int = -1 if 是否添加物品 else 1
+	# 遍历物品占用的每个格子，更新对应行列的空位数
+	for 格子坐标 in 物品占用格子数组:
+		var x: int = 格子坐标.x
+		var y: int = 格子坐标.y
+		if y < 0 or y >= rows or x < 0 or x >= columns:# 边界校验
+			print("警告：格子坐标(%s,%s)超出背包范围(%d列×%d行)" % [x, y, columns, rows])
+			continue
+		行空位[y] = max(0, 增量+行空位[y])# 更新行,列空位
+		列空位[x] = max(0, 增量+列空位[x])
+# 1. 初始化行/列空位数组
+func 初始化行列空位数组() -> void:
+	# 重置数组（确保长度匹配行列数）
+	行空位 = []
+	列空位 = []
+	# 初始化行空位：先填充0，再统计每行空位数
+	for y in rows:
+		行空位.append(0)
+		for x in columns:
+			var 当前格子 = Vector2i(x, y)
+			if 背包_格子_物品映射.get(当前格子, null) == null:
+				行空位[y] += 1
+	# 初始化列空位：先填充0，再统计每列空位数
+	for x in columns:
+		列空位.append(0)
+		for y in rows:
+			var 当前格子 = Vector2i(x, y)
+			if 背包_格子_物品映射.get(当前格子, null) == null:
+				列空位[x] += 1
+func 行列检查() -> bool:
+	# 核心判断句：只要行空位长度≠行数 或 列空位长度≠列数，就重新初始化
+	if len(行空位) != rows or len(列空位) != columns:
+		初始化行列空位数组()
+		return false
+	return true
 ## 查找第一个可用的网格位置来放置物品
 func 查找位置(物品: ItemData) -> Array[Vector2i]:
-	var 物品形状 = 物品.get_shape()
-	if 空格子数组.is_empty():
-		更新空格子数组()
-	for 起始格子 in 空格子数组:
-		var 可用格子组 = _try_get_empty_grids_by_shape(起始格子, 物品形状)
-		if not 可用格子组.is_empty():
-			return 可用格子组
+	行列检查()#该方法会检查并更新列空位&行空位
+	var 物品尺寸:Vector2i = 物品.get_shape()
+	if 物品尺寸.x <= 0 or 物品尺寸.y <= 0:
+		print("物品尺寸非法：", 物品尺寸)
+		return []
+	for y in rows:
+		if 行空位[y]<=0:continue
+		for x in columns:
+			if 列空位[x]<=0:continue
+			var 起始格子:Vector2i=Vector2i(x,y)
+			var 可用格子组 = _try_get_empty_grids_by_shape(起始格子, 物品尺寸)
+			if not 可用格子组.is_empty():
+				return 可用格子组
 	return []
-## 查找第一个可用的网格位置来放置物品
+## 查找第一个可用的网格位置来放置物品(兼容)
 func _find_first_availble_grids(物品: ItemData) -> Array[Vector2i]:#旧版本名称
 	return 查找位置(物品)
 ## 尝试根据物品形状获取从指定位置开始的空网格
-func _try_get_empty_grids_by_shape(start: Vector2i, shape: Vector2i) -> Array[Vector2i]:
+func _try_get_empty_grids_by_shape(起始格子: Vector2i, 物品尺寸: Vector2i) -> Array[Vector2i]:
+	# 2. 修正越界检查：核心逻辑 → 起始坐标 + 尺寸 - 1 > 最大索引（columns/rows是数量，索引从0开始）
+	var 最大列索引 = columns - 1
+	var 最大行索引 = rows - 1
+	var 结束列 = 起始格子.x + 物品尺寸.x - 1
+	var 结束行 = 起始格子.y + 物品尺寸.y - 1
+	if 起始格子.x < 0 or 起始格子.y < 0 or 结束列 > 最大列索引 or 结束行 > 最大行索引:
+		print("访问格子超出背包范围 | 起始:", 起始格子, " 尺寸:", 物品尺寸, " 最大索引:", Vector2i(最大列索引, 最大行索引))
+		return []
 	var ret: Array[Vector2i] = []
-	for row in shape.y:
-		for col in shape.x:
-			var grid_id = Vector2i(start.x + col, start.y + row)
-			if 背包_格子_物品映射.has(grid_id) and 背包_格子_物品映射[grid_id] == null:
-				ret.append(grid_id)
-			else:
-				return []
+	for Y in 物品尺寸.y:
+		for X in 物品尺寸.x:
+			var 坐标 = Vector2i(起始格子.x + X, 起始格子.y + Y)
+			if 背包_格子_物品映射.has(坐标) and 背包_格子_物品映射[坐标] == null:
+				ret.append(坐标)
+			else:return []
 	return ret
 ## 整理背包物品（物品排列 + 可堆叠物品合并）
 func 整理物品() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3gpyya5st4mm"]
+[gd_scene format=3 uid="uid://cyxheq28e2fm6"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_cn4lc"]
 [ext_resource type="Script" uid="uid://dt22h1unrvos7" path="res://界面/挂机系统/原罪/贪婪界面.gd" id="2_cn4lc"]
@@ -9,15 +9,16 @@
 [ext_resource type="FontFile" uid="uid://dybtol6821ybd" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-85-Bold/AlibabaPuHuiTi-3-85-Bold.woff2" id="7_3kl80"]
 [ext_resource type="PackedScene" uid="uid://bqxnx6wkd3qvi" path="res://界面/挂机系统/原罪/收藏卡片.tscn" id="8_0utu1"]
 [ext_resource type="Script" uid="uid://bosg1lvsi8bge" path="res://界面/挂机系统/原罪/收藏滚动区.gd" id="8_kl24w"]
+[ext_resource type="PackedScene" uid="uid://dlf0o8yt0hscg" path="res://界面/插件/悬浮提示.tscn" id="10_8mva7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3a8x"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysaov"]
 bg_color = Color(0.7411765, 0.5568628, 0.19215687, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kl80"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0847a"]
 bg_color = Color(0.5294118, 0.37254903, 0.101960786, 0)
 border_width_left = 5
 border_width_top = 5
@@ -35,7 +36,7 @@ margin_right = -20
 margin_bottom = -10
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0utu1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_to0pw"]
 bg_color = Color(0.5294118, 0.37254903, 0.101960786, 0.39215687)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -44,7 +45,7 @@ corner_radius_bottom_left = 10
 script = ExtResource("5_cn4lc")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kl24w"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2k7tf"]
 bg_color = Color(0.524333, 0.65, 0.52, 1)
 border_width_left = 5
 border_width_top = 5
@@ -56,7 +57,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mva7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pga12"]
 bg_color = Color(0.203922, 0.65098, 0.196078, 1)
 border_width_left = 5
 border_width_top = 5
@@ -68,7 +69,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cn4lc"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvt7m"]
 bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
 border_width_left = 5
 border_width_top = 5
@@ -80,7 +81,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="暴食界面" type="Control" node_paths=PackedStringArray("滚动区同步")]
+[node name="贪婪界面" type="Control" unique_id=166508811 node_paths=PackedStringArray("滚动区同步")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -95,23 +96,26 @@ script = ExtResource("2_cn4lc")
 "滚动区同步" = {
 "收藏品容器": NodePath("内容节点/分栏/排列/收藏滚动区")
 }
+metadata/_edit_use_anchors_ = true
 
-[node name="标题" type="ColorRect" parent="."]
+[node name="标题" type="ColorRect" parent="." unique_id=2049886415]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 100.0
 grow_horizontal = 2
-color = Color(0.75, 0.67, 0.45, 0.705882)
+color = Color(0.5254902, 0.6509804, 0.5176471, 1)
 metadata/_edit_lock_ = true
 
-[node name="等级显示" parent="标题" instance=ExtResource("3_0utu1")]
+[node name="等级显示" parent="标题" unique_id=2041357675 instance=ExtResource("3_0utu1")]
+custom_minimum_size = Vector2(1700, 100)
 layout_mode = 1
 "系统" = "挂机"
-"玩法" = "贪婪"
-"同时显示" = null
+"玩法" = "未命名"
 
-[node name="背景" type="ColorRect" parent="."]
+[node name="背景" type="ColorRect" parent="." unique_id=148655002]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -120,17 +124,21 @@ offset_top = 100.0
 offset_bottom = -3.99994
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.82, 0.732533, 0.492, 0.705882)
+color = Color(0.82, 0.73253334, 0.492, 0.7058824)
 metadata/_edit_lock_ = true
 
-[node name="内容节点" type="Control" parent="."]
-anchors_preset = 0
+[node name="内容节点" type="Control" parent="." unique_id=1614734378]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_top = 100.0
-offset_right = 1700.0
-offset_bottom = 1000.0
-metadata/_edit_lock_ = true
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="主菜单" type="Button" parent="内容节点"]
+[node name="主菜单" type="Button" parent="内容节点" unique_id=61273583]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 1
@@ -149,7 +157,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "主菜单"
 
-[node name="贪婪条" type="ProgressBar" parent="内容节点"]
+[node name="贪婪条" type="ProgressBar" parent="内容节点" unique_id=1509123570]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 0
@@ -158,12 +166,12 @@ offset_top = 11.528305
 offset_right = 1454.0
 offset_bottom = 98.528305
 theme = ExtResource("1_cn4lc")
-theme_override_styles/fill = SubResource("StyleBoxFlat_c3a8x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ysaov")
 step = 1.0
 value = 66.0
 show_percentage = false
 
-[node name="标题" type="Label" parent="内容节点/贪婪条"]
+[node name="标题" type="Label" parent="内容节点/贪婪条" unique_id=400377469]
 layout_mode = 0
 offset_left = -248.0
 offset_top = 1.471695
@@ -172,7 +180,7 @@ offset_bottom = 86.471695
 theme_override_font_sizes/font_size = 60
 text = "贪婪原罪"
 
-[node name="数值" type="Label" parent="内容节点/贪婪条"]
+[node name="数值" type="Label" parent="内容节点/贪婪条" unique_id=893354626]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -185,7 +193,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="收藏卡包" type="OptionButton" parent="内容节点"]
+[node name="收藏卡包" type="OptionButton" parent="内容节点" unique_id=867055344]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 258.0
@@ -200,7 +208,7 @@ popup/item_0/id = 0
 popup/item_1/text = "手工"
 popup/item_1/id = 1
 
-[node name="收藏评分" type="Label" parent="内容节点"]
+[node name="收藏评分" type="Label" parent="内容节点" unique_id=450541159]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 516.0
@@ -211,7 +219,7 @@ theme_override_constants/line_spacing = 0
 theme_override_constants/paragraph_spacing = -10
 text = "收藏评分"
 
-[node name="分栏" type="VSplitContainer" parent="内容节点"]
+[node name="分栏" type="VSplitContainer" parent="内容节点" unique_id=2046187355]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -222,20 +230,21 @@ offset_right = -38.0
 offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/split_bar_background = SubResource("StyleBoxFlat_3kl80")
-split_offset = -50
+theme_override_styles/split_bar_background = SubResource("StyleBoxFlat_0847a")
+split_offsets = PackedInt32Array(-50)
 dragging_enabled = false
+split_offset = -50
 
-[node name="占位节点" type="Panel" parent="内容节点/分栏"]
+[node name="占位节点" type="Panel" parent="内容节点/分栏" unique_id=394293357]
 unique_name_in_owner = true
 clip_contents = true
 custom_minimum_size = Vector2(1617, 220)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_0utu1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_to0pw")
 metadata/_edit_lock_ = true
 
-[node name="里程碑进度条" type="ProgressBar" parent="内容节点/分栏/占位节点"]
+[node name="里程碑进度条" type="ProgressBar" parent="内容节点/分栏/占位节点" unique_id=2095157856]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -246,61 +255,61 @@ anchor_bottom = 0.768
 offset_right = 750.0
 offset_bottom = 40.0
 grow_vertical = 0
-theme_override_styles/background = SubResource("StyleBoxFlat_kl24w")
-theme_override_styles/fill = SubResource("StyleBoxFlat_8mva7")
+theme_override_styles/background = SubResource("StyleBoxFlat_2k7tf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pga12")
 max_value = 3.0
 show_percentage = false
 script = ExtResource("6_3kl80")
 "里程碑点数" = 25
 "里程碑数组" = Array[int]([10, 20, 100])
 "里程碑长度" = 250.0
-"装饰样式" = SubResource("StyleBoxFlat_cn4lc")
+"装饰样式" = SubResource("StyleBoxFlat_mvt7m")
 "字体" = ExtResource("7_3kl80")
 "图片大小" = Vector2(100, 100)
 metadata/_edit_use_anchors_ = true
 
-[node name="排列" type="VBoxContainer" parent="内容节点/分栏"]
+[node name="排列" type="VBoxContainer" parent="内容节点/分栏" unique_id=67366382]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="收藏滚动区" type="ScrollContainer" parent="内容节点/分栏/排列"]
+[node name="收藏滚动区" type="ScrollContainer" parent="内容节点/分栏/排列" unique_id=1292541697]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_0utu1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_to0pw")
 script = ExtResource("8_kl24w")
 
-[node name="收藏品容器" type="HBoxContainer" parent="内容节点/分栏/排列/收藏滚动区"]
+[node name="收藏品容器" type="HBoxContainer" parent="内容节点/分栏/排列/收藏滚动区" unique_id=1908418905]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="收藏卡片" parent="内容节点/分栏/排列/收藏滚动区/收藏品容器" instance=ExtResource("8_0utu1")]
+[node name="收藏卡片" parent="内容节点/分栏/排列/收藏滚动区/收藏品容器" unique_id=1386927719 instance=ExtResource("8_0utu1")]
 layout_mode = 2
 
-[node name="按钮容器" type="HBoxContainer" parent="内容节点/分栏/排列"]
+[node name="按钮容器" type="HBoxContainer" parent="内容节点/分栏/排列" unique_id=1947644106]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="标签2" type="Label" parent="内容节点/分栏/排列/按钮容器"]
+[node name="标签2" type="Label" parent="内容节点/分栏/排列/按钮容器" unique_id=1938586526]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "领取将清空贪婪值"
 
-[node name="一键领取" type="Button" parent="内容节点/分栏/排列/按钮容器"]
+[node name="一键领取" type="Button" parent="内容节点/分栏/排列/按钮容器" unique_id=821490700]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "一键领取"
 
-[node name="标签" type="Label" parent="内容节点/分栏/排列/按钮容器"]
+[node name="标签" type="Label" parent="内容节点/分栏/排列/按钮容器" unique_id=914350121]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "提交数量"
 
-[node name="提交数量" type="SpinBox" parent="内容节点/分栏/排列/按钮容器"]
+[node name="提交数量" type="SpinBox" parent="内容节点/分栏/排列/按钮容器" unique_id=2047243807]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
@@ -308,7 +317,7 @@ value = 1.0
 rounded = true
 suffix = "次"
 
-[node name="暴食" type="TextureRect" parent="内容节点"]
+[node name="暴食" type="TextureRect" parent="内容节点" unique_id=748030453]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 47.0
@@ -321,7 +330,7 @@ texture = ExtResource("4_3kl80")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="标签" type="Label" parent="内容节点/暴食"]
+[node name="标签" type="Label" parent="内容节点/暴食" unique_id=280690053]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -336,3 +345,13 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "贪婪"
 horizontal_alignment = 1
+
+[node name="悬浮面板" type="Control" parent="." unique_id=1473741879]
+anchors_preset = 0
+
+[node name="悬浮提示" parent="悬浮面板" unique_id=1548291677 instance=ExtResource("10_8mva7")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -100.0
+offset_right = 0.0
+offset_bottom = 100.0

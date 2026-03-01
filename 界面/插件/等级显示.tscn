@@ -3,12 +3,16 @@
 [ext_resource type="Script" uid="uid://lscsq5yonm2v" path="res://代码/等级显示.gd" id="1_t1bs0"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_brtdv"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_in4vb"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_in4vb"]
 bg_color = Color(0.74, 0.557467, 0.1924, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c2fnl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brtdv"]
 bg_color = Color(0.1924, 0.557467, 0.74, 1)
@@ -45,10 +49,10 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme = ExtResource("2_brtdv")
+theme_override_styles/background = SubResource("StyleBoxEmpty_in4vb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_in4vb")
-max_value = 11000.0
 step = 1.0
-value = 2300.0
+value = 66.0
 allow_greater = true
 allow_lesser = true
 show_percentage = false
@@ -58,6 +62,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme = ExtResource("2_brtdv")
+theme_override_styles/background = SubResource("StyleBoxEmpty_c2fnl")
 theme_override_styles/fill = SubResource("StyleBoxFlat_brtdv")
 step = 1.0
 value = 33.0

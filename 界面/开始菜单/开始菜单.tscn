@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://kifxwq2enhmp"]
+[gd_scene format=3 uid="uid://kifxwq2enhmp"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_6r68l"]
 [ext_resource type="Texture2D" uid="uid://dxfklw2e15g0s" path="res://素材/游戏素材/背景/3.png" id="2_clqjb"]
@@ -65,7 +65,7 @@ metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clqjb"]
 bg_color = Color(0.65, 0.52216667, 0.2665, 0.19607843)
 
-[node name="开始界面" type="ScrollContainer"]
+[node name="开始界面" type="ScrollContainer" unique_id=87816416]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -76,13 +76,13 @@ size_flags_vertical = 3
 theme = ExtResource("1_6r68l")
 script = ExtResource("2_l8v50")
 
-[node name="开始菜单" type="Control" parent="."]
+[node name="开始菜单" type="Control" parent="." unique_id=787717874]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_6r68l")
 
-[node name="背景" type="NinePatchRect" parent="开始菜单"]
+[node name="背景" type="NinePatchRect" parent="开始菜单" unique_id=331547731]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -92,7 +92,7 @@ grow_vertical = 2
 texture = ExtResource("2_clqjb")
 metadata/_edit_lock_ = true
 
-[node name="游戏图标" type="TextureRect" parent="开始菜单"]
+[node name="游戏图标" type="TextureRect" parent="开始菜单" unique_id=281574760]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 166.0
@@ -103,7 +103,7 @@ texture = ExtResource("3_l8v50")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="游戏名称" type="Label" parent="开始菜单/游戏图标"]
+[node name="游戏名称" type="Label" parent="开始菜单/游戏图标" unique_id=675875385]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.14004914
@@ -117,7 +117,7 @@ text = "梅计划"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="版本号" type="Label" parent="开始菜单/游戏图标"]
+[node name="版本号" type="Label" parent="开始菜单/游戏图标" unique_id=1863091329]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 26.0
@@ -131,7 +131,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_trim_flags = 128
 
-[node name="感谢名单" type="Button" parent="开始菜单"]
+[node name="感谢名单" type="Button" parent="开始菜单" unique_id=1217290553]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 2
@@ -144,7 +144,7 @@ offset_bottom = -13.0
 grow_vertical = 0
 text = "感谢名单"
 
-[node name="名单容器" type="Panel" parent="开始菜单"]
+[node name="名单容器" type="Panel" parent="开始菜单" unique_id=910730895]
 visible = false
 layout_mode = 1
 anchors_preset = 9
@@ -156,7 +156,7 @@ offset_bottom = -89.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qbyf1")
 
-[node name="名单滚动区" type="ScrollContainer" parent="开始菜单/名单容器"]
+[node name="名单滚动区" type="ScrollContainer" parent="开始菜单/名单容器" unique_id=1030422015]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,19 +169,19 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="名单排列" type="VBoxContainer" parent="开始菜单/名单容器/名单滚动区"]
+[node name="名单排列" type="VBoxContainer" parent="开始菜单/名单容器/名单滚动区" unique_id=239465612]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="标题" type="Label" parent="开始菜单/名单容器/名单滚动区/名单排列"]
+[node name="标题" type="Label" parent="开始菜单/名单容器/名单滚动区/名单排列" unique_id=395598179]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_btlti")
 text = "感谢名单"
 
-[node name="说明文本" type="Label" parent="开始菜单/名单容器/名单滚动区/名单排列"]
+[node name="说明文本" type="Label" parent="开始菜单/名单容器/名单滚动区/名单排列" unique_id=1050934659]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
@@ -193,7 +193,7 @@ text = "这些玩家在游戏开发过程中提出
 对游戏反馈建议    排名不分先后"
 horizontal_alignment = 1
 
-[node name="名单" type="VBoxContainer" parent="开始菜单/名单容器/名单滚动区/名单排列"]
+[node name="名单" type="VBoxContainer" parent="开始菜单/名单容器/名单滚动区/名单排列" unique_id=1331144207]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("6_btlti")
@@ -202,7 +202,7 @@ script = ExtResource("6_btlti")
 "狼葵": "QQ群"
 })
 
-[node name="名称" type="Label" parent="开始菜单/名单容器/名单滚动区/名单排列/名单"]
+[node name="名称" type="Label" parent="开始菜单/名单容器/名单滚动区/名单排列/名单" unique_id=1965034433]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
@@ -210,7 +210,7 @@ theme_override_constants/line_spacing = -15
 theme_override_styles/normal = SubResource("StyleBoxFlat_btlti")
 text = "引领者"
 
-[node name="名称2" type="Label" parent="开始菜单/名单容器/名单滚动区/名单排列/名单"]
+[node name="名称2" type="Label" parent="开始菜单/名单容器/名单滚动区/名单排列/名单" unique_id=727841350]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
@@ -218,7 +218,7 @@ theme_override_constants/line_spacing = -15
 theme_override_styles/normal = SubResource("StyleBoxFlat_btlti")
 text = "狼葵"
 
-[node name="主面板" type="Panel" parent="开始菜单"]
+[node name="主面板" type="Panel" parent="开始菜单" unique_id=386794546]
 layout_mode = 0
 offset_left = 716.0
 offset_top = 114.0
@@ -226,7 +226,7 @@ offset_right = 1816.0
 offset_bottom = 815.0
 theme_override_styles/panel = SubResource("StyleBox_ubnl7")
 
-[node name="存档数量" type="Label" parent="开始菜单/主面板"]
+[node name="存档数量" type="Label" parent="开始菜单/主面板" unique_id=1766790040]
 layout_mode = 1
 offset_left = 23.0
 offset_top = 23.0
@@ -235,7 +235,7 @@ offset_bottom = 93.0
 theme_override_font_sizes/font_size = 50
 text = "存档数量:0"
 
-[node name="存档选择" type="TabContainer" parent="开始菜单/主面板"]
+[node name="存档选择" type="TabContainer" parent="开始菜单/主面板" unique_id=1625386353]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 50.0
@@ -244,7 +244,7 @@ offset_right = 1050.0
 offset_bottom = 457.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_clqjb")
 
-[node name="按钮区" type="HBoxContainer" parent="开始菜单/主面板"]
+[node name="按钮区" type="HBoxContainer" parent="开始菜单/主面板" unique_id=397123760]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -255,31 +255,31 @@ offset_right = 1050.0
 offset_bottom = -26.0
 grow_vertical = 0
 
-[node name="开始游戏" type="Button" parent="开始菜单/主面板/按钮区"]
+[node name="开始游戏" type="Button" parent="开始菜单/主面板/按钮区" unique_id=208819591]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 text = "开始游戏"
 
-[node name="设置" type="Button" parent="开始菜单/主面板/按钮区"]
+[node name="设置" type="Button" parent="开始菜单/主面板/按钮区" unique_id=81974660]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 text = "打开设置"
 
-[node name="新建" type="Button" parent="开始菜单/主面板/按钮区"]
+[node name="新建" type="Button" parent="开始菜单/主面板/按钮区" unique_id=1027729425]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 text = "新建"
 
-[node name="删除" type="Button" parent="开始菜单/主面板/按钮区"]
+[node name="删除" type="Button" parent="开始菜单/主面板/按钮区" unique_id=58043306]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 text = "删除"
 
-[node name="自定义存档名" type="LineEdit" parent="开始菜单/主面板"]
+[node name="自定义存档名" type="LineEdit" parent="开始菜单/主面板" unique_id=1441728490]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 2
@@ -295,7 +295,7 @@ placeholder_text = "自定义存档名称"
 max_length = 7
 emoji_menu_enabled = false
 
-[node name="存档" type="Label" parent="开始菜单/主面板/自定义存档名"]
+[node name="存档" type="Label" parent="开始菜单/主面板/自定义存档名" unique_id=1305320364]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.559375
@@ -306,7 +306,7 @@ theme_override_font_sizes/font_size = 50
 text = "文件名:"
 metadata/_edit_use_anchors_ = true
 
-[node name="玩家名" type="LineEdit" parent="开始菜单/主面板"]
+[node name="玩家名" type="LineEdit" parent="开始菜单/主面板" unique_id=645213529]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 2
@@ -323,7 +323,7 @@ placeholder_text = "用户名"
 max_length = 7
 emoji_menu_enabled = false
 
-[node name="存档" type="Label" parent="开始菜单/主面板/玩家名"]
+[node name="存档" type="Label" parent="开始菜单/主面板/玩家名" unique_id=574449264]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.559375
@@ -333,7 +333,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 50
 text = "用户名:"
 
-[node name="多语言功能区" type="Panel" parent="开始菜单"]
+[node name="多语言功能区" type="Panel" parent="开始菜单" unique_id=1816004725]
 layout_mode = 0
 offset_left = 1444.0
 offset_top = 840.0
@@ -341,7 +341,7 @@ offset_right = 1813.0
 offset_bottom = 904.0
 theme_override_styles/panel = SubResource("StyleBox_ubnl7")
 
-[node name="语言下拉菜单" type="OptionButton" parent="开始菜单/多语言功能区"]
+[node name="语言下拉菜单" type="OptionButton" parent="开始菜单/多语言功能区" unique_id=1322386284]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -358,12 +358,12 @@ popup/item_0/id = 0
 popup/item_1/text = "英文en"
 popup/item_1/id = 1
 
-[node name="地球" type="Sprite2D" parent="开始菜单/多语言功能区"]
+[node name="地球" type="Sprite2D" parent="开始菜单/多语言功能区" unique_id=73802959]
 position = Vector2(41.12495, 33)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_l8v50")
 
-[node name="可用性警告" type="Label" parent="开始菜单/多语言功能区"]
+[node name="可用性警告" type="Label" parent="开始菜单/多语言功能区" unique_id=124537175]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 65.0
@@ -372,7 +372,7 @@ offset_bottom = 122.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "多语言未适配不可用"
 
-[node name="退出游戏" type="Button" parent="开始菜单"]
+[node name="退出游戏" type="Button" parent="开始菜单" unique_id=136733970]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 4
@@ -387,7 +387,7 @@ size_flags_horizontal = 6
 text = "退出游戏"
 icon = ExtResource("8_qbyf1")
 
-[node name="提示容器" type="VBoxContainer" parent="开始菜单"]
+[node name="提示容器" type="VBoxContainer" parent="开始菜单" unique_id=1274884832]
 unique_name_in_owner = true
 z_index = 10
 layout_mode = 1
@@ -399,7 +399,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_behavior_recursive = 1
 
-[node name="确认弹窗" type="ConfirmationDialog" parent="."]
+[node name="确认弹窗" type="ConfirmationDialog" parent="." unique_id=1733792519]
 unique_name_in_owner = true
 disable_3d = true
 oversampling_override = 1.0
@@ -413,7 +413,7 @@ theme = ExtResource("1_6r68l")
 ok_button_text = "确认"
 cancel_button_text = "取消"
 
-[node name="节点" type="Control" parent="确认弹窗"]
+[node name="节点" type="Control" parent="确认弹窗" unique_id=1461040001]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 10.0
@@ -421,7 +421,7 @@ offset_top = 28.0
 offset_right = 830.0
 offset_bottom = 293.0
 
-[node name="弹窗标题" type="Label" parent="确认弹窗/节点"]
+[node name="弹窗标题" type="Label" parent="确认弹窗/节点" unique_id=969183942]
 unique_name_in_owner = true
 layout_mode = 0
 offset_top = -28.0
@@ -432,7 +432,7 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 60
 text = "二次确认"
 
-[node name="弹窗文本" type="Label" parent="确认弹窗/节点"]
+[node name="弹窗文本" type="Label" parent="确认弹窗/节点" unique_id=1689929033]
 unique_name_in_owner = true
 layout_mode = 0
 offset_top = 56.0
@@ -446,7 +446,7 @@ text = "存档创建后
 用户名修改后进入游戏存档后生效
 沙盒模式启用可以使用命令,但禁用多人(未开发)"
 
-[node name="启用测试" type="CheckButton" parent="确认弹窗/节点"]
+[node name="启用测试" type="CheckButton" parent="确认弹窗/节点" unique_id=1959848480]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 527.0

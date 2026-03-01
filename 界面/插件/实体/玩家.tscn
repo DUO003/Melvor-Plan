@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://cjsi35bpmr7oo"]
+
+[ext_resource type="PackedScene" uid="uid://ufm678ahcmcd" path="res://界面/插件/实体/实体卡片.tscn" id="1_1eny7"]
+[ext_resource type="Script" uid="uid://87l6457hgm5e" path="res://界面/插件/实体/玩家.gd" id="2_2gbtp"]
+[ext_resource type="Texture2D" uid="uid://r1hn1hh16sok" path="res://素材/元宝/玩家模板/玩家_右手.svg" id="3_u38l8"]
+[ext_resource type="Texture2D" uid="uid://bx0ton86wll5l" path="res://素材/元宝/玩家模板/玩家_脚.svg" id="4_nrmjh"]
+[ext_resource type="Texture2D" uid="uid://cnqs4oip6ix7d" path="res://素材/元宝/玩家模板/玩家_裤子.svg" id="5_n6vmw"]
+[ext_resource type="Texture2D" uid="uid://ck8iind3jwkmj" path="res://素材/元宝/玩家模板/玩家_衣服.svg" id="6_4dgi1"]
+[ext_resource type="Texture2D" uid="uid://kfgf757ve2" path="res://素材/元宝/玩家模板/玩家_头.svg" id="7_467m1"]
+[ext_resource type="Texture2D" uid="uid://tm2kfb61nn42" path="res://素材/元宝/玩家模板/玩家_左手.svg" id="8_4shqo"]
+[ext_resource type="Texture2D" uid="uid://dp8t0kyapjwic" path="res://素材/元宝/玩家模板/玩家_鞋.svg" id="9_4jdll"]
+[ext_resource type="Texture2D" uid="uid://48f5avq72m63" path="res://素材/豆包AI素材/玩家模板/玩家_表情.svg" id="10_nrmjh"]
+
+[node name="玩家" unique_id=1504805159 instance=ExtResource("1_1eny7")]
+script = ExtResource("2_2gbtp")
+
+[node name="贴图" parent="图片" parent_id_path=PackedInt32Array(353747191) index="0" unique_id=2061192371]
+texture = null
+
+[node name="右手" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="1" unique_id=385958921]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06666667
+anchor_top = 0.35444444
+anchor_right = 0.34000003
+anchor_bottom = 0.69666666
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_u38l8")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="脚" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="2" unique_id=592117422]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.28000003
+anchor_top = 0.78333336
+anchor_right = 0.73333335
+anchor_bottom = 0.92111117
+offset_top = -1.5258789e-05
+offset_bottom = -3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_nrmjh")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="裤子" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="3" unique_id=1413535606]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21333334
+anchor_top = 0.60333335
+anchor_right = 0.78
+anchor_bottom = 0.83555555
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_n6vmw")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="衣服" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="4" unique_id=704627090]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.20666666
+anchor_top = 0.28666663
+anchor_right = 0.7733333
+anchor_bottom = 0.6433333
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_4dgi1")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="头" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="5" unique_id=204906473]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.14
+anchor_top = -0.043333333
+anchor_right = 0.8666667
+anchor_bottom = 0.30333334
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_467m1")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="左手" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="6" unique_id=1224965144]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6466667
+anchor_top = 0.35
+anchor_right = 0.90726674
+anchor_bottom = 0.6975556
+offset_right = -0.0900116
+offset_bottom = 0.08001709
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_4shqo")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="鞋子" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="7" unique_id=1270701705]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15333334
+anchor_top = 0.86333334
+anchor_right = 0.75333333
+anchor_bottom = 0.98333335
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_4jdll")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="表情" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="8" unique_id=1563648225]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25333336
+anchor_top = 0.10666667
+anchor_right = 0.6066667
+anchor_bottom = 0.27555558
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_nrmjh")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true

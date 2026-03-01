@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dg6xjko3rdcta" path="res://addons/grid_base_inventory_system/core/view/slot/equipment_slot_view.gd" id="1_7vht8"]
 [ext_resource type="Script" uid="uid://bsj3qj4hsie1" path="res://界面/挂机系统/背包/装备槽.gd" id="1_cktd2"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_e64v6"]
-[ext_resource type="PackedScene" uid="uid://cjsi35bpmr7oo" path="res://界面/插件/玩家.tscn" id="3_e64v6"]
+[ext_resource type="PackedScene" uid="uid://cjsi35bpmr7oo" path="res://界面/插件/实体/玩家.tscn" id="3_e64v6"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_j8cvi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gdyh"]

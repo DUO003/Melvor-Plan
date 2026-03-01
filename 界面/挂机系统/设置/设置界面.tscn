@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c2em38efacfwr"]
+[gd_scene format=3 uid="uid://biiibff0gkl1g"]
 
 [ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_cujtg"]
 [ext_resource type="Script" uid="uid://ook5wj6ba7ci" path="res://界面/挂机系统/设置/设置界面.gd" id="2_gd2bl"]
@@ -6,20 +6,24 @@
 [ext_resource type="PackedScene" uid="uid://dron5fg7jasw2" path="res://界面/挂机系统/任务窗口/设置面板.tscn" id="7_2bix8"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="7_m36mt"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ynx36"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ey0y"]
 content_margin_left = 10.0
 content_margin_right = 10.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ukwti"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wjqcg"]
 
-[node name="设置界面" unique_id=590196138 instance=ExtResource("1_cujtg")]
+[node name="设置界面" unique_id=166508811 node_paths=PackedStringArray("选项卡同步") instance=ExtResource("1_cujtg")]
 script = ExtResource("2_gd2bl")
 "基类窗口名称" = "设置界面"
+"选项卡同步" = {
+"标签选项卡": NodePath("内容节点/标签"),
+"设置标签": NodePath("内容节点/标签/设置面板/设置面板/设置标签")
+}
 
-[node name="等级显示" parent="标题" index="0"]
+[node name="等级显示" parent="标题" parent_id_path=PackedInt32Array(2049886415) index="0" unique_id=2041357675]
 "玩法" = "设置"
 
-[node name="标签" type="TabContainer" parent="内容节点" index="0" unique_id=1273188622]
+[node name="标签" type="TabContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=1936856338]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -27,30 +31,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ynx36")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2ey0y")
 current_tab = 0
 
-[node name="快捷面板" type="VBoxContainer" parent="内容节点/标签" index="1" unique_id=1166352535]
+[node name="快捷面板" type="VBoxContainer" parent="内容节点/标签" index="1" unique_id=1719066912]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="操作说明" type="Label" parent="内容节点/标签/快捷面板" index="0" unique_id=2146101743]
+[node name="操作说明" type="Label" parent="内容节点/标签/快捷面板" index="0" unique_id=995257806]
 layout_mode = 2
 text = "窗口解锁后只显示主界面,如果想把子界面放在界面上可以在这启用."
 
-[node name="任务栏" type="HBoxContainer" parent="内容节点/标签/快捷面板" index="1" unique_id=743882629]
+[node name="任务栏" type="HBoxContainer" parent="内容节点/标签/快捷面板" index="1" unique_id=951880888]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="任务栏" type="ScrollContainer" parent="内容节点/标签/快捷面板/任务栏" index="0" unique_id=1703675595]
+[node name="任务栏" type="ScrollContainer" parent="内容节点/标签/快捷面板/任务栏" index="0" unique_id=997651241]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="任务栏盒子" type="GridContainer" parent="内容节点/标签/快捷面板/任务栏/任务栏" index="0" unique_id=1388231260]
+[node name="任务栏盒子" type="GridContainer" parent="内容节点/标签/快捷面板/任务栏/任务栏" index="0" unique_id=1192177719]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -58,67 +62,78 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 columns = 2
 
-[node name="窗口介绍" type="VBoxContainer" parent="内容节点/标签/快捷面板/任务栏" index="1" unique_id=263663790]
+[node name="窗口介绍" type="VBoxContainer" parent="内容节点/标签/快捷面板/任务栏" index="1" unique_id=1703217784]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="内容节点/标签/快捷面板/任务栏/窗口介绍" index="0" unique_id=1995475722]
+[node name="HBoxContainer" type="HBoxContainer" parent="内容节点/标签/快捷面板/任务栏/窗口介绍" index="0" unique_id=353883294]
 layout_mode = 2
 
-[node name="展示按钮" type="CheckButton" parent="内容节点/标签/快捷面板/任务栏/窗口介绍/HBoxContainer" index="0" unique_id=512599362]
+[node name="展示按钮" type="CheckButton" parent="内容节点/标签/快捷面板/任务栏/窗口介绍/HBoxContainer" index="0" unique_id=830679308]
 unique_name_in_owner = true
 editor_description = "保持禁用状态,用于显示图片"
 custom_minimum_size = Vector2(220, 120)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ukwti")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ukwti")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_ukwti")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ukwti")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ukwti")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_ukwti")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ukwti")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ukwti")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ukwti")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ukwti")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ukwti")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wjqcg")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_wjqcg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wjqcg")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_wjqcg")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wjqcg")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_wjqcg")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_wjqcg")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wjqcg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wjqcg")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_wjqcg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wjqcg")
 icon = ExtResource("7_m36mt")
 alignment = 1
 expand_icon = true
 
-[node name="窗口名" type="Label" parent="内容节点/标签/快捷面板/任务栏/窗口介绍/HBoxContainer" index="1" unique_id=1744401196]
+[node name="窗口名" type="Label" parent="内容节点/标签/快捷面板/任务栏/窗口介绍/HBoxContainer" index="1" unique_id=681579746]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "窗口名称:未选中"
 
-[node name="窗口排序" type="HBoxContainer" parent="内容节点/标签/快捷面板/任务栏/窗口介绍" index="1" unique_id=1306029099]
+[node name="窗口排序" type="HBoxContainer" parent="内容节点/标签/快捷面板/任务栏/窗口介绍" index="1" unique_id=1101130160]
 layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="置顶" type="Button" parent="内容节点/标签/快捷面板/任务栏/窗口介绍/窗口排序" index="0" unique_id=1053528590]
+[node name="置顶" type="Button" parent="内容节点/标签/快捷面板/任务栏/窗口介绍/窗口排序" index="0" unique_id=1098103884]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
 text = "窗口置顶"
 
-[node name="前移" type="Button" parent="内容节点/标签/快捷面板/任务栏/窗口介绍/窗口排序" index="1" unique_id=1725361004]
+[node name="排序" type="Button" parent="内容节点/标签/快捷面板/任务栏/窗口介绍/窗口排序" index="1" unique_id=1012235780]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
+text = "一键排序"
+
+[node name="前移" type="Button" parent="内容节点/标签/快捷面板/任务栏/窗口介绍/窗口排序" index="2" unique_id=1532701795]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
 text = "前移"
 icon = ExtResource("4_6wh4b")
 
-[node name="后移" type="Button" parent="内容节点/标签/快捷面板/任务栏/窗口介绍/窗口排序" index="2" unique_id=338086786]
+[node name="后移" type="Button" parent="内容节点/标签/快捷面板/任务栏/窗口介绍/窗口排序" index="3" unique_id=701570833]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
 text = "后移"
 icon = ExtResource("4_6wh4b")
 
-[node name="跳转" type="Button" parent="内容节点/标签/快捷面板/任务栏/窗口介绍/窗口排序" index="3" unique_id=1820329387]
+[node name="跳转" type="Button" parent="内容节点/标签/快捷面板/任务栏/窗口介绍/窗口排序" index="4" unique_id=1334161617]
 unique_name_in_owner = true
 layout_mode = 2
-text = "前往"
+size_flags_horizontal = 0
+text = "前往->"
 
-[node name="窗口介绍" type="Label" parent="内容节点/标签/快捷面板/任务栏/窗口介绍" index="2" unique_id=434684387]
+[node name="窗口介绍" type="Label" parent="内容节点/标签/快捷面板/任务栏/窗口介绍" index="2" unique_id=1130150258]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -126,28 +141,30 @@ text = "简介:
 将光标放到左侧选项查看选项信息
 管理任务栏中显示的按钮"
 
-[node name="通知历史" type="VBoxContainer" parent="内容节点/标签" index="2" unique_id=1049249210]
+[node name="通知历史" type="VBoxContainer" parent="内容节点/标签" index="2" unique_id=745305070]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="最大通知文本" type="Label" parent="内容节点/标签/通知历史" index="0" unique_id=1408002617]
+[node name="最大通知文本" type="Label" parent="内容节点/标签/通知历史" index="0" unique_id=434283728]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "最多保留,本次游戏中,最新的20条通知"
 
-[node name="滚动区" type="ScrollContainer" parent="内容节点/标签/通知历史" index="1" unique_id=312468004]
+[node name="滚动区" type="ScrollContainer" parent="内容节点/标签/通知历史" index="1" unique_id=914099149]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="提示" type="VBoxContainer" parent="内容节点/标签/通知历史/滚动区" index="0" unique_id=1172980808]
+[node name="提示" type="VBoxContainer" parent="内容节点/标签/通知历史/滚动区" index="0" unique_id=1759278764]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="设置面板" parent="内容节点/标签" index="3" unique_id=765085291 instance=ExtResource("7_2bix8")]
+[node name="设置面板" parent="内容节点/标签" index="3" unique_id=396692463 instance=ExtResource("7_2bix8")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
+
+[editable path="内容节点/标签/设置面板"]

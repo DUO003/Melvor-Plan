@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://ufm678ahcmcd"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ss1xo"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_xq4x1"]
+[ext_resource type="Script" uid="uid://qb047g3a7a37" path="res://界面/插件/实体/实体卡片.gd" id="3_glkit"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="4_i80no"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dgi1"]
+bg_color = Color(0.67, 0.52036667, 0.22109999, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("2_xq4x1")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="Animation" id="Animation_467m1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("图片:anchors_preset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("图片:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(55, 60)]
+}
+
+[sub_resource type="Animation" id="Animation_n6vmw"]
+resource_name = "待机"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("图片:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(55, 60), Vector2(55, 55), Vector2(55, 60)]
+}
+
+[sub_resource type="Animation" id="Animation_4dgi1"]
+resource_name = "移动"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.034906585, 0.0, -0.034906585, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4dgi1"]
+_data = {
+&"RESET": SubResource("Animation_467m1"),
+&"待机": SubResource("Animation_n6vmw"),
+&"移动": SubResource("Animation_4dgi1")
+}
+
+[node name="实体" type="Panel" unique_id=1504805159]
+custom_minimum_size = Vector2(260, 360)
+anchors_preset = -1
+anchor_right = 0.13541667
+anchor_bottom = 0.33333334
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(130, 360)
+mouse_behavior_recursive = 2
+theme = ExtResource("1_ss1xo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_4dgi1")
+script = ExtResource("3_glkit")
+metadata/_edit_use_anchors_ = true
+
+[node name="名称" type="Label" parent="." unique_id=1438488523]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+mouse_behavior_recursive = 1
+theme_override_font_sizes/font_size = 35
+text = "测试实体"
+horizontal_alignment = 1
+text_overrun_behavior = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="图片" type="Control" parent="." unique_id=353747191]
+z_index = 1
+custom_minimum_size = Vector2(150, 300)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -300.0
+offset_right = 75.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_behavior_recursive = 1
+
+[node name="贴图" type="TextureRect" parent="图片" unique_id=2061192371]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(55, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_i80no")
+expand_mode = 5
+stretch_mode = 3
+
+[node name="动画" type="AnimationPlayer" parent="." unique_id=786618005]
+libraries/ = SubResource("AnimationLibrary_4dgi1")
+autoplay = &"RESET"

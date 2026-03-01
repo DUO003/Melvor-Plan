@@ -1,0 +1,23 @@
+[gd_resource type="TileSet" format=3 uid="uid://dpbfj8gebcyck"]
+
+[ext_resource type="Texture2D" uid="uid://bpdja1tfyieb6" path="res://素材/综合/地块集合.png" id="1_hp2pq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnyx0"]
+texture = ExtResource("1_hp2pq")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+3:1/0 = 0
+2:1/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+1:1/0 = 0
+
+[resource]
+tile_shape = 3
+tile_size = Vector2i(256, 256)
+sources/3 = SubResource("TileSetAtlasSource_lnyx0")

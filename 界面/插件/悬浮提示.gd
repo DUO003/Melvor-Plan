@@ -1,45 +1,193 @@
-extends Panel
+extends PanelContainer
 class_name 梅悬浮提示
 ##最大宽度
 var 宽度上限=800
 var 屏幕尺寸:Vector2
 var 节点:Node 
 @export var 禁用:bool=false
+@export var 禁用后删除:bool=true
 @onready var 富文本: RichTextLabel = %文本
+@onready var 样式: VBoxContainer = %样式
 func _ready() -> void:
 	if 禁用:
-		queue_free()
+		if 禁用后删除:queue_free()
+		富文本.visible=false
 		return
 	visible=false
 	屏幕尺寸=计划.游戏分辨率
+	富文本.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	富文本.custom_minimum_size=Vector2(宽度上限, 50)
 	计划.全局悬浮提示.connect(更新文本)
+	计划.数据包提示.connect(数据包更新)
 func 更新文本(文本内容:String="",节点实例:Node=self,默认字体:int=40):
 	if 文本内容=="":
 		if 节点==节点实例:
 			visible=false
 		return
 	节点=节点实例
+	默认样式启用()
 	富文本.add_theme_font_size_override("normal_font_size",默认字体)
 	富文本.add_theme_constant_override("paragraph_separation",int(默认字体*-0.1))
 	富文本.add_theme_constant_override("line_separation",int(默认字体*-0.1))
-	global_position = get_global_mouse_position() + Vector2(10, 10)
 	富文本.text=文本内容
 	富文本.autowrap_mode=TextServer.AUTOWRAP_OFF
-	富文本.size=Vector2(50, 50)
-	富文本.custom_minimum_size=Vector2(50, 50)
+	富文本.size=Vector2(0, 0)
+	富文本.custom_minimum_size=Vector2(0, 0)
 	var 范围=富文本.get_combined_minimum_size()
 	if 范围.x>宽度上限:
 		富文本.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 		富文本.custom_minimum_size=Vector2(宽度上限, 50)
-	富文本.size=富文本.get_minimum_size()
-	await get_tree().process_frame
-	富文本.size=富文本.get_minimum_size()
-	size = 富文本.size + Vector2(16, 16)
-	富文本.position=Vector2(8, 5)
-	样式调整(默认字体+15)
+	size = Vector2(0, 0)
+	if not 禁用:
+		global_position = get_global_mouse_position() + Vector2(10, 10)
 	visible=true
+func 数据包更新(数据:梅提示数据):
+	if 数据.节点:节点=数据.节点
+	else :节点=self
+	计划.清除子节点(样式,富文本)
+	富文本.visible=false
+	if 数据.提示数组.is_empty():
+		visible=false
+		return
+	var 富文本模板: RichTextLabel=RichTextLabel.new()
+	富文本模板.bbcode_enabled=true
+	富文本模板.fit_content=true
+	富文本模板.scroll_active=false
+	富文本模板.autowrap_mode=TextServer.AUTOWRAP_OFF
+	富文本模板.size=Vector2(0, 0)
+	#富文本模板.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+	富文本模板.add_theme_font_size_override("normal_font_size",数据.默认字体)
+	富文本模板.add_theme_constant_override("paragraph_separation",int(数据.默认字体*-0.15))
+	富文本模板.add_theme_constant_override("line_separation",int(数据.默认字体*-0.4))
+	#富文本模板.add_theme_stylebox_override("normal",默认边距)
+	for 提示数据:Dictionary in 数据.提示数组:
+		var 模式:String=提示数据.get("模式","默认")
+		match 模式:
+			"默认":
+				var 富文本克隆:=富文本模板.duplicate()
+				富文本克隆.text=提示数据.文本
+				if 提示数据.has("宽度"):
+					富文本克隆.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+					富文本克隆.custom_minimum_size=Vector2(提示数据.宽度, 50)
+				样式.add_child(富文本克隆)
+			"分栏":
+				var 分栏:=分栏节点(提示数据.get("间距",0))
+				for 分栏数据 in 提示数据.分栏组:
+					if 分栏数据 is String:
+						var 富文本克隆:=富文本模板.duplicate()
+						富文本克隆.text=分栏数据
+						分栏.add_child(富文本克隆)
+					elif 分栏数据 is float:
+						var 进度:=ProgressBar.new()
+						进度.max_value=1
+						进度.value=分栏数据
+						进度.custom_minimum_size=Vector2(75,20)
+						进度.show_percentage=true#false
+						进度.size_flags_vertical=Control.SIZE_SHRINK_CENTER
+						进度.add_theme_font_size_override("font_size",int(数据.默认字体*0.6))
+						进度.add_theme_color_override("font_color", Color(0, 0, 0))
+						调整进度条填充颜色(进度,分栏数据)
+						分栏.add_child(进度)
+					elif 分栏数据 is Dictionary:
+						var 图片:TextureRect=TextureRect.new()
+						图片.texture=分栏数据.图片
+						图片.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
+						图片.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+						图片.custom_minimum_size=Vector2(数据.默认字体,数据.默认字体)
+						分栏.add_child(图片)
+				样式.add_child(分栏)
+			"分隔线":
+				# 获取分隔线宽度（默认值5）
+				var 分隔线宽度:float = 提示数据.get("宽度", 5.0)
+				# 创建ColorRect作为分隔线
+				var 分隔线:ColorRect = ColorRect.new()
+				# 设置分隔线样式（可根据需要调整颜色）
+				分隔线.color = 提示数据.get("颜色", Color(0.7, 0.7, 0.7)) # 默认灰色
+				# 设置分隔线尺寸：宽度自适应容器，高度为指定的宽度参数
+				分隔线.custom_minimum_size = Vector2(0, 分隔线宽度)
+				分隔线.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				var 边距容器:MarginContainer = MarginContainer.new()
+				var 边距:int=提示数据.get("边距",5)
+				边距容器.add_theme_constant_override("margin_left", 边距)
+				边距容器.add_theme_constant_override("margin_right", 边距)
+				边距容器.add_theme_constant_override("margin_top", 边距)
+				边距容器.add_theme_constant_override("margin_bottom", 边距)
+				边距容器.add_child(分隔线)
+				样式.add_child(边距容器)
+	if not 禁用:
+		size = Vector2(0, 0)
+	print(size)
+	数据包样式调整(数据.标题高度)
+	if not 禁用:
+		global_position = get_global_mouse_position() + Vector2(10, 10)
+	visible=true
+	#print("提示数组:\n",数据.提示数组)
+func 调整进度条填充颜色(进度条节点: ProgressBar, 进度数值: float) -> void:
+	# ========== 颜色可配置变量（方法内定义，方便调整） ==========
+	# 过低色：0-25% 显示的暗红色（替代原亮红）
+	var 过低色: Color = Color(0.4, 0.04, 0.046, 1.0)
+	# 中间色：50% 显示的暗黄色（替代原亮黄，渐变基准色）
+	var 中间色: Color = Color(0.61, 0.5, 0.012, 1.0)
+	# 完美色：75%-100% 显示的暗绿色（替代原亮绿）
+	var 完美色: Color = Color(0.07, 0.7, 0.164, 1.0)
+	# ==========================================================
+
+	# 1. 参数校验：确保节点有效且是ProgressBar类型
+	if 进度条节点 == null or not 进度条节点 is ProgressBar:
+		print("错误：传入的节点不是有效的ProgressBar！")
+		return
+
+	# 2. 裁剪数值到0-1范围，避免异常值导致颜色错误
+	var 有效进度值: float = clamp(进度数值, 0.0, 1.0)
+
+	# 3. 获取并复制进度条默认的fill样式盒（必须复制，避免修改全局样式）
+	var 填充样式盒: StyleBoxFlat = 进度条节点.get_theme_stylebox("fill", "ProgressBar").duplicate()
+	if 填充样式盒 == null:
+		print("错误：无法获取ProgressBar的fill样式盒！")
+		return
+
+	# 4. 根据进度值计算目标颜色（引用配置变量）
+	var 目标颜色: Color
+	if 有效进度值 <= 0.25:
+		# 0-25%：使用配置的过低色
+		目标颜色 = 过低色
+	elif 有效进度值 < 0.75:
+		var 渐变系数: float
+		var 红通道: float
+		var 绿通道: float
+		var 蓝通道: float
+		if 有效进度值 <= 0.5:
+			# 25%-50%：过低色 → 中间色 渐变
+			# 计算渐变系数（0~1，对应25%到50%的区间）
+			渐变系数 = (有效进度值 - 0.25) * 4  # 结果范围：0 → 1
+			# 手动计算每个通道的渐变值：起始值 + 系数*(目标值-起始值)
+			红通道 = 过低色.r + 渐变系数 * (中间色.r - 过低色.r)
+			绿通道 = 过低色.g + 渐变系数 * (中间色.g - 过低色.g)
+			蓝通道 = 过低色.b + 渐变系数 * (中间色.b - 过低色.b)
+		else:
+			# 50%-75%：中间色 → 完美色 渐变
+			# 计算渐变系数（0~1，对应50%到75%的区间）
+			渐变系数 = (有效进度值 - 0.5) * 4  # 结果范围：0 → 1
+			# 手动计算每个通道的渐变值
+			红通道 = 中间色.r + 渐变系数 * (完美色.r - 中间色.r)
+			绿通道 = 中间色.g + 渐变系数 * (完美色.g - 中间色.g)
+			蓝通道 = 中间色.b + 渐变系数 * (完美色.b - 中间色.b)
+		# 组装最终的渐变颜色
+		目标颜色 = Color(红通道, 绿通道, 蓝通道)
+	else:
+		# 75%-100%：使用配置的完美色
+		目标颜色 = 完美色
+
+	# 5. 修改样式盒背景色并应用到进度条
+	填充样式盒.bg_color = 目标颜色
+	进度条节点.add_theme_stylebox_override("fill", 填充样式盒)
+func 分栏节点(间距:int)->HBoxContainer:
+	var 分栏:HBoxContainer=HBoxContainer.new()
+	分栏.add_theme_constant_override("separation",间距)
+	分栏.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+	return 分栏
 func _process(_delta: float) -> void:
-	if visible:
+	if visible and not 禁用:
 		if 节点:
 			global_position = get_global_mouse_position() + Vector2(10, 10)
 			限制屏幕范围()
@@ -130,8 +278,21 @@ func 限制屏幕范围():
 		#索引+=1
 #
 	#return 最终拼接文本
-func 样式调整(标题高度:float=60):
-	var 样式:嵌套数组样式=get_theme_stylebox("panel").duplicate(true)
-	样式.样式数组[0].margin_bottom=标题高度-size.y
-	样式.样式数组[1].margin_top=-标题高度
-	add_theme_stylebox_override("panel",样式)
+var 数据包样式:嵌套数组样式=preload("res://界面/主题/提示/悬浮提示.tres")
+var 默认样式:扩展的扁平样式框=preload("res://界面/主题/提示/默认悬浮提示.tres")
+var 默认边距:扩展的扁平样式框=preload("res://界面/主题/提示/默认边距.tres")
+func 数据包样式调整(标题高度:float=60):
+	#get_theme_stylebox("panel")
+	var 全局配置字典:Dictionary = ProjectSettings.get_setting("global/snake_case")
+	var 标题色:=Color(计划.配置文件.get("悬浮标题色", 全局配置字典.get("悬浮标题色","#b38c40dc"))as String)
+	var 背景色:=Color(计划.配置文件.get("悬浮背景色", 全局配置字典.get("悬浮背景色","#8f6f2fe6"))as String)
+	var 当前样式:嵌套数组样式=数据包样式.duplicate(true)
+	当前样式.样式数组[0].margin_top=-标题高度
+	当前样式.样式数组[0].bg_color=背景色
+	当前样式.样式数组[1].margin_bottom=标题高度-size.y
+	当前样式.样式数组[1].bg_color=标题色
+	add_theme_stylebox_override("panel",当前样式)
+func 默认样式启用():
+	计划.清除子节点(样式,富文本)
+	富文本.visible=true
+	add_theme_stylebox_override("panel",默认样式)

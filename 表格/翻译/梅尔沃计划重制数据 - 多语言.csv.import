@@ -15,3 +15,5 @@ dest_files=["res://表格/翻译/梅尔沃计划重制数据 - 多语言.EN.tran
 
 compress=true
 delimiter=0
+unescape_keys=false
+unescape_translations=true

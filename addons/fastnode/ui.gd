@@ -792,9 +792,9 @@ func 快速生成结构():
 func 按下功能(功能):
 	if %"添加".button_pressed==true:
 		加载当前节点()
-		var 节点=插件节点字典[功能]["代码"].new()
+		var 节点:Node=插件节点字典[功能]["代码"].new()
 		节点.name = 功能
-		parent_node.add_child(节点)
+		首个选中节点.add_child(节点)
 		节点.owner = EditorInterface.get_edited_scene_root()
 	if %"复制".button_pressed==true:
 		DisplayServer.clipboard_set(功能)
@@ -823,21 +823,21 @@ func _on_模板_1_pressed() -> void:
 
 
 #------容器
-var selection
-var selected_nodes
-var parent_node 
+var 选择器实例
+var 选中节点数组
+var 首个选中节点 
 
 func 加载当前节点() -> void:
-	selection = EditorInterface.get_selection() #获取选择器
-	selected_nodes = selection.get_selected_nodes() #获取选中的节点
-	if selected_nodes.size() == 0:
+	选择器实例 = EditorInterface.get_selection() #获取选择器
+	选中节点数组 = 选择器实例.get_selected_nodes() #获取选中的节点
+	if 选中节点数组.size() == 0:
 		printerr("请先选择一个父节点")
 		return
-	parent_node = selected_nodes[0]
+	首个选中节点 = 选中节点数组[0]
 ##添加节点
 func 模版(节点类型) -> void:
 	加载当前节点()
 	var newnode = Container.new()
 	newnode.name = "Container"
-	parent_node.add_child(newnode)
+	首个选中节点.add_child(newnode)
 	newnode.owner = EditorInterface.get_edited_scene_root()

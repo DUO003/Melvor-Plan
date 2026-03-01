@@ -5,12 +5,29 @@ class_name 基类梅窗口#逐渐改使用基类 当前大部分窗口未使用
 @export var 选项卡同步: Dictionary[String,TabContainer] = {}
 @export var 滚动区同步: Dictionary[String,ScrollContainer] = {}
 @export var 生命周期计时器: Array[Timer]
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	assert(基类窗口名称 != "", "基类窗口名称不能为空，所有继承者必须重写这个属性")
 	计划.节点[基类窗口名称]=self#注册
 	call_deferred("自动加载")
+	if not 基类窗口名称=="空节点":
+		计划.场景全局样式.connect(设置样式)
+		call_deferred("设置样式")
+func 设置样式():
+	if 基类窗口名称=="空节点":
+		return
+	var 标题: ColorRect = %标题
+	var 背景: ColorRect = %背景
+	if 背景 and 标题:
+		var 全局配置字典:Dictionary = ProjectSettings.get_setting("global/snake_case")
+		var 标题色:=Color(计划.配置文件.get("主题标题色", 全局配置字典.get("主题标题色","#86a684"))as String)
+		var 背景色:=Color(计划.配置文件.get("主题背景色", 全局配置字典.get("主题背景色","#d1bb7db4"))as String)
+		标题.color=标题色
+		背景.color=背景色
+	else :
+		print("错误窗口找不到节点:",基类窗口名称)
 func 自动加载():
 	for 选项名称:String in 选项卡同步:
 		var 当前选项卡=选项卡同步[选项名称]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://cuduk8yjwl5nn"]
+[gd_scene format=3 uid="uid://84g558i4npvr"]
 
-[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_msww2"]
+[ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_2eyov"]
 [ext_resource type="Script" uid="uid://dp04b1gplr3je" path="res://界面/挂机系统/原罪/原罪界面.gd" id="2_riyk3"]
-[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_4ycnk"]
 [ext_resource type="Texture2D" uid="uid://b5816q0b3ific" path="res://素材/自制/图标/傲慢.svg" id="4_2eyov"]
 [ext_resource type="PackedScene" uid="uid://bd3xjcgrk6vpk" path="res://界面/挂机系统/原罪/系统管理.tscn" id="4_riyk3"]
 [ext_resource type="Texture2D" uid="uid://b1ep2nj8rob3c" path="res://素材/自制/图标/嫉妒.svg" id="5_nhtbf"]
@@ -13,65 +12,29 @@
 [ext_resource type="Texture2D" uid="uid://yygcd26urbqk" path="res://素材/自制/图标/贪婪.svg" id="10_uhxdx"]
 [ext_resource type="PackedScene" uid="uid://hropdpl5f686" path="res://界面/挂机系统/原罪/技能树.tscn" id="12_nhtbf"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2eyov"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_riyk3"]
-content_margin_left = 10.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ycnk"]
-content_margin_left = 10.0
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nhtbf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yuie1"]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wace0"]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6nm3x"]
 content_margin_left = 10.0
 content_margin_right = 10.0
 
-[node name="原罪界面" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -220.0
-offset_bottom = -80.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_msww2")
+[node name="原罪界面" unique_id=166508811 node_paths=PackedStringArray("选项卡同步") instance=ExtResource("1_2eyov")]
+size_flags_horizontal = 1
+size_flags_vertical = 1
 script = ExtResource("2_riyk3")
 "基类窗口名称" = "原罪界面"
+"选项卡同步" = {
+"管理选项卡": NodePath("内容节点/选项卡"),
+"系统选项卡": NodePath("内容节点/选项卡/系统管理")
+}
 
-[node name="标题" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 100.0
-grow_horizontal = 2
-color = Color(0.75, 0.67, 0.45, 0.705882)
-metadata/_edit_lock_ = true
-
-[node name="等级显示" parent="标题" instance=ExtResource("3_4ycnk")]
-layout_mode = 1
-"系统" = "挂机"
-"玩法" = "原罪"
-"同时显示" = null
-
-[node name="背景" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.004
-offset_top = 100.0
-offset_bottom = -3.99994
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.82, 0.732533, 0.492, 0.705882)
-metadata/_edit_lock_ = true
-
-[node name="内容节点" type="Control" parent="."]
-anchors_preset = 0
-offset_top = 100.0
-offset_right = 1700.0
-offset_bottom = 1000.0
-
-[node name="选项卡" type="TabContainer" parent="内容节点"]
+[node name="选项卡" type="TabContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=172478221]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -79,15 +42,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_2eyov")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nhtbf")
 current_tab = 0
 
-[node name="原罪突破" type="Control" parent="内容节点/选项卡"]
+[node name="原罪突破" type="Control" parent="内容节点/选项卡" index="1" unique_id=221357507]
 unique_name_in_owner = true
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="原罪值" type="Label" parent="内容节点/选项卡/原罪突破"]
+[node name="原罪值" type="Label" parent="内容节点/选项卡/原罪突破" index="0" unique_id=950501470]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 9
@@ -99,7 +62,7 @@ grow_vertical = 2
 theme_override_constants/line_spacing = -15
 theme_override_constants/paragraph_spacing = -5
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxEmpty_riyk3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yuie1")
 text = "原罪值:
 傲慢:100/1000
 傲慢:100/1000
@@ -109,7 +72,7 @@ text = "原罪值:
 傲慢:100/1000
 傲慢:100/1000"
 
-[node name="熟练转移" type="Label" parent="内容节点/选项卡/原罪突破"]
+[node name="熟练转移" type="Label" parent="内容节点/选项卡/原罪突破" index="1" unique_id=1049529122]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 9
@@ -122,7 +85,7 @@ grow_vertical = 2
 theme_override_constants/line_spacing = -15
 theme_override_constants/paragraph_spacing = -5
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxEmpty_riyk3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yuie1")
 text = "精通转移状态
 傲慢:100/1000
 傲慢:100/1000
@@ -132,7 +95,7 @@ text = "精通转移状态
 傲慢:100/1000
 傲慢:100/1000"
 
-[node name="突破" type="Label" parent="内容节点/选项卡/原罪突破"]
+[node name="突破" type="Label" parent="内容节点/选项卡/原罪突破" index="2" unique_id=2005465130]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 47.0
@@ -141,14 +104,14 @@ offset_right = 605.0
 offset_bottom = 326.0
 theme_override_constants/line_spacing = -10
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxEmpty_4ycnk")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wace0")
 text = "突破LV:0
 突破成功率:100%
 失败将损失20%熟练度
 突破成功+5挂机等级上限
 精通获取乘以1.28"
 
-[node name="突破按钮" type="Button" parent="内容节点/选项卡/原罪突破/突破"]
+[node name="突破按钮" type="Button" parent="内容节点/选项卡/原罪突破/突破" index="0" unique_id=1595909288]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 2
@@ -162,7 +125,7 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 50
 text = "突破"
 
-[node name="原罪标签" type="HBoxContainer" parent="内容节点/选项卡/原罪突破"]
+[node name="原罪标签" type="HBoxContainer" parent="内容节点/选项卡/原罪突破" index="3" unique_id=363759089]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -175,7 +138,7 @@ offset_right = 850.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="傲慢" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+[node name="傲慢" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签" index="0" unique_id=294398456]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
@@ -185,7 +148,7 @@ texture = ExtResource("4_2eyov")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="傲慢标签" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/傲慢"]
+[node name="傲慢标签" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/傲慢" index="0" unique_id=2045746844]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -201,7 +164,7 @@ text = "傲慢
 成就里程碑"
 horizontal_alignment = 1
 
-[node name="暴食" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+[node name="暴食" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签" index="1" unique_id=332032422]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
@@ -211,7 +174,7 @@ texture = ExtResource("8_6nm3x")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="暴食标签" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/暴食"]
+[node name="暴食标签" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/暴食" index="0" unique_id=73824649]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -227,7 +190,7 @@ text = "暴食
 暴食里程碑"
 horizontal_alignment = 1
 
-[node name="贪婪" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+[node name="贪婪" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签" index="2" unique_id=1930185070]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
@@ -237,7 +200,7 @@ texture = ExtResource("10_uhxdx")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="贪婪标签" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/贪婪"]
+[node name="贪婪标签" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/贪婪" index="0" unique_id=1541095065]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -253,7 +216,7 @@ text = "贪婪
 收藏里程碑"
 horizontal_alignment = 1
 
-[node name="懒惰" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+[node name="懒惰" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签" index="3" unique_id=1951462664]
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -262,7 +225,7 @@ texture = ExtResource("6_yuie1")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/懒惰"]
+[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/懒惰" index="0" unique_id=1272170357]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -278,7 +241,7 @@ grow_vertical = 0
 text = "未解锁"
 horizontal_alignment = 1
 
-[node name="暴怒" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+[node name="暴怒" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签" index="4" unique_id=473371948]
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -287,7 +250,7 @@ texture = ExtResource("7_wace0")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/暴怒"]
+[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/暴怒" index="0" unique_id=1751541876]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -303,7 +266,7 @@ grow_vertical = 0
 text = "未解锁"
 horizontal_alignment = 1
 
-[node name="色欲" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+[node name="色欲" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签" index="5" unique_id=723658919]
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -312,7 +275,7 @@ texture = ExtResource("9_mrh1p")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/色欲"]
+[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/色欲" index="0" unique_id=555574741]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -328,7 +291,7 @@ grow_vertical = 0
 text = "未解锁"
 horizontal_alignment = 1
 
-[node name="嫉妒" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签"]
+[node name="嫉妒" type="TextureRect" parent="内容节点/选项卡/原罪突破/原罪标签" index="6" unique_id=1521499077]
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -337,7 +300,7 @@ texture = ExtResource("5_nhtbf")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/嫉妒"]
+[node name="Label" type="Label" parent="内容节点/选项卡/原罪突破/原罪标签/嫉妒" index="0" unique_id=47682268]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -353,61 +316,61 @@ grow_vertical = 0
 text = "未解锁"
 horizontal_alignment = 1
 
-[node name="系统管理" type="TabContainer" parent="内容节点/选项卡"]
+[node name="系统管理" type="TabContainer" parent="内容节点/选项卡" index="2" unique_id=1268753508]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_nhtbf")
-current_tab = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6nm3x")
+current_tab = 0
 metadata/_tab_index = 1
 
-[node name="0_挂机" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
+[node name="0_挂机" parent="内容节点/选项卡/系统管理" index="1" unique_id=387609715 instance=ExtResource("4_riyk3")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 "系统" = "挂机"
 
-[node name="1_木料" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
+[node name="1_木料" parent="内容节点/选项卡/系统管理" index="2" unique_id=410135528 instance=ExtResource("4_riyk3")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 "系统" = "木料"
 metadata/_tab_index = 1
 
-[node name="2_矿城" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
+[node name="2_矿城" parent="内容节点/选项卡/系统管理" index="3" unique_id=49855096 instance=ExtResource("4_riyk3")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 "系统" = "矿城"
 metadata/_tab_index = 2
 
-[node name="3_手工" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
+[node name="3_手工" parent="内容节点/选项卡/系统管理" index="4" unique_id=46759468 instance=ExtResource("4_riyk3")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="4_游历" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
+[node name="4_游历" parent="内容节点/选项卡/系统管理" index="5" unique_id=844256267 instance=ExtResource("4_riyk3")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 "系统" = "游历"
 metadata/_tab_index = 4
 
-[node name="5_职业" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
+[node name="5_职业" parent="内容节点/选项卡/系统管理" index="6" unique_id=408567468 instance=ExtResource("4_riyk3")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 "系统" = "职业"
 metadata/_tab_index = 5
 
-[node name="6_召唤" parent="内容节点/选项卡/系统管理" instance=ExtResource("4_riyk3")]
+[node name="6_召唤" parent="内容节点/选项卡/系统管理" index="7" unique_id=817564321 instance=ExtResource("4_riyk3")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 "系统" = "召唤"
 metadata/_tab_index = 6
 
-[node name="介绍" type="RichTextLabel" parent="内容节点/选项卡"]
+[node name="介绍" type="RichTextLabel" parent="内容节点/选项卡" index="3" unique_id=629627853]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(600, 0)
@@ -415,7 +378,7 @@ layout_mode = 2
 theme_override_constants/line_separation = -10
 theme_override_constants/paragraph_separation = -10
 theme_override_font_sizes/normal_font_size = 42
-theme_override_styles/normal = SubResource("StyleBoxEmpty_riyk3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yuie1")
 text = "挂机系统升级
 挂机系统不能直接获取熟练度需要 打开系统管理中的\"精通转移\"
 将其他玩法系统的\"熟练度\"与\"精通池收益\"转移至挂机系统。
@@ -433,7 +396,7 @@ text = "挂机系统升级
 4.累计成功突破 2、4、6、8、10 次后，将解锁新玩法系统。"
 metadata/_tab_index = 2
 
-[node name="技能树" parent="内容节点/选项卡" instance=ExtResource("12_nhtbf")]
+[node name="技能树" parent="内容节点/选项卡" index="4" unique_id=769633772 instance=ExtResource("12_nhtbf")]
 visible = false
 layout_mode = 2
 

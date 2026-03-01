@@ -14,14 +14,12 @@ offset_right = -220.0
 offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
 theme = ExtResource("1_6378n")
 script = ExtResource("2_pcrch")
 metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = null
 
 [node name="标题" type="ColorRect" parent="." unique_id=2049886415]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -37,6 +35,7 @@ layout_mode = 1
 "玩法" = "未命名"
 
 [node name="背景" type="ColorRect" parent="." unique_id=148655002]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0

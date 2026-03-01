@@ -22,7 +22,7 @@ config/description="游戏手工版本开发中
 总进度(1/7)
 [手工:99%]
 [挂机:20%]"
-config/version="0.2.0.3"
+config/version="0.2.1"
 config/tags=PackedStringArray("梅计划")
 run/main_scene="uid://kifxwq2enhmp"
 config/features=PackedStringArray("4.6", "Mobile")
@@ -140,7 +140,14 @@ folder_colors={
 
 [global]
 
-steam_enabled=false
+steam_enabled=true
+snake_case={
+"主题标题色": "#86a684",
+"主题背景色": "#d1bb7db4",
+"悬浮数值色": "#004e82ff",
+"悬浮标题色": "#8f6f2fe6",
+"悬浮背景色": "#b38c40dc"
+}
 
 [input]
 
@@ -232,6 +239,7 @@ locale/locale_filter_mode=1
 2d_physics/layer_2="敌人"
 2d_physics/layer_3="玩家"
 2d_physics/layer_4="交互"
+2d_physics/layer_5="队友"
 
 [physics]
 
@@ -243,3 +251,10 @@ common/physics_ticks_per_second=30
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
+
+[steam]
+
+initialization/app_id=4181740
+multiplayer_peer/max_channels=4
+initialization/initialize_on_startup=false
+initialization/embed_callbacks=false

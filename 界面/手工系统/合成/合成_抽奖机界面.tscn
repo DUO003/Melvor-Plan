@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://3vfhgyg8wo6m" path="res://素材/豆包AI素材/特殊图纸.png" id="10_aj8fg"]
 [ext_resource type="Script" uid="uid://bbi5ojpwx5ouf" path="res://界面/蓝图图片.gd" id="11_12j2d"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="12_xbsbx"]
-[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="13_tddqe"]
+[ext_resource type="PackedScene" uid="uid://dlf0o8yt0hscg" path="res://界面/插件/悬浮提示.tscn" id="14_6nf3n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6kji"]
 content_margin_left = 10.0
@@ -74,31 +74,6 @@ script = ExtResource("8_tdurk")
 "费用" = 5
 "商店名称" = "蓝图纸合成"
 metadata/_custom_type_script = "uid://bivcgv6cvbvln"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5imkx"]
-bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.70021564, 0.5527891, 0.25613704, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-script = ExtResource("6_kl4kr")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBox" id="StyleBox_cteq2"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = -1.0
-content_margin_top = -1.0
-content_margin_right = -1.0
-content_margin_bottom = -1.0
-script = ExtResource("13_tddqe")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_5imkx")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [sub_resource type="Animation" id="Animation_7solx"]
 length = 0.001
@@ -258,10 +233,10 @@ script = ExtResource("2_0lnvh")
 "标签页": NodePath("内容节点/界面布局/标签页")
 }
 
-[node name="等级显示" parent="标题" index="0"]
+[node name="等级显示" parent="标题" parent_id_path=PackedInt32Array(2049886415) index="0" unique_id=2041357675]
 "玩法" = "抽奖"
 
-[node name="研究" type="Button" parent="内容节点" index="0" unique_id=1647928484]
+[node name="研究" type="Button" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=1647928484]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 2
@@ -276,7 +251,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "研究"
 
-[node name="研究方向" type="OptionButton" parent="内容节点" index="1" unique_id=1769902389]
+[node name="研究方向" type="OptionButton" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="1" unique_id=1769902389]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -299,7 +274,7 @@ offset_bottom = -1.0
 theme_override_font_sizes/font_size = 45
 text = "研究方向:"
 
-[node name="滑块" parent="内容节点" index="2" unique_id=921848942 instance=ExtResource("2_6nf3n")]
+[node name="滑块" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="2" unique_id=921848942 instance=ExtResource("2_6nf3n")]
 layout_mode = 0
 offset_left = 59.0
 offset_top = 279.0
@@ -317,7 +292,7 @@ offset_right = 172.49048
 offset_bottom = -3.0
 theme_override_font_sizes/font_size = 45
 
-[node name="研究进度条" parent="内容节点" index="3" unique_id=1795264555 instance=ExtResource("3_0lnvh")]
+[node name="研究进度条" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="3" unique_id=1795264555 instance=ExtResource("3_0lnvh")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(335, 335)
 layout_mode = 1
@@ -368,7 +343,7 @@ scale = Vector2(1.25075, 1.25075)
 texture = ExtResource("5_ulomb")
 expand_mode = 1
 
-[node name="界面布局" type="VBoxContainer" parent="内容节点" index="4" unique_id=273123555]
+[node name="界面布局" type="VBoxContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="4" unique_id=273123555]
 layout_mode = 0
 offset_left = 520.0
 offset_right = 1670.0
@@ -441,9 +416,8 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 40
 text = "合成窗口"
 
-[node name="蓝色图纸" type="Sprite2D" parent="悬浮面板" index="1" unique_id=1850642334]
+[node name="蓝色图纸" type="Sprite2D" parent="悬浮面板" parent_id_path=PackedInt32Array(1473741879) index="1" unique_id=1850642334]
 unique_name_in_owner = true
-visible = false
 position = Vector2(568, 472)
 scale = Vector2(2.3824487, 2.116616)
 texture = ExtResource("10_aj8fg")
@@ -471,39 +445,22 @@ offset_right = 423.45724
 offset_bottom = 612.2981
 theme = ExtResource("12_xbsbx")
 
-[node name="属性背景" type="Panel" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器" index="0" unique_id=1632466872]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBox_cteq2")
+[node name="蓝图容器" type="ScrollContainer" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器" index="0" unique_id=176586642]
+custom_minimum_size = Vector2(470, 612.298)
+layout_mode = 0
+offset_right = 470.0
+offset_bottom = 612.2981
 
-[node name="蓝图属性" type="RichTextLabel" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器" index="1" unique_id=235956103]
+[node name="蓝图属性" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器/蓝图容器" index="0" unique_id=800503351 instance=ExtResource("14_6nf3n")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(450, 530)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 13.43158
-offset_top = 15.118469
-offset_right = -6.673004
-offset_bottom = -67.17963
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/paragraph_separation = 0
-bbcode_enabled = true
-text = "简介:一些测试的内容
-简介:一些测试的内容
-简介:一些测试的内容
-简介:一些测试的内容
-简介:一些测试的内容
-简介:一些测试的内容"
-autowrap_mode = 2
+z_index = 0
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+"禁用" = true
+"禁用后删除" = false
 
-[node name="关闭蓝图展示" type="Button" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器" index="2" unique_id=1702110813]
+[node name="关闭蓝图展示" type="Button" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器" index="1" unique_id=1702110813]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 60)
 layout_mode = 0
@@ -514,7 +471,7 @@ offset_bottom = 606.32166
 theme_override_font_sizes/font_size = 20
 text = "关闭"
 
-[node name="切换按钮节点" type="Control" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器" index="3" unique_id=1727507409]
+[node name="切换按钮节点" type="Control" parent="悬浮面板/蓝色图纸/倾斜度控制/蓝图属性容器" index="2" unique_id=1727507409]
 unique_name_in_owner = true
 anchors_preset = 0
 offset_right = 40.0
@@ -542,7 +499,7 @@ offset_bottom = 536.2319
 theme_override_font_sizes/font_size = 20
 text = "上一页"
 
-[node name="动画" type="AnimationPlayer" parent="悬浮面板" index="2" unique_id=175068924]
+[node name="动画" type="AnimationPlayer" parent="悬浮面板" parent_id_path=PackedInt32Array(1473741879) index="2" unique_id=175068924]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_f4fr3")
 

@@ -1,6 +1,5 @@
-extends Control
-
-# 瓶子属性定义
+extends 基类梅窗口
+## 瓶子属性定义
 @export var 内容长度: int = 4
 @export var 内容数组: Array[Dictionary] = [{Color(1.0, 0.0, 0.0, 1.0): 1}]
 var 隐藏条件颜色=[]
@@ -49,6 +48,7 @@ var 奖励结算关卡
 @onready var 瓶子碎片 = preload("res://粒子/瓶子碎片.tscn")
 var 瓶子位置
 func _ready():
+	super._ready()
 # 游戏初始化：循环批量绑定1-5关的测试按钮
 	for 关卡数 in range(1, 9):
 		var 按钮节点 = get_node("%测试按钮" + str(关卡数))

@@ -2,75 +2,28 @@
 
 [ext_resource type="Script" uid="uid://d3rwtrc1l2mml" path="res://界面/插件/悬浮提示.gd" id="1_dekp0"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_fxf10"]
-[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_3acc5"]
-[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_mcqd1"]
+[ext_resource type="StyleBox" uid="uid://dvsmoxsm4nshh" path="res://界面/主题/提示/悬浮提示.tres" id="2_fxf10"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcqd1"]
-bg_color = Color(0.56, 0.43493333, 0.18479998, 0.8627451)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-expand_margin_bottom = -140.0
-script = ExtResource("3_mcqd1")
-margin_bottom = -140
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxf10"]
-bg_color = Color(0.7, 0.5506667, 0.252, 0.8627451)
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_top = -60.0
-script = ExtResource("3_mcqd1")
-margin_top = -60
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3acc5"]
-draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.48292035, 0.3740945, 0.15240756, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-script = ExtResource("3_mcqd1")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBox" id="StyleBox_ydj0l"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = -1.0
-content_margin_top = -1.0
-content_margin_right = -1.0
-content_margin_bottom = -1.0
-script = ExtResource("2_3acc5")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_mcqd1"), SubResource("StyleBoxFlat_fxf10"), SubResource("StyleBoxFlat_3acc5")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
-
-[node name="悬浮提示" type="Panel" unique_id=644603075]
+[node name="悬浮提示" type="PanelContainer" unique_id=800503351]
 z_index = 1
-offset_right = 200.0
-offset_bottom = 200.0
+custom_minimum_size = Vector2(50, 50)
+offset_right = 1.0
 theme = ExtResource("1_fxf10")
-theme_override_styles/panel = SubResource("StyleBox_ydj0l")
+theme_override_styles/panel = ExtResource("2_fxf10")
 script = ExtResource("1_dekp0")
 
-[node name="文本" type="RichTextLabel" parent="." unique_id=85689410]
+[node name="样式" type="VBoxContainer" parent="." unique_id=1040474616]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_right = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="文本" type="RichTextLabel" parent="样式" unique_id=85689410]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_constants/line_separation = 0
 theme_override_constants/paragraph_separation = 0
 bbcode_enabled = true
+text = "1"
 fit_content = true
 scroll_active = false
 autowrap_mode = 2

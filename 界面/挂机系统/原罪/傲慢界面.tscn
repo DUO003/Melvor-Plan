@@ -1,65 +1,23 @@
-[gd_scene format=3 uid="uid://dh1msypj3v84x"]
+[gd_scene format=3 uid="uid://dgaf3m8wo3hkg"]
 
+[ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_eumwo"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_iwukf"]
 [ext_resource type="Script" uid="uid://dx8yylfqt2n2l" path="res://界面/挂机系统/原罪/傲慢界面.gd" id="2_eumwo"]
-[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="3_ee1lr"]
 [ext_resource type="Texture2D" uid="uid://b5816q0b3ific" path="res://素材/自制/图标/傲慢.svg" id="3_x2j7v"]
 [ext_resource type="PackedScene" uid="uid://deum65mqdco6a" path="res://界面/挂机系统/原罪/成就卡片.tscn" id="4_q5scx"]
-[ext_resource type="PackedScene" uid="uid://dlf0o8yt0hscg" path="res://界面/插件/悬浮提示.tscn" id="6_iwukf"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3a8x"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwukf"]
 bg_color = Color(0.74, 0.557467, 0.1924, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="傲慢界面" type="Control" unique_id=2041898832]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -220.0
-offset_bottom = -80.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_iwukf")
+[node name="傲慢界面" unique_id=166508811 instance=ExtResource("1_eumwo")]
 script = ExtResource("2_eumwo")
+"基类窗口名称" = "原罪_傲慢界面"
 
-[node name="标题" type="ColorRect" parent="." unique_id=214777143]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 100.0
-grow_horizontal = 2
-color = Color(0.75, 0.67, 0.45, 0.705882)
-metadata/_edit_lock_ = true
-
-[node name="等级显示" parent="标题" unique_id=1924615424 instance=ExtResource("3_ee1lr")]
-layout_mode = 1
-"系统" = "挂机"
-"玩法" = "傲慢"
-
-[node name="背景" type="ColorRect" parent="." unique_id=886762863]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.004
-offset_top = 100.0
-offset_bottom = -3.99994
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.82, 0.732533, 0.492, 0.705882)
-metadata/_edit_lock_ = true
-
-[node name="内容节点" type="Control" parent="." unique_id=1258023235]
-anchors_preset = 0
-offset_top = 100.0
-offset_right = 1700.0
-offset_bottom = 1000.0
-metadata/_edit_lock_ = true
-
-[node name="主菜单" type="Button" parent="内容节点" unique_id=218781596]
+[node name="主菜单" type="Button" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=1912382435]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 1
@@ -76,7 +34,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 40
 text = "原罪窗口"
 
-[node name="暴食" type="TextureRect" parent="内容节点" unique_id=527244839]
+[node name="暴食" type="TextureRect" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="1" unique_id=1153681555]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 0
@@ -90,7 +48,7 @@ texture = ExtResource("3_x2j7v")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="标签" type="Label" parent="内容节点/暴食" unique_id=1370535900]
+[node name="标签" type="Label" parent="内容节点/暴食" index="0" unique_id=820014612]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -105,7 +63,7 @@ grow_vertical = 0
 text = "傲慢"
 horizontal_alignment = 1
 
-[node name="成就进度" type="ProgressBar" parent="内容节点" unique_id=1067153219]
+[node name="成就进度" type="ProgressBar" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="2" unique_id=1808228108]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 0
@@ -114,12 +72,12 @@ offset_top = 54.0
 offset_right = 1408.0
 offset_bottom = 141.0
 theme = ExtResource("1_iwukf")
-theme_override_styles/fill = SubResource("StyleBoxFlat_c3a8x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_iwukf")
 step = 1.0
 value = 66.0
 show_percentage = false
 
-[node name="标题" type="Label" parent="内容节点/成就进度" unique_id=450904098]
+[node name="标题" type="Label" parent="内容节点/成就进度" index="0" unique_id=1813693683]
 layout_mode = 1
 anchors_preset = -1
 offset_left = -246.0
@@ -129,7 +87,7 @@ offset_bottom = 86.0
 theme_override_font_sizes/font_size = 60
 text = "成就完成"
 
-[node name="成就数值" type="Label" parent="内容节点/成就进度" unique_id=243985029]
+[node name="成就数值" type="Label" parent="内容节点/成就进度" index="1" unique_id=521262403]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -142,7 +100,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="介绍" type="Label" parent="内容节点/成就进度" unique_id=4082087]
+[node name="介绍" type="Label" parent="内容节点/成就进度" index="2" unique_id=414241118]
 layout_mode = 0
 offset_left = -238.0
 offset_top = 96.0
@@ -150,7 +108,7 @@ offset_right = 640.0
 offset_bottom = 153.0
 text = "每个完成的成就会增加50点傲慢上限"
 
-[node name="成就区" type="ScrollContainer" parent="内容节点" unique_id=731400332]
+[node name="成就区" type="ScrollContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="3" unique_id=1873699609]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.27100003
@@ -163,19 +121,12 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="成就容器" type="GridContainer" parent="内容节点/成就区" unique_id=1255388429]
+[node name="成就容器" type="GridContainer" parent="内容节点/成就区" index="0" unique_id=1532470267]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 8
 columns = 7
 
-[node name="成就卡片" parent="内容节点/成就区/成就容器" unique_id=1694285219 instance=ExtResource("4_q5scx")]
+[node name="成就卡片" parent="内容节点/成就区/成就容器" index="0" unique_id=302301076 instance=ExtResource("4_q5scx")]
 layout_mode = 2
-
-[node name="悬浮提示" parent="内容节点" unique_id=989701256 instance=ExtResource("6_iwukf")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = -100.0
-offset_right = 0.0
-offset_bottom = 100.0

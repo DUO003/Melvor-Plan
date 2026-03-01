@@ -120,6 +120,9 @@ func _on_item_added(inv_name:String, item_data: ItemData, grids: Array[Vector2i]
 		return
 	if not is_visible_in_tree():
 		return
+	if not _grid_map.has(grids[0]):
+		print("错误,正在尝试更新一个不存在位置")
+		return
 	var item = _draw_item(item_data, grids[0])
 	_items.append(item)
 	_item_grids_map[item] = grids

@@ -11,14 +11,15 @@ var 固定文本="最高数据统计
 蓝图等阶:{最高等级蓝图}\r研究获取高级图纸
 总等级:{总等级}\r精通等级:{最高精通等级}\r分配精通提高\r图纸精通等级
 强化点:{强化点}\r每25级精通\r可获得1强化点"
-@onready var 内容节点: HSplitContainer = %内容节点
+@onready var 分栏节点: HSplitContainer = %分栏节点
 @onready var 选项卡: TabContainer = %选项卡
+@onready var 等级信息: RichTextLabel = %等级信息
 ##加载蓝图库
 func _ready() -> void:#节点进入节点树
 	super._ready()#运行上级节点的方法
 	筛选蓝图()
 	%"主菜单".pressed.connect(func(): 计划.切换场景("合成界面"))
-	内容节点.dragged.connect(func(_偏移):
+	分栏节点.dragged.connect(func(_偏移):
 		设置宽度(%"图纸容器",合成蓝图节点))
 	生成图纸列表()
 	生成菜谱列表()
@@ -34,7 +35,7 @@ func 更新文本():
 	缓存文本=缓存文本.replace("{最高精通等级}",str(最高精通等级))
 	缓存文本=缓存文本.replace("{总等级}",str(总等级))
 	缓存文本=缓存文本.replace("{强化点}",str(强化点))
-	$"内容节点/等级信息".text=缓存文本
+	等级信息.text=缓存文本
 ##图纸集
 func 筛选蓝图():
 	所有图纸=[]

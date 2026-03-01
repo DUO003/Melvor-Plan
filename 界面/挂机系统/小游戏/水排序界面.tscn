@@ -1,55 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6khag236gkd7"]
+[gd_scene format=3 uid="uid://dnuekvw8ctoln"]
 
-[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_32eot"]
-[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="2_jxl5q"]
-[ext_resource type="Script" uid="uid://bott32ggqrtjf" path="res://代码/专属代码/特殊功能/水排序.gd" id="2_xvq0g"]
-[ext_resource type="PackedScene" uid="uid://dx5oki37mgsju" path="res://界面/插件/体力状态.tscn" id="4_qnor1"]
+[ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_gjonf"]
+[ext_resource type="Script" uid="uid://bott32ggqrtjf" path="res://代码/专属代码/特殊功能/水排序.gd" id="2_ktity"]
+[ext_resource type="PackedScene" uid="uid://dx5oki37mgsju" path="res://界面/插件/体力状态.tscn" id="3_ckflb"]
 
-[node name="小游戏界面" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -220.0
-offset_bottom = -80.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_32eot")
-script = ExtResource("2_xvq0g")
+[node name="水排序界面" unique_id=166508811 instance=ExtResource("1_gjonf")]
+script = ExtResource("2_ktity")
+"内容长度" = 4
+"内容数组" = Array[Dictionary]([{
+Color(1, 0, 0, 1): 1
+}])
+"基类窗口名称" = "水排序界面"
 
-[node name="标题" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 100.0
-grow_horizontal = 2
-color = Color(0.75, 0.67, 0.45, 0.705882)
-metadata/_edit_lock_ = true
-
-[node name="等级显示" parent="标题" instance=ExtResource("2_jxl5q")]
-layout_mode = 1
-"系统" = "挂机"
+[node name="等级显示" parent="标题" parent_id_path=PackedInt32Array(2049886415) index="0" unique_id=2041357675]
 "玩法" = "水排序"
 
-[node name="背景" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.004
-offset_top = 100.0
-offset_bottom = -3.99994
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.82, 0.732533, 0.492, 0.705882)
-metadata/_edit_lock_ = true
-
-[node name="内容节点" type="Control" parent="."]
-anchors_preset = 0
-offset_top = 100.0
-offset_right = 1700.0
-offset_bottom = 1000.0
-
-[node name="关卡" type="Label" parent="内容节点"]
+[node name="关卡" type="Label" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=1862296817]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 40.0
@@ -57,18 +23,18 @@ offset_bottom = 45.0
 theme_override_font_sizes/font_size = 64
 text = "第一关"
 
-[node name="关卡滚动区" type="ScrollContainer" parent="内容节点"]
+[node name="关卡滚动区" type="ScrollContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="1" unique_id=461856179]
 layout_mode = 0
 offset_left = 1440.0
 offset_top = 228.0
 offset_right = 1670.0
 offset_bottom = 756.0
 
-[node name="关卡容器" type="VBoxContainer" parent="内容节点/关卡滚动区"]
+[node name="关卡容器" type="VBoxContainer" parent="内容节点/关卡滚动区" index="0" unique_id=501864544]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="测试按钮1" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+[node name="测试按钮1" type="Button" parent="内容节点/关卡滚动区/关卡容器" index="0" unique_id=408347281]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
@@ -76,7 +42,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "第一关"
 
-[node name="测试按钮2" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+[node name="测试按钮2" type="Button" parent="内容节点/关卡滚动区/关卡容器" index="1" unique_id=177815349]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
@@ -84,7 +50,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "第二关"
 
-[node name="测试按钮3" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+[node name="测试按钮3" type="Button" parent="内容节点/关卡滚动区/关卡容器" index="2" unique_id=2114951081]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
@@ -92,7 +58,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "第三关"
 
-[node name="测试按钮4" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+[node name="测试按钮4" type="Button" parent="内容节点/关卡滚动区/关卡容器" index="3" unique_id=1806224051]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
@@ -100,7 +66,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "第四关"
 
-[node name="测试按钮5" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+[node name="测试按钮5" type="Button" parent="内容节点/关卡滚动区/关卡容器" index="4" unique_id=1092420964]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
@@ -108,7 +74,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "第五关"
 
-[node name="测试按钮6" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+[node name="测试按钮6" type="Button" parent="内容节点/关卡滚动区/关卡容器" index="5" unique_id=2075971362]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
@@ -116,7 +82,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "挑战一"
 
-[node name="测试按钮7" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+[node name="测试按钮7" type="Button" parent="内容节点/关卡滚动区/关卡容器" index="6" unique_id=660509435]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
@@ -124,7 +90,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "挑战二"
 
-[node name="测试按钮8" type="Button" parent="内容节点/关卡滚动区/关卡容器"]
+[node name="测试按钮8" type="Button" parent="内容节点/关卡滚动区/关卡容器" index="7" unique_id=44026353]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
@@ -132,7 +98,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "挑战三"
 
-[node name="主菜单" type="Button" parent="内容节点"]
+[node name="主菜单" type="Button" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="2" unique_id=791721579]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 1
@@ -151,7 +117,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "主菜单"
 
-[node name="帮助" type="Button" parent="内容节点"]
+[node name="帮助" type="Button" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="3" unique_id=1300253012]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 1
@@ -170,22 +136,22 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "帮助"
 
-[node name="滚动游戏区" type="ScrollContainer" parent="内容节点"]
+[node name="滚动游戏区" type="ScrollContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="4" unique_id=1666698283]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 108.0
 offset_right = 1420.0
 offset_bottom = 858.0
 
-[node name="游戏内容" type="VBoxContainer" parent="内容节点/滚动游戏区"]
+[node name="游戏内容" type="VBoxContainer" parent="内容节点/滚动游戏区" index="0" unique_id=751322150]
 custom_minimum_size = Vector2(1400, 750)
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="箱子父节点" type="HBoxContainer" parent="内容节点/滚动游戏区/游戏内容"]
+[node name="箱子父节点" type="HBoxContainer" parent="内容节点/滚动游戏区/游戏内容" index="0" unique_id=800498649]
 layout_mode = 2
 
-[node name="隐藏瓶子数量" type="Label" parent="内容节点/滚动游戏区/游戏内容/箱子父节点"]
+[node name="隐藏瓶子数量" type="Label" parent="内容节点/滚动游戏区/游戏内容/箱子父节点" index="0" unique_id=26102471]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -193,25 +159,25 @@ text = "消除指定颜色
 显示隐藏瓶子
 瓶子数量:0"
 
-[node name="箱子位置" type="GridContainer" parent="内容节点/滚动游戏区/游戏内容/箱子父节点"]
+[node name="箱子位置" type="GridContainer" parent="内容节点/滚动游戏区/游戏内容/箱子父节点" index="1" unique_id=508235906]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 10
 
-[node name="瓶子位置" type="GridContainer" parent="内容节点/滚动游戏区/游戏内容"]
+[node name="瓶子位置" type="GridContainer" parent="内容节点/滚动游戏区/游戏内容" index="1" unique_id=18519428]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 80
 theme_override_constants/v_separation = 15
 columns = 10
 
-[node name="粒子容器" type="Control" parent="内容节点/滚动游戏区/游戏内容"]
+[node name="粒子容器" type="Control" parent="内容节点/滚动游戏区/游戏内容" index="2" unique_id=938011380]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="关卡内容" type="RichTextLabel" parent="内容节点"]
+[node name="关卡内容" type="RichTextLabel" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="5" unique_id=1669257170]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 32.0
@@ -231,7 +197,7 @@ text = "消耗12体力开启关卡挑战,难度越大奖励越丰富
 难度3_挑战2:[url=7]颜料罐[/url]*25+100,超级颜料罐箱.
 难度4_挑战3:迷雾[url=8]颜料罐[/url]*24"
 
-[node name="体力状态" parent="内容节点" instance=ExtResource("4_qnor1")]
+[node name="体力状态" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="6" unique_id=776025947 instance=ExtResource("3_ckflb")]
 layout_mode = 0
 offset_left = 1272.0
 offset_top = 28.0

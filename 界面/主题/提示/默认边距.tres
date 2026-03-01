@@ -1,0 +1,9 @@
+[gd_resource type="StyleBoxFlat" script_class="扩展的扁平样式框" format=3 uid="uid://d3kda0k6a3yqs"]
+
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_5arvh"]
+
+[resource]
+draw_center = false
+border_width_bottom = 5
+script = ExtResource("1_5arvh")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"

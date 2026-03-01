@@ -107,11 +107,13 @@ func cost(背包) -> void:
 ## 出售后增加资源
 func sold() -> void:
 	if self is 物品装备 or self is 物品宝石:
-		计划.梅存档["金币"]+=100
-		计划.语法糖通知("出售成功获取金币+100","商店信息")
+		var 价格:int=出售价格()
+		计划.梅存档["金币"]+=价格
+		计划.语法糖通知("出售成功获取金币+%d"%价格,"商店信息")
 		计划.emit_signal("更新_UI")
 	#push_warning("[Override this function] [%s] add resource" % item_name)
-
+func 出售价格()->int:#默认给100金币,可以重写
+	return 100
 ## 购买并添加到背包
 func buy(背包) -> bool:
 	if not can_buy():

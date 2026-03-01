@@ -1,10 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://dron5fg7jasw2"]
+[gd_scene format=3 uid="uid://dron5fg7jasw2"]
 
 [ext_resource type="Texture2D" uid="uid://db5tn75ulvc28" path="res://素材/自制/QQ群.png" id="1_1lv0b"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ar4cj"]
 [ext_resource type="Script" uid="uid://cnoic7mbi3ks1" path="res://界面/挂机系统/任务窗口/设置面板.gd" id="2_xx283"]
 [ext_resource type="Script" uid="uid://b7ri82yh6cfx1" path="res://界面/挂机系统/任务窗口/重置倒计时.gd" id="3_jepqw"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="4_jxn20"]
+[ext_resource type="Theme" uid="uid://bd8wir2bqyhux" path="res://界面/主题/空主题.tres" id="5_7ja3k"]
+[ext_resource type="PackedScene" uid="uid://dusyum2t63uiv" path="res://界面/插件/帮助文本.tscn" id="5_leojc"]
+[ext_resource type="Script" uid="uid://bv2j3nk3k62sd" path="res://代码/挂件/取色器.gd" id="6_26hf3"]
+[ext_resource type="Script" uid="uid://gsgi8bvvdutk" path="res://界面/插件/悬浮提示数据.gd" id="6_rl18n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xx283"]
 content_margin_left = 10.0
@@ -32,6 +36,38 @@ content_margin_left = 25.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_376va"]
 
+[sub_resource type="Theme" id="Theme_jxn20"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_22niw"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="Resource" id="Resource_8yxkd"]
+script = ExtResource("6_rl18n")
+"提示数组" = Array[Dictionary]([{
+"文本": "[center][font_size=50]示例提示[/font_size][/center]"
+}, {
+"文本": "普通文本内容"
+}, {
+"文本": ""
+}, {
+"宽度": 5,
+"模式": "分隔线",
+"边距": 10
+}, {
+"分栏组": ["进度条", 0.5],
+"模式": "分栏",
+"间距": 5
+}, {
+"分栏组": ["图片", {
+"图片": SubResource("CompressedTexture2D_22niw"),
+"类型": "图片"
+}],
+"模式": "分栏",
+"间距": 5
+}])
+"标题高度" = 65
+metadata/_custom_type_script = "uid://gsgi8bvvdutk"
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_leojc"]
 content_margin_left = 25.0
 
@@ -41,7 +77,7 @@ content_margin_left = 25.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_22niw"]
 content_margin_left = 25.0
 
-[node name="设置面板" type="ScrollContainer"]
+[node name="设置面板" type="ScrollContainer" unique_id=396692463]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -54,36 +90,37 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_xx283")
 script = ExtResource("2_xx283")
 metadata/_tab_index = 3
 
-[node name="设置面板" type="HBoxContainer" parent="."]
+[node name="设置面板" type="HBoxContainer" parent="." unique_id=978232842]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="设置标签" type="TabContainer" parent="设置面板"]
+[node name="设置标签" type="TabContainer" parent="设置面板" unique_id=773794596]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_8yxkd")
-current_tab = 0
+current_tab = 1
 
-[node name="基础设置" type="ScrollContainer" parent="设置面板/设置标签"]
+[node name="基础设置" type="ScrollContainer" parent="设置面板/设置标签" unique_id=1380958802]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_tab_index = 0
 
-[node name="设置" type="VBoxContainer" parent="设置面板/设置标签/基础设置"]
+[node name="设置" type="VBoxContainer" parent="设置面板/设置标签/基础设置" unique_id=1721286892]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="标签" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+[node name="标签" type="Label" parent="设置面板/设置标签/基础设置/设置" unique_id=1668940723]
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_jxn20")
 text = "游戏运行信息:"
 
-[node name="重置倒计时" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+[node name="重置倒计时" type="Label" parent="设置面板/设置标签/基础设置/设置" unique_id=1468854249]
 layout_mode = 2
 theme_override_constants/line_spacing = -15
 theme_override_styles/normal = SubResource("StyleBoxEmpty_jxn20")
@@ -91,26 +128,26 @@ text = "测试文本
 测试文本"
 script = ExtResource("3_jepqw")
 
-[node name="自动存档" type="CheckButton" parent="设置面板/设置标签/基础设置/设置"]
+[node name="自动存档" type="CheckButton" parent="设置面板/设置标签/基础设置/设置" unique_id=1402828565]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "启用自动存档"
 
-[node name="标签2" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+[node name="标签2" type="Label" parent="设置面板/设置标签/基础设置/设置" unique_id=1453008527]
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_jxn20")
 text = "通知设置:"
 
-[node name="功能说明" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+[node name="功能说明" type="Label" parent="设置面板/设置标签/基础设置/设置" unique_id=626544687]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7ja3k")
 text = "通知显示时长"
 
-[node name="通知显示时长" type="OptionButton" parent="设置面板/设置标签/基础设置/设置/功能说明"]
+[node name="通知显示时长" type="OptionButton" parent="设置面板/设置标签/基础设置/设置/功能说明" unique_id=23868992]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 283.0
@@ -132,13 +169,13 @@ popup/item_4/id = 1
 popup/item_5/text = "5秒"
 popup/item_5/id = 0
 
-[node name="功能说明2" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+[node name="功能说明2" type="Label" parent="设置面板/设置标签/基础设置/设置" unique_id=1579663589]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_26hf3")
 text = "通知显示位置"
 
-[node name="通知显示位置" type="OptionButton" parent="设置面板/设置标签/基础设置/设置/功能说明2"]
+[node name="通知显示位置" type="OptionButton" parent="设置面板/设置标签/基础设置/设置/功能说明2" unique_id=1711834145]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 283.0
@@ -156,13 +193,13 @@ popup/item_2/id = 2
 popup/item_3/text = "悬浮"
 popup/item_3/id = 3
 
-[node name="功能说明6" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+[node name="功能说明6" type="Label" parent="设置面板/设置标签/基础设置/设置" unique_id=688841628]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_26hf3")
 text = "最大通知数量"
 
-[node name="通知数量" type="SpinBox" parent="设置面板/设置标签/基础设置/设置/功能说明6"]
+[node name="通知数量" type="SpinBox" parent="设置面板/设置标签/基础设置/设置/功能说明6" unique_id=1149034505]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 6
@@ -178,13 +215,13 @@ grow_horizontal = 0
 grow_vertical = 2
 value = 20.0
 
-[node name="功能说明3" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+[node name="功能说明3" type="Label" parent="设置面板/设置标签/基础设置/设置" unique_id=1576128057]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_26hf3")
 text = "手工系统自动制作通知"
 
-[node name="制作通知" type="CheckButton" parent="设置面板/设置标签/基础设置/设置/功能说明3"]
+[node name="制作通知" type="CheckButton" parent="设置面板/设置标签/基础设置/设置/功能说明3" unique_id=901884502]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 6
@@ -204,13 +241,13 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_376va")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_376va")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_376va")
 
-[node name="功能说明4" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+[node name="功能说明4" type="Label" parent="设置面板/设置标签/基础设置/设置" unique_id=1180601027]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_26hf3")
 text = "全局精通通知"
 
-[node name="精通通知" type="CheckButton" parent="设置面板/设置标签/基础设置/设置/功能说明4"]
+[node name="精通通知" type="CheckButton" parent="设置面板/设置标签/基础设置/设置/功能说明4" unique_id=2081412773]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 6
@@ -230,13 +267,13 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_376va")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_376va")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_376va")
 
-[node name="功能说明5" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+[node name="功能说明5" type="Label" parent="设置面板/设置标签/基础设置/设置" unique_id=127165800]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_26hf3")
 text = "全局熟练通知"
 
-[node name="熟练通知" type="CheckButton" parent="设置面板/设置标签/基础设置/设置/功能说明5"]
+[node name="熟练通知" type="CheckButton" parent="设置面板/设置标签/基础设置/设置/功能说明5" unique_id=657325697]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 6
@@ -256,32 +293,246 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_376va")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_376va")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_376va")
 
-[node name="标签3" type="Label" parent="设置面板/设置标签/基础设置/设置"]
+[node name="标签3" type="Label" parent="设置面板/设置标签/基础设置/设置" unique_id=2140099834]
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_jxn20")
 text = "游戏窗口:"
 
-[node name="启用全屏" type="CheckButton" parent="设置面板/设置标签/基础设置/设置"]
+[node name="启用全屏" type="CheckButton" parent="设置面板/设置标签/基础设置/设置" unique_id=1185877089]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "启用全屏"
 
-[node name="其他" type="ScrollContainer" parent="设置面板/设置标签"]
-visible = false
+[node name="样式" type="ScrollContainer" parent="设置面板/设置标签" unique_id=151050320]
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_tab_index = 1
 
-[node name="设置" type="VBoxContainer" parent="设置面板/设置标签/其他"]
+[node name="设置" type="VBoxContainer" parent="设置面板/设置标签/样式" unique_id=438578994]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_jxn20")
+theme_override_constants/separation = 0
+
+[node name="标题" type="Label" parent="设置面板/设置标签/样式/设置" unique_id=1079327688]
+layout_mode = 2
+theme_override_constants/line_spacing = -10
+theme_override_constants/paragraph_spacing = -10
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_jxn20")
+text = "悬浮提示:"
+
+[node name="悬浮样式示例" parent="设置面板/设置标签/样式/设置/标题" unique_id=1882497651 instance=ExtResource("5_leojc")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -30.0
+offset_right = 0.0
+offset_bottom = 30.0
+grow_horizontal = 0
+grow_vertical = 2
+"提示数据" = SubResource("Resource_8yxkd")
+
+[node name="悬浮样式说明" type="Label" parent="设置面板/设置标签/样式/设置" unique_id=341463102]
+layout_mode = 2
+theme_override_constants/line_spacing = -15
+theme_override_styles/normal = SubResource("StyleBoxEmpty_leojc")
+text = "修改默认样式后可以在右侧提示节点查看效果
+修改效果将在大部分位置生效
+清空样式会删除悬浮的所有样式"
+
+[node name="清空悬浮样式" type="Button" parent="设置面板/设置标签/样式/设置/悬浮样式说明" unique_id=1698619059]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -187.0
+offset_top = -67.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 0
+text = "清空样式"
+
+[node name="功能说明2" type="Label" parent="设置面板/设置标签/样式/设置" unique_id=166576390]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ja3k")
+text = "背景颜色"
+
+[node name="悬浮背景色" type="ColorPickerButton" parent="设置面板/设置标签/样式/设置/功能说明2" unique_id=869580510]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_top = -29.5
+offset_right = 72.0
+offset_bottom = 27.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme = ExtResource("5_7ja3k")
+script = ExtResource("6_26hf3")
+
+[node name="功能说明3" type="Label" parent="设置面板/设置标签/样式/设置" unique_id=855335665]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ja3k")
+text = "标题颜色"
+
+[node name="悬浮标题色" type="ColorPickerButton" parent="设置面板/设置标签/样式/设置/功能说明3" unique_id=2106148297]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_top = -29.5
+offset_right = 72.0
+offset_bottom = 27.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme = ExtResource("5_7ja3k")
+script = ExtResource("6_26hf3")
+
+[node name="功能说明" type="Label" parent="设置面板/设置标签/样式/设置" unique_id=1719950599]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ja3k")
+text = "数值颜色"
+
+[node name="悬浮数值色" type="ColorPickerButton" parent="设置面板/设置标签/样式/设置/功能说明" unique_id=933461125]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_top = -29.5
+offset_right = 72.0
+offset_bottom = 27.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme = ExtResource("5_7ja3k")
+script = ExtResource("6_26hf3")
+
+[node name="标题2" type="Label" parent="设置面板/设置标签/样式/设置" unique_id=1263795946]
+layout_mode = 2
+theme_override_constants/line_spacing = -10
+theme_override_constants/paragraph_spacing = -10
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_jxn20")
+text = "窗口主题:"
+
+[node name="主题样式说明" type="Label" parent="设置面板/设置标签/样式/设置" unique_id=1071787002]
+layout_mode = 2
+theme_override_constants/line_spacing = -15
+theme_override_styles/normal = SubResource("StyleBoxEmpty_leojc")
+text = "修改主题的效果可能支持的还不是很好
+建议维持默认"
+
+[node name="清空主题样式" type="Button" parent="设置面板/设置标签/样式/设置/主题样式说明" unique_id=1790876361]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -187.0
+offset_top = -67.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 0
+text = "清空样式"
+
+[node name="背景颜色" type="Label" parent="设置面板/设置标签/样式/设置" unique_id=868773118]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ja3k")
+text = "背景颜色"
+
+[node name="主题背景色" type="ColorPickerButton" parent="设置面板/设置标签/样式/设置/背景颜色" unique_id=962024699]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_top = -29.5
+offset_right = 72.0
+offset_bottom = 27.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme = ExtResource("5_7ja3k")
+script = ExtResource("6_26hf3")
+
+[node name="标题颜色" type="Label" parent="设置面板/设置标签/样式/设置" unique_id=601105373]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ja3k")
+text = "标题颜色"
+
+[node name="主题标题色" type="ColorPickerButton" parent="设置面板/设置标签/样式/设置/标题颜色" unique_id=1715063645]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_top = -29.5
+offset_right = 72.0
+offset_bottom = 27.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme = ExtResource("5_7ja3k")
+script = ExtResource("6_26hf3")
+
+[node name="其他" type="ScrollContainer" parent="设置面板/设置标签" unique_id=496120454]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_tab_index = 2
+
+[node name="设置" type="VBoxContainer" parent="设置面板/设置标签/其他" unique_id=1633620644]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="标签2" type="Label" parent="设置面板/设置标签/其他/设置"]
+[node name="标签2" type="Label" parent="设置面板/设置标签/其他/设置" unique_id=2009304694]
 layout_mode = 2
 theme_override_constants/line_spacing = -10
 theme_override_constants/paragraph_spacing = -10
@@ -289,7 +540,7 @@ theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_jxn20")
 text = "游戏存档:"
 
-[node name="存档说明" type="Label" parent="设置面板/设置标签/其他/设置"]
+[node name="存档说明" type="Label" parent="设置面板/设置标签/其他/设置" unique_id=544102552]
 layout_mode = 2
 theme_override_constants/line_spacing = -15
 theme_override_styles/normal = SubResource("StyleBoxEmpty_leojc")
@@ -298,91 +549,91 @@ text = "如果你发现存档丢失
 可以打开文件夹,将旧存档拷贝进来
 原目录名<梅尔沃计划>就在新目录<梅计划>旁边"
 
-[node name="打开存档文件夹" type="Button" parent="设置面板/设置标签/其他/设置"]
+[node name="打开存档文件夹" type="Button" parent="设置面板/设置标签/其他/设置" unique_id=947393368]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 text = "打开存档文件夹"
 
-[node name="标签3" type="Label" parent="设置面板/设置标签/其他/设置"]
+[node name="标签3" type="Label" parent="设置面板/设置标签/其他/设置" unique_id=872610013]
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_jxn20")
 text = "游戏缓存:"
 
-[node name="删除说明" type="Label" parent="设置面板/设置标签/其他/设置"]
+[node name="删除说明" type="Label" parent="设置面板/设置标签/其他/设置" unique_id=649114339]
 layout_mode = 2
 theme_override_constants/line_spacing = -15
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rl18n")
 text = "游戏会缓存当前窗口状态.通常不需要删除.
 例如选中的标签,筛选器.不影响存档内数据"
 
-[node name="删除缓存" type="Button" parent="设置面板/设置标签/其他/设置"]
+[node name="删除缓存" type="Button" parent="设置面板/设置标签/其他/设置" unique_id=241302557]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 text = "删除缓存"
 
-[node name="说明" type="Label" parent="设置面板/设置标签/其他/设置"]
+[node name="说明" type="Label" parent="设置面板/设置标签/其他/设置" unique_id=1654679425]
 layout_mode = 2
 theme_override_constants/line_spacing = -15
 theme_override_styles/normal = SubResource("StyleBoxEmpty_22niw")
 text = "如果关闭,会隐藏QQ群的二维码
 可以先隐藏二维码后删除缓存如果删除成功,会恢复默认显示"
 
-[node name="二维码" type="CheckButton" parent="设置面板/设置标签/其他/设置"]
+[node name="二维码" type="CheckButton" parent="设置面板/设置标签/其他/设置" unique_id=781298099]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "显示二维码"
 
-[node name="外链" type="VBoxContainer" parent="设置面板"]
+[node name="外链" type="VBoxContainer" parent="设置面板" unique_id=1057471871]
 layout_mode = 2
 theme_override_constants/separation = -5
 
-[node name="标题" type="Label" parent="设置面板/外链"]
+[node name="标题" type="Label" parent="设置面板/外链" unique_id=1482628658]
 layout_mode = 2
 theme_override_constants/line_spacing = -20
 theme_override_font_sizes/font_size = 38
 text = "游戏没有BGM
 请使用外部音乐网站"
 
-[node name="网易云" type="LinkButton" parent="设置面板/外链"]
+[node name="网易云" type="LinkButton" parent="设置面板/外链" unique_id=287101805]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "网易云"
 underline = 1
 uri = "https://music.163.com/"
 
-[node name="QQ音乐" type="LinkButton" parent="设置面板/外链"]
+[node name="QQ音乐" type="LinkButton" parent="设置面板/外链" unique_id=539716306]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "QQ音乐"
 underline = 1
 uri = "https://y.qq.com/"
 
-[node name="标题2" type="Label" parent="设置面板/外链"]
+[node name="标题2" type="Label" parent="设置面板/外链" unique_id=527089957]
 layout_mode = 2
 theme_override_constants/line_spacing = -20
 theme_override_font_sizes/font_size = 38
 text = "游戏相关"
 
-[node name="更新日志" type="LinkButton" parent="设置面板/外链"]
+[node name="更新日志" type="LinkButton" parent="设置面板/外链" unique_id=2091063913]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "更新日志"
 underline = 1
 uri = "https://ai.feishu.cn/wiki/ERTNwq8ggiGLlUkJv8CchMjonPb"
 
-[node name="QQ群" type="LinkButton" parent="设置面板/外链"]
+[node name="QQ群" type="LinkButton" parent="设置面板/外链" unique_id=1841094247]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "QQ群链接"
 underline = 1
 uri = "https://qm.qq.com/q/P7b2kw9OsU"
 
-[node name="群二维码" type="TextureButton" parent="设置面板/外链"]
+[node name="群二维码" type="TextureButton" parent="设置面板/外链" unique_id=1793004577]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 400)
 layout_mode = 2

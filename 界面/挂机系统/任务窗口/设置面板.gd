@@ -1,4 +1,14 @@
 extends ScrollContainer
+@onready var 悬浮背景色: ColorPickerButton = %悬浮背景色
+@onready var 悬浮标题色: ColorPickerButton = %悬浮标题色
+@onready var 悬浮数值色: ColorPickerButton = %悬浮数值色
+@onready var 主题背景色: ColorPickerButton = %主题背景色
+@onready var 主题标题色: ColorPickerButton = %主题标题色
+@onready var 清空悬浮样式: Button = %清空悬浮样式
+@onready var 清空主题样式: Button = %清空主题样式
+@onready var 悬浮样式示例: Control = %悬浮样式示例
+signal 更新设置(条件)
+var 全局配置字典:Dictionary = ProjectSettings.get_setting("global/snake_case")
 func _ready() -> void:
 	%"启用全屏".button_pressed=计划.配置文件.get("全屏",false)
 	%"启用全屏".toggled.connect(func(条件):计划.切换全屏(条件))
@@ -22,6 +32,46 @@ func _ready() -> void:
 			计划.节点["空节点"].重新载入存档缓存()
 		计划.语法糖通知("缓存已清空","通知"))
 	%"打开存档文件夹".pressed.connect(func():计划.打开存档目录())
+	处理颜色变更(悬浮背景色,"悬浮背景色",全局配置字典.get("悬浮背景色"))
+	处理颜色变更(悬浮标题色,"悬浮标题色",全局配置字典.get("悬浮标题色"))
+	处理颜色变更(悬浮数值色,"悬浮数值色",全局配置字典.get("悬浮数值色"))
+	悬浮数值色.color_changed.connect(func(_颜色: Color):设置悬浮样式())
+	清空悬浮样式.pressed.connect(清空设置.bind(["悬浮背景色","悬浮标题色","悬浮数值色"]))
+	处理颜色变更(主题背景色,"主题背景色",全局配置字典.get("主题背景色"))
+	主题背景色.color_changed.connect(func(_颜色: Color):计划.场景全局样式.emit())
+	处理颜色变更(主题标题色,"主题标题色",全局配置字典.get("主题标题色"))
+	主题标题色.color_changed.connect(func(_颜色: Color):计划.场景全局样式.emit())
+	清空主题样式.pressed.connect(清空设置.bind(["主题背景色","主题标题色"]))
+	设置悬浮样式()
+	计划.场景全局样式.connect(设置悬浮样式)
+func 设置悬浮样式():
+	悬浮样式示例.提示数据.提示数组[2].文本="数值色[color=%s]%d[/color]"%[
+		计划.配置文件.get("悬浮数值色",全局配置字典.get("悬浮数值色")),123]
+func 清空设置(条件数组:Array=[]):
+	for 条件 in 条件数组:
+		计划.配置文件.erase(条件)
+		更新设置.emit(条件)
+	计划.场景全局样式.emit()
+##给颜色节点绑定信号设置默认值
+func 处理颜色变更(节点: ColorPickerButton,条件名:String,默认值:String="#000000FF"):
+	更新设置.connect(func(条件):
+		if 条件==条件名:
+			节点.color=Color(计划.配置文件.get(条件名, 默认值)as String))
+	节点.color=Color(计划.配置文件.get(条件名, 默认值)as String)
+	节点.color_changed.connect(func(颜色: Color):计划.配置文件[条件名]=颜色转十六进制文本(颜色))
+## 核心函数：将Color对象转为 #000000 格式的十六进制文本
+func 颜色转十六进制文本(颜色: Color) -> String:
+	# 分别将R/G/B值转换为两位十六进制（00-FF），并拼接成 #RRGGBB 格式
+	var r = "%02X" % int(颜色.r * 255)  # 红色通道（0-255）转两位十六进制
+	var g = "%02X" % int(颜色.g * 255)  # 绿色通道
+	var b = "%02X" % int(颜色.b * 255)  # 蓝色通道
+	# 关键：自动判断透明度（兼容浮点精度误差，比如0.999999≈1.0）
+	var 完全不透明 = abs(颜色.a - 1.0) < 0.001  # 浮点精度容错阈值
+	if 完全不透明:
+		return "#" + r + g + b  # 无透明通道：#RRGGBB
+	else:
+		var a = "%02X" % clamp(int(颜色.a * 255), 0, 255)
+		return "#" + r + g + b + a  # 带透明通道：#RRGGBBAA
 func 绑定按钮(节点:Button,条件名:String,默认值:bool=true):
 	节点.button_pressed=计划.配置文件.get(条件名,默认值)
 	节点.toggled.connect(func(条件):计划.配置文件[条件名]=条件)

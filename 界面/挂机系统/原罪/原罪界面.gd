@@ -2,8 +2,7 @@ extends 基类梅窗口
 var 系统节点:={}
 var 原罪=["傲慢","暴食","贪婪","懒惰","暴怒","色欲","嫉妒"]
 var 原罪计时器
-var 管理选项卡:TabContainer
-var 系统选项卡:TabContainer
+@onready var 系统选项卡: TabContainer = %系统管理
 @onready var 原罪突破: Control = %原罪突破
 
 func _ready() -> void:
@@ -16,12 +15,6 @@ func _ready() -> void:
 		"游历":%"4_游历",
 		"职业":%"5_职业",
 		"召唤":%"6_召唤",}
-	系统选项卡=%"系统管理"
-	系统选项卡.current_tab=计划.窗口状态_限制(基类窗口名称,"管理选项卡",0,系统选项卡.get_tab_count())
-	系统选项卡.tab_selected.connect(func(序号):计划.窗口状态管理(基类窗口名称,"系统选项卡",null,序号))
-	管理选项卡=%"选项卡"
-	管理选项卡.current_tab=计划.窗口状态_限制(基类窗口名称,"管理选项卡",0,管理选项卡.get_tab_count())
-	管理选项卡.tab_selected.connect(func(序号):计划.窗口状态管理(基类窗口名称,"管理选项卡",null,序号))
 	for 系统名 in 系统节点:#为选项卡重命名
 		var 子节点: Node = 系统节点[系统名]# 获取当前选项卡对应的子节点
 		var 新标题: String = 子节点.name.replace("_", ".")#节点原始名称替换下划线为小数点
