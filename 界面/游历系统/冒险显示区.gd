@@ -18,10 +18,16 @@ class_name 冒险地图
 @export var 地图信息:地图信息包=null
 var 玩家:游历实体
 var 玩家摄像机: Camera2D
-func 检查玩家移动():
-	if 玩家:
-		玩家.启用自动前进=true
-		玩家.自动前进目标=get_global_mouse_position().x
+func _physics_process(_间隔: float) -> void:
+	if Engine.is_editor_hint():
+		return
+	var 鼠标全局:Vector2 = get_global_mouse_position()
+	var 鼠标局部 = 地图.to_local(鼠标全局)
+	var 方块坐标:Vector2i = 地图.local_to_map(鼠标局部)
+	var 点击屏幕:bool=Input.is_action_just_pressed("点击屏幕")
+	if 点击屏幕 and 方块坐标.y>=5:
+		计划.地图.玩家导航.emit(get_global_mouse_position().x)
+
 func 保存地图():
 	if Engine.is_editor_hint():#只在编辑器工作
 		地图.保存地图()#先各自保存自身的图块数据
@@ -74,12 +80,15 @@ func 加载地图(传入的地图信息包: 地图信息包):
 			print("警告：实体数据缺失必要字段，跳过生成：", 节点唯一标识)
 			continue
 		var 实体类型:String=实体数据["实体类型"]#配置实体参数
-		var 新实体:游历实体 = 实体场景字典.get(实体类型,"基础").duplicate()
+		var 新实体:游历实体 = 实体场景字典.get(实体类型,实体场景字典.基础).duplicate()
 		新实体.实体名称 = 实体数据["实体名称"]
 		新实体.实体类型 = 实体类型
 		新实体.position = 实体数据["位置"]  # 设置位置
 		if 新实体.实体类型=="玩家":
-			新实体.add_child(创建玩家摄像机())
+			if 新实体 is 游历实体_玩家:
+				var 摄像机: Camera2D=创建玩家摄像机()
+				新实体.摄像机=摄像机
+				新实体.add_child(摄像机)
 		if Engine.is_editor_hint():
 			新实体.name=节点唯一标识
 		实体.add_child(新实体)

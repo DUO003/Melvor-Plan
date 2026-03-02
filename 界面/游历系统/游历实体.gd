@@ -6,7 +6,8 @@ var 卡片素材:Dictionary={
 		"场景":preload("res://界面/插件/实体/玩家.tscn"),
 		"范围":Vector2(65,140),
 		"偏移":Vector2(0,-75),
-		"血条偏移":Vector2(-70,-186)},
+		"血条偏移":Vector2(-70,-186),
+		"代码":游历实体_玩家},
 	"村民":{
 		"场景":preload("res://界面/插件/实体/实体卡片.tscn"),
 		"范围":Vector2(65,140),
@@ -75,6 +76,8 @@ var 地图外判断:int=1100#Y大于这个值视为掉出地图
 var 出生点:Vector2
 func _ready():
 	if Engine.is_editor_hint():
+		var 编辑器名: Label = %编辑器名
+		编辑器名.text=实体名称
 		return
 	初始化实体()
 	更新进度条()

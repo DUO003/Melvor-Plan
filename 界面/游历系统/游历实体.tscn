@@ -107,6 +107,19 @@ theme = ExtResource("2_43fed")
 theme_override_styles/panel = SubResource("StyleBoxFlat_4dgi1")
 metadata/_edit_use_anchors_ = true
 
+[node name="编辑器名" type="Label" parent="动画" unique_id=1848171724]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.5
+offset_top = 50.0
+offset_right = 39.5
+offset_bottom = 107.0
+grow_horizontal = 2
+text = "测试"
+
 [node name="碰撞范围" type="CollisionShape2D" parent="." unique_id=1792861877]
 unique_name_in_owner = true
 position = Vector2(0, -76)
