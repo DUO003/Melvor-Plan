@@ -103,10 +103,21 @@ func 生成任务栏按钮() -> void:# 生成任务栏所有按钮
 			任务栏数组.append(窗口名)
 	if not 任务栏数组.has("任务窗口"):
 		任务栏数组.insert(0,"任务窗口")
+	var 待移除元素:Array=[]
 	for 界面名称 in 任务栏数组:
-		任务栏节点.add_child(生成任务栏节点(界面名称))
+		if 窗口.窗口数据.has(界面名称):
+			任务栏节点.add_child(生成任务栏节点(界面名称))
+		else :
+			待移除元素.append(界面名称)
+	if 待移除元素.size()>=1:
+		for 界面名称 in 待移除元素:
+			print("当前%s界面不存在从存档中移除"%界面名称)
+			窗口解锁数组.erase(界面名称)
+			窗口禁用数组.erase(界面名称)
 	任务按钮本体.hide()# 按钮本体初始隐藏
-func 生成任务栏节点(界面名称,隐藏文本:bool=false)->Button:
+func 生成任务栏节点(界面名称:String,隐藏文本:bool=false)->Button:
+	if not 窗口.窗口数据.has(界面名称):
+		return null
 	var 任务按钮: Button = 任务按钮本体.duplicate()
 	任务按钮.show()#防止节点为隐藏
 	if 隐藏文本:

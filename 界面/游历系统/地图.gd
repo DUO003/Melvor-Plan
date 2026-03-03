@@ -15,18 +15,24 @@ extends Control
 	set(值):
 		半径=值
 		if Engine.is_editor_hint():queue_redraw()
-@export var 填充颜色: Color = Color(0.8, 0.9, 1.0, 0.7)  # 填充色（浅蓝半透明）
+@export var 颜色字典: Dictionary[int,Color] = {2:Color(0.376, 0.825, 0.0, 1.0)}
 # 配置参数：长按判定阈值（秒）
 @export var 长按判定时间:float = 0.1
 @export var 当前地区:String="新手村"
+@export var 当前地区解锁:Dictionary={Vector2i(0,0):true}
+@export var 战争迷雾:Dictionary={Vector2i(0,0):1}
 @export var 玩家坐标:Vector2i=Vector2i(0,0)
 @onready var 地图显示: TileMapLayer = %地图显示
 @onready var 地图数据: 梅悬浮提示 = %地图数据
 @onready var 冒险管理器: 冒险地图 = %冒险管理器
-
+@onready var 前往: Button = %前往
+var 载入当前地区:Dictionary
 func _ready():
 	if not Engine.is_editor_hint():
 		加载数据()
+		更新战争迷雾()
+		call_deferred("更新提示信息",玩家坐标)
+		前往.pressed.connect(前往按钮方法)
 	拖动函数()
 func 加载数据():
 	var 游历:=计划.游历
@@ -35,14 +41,14 @@ func 加载数据():
 	if 地区数据.has(当前地区) and 地区数据[当前地区].has_all(["范围","地区"]):
 		var 当前数据:Dictionary=地区数据[当前地区]
 		绘制范围=当前数据.范围 as Rect2i
-		var 地区:Dictionary=当前数据.地区 as Dictionary
+		载入当前地区=当前数据.地区 as Dictionary
 		var 地块数据:=游历.地块数据
 		var 方块:物品方块=物品方块.new(-1)
 		var 地图信息:地图信息包
 		for 列索引 in range(绘制范围.position.x, 绘制范围.position.x + 绘制范围.size.x):
 			for 行索引 in range(绘制范围.position.y, 绘制范围.position.y + 绘制范围.size.y):
 				var 当前坐标:Vector2i=Vector2i(列索引, 行索引)
-				var 方块名称:String=地区.get(当前坐标,"空")
+				var 方块名称:String=载入当前地区.get(当前坐标,"空")
 				if not 地块数据.has(方块名称):
 					方块名称="空"
 				var 当前地块:Dictionary=地块数据[方块名称]
@@ -93,10 +99,26 @@ var 拖动偏移量: Vector2 = Vector2.ZERO
 func 点击函数(鼠标全局: Vector2):
 	var 鼠标局部 = 地图显示.to_local(鼠标全局)
 	var 地图格子:Vector2i=地图显示.local_to_map(鼠标局部)
+	更新提示信息(地图格子)
+	
+func 更新提示信息(当前坐标:Vector2i):
+	var 地块数据:=计划.游历.地块数据
+	var 方块名称:String=载入当前地区.get(当前坐标,"空")
+	if not 地块数据.has(方块名称):
+		方块名称="空"
+	var 当前地块:Dictionary=地块数据[方块名称]
 	var 提示数据:=梅提示数据.new()
+	提示数据.默认字体=30
 	提示数据.提示数组.clear()
-	提示数据.提示数组.append({"文本": "[center][font_size=%d]%s[/font_size][/center]" % [30,str(地图格子)]})
+	提示数据.提示数组.append({"文本": "[center][font_size=%d]地块名称:%s[/font_size][/center]" % [40,方块名称]})
+	提示数据.提示数组.append({"文本": "类型:%s" % [当前地块.get("地块","未知")]})
 	地图数据.数据包更新(提示数据)
+	if 玩家坐标==当前坐标:
+		前往.text="当前"
+	else :
+		前往.text="前往"
+func 前往按钮方法():
+	pass
 func 拖动函数(鼠标位置: Vector2=绘制偏移 + 拖动偏移量):
 	绘制偏移 = 鼠标位置 - 拖动偏移量
 	地图显示.position=绘制偏移+Vector2(-64, -64)
@@ -133,10 +155,85 @@ func 生成六边形(列索引: int, 行索引: int):
 		顶点列表.append(Vector2(x, y))
 	# 闭合多边形（添加第一个顶点到末尾）
 	顶点列表.append(顶点列表[0])
+	var 迷雾:int=获取迷雾(Vector2i(列索引, 行索引))
 	if 地图提示:
-		地图提示.打印("%d,%d"%[列索引,行索引],中心点,顶点列表,{Vector2i(0,0):true}.has(Vector2i(列索引, 行索引)))
-	var 填充颜色数组: PackedColorArray = PackedColorArray()
-	for i in 顶点列表:  # 遍历顶点列表，为每个顶点添加相同的填充颜色
-		填充颜色数组.append(填充颜色)
-	draw_polygon(顶点列表, 填充颜色数组)
+		地图提示.打印("%d,%d"%[列索引,行索引],中心点,顶点列表,迷雾)
+	if 颜色字典.has(迷雾) and not Engine.is_editor_hint():
+		var 填充颜色数组: PackedColorArray = PackedColorArray()
+		for i in 顶点列表:  # 遍历顶点列表，为每个顶点添加相同的填充颜色
+			填充颜色数组.append(颜色字典[迷雾])
+		draw_polygon(顶点列表, 填充颜色数组)
 	return
+# 获取六边形相邻有效格子坐标（输入改为Vector2i类型的目标坐标）
+func 获取六边形相邻格子(目标坐标: Vector2i) -> Array[Vector2i]:
+	# 从Vector2i中提取列索引（x）和行索引（y）
+	var 目标列索引 = 目标坐标.x
+	var 目标行索引 = 目标坐标.y
+	
+	# 存储最终有效的相邻格子坐标
+	var 有效相邻格子: Array[Vector2i] = []
+	
+	# 定义六边形网格的偏移规则：改用Vector2i存储偏移（列偏移=x，行偏移=y）
+	var 偏移列表: Array[Vector2i]
+	if 目标行索引 % 2 == 0:
+		# 偶数行（行索引为0、2、4...）的6个相邻偏移
+		偏移列表 = [
+			Vector2i(-1, -1), Vector2i(0, -1),  # 左上、上
+			Vector2i(-1, 0),  Vector2i(1, 0),   # 左、右
+			Vector2i(-1, 1),  Vector2i(0, 1)    # 左下、下
+		]
+	else:
+		# 奇数行（行索引为1、3、5...）的6个相邻偏移
+		偏移列表 = [
+			Vector2i(0, -1),  Vector2i(1, -1),  # 上、右上
+			Vector2i(-1, 0),  Vector2i(1, 0),   # 左、右
+			Vector2i(0, 1),   Vector2i(1, 1)    # 下、右下
+		]
+	
+	# 遍历所有偏移，计算相邻格子并校验边界有效性
+	for 偏移 in 偏移列表:
+		# 计算相邻格子的行列索引（x对应列，y对应行）
+		var 新列索引 = 目标列索引 + 偏移.x
+		var 新行索引 = 目标行索引 + 偏移.y
+		
+		# 校验是否在绘制范围的矩形边界内（适配range左闭右开的生成逻辑）
+		var 列有效 = 新列索引 >= 绘制范围.position.x and 新列索引 < 绘制范围.position.x + 绘制范围.size.x
+		var 行有效 = 新行索引 >= 绘制范围.position.y and 新行索引 < 绘制范围.position.y + 绘制范围.size.y
+		
+		# 仅保留边界内的有效坐标
+		if 列有效 and 行有效:
+			有效相邻格子.append(Vector2i(新列索引, 新行索引))
+	
+	return 有效相邻格子
+# 核心方法：根据已解锁格子更新战争迷雾字典
+func 更新战争迷雾():
+	# 1. 清空旧的战争迷雾数据，避免残留干扰
+	战争迷雾.clear()
+	
+	# 2. 先收集所有需要处理的格子：占领格子 + 其周围格子
+	var 占领格子列表: Array[Vector2i] = []
+	# 遍历当前地区解锁字典，筛选出已占领的格子（value为true）
+	for 格子坐标 in 当前地区解锁:
+		if 当前地区解锁[格子坐标] is bool and 当前地区解锁[格子坐标]:
+			占领格子列表.append(格子坐标)
+	
+	# 3. 处理占领格子：设为1
+	for 占领坐标 in 占领格子列表:
+		战争迷雾[占领坐标] = 1
+	
+	# 4. 处理占领格子的周围格子：设为0（注意：不覆盖已设为1的占领格子）
+	for 占领坐标 in 占领格子列表:
+		# 获取该占领格子的所有相邻有效格子
+		var 周围格子列表 = 获取六边形相邻格子(占领坐标)
+		for 周围坐标 in 周围格子列表:
+			# 仅当该格子不未写入才设为0（避免覆盖1）
+			if not 战争迷雾.has(周围坐标):
+				战争迷雾[周围坐标] = 0
+
+# 可选：获取指定格子的战争迷雾值（处理默认值-1）
+func 获取迷雾(格子坐标: Vector2i) -> int:
+	if Engine.is_editor_hint():
+		return 1
+	if 玩家坐标==格子坐标:
+		return 2
+	return 战争迷雾.get(格子坐标, -1)

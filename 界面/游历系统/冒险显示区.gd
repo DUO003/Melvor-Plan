@@ -18,16 +18,38 @@ class_name 冒险地图
 @export var 地图信息:地图信息包=null
 var 玩家:游历实体
 var 玩家摄像机: Camera2D
+@onready var 冒险视口: SubViewport = %冒险窗口
+#func _draw():
+	#if Engine.is_editor_hint():
+		#return
+	#draw_rect(计划.地图.传送点位置,Color(0.285, 0.285, 0.285, 1.0), true)
 func _physics_process(_间隔: float) -> void:
 	if Engine.is_editor_hint():
 		return
-	var 鼠标全局:Vector2 = get_global_mouse_position()
+	if not 点击在视口内():
+		return
+	var 鼠标全局:Vector2 = 地图.get_global_mouse_position()
 	var 鼠标局部 = 地图.to_local(鼠标全局)
 	var 方块坐标:Vector2i = 地图.local_to_map(鼠标局部)
 	var 点击屏幕:bool=Input.is_action_just_pressed("点击屏幕")
-	if 点击屏幕 and 方块坐标.y>=5:
-		计划.地图.玩家导航.emit(get_global_mouse_position().x)
-
+	if 点击屏幕:
+		if 方块坐标.y>=5:
+			#print("鼠标全局位置",鼠标全局,"鼠标局部",鼠标局部)
+			#print("点击位置",方块坐标,"方块ID",地图.get_cell_source_id(方块坐标))
+			计划.地图.玩家导航.emit(get_global_mouse_position().x)
+		else :
+			var 图块源:int=建筑.get_cell_source_id(方块坐标)
+			var 图块坐标:Vector2i=建筑.get_cell_atlas_coords(方块坐标)
+			var 方块名称:String=计划.表格.方块读取(图块源,图块坐标)
+			print(方块名称)
+# 核心判断函数：判断鼠标位置是否在视口内
+func 点击在视口内() -> bool:
+	var 鼠标全局:Vector2 = get_global_mouse_position()
+	# 将鼠标全局坐标转换为 SubViewportContainer 的局部坐标
+	var 鼠标局部: Vector2 = (鼠标全局 - global_position) / scale
+	# 判断该局部坐标是否在 SubViewportContainer 的矩形范围内
+	var 视口边界: Rect2 = Rect2(Vector2.ZERO, size)
+	return 视口边界.has_point(鼠标局部)
 func 保存地图():
 	if Engine.is_editor_hint():#只在编辑器工作
 		地图.保存地图()#先各自保存自身的图块数据
@@ -62,8 +84,9 @@ func 保存游历实体数据()->Dictionary:
 	# 后续你可自行处理这个字典（保存到文件/配置等）
 	return 字典
 var 实体场景字典:Dictionary[String,游历实体] = {
-	"基础":preload("res://界面/游历系统/游历实体.tscn").instantiate(),
-	"玩家":preload("res://界面/游历系统/实体_玩家.tscn").instantiate(),}
+	"基础":preload("res://界面/游历系统/实体/游历实体.tscn").instantiate(),
+	"玩家":preload("res://界面/游历系统/实体/实体_玩家.tscn").instantiate(),
+	"怪物":preload("res://界面/游历系统/实体/实体_怪物.tscn").instantiate(),}
 # 核心加载方法：传入地图信息包，加载实体数据
 func 加载地图(传入的地图信息包: 地图信息包):
 	清除子节点(实体)
@@ -92,39 +115,63 @@ func 加载地图(传入的地图信息包: 地图信息包):
 		if Engine.is_editor_hint():
 			新实体.name=节点唯一标识
 		实体.add_child(新实体)
-		if  Engine.is_editor_hint():
+		if Engine.is_editor_hint():
 			新实体.owner=self
 	if  玩家摄像机 and Engine.is_editor_hint():#解决摄像机报错
 		玩家摄像机.owner=self
 	地图名称 = 地图信息.地图名称
-	加载图块(地图信息.地图_地图,地图信息.起点_地图,地图,true)
-	加载图块(地图信息.地图_建筑,地图信息.起点_建筑,建筑)
-func 加载图块(地图图块: TileMapPattern,起点: Vector2i,节点:TileMapLayer,限制:bool=false):
-	节点.set_pattern(起点, 地图图块)
-	if 限制:
-		if not 玩家摄像机:
-			玩家摄像机 = Camera2D.new()
-		# 1. 获取核心尺寸信息
+	地图.set_pattern(地图信息.起点_地图, 地图信息.地图_地图)
+	更新限制(地图信息.起点_地图, 地图信息.地图_地图,地图)
+	建筑.set_pattern(地图信息.起点_建筑, 地图信息.地图_建筑)
+	if not Engine.is_editor_hint():
+		更新传送门(建筑)
+		#queue_redraw()
+func 更新传送门(节点:TileMapLayer):
+	var 方块字典:Dictionary=计划.表格.方块字典
+	if not 方块字典.has("传送门") or not 方块字典.传送门.has_all(["瓦片集","瓦片列","瓦片排"]):
+		push_warning("错误,找不到传送门数据")
+		return
+	var 目标源:int=方块字典.传送门.瓦片集
+	var 目标坐标:Vector2i=Vector2i(方块字典.传送门.瓦片列,方块字典.传送门.瓦片排)
+	var 搜索结果:=计划.地图.搜索图块(节点,目标源,目标坐标)
+	if 搜索结果.is_empty():
+		计划.地图.传送点有效=false
+	else :
+		计划.地图.传送点有效=true
 		var 地图集: TileSet = 节点.tile_set
 		if not 地图集:
 			push_warning("TileMapLayer未关联TileSet")
 			地图集=TileSet.new()
 			地图集.tile_size=Vector2i(64,64)
 		var 图块大小: Vector2i = 地图集.tile_size
-		var 图块图案尺寸: Vector2i = 地图图块.get_size() # 加载的图块图案本身的尺寸（行列数）
-		var 半格高度: int = int(图块大小.y / 2.0)  # 计算半格的像素值
-		# 2. 计算地图实际像素边界（基于加载起点）
-		# 左侧边界：起点的x坐标 × 单个图块宽度（避免负数，取最大值0）
-		var 地图左边界像素: int = max(起点.x * 图块大小.x, 0)
-		# 右侧边界：(起点x + 图块图案列数) × 单个图块宽度
-		var 地图右边界像素: int = (起点.x + 图块图案尺寸.x) * 图块大小.x
-		# 底部边界：(起点y + 图块图案行数) × 单个图块高度
-		var 地图下边界像素: int = (起点.y + 图块图案尺寸.y) * 图块大小.y - 半格高度
-		
-		# 3. 设置摄像机限制（取消顶部限制，只限制左、右、下）
-		玩家摄像机.limit_left = 地图左边界像素    # 左侧基于加载起点计算
-		玩家摄像机.limit_right = 地图右边界像素   # 右侧基于图块图案尺寸计算
-		玩家摄像机.limit_bottom = 地图下边界像素  # 底部基于图块图案尺寸计算
+		var 传送门坐标:Vector2i = 搜索结果[0]
+		var 传送门原点:Vector2 = Vector2(传送门坐标.x * 图块大小.x,传送门坐标.y * 图块大小.y)
+		计划.地图.传送点位置 = Rect2(传送门原点+Vector2(-20, -120), Vector2(108, 200))
+	print("源%d(%d,%d)搜索结果:"%[目标源,目标坐标.x,目标坐标.y],搜索结果)
+func 更新限制(起点: Vector2i,地图图块: TileMapPattern,节点:TileMapLayer):
+	if not 玩家摄像机:
+		玩家摄像机 = Camera2D.new()
+	# 1. 获取核心尺寸信息
+	var 地图集: TileSet = 节点.tile_set
+	if not 地图集:
+		push_warning("TileMapLayer未关联TileSet")
+		地图集=TileSet.new()
+		地图集.tile_size=Vector2i(64,64)
+	var 图块大小: Vector2i = 地图集.tile_size
+	var 图块图案尺寸: Vector2i = 地图图块.get_size() # 加载的图块图案本身的尺寸（行列数）
+	var 半格高度: int = int(图块大小.y / 2.0)  # 计算半格的像素值
+	# 2. 计算地图实际像素边界（基于加载起点）
+	# 左侧边界：起点的x坐标 × 单个图块宽度（避免负数，取最大值0）
+	var 地图左边界像素: int = max(起点.x * 图块大小.x, 0)
+	# 右侧边界：(起点x + 图块图案列数) × 单个图块宽度
+	var 地图右边界像素: int = (起点.x + 图块图案尺寸.x) * 图块大小.x
+	# 底部边界：(起点y + 图块图案行数) × 单个图块高度
+	var 地图下边界像素: int = (起点.y + 图块图案尺寸.y) * 图块大小.y - 半格高度
+	
+	# 3. 设置摄像机限制（取消顶部限制，只限制左、右、下）
+	玩家摄像机.limit_left = 地图左边界像素    # 左侧基于加载起点计算
+	玩家摄像机.limit_right = 地图右边界像素   # 右侧基于图块图案尺寸计算
+	玩家摄像机.limit_bottom = 地图下边界像素  # 底部基于图块图案尺寸计算
 		
 func 清除子节点(节点容器:Node,保留节点=null):
 	for 节点名 in 节点容器.get_children():

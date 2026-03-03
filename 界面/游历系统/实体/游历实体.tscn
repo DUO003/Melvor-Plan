@@ -1,0 +1,200 @@
+[gd_scene format=3 uid="uid://j753afqyfj4r"]
+
+[ext_resource type="Script" uid="uid://bmdnkg02lei5t" path="res://界面/游历系统/实体/游历实体.gd" id="1_3b5h0"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_43fed"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_qokn6"]
+[ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="4_vtxdu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dgi1"]
+bg_color = Color(0.67, 0.52036667, 0.22109999, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("3_qokn6")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8dmt"]
+size = Vector2(65, 140)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g082e"]
+bg_color = Color(0.7, 0.61833334, 0.45499998, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyryk"]
+bg_color = Color(0.203922, 0.65098, 0.196078, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubcb0"]
+bg_color = Color(0.6666667, 0.6039216, 0.43529412, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+script = ExtResource("3_qokn6")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_147kk"]
+
+[sub_resource type="Gradient" id="Gradient_jdkko"]
+offsets = PackedFloat32Array(0, 0.1448598, 0.2990654, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0.19966345, 0, 1, 1, 1, 0)
+metadata/_snap_count = 50
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6aw6a"]
+gradient = SubResource("Gradient_jdkko")
+fill_from = Vector2(0.491453, 1)
+fill_to = Vector2(0.508547, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wcpfc"]
+texture = SubResource("GradientTexture2D_6aw6a")
+script = ExtResource("4_vtxdu")
+metadata/_custom_type_script = "uid://dr0317kuw34um"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unoew"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+script = ExtResource("3_qokn6")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_unoew"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_147kk"]
+bg_color = Color(4.7168137e-06, 0.59296954, 0.81493306, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[node name="实体" type="CharacterBody2D" unique_id=1150286531]
+velocity = Vector2(0, 1666.6664)
+script = ExtResource("1_3b5h0")
+
+[node name="动画" type="Panel" parent="." unique_id=339039118]
+offset_left = -130.0
+offset_top = -360.0
+offset_right = 130.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(130, 360)
+mouse_behavior_recursive = 2
+theme = ExtResource("2_43fed")
+theme_override_styles/panel = SubResource("StyleBoxFlat_4dgi1")
+metadata/_edit_use_anchors_ = true
+
+[node name="编辑器名" type="Label" parent="动画" unique_id=1848171724]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.5
+offset_top = 50.0
+offset_right = 39.5
+offset_bottom = 107.0
+grow_horizontal = 2
+text = "测试"
+
+[node name="碰撞范围" type="CollisionShape2D" parent="." unique_id=1792861877]
+unique_name_in_owner = true
+position = Vector2(0, -76)
+shape = SubResource("RectangleShape2D_b8dmt")
+metadata/_edit_lock_ = true
+
+[node name="血量" type="ProgressBar" parent="." unique_id=1861504083]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 25)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.0
+offset_top = -186.0
+offset_right = 70.0
+offset_bottom = -159.0
+grow_horizontal = 2
+pivot_offset = Vector2(70, 27)
+mouse_behavior_recursive = 1
+theme = ExtResource("2_43fed")
+theme_override_styles/background = SubResource("StyleBoxFlat_g082e")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kyryk")
+value = 25.0
+allow_greater = true
+show_percentage = false
+
+[node name="蒙版" type="Panel" parent="血量" unique_id=720280088]
+clip_children = 1
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ubcb0")
+metadata/_edit_lock_ = true
+
+[node name="护盾" type="ProgressBar" parent="血量/蒙版" unique_id=1959929690]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_147kk")
+theme_override_styles/fill = SubResource("StyleBoxTexture_wcpfc")
+value = 50.0
+show_percentage = false
+metadata/_edit_lock_ = true
+
+[node name="边框" type="Panel" parent="血量" unique_id=1116405271]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_unoew")
+metadata/_edit_lock_ = true
+
+[node name="魔法" type="ProgressBar" parent="血量/边框" unique_id=1031354366]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_43fed")
+theme_override_styles/background = SubResource("StyleBoxEmpty_unoew")
+theme_override_styles/fill = SubResource("StyleBoxFlat_147kk")
+value = 75.0
+allow_greater = true
+show_percentage = false
+metadata/_edit_lock_ = true

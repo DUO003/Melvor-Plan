@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cmimgxg35bc7b"]
+
+[ext_resource type="PackedScene" uid="uid://j753afqyfj4r" path="res://界面/游历系统/实体/游历实体.tscn" id="1_u441u"]
+[ext_resource type="Script" uid="uid://bokvbtsew5gwt" path="res://界面/游历系统/实体/实体_玩家.gd" id="2_yi5us"]
+
+[node name="玩家" unique_id=1150286531 instance=ExtResource("1_u441u")]
+script = ExtResource("2_yi5us")
+
+[node name="编辑器名" parent="动画" parent_id_path=PackedInt32Array(339039118) index="0" unique_id=1848171724]
+text = "玩家"

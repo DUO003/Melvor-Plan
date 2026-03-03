@@ -49,6 +49,9 @@ func 任务栏初始化():
 		if 已读取数组.has(界面名称):
 			需要删除.append(界面名称)
 			continue
+		if not 窗口.窗口数据.has(界面名称):
+			需要删除.append(界面名称)
+			continue
 		已读取数组.append(界面名称)
 		var 任务按钮: Button = Button.new()
 		任务按钮.vertical_icon_alignment=VERTICAL_ALIGNMENT_FILL

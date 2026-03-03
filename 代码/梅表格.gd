@@ -396,3 +396,10 @@ func 筛选物品(表头条件: String,目标值: String,待筛选数组: Array=
 		if 蓝图字典[物品名称][索引] == 目标值:# 符合条件则加入结果字典
 			筛选结果 += [物品名称]
 	return 筛选结果
+func 方块读取(图块源:int,图块坐标:Vector2i)->String:
+	var 访问坐标:Vector3i = Vector3i(图块源, 图块坐标.x, 图块坐标.y)
+	if 方块检索字典.has(访问坐标):
+		return 方块检索字典[访问坐标]
+	else:
+		print("警告：未找到图块源", 图块源, " 坐标", 图块坐标, "对应的方块")
+		return "空"

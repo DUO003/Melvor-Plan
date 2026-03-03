@@ -9,6 +9,9 @@ signal 更新_快捷键栏()
 @warning_ignore("unused_signal")
 ##期望玩家前往到当前坐标
 signal 玩家导航(目标:float)
+@warning_ignore("unused_signal")
+##当传送门
+signal 传送门更新()
 var 交互字典:Dictionary={}
 ##编号从0计数默认快捷键1
 var 快捷栏编号:int=0
@@ -17,6 +20,38 @@ var 方块背包:ContainerData
 var 快捷键字典:Dictionary[int,物品方块]={}
 var 方块检查器:检查器方块
 var 背包检查器:检查器背包
+
+##游历地图切换
+var 接触传送点:bool=false
+var 传送点有效:bool=false
+var 传送点位置:Rect2=Rect2(0,0,108,180)
+## 地图图块搜索算法[br]
+## 返回值: Array[Vector2i] - 所有符合条件的图块坐标数组
+func 搜索图块(地图图块: TileMapLayer, 目标源ID: int, 目标图集坐标: Vector2i) -> Array[Vector2i]:
+	# 存储所有符合条件的坐标
+	var 符合条件的坐标数组: Array[Vector2i] = []
+	
+	# 安全校验：确保传入的地图图块节点有效
+	if 地图图块 == null:
+		push_warning("搜索算法：传入的地图图块节点为空！")
+		return 符合条件的坐标数组
+	
+	# 获取地图中所有已使用的格子坐标
+	var 所有已使用格子: Array[Vector2i] = 地图图块.get_used_cells()
+	
+	# 遍历每个已使用的格子，检查匹配条件
+	for 方块坐标:Vector2i in 所有已使用格子:
+		# 获取当前格子的源ID
+		var 当前源ID: int = 地图图块.get_cell_source_id(方块坐标)
+		# 获取当前格子的图集坐标
+		var 当前图集坐标: Vector2i = 地图图块.get_cell_atlas_coords(方块坐标)
+		
+		# 检查是否同时匹配源ID和图集坐标
+		if 当前源ID == 目标源ID and 当前图集坐标 == 目标图集坐标:
+			符合条件的坐标数组.append(方块坐标)
+	
+	# 返回最终匹配的坐标数组
+	return 符合条件的坐标数组
 func _ready() -> void:
 	更新_交互.connect(交互保存)
 	获取背包消息()
