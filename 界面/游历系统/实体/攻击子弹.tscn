@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://bdymbh8wt0awi"]
+
+[ext_resource type="Script" uid="uid://dxjhwrqt3h5h1" path="res://界面/游历系统/实体/攻击子弹.gd" id="1_7cj7y"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_bd31p"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="3_7cj7y"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="4_7cj7y"]
+[ext_resource type="AnimationLibrary" uid="uid://cxvdjugf5bay4" path="res://界面/游历系统/实体/子弹动画.res" id="4_xsgj1"]
+[ext_resource type="Texture2D" uid="uid://b0ymdoh7l3jra" path="res://素材/豆包AI素材/攻击子弹/抓痕.png" id="5_u2o4e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whjyk"]
+expand_margin_bottom = -110.0
+script = ExtResource("4_7cj7y")
+margin_bottom = -110
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7b7a3"]
+size = Vector2(59, 58.5)
+
+[node name="攻击子弹" type="Node2D" unique_id=1824539962]
+script = ExtResource("1_7cj7y")
+
+[node name="动画节点" type="Node2D" parent="." unique_id=940959679]
+
+[node name="动画" type="AnimationPlayer" parent="动画节点" unique_id=1386171087]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries/ = ExtResource("4_xsgj1")
+
+[node name="贴图" type="TextureRect" parent="动画节点" unique_id=240943836]
+unique_name_in_owner = true
+offset_left = -27.0
+offset_top = -29.0
+offset_right = 28.0
+offset_bottom = 31.0
+theme = ExtResource("2_bd31p")
+texture = ExtResource("3_7cj7y")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="蒙版" type="Panel" parent="动画节点" unique_id=907935499]
+unique_name_in_owner = true
+visible = false
+clip_children = 1
+anchors_preset = -1
+offset_left = -50.0
+offset_top = -56.5
+offset_right = 50.0
+offset_bottom = 56.5
+theme_override_styles/panel = SubResource("StyleBoxFlat_whjyk")
+
+[node name="蒙版贴图" type="TextureRect" parent="动画节点/蒙版" unique_id=459773473]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_bd31p")
+texture = ExtResource("5_u2o4e")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="攻击范围" type="Area2D" parent="." unique_id=103696460]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 0
+
+[node name="碰撞箱子" type="CollisionShape2D" parent="攻击范围" unique_id=1391259410]
+shape = SubResource("RectangleShape2D_7b7a3")
+debug_color = Color(1, 0.35000002, 0.25, 0.29411766)

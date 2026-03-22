@@ -5,6 +5,10 @@
 
 [node name="玩家" unique_id=1150286531 instance=ExtResource("1_u441u")]
 script = ExtResource("2_yi5us")
+"每秒回血" = 0.0
+"每秒回蓝" = 0.0
+"每秒回盾" = -1.0
 
-[node name="编辑器名" parent="动画" parent_id_path=PackedInt32Array(339039118) index="0" unique_id=1848171724]
-text = "玩家"
+[node name="攻击检查" parent="." index="1" unique_id=212390771]
+target_position = Vector2(100, 0)
+collision_mask = 2

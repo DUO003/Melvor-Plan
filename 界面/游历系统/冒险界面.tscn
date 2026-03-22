@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_ja4i7"]
 [ext_resource type="Script" uid="uid://dtmtlfr4dft2w" path="res://界面/游历系统/地图.gd" id="2_jh5gh"]
+[ext_resource type="Script" uid="uid://xqb50xqbpghs" path="res://界面/游历系统/选项卡.gd" id="2_sr4hh"]
 [ext_resource type="TileSet" uid="uid://dpbfj8gebcyck" path="res://代码/地图集/地块.tres" id="3_6uq2s"]
 [ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="3_lnyx0"]
 [ext_resource type="Script" uid="uid://0vh233e3f1j1" path="res://界面/游历系统/地图提示.gd" id="5_6uq2s"]
@@ -34,28 +35,34 @@ corner_radius_bottom_left = 10
 script = ExtResource("6_87nh3")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sr4hh"]
+
 [node name="冒险界面" unique_id=166508811 instance=ExtResource("1_ja4i7")]
 "基类窗口名称" = "冒险界面"
 
 [node name="等级显示" parent="标题" parent_id_path=PackedInt32Array(2049886415) index="0" unique_id=2041357675]
 "玩法" = "冒险"
 
-[node name="分栏" type="VSplitContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=922828501]
+[node name="内容节点" parent="." index="2" unique_id=1614734378]
+unique_name_in_owner = true
+
+[node name="分栏" type="VBoxContainer" parent="内容节点" index="0" unique_id=1528641567]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-dragging_enabled = false
-dragger_visibility = 1
+theme_override_constants/separation = 0
 
 [node name="选项卡" type="TabContainer" parent="内容节点/分栏" index="0" unique_id=512163837]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 0
 current_tab = 0
+script = ExtResource("2_sr4hh")
 
 [node name="地图" type="Control" parent="内容节点/分栏/选项卡" index="1" unique_id=7501989]
+custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -120,17 +127,40 @@ layout_mode = 2
 [node name="前往" type="Button" parent="内容节点/分栏/选项卡/地图/地图分栏/分栏/按钮区" index="0" unique_id=2144472197]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "前往"
 
-[node name="战斗区域" type="Control" parent="内容节点/分栏" index="1" unique_id=2091836956]
-custom_minimum_size = Vector2(0, 400)
+[node name="冒险2" type="Control" parent="内容节点/分栏/选项卡" index="2" unique_id=99023041]
+visible = false
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+metadata/_tab_index = 1
 
-[node name="冒险管理器" parent="内容节点/分栏/战斗区域" index="0" unique_id=2141668563 instance=ExtResource("8_pau8c")]
+[node name="冒险" type="Control" parent="内容节点/分栏/选项卡" index="3" unique_id=25289229]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="冒险窗口区" type="SubViewportContainer" parent="内容节点/分栏" index="1" unique_id=2141668563]
 unique_name_in_owner = true
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_lock_ = true
+
+[node name="冒险窗口" type="SubViewport" parent="内容节点/分栏/冒险窗口区" index="0" unique_id=826863376]
+unique_name_in_owner = true
+disable_3d = true
+handle_input_locally = false
+size = Vector2i(1700, 387)
+render_target_update_mode = 4
+
+[node name="冒险管理器" parent="内容节点/分栏/冒险窗口区/冒险窗口" index="0" unique_id=99110732 instance=ExtResource("8_pau8c")]
+unique_name_in_owner = true
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="." index="4" unique_id=406667678]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0" unique_id=440899650]
+shape = SubResource("RectangleShape2D_sr4hh")
+
+[editable path="内容节点/分栏/冒险窗口区/冒险窗口/冒险管理器"]

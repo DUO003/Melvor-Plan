@@ -12,6 +12,9 @@ signal 玩家导航(目标:float)
 @warning_ignore("unused_signal")
 ##当传送门
 signal 传送门更新()
+@warning_ignore("unused_signal")
+##当生命值法力护盾变化时触发
+signal 伤害跳字(数值:float,位置:Vector2,类型:String)
 var 交互字典:Dictionary={}
 ##编号从0计数默认快捷键1
 var 快捷栏编号:int=0
@@ -21,10 +24,12 @@ var 快捷键字典:Dictionary[int,物品方块]={}
 var 方块检查器:检查器方块
 var 背包检查器:检查器背包
 
+var 子弹管理器:Node2D=null
+var 关卡战线:float=0
+
 ##游历地图切换
 var 接触传送点:bool=false
 var 传送点有效:bool=false
-var 传送点位置:Rect2=Rect2(0,0,108,180)
 ## 地图图块搜索算法[br]
 ## 返回值: Array[Vector2i] - 所有符合条件的图块坐标数组
 func 搜索图块(地图图块: TileMapLayer, 目标源ID: int, 目标图集坐标: Vector2i) -> Array[Vector2i]:

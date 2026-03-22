@@ -1,0 +1,166 @@
+@tool
+extends 游历实体
+class_name 游历实体_怪物
+var 强度:float=1
+enum 怪物状态 {
+	待机,        # 无主动移动，仅基础动画
+	游走,        # 随机方向移动（区别于巡逻的固定路径）
+	追击,        # 向玩家寻路移动（优先级最高）
+	攻击,        # 停止移动，释放攻击（有判定框+冷却）
+	濒死}         # 无交互，播放死亡动画（血量为0触发）
+var 逆向状态:Dictionary={}
+var 状态机:怪物状态=怪物状态.待机
+var 状态持续时间:float=0
+var 状态参数:Dictionary={}
+@onready var 实体数据: Label = %实体数据
+@onready var 推动检查: RayCast2D = %推动检查
+var 推动检查距离: float = 35
+var 战线推动:bool=true
+var 自由移动:bool=false
+func _ready():
+	super._ready()
+	if Engine.is_editor_hint():
+		return
+	for 状态 in 怪物状态:
+		逆向状态[怪物状态[状态]]=状态
+	更新显示()
+	速度=340
+	#print(怪物状态,逆向状态)
+func 更新显示():
+	var 状态时间:float=状态参数.get("状态时间",1)
+	var 通用文本:String="状态机:%s\r切换:%.1f/%d"%[逆向状态[状态机],状态持续时间,状态时间]
+	match 状态机:
+		怪物状态.游走:
+			var 游走方向:float=状态参数.get("游走方向",-0.5)
+			实体数据.text="速度:%.1f\r%s"%[游走方向,通用文本]
+		_:
+			实体数据.text=通用文本
+	
+func 移动更新(间隔: float) -> void:
+	match 状态机:
+		怪物状态.待机:
+			velocity.x=move_toward(velocity.x,0,50)
+		怪物状态.游走:
+			var 游走方向:float=状态参数.get("游走方向",-0.5)
+			velocity.x=move_toward(velocity.x,速度*游走方向,50)
+		怪物状态.追击:
+			var 目标:游历实体=状态参数.get("追击目标",null)
+			if 目标:
+				if abs(position.x-目标.position.x)<近战攻击距离 and abs(position.y-目标.position.y)<20:
+					状态切换(怪物状态.攻击)
+					velocity.x=0
+				elif abs(position.x-目标.position.x)>最大攻击距离*2:
+					状态切换(怪物状态.待机)
+				elif position.x<目标.position.x:
+					velocity.x=move_toward(velocity.x,速度,50)
+				else :
+					velocity.x=move_toward(velocity.x,-速度,50)
+			else :
+				print("错误,无目标对象")
+		怪物状态.攻击:
+			velocity.x=move_toward(velocity.x,0,50)
+			var 攻击计时器:float=状态参数["攻击计时器"]
+			var 攻击冷却:float=状态参数["攻击冷却"]
+			if 攻击计时器>=攻击冷却:
+				var 目标:游历实体=状态参数.get("追击目标",null)
+				var 距离:float=abs(position.x-目标.position.x)
+				if 目标 and 距离<最大攻击距离:
+					#print("距离%d/%d"%[距离,近战攻击距离])
+					if 距离<近战攻击距离:
+						生成攻击("近战攻击","抓痕")
+						状态参数["攻击计时器"]=0
+					else :
+						生成攻击("远程攻击","默认子弹")
+						状态参数["攻击计时器"]=0
+					方向更新(sign(目标.position.x-position.x))
+				else :
+					状态切换(怪物状态.追击)
+			else :
+				状态参数["攻击计时器"]=攻击计时器+间隔
+	if sign(velocity.x) != 0:
+		方向更新(sign(velocity.x))
+		推动检查.force_raycast_update()
+		if 推动检查.is_colliding():
+			var 推动目标=推动检查.get_collider()
+			#print("推动成功",推动目标)
+			#推动碰撞对象(推动目标)
+	if 战线推动 and position.x<计划.地图.关卡战线:
+		position.x=计划.地图.关卡战线
+	状态持续时间+=间隔
+	velocity.y+=间隔*重力加速度
+	更新显示()
+	更新状态()
+func 方向更新(方向:int):
+	if 方向==1 or 方向==-1:
+		if not 自由移动:
+			方向=-1
+		推动检查.target_position=Vector2(方向*推动检查距离,0)
+		攻击检查.target_position=Vector2(方向*最大攻击距离,0)
+		近战攻击容器.scale=Vector2(-方向,1)
+		近战攻击容器.position=Vector2(方向*50,-75)
+		
+func 状态切换(新状态:怪物状态):
+	if 状态机==新状态:
+		return
+	var 状态时间:float=2
+	match 新状态:
+		怪物状态.待机:
+			状态参数["追击目标"] = null
+		怪物状态.游走:
+			var 方向: int = 1 if randi() % 2 == 0 else -1#随机生成方向
+			var 随机速度百分比: float = randf_range(0.25, 0.5)
+			状态参数["游走方向"] = 方向 * 随机速度百分比
+		怪物状态.追击:
+			攻击检查.force_raycast_update()
+			var 追击目标=攻击检查.get_collider()
+			if 追击目标 and 追击目标 is 游历实体:
+				#print("追击目标",追击目标)
+				状态参数["追击目标"] = 追击目标
+				状态时间=10
+			else :
+				var 目标:游历实体=状态参数.get("追击目标",null)
+				if not 目标 or abs(position.x-目标.position.x)>最大攻击距离*2:
+					新状态=怪物状态.待机
+		怪物状态.攻击:
+			#攻击检查.target_position=Vector2(-500,0)
+			状态参数["攻击计时器"]=0
+			状态参数["攻击冷却"]=2
+	状态机=新状态
+	状态持续时间=0
+	状态参数["状态时间"]=状态时间
+func 更新状态():
+	var 状态时间:float=状态参数.get("状态时间",1)
+	var 切换状态:bool=状态持续时间>状态时间
+	if 切换状态:
+		状态持续时间=0
+	match 状态机:
+		怪物状态.待机:
+			攻击检查.force_raycast_update()
+			if 攻击检查.is_colliding():
+				状态切换(怪物状态.追击)
+			elif 切换状态 and randf()>0.7:
+				状态切换(怪物状态.游走)
+		怪物状态.游走:
+			攻击检查.force_raycast_update()
+			if 攻击检查.is_colliding():
+				状态切换(怪物状态.追击)
+			elif 切换状态:
+				状态切换(怪物状态.待机)
+		怪物状态.追击:
+			if 切换状态:
+				状态切换(怪物状态.待机)
+			
+
+func 推动碰撞对象(碰撞实体:游历实体) -> void:
+	# 安全校验：避免空对象/推自己
+	if not 碰撞实体 or 碰撞实体 == self:
+		return
+	#最大推动速度
+	var 推动力度: float = 200.0  
+	if sign(velocity.x) != 0:  # 只有有水平速度时才推动
+		碰撞实体.velocity.x=move_toward(碰撞实体.velocity.x,-速度,推动力度)
+	velocity.x *= 0
+	if 状态机==怪物状态.追击:
+		var 目标:游历实体=状态参数.get("追击目标",null)
+		if 目标 and abs(position.x-目标.position.x)<200:
+			状态切换(怪物状态.攻击)

@@ -12,33 +12,44 @@ var 卡片素材:Dictionary={
 		"场景":preload("res://界面/插件/实体/实体卡片.tscn"),
 		"范围":Vector2(65,140),
 		"偏移":Vector2(0,-75),
-		"血条偏移":Vector2(-70,-186)},}
+		"血条偏移":Vector2(-70,-186)},
+	"怪物":{
+		"场景":preload("res://界面/插件/实体/实体卡片.tscn"),
+		"范围":Vector2(65,140),
+		"偏移":Vector2(0,-75),
+		"血条偏移":Vector2(-70,-186),
+		"代码":游历实体_怪物},}
+var 子弹字典:Dictionary={
+	"近战攻击":{
+		"场景":preload("res://界面/游历系统/实体/近战攻击.tscn")},
+	"远程攻击":{
+		"场景":preload("res://界面/游历系统/实体/远程攻击.tscn")},}
 @export var 实体名称: String="玩家"
 @export_enum("玩家","队友","怪物","村民") var 实体类型: String="玩家"
 ## 生命值：修改时仅更新血量进度条
-@export var 生命值: float = 100:
+var 生命值: float = 100:
 	set(值):
 		生命值 = clamp(值, 0, 最大生命)  # 限制数值范围
 		# 仅更新血量进度条（最小化更新）
 		if is_inside_tree() and 血量 and 血量.is_inside_tree():
 			血量.value = 生命值
 ## 最大生命值：修改时仅更新血量进度条的最大值+同步当前生命值
-@export var 最大生命: float = 100:
+var 最大生命: float = 100:
 	set(值):
-		最大生命 = max(值, 0)  # 确保最大值不为负
+		最大生命 = max(值, 1)  # 确保最大值不为负
 		生命值 = clamp(生命值, 0, 最大生命)  # 修正当前生命值不超限
 		# 仅更新血量进度条的最大值和当前值
 		if is_inside_tree() and 血量 and 血量.is_inside_tree():
 			血量.max_value = 最大生命
 			血量.value = 生命值
 ## 护盾值：修改时仅更新护盾进度条
-@export var 护盾值: float = 0:
+var 护盾值: float = 0:
 	set(值):
 		护盾值 = clamp(值, 0, 最大护盾)
 		if is_inside_tree() and 护盾 and 护盾.is_inside_tree():
 			护盾.value = 护盾值
 ## 最大护盾：修改时仅更新护盾进度条的最大值+同步当前护盾值
-@export var 最大护盾: float = 0:
+var 最大护盾: float = 0:
 	set(值):
 		最大护盾 = max(值, 0)
 		护盾值 = clamp(护盾值, 0, 最大护盾)
@@ -46,13 +57,13 @@ var 卡片素材:Dictionary={
 			护盾.max_value = 最大护盾
 			护盾.value = 护盾值
 ## 魔法值：修改时仅更新魔法进度条
-@export var 魔法值: float = 0:
+var 魔法值: float = 0:
 	set(值):
 		魔法值 = clamp(值, 0, 最大魔法)
 		if is_inside_tree() and 魔法 and 魔法.is_inside_tree():
 			魔法.value = 魔法值
 ## 最大魔法：修改时仅更新魔法进度条的最大值+同步当前魔法值
-@export var 最大魔法: float = 0:
+var 最大魔法: float = 0:
 	set(值):
 		最大魔法 = max(值, 0)
 		魔法值 = clamp(魔法值, 0, 最大魔法)
@@ -60,20 +71,25 @@ var 卡片素材:Dictionary={
 			魔法.max_value = 最大魔法
 			魔法.value = 魔法值
 ##不为0时显示血条
-@export var 血条显示: float = 0:
+var 血条显示: float = 0:
 	set(值):
 		血条显示 = 值
 		更新血条显示状态()
+var 攻击力:float=15
+var 重力加速度:float=ProjectSettings.get("physics/2d/default_gravity") as float
+var 最大攻击距离: float = 500
+var 近战攻击距离: float = 135
+var 速度:float=500.0
+var 跳跃高度:float=-870
+var 地图外判断:int=1100#Y大于这个值视为掉出地图
+var 出生点:Vector2
 @onready var 血量: ProgressBar = %血量
 @onready var 护盾: ProgressBar = %护盾
 @onready var 魔法: ProgressBar = %魔法
 @onready var 碰撞范围: CollisionShape2D = %碰撞范围
 @onready var 动画节点: Control = $动画
-var 重力加速度:float=ProjectSettings.get("physics/2d/default_gravity") as float
-var 速度:float=500.0
-var 跳跃高度:float=-870
-var 地图外判断:int=1100#Y大于这个值视为掉出地图
-var 出生点:Vector2
+@onready var 攻击检查: RayCast2D = %攻击检查
+@onready var 近战攻击容器: Node2D = %近战攻击容器
 func _ready():
 	if Engine.is_editor_hint():
 		var 编辑器名: Label = %编辑器名
@@ -127,6 +143,9 @@ func 初始化实体() -> void:
 		if 实体类型=="村民":
 			if 动画节点 is 实体卡片:
 				动画节点.传入数据(实体名称,计划.表格.道具贴图(实体名称),实体类型)
+		if 实体类型=="怪物":
+			if 动画节点 is 实体卡片:
+				动画节点.传入数据(实体名称,计划.表格.道具贴图(实体名称),实体类型)
 		add_child(动画节点,false,INTERNAL_MODE_FRONT)
 	else :print("错误：无法加载【%s】的动画场景：%s" % [实体名称, 角色配置["场景"]])
 	出生点=position
@@ -146,6 +165,7 @@ func 设置碰撞层和遮罩():
 			set_collision_layer_value(5, true)  # Layer 5 队友
 		"怪物":
 			set_collision_layer_value(2, true)  # Layer 2 敌人
+			#set_collision_mask_value(2, true)  # Layer 2 敌人
 		"村民":
 			set_collision_layer_value(4, true)  # Layer 4 交互（村民是可交互对象）
 	# 第三步：统一遮罩只检测地图层（Layer 1）
@@ -157,11 +177,31 @@ func _physics_process(间隔: float) -> void:
 		血条显示-=间隔
 		if 血条显示<0:血条显示=0
 	移动更新(间隔)
+	检查回复更新(间隔)
 	move_and_slide()
 	if position.y > 地图外判断:
 		回到出生点()
-	if not velocity.is_zero_approx():
-		更新位置状态()
+	#if not velocity.is_zero_approx():
+		#更新位置状态()
+@export var 每秒回血: float = 0
+var 回血值=0
+@export var 每秒回蓝: float = 0
+var 回蓝值=0
+@export var 每秒回盾: float = -1
+var 回盾值=0
+func 检查回复更新(间隔: float):
+	回血值+=间隔*每秒回血
+	if 回血值>=1:
+		修改属性值("生命",回血值)
+		回血值=0
+	回蓝值+=间隔*每秒回蓝
+	if 回蓝值>=1:
+		修改属性值("魔法",回蓝值)
+		回蓝值=0
+	回盾值+=间隔*每秒回盾
+	if 回盾值>=1:
+		修改属性值("护盾",回盾值)
+		回盾值=0
 ##当前帧发生移动时调用
 func 更新位置状态():
 	pass
@@ -194,10 +234,56 @@ func 受伤害(伤害值: float):
 	if 血条显示>=0:血条显示=3
 	# 扣血逻辑（省略）
 	生命值 -= 伤害值
+	计划.地图.伤害跳字.emit(-伤害值,血量.global_position+Vector2(0,-30),"生命")
 	if 生命值<=0:
 		死亡逻辑()
+##修改属性值可以处理不需要考虑增益的情况会更新血条显示
+func 修改属性值(属性类型:String,调整量:float):
+	if 调整量==0:
+		return
+	match 属性类型:
+		"生命":
+			if 生命值<最大生命 or (调整量<0 and 生命值>0):
+				if 血条显示>=0:血条显示=1
+				生命值+=调整量
+			else :return
+		"魔法":
+			if 魔法值<最大魔法 or (调整量<0 and 魔法值>0):
+				if 血条显示>=0:血条显示=1
+				魔法值+=调整量
+			else :return
+		"护盾":
+			if 护盾值<最大护盾 or (调整量<0 and 护盾值>0):
+				if 血条显示>=0:血条显示=1
+				护盾值+=调整量
+			else :return
+	计划.地图.伤害跳字.emit(调整量,血量.global_position+血量.size*Vector2(0.5,-1),属性类型)
+
+#(数值: float, 位置: Vector2, 类型: String) -> void:
 func 死亡逻辑():
 	match 实体类型:
 		"玩家":
 			pass
 		_:queue_free()
+
+func 生成攻击(子弹类型="近战攻击",武器类型="抓痕"):
+	var 子弹数据:Dictionary=子弹字典.get(子弹类型,{})
+	if 子弹数据.has("场景"):
+		var 子弹场景:游历子弹=子弹数据.场景.instantiate()
+		if 实体类型=="怪物":
+			子弹场景.碰撞目标层=5
+		elif 实体类型=="玩家":
+			子弹场景.碰撞目标层=2
+		子弹场景.伤害值=攻击力
+		子弹场景.武器名称=武器类型
+		if 子弹类型=="近战攻击":
+			近战攻击容器.add_child(子弹场景)
+		elif 子弹类型=="远程攻击":
+			if not 计划.地图.子弹管理器:
+				return
+			if 子弹场景 is 游历子弹_远程攻击:
+				子弹场景.global_position=近战攻击容器.global_position
+				子弹场景.最大飞行距离=最大攻击距离
+				子弹场景.子弹速度=1000
+				子弹场景.子弹方向=Vector2(sign(攻击检查.target_position.x),0)#碰撞范围.scale
+				计划.地图.子弹管理器.add_child(子弹场景)

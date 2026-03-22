@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://x7u6pc3jx8ak"]
+
+[ext_resource type="Script" uid="uid://6cwrvs12403u" path="res://界面/游历系统/实体/近战攻击.gd" id="1_7b7a3"]
+[ext_resource type="PackedScene" uid="uid://bdymbh8wt0awi" path="res://界面/游历系统/实体/攻击子弹.tscn" id="1_vspi8"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_7b7a3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ne28"]
+expand_margin_bottom = -110.0
+script = ExtResource("2_7b7a3")
+margin_bottom = -110
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[node name="近战攻击" unique_id=1824539962 instance=ExtResource("1_vspi8")]
+script = ExtResource("1_7b7a3")
+
+[node name="贴图" parent="动画节点" parent_id_path=PackedInt32Array(1321653073) index="1" unique_id=240943836]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1892.0
+offset_bottom = -1049.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="蒙版" parent="动画节点" parent_id_path=PackedInt32Array(1321653073) index="2" unique_id=907935499]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1010.0
+offset_top = -596.5
+offset_right = -910.0
+offset_bottom = -483.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ne28")
+
+[node name="蒙版贴图" parent="动画节点/蒙版" index="0" unique_id=459773473]
+expand_mode = 1

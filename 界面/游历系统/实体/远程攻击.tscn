@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://br0vkqhmsmwji"]
+
+[ext_resource type="PackedScene" uid="uid://bdymbh8wt0awi" path="res://界面/游历系统/实体/攻击子弹.tscn" id="1_0ly00"]
+[ext_resource type="Script" uid="uid://c4x40rmo5inna" path="res://界面/游历系统/实体/远程攻击.gd" id="2_32r0l"]
+
+[node name="远程攻击" unique_id=1824539962 instance=ExtResource("1_0ly00")]
+script = ExtResource("2_32r0l")
+"子弹方向" = Vector2(-1, 0)
+"子弹速度" = 1000.0
+"最大飞行距离" = 500.0
+
+[node name="蒙版" parent="动画节点" parent_id_path=PackedInt32Array(1321653073) index="2" unique_id=907935499]
+anchors_preset = -1

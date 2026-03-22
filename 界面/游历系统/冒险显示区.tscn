@@ -3,88 +3,107 @@
 [ext_resource type="Script" uid="uid://bdcc4whahjiyi" path="res://界面/游历系统/冒险显示区.gd" id="1_2ecc8"]
 [ext_resource type="Texture2D" uid="uid://qgbdeihy2mp7" path="res://素材/游戏素材/背景/1.png" id="1_ki74h"]
 [ext_resource type="TileSet" uid="uid://lcxf26dcxd0m" path="res://代码/地图集/地图.tres" id="2_2ecc8"]
-[ext_resource type="Resource" uid="uid://cs13s2k16k57" path="res://界面/游历系统/冒险卷轴地图/新手村.tres" id="2_psavm"]
+[ext_resource type="Resource" uid="uid://cs13s2k16k57" path="res://界面/游历系统/冒险卷轴地图/新手村.tres" id="2_bg2xc"]
 [ext_resource type="Script" uid="uid://drm3ebawdtn51" path="res://界面/挂机系统/故事/地图编辑器/保存地图.gd" id="3_psavm"]
-[ext_resource type="PackedScene" uid="uid://j753afqyfj4r" path="res://界面/游历系统/实体/游历实体.tscn" id="6_psavm"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="6_3wxtc"]
+[ext_resource type="PackedScene" uid="uid://j753afqyfj4r" path="res://界面/游历系统/实体/游历实体.tscn" id="6_i1nod"]
+[ext_resource type="PackedScene" uid="uid://cmimgxg35bc7b" path="res://界面/游历系统/实体/实体_玩家.tscn" id="6_psavm"]
+[ext_resource type="Script" uid="uid://cgw68hx75xj3k" path="res://界面/游历系统/伤害跳字.gd" id="6_rha17"]
+[ext_resource type="Script" uid="uid://bmdnkg02lei5t" path="res://界面/游历系统/实体/游历实体.gd" id="7_s8dor"]
+[ext_resource type="Script" uid="uid://bokvbtsew5gwt" path="res://界面/游历系统/实体/实体_玩家.gd" id="9_nt6cc"]
 
-[sub_resource type="TileMapPattern" id="TileMapPattern_2ecc8"]
-tile_data = PackedInt32Array(65562, 65536, 0, 26, 458752, 0, 65561, 65536, 0, 25, 524288, 0, 65560, 65536, 0, 24, 524288, 0, 65559, 65536, 1, 23, 524288, 0, 65558, 65536, 1, 22, 524288, 0, 65557, 65536, 1, 21, 458752, 0, 65556, 65536, 1, 20, 458752, 0, 65555, 65536, 0, 19, 524288, 0, 65554, 65536, 1, 18, 458752, 0, 65553, 65536, 0, 17, 524288, 0, 65552, 65536, 1, 16, 524288, 0, 65551, 65536, 0, 15, 458752, 0, 65550, 65536, 1, 14, 458752, 0, 65549, 65536, 0, 13, 458752, 0, 65548, 65536, 0, 12, 524288, 0, 65547, 65536, 0, 11, 458752, 0, 65546, 65536, 1, 10, 524288, 0, 65545, 65536, 1, 9, 458752, 0, 65544, 65536, 1, 8, 458752, 0, 65543, 65536, 1, 7, 524288, 0, 65542, 65536, 1, 6, 524288, 0, 65541, 65536, 1, 5, 458752, 0, 65540, 65536, 1, 4, 458752, 0, 65539, 65536, 1, 3, 524288, 0, 65538, 65536, 1, 2, 458752, 0, 65537, 65536, 1, 1, 458752, 0, 65536, 0, 1, 0, 393216, 0)
+[sub_resource type="TileMapPattern" id="TileMapPattern_modvm"]
+tile_data = PackedInt32Array(65562, 65536, 0, 65561, 65536, 0, 65560, 65536, 0, 65559, 65536, 1, 65558, 65536, 1, 65557, 65536, 1, 65556, 65536, 1, 65555, 65536, 0, 65554, 65536, 1, 65553, 65536, 0, 65552, 65536, 1, 65551, 65536, 0, 65549, 65536, 0, 65548, 65536, 0, 12, 524288, 0, 65547, 65536, 0, 11, 458752, 0, 65546, 65536, 1, 10, 524288, 0, 65545, 65536, 1, 9, 458752, 0, 65544, 65536, 1, 8, 458752, 0, 65543, 65536, 1, 7, 524288, 0, 65542, 65536, 1, 65541, 65536, 1, 65538, 65536, 1, 65537, 65536, 1, 65536, 0, 1, 65550, 65536, 1, 65540, 65536, 1, 65539, 65536, 1, 26, 458752, 0, 25, 524288, 0, 24, 524288, 0, 23, 524288, 0, 22, 524288, 0, 21, 458752, 0, 20, 458752, 0, 19, 524288, 0, 18, 458752, 0, 17, 524288, 0, 16, 524288, 0, 15, 458752, 0, 14, 458752, 0, 13, 458752, 0, 5, 458752, 0, 4, 458752, 0, 3, 524288, 0, 2, 458752, 0, 1, 458752, 0, 0, 393216, 0, 6, 524288, 0)
 
-[sub_resource type="TileMapPattern" id="TileMapPattern_psavm"]
+[sub_resource type="TileMapPattern" id="TileMapPattern_1sd8i"]
 tile_data = PackedInt32Array(0, 851970, 9, 5, 1114114, 9, 10, 1441794, 9, 15, 1769474, 9, 21, 524290, 13)
 
-[node name="冒险显示区" type="SubViewportContainer" unique_id=2141668563]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="冒险管理器" type="Node2D" unique_id=99110732]
 script = ExtResource("1_2ecc8")
-"地图信息" = ExtResource("2_psavm")
+"地图名称" = "新手村"
+"地图信息" = ExtResource("2_bg2xc")
 
-[node name="冒险窗口" type="SubViewport" parent="." unique_id=826863376]
+[node name="视差背景" type="Parallax2D" parent="." unique_id=1252967752]
 unique_name_in_owner = true
-handle_input_locally = false
-size = Vector2i(1700, 400)
-render_target_update_mode = 4
-
-[node name="视差背景" type="Parallax2D" parent="冒险窗口" unique_id=400331679]
 scroll_scale = Vector2(0.3, 0.3)
 repeat_size = Vector2(3840, 0)
 
-[node name="图片" type="Sprite2D" parent="冒险窗口/视差背景" unique_id=1064214033]
+[node name="图片" type="Sprite2D" parent="视差背景" unique_id=704300801]
 z_index = -10
 position = Vector2(724.4445, 57.5)
 scale = Vector2(2, 2)
 texture = ExtResource("1_ki74h")
 metadata/_edit_lock_ = true
 
-[node name="地图" type="TileMapLayer" parent="冒险窗口" unique_id=1779561840]
-tile_map_data = PackedByteArray("AAAaAAYAAAABAAAAAAAZAAYAAAABAAAAAAAYAAYAAAABAAAAAAAXAAYAAAABAAEAAAAWAAYAAAABAAEAAAAVAAYAAAABAAEAAAAUAAYAAAABAAEAAAATAAYAAAABAAAAAAASAAYAAAABAAEAAAARAAYAAAABAAAAAAAQAAYAAAABAAEAAAAPAAYAAAABAAAAAAANAAYAAAABAAAAAAAMAAYAAAABAAAAAAAMAAUAAAAIAAAAAAALAAYAAAABAAAAAAALAAUAAAAHAAAAAAAKAAYAAAABAAEAAAAKAAUAAAAIAAAAAAAJAAYAAAABAAEAAAAJAAUAAAAHAAAAAAAIAAYAAAABAAEAAAAIAAUAAAAHAAAAAAAHAAYAAAABAAEAAAAHAAUAAAAIAAAAAAAGAAYAAAABAAEAAAAFAAYAAAABAAEAAAACAAYAAAABAAEAAAABAAYAAAABAAEAAAAAAAYAAAAAAAEAAAAOAAYAAAABAAEAAAAGAAUAAAAIAAAAAAAEAAYAAAABAAEAAAADAAYAAAABAAEAAAAaAAUAAAAHAAAAAAAZAAUAAAAIAAAAAAAYAAUAAAAIAAAAAAAXAAUAAAAIAAAAAAAWAAUAAAAIAAAAAAAVAAUAAAAHAAAAAAAUAAUAAAAHAAAAAAATAAUAAAAIAAAAAAASAAUAAAAHAAAAAAARAAUAAAAIAAAAAAAQAAUAAAAIAAAAAAAPAAUAAAAHAAAAAAAOAAUAAAAHAAAAAAANAAUAAAAHAAAAAAAFAAUAAAAHAAAAAAAEAAUAAAAHAAAAAAADAAUAAAAIAAAAAAACAAUAAAAHAAAAAAABAAUAAAAHAAAAAAAAAAUAAAAGAAAAAAA=")
+[node name="地图" type="TileMapLayer" parent="." unique_id=1828750003]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAaAAYAAAABAAAAAAAZAAYAAAABAAAAAAAYAAYAAAABAAAAAAAXAAYAAAABAAEAAAAWAAYAAAABAAEAAAAVAAYAAAABAAEAAAAUAAYAAAABAAEAAAATAAYAAAABAAAAAAASAAYAAAABAAEAAAARAAYAAAABAAAAAAAQAAYAAAABAAEAAAAPAAYAAAABAAAAAAANAAYAAAABAAAAAAAMAAYAAAABAAAAAAAMAAUAAAAIAAAAAAALAAYAAAABAAAAAAALAAUAAAAHAAAAAAAKAAYAAAABAAEAAAAKAAUAAAAIAAAAAAAJAAYAAAABAAEAAAAJAAUAAAAHAAAAAAAIAAYAAAABAAEAAAAIAAUAAAAHAAAAAAAHAAYAAAABAAEAAAAHAAUAAAAIAAAAAAAGAAYAAAABAAEAAAAFAAYAAAABAAEAAAACAAYAAAABAAEAAAABAAYAAAABAAEAAAAAAAYAAAAAAAEAAAAOAAYAAAABAAEAAAAEAAYAAAABAAEAAAADAAYAAAABAAEAAAAaAAUAAAAHAAAAAAAZAAUAAAAIAAAAAAAYAAUAAAAIAAAAAAAXAAUAAAAIAAAAAAAWAAUAAAAIAAAAAAAVAAUAAAAHAAAAAAAUAAUAAAAHAAAAAAATAAUAAAAIAAAAAAASAAUAAAAHAAAAAAARAAUAAAAIAAAAAAAQAAUAAAAIAAAAAAAPAAUAAAAHAAAAAAAOAAUAAAAHAAAAAAANAAUAAAAHAAAAAAAFAAUAAAAHAAAAAAAEAAUAAAAHAAAAAAADAAUAAAAIAAAAAAACAAUAAAAHAAAAAAABAAUAAAAHAAAAAAAAAAUAAAAGAAAAAAAGAAUAAAAIAAAAAAA=")
 tile_set = ExtResource("2_2ecc8")
 collision_visibility_mode = 2
 navigation_visibility_mode = 2
 script = ExtResource("3_psavm")
-"地图资源" = SubResource("TileMapPattern_2ecc8")
+"地图资源" = SubResource("TileMapPattern_modvm")
 "图案起点坐标" = Vector2i(0, 5)
 
-[node name="建筑" type="TileMapLayer" parent="冒险窗口" unique_id=911805516]
+[node name="建筑" type="TileMapLayer" parent="." unique_id=1539755345]
+scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAEAAQAAgANAAkAAAAJAAQAAgARAAkAAAAOAAQAAgAWAAkAAAATAAQAAgAbAAkAAAAZAAQAAgAIAA0AAAA=")
 tile_set = ExtResource("2_2ecc8")
 collision_visibility_mode = 2
 navigation_visibility_mode = 2
 script = ExtResource("3_psavm")
-"地图资源" = SubResource("TileMapPattern_psavm")
+"地图资源" = SubResource("TileMapPattern_1sd8i")
 "图案起点坐标" = Vector2i(4, 4)
 
-[node name="实体" type="Node2D" parent="冒险窗口" unique_id=1427697676]
+[node name="实体" type="Node2D" parent="." unique_id=1935659463]
 unique_name_in_owner = true
 
-[node name="杂货铺老板" parent="冒险窗口/实体" unique_id=1150286531 instance=ExtResource("6_psavm")]
-position = Vector2(685, 336.6472)
+[node name="杂货铺老板" type="CharacterBody2D" parent="实体" unique_id=1150286531 instance=ExtResource("6_i1nod")]
+position = Vector2(1376, 650)
+velocity = Vector2(0, 1666.6664)
+script = ExtResource("7_s8dor")
 "实体名称" = "杂货铺老板"
 "实体类型" = "村民"
 
-[node name="猎人" parent="冒险窗口/实体" unique_id=979341802 instance=ExtResource("6_psavm")]
-position = Vector2(1467, 336.64792)
+[node name="猎人" type="CharacterBody2D" parent="实体" unique_id=1598143378 instance=ExtResource("6_i1nod")]
+position = Vector2(2884, 655)
+velocity = Vector2(0, 1666.6664)
+script = ExtResource("7_s8dor")
 "实体名称" = "猎人"
 "实体类型" = "村民"
 
-[node name="玩家" parent="冒险窗口/实体" unique_id=1966815052 instance=ExtResource("6_psavm")]
+[node name="玩家" type="CharacterBody2D" parent="实体" unique_id=83950740 instance=ExtResource("6_psavm")]
 position = Vector2(139, 336.6473)
+velocity = Vector2(0, 1666.6664)
+script = ExtResource("9_nt6cc")
 
-[node name="摄像机" type="Camera2D" parent="冒险窗口/实体/玩家" unique_id=721098078]
+[node name="摄像机" type="Camera2D" parent="实体/玩家" unique_id=24668679]
 limit_left = 0
-limit_right = 1728
-limit_bottom = 416
+limit_right = 3456
+limit_bottom = 768
 limit_smoothed = true
 
-[node name="老奶奶" parent="冒险窗口/实体" unique_id=21319574 instance=ExtResource("6_psavm")]
-position = Vector2(485, 336.64792)
+[node name="老奶奶" type="CharacterBody2D" parent="实体" unique_id=1446836722 instance=ExtResource("6_i1nod")]
+position = Vector2(1009, 646)
+velocity = Vector2(0, 1666.6664)
+script = ExtResource("7_s8dor")
 "实体名称" = "老奶奶"
 "实体类型" = "村民"
 
-[node name="铁匠" parent="冒险窗口/实体" unique_id=1170340336 instance=ExtResource("6_psavm")]
-position = Vector2(1183, 336.6478)
+[node name="铁匠" type="CharacterBody2D" parent="实体" unique_id=570210701 instance=ExtResource("6_i1nod")]
+position = Vector2(2336, 643)
+velocity = Vector2(0, 1666.6664)
+script = ExtResource("7_s8dor")
 "实体名称" = "铁匠"
 "实体类型" = "村民"
+
+[node name="子弹管理器" type="Node2D" parent="." unique_id=694046706]
+unique_name_in_owner = true
+
+[node name="伤害跳字" type="Control" parent="." unique_id=660408906]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("6_3wxtc")
+script = ExtResource("6_rha17")
