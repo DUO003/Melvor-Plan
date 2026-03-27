@@ -23,6 +23,7 @@ script = ExtResource("1_hq0sv")
 "实体类型": "玩家"
 }
 })
+"刷怪种子" = 123456
 "刷怪" = Dictionary[String, Dictionary]({
 "墓碑B": {
 "强度": Vector2(1, 1.1),

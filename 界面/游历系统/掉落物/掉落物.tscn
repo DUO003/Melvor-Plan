@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dhjnoohrvj6b7"]
+
+[ext_resource type="Script" uid="uid://cyjfvt3i28kaw" path="res://界面/游历系统/掉落物/掉落物.gd" id="1_3cje5"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="2_yb7pf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yb7pf"]
+radius = 64.0
+
+[node name="掉落物" type="RigidBody2D" unique_id=601152077]
+z_index = 1
+script = ExtResource("1_3cje5")
+
+[node name="图片" type="Sprite2D" parent="." unique_id=2036926826]
+texture = ExtResource("2_yb7pf")
+
+[node name="碰撞形状" type="CollisionShape2D" parent="." unique_id=903393747]
+shape = SubResource("CircleShape2D_yb7pf")
+
+[node name="文本" type="Label" parent="." unique_id=1174589901]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -39.0
+offset_right = 20.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1

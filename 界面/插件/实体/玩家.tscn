@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ufm678ahcmcd" path="res://界面/插件/实体/实体卡片.tscn" id="1_1eny7"]
 [ext_resource type="Script" uid="uid://87l6457hgm5e" path="res://界面/插件/实体/玩家.gd" id="2_2gbtp"]
+[ext_resource type="Shader" uid="uid://bg0qomh31e1iv" path="res://界面/插件/实体/实体着色器.gdshader" id="3_6trlm"]
 [ext_resource type="Texture2D" uid="uid://r1hn1hh16sok" path="res://素材/元宝/玩家模板/玩家_右手.svg" id="3_u38l8"]
 [ext_resource type="Texture2D" uid="uid://bx0ton86wll5l" path="res://素材/元宝/玩家模板/玩家_脚.svg" id="4_nrmjh"]
 [ext_resource type="Texture2D" uid="uid://cnqs4oip6ix7d" path="res://素材/元宝/玩家模板/玩家_裤子.svg" id="5_n6vmw"]
@@ -11,13 +12,23 @@
 [ext_resource type="Texture2D" uid="uid://dp8t0kyapjwic" path="res://素材/元宝/玩家模板/玩家_鞋.svg" id="9_4jdll"]
 [ext_resource type="Texture2D" uid="uid://48f5avq72m63" path="res://素材/豆包AI素材/玩家模板/玩家_表情.svg" id="10_nrmjh"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3e056"]
+shader = ExtResource("3_6trlm")
+shader_parameter/percent = 0.0
+shader_parameter/hit_color = Color(1, 0, 0, 1)
+
 [node name="玩家" unique_id=1504805159 instance=ExtResource("1_1eny7")]
 script = ExtResource("2_2gbtp")
 
-[node name="贴图" parent="图片" parent_id_path=PackedInt32Array(353747191) index="0" unique_id=2061192371]
+[node name="图片" parent="背景" parent_id_path=PackedInt32Array(1702784861) index="1" unique_id=353747191]
+material = SubResource("ShaderMaterial_3e056")
+scale = Vector2(-1, 1)
+
+[node name="贴图" parent="背景/图片" index="0" unique_id=2061192371]
 texture = null
 
-[node name="右手" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="1" unique_id=385958921]
+[node name="右手" type="TextureRect" parent="背景/图片" index="1" unique_id=385958921]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.06666667
@@ -31,7 +42,8 @@ expand_mode = 1
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="脚" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="2" unique_id=592117422]
+[node name="脚" type="TextureRect" parent="背景/图片" index="2" unique_id=592117422]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.28000003
@@ -47,7 +59,8 @@ expand_mode = 1
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="裤子" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="3" unique_id=1413535606]
+[node name="裤子" type="TextureRect" parent="背景/图片" index="3" unique_id=1413535606]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.21333334
@@ -61,7 +74,8 @@ expand_mode = 1
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="衣服" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="4" unique_id=704627090]
+[node name="衣服" type="TextureRect" parent="背景/图片" index="4" unique_id=704627090]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.20666666
@@ -75,7 +89,8 @@ expand_mode = 1
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="头" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="5" unique_id=204906473]
+[node name="头" type="TextureRect" parent="背景/图片" index="5" unique_id=204906473]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.14
@@ -89,7 +104,8 @@ expand_mode = 1
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="左手" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="6" unique_id=1224965144]
+[node name="左手" type="TextureRect" parent="背景/图片" index="6" unique_id=1224965144]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.6466667
@@ -105,7 +121,8 @@ expand_mode = 1
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="鞋子" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="7" unique_id=1270701705]
+[node name="鞋子" type="TextureRect" parent="背景/图片" index="7" unique_id=1270701705]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.15333334
@@ -119,7 +136,8 @@ expand_mode = 1
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="表情" type="TextureRect" parent="图片" parent_id_path=PackedInt32Array(353747191) index="8" unique_id=1563648225]
+[node name="表情" type="TextureRect" parent="背景/图片" index="8" unique_id=1563648225]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.25333336

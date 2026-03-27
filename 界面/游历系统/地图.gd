@@ -34,8 +34,8 @@ func _ready():
 		更新战争迷雾()
 		call_deferred("更新提示信息",玩家坐标)
 		前往.pressed.connect(前往按钮方法)
+		计划.地图.传送门更新.connect(传送门更新)
 	拖动函数()
-	计划.地图.传送门更新.connect(传送门更新)
 func 传送门更新():
 	print("传送门更新",计划.地图.接触传送点)
 	if not 计划.地图.接触传送点:

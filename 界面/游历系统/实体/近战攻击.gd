@@ -1,5 +1,6 @@
 extends 游历子弹
 class_name 游历子弹_近战攻击
+var 击退力:Vector2=Vector2(10,10)
 ##子弹创建后立即播放动画
 func _ready() -> void:
 	if not 初始化参数检查():
@@ -14,10 +15,11 @@ func _ready() -> void:
 	if 动画时长>=0.1:
 		动画.animation_finished.connect(动画结束)
 	else :
-		动画.advance(0)#警告触发位置
-		动画.stop()
+		visible=false
+		await 动画.animation_finished
+		visible=true
 		贴图.rotation += 1
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.15).timeout
 		var 补间动画 = create_tween()
 		补间动画.tween_property(贴图, "rotation",贴图.rotation- 1, 0.1)
 		造成伤害()

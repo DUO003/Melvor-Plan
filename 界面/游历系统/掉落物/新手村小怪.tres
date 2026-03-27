@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="梅掉落配置" format=3 uid="uid://dnlknmskciwq3"]
+
+[ext_resource type="Script" uid="uid://ccj4ro82v40un" path="res://界面/游历系统/实体/掉落配置.gd" id="1_3tnoa"]
+[ext_resource type="Script" uid="uid://cmatvdnnovig7" path="res://界面/游历系统/实体/梅掉落项.gd" id="2_hvbcb"]
+
+[sub_resource type="Resource" id="Resource_jyah3"]
+script = ExtResource("2_hvbcb")
+"物品名称" = "金币"
+"最小数量" = 10
+"最大数量" = 128
+metadata/_custom_type_script = "uid://cmatvdnnovig7"
+
+[sub_resource type="Resource" id="Resource_3tnoa"]
+script = ExtResource("2_hvbcb")
+"物品名称" = "星核矿砂"
+"掉落概率" = 0.1
+"最小数量" = 2
+"最大数量" = 10
+metadata/_custom_type_script = "uid://cmatvdnnovig7"
+
+[sub_resource type="Resource" id="Resource_hvbcb"]
+script = ExtResource("2_hvbcb")
+"物品名称" = "幻雾凝露"
+"掉落概率" = 0.1
+"最小数量" = 2
+"最大数量" = 10
+metadata/_custom_type_script = "uid://cmatvdnnovig7"
+
+[sub_resource type="Resource" id="Resource_6gem8"]
+script = ExtResource("2_hvbcb")
+"物品名称" = "发条虫蜕"
+"掉落概率" = 0.1
+"最小数量" = 2
+"最大数量" = 10
+metadata/_custom_type_script = "uid://cmatvdnnovig7"
+
+[resource]
+script = ExtResource("1_3tnoa")
+"随机物品池" = Array[ExtResource("2_hvbcb")]([SubResource("Resource_jyah3"), SubResource("Resource_3tnoa"), SubResource("Resource_hvbcb"), SubResource("Resource_6gem8")])
+"最大掉落数" = 3
+"启用打乱" = true
+metadata/_custom_type_script = "uid://ccj4ro82v40un"

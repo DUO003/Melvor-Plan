@@ -29,9 +29,13 @@ class_name 冒险地图
 var 玩家:游历实体
 var 玩家摄像机: Camera2D
 @onready var 子弹管理器: Node2D = %子弹管理器
+@onready var 掉落物管理器: Node2D = %掉落物管理器
+@onready var 提示管理器: Control = $伤害跳字
 func _ready() -> void:
-	计划.地图.子弹管理器=子弹管理器
-	计划.地图.关卡战线=0
+	if not Engine.is_editor_hint():
+		计划.地图.子弹管理器=子弹管理器
+		计划.地图.掉落物管理器=掉落物管理器
+		计划.地图.关卡战线=0
 #func _draw():
 	#if Engine.is_editor_hint():
 		#return
@@ -95,6 +99,8 @@ var 实体场景字典:Dictionary[String,PackedScene] = {
 # 核心加载方法：传入地图信息包，加载实体数据
 func 加载地图(传入的地图信息包: 地图信息包):
 	清除子节点(实体)
+	清除子节点(子弹管理器)
+	清除子节点(掉落物管理器)
 	var 实体数据字典:Dictionary = 传入的地图信息包.实体 if 传入的地图信息包 else {}
 	if  not 传入的地图信息包 or not 实体 or 实体数据字典.is_empty():# 安全校验
 		if not 传入的地图信息包:print("错误：传入的地图信息包为空！")
@@ -114,10 +120,10 @@ func 加载地图(传入的地图信息包: 地图信息包):
 		新实体.实体类型 = 实体类型
 		新实体.position = 实体数据["位置"]  # 设置位置
 		if 新实体.实体类型=="玩家":
+			var 摄像机: Camera2D=创建玩家摄像机()
+			新实体.add_child(摄像机)
 			if 新实体 is 游历实体_玩家:
-				var 摄像机: Camera2D=创建玩家摄像机()
 				新实体.摄像机=摄像机
-				新实体.add_child(摄像机)
 		if Engine.is_editor_hint():
 			新实体.name=节点唯一标识
 		实体.add_child(新实体)
@@ -147,7 +153,6 @@ func 生成怪物(传入的地图信息包: 地图信息包):
 	if 怪物数据字典.is_empty():
 		print("提示：地图信息包中无刷怪数据，无需生成怪物")
 		return
-	
 	# 初始化随机数生成器（使用刷怪种子保证随机性可复现）
 	var 随机数生成器: RandomNumberGenerator = RandomNumberGenerator.new()
 	if 传入的地图信息包.刷怪种子 > -1:
@@ -160,22 +165,18 @@ func 生成怪物(传入的地图信息包: 地图信息包):
 	if 图块大小.x <= 0 or 图块大小.y <= 0:
 		print("警告：获取图块大小失败，使用默认值64")
 		图块大小 = Vector2(64, 64) # 兜底默认值
-	var 已生成怪物位置数组: Array[Vector2] = []
 	# 遍历所有刷怪点生成怪物
 	for 刷新点标识:String in 怪物数据字典:
 		var 怪物数据:Dictionary = 怪物数据字典[刷新点标识]
-		
 		# 校验怪物必备字段
 		if not 怪物数据.has_all(["怪物","强度","数量"]):
 			print("警告：刷怪点[",刷新点标识,"]数据缺失必要字段，跳过生成")
 			continue
-		
 		# 1. 获取并校验刷新点坐标数组
 		var 刷新点坐标数组:Array[Vector2] = 搜索刷怪点(刷新点标识)
 		if 刷新点坐标数组.is_empty():
 			print("错误：刷怪点[",刷新点标识,"]未找到有效刷新坐标，跳过生成")
 			continue
-		
 		# 2. 随机生成本次刷怪数量（Vector2i范围取整）
 		var 数量范围:Vector2i = 怪物数据["数量"]
 		# 3.2 随机生成怪物强度（Vector2范围取浮点）
@@ -198,24 +199,16 @@ func 生成怪物(传入的地图信息包: 地图信息包):
 				print("错误：实体场景字典中未配置怪物场景，跳过生成")
 				break
 			var 新怪物: 游历实体_怪物 = 实体场景字典.怪物.instantiate().duplicate()
-			
-			# 3.4 设置怪物属性
+			#设置怪物属性
 			新怪物.实体名称 = 怪物数据["怪物"]
 			新怪物.实体类型 = "怪物"
 			新怪物.强度 = 随机强度 # 赋值怪物强度属性
 			新怪物.position = 最终坐标 # 设置生成坐标
-			if 最终坐标 in 已生成怪物位置数组:
-				新怪物.状态切换(新怪物.怪物状态.游走) # 调用游走方法修改状态机，避免重叠
-			
-			# 记录当前怪物位置到数组（无论是否重复都记录）
-			已生成怪物位置数组.append(最终坐标)
 			# 3.5 编辑器模式下的节点配置
 			if Engine.is_editor_hint():
 				新怪物.name = "怪物_" + 刷新点标识 + "_" + str(生成索引)
 				新怪物.owner = self
-			# 3.6 将怪物添加到实体根节点
 			实体.add_child(新怪物)
-			#print("成功生成怪物：", 新怪物.实体名称, " | 强度：", 随机强度, " | 坐标：", 最终坐标)
 func 搜索刷怪点(刷怪点名:String)->Array[Vector2]:
 	var 方块字典:Dictionary=计划.表格.方块字典
 	if not 方块字典.has(刷怪点名) or not 方块字典.传送门.has_all(["瓦片集","瓦片列","瓦片排"]):

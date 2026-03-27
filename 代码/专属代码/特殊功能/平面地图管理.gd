@@ -25,8 +25,11 @@ var 方块检查器:检查器方块
 var 背包检查器:检查器背包
 
 var 子弹管理器:Node2D=null
-var 关卡战线:float=0
 
+var 掉落物管理器:Node2D=null
+##怪物不能小于这个X位置
+var 关卡战线:float=0
+var 关卡边界:Vector2=Vector2(0,0)
 ##游历地图切换
 var 接触传送点:bool=false
 var 传送点有效:bool=false
@@ -101,3 +104,17 @@ func 放置快捷键物品():
 			获取背包消息()
 		else :
 			更新_快捷键栏.emit()
+var 掉落物场景: PackedScene = preload("res://界面/游历系统/掉落物/掉落物.tscn") # 替换为你的场景路径
+func 创建掉落物(物品名称: String,物品数量: int,生成位置: Vector2,物品类型: String = "标准物品",
+	自定义参数: Dictionary = {},目标像素尺寸: Vector2 = Vector2(64,64)):
+	print("掉落物创建执行")
+	# 无管理器直接获取（同时传递类型+参数）
+	if not is_instance_valid(掉落物管理器):
+		print("错误,获取不到掉落管理器")
+		计划.获得物品语法糖(物品名称, 物品数量, 物品类型, 自定义参数)
+		return
+	var 物品贴图 = 计划.表格.道具贴图(物品名称)
+	var 克隆掉落物:掉落物实例 = 掉落物场景.instantiate()
+	# 传给掉落物，让它存起来，拾取时正确调用语法糖
+	克隆掉落物.初始化数据(物品名称, 物品数量, 目标像素尺寸, 生成位置, 物品贴图, 物品类型, 自定义参数)
+	掉落物管理器.add_child(克隆掉落物)

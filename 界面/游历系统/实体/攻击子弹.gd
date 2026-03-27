@@ -23,6 +23,9 @@ func 造成伤害():
 	for 实体 in 范围内的实体列表:
 		if 实体 is 游历实体:
 			实体.受伤害(伤害值)
+			if self is 游历子弹_近战攻击:
+				var 子弹:游历子弹_近战攻击=self
+				实体.velocity+=子弹.击退力
 	#print("实体列表",范围内的实体列表,"\r碰撞层",攻击范围.collision_layer)
 func 动画结束(_动画名称:String):
 	攻击结束()

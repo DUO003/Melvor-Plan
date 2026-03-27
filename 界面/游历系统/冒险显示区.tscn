@@ -9,8 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://j753afqyfj4r" path="res://界面/游历系统/实体/游历实体.tscn" id="6_i1nod"]
 [ext_resource type="PackedScene" uid="uid://cmimgxg35bc7b" path="res://界面/游历系统/实体/实体_玩家.tscn" id="6_psavm"]
 [ext_resource type="Script" uid="uid://cgw68hx75xj3k" path="res://界面/游历系统/伤害跳字.gd" id="6_rha17"]
-[ext_resource type="Script" uid="uid://bmdnkg02lei5t" path="res://界面/游历系统/实体/游历实体.gd" id="7_s8dor"]
-[ext_resource type="Script" uid="uid://bokvbtsew5gwt" path="res://界面/游历系统/实体/实体_玩家.gd" id="9_nt6cc"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_modvm"]
 tile_data = PackedInt32Array(65562, 65536, 0, 65561, 65536, 0, 65560, 65536, 0, 65559, 65536, 1, 65558, 65536, 1, 65557, 65536, 1, 65556, 65536, 1, 65555, 65536, 0, 65554, 65536, 1, 65553, 65536, 0, 65552, 65536, 1, 65551, 65536, 0, 65549, 65536, 0, 65548, 65536, 0, 12, 524288, 0, 65547, 65536, 0, 11, 458752, 0, 65546, 65536, 1, 10, 524288, 0, 65545, 65536, 1, 9, 458752, 0, 65544, 65536, 1, 8, 458752, 0, 65543, 65536, 1, 7, 524288, 0, 65542, 65536, 1, 65541, 65536, 1, 65538, 65536, 1, 65537, 65536, 1, 65536, 0, 1, 65550, 65536, 1, 65540, 65536, 1, 65539, 65536, 1, 26, 458752, 0, 25, 524288, 0, 24, 524288, 0, 23, 524288, 0, 22, 524288, 0, 21, 458752, 0, 20, 458752, 0, 19, 524288, 0, 18, 458752, 0, 17, 524288, 0, 16, 524288, 0, 15, 458752, 0, 14, 458752, 0, 13, 458752, 0, 5, 458752, 0, 4, 458752, 0, 3, 524288, 0, 2, 458752, 0, 1, 458752, 0, 0, 393216, 0, 6, 524288, 0)
@@ -58,24 +56,18 @@ script = ExtResource("3_psavm")
 [node name="实体" type="Node2D" parent="." unique_id=1935659463]
 unique_name_in_owner = true
 
-[node name="杂货铺老板" type="CharacterBody2D" parent="实体" unique_id=1150286531 instance=ExtResource("6_i1nod")]
+[node name="杂货铺老板" parent="实体" unique_id=1150286531 instance=ExtResource("6_i1nod")]
 position = Vector2(1376, 650)
-velocity = Vector2(0, 1666.6664)
-script = ExtResource("7_s8dor")
 "实体名称" = "杂货铺老板"
 "实体类型" = "村民"
 
-[node name="猎人" type="CharacterBody2D" parent="实体" unique_id=1598143378 instance=ExtResource("6_i1nod")]
+[node name="猎人" parent="实体" unique_id=1598143378 instance=ExtResource("6_i1nod")]
 position = Vector2(2884, 655)
-velocity = Vector2(0, 1666.6664)
-script = ExtResource("7_s8dor")
 "实体名称" = "猎人"
 "实体类型" = "村民"
 
-[node name="玩家" type="CharacterBody2D" parent="实体" unique_id=83950740 instance=ExtResource("6_psavm")]
+[node name="玩家" parent="实体" unique_id=83950740 instance=ExtResource("6_psavm")]
 position = Vector2(139, 336.6473)
-velocity = Vector2(0, 1666.6664)
-script = ExtResource("9_nt6cc")
 
 [node name="摄像机" type="Camera2D" parent="实体/玩家" unique_id=24668679]
 limit_left = 0
@@ -83,21 +75,20 @@ limit_right = 3456
 limit_bottom = 768
 limit_smoothed = true
 
-[node name="老奶奶" type="CharacterBody2D" parent="实体" unique_id=1446836722 instance=ExtResource("6_i1nod")]
+[node name="老奶奶" parent="实体" unique_id=1446836722 instance=ExtResource("6_i1nod")]
 position = Vector2(1009, 646)
-velocity = Vector2(0, 1666.6664)
-script = ExtResource("7_s8dor")
 "实体名称" = "老奶奶"
 "实体类型" = "村民"
 
-[node name="铁匠" type="CharacterBody2D" parent="实体" unique_id=570210701 instance=ExtResource("6_i1nod")]
+[node name="铁匠" parent="实体" unique_id=570210701 instance=ExtResource("6_i1nod")]
 position = Vector2(2336, 643)
-velocity = Vector2(0, 1666.6664)
-script = ExtResource("7_s8dor")
 "实体名称" = "铁匠"
 "实体类型" = "村民"
 
 [node name="子弹管理器" type="Node2D" parent="." unique_id=694046706]
+unique_name_in_owner = true
+
+[node name="掉落物管理器" type="Node2D" parent="." unique_id=1030070484]
 unique_name_in_owner = true
 
 [node name="伤害跳字" type="Control" parent="." unique_id=660408906]

@@ -2,13 +2,46 @@
 
 [ext_resource type="PackedScene" uid="uid://j753afqyfj4r" path="res://界面/游历系统/实体/游历实体.tscn" id="1_u441u"]
 [ext_resource type="Script" uid="uid://bokvbtsew5gwt" path="res://界面/游历系统/实体/实体_玩家.gd" id="2_yi5us"]
+[ext_resource type="Script" uid="uid://ixxqg567mfl" path="res://界面/游历系统/实体/状态_待机_玩家.gd" id="3_gy04m"]
+[ext_resource type="Script" uid="uid://cpqv5ohx12rqu" path="res://界面/游历系统/实体/状态_移动_玩家.gd" id="4_v5ipo"]
+[ext_resource type="Script" uid="uid://coifmqlxypajk" path="res://界面/游历系统/实体/状态_攻击_玩家.gd" id="5_2bb5a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5ipo"]
+size = Vector2(300, 20)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gctsw"]
+radius = 40.0
+height = 140.0
 
 [node name="玩家" unique_id=1150286531 instance=ExtResource("1_u441u")]
 script = ExtResource("2_yi5us")
-"每秒回血" = 0.0
-"每秒回蓝" = 0.0
-"每秒回盾" = -1.0
 
-[node name="攻击检查" parent="." index="1" unique_id=212390771]
-target_position = Vector2(100, 0)
+[node name="动画" parent="." index="0" unique_id=1011232936]
+anchors_preset = -1
+
+[node name="攻击检查" parent="." index="1" unique_id=629043272]
 collision_mask = 2
+
+[node name="攻击范围" parent="攻击检查" index="0" unique_id=217598464]
+shape = SubResource("RectangleShape2D_v5ipo")
+debug_color = Color(0.38517496, 0.61255723, 0, 0.41960785)
+
+[node name="拾取检查" type="Area2D" parent="." index="2" unique_id=1273335672]
+unique_name_in_owner = true
+position = Vector2(0, -76)
+collision_layer = 0
+collision_mask = 8
+
+[node name="拾取范围" type="CollisionShape2D" parent="拾取检查" index="0" unique_id=40515224]
+unique_name_in_owner = true
+shape = SubResource("CapsuleShape2D_gctsw")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="待机状态" parent="状态机" parent_id_path=PackedInt32Array(290874431) index="0" unique_id=1697266100]
+script = ExtResource("3_gy04m")
+
+[node name="移动状态" parent="状态机" parent_id_path=PackedInt32Array(290874431) index="3" unique_id=84218885]
+script = ExtResource("4_v5ipo")
+
+[node name="攻击状态" parent="状态机" parent_id_path=PackedInt32Array(290874431) index="4" unique_id=1387092577]
+script = ExtResource("5_2bb5a")

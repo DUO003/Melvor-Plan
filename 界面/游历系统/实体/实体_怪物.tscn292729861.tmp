@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://hfhssg4m6j71"]
+
+[ext_resource type="PackedScene" uid="uid://j753afqyfj4r" path="res://界面/游历系统/实体/游历实体.tscn" id="1_bpj0t"]
+[ext_resource type="Script" uid="uid://c7y71c6v4215y" path="res://界面/游历系统/实体/实体_怪物.gd" id="2_sys2h"]
+[ext_resource type="Script" uid="uid://bhby7d0cd8hnu" path="res://界面/游历系统/实体/怪物状态机.gd" id="3_7jotm"]
+[ext_resource type="Script" uid="uid://bemophx3tqx8b" path="res://界面/游历系统/实体/移动状态.gd" id="3_8k576"]
+[ext_resource type="Script" uid="uid://ccj4ro82v40un" path="res://界面/游历系统/实体/掉落配置.gd" id="3_41q02"]
+[ext_resource type="Script" uid="uid://o4b7pko23dri" path="res://界面/游历系统/实体/待机状态_怪物.gd" id="4_4mtty"]
+[ext_resource type="Script" uid="uid://cmatvdnnovig7" path="res://界面/游历系统/实体/梅掉落项.gd" id="4_pnoxm"]
+[ext_resource type="Script" uid="uid://cdqorgtfmhmhk" path="res://界面/游历系统/实体/状态_攻击_怪物.gd" id="6_4mtty"]
+
+[sub_resource type="Resource" id="Resource_h7p1r"]
+script = ExtResource("3_41q02")
+"启用打乱" = true
+"最大实体数量" = 5
+"掉落表" = Array[String](["新手村小怪"])
+metadata/_custom_type_script = "uid://ccj4ro82v40un"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8k576"]
+size = Vector2(1000, 20)
+
+[node name="实体" unique_id=1150286531 instance=ExtResource("1_bpj0t")]
+script = ExtResource("2_sys2h")
+"实体掉落" = SubResource("Resource_h7p1r")
+
+[node name="动画" parent="." index="0" unique_id=1011232936]
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="攻击检查" parent="." index="1" unique_id=629043272]
+collision_layer = 0
+
+[node name="攻击范围" parent="攻击检查" index="0" unique_id=217598464]
+shape = SubResource("RectangleShape2D_8k576")
+debug_color = Color(0.8911841, 0.3003337, 0.33006856, 0.41960785)
+
+[node name="推动检查" type="RayCast2D" parent="." index="2" unique_id=2030853320]
+unique_name_in_owner = true
+position = Vector2(0, -76)
+enabled = false
+target_position = Vector2(-35, 0)
+collision_mask = 2
+
+[node name="近战攻击容器" parent="." index="3" unique_id=1940382363]
+position = Vector2(-70, -75)
+
+[node name="编辑器名" parent="." index="6" unique_id=1848171724]
+offset_right = 12.25
+offset_bottom = -132.0
+
+[node name="状态机" parent="." index="7" unique_id=290874431]
+script = ExtResource("3_7jotm")
+
+[node name="待机状态" parent="状态机" index="0" unique_id=1697266100]
+script = ExtResource("4_4mtty")
+
+[node name="移动状态" parent="状态机" index="3" unique_id=84218885]
+script = ExtResource("3_8k576")
+
+[node name="攻击状态" parent="状态机" index="4" unique_id=1387092577]
+script = ExtResource("6_4mtty")

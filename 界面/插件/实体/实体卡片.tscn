@@ -3,7 +3,10 @@
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ss1xo"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_xq4x1"]
 [ext_resource type="Script" uid="uid://qb047g3a7a37" path="res://界面/插件/实体/实体卡片.gd" id="3_glkit"]
+[ext_resource type="Shader" uid="uid://bg0qomh31e1iv" path="res://界面/插件/实体/实体着色器.gdshader" id="4_a53qn"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="4_i80no"]
+[ext_resource type="Texture2D" uid="uid://cjiduhobn8hf3" path="res://素材/综合/瓦片集.png" id="5_glkit"]
+[ext_resource type="Script" uid="uid://dciygcljm8xmx" path="res://界面/插件/实体/图片裁剪器.gd" id="6_i80no"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dgi1"]
 bg_color = Color(0.67, 0.52036667, 0.22109999, 1)
@@ -18,6 +21,11 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 script = ExtResource("2_xq4x1")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m6jab"]
+shader = ExtResource("4_a53qn")
+shader_parameter/percent = 0.0
+shader_parameter/hit_color = Color(1, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_467m1"]
 length = 0.001
@@ -36,7 +44,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("图片:anchors_preset")
+tracks/1/path = NodePath("背景/图片:anchors_preset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -48,7 +56,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("图片:position")
+tracks/2/path = NodePath("背景/图片:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -57,13 +65,150 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(55, 60)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("攻击效果:anchor_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("背景:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("背景:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("背景/图片:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("背景/名称:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("背景/卡背面:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("背景/图片:material:shader_parameter/percent")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("背景/图片:material:shader_parameter/hit_color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
 
-[sub_resource type="Animation" id="Animation_n6vmw"]
-resource_name = "待机"
+[sub_resource type="Animation" id="Animation_xq4x1"]
+resource_name = "受击"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("图片:position")
+tracks/0/path = NodePath("背景:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("背景/图片:material:shader_parameter/percent")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.30000000447036, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("背景/图片:material:shader_parameter/hit_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n6vmw"]
+resource_name = "待机"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("背景/图片:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -71,6 +216,85 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(55, 60), Vector2(55, 55), Vector2(55, 60)]
+}
+
+[sub_resource type="Animation" id="Animation_ss1xo"]
+resource_name = "攻击"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("攻击效果:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_glkit"]
+resource_name = "死亡"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("背景:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("背景:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.7121294, 0.7121294, 0.71212935, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("背景/图片:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("背景/名称:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("背景/卡背面:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
 }
 
 [sub_resource type="Animation" id="Animation_4dgi1"]
@@ -92,13 +316,19 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4dgi1"]
 _data = {
 &"RESET": SubResource("Animation_467m1"),
+&"受击": SubResource("Animation_xq4x1"),
 &"待机": SubResource("Animation_n6vmw"),
+&"攻击": SubResource("Animation_ss1xo"),
+&"死亡": SubResource("Animation_glkit"),
 &"移动": SubResource("Animation_4dgi1")
 }
 
-[node name="实体" type="Panel" unique_id=1504805159]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xq4x1"]
+bg_color = Color(0.6, 0.6, 0.6, 0.47058824)
+
+[node name="实体" type="Control" unique_id=1011232936]
 custom_minimum_size = Vector2(260, 360)
-anchors_preset = -1
+layout_mode = 3
 anchor_right = 0.13541667
 anchor_bottom = 0.33333334
 grow_horizontal = 2
@@ -106,15 +336,27 @@ grow_vertical = 2
 pivot_offset = Vector2(130, 360)
 mouse_behavior_recursive = 2
 theme = ExtResource("1_ss1xo")
-theme_override_styles/panel = SubResource("StyleBoxFlat_4dgi1")
 script = ExtResource("3_glkit")
 metadata/_edit_use_anchors_ = true
 
-[node name="名称" type="Label" parent="." unique_id=1438488523]
+[node name="背景" type="Panel" parent="." unique_id=1702784861]
+custom_minimum_size = Vector2(260, 360)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(130, 360)
+mouse_behavior_recursive = 2
+theme = ExtResource("1_ss1xo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_4dgi1")
+
+[node name="名称" type="Label" parent="背景" unique_id=1438488523]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 36.0
+offset_bottom = 50.0
 grow_horizontal = 2
 mouse_behavior_recursive = 1
 theme_override_font_sizes/font_size = 35
@@ -123,8 +365,9 @@ horizontal_alignment = 1
 text_overrun_behavior = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="图片" type="Control" parent="." unique_id=353747191]
+[node name="图片" type="Control" parent="背景" unique_id=353747191]
 z_index = 1
+material = SubResource("ShaderMaterial_m6jab")
 custom_minimum_size = Vector2(150, 300)
 layout_mode = 1
 anchors_preset = 7
@@ -137,10 +380,12 @@ offset_top = -300.0
 offset_right = 75.0
 grow_horizontal = 2
 grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_behavior_recursive = 1
 
-[node name="贴图" type="TextureRect" parent="图片" unique_id=2061192371]
+[node name="贴图" type="TextureRect" parent="背景/图片" unique_id=2061192371]
 unique_name_in_owner = true
+use_parent_material = true
 custom_minimum_size = Vector2(55, 60)
 layout_mode = 1
 anchors_preset = 12
@@ -154,6 +399,45 @@ texture = ExtResource("4_i80no")
 expand_mode = 5
 stretch_mode = 5
 
+[node name="卡背面" type="TextureRect" parent="背景" unique_id=2082419258]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_i80no")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="图片裁剪器" type="Sprite2D" parent="背景/卡背面" unique_id=1823147889 node_paths=PackedStringArray("纹理节点")]
+visible = false
+position = Vector2(75, 84)
+texture = ExtResource("5_glkit")
+region_enabled = true
+region_rect = Rect2(767.4161, 748.83167, 65.1745, 82.5567)
+script = ExtResource("6_i80no")
+"纹理节点" = NodePath("..")
+
 [node name="动画" type="AnimationPlayer" parent="." unique_id=786618005]
 libraries/ = SubResource("AnimationLibrary_4dgi1")
 autoplay = &"RESET"
+
+[node name="攻击效果" type="Panel" parent="." unique_id=1598845774]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xq4x1")

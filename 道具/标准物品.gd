@@ -1,5 +1,6 @@
 extends StackableData
 class_name 标准物品
+var 物品类型目录:Array=[物品方块,物品装备,物品宝石]
 ## 梅尔沃计划定义属性,决定部分抽取道具的随机池
 var 标签: PackedStringArray = []
 ## 梅尔沃计划定义属性,决定鼠标指向物品的提示

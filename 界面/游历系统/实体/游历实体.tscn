@@ -2,25 +2,21 @@
 
 [ext_resource type="Script" uid="uid://bmdnkg02lei5t" path="res://界面/游历系统/实体/游历实体.gd" id="1_3b5h0"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_43fed"]
+[ext_resource type="PackedScene" uid="uid://ufm678ahcmcd" path="res://界面/插件/实体/实体卡片.tscn" id="2_gctsw"]
+[ext_resource type="PackedScene" uid="uid://c8hh4tgdh0554" path="res://界面/游历系统/特效/血液爆炸.tscn" id="3_5oe0i"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_qokn6"]
 [ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="4_vtxdu"]
+[ext_resource type="Script" uid="uid://bxp2h3j7605ag" path="res://界面/游历系统/实体/状态机.gd" id="5_6l5y5"]
+[ext_resource type="Script" uid="uid://uv1awio33vwa" path="res://界面/游历系统/实体/状态基类.gd" id="5_46ssg"]
+[ext_resource type="Script" uid="uid://bhawcn4720mh1" path="res://界面/游历系统/实体/状态_受击.gd" id="7_wnapb"]
+[ext_resource type="Script" uid="uid://7c6r4lll0jvd" path="res://界面/游历系统/实体/状态_死亡_玩家.gd" id="8_67s6m"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dgi1"]
-bg_color = Color(0.67, 0.52036667, 0.22109999, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-script = ExtResource("3_qokn6")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3271b"]
+size = Vector2(289, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8dmt"]
-size = Vector2(65, 140)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gctsw"]
+radius = 40.0
+height = 140.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g082e"]
 bg_color = Color(0.7, 0.61833334, 0.45499998, 1)
@@ -94,38 +90,27 @@ expand_margin_bottom = 1.0
 velocity = Vector2(0, 1666.6664)
 script = ExtResource("1_3b5h0")
 
-[node name="动画" type="Panel" parent="." unique_id=339039118]
+[node name="动画" parent="." unique_id=1011232936 instance=ExtResource("2_gctsw")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 0)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = -130.0
 offset_top = -360.0
 offset_right = 130.0
-grow_horizontal = 2
-grow_vertical = 0
+grow_horizontal = 1
+grow_vertical = 1
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(130, 360)
-mouse_behavior_recursive = 2
-theme = ExtResource("2_43fed")
-theme_override_styles/panel = SubResource("StyleBoxFlat_4dgi1")
-metadata/_edit_use_anchors_ = true
 
-[node name="编辑器名" type="Label" parent="动画" unique_id=1848171724]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -39.5
-offset_top = 50.0
-offset_right = 39.5
-offset_bottom = 107.0
-grow_horizontal = 2
-text = "玩家"
-
-[node name="攻击检查" type="RayCast2D" parent="." unique_id=212390771]
+[node name="攻击检查" type="Area2D" parent="." unique_id=629043272]
 unique_name_in_owner = true
 position = Vector2(0, -76)
-enabled = false
-target_position = Vector2(-500, 0)
 collision_mask = 16
+
+[node name="攻击范围" type="CollisionShape2D" parent="攻击检查" unique_id=217598464]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_3271b")
 
 [node name="近战攻击容器" type="Node2D" parent="." unique_id=1940382363]
 unique_name_in_owner = true
@@ -135,8 +120,12 @@ scale = Vector2(-1, 1)
 [node name="碰撞范围" type="CollisionShape2D" parent="." unique_id=1792861877]
 unique_name_in_owner = true
 position = Vector2(0, -76)
-shape = SubResource("RectangleShape2D_b8dmt")
+shape = SubResource("CapsuleShape2D_gctsw")
 metadata/_edit_lock_ = true
+
+[node name="受伤粒子" parent="." unique_id=1925890234 instance=ExtResource("3_5oe0i")]
+unique_name_in_owner = true
+position = Vector2(0, -88)
 
 [node name="血量" type="ProgressBar" parent="." unique_id=1861504083]
 unique_name_in_owner = true
@@ -210,3 +199,43 @@ value = 75.0
 allow_greater = true
 show_percentage = false
 metadata/_edit_lock_ = true
+
+[node name="编辑器名" type="Label" parent="." unique_id=1848171724]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.75
+offset_top = -155.0
+offset_right = 59.25
+offset_bottom = -98.0
+grow_horizontal = 2
+text = "玩家"
+
+[node name="状态机" type="LimboHSM" parent="." unique_id=290874431]
+unique_name_in_owner = true
+script = ExtResource("5_6l5y5")
+
+[node name="待机状态" type="LimboState" parent="状态机" unique_id=1697266100]
+unique_name_in_owner = true
+script = ExtResource("5_46ssg")
+
+[node name="受击状态" type="LimboState" parent="状态机" unique_id=1871053013]
+unique_name_in_owner = true
+script = ExtResource("7_wnapb")
+"动画名称" = "受击"
+
+[node name="死亡状态" type="LimboState" parent="状态机" unique_id=1812887957]
+unique_name_in_owner = true
+script = ExtResource("8_67s6m")
+"动画名称" = "死亡"
+
+[node name="移动状态" type="LimboState" parent="状态机" unique_id=84218885]
+unique_name_in_owner = true
+script = ExtResource("5_46ssg")
+"动画名称" = "移动"
+
+[node name="攻击状态" type="LimboState" parent="状态机" unique_id=1387092577]
+unique_name_in_owner = true
+script = ExtResource("5_46ssg")
+"动画名称" = "攻击"

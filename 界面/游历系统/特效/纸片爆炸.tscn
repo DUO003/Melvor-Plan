@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://0eqa1nu17glt"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mseuk"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[node name="纸片爆炸" type="GPUParticles2D" unique_id=1925890234]
+emitting = false
+amount = 40
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_mseuk")

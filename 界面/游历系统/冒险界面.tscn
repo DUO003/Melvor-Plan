@@ -35,8 +35,6 @@ corner_radius_bottom_left = 10
 script = ExtResource("6_87nh3")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sr4hh"]
-
 [node name="冒险界面" unique_id=166508811 instance=ExtResource("1_ja4i7")]
 "基类窗口名称" = "冒险界面"
 
@@ -157,10 +155,5 @@ render_target_update_mode = 4
 [node name="冒险管理器" parent="内容节点/分栏/冒险窗口区/冒险窗口" index="0" unique_id=99110732 instance=ExtResource("8_pau8c")]
 unique_name_in_owner = true
 metadata/_edit_lock_ = true
-
-[node name="Area2D" type="Area2D" parent="." index="4" unique_id=406667678]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0" unique_id=440899650]
-shape = SubResource("RectangleShape2D_sr4hh")
 
 [editable path="内容节点/分栏/冒险窗口区/冒险窗口/冒险管理器"]
