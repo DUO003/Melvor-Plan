@@ -19,21 +19,18 @@ var 卡片素材:Dictionary={
 		"偏移":Vector2(0,-75),
 		"血条偏移":Vector2(-70,-186),
 		"代码":游历实体_怪物},}
-var 子弹字典:Dictionary={
-	"近战攻击":{
-		"场景":preload("res://界面/游历系统/实体/近战攻击.tscn")},
-	"远程攻击":{
-		"场景":preload("res://界面/游历系统/实体/远程攻击.tscn")},}
 @export var 实体名称: String="玩家"
 @export_enum("玩家","队友","怪物","村民") var 实体类型: String="玩家"
-## 生命值：修改时仅更新血量进度条
+##有上限可变化的状态量
+@export_group("状态属性")
+## 生命值：归零时死亡,不能超过最大生命,其他备注内称呼为红条
 var 生命值: float = 100:
 	set(值):
 		生命值 = clamp(值, 0, 最大生命)  # 限制数值范围
 		# 仅更新血量进度条（最小化更新）
 		if is_inside_tree() and 血量 and 血量.is_inside_tree():
 			血量.value = 生命值
-## 最大生命值：修改时仅更新血量进度条的最大值+同步当前生命值
+## 最大生命值
 var 最大生命: float = 100:
 	set(值):
 		最大生命 = max(值, 1)  # 确保最大值不为负
@@ -42,13 +39,13 @@ var 最大生命: float = 100:
 		if is_inside_tree() and 血量 and 血量.is_inside_tree():
 			血量.max_value = 最大生命
 			血量.value = 生命值
-## 护盾值：修改时仅更新护盾进度条
+## 护盾值：由技能或其他事件提供的零时生命值,默认0,优先扣除,不能超过最大护盾,简称黄条
 var 护盾值: float = 0:
 	set(值):
 		护盾值 = clamp(值, 0, 最大护盾)
 		if is_inside_tree() and 护盾 and 护盾.is_inside_tree():
 			护盾.value = 护盾值
-## 最大护盾：修改时仅更新护盾进度条的最大值+同步当前护盾值
+## 最大护盾
 var 最大护盾: float = 0:
 	set(值):
 		最大护盾 = max(值, 0)
@@ -56,13 +53,13 @@ var 最大护盾: float = 0:
 		if is_inside_tree() and 护盾 and 护盾.is_inside_tree():
 			护盾.max_value = 最大护盾
 			护盾.value = 护盾值
-## 魔法值：修改时仅更新魔法进度条
+## 魔法值：释放技能消耗的资源,不能超过最大魔法,简称蓝条
 var 魔法值: float = 0:
 	set(值):
 		魔法值 = clamp(值, 0, 最大魔法)
 		if is_inside_tree() and 魔法 and 魔法.is_inside_tree():
 			魔法.value = 魔法值
-## 最大魔法：修改时仅更新魔法进度条的最大值+同步当前魔法值
+## 最大魔法
 var 最大魔法: float = 0:
 	set(值):
 		最大魔法 = max(值, 0)
@@ -70,25 +67,64 @@ var 最大魔法: float = 0:
 		if is_inside_tree() and 魔法 and 魔法.is_inside_tree():
 			魔法.max_value = 最大魔法
 			魔法.value = 魔法值
+##每个实体直接不完全相同的量
+@export_group("独特属性")
+##每次攻击造成的基础伤害
+var 攻击力:float=15
+##受到的伤害改为由防具承担的比例
+var 防具承伤比例:float=0
+##暴击率计算公式 暴击力/(暴击力+目标实体.暴击抗性)(软上限80%)[br]
+##暴击伤害倍率=1+(1/目标实体.暴击抗性)*暴击力^1.25(软上限+400%)
+var 暴击力:float=0
+##暴击抗性,降低对方暴击概率
+var 暴击抗性:float=100
+##每次命中可以击飞对手的基础击退,不同招式可能有不同固定倍率
+var 击退力:=Vector2(-50,-50)
+##每帧回血计算的参数,回复累计1点时触发回血方法
+var 每秒回血: float = 0
+##每帧回蓝计算的参数,回复累计1点时触发回蓝方法
+var 每秒回蓝: float = 0
+##每帧护盾变化计算的参数,通常为不会变化
+var 每秒回盾: float = 0
+##每次攻击动画间隔
+var 攻击间隔:float=2
+##对于玩家和远程怪物攻击飞行距离,同时是怪物的警戒距离
+var 最大攻击距离: float = 500
+##对应玩家和近战怪物是近战攻击生成位置
+var 近战攻击距离: float = 50
+##移动向量的最大速度,单位像素
+var 速度:float=500.0
+##每次点击跳跃时获得的跳跃移动向量,怪物通常不会跳跃
+var 跳跃高度:float=-870
+### 普通攻击类型(近战攻击,远程攻击)
+#var 攻击类型:String="近战攻击"
+## 武器名称 决定显示的碰撞范围和贴图
+var 武器名称:String="抓痕"
+##技能配置
+var 技能配置:Array[梅技能配置]=[]
+##例如单独的元素抗性,元素增伤等
+var 其他属性:Dictionary={}
+## 影响状态机的一些配置参数
+var 状态机配置:Dictionary={}
+var 回血值=0
+var 回蓝值=0
+var 回盾值=0
 ##不为0时显示血条
 var 血条显示: float = 0:
 	set(值):
 		血条显示 = 值
 		更新血条显示状态()
-var 攻击力:float=15
 var 重力加速度:float=ProjectSettings.get("physics/2d/default_gravity") as float
-var 最大攻击距离: float = 500
-var 近战攻击距离: float = 135
-var 速度:float=500.0
-var 跳跃高度:float=-870
 var 地图外判断:int=1100#Y大于这个值视为掉出地图
 var 出生点:Vector2
+var 角色碰撞箱宽度:float=40
 @onready var 血量: ProgressBar = %血量
 @onready var 护盾: ProgressBar = %护盾
 @onready var 魔法: ProgressBar = %魔法
 @onready var 碰撞范围: CollisionShape2D = %碰撞范围
 @onready var 动画节点: 实体卡片 = $动画
 @onready var 攻击检查: Area2D = %攻击检查
+@onready var 攻击范围: CollisionShape2D = %攻击范围
 @onready var 近战攻击容器: Node2D = %近战攻击容器
 ##状态机
 @onready var 状态机: 游历标准状态机 = $状态机
@@ -105,22 +141,19 @@ func _ready():
 		动画节点.offset_bottom=0
 		return
 	else :
+		计划.地图.实体注册字典[self]=Time.get_unix_time_from_system()
 		编辑器名.queue_free()
 	初始化实体()
 	更新进度条()
 	更新位置状态()
-	加载实体数据()
+func _exit_tree() -> void:
+	if not Engine.is_editor_hint():
+		if 计划.地图.实体注册字典.has(self):
+			计划.地图.实体注册字典.erase(self)
+		else :
+			push_error("❌ 逻辑异常：实体尝试注销，但未在注册字典中！实体：", self)
 func 加载实体数据():
-	最大生命=100
-	生命值=100
-	每秒回血=0
-	最大魔法=0
-	魔法值=0
-	每秒回蓝=0
-	最大护盾=0
-	护盾值=0
-	每秒回盾=-1
-	攻击力=15
+	pass
 ##变量更新时自动调用,但保留手动
 func 更新进度条() -> void:
 	if 血量 and 血量.is_inside_tree():
@@ -140,19 +173,21 @@ func 更新血条显示状态():
 		魔法.visible=最大魔法>0
 		护盾.visible=最大护盾>0
 func 初始化实体() -> void:
-	# 1. 安全校验：确保碰撞范围节点已正确获取
 	if not 碰撞范围:
 		print("错误：碰撞范围节点（CollisionShape2D）未找到，请检查节点路径或名称")
 		return
-	# 2. 校验角色名称是否存在于卡片素材字典中
 	if not 卡片素材.has(实体类型):
 		print("错误：卡片素材字典中未找到【%s】类型的配置" % 实体类型)
 		return
 	加载动画与碰撞范围()
 	设置碰撞层和遮罩()
+	加载实体数据()
 	初始化状态机()
 	出生点=position
 	血条显示=0
+	var 形状=RectangleShape2D.new()
+	形状.size=Vector2(最大攻击距离*2,20)
+	攻击范围.shape=形状
 func 初始化状态机():
 	状态跳转条件()
 	状态机.initialize(self)
@@ -169,6 +204,7 @@ func 加载动画与碰撞范围():
 	var 判定范围区:=CapsuleShape2D.new()
 	var 范围配置:Vector2=角色配置.get("范围",Vector2(42,150))
 	判定范围区.radius = 范围配置.x
+	角色碰撞箱宽度=范围配置.x
 	判定范围区.height = 范围配置.y
 	碰撞范围.shape = 判定范围区# 设置新的Shape
 	碰撞范围.position = 角色配置.get("偏移",Vector2(0,-75))  # 设置位置偏移
@@ -189,7 +225,7 @@ func 加载动画与碰撞范围():
 	else :print("错误：无法加载【%s】的动画场景：%s" % [实体名称, 角色配置["场景"]])
 	if 血量:
 		血量.position=角色配置.get("血条偏移",Vector2(-70,-186))
-	
+
 # 核心：设置碰撞层和遮罩的内部方法（无需传参，使用内置的「实体类型」变量）
 func 设置碰撞层和遮罩():
 	collision_layer=0
@@ -220,12 +256,6 @@ func _physics_process(间隔: float) -> void:
 		回到出生点()
 	#if not velocity.is_zero_approx():
 		#更新位置状态()
-var 每秒回血: float = 0
-var 回血值=0
-var 每秒回蓝: float = 0
-var 回蓝值=0
-var 每秒回盾: float = -1
-var 回盾值=0
 func 检查回复更新(间隔: float):
 	回血值+=间隔*每秒回血
 	if 回血值>=1:
@@ -323,36 +353,20 @@ func 修改属性值(属性类型:String,调整量:float):
 				护盾值+=调整量
 			else :return
 	计划.地图.伤害跳字.emit(调整量,血量.global_position+血量.size*Vector2(0.5,-1),属性类型)
-
-func 生成攻击(子弹类型="近战攻击",武器类型="抓痕"):
-	var 子弹数据:Dictionary=子弹字典.get(子弹类型,{})
-	if 子弹数据.has("场景"):
-		var 子弹场景:游历子弹=子弹数据.场景.instantiate()
-		if 实体类型=="怪物":
-			子弹场景.碰撞目标层=5
-		elif 实体类型=="玩家":
-			子弹场景.碰撞目标层=2
-		子弹场景.伤害值=攻击力
-		子弹场景.武器名称=武器类型
-		if 子弹类型=="近战攻击":
-			if 子弹场景 is 游历子弹_近战攻击:
-				子弹场景.击退力=Vector2(-50,-50)*近战攻击容器.scale
-			近战攻击容器.add_child(子弹场景)
-		elif 子弹类型=="远程攻击":
-			if not 计划.地图.子弹管理器:
-				return
-			if 子弹场景 is 游历子弹_远程攻击:
-				子弹场景.global_position=近战攻击容器.global_position
-				子弹场景.最大飞行距离=最大攻击距离
-				子弹场景.子弹速度=1000
-				子弹场景.子弹方向=Vector2(1,0)#碰撞范围.scale
-				计划.地图.子弹管理器.add_child(子弹场景)
+func 检查释放技能():
+	for 技能 in 技能配置:
+		if 技能.技能可用检查():
+			技能.释放技能(self)
+			return
+func 技能排序():
+	技能配置.sort_custom(func(a, b):
+		return a.AI释放优先级 > b.AI释放优先级)
 func 方向更新(实体:Node2D):
 	var 方向:int=sign(实体.position.x-position.x)
 	方向更新_指定(方向)
 func 方向更新_指定(方向:int=1):
 	近战攻击容器.scale=Vector2(-方向,1)
-	近战攻击容器.position=Vector2(方向*近战攻击距离*0.5,-75)
+	近战攻击容器.position=Vector2(方向*近战攻击距离,-75)
 	if 动画节点:
 		动画节点.面向调整(方向>0)
 	

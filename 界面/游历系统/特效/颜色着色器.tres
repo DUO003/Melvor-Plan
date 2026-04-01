@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://hf7h7i8nwaxt"]
+
+[ext_resource type="Shader" uid="uid://bg0qomh31e1iv" path="res://界面/插件/实体/实体着色器.gdshader" id="1_hxu2i"]
+
+[resource]
+shader = ExtResource("1_hxu2i")
+shader_parameter/percent = 0.0
+shader_parameter/hit_color = Color(1, 0, 0, 1)

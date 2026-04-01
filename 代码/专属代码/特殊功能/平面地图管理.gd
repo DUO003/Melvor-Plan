@@ -27,12 +27,18 @@ var 背包检查器:检查器背包
 var 子弹管理器:Node2D=null
 
 var 掉落物管理器:Node2D=null
+##实体引用和实体创建的时间戳
+var 实体注册字典:Dictionary[游历实体,float]={}
 ##怪物不能小于这个X位置
 var 关卡战线:float=0
 var 关卡边界:Vector2=Vector2(0,0)
 ##游历地图切换
 var 接触传送点:bool=false
 var 传送点有效:bool=false
+var 地图默认速度:float=500
+var 地图默认弹跳:float=-870
+
+
 ## 地图图块搜索算法[br]
 ## 返回值: Array[Vector2i] - 所有符合条件的图块坐标数组
 func 搜索图块(地图图块: TileMapLayer, 目标源ID: int, 目标图集坐标: Vector2i) -> Array[Vector2i]:

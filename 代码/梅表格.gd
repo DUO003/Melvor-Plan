@@ -95,7 +95,8 @@ func 道具贴图(贴图名称:String)->Texture2D:#-print("贴图名称",贴图�
 			蓝图贴图[贴图名称]=贴图
 			return 贴图
 	return preload("res://素材/自制/图标/未知图片.png")
-func 蓝图数据(道具名称,读取值,强制类型="自动"):
+##从"创世蓝图"表格文件获取物品信息
+func 蓝图数据(道具名称:String,读取值:String,强制类型:String="自动"):
 	if 蓝图表头.has(读取值):
 		if 道具名称 in 蓝图字典:
 			match 强制类型:
@@ -375,7 +376,7 @@ func 获取简介(物品名称: String, 图片尺寸: int=40) -> String:
 			替换内容 = ("[img=%s]%s[/img]") % [尺寸字符串, 图片路径]
 		结果文本 = 结果文本.substr(0, 匹配项.get_start()) + 替换内容 + 结果文本.substr(匹配项.get_end())# 执行替换
 	return 结果文本
-func 获取属性(道具名称,属性名称=null,解析失败=""):
+func 获取属性(道具名称:String,属性名称=null,解析失败=""):
 	if 蓝图字典.has(道具名称) and 蓝图表头.has("属性"):
 		var 属性=蓝图字典[道具名称][蓝图表头["属性"]]
 		var 字典={}

@@ -1,0 +1,42 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d1pdm3lsqumw1"]
+
+[ext_resource type="Shader" uid="uid://f40ynold7cb1" path="res://界面/游历系统/特效/火焰.tres" id="1_y7g7o"]
+[ext_resource type="Texture2D" uid="uid://bnq2fmxvo1nh4" path="res://素材/自制/噪声与纹理/火球.png" id="2_1g6lk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lw2rh"]
+noise_type = 0
+seed = 2560
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kir8t"]
+noise = SubResource("FastNoiseLite_lw2rh")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_g6aiu"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_alnkd"]
+gradient = SubResource("Gradient_g6aiu")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_6l837"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n8snl"]
+gradient = SubResource("Gradient_6l837")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_b3r5t"]
+offsets = PackedFloat32Array(0, 0.3, 0.5294118, 0.8235294, 0.9470588, 1)
+colors = PackedColorArray(0.72, 0.72, 0.72, 0, 0.72156864, 0, 0, 1, 0.78, 0, 0, 1, 0.8759715, 0.5545455, 0, 1, 1, 1, 0, 1, 1, 0.8333334, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xjdop"]
+gradient = SubResource("Gradient_b3r5t")
+
+[resource]
+shader = ExtResource("1_y7g7o")
+shader_parameter/DX = Vector2(1, 1)
+shader_parameter/SD = Vector2(0, 1)
+shader_parameter/T1 = SubResource("NoiseTexture2D_kir8t")
+shader_parameter/T2 = SubResource("GradientTexture2D_alnkd")
+shader_parameter/T3 = ExtResource("2_1g6lk")
+shader_parameter/T4 = SubResource("GradientTexture2D_n8snl")
+shader_parameter/T5 = SubResource("GradientTexture1D_xjdop")

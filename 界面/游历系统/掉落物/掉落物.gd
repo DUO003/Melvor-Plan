@@ -103,7 +103,7 @@ func 尝试拾取():
 	碰撞形状.set_deferred("disabled", true)
 	collision_layer = 0
 	collision_mask = 0
-	
+	计划.声音.语法糖随机音效(["硬币","金币"])
 	# 3. 播放向上飘移动画（0.5秒 上移60px + 渐隐）
 	创建拾取特效()
 

@@ -12,11 +12,6 @@ func _enter() -> void:
 
 	agent.velocity.x = 0
 	await 动画.animation_finished
-
-	# --------------------------
-	# 移除这里的 生成掉落物(agent)
-	# --------------------------
-
 	# 关闭碰撞 + 向上跳跃
 	agent.collision_layer = 0
 	agent.collision_mask = 0
@@ -44,8 +39,8 @@ func _update(间隔: float) -> void:
 		生成掉落物(agent)     # 此时才生成！
 func 生成掉落物(实体:游历实体_怪物):
 	print("生成掉落物已执行 —— 跳跃最高点下落时")
-	var 掉落物参数 := 实体.实体掉落
-	var 掉落物品列表 = 掉落物参数.计算掉落结果()
+	var 怪物数据:梅怪物配置= 实体.怪物数据
+	var 掉落物品列表 = 怪物数据.计算掉落结果()
 	for 物品数据 in 掉落物品列表:
 		print("掉落物%s*%d" % [物品数据["名称"], 物品数据["数量"]])
 		var 随机偏移 = Vector2(

@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://dfxyrb1q8dvht"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_x6cdk"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_slgco"]
+[ext_resource type="Script" uid="uid://d1mv0lbp0cwy5" path="res://界面/游历系统/冒险界面/技能按钮.gd" id="3_ma65x"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="4_s32q3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ma65x"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+script = ExtResource("2_slgco")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s32q3"]
+bg_color = Color(0.73, 0.695325, 0.6205, 0.19607843)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_bottom = -39.0
+script = ExtResource("2_slgco")
+margin_bottom = -39
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ma65x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s32q3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fjlpw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rj73"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8hdvd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i7y7k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6cks0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lx5cj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qrwr4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wk2ef"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ga45w"]
+
+[node name="技能按钮" type="Panel" unique_id=1821024165]
+custom_minimum_size = Vector2(100, 100)
+size_flags_horizontal = 6
+theme = ExtResource("1_x6cdk")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma65x")
+script = ExtResource("3_ma65x")
+"冷却条进度" = 0.56
+"技能贴图" = ExtResource("4_s32q3")
+"技能名称" = null
+
+[node name="技能图标" type="TextureRect" parent="." unique_id=584979173]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_s32q3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="冷却动画" type="Panel" parent="." unique_id=1880695866]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s32q3")
+
+[node name="技能冷却" type="Label" parent="." unique_id=723066383]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9058832, 0.7521072, 0.45778263, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 35
+text = "5.6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="技能点击" type="Button" parent="." unique_id=552136204]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ma65x")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_s32q3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fjlpw")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_0rj73")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8hdvd")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_i7y7k")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_6cks0")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_lx5cj")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qrwr4")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_wk2ef")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ga45w")

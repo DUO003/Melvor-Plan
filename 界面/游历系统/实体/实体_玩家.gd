@@ -16,17 +16,37 @@ func _ready():
 #var 自动前进目标:float=0
 #var 攻击计时器:float=0
 #var 攻击冷却:float=2
+var 多段跳上限:int=2
 func 加载实体数据():
-	最大生命=100
-	生命值=100
-	每秒回血=1
-	最大魔法=0
-	魔法值=0
-	每秒回蓝=0
+	var 属性管理器:=计划.装备
+	最大生命=属性管理器.血量
+	生命值=计划.数据状态("生命值",int(最大生命))
 	最大护盾=0
 	护盾值=0
-	每秒回盾=-1
-	攻击力=15
+	最大魔法=属性管理器.魔法
+	魔法值=计划.数据状态("魔法值",int(最大魔法))
+	攻击力=属性管理器.攻击
+	防具承伤比例=属性管理器.减伤
+	暴击力=属性管理器.暴击
+	暴击抗性=属性管理器.抗性
+	击退力=Vector2(-属性管理器.击退力,-属性管理器.击退力)
+	每秒回血=属性管理器.回血
+	每秒回蓝=属性管理器.回蓝
+	每秒回盾=0
+	攻击间隔=属性管理器.攻速
+	最大攻击距离=属性管理器.攻击距离*10
+	近战攻击距离=属性管理器.攻击距离
+	速度=计划.地图.地图默认速度*属性管理器.移速倍率
+	跳跃高度=计划.地图.地图默认弹跳*属性管理器.跳跃倍率
+	多段跳上限=属性管理器.跳跃上限
+	var 普通攻击:梅技能配置=梅技能配置.new("近战攻击",1)
+	技能配置.append(普通攻击)
+	var 手部装备:物品装备=属性管理器.语法糖获取装备物品("主手")
+	if 手部装备:武器名称=手部装备.item_name
+	else :武器名称="抓痕"
+	#武器名称="火球"
+	其他属性=属性管理器.计算其他属性()
+	状态机配置=属性管理器.计算状态机配置()
 func 状态跳转条件():
 	状态机.add_transition(移动状态,待机状态,移动状态.EVENT_FINISHED,死亡检查.bind(false))
 	状态机.add_transition(攻击状态,待机状态,攻击状态.EVENT_FINISHED,死亡检查.bind(false))
@@ -40,13 +60,7 @@ func 加载动画与碰撞范围():
 	拾取范围.shape=碰撞范围.shape
 func _unhandled_input(按键: InputEvent) -> void:
 	if 按键.is_action_pressed("移动_跳"):
-		if is_on_floor():
-			velocity.y=玩家跳跃高度
-			多段跳=1
-		else :
-			if 多段跳>=1:
-				velocity.y=玩家跳跃高度
-				多段跳+=-1
+		多段条逻辑()
 	elif 按键.is_action_pressed("移动_下"):
 		平台向下()
 	elif 按键.is_action_pressed("攻击"):
@@ -58,6 +72,15 @@ func _unhandled_input(按键: InputEvent) -> void:
 		执行拾取(false)
 	elif 按键.is_action_pressed("移动_左") or 按键.is_action_pressed("移动_右"):
 		状态机.dispatch("状态切换移动")
+func 多段条逻辑():
+	if is_on_floor():
+		velocity.y=玩家跳跃高度
+		多段跳=多段跳上限+-1
+	else :
+		if 多段跳>=1:
+			velocity.y=玩家跳跃高度
+			多段跳+=-1
+	
 var 平台向下触发:bool=false
 func 平台向下():
 	if not 平台向下触发:

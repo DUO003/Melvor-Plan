@@ -100,10 +100,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_8yxkd")
-current_tab = 1
+current_tab = 0
 
 [node name="基础设置" type="ScrollContainer" parent="设置面板/设置标签" unique_id=1380958802]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_tab_index = 0
@@ -306,7 +305,22 @@ size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "启用全屏"
 
+[node name="功能说明7" type="Label" parent="设置面板/设置标签/基础设置/设置" unique_id=1345810483]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_26hf3")
+text = "开启垂直同步后可以影响变速齿轮
+关闭垂直同步，画面可能产生撕裂"
+
+[node name="垂直同步" type="CheckButton" parent="设置面板/设置标签/基础设置/设置" unique_id=627494469]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "垂直同步"
+
 [node name="样式" type="ScrollContainer" parent="设置面板/设置标签" unique_id=151050320]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_tab_index = 1

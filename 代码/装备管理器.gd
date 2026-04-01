@@ -27,16 +27,25 @@ var 手工增长={"制作力":1,"研究力":1,"炼金力":1,"烹饪力":1}
 #region 游历数据
 @export_group("基础属性")
 var 血量:int=100
-var 攻击:int=10
 var 魔法:int=0
+var 攻击:int=10
 @export_group("进阶属性")
 var 回血:int=0
 var 回蓝:int=0
-var 闪避:int=0
+var 抗性:int=0
 var 暴击:int=0
 var 减伤:float=0
+##击退力
+var 击退力:int=30
 var 攻速:float=2
+##玩家不区分近战和远程距离
 var 攻击距离:int=50
+##移速倍率,实际乘以500
+var 移速倍率:float=1
+##跳跃倍率,实际高度是一次冲量
+var 跳跃倍率:float=1
+##跳跃上限,允许多段跳不能小于1
+var 跳跃上限:int=2
 var 游历默认={"血量":100,"攻击":10,'魔法':0,"默认减伤":0,"默认攻速":2,"默认攻击距离":50}
 var 游历增长={"血量":15,"攻击":5,"魔法":10}
 #endregion 游历数据
@@ -48,33 +57,30 @@ func 加载单例():
 		装备单例=EquipmentSlotRepository.instance
 	if not 物品单例:
 		物品单例=ContainerRepository.instance
-func 打印属性():
-	更新属性()
-	print("装备后属性：")
-	print("血量: ", 血量)
-	print("攻击: ", 攻击)
-	print("魔法: ", 魔法)
-	print("回血: ", 回血)
-	print("回蓝: ", 回蓝)
-	print("闪避: ", 闪避)
-	print("暴击: ", 暴击)
+func 语法糖获取装备物品(装备栏名:String):
+	var 装备栏:=装备单例.get_slot(装备栏名)
+	if 装备栏:
+		var 装备:物品装备=装备栏.equipped_item
+		if 装备:
+			return 装备
+		return null
+	return null
 func 更新装备栏():
 	装备来源属性=[]
 	装备来源栏={}
-	加载单例()
 	for 槽位名称 in 装备单例._slot_data_map.keys():
 		var 装备栏:EquipmentSlotData=装备单例._slot_data_map[槽位名称]
 		var 装备:物品装备 = 装备栏.equipped_item
 		if 装备 and 装备栏.avilable_types.size()>=1:
 			装备来源栏[装备]=装备栏
 			装备来源属性.append(装备)
+			
 func 从背包删除(装备:物品装备):
 	var 所有背包:Dictionary[String, ContainerData]=物品单例._container_data_map
 	if 所有背包.has("装备"):
 		var 背包:ContainerData=物品单例._container_data_map["装备"]
 		背包.remove_item(装备)
 func 获得装备槽宝石(名称,返回名称:bool=true)->Array:
-	加载单例()
 	var 装备槽:EquipmentSlotData=装备单例._slot_data_map.get(名称,null)
 	if 装备槽:
 		var 宝石数组:Array[物品宝石]=装备槽.装备栏宝石
@@ -185,7 +191,7 @@ func 更新游历数据():
 		elif 装备.分类 == "护甲" and 装备.通用检查("减伤"):
 			var 装备减伤 = clamp(装备.基础数值[装备.类型].减伤, 0.0, 1.0)
 			承受伤害比例 *= (1.0 - 装备减伤) / 1.0
-		var 基础属性=装备.基础属性
+		var 基础属性:Dictionary=装备.基础属性
 		for 属性名 in 基础属性:
 			if 属性名=="攻击力":
 				增加攻击+=基础属性[属性名]*加成倍率
@@ -255,3 +261,7 @@ func 安全访问(变量,默认值=0):
 	if 缓存值 is float or 缓存值 is int:
 		return 缓存值
 	return 默认值
+func 计算其他属性()->Dictionary:
+	return {}
+func 计算状态机配置()->Dictionary:
+	return {}

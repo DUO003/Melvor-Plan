@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://p4d44h1ajlvv"]
+
+[ext_resource type="Material" uid="uid://d1pdm3lsqumw1" path="res://界面/游历系统/特效/火焰着色器.tres" id="1_brm7d"]
+
+[sub_resource type="Gradient" id="Gradient_ycx75"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ldhat"]
+gradient = SubResource("Gradient_ycx75")
+
+[node name="Node2D" type="Node2D" unique_id=1833852783]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=944183512]
+material = ExtResource("1_brm7d")
+position = Vector2(0, -1)
+rotation = -1.5707964
+texture = SubResource("GradientTexture2D_ldhat")

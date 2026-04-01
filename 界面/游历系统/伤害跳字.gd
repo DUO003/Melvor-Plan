@@ -23,7 +23,7 @@ func 伤害跳字(数值: float, 位置: Vector2, 类型: String) -> void:
 	标签节点.position = 位置 + 随机偏移
 	标签节点.pivot_offset = Vector2(字体大小/2.0, 字体大小/2.0)  # 中心枢轴
 	标签节点.add_theme_font_size_override("font_size", 字体大小)
-	标签节点.text = ("" if 数值 < 0 else "+") + "%.0f"%数值
+	标签节点.text = 格式化数字(数值)
 	match 类型:#根据类型设置颜色 + 暴击描边
 		# 生命值：+绿色 / -红黄色；暴击加黄色描边
 		"生命", "生命暴击":
@@ -52,6 +52,8 @@ func 格式化数字(数值: float) -> String:
 	if 绝对值 < 1000000:
 		var 换算值 = 绝对值 / 1000
 		if 换算值 < 10:
+			return 正负号 + "%.2fK" % 换算值
+		elif 换算值 < 100:
 			return 正负号 + "%.1fK" % 换算值
 		else:
 			return 正负号 + "%.0fK" % 换算值
@@ -60,7 +62,9 @@ func 格式化数字(数值: float) -> String:
 	if 绝对值 < 100000000:
 		var 换算值 = 绝对值 / 1000000
 		if 换算值 < 10:
-			return 正负号 + "%.1fM" % 换算值
+			return 正负号 + "%.2fM" % 换算值
+		elif 换算值 < 100:
+			return 正负号 + "%.1fK" % 换算值
 		else:
 			return 正负号 + "%.0fM" % 换算值
 

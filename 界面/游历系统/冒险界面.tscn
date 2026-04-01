@@ -56,10 +56,11 @@ theme_override_constants/separation = 0
 [node name="选项卡" type="TabContainer" parent="内容节点/分栏" index="0" unique_id=512163837]
 layout_mode = 2
 size_flags_vertical = 0
-current_tab = 0
+current_tab = 2
 script = ExtResource("2_sr4hh")
 
 [node name="地图" type="Control" parent="内容节点/分栏/选项卡" index="1" unique_id=7501989]
+visible = false
 custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
 metadata/_tab_index = 0
@@ -128,16 +129,18 @@ layout_mode = 2
 focus_mode = 0
 text = "前往"
 
-[node name="冒险2" type="Control" parent="内容节点/分栏/选项卡" index="2" unique_id=99023041]
+[node name="冒险" type="Control" parent="内容节点/分栏/选项卡" index="2" unique_id=25289229]
 visible = false
-custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="冒险" type="Control" parent="内容节点/分栏/选项卡" index="3" unique_id=25289229]
-visible = false
+[node name="队伍" type="ScrollContainer" parent="内容节点/分栏/选项卡" index="3" unique_id=34650283]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="队伍容器" type="HBoxContainer" parent="内容节点/分栏/选项卡/队伍" index="0" unique_id=757296253]
+layout_mode = 2
 
 [node name="冒险窗口区" type="SubViewportContainer" parent="内容节点/分栏" index="1" unique_id=2141668563]
 unique_name_in_owner = true

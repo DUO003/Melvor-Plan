@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="梅掉落配置" format=3 uid="uid://dnlknmskciwq3"]
+[gd_resource type="Resource" script_class="梅怪物配置" format=3 uid="uid://dnlknmskciwq3"]
 
-[ext_resource type="Script" uid="uid://ccj4ro82v40un" path="res://界面/游历系统/实体/掉落配置.gd" id="1_3tnoa"]
+[ext_resource type="Script" uid="uid://ccj4ro82v40un" path="res://界面/游历系统/实体/怪物配置.gd" id="1_3tnoa"]
 [ext_resource type="Script" uid="uid://cmatvdnnovig7" path="res://界面/游历系统/实体/梅掉落项.gd" id="2_hvbcb"]
 
 [sub_resource type="Resource" id="Resource_jyah3"]

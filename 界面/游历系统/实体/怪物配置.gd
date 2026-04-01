@@ -1,15 +1,42 @@
 extends Resource
-class_name 梅掉落配置
-
-# 配置项
+class_name 梅怪物配置
+@export_group("基础属性")
+@export var 血量:int=100
+@export var 魔法:int=0
+@export var 攻击:int=10
+@export_group("进阶属性")
+@export var 攻击类型:String="近战攻击"
+@export var 武器名称:String="抓痕"
+@export var 回血:int=0
+@export var 回蓝:int=0
+@export var 抗性:int=0
+@export var 暴击:int=0
+@export var 减伤:float=0
+##击退力
+@export var 击退力:int=25
+##多少秒攻击一次
+@export var 攻速:float=2
+##进入近战距离后开始攻击
+@export var 攻击距离:int=60
+##玩家离开警戒距离后,将停止持续追击
+@export var 警戒距离:int=500
+##移速倍率,实际乘以500
+@export var 移速倍率:float=0.8
+@export_group("掉落属性")
 @export var 随机物品池: Array[梅掉落项] = []
 @export var 最大掉落数: int = -1  # 【仅生效阶段】原始掉落抽取：最多抽中X种奖励
 @export var 启用打乱: bool = false
-@export var 最大实体数量: int = 1 # 【视觉控制】单种物品最多拆分成多少个掉落实体
+## 【视觉控制】单种物品最多拆分成多少个掉落实体
+@export var 最大实体数量: int = 1
+##仅使用怪物配置中与掉落相关的属性
 @export var 掉落表: Array[String] = []
-var 掉落表枚举:Dictionary[String,梅掉落配置]={
+##仅使用怪物配置中与掉落相关的属性
+var 掉落表枚举:Dictionary[String,梅怪物配置]={
 	"新手村小怪":load("res://界面/游历系统/掉落物/新手村小怪.tres")}
-
+func 计算其他属性()->Dictionary:
+	return {}
+func 计算状态机配置()->Dictionary:
+	return {}
 # 计算最终掉落（严格区分：抽取阶段→合并拆分阶段）
 func 计算掉落结果() -> Array:
 	var 最终结果 = []
@@ -21,11 +48,11 @@ func 计算掉落结果() -> Array:
 		# 检查枚举映射中是否存在该名称
 		if 掉落表枚举.has(表名):
 			# 仅合并【随机物品池】，子配置的其他属性完全不使用
-			var 子配置 = 掉落表枚举[表名] as 梅掉落配置
+			var 子配置 = 掉落表枚举[表名] as 梅怪物配置
 			原始掉落列表.append_array(获取原始掉落(子配置))
 		else:
 			# 无效名称：控制台报错 + 忽略
-			push_error("梅掉落配置：未找到子掉落表枚举 -> " + 表名 + "，已自动忽略")
+			push_error("梅怪物配置：未找到子掉落表枚举 -> " + 表名 + "，已自动忽略")
 	# 3. 【合并阶段】仅合并：标准物品 + 无自定义参数
 	var 合并物品字典: Dictionary = {} # 标准物品合并：名称→总数量
 	var 特殊物品列表: Array[Dictionary] = [] # 非标准/有参数：直接保留
@@ -72,7 +99,7 @@ func 计算掉落结果() -> Array:
 	return 最终结果
 
 # 修复1：添加返回类型标注 + 独立使用传入配置的所有属性
-func 获取原始掉落(配置:梅掉落配置) -> Array[Dictionary]:
+func 获取原始掉落(配置:梅怪物配置) -> Array[Dictionary]:
 	# 1. 初始化：先加载自身配置的物品池
 	var 待处理列表: Array[梅掉落项] = 配置.随机物品池.duplicate()
 	# 打乱列表（使用子配置自身的打乱属性）

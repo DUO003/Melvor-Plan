@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bxp2h3j7605ag" path="res://界面/游历系统/实体/状态机.gd" id="5_6l5y5"]
 [ext_resource type="Script" uid="uid://uv1awio33vwa" path="res://界面/游历系统/实体/状态基类.gd" id="5_46ssg"]
 [ext_resource type="Script" uid="uid://bhawcn4720mh1" path="res://界面/游历系统/实体/状态_受击.gd" id="7_wnapb"]
-[ext_resource type="Script" uid="uid://7c6r4lll0jvd" path="res://界面/游历系统/实体/状态_死亡_玩家.gd" id="8_67s6m"]
+[ext_resource type="Script" uid="uid://7c6r4lll0jvd" path="res://界面/游历系统/实体/状态_死亡.gd" id="8_67s6m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3271b"]
 size = Vector2(289, 20)
@@ -48,13 +48,13 @@ offsets = PackedFloat32Array(0, 0.1448598, 0.2990654, 1)
 colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0.19966345, 0, 1, 1, 1, 0)
 metadata/_snap_count = 50
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6aw6a"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5oe0i"]
 gradient = SubResource("Gradient_jdkko")
 fill_from = Vector2(0.491453, 1)
 fill_to = Vector2(0.508547, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wcpfc"]
-texture = SubResource("GradientTexture2D_6aw6a")
+texture = SubResource("GradientTexture2D_5oe0i")
 script = ExtResource("4_vtxdu")
 metadata/_custom_type_script = "uid://dr0317kuw34um"
 

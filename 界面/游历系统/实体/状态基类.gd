@@ -10,6 +10,7 @@ var 玩家:游历实体_玩家
 ##
 var 怪物:游历实体_怪物
 func _enter() -> void:
+	#print("动画名称:",动画名称)
 	状态持续时间=0
 	if not agent:return
 	if agent is 游历实体_玩家:玩家=agent

@@ -8,7 +8,7 @@ func _enter() -> void:
 		动画.seek(打断动画恢复点, true)
 	else :
 		玩家.攻击预输入 = false
-		玩家.生成攻击("近战攻击","标准剑")#近战攻击实现逻辑与子弹一致,都是召唤出来的
+		玩家.检查释放技能()
 	#print("攻击触发完成")
 	await 动画.animation_finished
 	if is_active():

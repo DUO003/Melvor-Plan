@@ -15,18 +15,18 @@ offset_right = 1700.0
 offset_bottom = 1000.0
 grow_horizontal = 1
 grow_vertical = 1
-size_flags_horizontal = 1
-size_flags_vertical = 1
 script = ExtResource("2_6nxmh")
 "基类窗口名称" = "任务界面"
 "选项卡同步" = {
 "任务": NodePath("内容节点/任务")
 }
+metadata/_edit_vertical_guides_ = [-140.0, -114.0, -70.0, -387.0, -387.0, -675.0]
+metadata/_edit_horizontal_guides_ = [-144.0]
 
-[node name="等级显示" parent="标题" index="0"]
+[node name="等级显示" parent="标题" parent_id_path=PackedInt32Array(2049886415) index="0" unique_id=2041357675]
 "玩法" = "任务"
 
-[node name="任务" type="TabContainer" parent="内容节点" index="0" unique_id=68321431]
+[node name="任务" type="TabContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=68321431]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -210,7 +210,7 @@ text = "前往设置"
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="任务功能" type="HBoxContainer" parent="内容节点" index="1" unique_id=1826273315]
+[node name="任务功能" type="HBoxContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="1" unique_id=1826273315]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

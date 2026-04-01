@@ -8,6 +8,7 @@ class_name 游历子弹
 @onready var 动画: AnimationPlayer = %动画
 @onready var 贴图: TextureRect = %贴图
 @onready var 蒙版: Panel = %蒙版
+@onready var 动画节点: Node2D = %动画节点
 func 初始化参数检查()->bool:
 	if 碰撞目标层>=1:
 		攻击范围.collision_layer=0
@@ -17,7 +18,7 @@ func 初始化参数检查()->bool:
 	else :
 		攻击结束()
 		return false
-##由动画调用函数
+##由动画调用函数%"动画节点"
 func 造成伤害():
 	var 范围内的实体列表 = 攻击范围.get_overlapping_bodies()
 	for 实体 in 范围内的实体列表:

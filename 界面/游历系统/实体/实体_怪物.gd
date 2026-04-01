@@ -2,35 +2,43 @@
 extends 游历实体
 class_name 游历实体_怪物
 var 强度:float=1
-@export var 实体掉落: 梅掉落配置=null
+@export var 怪物数据:梅怪物配置=null
 func 状态跳转条件():
 	状态机.add_transition(移动状态,待机状态,移动状态.EVENT_FINISHED,死亡检查.bind(false))
-	状态机.add_transition(攻击状态,攻击状态,攻击状态.EVENT_FINISHED,死亡检查.bind(false))
+	状态机.add_transition(攻击状态,移动状态,攻击状态.EVENT_FINISHED,死亡检查.bind(false))
 	状态机.add_transition(状态机.ANYSTATE,移动状态,"状态切换移动",死亡检查.bind(false))
 	状态机.add_transition(状态机.ANYSTATE,攻击状态,"状态切换攻击",死亡检查.bind(false))
 	状态机.add_transition(状态机.ANYSTATE,受击状态,"状态切换受击",死亡检查.bind(false))
 	状态机.add_transition(状态机.ANYSTATE,死亡状态,"状态切换死亡")
 func 加载实体数据():
-	最大生命=int(50*(1+0.1*强度))
-	生命值=最大生命
-	每秒回血=0
-	最大魔法=0
-	魔法值=0
-	每秒回蓝=0
+	var 属性管理器:=怪物数据
+	最大生命=属性管理器.血量
+	生命值=计划.数据状态("生命值",int(最大生命))
 	最大护盾=0
 	护盾值=0
-	每秒回盾=-1
-	攻击力=5
-	速度=300
-	近战攻击距离=120
-	最大攻击距离=600
-@onready var 攻击范围: CollisionShape2D = %攻击范围
+	最大魔法=属性管理器.魔法
+	魔法值=计划.数据状态("魔法值",int(最大魔法))
+	攻击力=属性管理器.攻击
+	防具承伤比例=属性管理器.减伤
+	暴击力=属性管理器.暴击
+	暴击抗性=属性管理器.抗性
+	击退力=Vector2(-属性管理器.击退力,-属性管理器.击退力)
+	每秒回血=属性管理器.回血
+	每秒回蓝=属性管理器.回蓝
+	每秒回盾=0
+	攻击间隔=属性管理器.攻速
+	最大攻击距离=属性管理器.警戒距离+角色碰撞箱宽度
+	近战攻击距离=属性管理器.攻击距离+角色碰撞箱宽度
+	速度=计划.地图.地图默认速度*属性管理器.移速倍率
+	跳跃高度=计划.地图.地图默认弹跳
+	var 普通攻击:梅技能配置=梅技能配置.new("近战攻击",1)
+	技能配置.append(普通攻击)
+	武器名称=属性管理器.武器名称
+	其他属性=属性管理器.计算其他属性()
+	状态机配置=属性管理器.计算状态机配置()
 func 初始化实体() -> void:
 	super()
 	动画节点.面向反转=false
-	var 形状=RectangleShape2D.new()
-	形状.size=Vector2(最大攻击距离*2,20)
-	攻击范围.shape=形状
 	
 #func _ready():
 	#super._ready()

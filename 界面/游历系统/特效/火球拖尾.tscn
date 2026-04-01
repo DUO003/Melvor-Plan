@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bydbs37qa4xi5"]
+
+[sub_resource type="Gradient" id="Gradient_a0ol4"]
+offsets = PackedFloat32Array(0, 0.48181817, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.4627451, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1fhh2"]
+gradient = SubResource("Gradient_a0ol4")
+
+[sub_resource type="Curve" id="Curve_kvbxs"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8h4o5"]
+curve = SubResource("Curve_kvbxs")
+
+[sub_resource type="Curve" id="Curve_15qtr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.23983738, 1), 1.1952623, 1.1952623, 0, 0, Vector2(1, 0.29213488), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0q03v"]
+curve = SubResource("Curve_15qtr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pl33d"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 32.0
+angle_min = 1.0728835e-05
+angle_max = 180.00002
+inherit_velocity_ratio = 0.5
+spread = 180.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, -1000, 0)
+scale_min = 40.0
+scale_max = 50.0
+scale_curve = SubResource("CurveTexture_0q03v")
+color_ramp = SubResource("GradientTexture1D_1fhh2")
+hue_variation_curve = SubResource("CurveTexture_8h4o5")
+
+[node name="火球拖尾" type="GPUParticles2D" unique_id=1925890234]
+amount = 10
+lifetime = 0.5
+explosiveness = 0.2
+process_material = SubResource("ParticleProcessMaterial_pl33d")

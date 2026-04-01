@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ss1xo"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_xq4x1"]
 [ext_resource type="Script" uid="uid://qb047g3a7a37" path="res://界面/插件/实体/实体卡片.gd" id="3_glkit"]
-[ext_resource type="Shader" uid="uid://bg0qomh31e1iv" path="res://界面/插件/实体/实体着色器.gdshader" id="4_a53qn"]
+[ext_resource type="Material" uid="uid://hf7h7i8nwaxt" path="res://界面/游历系统/特效/颜色着色器.tres" id="4_a53qn"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="4_i80no"]
 [ext_resource type="Texture2D" uid="uid://cjiduhobn8hf3" path="res://素材/综合/瓦片集.png" id="5_glkit"]
 [ext_resource type="Script" uid="uid://dciygcljm8xmx" path="res://界面/插件/实体/图片裁剪器.gd" id="6_i80no"]
@@ -21,11 +21,6 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 script = ExtResource("2_xq4x1")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m6jab"]
-shader = ExtResource("4_a53qn")
-shader_parameter/percent = 0.0
-shader_parameter/hit_color = Color(1, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_467m1"]
 length = 0.001
@@ -367,7 +362,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="图片" type="Control" parent="背景" unique_id=353747191]
 z_index = 1
-material = SubResource("ShaderMaterial_m6jab")
+material = ExtResource("4_a53qn")
 custom_minimum_size = Vector2(150, 300)
 layout_mode = 1
 anchors_preset = 7

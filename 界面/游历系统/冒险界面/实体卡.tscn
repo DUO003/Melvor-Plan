@@ -1,0 +1,257 @@
+[gd_scene format=3 uid="uid://3pahwt7ke1a3"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_wydft"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_yxci5"]
+[ext_resource type="Script" uid="uid://bqsyrjp5pmrud" path="res://界面/游历系统/冒险界面/实体卡.gd" id="3_ev8o5"]
+[ext_resource type="PackedScene" uid="uid://dfxyrb1q8dvht" path="res://界面/游历系统/冒险界面/技能按钮.tscn" id="3_yxci5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ev8o5"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("2_yxci5")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acc05"]
+bg_color = Color(0.73, 0.695325, 0.6205, 0.19607843)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("2_yxci5")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vwge"]
+bg_color = Color(0.73, 0.695325, 0.6205, 0.19607843)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("2_yxci5")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5nxsi"]
+bg_color = Color(0.73, 0.695325, 0.6205, 0.19607843)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("2_yxci5")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3318"]
+bg_color = Color(0.73, 0.695325, 0.6205, 0.19607843)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("2_yxci5")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k07su"]
+bg_color = Color(0.7, 0.61833334, 0.45499998, 1)
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vptbd"]
+bg_color = Color(0.203922, 0.65098, 0.196078, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsfby"]
+bg_color = Color(0.7, 0.61833334, 0.45499998, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jo7g1"]
+bg_color = Color(0, 0.5921569, 0.8156863, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlk2g"]
+bg_color = Color(0.7411765, 0.5568628, 0.19215687, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxrfo"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+script = ExtResource("2_yxci5")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[node name="实体卡" type="Panel" unique_id=1724646316]
+custom_minimum_size = Vector2(500, 300)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1420.0
+offset_bottom = -780.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wydft")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ev8o5")
+script = ExtResource("3_ev8o5")
+
+[node name="技能" type="HBoxContainer" parent="." unique_id=1906238050]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -108.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="技能1" parent="技能" unique_id=1821024165 instance=ExtResource("3_yxci5")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_acc05")
+"技能名称" = ""
+
+[node name="技能2" parent="技能" unique_id=64490591 instance=ExtResource("3_yxci5")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4vwge")
+"技能名称" = ""
+
+[node name="技能3" parent="技能" unique_id=650095560 instance=ExtResource("3_yxci5")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5nxsi")
+"技能名称" = ""
+
+[node name="技能4" parent="技能" unique_id=502047321 instance=ExtResource("3_yxci5")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b3318")
+"技能名称" = ""
+
+[node name="按钮" type="VBoxContainer" parent="." unique_id=159469234]
+layout_mode = 0
+offset_left = 381.0
+offset_top = 10.0
+offset_right = 490.0
+offset_bottom = 148.0
+
+[node name="控制" type="Button" parent="按钮" unique_id=695171798]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+text = "切换"
+
+[node name="属性" type="Button" parent="按钮" unique_id=445636660]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+text = "属性"
+
+[node name="进度条" type="VBoxContainer" parent="." unique_id=1707215003]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 38.0
+offset_right = 373.0
+offset_bottom = 121.0
+
+[node name="血量" type="ProgressBar" parent="进度条" unique_id=1574430250]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 25)
+layout_mode = 2
+mouse_behavior_recursive = 1
+theme = ExtResource("1_wydft")
+theme_override_styles/background = SubResource("StyleBoxFlat_k07su")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vptbd")
+value = 25.0
+allow_greater = true
+show_percentage = false
+
+[node name="魔法" type="ProgressBar" parent="进度条" unique_id=1922077218]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 25)
+layout_mode = 2
+mouse_behavior_recursive = 1
+theme = ExtResource("1_wydft")
+theme_override_styles/background = SubResource("StyleBoxFlat_jsfby")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jo7g1")
+value = 25.0
+allow_greater = true
+show_percentage = false
+
+[node name="经验" type="ProgressBar" parent="进度条" unique_id=163442311]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 25)
+layout_mode = 2
+mouse_behavior_recursive = 1
+theme = ExtResource("1_wydft")
+theme_override_styles/background = SubResource("StyleBoxFlat_jsfby")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mlk2g")
+value = 25.0
+allow_greater = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="." unique_id=1617849008]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 141.0
+offset_right = 149.0
+offset_bottom = 198.0
+text = "LV:100"
+horizontal_alignment = 1
+
+[node name="Panel4" type="Panel" parent="." unique_id=153116945]
+clip_contents = true
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 130.0
+offset_bottom = 128.0
+size_flags_horizontal = 6
+theme = ExtResource("1_wydft")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jxrfo")
+
+[node name="Label2" type="Label" parent="." unique_id=1034776735]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 149.0
+offset_right = 290.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 30
+text = "实体名称"
