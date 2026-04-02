@@ -39,9 +39,11 @@ func 攻击结束():
 		print("移除事件")
 		动画节点.visible=false
 		子弹粒子.emitting=false
-		攻击范围.monitoring=false
+		攻击范围.set_deferred("monitoring", false)
 		await get_tree().create_timer(子弹粒子.lifetime).timeout
 	super()
 func 播放音效(音频名称:String):
 	计划.声音.播放音效(音频名称)
 	
+func 获取动画时长()->float:
+	return 0.1

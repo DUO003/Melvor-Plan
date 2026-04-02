@@ -41,6 +41,8 @@ func 加载实体数据():
 	多段跳上限=属性管理器.跳跃上限
 	var 普通攻击:梅技能配置=梅技能配置.new("近战攻击",1)
 	技能配置.append(普通攻击)
+	var 火球技能:梅技能配置=梅技能配置.new("火球术",1)
+	技能配置.append(火球技能)
 	var 手部装备:物品装备=属性管理器.语法糖获取装备物品("主手")
 	if 手部装备:武器名称=手部装备.item_name
 	else :武器名称="抓痕"
@@ -58,14 +60,25 @@ var 多段跳:int=0
 func 加载动画与碰撞范围():
 	super()
 	拾取范围.shape=碰撞范围.shape
+var 键位攻击映射: Dictionary = {
+	"攻击": 0,
+	"技能1": 1,
+	"技能2": 2,
+	"技能3": 3
+}
 func _unhandled_input(按键: InputEvent) -> void:
 	if 按键.is_action_pressed("移动_跳"):
 		多段条逻辑()
 	elif 按键.is_action_pressed("移动_下"):
 		平台向下()
 	elif 按键.is_action_pressed("攻击"):
-		攻击预输入=true
-		攻击状态检查()
+		输入攻击指令(0)
+	elif 按键.is_action_pressed("技能1"):
+		输入攻击指令(1)
+	elif 按键.is_action_pressed("技能2"):
+		输入攻击指令(2)
+	elif 按键.is_action_pressed("技能3"):
+		输入攻击指令(3)
 	elif 按键.is_action_pressed("交互"):
 		执行拾取()
 	elif 按键.is_action_pressed("移动_上"):
@@ -123,13 +136,44 @@ func 执行拾取(全部拾取:bool=true):
 		# 找到 → 调用掉落物自身的拾取方法
 		if 最近掉落物:
 			最近掉落物.尝试拾取()
-var 攻击预输入:bool=false
-func 攻击状态检查():
-	var 状态机当前:LimboState=状态机.get_active_state()
-	if not 攻击预输入 or 状态机当前==攻击状态 or 状态机当前==受击状态:
-		return
-	print("攻击已按下")
-	状态机.dispatch("状态切换攻击")
+var 预输入技能:梅技能配置=null
+func 输入攻击指令(技能编号:int):
+	if 技能配置.size()>技能编号:
+		预输入技能=技能配置[技能编号]
+		技能释放检查(技能配置[技能编号],true)
+var 输入有效期:float=2
+var 调试日志:Dictionary={"技能释放检查":false}
+var 操作ID:int=0
+func 技能释放检查(缓存技能:梅技能配置,延迟检查:bool=false):
+	var 日志:bool=调试日志.get("技能释放检查",false)#减少无关日志
+	if 缓存技能:
+		操作ID+=1
+		var 缓存ID:int=操作ID
+		var 缓存日志名称:String="%s技能<%d>"%[缓存技能.技能名称,缓存ID]
+		预输入技能=null
+		print("[调试]%s开始检查"%缓存日志名称)
+		if not 缓存技能.技能可用检查():
+			if not 延迟检查:#取消延迟检查
+				if 日志:print("[调试-退出]%s：未开启延迟检查"%缓存日志名称)
+				return
+			var 技能冷却:float=缓存技能.剩余冷却时间()
+			if 技能冷却>0 and 技能冷却<输入有效期:
+				if 日志:print("[调试]%s：技能进入等待冷却 %.2f" % [缓存日志名称,技能冷却])
+				await get_tree().create_timer(技能冷却).timeout
+			else :
+				if 日志:print("[调试-退出]%s：技能冷却时间超出输入有效期"%缓存日志名称)
+				return
+		if not 缓存ID==操作ID:
+			if 日志:print("[调试-退出]%s：操作被覆盖"%缓存日志名称)
+			return
+		var 状态机当前:LimboState=状态机.get_active_state()
+		if 状态机当前==攻击状态 or 状态机当前==受击状态:
+			if 日志:print("[调试-退出]%s：当前处于攻击/受击状态，无法释放"%缓存日志名称)
+			return
+		if 日志:print("[调试]%s：释放检查通过，准备切换攻击状态"%缓存日志名称)
+		状态机.dispatch("状态切换攻击",缓存技能)#第二次技能冷却检查
+	else:
+		if 日志:print("[调试-退出]缓存技能为空")
 #func 移动更新(间隔: float) -> void:
 	#var 控制按钮组: Array = ["移动_左", "移动_右", "移动_跳"]
 	#var 移动:float

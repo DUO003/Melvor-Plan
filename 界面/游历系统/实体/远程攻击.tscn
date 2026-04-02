@@ -8,9 +8,3 @@ script = ExtResource("2_32r0l")
 "子弹方向" = Vector2(-1, 0)
 "子弹速度" = 1000.0
 "最大飞行距离" = 500.0
-
-[node name="贴图" parent="动画节点" parent_id_path=PackedInt32Array(940959679) index="1" unique_id=240943836]
-offset_bottom = 91.0
-
-[node name="碰撞箱子" parent="攻击范围" parent_id_path=PackedInt32Array(103696460) index="0" unique_id=1391259410]
-debug_color = Color(1, 0.35000002, 0.25, 0)

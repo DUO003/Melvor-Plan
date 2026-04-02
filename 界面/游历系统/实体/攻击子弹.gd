@@ -32,3 +32,5 @@ func 动画结束(_动画名称:String):
 	攻击结束()
 func 攻击结束():
 	queue_free()
+func 获取动画时长()->float:
+	return 0.5

@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="6_87nh3"]
 [ext_resource type="PackedScene" uid="uid://dlf0o8yt0hscg" path="res://界面/插件/悬浮提示.tscn" id="7_cueu5"]
 [ext_resource type="PackedScene" uid="uid://dvvf528q7xjke" path="res://界面/游历系统/冒险显示区.tscn" id="8_pau8c"]
+[ext_resource type="PackedScene" uid="uid://3pahwt7ke1a3" path="res://界面/游历系统/冒险界面/实体卡.tscn" id="9_es2wo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87nh3"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
@@ -140,6 +141,16 @@ layout_mode = 2
 metadata/_tab_index = 2
 
 [node name="队伍容器" type="HBoxContainer" parent="内容节点/分栏/选项卡/队伍" index="0" unique_id=757296253]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="实体卡" parent="内容节点/分栏/选项卡/队伍/队伍容器" index="0" unique_id=1724646316 instance=ExtResource("9_es2wo")]
+layout_mode = 2
+
+[node name="实体卡2" parent="内容节点/分栏/选项卡/队伍/队伍容器" index="1" unique_id=2096330319 instance=ExtResource("9_es2wo")]
+layout_mode = 2
+
+[node name="实体卡3" parent="内容节点/分栏/选项卡/队伍/队伍容器" index="2" unique_id=80429152 instance=ExtResource("9_es2wo")]
 layout_mode = 2
 
 [node name="冒险窗口区" type="SubViewportContainer" parent="内容节点/分栏" index="1" unique_id=2141668563]

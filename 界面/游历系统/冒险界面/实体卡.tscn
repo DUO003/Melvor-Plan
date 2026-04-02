@@ -144,25 +144,25 @@ grow_vertical = 0
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_acc05")
-"技能名称" = ""
+"技能图标" = null
 
 [node name="技能2" parent="技能" unique_id=64490591 instance=ExtResource("3_yxci5")]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4vwge")
-"技能名称" = ""
+"技能图标" = null
 
 [node name="技能3" parent="技能" unique_id=650095560 instance=ExtResource("3_yxci5")]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5nxsi")
-"技能名称" = ""
+"技能图标" = null
 
 [node name="技能4" parent="技能" unique_id=502047321 instance=ExtResource("3_yxci5")]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_b3318")
-"技能名称" = ""
+"技能图标" = null
 
 [node name="按钮" type="VBoxContainer" parent="." unique_id=159469234]
 layout_mode = 0
@@ -190,7 +190,7 @@ offset_top = 38.0
 offset_right = 373.0
 offset_bottom = 121.0
 
-[node name="血量" type="ProgressBar" parent="进度条" unique_id=1574430250]
+[node name="生命" type="ProgressBar" parent="进度条" unique_id=1574430250]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 25)
 layout_mode = 2
@@ -201,6 +201,23 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_vptbd")
 value = 25.0
 allow_greater = true
 show_percentage = false
+
+[node name="生命值" type="Label" parent="进度条/生命" unique_id=2009558871]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -14.5
+offset_right = 0.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "123/123"
 
 [node name="魔法" type="ProgressBar" parent="进度条" unique_id=1922077218]
 unique_name_in_owner = true
@@ -214,6 +231,23 @@ value = 25.0
 allow_greater = true
 show_percentage = false
 
+[node name="魔法值" type="Label" parent="进度条/魔法" unique_id=265828047]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -14.5
+offset_right = 0.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "123/123"
+
 [node name="经验" type="ProgressBar" parent="进度条" unique_id=163442311]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 25)
@@ -226,7 +260,24 @@ value = 25.0
 allow_greater = true
 show_percentage = false
 
-[node name="Label" type="Label" parent="." unique_id=1617849008]
+[node name="经验值" type="Label" parent="进度条/经验" unique_id=627125828]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -14.5
+offset_right = 0.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "123/123"
+
+[node name="等级" type="Label" parent="." unique_id=1617849008]
 layout_mode = 0
 offset_left = 11.0
 offset_top = 141.0
@@ -235,7 +286,7 @@ offset_bottom = 198.0
 text = "LV:100"
 horizontal_alignment = 1
 
-[node name="Panel4" type="Panel" parent="." unique_id=153116945]
+[node name="头像" type="Panel" parent="." unique_id=153116945]
 clip_contents = true
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 0
@@ -247,7 +298,8 @@ size_flags_horizontal = 6
 theme = ExtResource("1_wydft")
 theme_override_styles/panel = SubResource("StyleBoxFlat_jxrfo")
 
-[node name="Label2" type="Label" parent="." unique_id=1034776735]
+[node name="名称" type="Label" parent="." unique_id=1034776735]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 152.0
 offset_top = 149.0

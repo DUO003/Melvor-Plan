@@ -12,19 +12,20 @@ var 怪物:游历实体_怪物
 func _enter() -> void:
 	#print("动画名称:",动画名称)
 	状态持续时间=0
-	if not agent:return
-	if agent is 游历实体_玩家:玩家=agent
-	elif  agent is 游历实体_怪物:怪物=agent
 	var 动画节点:实体卡片=(agent as 游历实体).动画节点
 	动画=动画节点.动画
 	动画.speed_scale=动画速度
 	动画.play("RESET")
 	动画.seek(0, true)
 	动画.play(动画名称)
+func 获取实体缓存():
+	if not agent:return
+	if agent is 游历实体_玩家:玩家=agent
+	elif  agent is 游历实体_怪物:怪物=agent
 func _update(间隔: float) -> void:
 	状态持续时间+=间隔
 func _exit() -> void:
-	动画.stop()
+	if 动画:动画.stop()
 func 玩家移动(移速倍率:float=1.0,加速值:int=50)->float:
 	var 移动:float=Input.get_axis("移动_左","移动_右")
 	if 移动==0:减速(玩家,加速值*2)

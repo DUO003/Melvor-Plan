@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://b0ymdoh7l3jra" path="res://素材/豆包AI素材/攻击子弹/抓痕.png" id="5_u2o4e"]
 
 [sub_resource type="Gradient" id="Gradient_7cj7y"]
-offsets = PackedFloat32Array(0, 0.48181817, 1)
-colors = PackedColorArray(1, 0, 0, 1, 1, 0.4627451, 0, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.30514705, 0.8088235, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.4627451, 0, 1, 0, 0, 0, 0.79607844, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_1fhh2"]
 gradient = SubResource("Gradient_7cj7y")
@@ -39,8 +39,8 @@ inherit_velocity_ratio = 0.5
 spread = 180.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, -1000, 0)
-scale_min = 40.0
-scale_max = 50.0
+scale_min = 30.0
+scale_max = 40.0
 scale_curve = SubResource("CurveTexture_0q03v")
 color_ramp = SubResource("GradientTexture1D_1fhh2")
 hue_variation_curve = SubResource("CurveTexture_8h4o5")
@@ -68,6 +68,7 @@ process_material = SubResource("ParticleProcessMaterial_qeamg")
 
 [node name="动画节点" type="Node2D" parent="." unique_id=940959679]
 unique_name_in_owner = true
+z_index = 1
 
 [node name="动画" type="AnimationPlayer" parent="动画节点" unique_id=1386171087]
 unique_name_in_owner = true
@@ -114,4 +115,4 @@ collision_mask = 0
 
 [node name="碰撞箱子" type="CollisionShape2D" parent="攻击范围" unique_id=1391259410]
 shape = SubResource("RectangleShape2D_7b7a3")
-debug_color = Color(1, 0.35000002, 0.25, 0.29411766)
+debug_color = Color(1, 0.35000002, 0.25, 0)

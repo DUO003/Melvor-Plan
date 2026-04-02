@@ -30,12 +30,22 @@ var 选中坐标:Vector2i=Vector2i(0,1)
 var 载入当前地区:Dictionary
 func _ready():
 	if not Engine.is_editor_hint():
+		计划.清除子节点(队伍容器)
+		计划.地图.注册实体.connect(实体卡注册)
 		加载数据()
 		更新战争迷雾()
 		call_deferred("更新提示信息",玩家坐标)
 		前往.pressed.connect(前往按钮方法)
 		计划.地图.传送门更新.connect(传送门更新)
 	拖动函数()
+var 实体卡场景 = preload("res://界面/游历系统/冒险界面/实体卡.tscn")
+@onready var 队伍容器: HBoxContainer = %队伍容器
+func 实体卡注册(实体:游历实体,注册状态:bool):
+	if 注册状态 and 实体 is 游历实体_玩家:
+		var 克隆实体卡:梅游历实体卡=实体卡场景.instantiate().duplicate()
+		克隆实体卡.绑定实体=实体
+		队伍容器.add_child(克隆实体卡)
+		
 func 传送门更新():
 	print("传送门更新",计划.地图.接触传送点)
 	if not 计划.地图.接触传送点:

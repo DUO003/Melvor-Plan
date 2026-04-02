@@ -15,6 +15,9 @@ signal 传送门更新()
 @warning_ignore("unused_signal")
 ##当生命值法力护盾变化时触发
 signal 伤害跳字(数值:float,位置:Vector2,类型:String)
+@warning_ignore("unused_signal")
+##实体注册时更新
+signal 注册实体(实体:游历实体,注册状态:bool)
 var 交互字典:Dictionary={}
 ##编号从0计数默认快捷键1
 var 快捷栏编号:int=0

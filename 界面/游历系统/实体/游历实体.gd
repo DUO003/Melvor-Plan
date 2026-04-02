@@ -27,7 +27,7 @@ var 卡片素材:Dictionary={
 var 生命值: float = 100:
 	set(值):
 		生命值 = clamp(值, 0, 最大生命)  # 限制数值范围
-		# 仅更新血量进度条（最小化更新）
+		属性值更新.emit()
 		if is_inside_tree() and 血量 and 血量.is_inside_tree():
 			血量.value = 生命值
 ## 最大生命值
@@ -57,6 +57,7 @@ var 最大护盾: float = 0:
 var 魔法值: float = 0:
 	set(值):
 		魔法值 = clamp(值, 0, 最大魔法)
+		属性值更新.emit()
 		if is_inside_tree() and 魔法 and 魔法.is_inside_tree():
 			魔法.value = 魔法值
 ## 最大魔法
@@ -100,8 +101,10 @@ var 跳跃高度:float=-870
 #var 攻击类型:String="近战攻击"
 ## 武器名称 决定显示的碰撞范围和贴图
 var 武器名称:String="抓痕"
-##技能配置
+##技能配置,真实属性
 var 技能配置:Array[梅技能配置]=[]
+##用于AI逻辑,自动更新
+var 技能优先级排序:Array[梅技能配置]=[]
 ##例如单独的元素抗性,元素增伤等
 var 其他属性:Dictionary={}
 ## 影响状态机的一些配置参数
@@ -134,20 +137,24 @@ var 角色碰撞箱宽度:float=40
 @onready var 死亡状态: 游历状态机_基类 = %死亡状态
 @onready var 移动状态: 游历状态机_基类 = %移动状态
 @onready var 攻击状态: 游历状态机_基类 = %攻击状态
+@warning_ignore("unused_signal")
+signal 属性值更新()
 func _ready():
 	var 编辑器名: Label = %编辑器名
 	if Engine.is_editor_hint():
 		编辑器名.text=实体名称
 		动画节点.offset_bottom=0
 		return
-	else :
-		计划.地图.实体注册字典[self]=Time.get_unix_time_from_system()
-		编辑器名.queue_free()
 	初始化实体()
 	更新进度条()
 	更新位置状态()
+	if not Engine.is_editor_hint():
+		计划.地图.实体注册字典[self]=Time.get_unix_time_from_system()
+		计划.地图.注册实体.emit(self,true)
+		编辑器名.queue_free()
 func _exit_tree() -> void:
 	if not Engine.is_editor_hint():
+		计划.地图.注册实体.emit(self,false)
 		if 计划.地图.实体注册字典.has(self):
 			计划.地图.实体注册字典.erase(self)
 		else :
@@ -183,6 +190,7 @@ func 初始化实体() -> void:
 	设置碰撞层和遮罩()
 	加载实体数据()
 	初始化状态机()
+	技能排序()
 	出生点=position
 	血条显示=0
 	var 形状=RectangleShape2D.new()
@@ -353,13 +361,38 @@ func 修改属性值(属性类型:String,调整量:float):
 				护盾值+=调整量
 			else :return
 	计划.地图.伤害跳字.emit(调整量,血量.global_position+血量.size*Vector2(0.5,-1),属性类型)
-func 检查释放技能():
+func 返回释放技能()->梅技能配置:
 	for 技能 in 技能配置:
 		if 技能.技能可用检查():
-			技能.释放技能(self)
-			return
+			return 技能
+	return null
+# 怪物状态机脚本
+# 返回：0=有技能可用 | 正数=最快冷却秒数 | -1=获取失败
+func 返回技能最快冷却间隔() -> float:
+	# 无技能配置，返回-1
+	if 技能配置.is_empty():
+		return -1
+
+	# 记录最小冷却时间，初始设为极大值
+	var 最小冷却时间 = INF
+
+	# 遍历所有技能
+	for 技能 in 技能配置:
+		var 剩余 = 技能.剩余冷却时间()
+		
+		# 只要有一个技能可用，直接返回0
+		if 剩余 == 0:
+			return 0
+		
+		# 记录最小的冷却时间
+		if 剩余 < 最小冷却时间:
+			最小冷却时间 = 剩余
+
+	# 所有技能都在冷却，返回最快的那个
+	return 最小冷却时间
 func 技能排序():
-	技能配置.sort_custom(func(a, b):
+	技能优先级排序=技能配置.duplicate()
+	技能优先级排序.sort_custom(func(a, b):
 		return a.AI释放优先级 > b.AI释放优先级)
 func 方向更新(实体:Node2D):
 	var 方向:int=sign(实体.position.x-position.x)

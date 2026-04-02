@@ -24,7 +24,7 @@ collision_mask = 2
 
 [node name="攻击范围" parent="攻击检查" index="0" unique_id=217598464]
 shape = SubResource("RectangleShape2D_v5ipo")
-debug_color = Color(0.38517496, 0.61255723, 0, 0.41960785)
+debug_color = Color(0.38633335, 0.61, 0, 0)
 
 [node name="拾取检查" type="Area2D" parent="." index="2" unique_id=1273335672]
 unique_name_in_owner = true
@@ -36,6 +36,9 @@ collision_mask = 8
 unique_name_in_owner = true
 shape = SubResource("CapsuleShape2D_gctsw")
 debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="碰撞范围" parent="." index="4" unique_id=1792861877]
+debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [node name="待机状态" parent="状态机" parent_id_path=PackedInt32Array(290874431) index="0" unique_id=1697266100]
 script = ExtResource("3_gy04m")

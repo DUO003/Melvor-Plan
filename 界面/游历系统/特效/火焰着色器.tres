@@ -13,20 +13,24 @@ noise = SubResource("FastNoiseLite_lw2rh")
 seamless = true
 
 [sub_resource type="Gradient" id="Gradient_g6aiu"]
+offsets = PackedFloat32Array(0, 0.76760566, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.51, 0.51, 0.51, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_alnkd"]
 gradient = SubResource("Gradient_g6aiu")
 fill_to = Vector2(0, 1)
 
 [sub_resource type="Gradient" id="Gradient_6l837"]
+offsets = PackedFloat32Array(0, 0.18309858, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_n8snl"]
 gradient = SubResource("Gradient_6l837")
 fill_from = Vector2(1, 1)
 
 [sub_resource type="Gradient" id="Gradient_b3r5t"]
-offsets = PackedFloat32Array(0, 0.3, 0.5294118, 0.8235294, 0.9470588, 1)
-colors = PackedColorArray(0.72, 0.72, 0.72, 0, 0.72156864, 0, 0, 1, 0.78, 0, 0, 1, 0.8759715, 0.5545455, 0, 1, 1, 1, 0, 1, 1, 0.8333334, 0, 0)
+offsets = PackedFloat32Array(0, 0.17605634, 0.23239437, 0.3, 0.5294118, 0.85211265, 0.9084507, 1)
+colors = PackedColorArray(0.72, 0.72, 0.72, 0, 0.72, 0.3816, 0.3816, 0, 0, 0, 0, 0.52156866, 0.72156864, 0, 0, 1, 0.78, 0, 0, 1, 0.8759715, 0.5545455, 0, 1, 1, 0.98333335, 0, 1, 0.75, 0.65, 0, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xjdop"]
 gradient = SubResource("Gradient_b3r5t")
@@ -34,7 +38,7 @@ gradient = SubResource("Gradient_b3r5t")
 [resource]
 shader = ExtResource("1_y7g7o")
 shader_parameter/DX = Vector2(1, 1)
-shader_parameter/SD = Vector2(0, 1)
+shader_parameter/SD = Vector2(0, 0.5)
 shader_parameter/T1 = SubResource("NoiseTexture2D_kir8t")
 shader_parameter/T2 = SubResource("GradientTexture2D_alnkd")
 shader_parameter/T3 = ExtResource("2_1g6lk")

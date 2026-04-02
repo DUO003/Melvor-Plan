@@ -8,6 +8,7 @@ var 移动方向:float=0
 ##切换到移动状态机时执行
 func _enter() -> void:
 	super()
+	获取实体缓存()
 	目标移动时间=2*randf()+1
 	var 方向: int = 1 if randi() % 2 == 0 else -1#随机生成方向
 	var 随机速度百分比: float = randf_range(0.25, 0.5)

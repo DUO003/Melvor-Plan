@@ -2,6 +2,7 @@ extends 游历状态机_基类
 var 退出移动延迟:float=0.5
 var 已累计移动延迟:float=0
 func _update(间隔: float) -> void:
+	获取实体缓存()
 	super(间隔)
 	var 移动:=玩家移动()
 	if 移动==0:

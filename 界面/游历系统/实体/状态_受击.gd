@@ -1,8 +1,6 @@
 extends 游历状态机_基类
 func _enter() -> void:
 	super()
-	if 玩家:
-		玩家.攻击预输入 = false
 	agent.velocity.x=0
 	await 动画.animation_finished
 	if 状态机 is 游历标准状态机:
