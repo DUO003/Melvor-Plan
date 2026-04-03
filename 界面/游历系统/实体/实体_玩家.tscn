@@ -13,6 +13,8 @@ size = Vector2(300, 20)
 radius = 40.0
 height = 140.0
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_2bb5a"]
+
 [node name="玩家" unique_id=1150286531 instance=ExtResource("1_u441u")]
 script = ExtResource("2_yi5us")
 
@@ -48,3 +50,7 @@ script = ExtResource("4_v5ipo")
 
 [node name="攻击状态" parent="状态机" parent_id_path=PackedInt32Array(290874431) index="4" unique_id=1387092577]
 script = ExtResource("5_2bb5a")
+
+[node name="指令状态机" type="LimboHSM" parent="." index="9" unique_id=902874590]
+blackboard_plan = SubResource("BlackboardPlan_2bb5a")
+unique_name_in_owner = true

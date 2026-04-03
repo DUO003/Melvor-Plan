@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_yxci5"]
 [ext_resource type="Script" uid="uid://bqsyrjp5pmrud" path="res://界面/游历系统/冒险界面/实体卡.gd" id="3_ev8o5"]
 [ext_resource type="PackedScene" uid="uid://dfxyrb1q8dvht" path="res://界面/游历系统/冒险界面/技能按钮.tscn" id="3_yxci5"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="5_k07su"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ev8o5"]
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
@@ -194,6 +195,7 @@ offset_bottom = 121.0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 25)
 layout_mode = 2
+size_flags_vertical = 3
 mouse_behavior_recursive = 1
 theme = ExtResource("1_wydft")
 theme_override_styles/background = SubResource("StyleBoxFlat_k07su")
@@ -223,6 +225,7 @@ text = "123/123"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 25)
 layout_mode = 2
+size_flags_vertical = 3
 mouse_behavior_recursive = 1
 theme = ExtResource("1_wydft")
 theme_override_styles/background = SubResource("StyleBoxFlat_jsfby")
@@ -250,8 +253,10 @@ text = "123/123"
 
 [node name="经验" type="ProgressBar" parent="进度条" unique_id=163442311]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(140, 25)
 layout_mode = 2
+size_flags_vertical = 3
 mouse_behavior_recursive = 1
 theme = ExtResource("1_wydft")
 theme_override_styles/background = SubResource("StyleBoxFlat_jsfby")
@@ -277,33 +282,38 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "123/123"
 
-[node name="等级" type="Label" parent="." unique_id=1617849008]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 141.0
-offset_right = 149.0
-offset_bottom = 198.0
-text = "LV:100"
-horizontal_alignment = 1
-
-[node name="头像" type="Panel" parent="." unique_id=153116945]
+[node name="头像" type="Panel" parent="." unique_id=576813916]
 clip_contents = true
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 0
 offset_left = 10.0
 offset_top = 8.0
-offset_right = 130.0
-offset_bottom = 128.0
+offset_right = 150.0
+offset_bottom = 148.0
 size_flags_horizontal = 6
 theme = ExtResource("1_wydft")
 theme_override_styles/panel = SubResource("StyleBoxFlat_jxrfo")
 
+[node name="TextureRect" type="TextureRect" parent="头像" unique_id=1763235385]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_k07su")
+expand_mode = 1
+
 [node name="名称" type="Label" parent="." unique_id=1034776735]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 152.0
+offset_left = 16.0
 offset_top = 149.0
-offset_right = 290.0
+offset_right = 154.0
 offset_bottom = 192.0
 theme_override_font_sizes/font_size = 30
 text = "实体名称"

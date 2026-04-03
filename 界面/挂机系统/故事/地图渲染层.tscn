@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://b25kif3hjc6is" path="res://界面/挂机系统/故事/玩家.gd" id="3_0ubns"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="4_jmi07"]
 [ext_resource type="PackedScene" uid="uid://cjsi35bpmr7oo" path="res://界面/插件/实体/玩家.tscn" id="5_m444s"]
-[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="6_0ubns"]
 [ext_resource type="PackedScene" uid="uid://dvv8grnr0717i" path="res://界面/挂机系统/故事/物品栏.tscn" id="6_cbxf4"]
 [ext_resource type="PackedScene" uid="uid://be1uar8pmksb2" path="res://界面/挂机系统/故事/方块检查器.tscn" id="7_lgj7u"]
 [ext_resource type="PackedScene" uid="uid://c8xt474cuqbfc" path="res://界面/挂机系统/故事/背包检查器.tscn" id="8_em1jn"]
@@ -18,20 +17,6 @@ unicode = 69
 
 [sub_resource type="Shortcut" id="Shortcut_3qxj1"]
 events = [SubResource("InputEventKey_1dupq")]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dgi1"]
-bg_color = Color(0.67, 0.52036667, 0.22109999, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-script = ExtResource("6_0ubns")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6idty"]
 size = Vector2(65, 140)
@@ -86,7 +71,6 @@ offset_top = -366.0
 offset_right = 133.0
 offset_bottom = -6.0
 scale = Vector2(0.5, 0.5)
-theme_override_styles/panel = SubResource("StyleBoxFlat_4dgi1")
 metadata/_edit_lock_ = true
 
 [node name="碰撞范围" type="CollisionShape2D" parent="地图渲染层/玩家" unique_id=47745095]

@@ -8,7 +8,7 @@ func _enter() -> void:
 	var 日志名称:String="[状态机_攻击]"
 	var 缓存技能:梅技能配置=get_cargo() as 梅技能配置
 	if 缓存技能:
-		if 缓存技能.技能可用检查():
+		if 缓存技能.技能可用检查(玩家):
 			var 动画时长:float=缓存技能.释放技能(玩家)
 			await get_tree().create_timer(动画时长).timeout
 			if is_active():

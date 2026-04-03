@@ -59,7 +59,15 @@ func _init(注册技能名称:String,等级:int= 1) -> void:
 	AI释放优先级 = 属性.get("AI释放优先级", AI释放优先级)
 	AI释放距离 = 属性.get("AI释放距离", AI释放距离)
 # 技能是否可以释放（核心判断）
-func 技能可用检查() -> bool:
+func 技能可用检查(实体:游历实体) -> bool:
+	return 技能不可用原因(实体)=="可用"
+func 技能不可用原因(实体:游历实体)->String:
+	if  魔法消耗>实体.魔法值:
+		return "魔法"
+	if 技能正在冷却():
+		return "冷却"
+	return "可用"
+func 技能正在冷却() -> bool:
 	# 误差宽容值：1/30 秒 ≈ 0.03 秒，解决帧精度问题
 	const 误差宽容值 = 1.0 / 30.0
 	if 已释放:
@@ -69,13 +77,13 @@ func 技能可用检查() -> bool:
 		if 当前时间 < (后摇结束时间 - 误差宽容值):
 			var 剩余后摇 = 后摇结束时间 - 当前时间
 			print("[后摇中] 剩余后摇：%.2f 秒" % 剩余后摇)
-			return false
+			return true
 		var 冷却结束时间 = 释放时间 + 冷却时间
 		if 当前时间 < (冷却结束时间 - 误差宽容值):
 			var 剩余冷却 = 冷却结束时间 - 当前时间
 			print("[冷却中] 剩余冷却：%.2f 秒" % 剩余冷却)
-			return false
-	return true
+			return true
+	return false
 # 获取剩余冷却/后摇时间（UI 用）
 func 剩余冷却时间() -> float:
 	if 已释放:
@@ -93,6 +101,8 @@ var 子弹字典:Dictionary={
 func 释放技能(实体:游历实体)->float:
 	var 子弹数据:Dictionary=子弹字典.get(子弹类型,{})
 	if 子弹数据.has("场景"):
+		if 魔法消耗>0:
+			实体.魔法值-=魔法消耗
 		var 子弹场景:游历子弹=子弹数据.场景.instantiate()
 		if 实体.实体类型=="怪物":子弹场景.碰撞目标层=5
 		elif 实体.实体类型=="玩家":子弹场景.碰撞目标层=2
@@ -110,7 +120,8 @@ func 释放技能(实体:游历实体)->float:
 				子弹场景.global_position=实体.近战攻击容器.global_position
 				子弹场景.最大飞行距离=实体.最大攻击距离*飞行倍率
 				子弹场景.子弹速度=实体.速度*弹道速度倍率
-				子弹场景.子弹方向=Vector2(1,0)#碰撞范围.scale
+				子弹场景.子弹方向=Vector2(-实体.近战攻击容器.scale.x,0)
+				子弹场景.scale=-实体.近战攻击容器.scale
 				计划.地图.子弹管理器.add_child(子弹场景)
 		已释放 = true
 		后摇时长=子弹场景.获取动画时长()

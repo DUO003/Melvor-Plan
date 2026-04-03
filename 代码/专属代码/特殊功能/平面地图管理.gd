@@ -35,6 +35,7 @@ var 实体注册字典:Dictionary[游历实体,float]={}
 ##怪物不能小于这个X位置
 var 关卡战线:float=0
 var 关卡边界:Vector2=Vector2(0,0)
+var 控制队友:游历实体=null
 ##游历地图切换
 var 接触传送点:bool=false
 var 传送点有效:bool=false

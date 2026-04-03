@@ -121,9 +121,12 @@ func 加载地图(传入的地图信息包: 地图信息包):
 		新实体.position = 实体数据["位置"]  # 设置位置
 		if 新实体.实体类型=="玩家":
 			var 摄像机: Camera2D=创建玩家摄像机()
+			if 摄像机.get_parent():
+				摄像机.get_parent().remove_child(摄像机)
 			新实体.add_child(摄像机)
 			if 新实体 is 游历实体_玩家:
 				新实体.摄像机=摄像机
+				计划.地图.控制队友=新实体
 		if Engine.is_editor_hint():
 			新实体.name=节点唯一标识
 		实体.add_child(新实体)
@@ -302,17 +305,16 @@ func 清除子节点(节点容器:Node,保留节点=null):
 			节点容器.remove_child(节点名)
 			节点名.queue_free()
 func 创建玩家摄像机() -> Camera2D:
-	#if not 玩家摄像机:
-		#玩家摄像机 = Camera2D.new()
-	玩家摄像机 = Camera2D.new()
-	#配置摄像机核心属性
-	玩家摄像机.enabled = true          # 启用摄像机
-	玩家摄像机.limit_enabled = true    # 启用位置限制
-	玩家摄像机.limit_smoothed = true  # 启用限制平滑
-	# 给摄像机命名，方便你后续查找/操作
-	# 3.5 编辑器模式下的节点配置
-	if Engine.is_editor_hint():
-		玩家摄像机.name = "摄像机"
+	if not 玩家摄像机:
+		玩家摄像机 = Camera2D.new()
+		#配置摄像机核心属性
+		玩家摄像机.enabled = true          # 启用摄像机
+		玩家摄像机.limit_enabled = true    # 启用位置限制
+		玩家摄像机.limit_smoothed = true  # 启用限制平滑
+		# 给摄像机命名，方便你后续查找/操作
+		# 3.5 编辑器模式下的节点配置
+		if Engine.is_editor_hint():
+			玩家摄像机.name = "摄像机"
 	return 玩家摄像机
 func 仿真测试() -> void:
 	# 初始化变量

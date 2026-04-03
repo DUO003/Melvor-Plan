@@ -5,10 +5,18 @@ var 玩家跳跃高度:float=-870
 var 摄像机: Camera2D
 @onready var 拾取检查: Area2D = %拾取检查
 @onready var 拾取范围: CollisionShape2D = %拾取范围
+@onready var 指令状态机: LimboHSM = %指令状态机
 func _ready():
 	super._ready()
 	if Engine.is_editor_hint():
 		return
+var AI启用状态:bool=false
+func _physics_process(间隔: float) -> void:
+	super(间隔)
+	if AI启用状态 and 控制检查():
+		指令状态机.set_active(false)
+	elif not AI启用状态 and not 控制检查():
+		指令状态机.set_active(true)
 	#计划.地图.玩家导航.connect(设置导航)
 #var 二段跳:bool
 #var 松开跳跃:bool
@@ -23,7 +31,7 @@ func 加载实体数据():
 	生命值=计划.数据状态("生命值",int(最大生命))
 	最大护盾=0
 	护盾值=0
-	最大魔法=属性管理器.魔法
+	最大魔法=属性管理器.魔法+100
 	魔法值=计划.数据状态("魔法值",int(最大魔法))
 	攻击力=属性管理器.攻击
 	防具承伤比例=属性管理器.减伤
@@ -49,6 +57,10 @@ func 加载实体数据():
 	#武器名称="火球"
 	其他属性=属性管理器.计算其他属性()
 	状态机配置=属性管理器.计算状态机配置()
+func 切换摄像机():
+	if 摄像机 and 摄像机.get_parent():
+		摄像机.get_parent().remove_child(摄像机)
+		self.add_child(摄像机)
 func 状态跳转条件():
 	状态机.add_transition(移动状态,待机状态,移动状态.EVENT_FINISHED,死亡检查.bind(false))
 	状态机.add_transition(攻击状态,待机状态,攻击状态.EVENT_FINISHED,死亡检查.bind(false))
@@ -66,7 +78,13 @@ var 键位攻击映射: Dictionary = {
 	"技能2": 2,
 	"技能3": 3
 }
+func 控制检查()->bool:
+	if 计划.地图.控制队友 and 计划.地图.控制队友==self:
+		return true
+	return false
 func _unhandled_input(按键: InputEvent) -> void:
+	if not 控制检查():
+		return
 	if 按键.is_action_pressed("移动_跳"):
 		多段条逻辑()
 	elif 按键.is_action_pressed("移动_下"):
@@ -142,27 +160,36 @@ func 输入攻击指令(技能编号:int):
 		预输入技能=技能配置[技能编号]
 		技能释放检查(技能配置[技能编号],true)
 var 输入有效期:float=2
-var 调试日志:Dictionary={"技能释放检查":false}
+var 调试日志:Dictionary={"技能释放检查":true}
 var 操作ID:int=0
 func 技能释放检查(缓存技能:梅技能配置,延迟检查:bool=false):
 	var 日志:bool=调试日志.get("技能释放检查",false)#减少无关日志
 	if 缓存技能:
 		操作ID+=1
 		var 缓存ID:int=操作ID
-		var 缓存日志名称:String="%s技能<%d>"%[缓存技能.技能名称,缓存ID]
+		var 缓存日志名称:String="<%d>%s技能"%[缓存ID,缓存技能.技能名称]
 		预输入技能=null
-		print("[调试]%s开始检查"%缓存日志名称)
-		if not 缓存技能.技能可用检查():
+		if 日志:print("[调试]%s开始检查"%缓存日志名称)
+		var 技能状态值:String=缓存技能.技能不可用原因(self)
+		if not 技能状态值=="可用":
 			if not 延迟检查:#取消延迟检查
 				if 日志:print("[调试-退出]%s：未开启延迟检查"%缓存日志名称)
 				return
-			var 技能冷却:float=缓存技能.剩余冷却时间()
-			if 技能冷却>0 and 技能冷却<输入有效期:
-				if 日志:print("[调试]%s：技能进入等待冷却 %.2f" % [缓存日志名称,技能冷却])
-				await get_tree().create_timer(技能冷却).timeout
-			else :
-				if 日志:print("[调试-退出]%s：技能冷却时间超出输入有效期"%缓存日志名称)
-				return
+			match 技能状态值:
+				"冷却":
+					var 技能冷却:float=缓存技能.剩余冷却时间()
+					if 技能冷却>0 and 技能冷却<输入有效期:
+						if 日志:print("[调试]%s：技能进入等待冷却 %.2f" % [缓存日志名称,技能冷却])
+						await get_tree().create_timer(技能冷却).timeout
+					else :
+						if 日志:print("[调试-退出]%s：技能冷却时间超出输入有效期"%缓存日志名称)
+						return
+				"魔法":
+					if 日志:print("[调试-退出]%s：技能法力不足"%缓存日志名称)
+					return
+				_:
+					print("[错误]%s：未定义错误<%s>"%[缓存日志名称,str(技能状态值)])
+					return
 		if not 缓存ID==操作ID:
 			if 日志:print("[调试-退出]%s：操作被覆盖"%缓存日志名称)
 			return

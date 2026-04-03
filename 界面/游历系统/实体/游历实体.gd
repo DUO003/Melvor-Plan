@@ -224,7 +224,10 @@ func 加载动画与碰撞范围():
 		动画节点 = 加载场景.instantiate()
 		动画节点.scale=Vector2(0.5,0.5)
 		动画节点.position=Vector2(-130,-360)
-		动画节点.gui_input.connect(点击检查)
+		#动画节点.gui_input.connect(点击检查)
+		
+		动画节点.mouse_entered.connect(属性弹窗.bind(true))
+		动画节点.mouse_exited.connect(属性弹窗.bind(false))
 		if 实体类型=="村民":
 			动画节点.传入数据(实体名称,计划.表格.道具贴图(实体名称),实体类型)
 		if 实体类型=="怪物":
@@ -233,7 +236,12 @@ func 加载动画与碰撞范围():
 	else :print("错误：无法加载【%s】的动画场景：%s" % [实体名称, 角色配置["场景"]])
 	if 血量:
 		血量.position=角色配置.get("血条偏移",Vector2(-70,-186))
-
+func 属性弹窗(启用:bool=true):
+	var 通知数据:梅提示数据=梅提示数据.new()
+	通知数据.节点=self
+	if 启用:
+		通知数据.通用解析(self)
+	计划.数据包提示.emit(通知数据)
 # 核心：设置碰撞层和遮罩的内部方法（无需传参，使用内置的「实体类型」变量）
 func 设置碰撞层和遮罩():
 	collision_layer=0
@@ -363,7 +371,7 @@ func 修改属性值(属性类型:String,调整量:float):
 	计划.地图.伤害跳字.emit(调整量,血量.global_position+血量.size*Vector2(0.5,-1),属性类型)
 func 返回释放技能()->梅技能配置:
 	for 技能 in 技能配置:
-		if 技能.技能可用检查():
+		if 技能.技能可用检查(self):
 			return 技能
 	return null
 # 怪物状态机脚本

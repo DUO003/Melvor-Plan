@@ -10,18 +10,19 @@ script = ExtResource("2_67qny")
 metadata/_edit_vertical_guides_ = [2411.0]
 metadata/_edit_lock_ = true
 
-[node name="等级显示" parent="标题" index="0"]
+[node name="等级显示" parent="标题" parent_id_path=PackedInt32Array(2049886415) index="0" unique_id=2041357675]
 "玩法" = "故事"
 
 [node name="大地图" type="CanvasLayer" parent="." index="2" unique_id=342671919]
 follow_viewport_enabled = true
 
 [node name="地图容器" parent="大地图" index="0" unique_id=155001563 instance=ExtResource("3_ycshr")]
+clip_contents = true
 
-[node name="内容节点" parent="." index="3"]
+[node name="内容节点" parent="." index="3" unique_id=1614734378]
 metadata/_edit_lock_ = true
 
-[node name="悬浮提示" parent="悬浮面板" index="0"]
+[node name="悬浮提示" parent="悬浮面板" parent_id_path=PackedInt32Array(1473741879) index="0" unique_id=1548291677]
 offset_left = -122.0
 offset_top = 6.0
 offset_right = -22.0
