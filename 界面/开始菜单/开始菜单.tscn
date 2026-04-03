@@ -3,11 +3,14 @@
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_6r68l"]
 [ext_resource type="Texture2D" uid="uid://dxfklw2e15g0s" path="res://素材/游戏素材/背景/3.png" id="2_clqjb"]
 [ext_resource type="Script" uid="uid://blxbxdy28ud5v" path="res://界面/开始菜单/开始菜单.gd" id="2_l8v50"]
-[ext_resource type="Texture2D" uid="uid://bttn4tgkwj4p0" path="res://素材/全息图片AI素材/元素/火.png" id="3_l8v50"]
+[ext_resource type="Texture2D" uid="uid://dtm5twktsyrp3" path="res://素材/全息图片AI素材/元素/火.png" id="3_l8v50"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="4_qbyf1"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_btlti"]
 [ext_resource type="Script" uid="uid://cmbasrv6fjwdo" path="res://界面/开始菜单/名单.gd" id="6_btlti"]
-[ext_resource type="Texture2D" uid="uid://bkwyexu6ph0l" path="res://素材/豆包AI素材/图标/地球.png" id="7_l8v50"]
+[ext_resource type="StyleBox" uid="uid://bm5840l8u24jv" path="res://界面/主题/样式/按钮样式_默认_按下.tres" id="7_7r74b"]
+[ext_resource type="Texture2D" uid="uid://bffqmg7ccaeq0" path="res://素材/豆包AI素材/图标/地球.png" id="7_l8v50"]
+[ext_resource type="StyleBox" uid="uid://cdxp83ndaxqbh" path="res://界面/主题/样式/按钮样式_红色_正常.tres" id="7_ubnl7"]
+[ext_resource type="StyleBox" uid="uid://cve1uj1iraqyj" path="res://界面/主题/样式/按钮样式_红色_按下.tres" id="8_7r74b"]
 [ext_resource type="Texture2D" uid="uid://cpttn2y0dmq0e" path="res://素材/自制/图标/关闭.png" id="8_qbyf1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbyf1"]
@@ -61,9 +64,6 @@ content_margin_bottom = -1.0
 script = ExtResource("4_qbyf1")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_1s0f7")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clqjb"]
-bg_color = Color(0.65, 0.52216667, 0.2665, 0.19607843)
 
 [node name="开始界面" type="ScrollContainer" unique_id=87816416]
 anchors_preset = 15
@@ -224,114 +224,94 @@ offset_left = 716.0
 offset_top = 114.0
 offset_right = 1816.0
 offset_bottom = 815.0
-theme_override_styles/panel = SubResource("StyleBox_ubnl7")
 
-[node name="存档数量" type="Label" parent="开始菜单/主面板" unique_id=1766790040]
+[node name="边距容器" type="MarginContainer" parent="开始菜单/主面板" unique_id=663076966]
 layout_mode = 1
-offset_left = 23.0
-offset_top = 23.0
-offset_right = 267.0
-offset_bottom = 93.0
-theme_override_font_sizes/font_size = 50
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="竖向容器" type="VBoxContainer" parent="开始菜单/主面板/边距容器" unique_id=980910507]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="存档数量" type="Label" parent="开始菜单/主面板/边距容器/竖向容器" unique_id=1766790040]
+layout_mode = 2
 text = "存档数量:0"
 
-[node name="存档选择" type="TabContainer" parent="开始菜单/主面板" unique_id=1625386353]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 50.0
-offset_top = 107.0
-offset_right = 1050.0
-offset_bottom = 457.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_clqjb")
-
-[node name="按钮区" type="HBoxContainer" parent="开始菜单/主面板" unique_id=397123760]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 50.0
-offset_top = -101.0
-offset_right = 1050.0
-offset_bottom = -26.0
-grow_vertical = 0
-
-[node name="开始游戏" type="Button" parent="开始菜单/主面板/按钮区" unique_id=208819591]
+[node name="存档选择" type="TabContainer" parent="开始菜单/主面板/边距容器/竖向容器" unique_id=1625386353]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 6
-text = "开始游戏"
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("7_7r74b")
 
-[node name="设置" type="Button" parent="开始菜单/主面板/按钮区" unique_id=81974660]
+[node name="自定义存档" type="HBoxContainer" parent="开始菜单/主面板/边距容器/竖向容器" unique_id=1304255570]
+layout_mode = 2
+
+[node name="用户名标签" type="Label" parent="开始菜单/主面板/边距容器/竖向容器/自定义存档" unique_id=574449264]
+layout_mode = 2
+text = "用户名:"
+
+[node name="玩家名" type="LineEdit" parent="开始菜单/主面板/边距容器/竖向容器/自定义存档" unique_id=645213529]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 10
-text = "打开设置"
-
-[node name="新建" type="Button" parent="开始菜单/主面板/按钮区" unique_id=1027729425]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-text = "新建"
-
-[node name="删除" type="Button" parent="开始菜单/主面板/按钮区" unique_id=58043306]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-text = "删除"
-
-[node name="自定义存档名" type="LineEdit" parent="开始菜单/主面板" unique_id=1441728490]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 735.0
-offset_top = -213.0
-offset_right = 1055.0
-offset_bottom = -143.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 50
-placeholder_text = "自定义存档名称"
-max_length = 7
-emoji_menu_enabled = false
-
-[node name="存档" type="Label" parent="开始菜单/主面板/自定义存档名" unique_id=1305320364]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.559375
-anchor_right = -0.0375
-anchor_bottom = 0.9459459
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
-text = "文件名:"
-metadata/_edit_use_anchors_ = true
-
-[node name="玩家名" type="LineEdit" parent="开始菜单/主面板" unique_id=645213529]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 228.0
-offset_top = -213.0
-offset_right = 548.0
-offset_bottom = -143.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 50
+size_flags_horizontal = 3
 text = "玩家"
 placeholder_text = "用户名"
 max_length = 7
 emoji_menu_enabled = false
 
-[node name="存档" type="Label" parent="开始菜单/主面板/玩家名" unique_id=574449264]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.559375
-anchor_right = -0.0375
-anchor_bottom = 0.9459459
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
-text = "用户名:"
+[node name="文件名标签" type="Label" parent="开始菜单/主面板/边距容器/竖向容器/自定义存档" unique_id=1305320364]
+layout_mode = 2
+text = "文件名:"
+metadata/_edit_use_anchors_ = true
+
+[node name="自定义存档名" type="LineEdit" parent="开始菜单/主面板/边距容器/竖向容器/自定义存档" unique_id=1441728490]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "自定义存档名称"
+max_length = 7
+emoji_menu_enabled = false
+
+[node name="按钮区" type="HBoxContainer" parent="开始菜单/主面板/边距容器/竖向容器" unique_id=397123760]
+layout_mode = 2
+
+[node name="开始游戏" type="Button" parent="开始菜单/主面板/边距容器/竖向容器/按钮区" unique_id=208819591]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.68235296, 0.6745098, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.68235296, 0.6745098, 1)
+theme_override_styles/normal = ExtResource("7_ubnl7")
+theme_override_styles/pressed = ExtResource("8_7r74b")
+theme_override_styles/hover = ExtResource("7_ubnl7")
+theme_override_styles/hover_pressed = ExtResource("8_7r74b")
+text = "开始游戏"
+
+[node name="设置" type="Button" parent="开始菜单/主面板/边距容器/竖向容器/按钮区" unique_id=81974660]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "打开设置"
+
+[node name="新建" type="Button" parent="开始菜单/主面板/边距容器/竖向容器/按钮区" unique_id=1027729425]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "新建"
+
+[node name="删除" type="Button" parent="开始菜单/主面板/边距容器/竖向容器/按钮区" unique_id=58043306]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "删除"
 
 [node name="多语言功能区" type="Panel" parent="开始菜单" unique_id=1816004725]
 layout_mode = 0
@@ -378,10 +358,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 716.0
-offset_top = 301.5
-offset_right = 971.0
-offset_bottom = 375.5
+offset_left = 724.0
+offset_top = 293.0
+offset_right = 979.0
+offset_bottom = 377.0
 grow_vertical = 2
 size_flags_horizontal = 6
 text = "退出游戏"

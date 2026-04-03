@@ -1,18 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c14u5pgdtet8q"]
+[gd_scene format=3 uid="uid://c14u5pgdtet8q"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_23m16"]
-[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_285d4"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvpph"]
-bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-script = ExtResource("2_285d4")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[node name="主题预览" type="ScrollContainer"]
+[node name="主题预览" type="ScrollContainer" unique_id=344746677]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,35 +11,33 @@ offset_bottom = -580.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_23m16")
-theme_override_styles/panel = SubResource("StyleBoxFlat_tvpph")
 
-[node name="选项卡" type="TabContainer" parent="."]
+[node name="选项卡" type="TabContainer" parent="." unique_id=1088464097]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-current_tab = 2
+current_tab = 0
 
-[node name="主要功能" type="VBoxContainer" parent="选项卡"]
-visible = false
+[node name="主要功能" type="VBoxContainer" parent="选项卡" unique_id=1326340280]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="默认按钮" type="Button" parent="选项卡/主要功能"]
+[node name="默认按钮" type="Button" parent="选项卡/主要功能" unique_id=1150296538]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "默认按钮"
 
-[node name="切换按钮" type="CheckButton" parent="选项卡/主要功能"]
+[node name="切换按钮" type="CheckButton" parent="选项卡/主要功能" unique_id=1333999810]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "切换按钮"
 
-[node name="默认文本" type="Label" parent="选项卡/主要功能"]
+[node name="默认文本" type="Label" parent="选项卡/主要功能" unique_id=1308238045]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "默认文本"
 
-[node name="选项按钮" type="OptionButton" parent="选项卡/主要功能"]
+[node name="选项按钮" type="OptionButton" parent="选项卡/主要功能" unique_id=403109039]
 layout_mode = 2
 size_flags_horizontal = 0
 selected = 0
@@ -75,26 +63,27 @@ popup/item_8/id = 8
 popup/item_9/text = "默认文本"
 popup/item_9/id = 9
 
-[node name="其他功能" type="VBoxContainer" parent="选项卡"]
+[node name="其他功能" type="VBoxContainer" parent="选项卡" unique_id=2128377341]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="空" type="Control" parent="选项卡/其他功能"]
+[node name="空" type="Control" parent="选项卡/其他功能" unique_id=2107400548]
 layout_mode = 2
 
-[node name="默认文本" type="Label" parent="选项卡/其他功能"]
+[node name="默认文本" type="Label" parent="选项卡/其他功能" unique_id=1601728067]
 layout_mode = 2
 text = "没有写"
 
-[node name="禁用功能" type="VBoxContainer" parent="选项卡"]
+[node name="禁用功能" type="VBoxContainer" parent="选项卡" unique_id=1342824112]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="空" type="Control" parent="选项卡/禁用功能"]
+[node name="空" type="Control" parent="选项卡/禁用功能" unique_id=1201745480]
 layout_mode = 2
 
-[node name="默认文本" type="Label" parent="选项卡/禁用功能"]
+[node name="默认文本" type="Label" parent="选项卡/禁用功能" unique_id=2102302595]
 custom_minimum_size = Vector2(2000, 0)
 layout_mode = 2
 text = "没有写"

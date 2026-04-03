@@ -132,7 +132,8 @@ func 生成任务栏节点(界面名称:String,隐藏文本:bool=false)->Button:
 		任务按钮.icon=纹理
 		var 文本字数:int=任务按钮.text.length()#获取长度
 		if 文本字数>=2:
-			任务按钮.add_theme_font_size_override("font_size", max(20,100.0/文本字数))
+			pass
+			#任务按钮.add_theme_font_size_override("font_size", max(20,100.0/文本字数))
 	任务按钮.pressed.connect(重载场景.bind(界面名称))
 	var 红点提示 = 任务按钮.get_node("红点提示")
 	红点提示.红点条目=界面名称

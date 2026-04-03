@@ -5,25 +5,14 @@
 [ext_resource type="Script" uid="uid://qw0gp35xq72b" path="res://代码/专属代码/特殊功能/展开按钮.gd" id="4_4h1no"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="4_kiae7"]
 [ext_resource type="Script" uid="uid://cvqpr44nuhv1h" path="res://界面/根界面/隐藏奖励.gd" id="4_rhqkc"]
+[ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="4_yd0tu"]
 [ext_resource type="PackedScene" uid="uid://c51gx8des8nv1" path="res://界面/插件/红点提示.tscn" id="5_5a7ci"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="6_rxn41"]
-[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="7_4h1no"]
 [ext_resource type="Script" uid="uid://dbhilkborreev" path="res://代码/专属代码/特殊功能/手动存档.gd" id="7_5a7ci"]
-[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="8_0p14m"]
 [ext_resource type="PackedScene" uid="uid://bs3xyimmlbfxm" path="res://界面/根界面/测试功能.tscn" id="9_rhqkc"]
 [ext_resource type="PackedScene" uid="uid://cq8y0f7wmpt01" path="res://界面/插件/奖励悬浮面板.tscn" id="10_0p14m"]
 [ext_resource type="Texture2D" uid="uid://vkpx0uhvnpn" path="res://素材/自制/图标/暂停.png" id="11_q2fph"]
 [ext_resource type="Script" uid="uid://cc1j5mukjb2p1" path="res://代码/专属代码/暂停界面/暂停界面.gd" id="11_s3egw"]
-[ext_resource type="FontFile" uid="uid://dybtol6821ybd" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-85-Bold/AlibabaPuHuiTi-3-85-Bold.woff2" id="11_yd0tu"]
-
-[sub_resource type="DPITexture" id="DPITexture_rhqkc"]
-_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"30\"><rect width=\"58\" height=\"28\" x=\"1\" y=\"1\" fill=\"#e0e0e0\" fill-opacity=\".6\" stroke=\"#000\" stroke-width=\".8\" rx=\"7\"/></svg>
-"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhqkc"]
-bg_color = Color(0.55, 0.42716667, 0.18149999, 0.2509804)
-script = ExtResource("8_0p14m")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="InputEventKey" id="InputEventKey_yd0tu"]
 device = -1
@@ -32,51 +21,6 @@ unicode = 96
 
 [sub_resource type="Shortcut" id="Shortcut_s3egw"]
 events = [SubResource("InputEventKey_yd0tu")]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3egw"]
-bg_color = Color(0.55, 0.42716667, 0.18149999, 0.78431374)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-script = ExtResource("8_0p14m")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBox" id="StyleBox_q2fph"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = -1.0
-content_margin_top = -1.0
-content_margin_right = -1.0
-content_margin_bottom = -1.0
-script = ExtResource("7_4h1no")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_s3egw")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0p14m"]
-bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.70021564, 0.5527891, 0.25613704, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-script = ExtResource("8_0p14m")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBox" id="StyleBox_s3egw"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = -1.0
-content_margin_top = -1.0
-content_margin_right = -1.0
-content_margin_bottom = -1.0
-script = ExtResource("7_4h1no")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_0p14m")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [node name="空节点" type="Control" unique_id=395624579]
 layout_mode = 3
@@ -107,22 +51,100 @@ unique_name_in_owner = true
 offset = Vector2(960, 540)
 limit_enabled = false
 
-[node name="任务栏分割" type="VSplitContainer" parent="功能" unique_id=110886393]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(220, 990)
+[node name="上边栏" type="Control" parent="功能" unique_id=1189103482]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 120.0
+grow_horizontal = 2
+size_flags_vertical = 4
+theme = ExtResource("4_kiae7")
+
+[node name="等级显示" parent="功能/上边栏" unique_id=1257429001 instance=ExtResource("4_yd0tu")]
+custom_minimum_size = Vector2(1700, 100)
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+offset_right = 1600.0
+offset_bottom = 100.0
+grow_horizontal = 1
+"系统" = "挂机"
+"玩法" = "未命名"
+
+[node name="右侧按钮" type="HBoxContainer" parent="功能/上边栏" unique_id=2008137860]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -220.0
-offset_top = 10.0
-offset_bottom = 1000.0
+offset_left = -305.0
+offset_bottom = 89.0
+grow_horizontal = 0
+
+[node name="存档" type="Button" parent="功能/上边栏/右侧按钮" unique_id=201742822]
+unique_name_in_owner = true
+z_index = 1
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 4
+text = "手动存档"
+script = ExtResource("7_5a7ci")
+
+[node name="存档时间" type="Panel" parent="功能/上边栏/右侧按钮/存档" unique_id=368612696]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="时间" type="Label" parent="功能/上边栏/右侧按钮/存档/存档时间" unique_id=1246896788]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "10秒前"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="展开按钮" type="Button" parent="功能/上边栏/右侧按钮" unique_id=84701992]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_kiae7")
+theme_override_font_sizes/font_size = 50
+shortcut = SubResource("Shortcut_s3egw")
+shortcut_in_tooltip = false
+text = ">"
+script = ExtResource("4_4h1no")
+
+[node name="暂停" type="Button" parent="功能/上边栏/右侧按钮" unique_id=1484535938]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("11_q2fph")
+expand_icon = true
+
+[node name="任务栏分割" type="VSplitContainer" parent="功能" unique_id=110886393]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 120.0
+offset_bottom = -80.0
 grow_horizontal = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("4_kiae7")
 theme_override_constants/separation = 5
 theme_override_constants/minimum_grab_thickness = 2
-theme_override_icons/grabber = SubResource("DPITexture_rhqkc")
 split_offsets = PackedInt32Array(200)
 drag_area_margin_begin = 10
 drag_area_margin_end = 10
@@ -134,7 +156,6 @@ custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("4_kiae7")
-theme_override_styles/panel = SubResource("StyleBoxFlat_rhqkc")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
@@ -144,7 +165,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("4_kiae7")
-theme_override_constants/separation = -5
+theme_override_constants/separation = 0
 
 [node name="任务" type="Button" parent="功能/任务栏分割/任务栏滚动区/任务栏" unique_id=1808832397]
 unique_name_in_owner = true
@@ -152,12 +173,6 @@ custom_minimum_size = Vector2(220, 70)
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("4_kiae7")
-theme_override_constants/outline_size = 8
-theme_override_constants/h_separation = 0
-theme_override_constants/icon_max_width = 60
-theme_override_constants/align_to_largest_stylebox = 1
-theme_override_fonts/font = ExtResource("11_yd0tu")
-theme_override_font_sizes/font_size = 30
 text = "合成"
 icon = ExtResource("6_rxn41")
 expand_icon = true
@@ -178,7 +193,6 @@ custom_minimum_size = Vector2(0, 280)
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("4_kiae7")
-theme_override_styles/panel = SubResource("StyleBoxFlat_rhqkc")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
@@ -213,60 +227,6 @@ follow_viewport_enabled = true
 
 [node name="悬浮面板" type="CanvasLayer" parent="." unique_id=1789299298]
 layer = 3
-
-[node name="展开按钮" type="Button" parent="悬浮面板" unique_id=84701992]
-offset_left = 1550.0
-offset_top = 10.0
-offset_right = 1610.0
-offset_bottom = 90.0
-theme = ExtResource("4_kiae7")
-theme_override_font_sizes/font_size = 50
-shortcut = SubResource("Shortcut_s3egw")
-shortcut_in_tooltip = false
-text = ">"
-script = ExtResource("4_4h1no")
-
-[node name="存档" type="Button" parent="悬浮面板/展开按钮" unique_id=201742822]
-z_index = 1
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -270.0
-offset_right = -53.0
-offset_bottom = 74.0
-grow_horizontal = 0
-theme = ExtResource("4_kiae7")
-theme_override_font_sizes/font_size = 50
-text = "手动存档"
-script = ExtResource("7_5a7ci")
-
-[node name="存档时间" type="Panel" parent="悬浮面板/展开按钮/存档" unique_id=368612696]
-layout_mode = 0
-offset_left = -225.0
-offset_bottom = 80.0
-theme_override_styles/panel = SubResource("StyleBox_q2fph")
-
-[node name="时间" type="Label" parent="悬浮面板/展开按钮/存档/存档时间" unique_id=1246896788]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 45
-text = "10秒前"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_lock_ = true
-
-[node name="暂停" type="Button" parent="悬浮面板/展开按钮" unique_id=1484535938]
-layout_mode = 0
-offset_left = 55.0
-offset_right = 149.0
-offset_bottom = 80.0
-theme_override_font_sizes/font_size = 40
-icon = ExtResource("11_q2fph")
 
 [node name="提示容器" type="VBoxContainer" parent="悬浮面板" unique_id=499124377]
 unique_name_in_owner = true
@@ -308,7 +268,6 @@ offset_right = 100.0
 offset_bottom = 63.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBox_s3egw")
 
 [node name="暂停界面" type="CanvasLayer" parent="." unique_id=100003098]
 unique_name_in_owner = true

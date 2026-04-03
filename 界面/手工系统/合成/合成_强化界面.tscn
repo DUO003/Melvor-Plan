@@ -48,11 +48,10 @@ script = ExtResource("2_f5s88")
 "强化选项卡": NodePath("内容节点/内容/选项卡")
 }
 
-[node name="等级显示" parent="标题" parent_id_path=PackedInt32Array(2049886415) index="0" unique_id=2041357675]
-"系统" = "手工"
-"玩法" = "强化"
+[node name="内容节点" parent="." index="0" unique_id=1614734378]
+anchors_preset = 15
 
-[node name="内容" type="HBoxContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=1321928947]
+[node name="内容" type="HBoxContainer" parent="内容节点" index="1" unique_id=1321928947]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -324,19 +323,19 @@ script = ExtResource("4_pxfyn")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 
-[node name="主菜单" type="Button" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="1" unique_id=2139254816]
+[node name="主菜单" type="Button" parent="内容节点" index="2" unique_id=2139254816]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 1
 offset_left = 1517.0
 offset_top = 825.0
 offset_right = 1697.0
-offset_bottom = 892.0
+offset_bottom = 900.0
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 40
 text = "主菜单"
 
-[node name="复选框示例" type="CheckBox" parent="." index="3" unique_id=824370121]
+[node name="复选框示例" type="CheckBox" parent="." index="2" unique_id=824370121]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0

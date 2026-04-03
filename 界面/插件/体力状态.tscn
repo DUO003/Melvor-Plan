@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_wok3q"]
 [ext_resource type="Script" uid="uid://3qbuxr56jjr6" path="res://代码/专属代码/特殊功能/体力系统.gd" id="2_n7kj1"]
 [ext_resource type="Texture2D" uid="uid://ctqv4hb3llh2n" path="res://素材/游戏素材/食品包/体力蛋糕.png" id="3_0tcwq"]
+[ext_resource type="StyleBox" uid="uid://sdbk6om71jii" path="res://界面/主题/样式/面板样式_窄边.tres" id="4_n7kj1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxrpf"]
 bg_color = Color(0.91764706, 0.60784316, 0.24705882, 1)
@@ -75,7 +76,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="扩展内容" type="Panel" parent="." unique_id=1720184831]
+[node name="扩展内容" type="PanelContainer" parent="." unique_id=1309772613]
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 1
@@ -83,37 +84,29 @@ anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -0.25299996
+offset_left = 2.0
 offset_top = 2.0
-offset_right = -2.770996
-offset_bottom = 90.0
+offset_right = -2.0
 grow_horizontal = 2
 mouse_behavior_recursive = 1
+theme_override_styles/panel = ExtResource("4_n7kj1")
 
-[node name="体力回复条" type="ProgressBar" parent="扩展内容" unique_id=1586824540]
+[node name="VBoxContainer" type="VBoxContainer" parent="扩展内容" unique_id=872500148]
+layout_mode = 2
+
+[node name="体力回复条" type="ProgressBar" parent="扩展内容/VBoxContainer" unique_id=1586824540]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
+layout_mode = 2
 mouse_behavior_recursive = 1
 theme = ExtResource("1_wok3q")
 theme_override_styles/fill = SubResource("StyleBoxFlat_okb3m")
 value = 50.0
 show_percentage = false
 
-[node name="扩展信息" type="RichTextLabel" parent="扩展内容" unique_id=478492076]
+[node name="扩展信息" type="RichTextLabel" parent="扩展内容/VBoxContainer" unique_id=478492076]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_left = 0.25299978
-offset_top = 14.0
-offset_right = -1.2290039
-offset_bottom = 84.0
-grow_horizontal = 2
+layout_mode = 2
 mouse_behavior_recursive = 1
 theme = ExtResource("1_wok3q")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
