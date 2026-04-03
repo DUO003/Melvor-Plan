@@ -18,15 +18,16 @@
 
 [node name="循环任务" type="ScrollContainer" unique_id=901319443]
 custom_minimum_size = Vector2(520, 0)
-anchors_preset = -1
-anchor_right = 0.27083334
-anchor_bottom = 0.45833334
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_ugbwj")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 script = ExtResource("1_lv6te")
 metadata/_tab_index = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="任务容器" type="VBoxContainer" parent="." unique_id=551189033]
 unique_name_in_owner = true
@@ -38,6 +39,8 @@ theme_override_constants/separation = 0
 [node name="隐藏任务" type="HBoxContainer" parent="任务容器" unique_id=996902426]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 8
+alignment = 2
 
 [node name="隐藏" type="CheckButton" parent="任务容器/隐藏任务" unique_id=1985427059]
 unique_name_in_owner = true
@@ -54,7 +57,6 @@ text = "隐藏其他任务"
 
 [node name="标签" type="Label" parent="任务容器/隐藏任务" unique_id=249152579]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 text = "隐藏数量:%d"
 horizontal_alignment = 1

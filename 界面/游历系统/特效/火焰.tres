@@ -77,7 +77,7 @@ linked_parent_graph_frame = 5
 operator = 1
 
 [sub_resource type="VisualShaderNodeClamp" id="VisualShaderNodeClamp_jhyj7"]
-default_input_values = [0, 0.0, 1, 0.0, 2, 0.9]
+default_input_values = [0, 0.0, 1, 0.0, 2, 0.95]
 linked_parent_graph_frame = 5
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_4f2pn"]
