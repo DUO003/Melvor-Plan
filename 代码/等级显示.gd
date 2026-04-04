@@ -1,5 +1,6 @@
 @tool  # 启用编辑器内预览
 extends Control
+class_name 梅精通熟练条
 @export_enum("挂机", "木料", "矿城", "手工", "游历", "职业", "召唤") var 系统 = "手工"
 @export var 玩法:String="合成":
 	set(值):
@@ -8,34 +9,37 @@ extends Control
 var 等级=100
 @onready var 玩法文本: Label = %玩法文本
 @onready var 系统文本: Label = %系统文本
-@onready var 文本数值:RichTextLabel = %文本数值
+@onready var 熟练数值: RichTextLabel = %熟练数值
+@onready var 精通数值: RichTextLabel = %精通数值
+@onready var 熟练进度条: ProgressBar = %熟练进度条
+@onready var 精通进度条: ProgressBar = %精通进度条
 func _ready() -> void:
 	_更新_UI()
 	if Engine.is_editor_hint():
 		return  # 直接返回，不执行后续可能出错的代码
 	计划.connect("更新_UI", Callable(self, "_更新_UI"))
-	文本数值.size.y=100
-	%"精通进度条".custom_minimum_size.y=50
-	%"熟练进度条".custom_minimum_size.y=50
-	%"熟练进度条".position.y=50
+	精通进度条.custom_minimum_size.y=50
+	熟练进度条.custom_minimum_size.y=50
+	熟练进度条.position.y=50
 	custom_minimum_size.y=100
 	position=Vector2(0,0)
-	文本数值.position.y=0
 	await get_tree().process_frame
 	_更新_UI()
+func 页面修改(新系统:String,新玩法:String):
+	系统=新系统
+	玩法=新玩法
+	_更新_UI()
 func _更新_UI():
-	if not has_node("玩法文本") or not is_instance_valid(玩法文本):
+	if not has_node("%玩法文本") or not is_instance_valid(玩法文本):
+		print("错误找不到节点")
 		return
 	if Engine.is_editor_hint():
 		玩法文本.text= "%s"%[玩法]
 		系统文本.text= "%s LV:%d"%[系统,等级]
-		文本数值.position.x=文本节点宽度(系统文本).x+20
-		文本数值.size.x=size.x-文本数值.position.x
-		%精通进度条.max_value=100
-		%精通进度条.value=33
-		%熟练进度条.max_value=100
-		%熟练进度条.value=66
-		文本数值.text="熟练:\r精通:"
+		精通进度条.max_value=100
+		精通进度条.value=33
+		熟练进度条.max_value=100
+		熟练进度条.value=66
 	else :
 		等级=计划.数据系统(系统,"等级")
 		if 玩法==系统:
@@ -43,8 +47,8 @@ func _更新_UI():
 		else :
 			玩法文本.text= "%s"%[玩法]
 		系统文本.text= "%s LV:%d"%[系统,等级]
-		文本数值.position.x=文本节点宽度(系统文本).x+20
-		文本数值.size.x=size.x-文本数值.position.x
+		print("调试状态",系统,"+",玩法)
+		
 		var 精通=计划.数据系统(系统,"精通")
 		var 精通上限=计划.数据系统(系统,"精通上限")
 		var 熟练=计划.数据系统(系统,"熟练")
@@ -53,17 +57,16 @@ func _更新_UI():
 		var 增益文本=""
 		if 升级检查.size()>=1:
 			增益文本="加成%d%%"%(升级检查.size()*5)
-		文本数值.text="[img=40x40]%s[/img]熟练%s:%d/%d\r[img=40x40]%s[/img]精通:%d/%d"%[
-			计划.表格.道具贴图("熟练").resource_path,增益文本,熟练,熟练上限,
-			计划.表格.道具贴图("精通").resource_path,精通,精通上限]
+		熟练数值.text="[img=40x40]%s[/img]熟练%s:%d/%d"%[计划.表格.道具贴图("熟练").resource_path,增益文本,熟练,熟练上限]
+		精通数值.text="[img=40x40]%s[/img]精通:%d/%d"%[计划.表格.道具贴图("精通").resource_path,精通,精通上限]
 		if 熟练上限==-1:
 			熟练=0
 			熟练上限=1
-		%熟练进度条.max_value=熟练上限
-		%精通进度条.max_value=精通上限
-		%熟练进度条.value=熟练
-		%精通进度条.value=精通
-		#print(%精通进度条.value,"/",%精通进度条.max_value)
+		熟练进度条.max_value=熟练上限
+		精通进度条.max_value=精通上限
+		熟练进度条.value=熟练
+		精通进度条.value=精通
+		#print(精通进度条.value,"/",精通进度条.max_value)
 
 func 文本节点宽度(文本节点,对齐方式:HorizontalAlignment=HORIZONTAL_ALIGNMENT_LEFT)->Vector2:
 	if 文本节点 is RichTextLabel or 文本节点 is Label:

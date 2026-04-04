@@ -1,11 +1,27 @@
-extends Button
-@onready var 时间文本: Label = %"存档时间文本"
+extends HBoxContainer
+@onready var 存档功能区: HBoxContainer = %"存档功能区"
+@onready var 时间文本: Label = %存档时间文本
+@onready var 存档: Button = %存档
+@onready var 展开按钮: Button = $展开按钮
+@onready var 暂停: Button = %暂停
 func _ready():
 	时间文本.text="未存档"
-	pressed.connect(手动存档)
+	存档.pressed.connect(手动存档)
 	计划.过去一秒.connect(更新显示)
 	计划.更新_UI.connect(更新显示)
-
+	展开界面(false)
+	展开按钮.pressed.connect(切换展开界面)
+	暂停.pressed.connect(显示暂停界面)
+func 显示暂停界面():
+	计划.显示暂停界面.emit(true)
+func 切换展开界面():
+	展开界面(not 存档功能区.visible)
+func 展开界面(展开:bool):
+	存档功能区.visible=展开
+	if 展开:
+		展开按钮.text=">"
+	else :
+		展开按钮.text="<"
 func 手动存档():
 	if GBIS.has_moving_item():
 		GBIS.moving_item_service.安全清除移动物品()

@@ -11,8 +11,8 @@
 [ext_resource type="StyleBox" uid="uid://dtqhnwn5me1i8" path="res://界面/主题/样式/面板样式_浅色.tres" id="8_fv7pg"]
 [ext_resource type="StyleBox" uid="uid://dn525qmnyhns4" path="res://界面/主题/样式/面板样式_禁用.tres" id="9_1bn4b"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgrsc"]
-bg_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ff5e4"]
+bg_color = Color(0.50980395, 0.3529412, 0.23921569, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -878,10 +878,12 @@ expand_margin_bottom = 2.0
 [sub_resource type="DPITexture" id="DPITexture_1xjbn"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#fff\" d=\"m1 3 2-2 5 5 5-5 2 2-5 5 5 5-2 2-5-5-5 5-2-2 5-5z\"/></svg>
 "
+base_scale = 2.0
 
 [sub_resource type="DPITexture" id="DPITexture_fhl5v"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#fff\" d=\"m1 3 2-2 5 5 5-5 2 2-5 5 5 5-2 2-5-5-5 5-2-2 5-5z\"/></svg>
 "
+base_scale = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gowdn"]
 content_margin_left = 10.0
@@ -900,11 +902,13 @@ expand_margin_right = 8.0
 expand_margin_bottom = 6.0
 
 [resource]
-AcceptDialog/constants/close_h_offset = 30
-AcceptDialog/constants/title_height = 30
+AcceptDialog/constants/buttons_separation = 10
+AcceptDialog/constants/close_h_offset = 40
+AcceptDialog/constants/title_height = 50
+AcceptDialog/constants/title_outline_size = 2
 AcceptDialog/font_sizes/title_font_size = 40
 AcceptDialog/fonts/title_font = ExtResource("1_csmyg")
-AcceptDialog/styles/panel = SubResource("StyleBoxFlat_cgrsc")
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_ff5e4")
 Button/colors/font_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
 Button/colors/font_hover_pressed_color = Color(0.6313726, 0.5764706, 0.015686275, 1)
 Button/colors/font_outline_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
@@ -1108,6 +1112,8 @@ VScrollBar/styles/scroll = SubResource("StyleBoxFlat_fhl5v")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_gbvy5")
 Window/colors/title_color = Color(0, 0, 0, 1)
 Window/colors/title_outline_modulate = Color(0, 0, 0, 1)
+Window/constants/title_height = 40
+Window/constants/title_outline_size = 2
 Window/font_sizes/title_font_size = 40
 Window/fonts/title_font = ExtResource("1_csmyg")
 Window/icons/close = SubResource("DPITexture_1xjbn")

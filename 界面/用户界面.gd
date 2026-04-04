@@ -17,6 +17,7 @@ var 图钉区光标=false
 @onready var 任务栏节点: VBoxContainer = %"任务栏"
 @onready var 任务按钮本体: Button = %"任务"  # 明确为Button节点
 @onready var 其他容器: Control = %其他容器
+@onready var 等级显示: 梅精通熟练条 = %等级显示
 signal 场景更新(当前场景)# 场景变化时会发出信号,首次加载也会发出
 func _ready():
 	场景容器= %场景容器
@@ -143,6 +144,7 @@ func 重载场景(场景名称: String,强制重载=false) -> void:
 	if not 窗口.窗口数据.has(场景名称):
 		print("错误: 场景%s不存在于路径映射中"%场景名称)
 		return
+	var 场景配置:Dictionary=窗口.窗口数据[场景名称] as Dictionary
 	if GBIS.has_moving_item():
 		GBIS.moving_item_service.安全清除移动物品()
 	if 计划.节点有效性检查("奖励悬浮面板"):
@@ -154,7 +156,7 @@ func 重载场景(场景名称: String,强制重载=false) -> void:
 	for 子节点 in 场景容器.get_children():# 清空场景容器下的所有节点
 		场景容器.remove_child(子节点)
 		子节点.queue_free()  # 释放节点资源
-	var 场景路径: String = 窗口.窗口数据[场景名称].场景路径
+	var 场景路径: String = 场景配置.场景路径
 	var 场景加载器: PackedScene = load(场景路径)
 	if 场景加载器 == null:
 		print("无法加载场景: ", 场景路径)
@@ -167,6 +169,9 @@ func 重载场景(场景名称: String,强制重载=false) -> void:
 	计划.红点.消除红点(场景名称,"",-1)
 	重载图钉()
 	emit_signal("场景更新",场景名称)
+	var 系统名称:String=场景配置.系统
+	var 玩法名称:String=场景配置.显示名
+	等级显示.页面修改(系统名称,玩法名称)
 # 传入容器节点，检查是否有2个以上子节点，如果是则将第一个节点移到最后
 func 移动节点到最后(容器节点: Node) -> void:
 	if 容器节点 == null:

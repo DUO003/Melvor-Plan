@@ -5,6 +5,7 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqfis"]
 bg_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
+draw_center = false
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10
@@ -18,7 +19,7 @@ script = ExtResource("2_mkb4r")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xjbn"]
-bg_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
+bg_color = Color(0.9, 0.76979995, 0.648, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
