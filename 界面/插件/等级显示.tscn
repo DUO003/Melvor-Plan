@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://lscsq5yonm2v" path="res://代码/等级显示.gd" id="1_t1bs0"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_brtdv"]
+[ext_resource type="Script" uid="uid://cpcxenbyca8ed" path="res://界面/根界面/右侧按钮.gd" id="3_c2fnl"]
+[ext_resource type="Texture2D" uid="uid://vkpx0uhvnpn" path="res://素材/自制/图标/暂停.png" id="5_hprww"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_in4vb"]
 
@@ -12,10 +14,40 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7v3hg"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_brtdv"]
 content_margin_left = 10.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c2fnl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6ht0"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="InputEventKey" id="InputEventKey_yd0tu"]
+device = -1
+keycode = 96
+unicode = 96
+
+[sub_resource type="Shortcut" id="Shortcut_p0uee"]
+events = [SubResource("InputEventKey_yd0tu")]
 
 [node name="等级显示" type="Control" unique_id=1257429001]
 custom_minimum_size = Vector2(0, 100)
@@ -26,10 +58,10 @@ grow_horizontal = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_brtdv")
 script = ExtResource("1_t1bs0")
+"系统" = "矿城"
 "玩法" = "挂机"
 
-[node name="进度条" type="GridContainer" parent="." unique_id=855376273]
-unique_name_in_owner = true
+[node name="容器" type="HBoxContainer" parent="." unique_id=960736639]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -42,9 +74,9 @@ grow_vertical = 2
 theme_override_constants/v_separation = 0
 columns = 2
 
-[node name="系统文本" type="Label" parent="进度条" unique_id=770788327]
+[node name="系统文本" type="Label" parent="容器/进度条" unique_id=770788327]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(280, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme = ExtResource("2_brtdv")
 theme_override_colors/font_outline_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
@@ -52,7 +84,7 @@ theme_override_constants/outline_size = 10
 text = "手工 LV:100"
 horizontal_alignment = 2
 
-[node name="熟练进度条" type="ProgressBar" parent="进度条" unique_id=2038560541]
+[node name="熟练进度条" type="ProgressBar" parent="容器/进度条" unique_id=2038560541]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
@@ -67,9 +99,24 @@ allow_greater = true
 allow_lesser = true
 show_percentage = false
 
-[node name="玩法文本" type="Label" parent="进度条" unique_id=1860998728]
+[node name="熟练数值" type="RichTextLabel" parent="容器/进度条/熟练进度条" unique_id=1431180209]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(280, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_brtdv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7v3hg")
+bbcode_enabled = true
+text = "熟练:"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="玩法文本" type="Label" parent="容器/进度条" unique_id=1860998728]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_brtdv")
 theme_override_colors/font_outline_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
@@ -78,7 +125,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_brtdv")
 text = "挂机"
 horizontal_alignment = 2
 
-[node name="精通进度条" type="ProgressBar" parent="进度条" unique_id=497548190]
+[node name="精通进度条" type="ProgressBar" parent="容器/进度条" unique_id=497548190]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
@@ -92,23 +139,39 @@ allow_greater = true
 allow_lesser = true
 show_percentage = false
 
-[node name="文本数值" type="RichTextLabel" parent="." unique_id=1431180209]
+[node name="精通数值" type="RichTextLabel" parent="容器/进度条/精通进度条" unique_id=795171503]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 300.0
+offset_top = -11.0
+offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/paragraph_separation = 0
 bbcode_enabled = true
-text = "熟练:精通:"
+text = "精通:"
 fit_content = true
 scroll_active = false
 vertical_alignment = 1
 
-[node name="上层" type="Control" parent="." unique_id=1079524228]
+[node name="右侧按钮" type="HBoxContainer" parent="容器" unique_id=1636883750]
+layout_mode = 2
+script = ExtResource("3_c2fnl")
+
+[node name="存档功能区" type="HBoxContainer" parent="容器/右侧按钮" unique_id=1163252536]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="存档时间" type="Panel" parent="容器/右侧按钮/存档功能区" unique_id=806379159]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_q6ht0")
+
+[node name="存档时间文本" type="Label" parent="容器/右侧按钮/存档功能区/存档时间" unique_id=2026459150]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -116,3 +179,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "10秒前"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="存档" type="Button" parent="容器/右侧按钮/存档功能区" unique_id=1173198228]
+unique_name_in_owner = true
+z_index = 1
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 4
+text = "手动存档"
+
+[node name="展开按钮" type="Button" parent="容器/右侧按钮" unique_id=541937586]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_brtdv")
+theme_override_font_sizes/font_size = 50
+shortcut = SubResource("Shortcut_p0uee")
+shortcut_in_tooltip = false
+text = ">"
+
+[node name="暂停" type="Button" parent="容器/右侧按钮" unique_id=673514489]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("5_hprww")
+expand_icon = true

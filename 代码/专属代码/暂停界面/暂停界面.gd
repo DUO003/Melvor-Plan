@@ -1,5 +1,7 @@
 extends CanvasLayer
 func _ready():
+	visible=false
+	计划.显示暂停界面.connect(显示暂停界面)
 	if 梅存档格式.单例.启用测试:
 		var 测试功能=%"测试功能"
 		var 测试默认显示:bool=false
@@ -20,7 +22,8 @@ func _ready():
 		await 计划.保存存档("手动存档")
 		get_tree().quit())
 	%"取消".pressed.connect(func():切换暂停())
-
+func 显示暂停界面(状态:bool=true):
+	visible=状态
 func _input(event: InputEvent):
 	# 检测 ESC 键按下（对应 InputMap 中的 "ui_cancel" 动作）
 	if event.is_action_pressed("显示控制台"):
