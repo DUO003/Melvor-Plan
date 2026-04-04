@@ -17,7 +17,48 @@ const DEFAULT_TAKEN_COLOR: Color = Color.LIGHT_SLATE_GRAY
 const DEFAULT_CONFLICT_COLOR: Color = Color.INDIAN_RED
 ## 默认可用颜色
 const DEFAULT_AVILABLE_COLOR: Color = Color.STEEL_BLUE
-
+@export var 格子覆盖:bool=false:
+	set(值):
+		格子覆盖 = 值
+		queue_redraw()
+		#空、占用、冲突、可用
+@export var 覆盖样式_空: StyleBoxFlat:
+	set(值):# 断开旧资源的信号连接
+		_样式信号绑定(覆盖样式_空,false)
+		_样式信号绑定(值,true)
+		覆盖样式_空 = 值
+		if Engine.is_editor_hint():
+			queue_redraw()
+@export var 覆盖样式_占用: StyleBoxFlat:
+	set(值):# 断开旧资源的信号连接
+		_样式信号绑定(覆盖样式_占用,false)
+		_样式信号绑定(值,true)
+		覆盖样式_占用 = 值
+		if Engine.is_editor_hint():
+			queue_redraw()
+@export var 覆盖样式_冲突: StyleBoxFlat:
+	set(值):# 断开旧资源的信号连接
+		_样式信号绑定(覆盖样式_冲突,false)
+		_样式信号绑定(值,true)
+		覆盖样式_冲突 = 值
+		if Engine.is_editor_hint():
+			queue_redraw()
+@export var 覆盖样式_可用: StyleBoxFlat:
+	set(值):# 断开旧资源的信号连接
+		_样式信号绑定(覆盖样式_可用,false)
+		_样式信号绑定(值,true)
+		覆盖样式_可用 = 值
+		if Engine.is_editor_hint():
+			queue_redraw()
+func _样式信号绑定(样式:StyleBoxFlat,状态:bool,监听方法:=queue_redraw):
+	if not Engine.is_editor_hint():
+		return
+	if 状态:
+		if 样式 != null and not 样式.changed.is_connected(监听方法):
+			样式.changed.connect(监听方法)# 连接资源的信号
+	else :
+		if 样式 != null and 样式.changed.is_connected(监听方法):
+			样式.changed.disconnect(监听方法)# 断开资源的信号
 ## 当前绘制状态
 var state: State = State.EMPTY:
 	set(value):
@@ -86,13 +127,25 @@ func _draw() -> void:
 	draw_rect(Rect2(0, 0, _size, _size), _border_color, true)
 	var inner_size = _size - _border_size * 2
 	var background_color = null
-	match state:
-		State.EMPTY:
-			background_color = _empty_color
-		State.TAKEN:
-			background_color = _taken_color
-		State.CONFLICT:
-			background_color = _conflict_color
-		State.AVILABLE:
-			background_color = _avilable_color
-	draw_rect(Rect2(_border_size, _border_size, inner_size, inner_size), background_color, true)
+	var 矩形新尺寸:=Rect2(_border_size, _border_size, inner_size, inner_size)
+	if 格子覆盖:
+		match state:
+			State.EMPTY:
+				draw_style_box(覆盖样式_空, 矩形新尺寸)
+			State.TAKEN:
+				draw_style_box(覆盖样式_占用, 矩形新尺寸)
+			State.CONFLICT:
+				draw_style_box(覆盖样式_冲突, 矩形新尺寸)
+			State.AVILABLE:
+				draw_style_box(覆盖样式_可用, 矩形新尺寸)
+	else :
+		match state:
+			State.EMPTY:
+				background_color = _empty_color
+			State.TAKEN:
+				background_color = _taken_color
+			State.CONFLICT:
+				background_color = _conflict_color
+			State.AVILABLE:
+				background_color = _avilable_color
+		draw_rect(矩形新尺寸, background_color, true)

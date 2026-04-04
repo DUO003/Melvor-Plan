@@ -132,7 +132,6 @@ signal 全局悬浮提示(文本内容:String,节点实例:Node,默认字体:int
 signal 数据包提示(数据:梅提示数据)
 ##部分功能需要单独处理保存
 signal 全局保存()
-##部分功能需要单独处理保存
 @warning_ignore("unused_signal")
 signal 显示暂停界面(状态:bool)
 enum 修改枚举{无,添加,删除}

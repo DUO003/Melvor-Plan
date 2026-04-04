@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_jleaq"]
 [ext_resource type="Script" uid="uid://mkdbh1ljjonw" path="res://代码/专属代码/背包界面/背包界面.gd" id="2_yf4j8"]
 [ext_resource type="Script" uid="uid://b3x4mwtjmm4tp" path="res://addons/grid_base_inventory_system/core/view/container/inventory/inventory_view.gd" id="3_ghfyu"]
-[ext_resource type="FontFile" uid="uid://ba8mauhrxpxeg" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-85-Bold/AlibabaPuHuiTi-3-85-Bold.otf" id="4_6h3xu"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="4_yf4j8"]
 [ext_resource type="Texture2D" uid="uid://fgk6x0h3se4x" path="res://素材/游戏素材/货币/2.png" id="5_t0i27"]
 [ext_resource type="PackedScene" uid="uid://c2jq16mbnhyo8" path="res://界面/挂机系统/背包/装备.tscn" id="6_cj64r"]
 [ext_resource type="PackedScene" uid="uid://djk25cxay1cfd" path="res://界面/挂机系统/背包/随身商店.tscn" id="7_oth7v"]
@@ -19,6 +19,15 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6h3xu"]
+script = ExtResource("4_yf4j8")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghfyu"]
+bg_color = Color(0, 0, 0, 1)
+script = ExtResource("4_yf4j8")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ig8do"]
 content_margin_top = 5.0
@@ -101,11 +110,10 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 1
+current_tab = 0
 
 [node name="背包栏" type="ScrollContainer" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡" index="1" unique_id=1736124572]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_yf4j8")
@@ -131,9 +139,11 @@ gird_background_color_empty = Color(0.9411765, 0.8039216, 0.6784314, 1)
 gird_background_color_taken = Color(0.9411765, 0.8039216, 0.6784314, 1)
 gird_background_color_conflict = Color(0.8156863, 0.3529412, 0.28627452, 1)
 grid_background_color_avilable = Color(0.9529412, 0.8627451, 0.8039216, 1)
-stack_num_font = ExtResource("4_6h3xu")
-stack_num_font_size = 32
-stack_num_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+"格子覆盖" = true
+"覆盖样式_空" = SubResource("StyleBoxFlat_6h3xu")
+"覆盖样式_占用" = SubResource("StyleBoxFlat_ghfyu")
+stack_num_margin = 16
+stack_num_color = Color(0, 0, 0, 0.1254902)
 metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
 
 [node name="背包按钮区" type="HBoxContainer" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/背包栏/背包滚动区" index="1" unique_id=1044812167]
@@ -153,6 +163,7 @@ text = "扩容"
 
 [node name="装备栏" type="ScrollContainer" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡" index="2" unique_id=163861683]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yf4j8")
 scroll_vertical = 90
@@ -182,9 +193,8 @@ gird_background_color_empty = Color(0.9411765, 0.8039216, 0.6784314, 1)
 gird_background_color_taken = Color(0.9411765, 0.8039216, 0.6784314, 1)
 gird_background_color_conflict = Color(0.8156863, 0.3529412, 0.28627452, 1)
 grid_background_color_avilable = Color(0.9411765, 0.8039216, 0.6784314, 1)
-stack_num_font = ExtResource("4_6h3xu")
-stack_num_font_size = 32
-stack_num_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+stack_num_margin = 16
+stack_num_color = Color(0, 0, 0, 0.1254902)
 metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
 
 [node name="文本2" type="Label" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/装备栏/装备滚动区" index="2" unique_id=511633614]
@@ -207,9 +217,8 @@ gird_background_color_empty = Color(0.9411765, 0.8039216, 0.6784314, 1)
 gird_background_color_taken = Color(0.9411765, 0.8039216, 0.6784314, 1)
 gird_background_color_conflict = Color(0.7294118, 0.31764707, 0.2627451, 1)
 grid_background_color_avilable = Color(0.9411765, 0.8039216, 0.6784314, 1)
-stack_num_font = ExtResource("4_6h3xu")
-stack_num_font_size = 32
-stack_num_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+stack_num_margin = 16
+stack_num_color = Color(0, 0, 0, 0.1254902)
 metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
 
 [node name="方块背包" type="ScrollContainer" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡" index="3" unique_id=2022741407]
@@ -237,10 +246,8 @@ gird_background_color_empty = Color(0.9411765, 0.8039216, 0.6784314, 1)
 gird_background_color_taken = Color(0.49, 0.444267, 0.3185, 0.862745)
 gird_background_color_conflict = Color(0.94, 0.68103, 0.6674, 0.784314)
 grid_background_color_avilable = Color(0.4, 0.362667, 0.26, 0.784314)
-stack_num_font = ExtResource("4_6h3xu")
-stack_num_font_size = 28
-stack_num_margin = 2
-stack_num_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+stack_num_margin = 16
+stack_num_color = Color(0, 0, 0, 0.10980392)
 metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
 metadata/_edit_lock_ = true
 

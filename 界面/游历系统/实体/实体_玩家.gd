@@ -12,8 +12,6 @@ func _ready():
 		return
 var AI启用状态:bool=false
 func _physics_process(间隔: float) -> void:
-	if Engine.is_editor_hint():
-		return
 	super(间隔)
 	if AI启用状态 and 控制检查():
 		指令状态机.set_active(false)

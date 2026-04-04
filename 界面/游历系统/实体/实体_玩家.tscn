@@ -54,5 +54,3 @@ script = ExtResource("5_2bb5a")
 [node name="指令状态机" type="LimboHSM" parent="." index="9" unique_id=902874590]
 blackboard_plan = SubResource("BlackboardPlan_2bb5a")
 unique_name_in_owner = true
-
-[node name="移动" type="LimboState" parent="指令状态机" index="0" unique_id=1841998388]

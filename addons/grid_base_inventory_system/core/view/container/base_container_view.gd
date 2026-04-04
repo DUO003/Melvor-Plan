@@ -55,7 +55,52 @@ class_name BaseContainerView
 	set(value):
 		grid_background_color_avilable = value
 		queue_redraw()
-
+@export var 格子覆盖:bool=false:
+	set(值):
+		格子覆盖 = 值
+		queue_redraw()
+##空、占用、冲突、可用
+@export_enum("空","占用","冲突","可用") var 测试样式:String="空":
+	set(值):
+		测试样式 = 值
+		queue_redraw()
+@export var 覆盖样式_空: StyleBoxFlat:
+	set(值):# 断开旧资源的信号连接
+		_样式信号绑定(覆盖样式_空,false)
+		_样式信号绑定(值,true)
+		覆盖样式_空 = 值
+		if Engine.is_editor_hint():
+			queue_redraw()
+@export var 覆盖样式_占用: StyleBoxFlat:
+	set(值):# 断开旧资源的信号连接
+		_样式信号绑定(覆盖样式_占用,false)
+		_样式信号绑定(值,true)
+		覆盖样式_占用 = 值
+		if Engine.is_editor_hint():
+			queue_redraw()
+@export var 覆盖样式_冲突: StyleBoxFlat:
+	set(值):# 断开旧资源的信号连接
+		_样式信号绑定(覆盖样式_冲突,false)
+		_样式信号绑定(值,true)
+		覆盖样式_冲突 = 值
+		if Engine.is_editor_hint():
+			queue_redraw()
+@export var 覆盖样式_可用: StyleBoxFlat:
+	set(值):# 断开旧资源的信号连接
+		_样式信号绑定(覆盖样式_可用,false)
+		_样式信号绑定(值,true)
+		覆盖样式_可用 = 值
+		if Engine.is_editor_hint():
+			queue_redraw()
+func _样式信号绑定(样式:StyleBoxFlat,状态:bool,监听方法:=queue_redraw):
+	if not Engine.is_editor_hint():
+		return
+	if 状态:
+		if 样式 != null and not 样式.changed.is_connected(监听方法):
+			样式.changed.connect(监听方法)# 连接资源的信号
+	else :
+		if 样式 != null and 样式.changed.is_connected(监听方法):
+			样式.changed.disconnect(监听方法)# 断开资源的信号
 @export_group("Stack Settings")
 ## 堆叠数量的字体
 @export var stack_num_font: Font:
@@ -176,7 +221,7 @@ func _get_grids_by_shape(start: Vector2i, shape: Vector2i) -> Array[Vector2i]:
 ## 功能：创建物品视图实例，设置其位置并添加到容器中，返回创建的物品视图
 func _draw_item(item_data: ItemData, first_grid: Vector2i) -> ItemView:
 	# 根据物品数据及基础样式参数（尺寸、堆叠数量字体等）创建物品视图实例	
-	var item = ItemView.new(item_data, base_size - 2 * grid_border_size, stack_num_font, stack_num_font_size, stack_num_margin, stack_num_color,可拿取类型)
+	var item: = ItemView.new(item_data, base_size - 2 * grid_border_size, stack_num_font, stack_num_font_size, stack_num_margin, stack_num_color,可拿取类型)
 	# 将物品视图添加到物品容器中，使其在界面上显示
 	_item_container.add_child(item)
 	# 设置物品视图的全局位置为第一个格子的全局位置（实现物品在格子上的定位）
@@ -204,8 +249,31 @@ func _draw() -> void:
 		var inner_size = base_size - grid_border_size * 2
 		for row in container_rows:
 			for col in container_columns:
-				draw_rect(Rect2(col * base_size, row * base_size, base_size, base_size), grid_border_color, true)
-				draw_rect(Rect2(col * base_size + grid_border_size, row * base_size + grid_border_size, inner_size, inner_size), gird_background_color_empty, true)
+				var 位置: Vector2 = Vector2(col * base_size + grid_border_size, row * base_size + grid_border_size)
+				var 矩形新尺寸: Rect2 = Rect2(位置, Vector2(inner_size, inner_size))
+				if 格子覆盖:
+					match 测试样式:
+						"空":
+							draw_style_box(覆盖样式_空, 矩形新尺寸)
+						"占用":
+							draw_style_box(覆盖样式_占用, 矩形新尺寸)
+						"冲突":
+							draw_style_box(覆盖样式_冲突, 矩形新尺寸)
+						"可用":
+							draw_style_box(覆盖样式_可用, 矩形新尺寸)
+				else :
+					var 新颜色:Color=gird_background_color_empty
+					match 测试样式:
+						"空":
+							新颜色 = gird_background_color_empty
+						"占用":
+							新颜色 = gird_background_color_taken
+						"冲突":
+							新颜色 = gird_background_color_conflict
+						"可用":
+							新颜色 = grid_background_color_avilable
+					draw_rect(Rect2(col * base_size, row * base_size, base_size, base_size), grid_border_color, true)
+					draw_rect(矩形新尺寸, 新颜色, true)
 				var font = stack_num_font if stack_num_font else get_theme_font("font")
 				var text_size = font.get_string_size("99", HORIZONTAL_ALIGNMENT_RIGHT, -1, stack_num_font_size)
 				var pos = Vector2(

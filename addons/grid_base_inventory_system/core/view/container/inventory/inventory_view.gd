@@ -173,7 +173,13 @@ func _init_grids() -> void:
 	for row in container_rows:
 		for col in container_columns:
 			var grid_id = Vector2i(col, row)
-			var grid = InventoryGridView.new(self, grid_id, base_size, grid_border_size, grid_border_color, 
+			var grid: = InventoryGridView.new(self, grid_id, base_size, grid_border_size, grid_border_color, 
 				gird_background_color_empty, gird_background_color_taken, gird_background_color_conflict, grid_background_color_avilable)
+			if 格子覆盖:
+				grid.格子覆盖=true
+				grid.覆盖样式_空=覆盖样式_空
+				grid.覆盖样式_占用=覆盖样式_占用
+				grid.覆盖样式_冲突=覆盖样式_冲突
+				grid.覆盖样式_可用=覆盖样式_可用
 			_grid_container.add_child(grid)
 			_grid_map[grid_id] = grid

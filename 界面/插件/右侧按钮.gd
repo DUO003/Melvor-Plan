@@ -1,8 +1,8 @@
 extends HBoxContainer
 @onready var 存档功能区: HBoxContainer = %"存档功能区"
 @onready var 时间文本: Label = %存档时间文本
-@onready var 存档: Button = %存档
-@onready var 展开按钮: Button = $展开按钮
+@onready var 存档: Button = %存档按钮
+@onready var 展开按钮: Button = %展开按钮
 @onready var 暂停: Button = %暂停
 func _ready():
 	时间文本.text="未存档"

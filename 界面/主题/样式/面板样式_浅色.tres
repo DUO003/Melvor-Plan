@@ -5,7 +5,6 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqfis"]
 bg_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
-draw_center = false
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10

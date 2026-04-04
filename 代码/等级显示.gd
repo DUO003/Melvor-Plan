@@ -21,8 +21,10 @@ func _ready() -> void:
 	精通进度条.custom_minimum_size.y=50
 	熟练进度条.custom_minimum_size.y=50
 	熟练进度条.position.y=50
+
 	custom_minimum_size.y=100
 	position=Vector2(0,0)
+
 	await get_tree().process_frame
 	_更新_UI()
 func 页面修改(新系统:String,新玩法:String):
@@ -40,6 +42,9 @@ func _更新_UI():
 		精通进度条.value=33
 		熟练进度条.max_value=100
 		熟练进度条.value=66
+
+
+
 	else :
 		等级=计划.数据系统(系统,"等级")
 		if 玩法==系统:
@@ -59,6 +64,7 @@ func _更新_UI():
 			增益文本="加成%d%%"%(升级检查.size()*5)
 		熟练数值.text="[img=40x40]%s[/img]熟练%s:%d/%d"%[计划.表格.道具贴图("熟练").resource_path,增益文本,熟练,熟练上限]
 		精通数值.text="[img=40x40]%s[/img]精通:%d/%d"%[计划.表格.道具贴图("精通").resource_path,精通,精通上限]
+
 		if 熟练上限==-1:
 			熟练=0
 			熟练上限=1

@@ -11,28 +11,6 @@
 [ext_resource type="StyleBox" uid="uid://dtqhnwn5me1i8" path="res://界面/主题/样式/面板样式_浅色.tres" id="8_fv7pg"]
 [ext_resource type="StyleBox" uid="uid://dn525qmnyhns4" path="res://界面/主题/样式/面板样式_禁用.tres" id="9_1bn4b"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ff5e4"]
-bg_color = Color(0.50980395, 0.3529412, 0.23921569, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.50980395, 0.3529412, 0.23921569, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_left = -5.0
-expand_margin_top = -5.0
-expand_margin_right = -5.0
-expand_margin_bottom = -5.0
-script = ExtResource("2_csmyg")
-margin_left = -5
-margin_top = -5
-margin_right = -5
-margin_bottom = -5
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ykmuj"]
 
 [sub_resource type="DPITexture" id="DPITexture_1bn4b"]
@@ -812,12 +790,10 @@ vertical = true
 [sub_resource type="DPITexture" id="DPITexture_1xjbn"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#fff\" d=\"m1 3 2-2 5 5 5-5 2 2-5 5 5 5-2 2-5-5-5 5-2-2 5-5z\"/></svg>
 "
-base_scale = 2.0
 
 [sub_resource type="DPITexture" id="DPITexture_fhl5v"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#fff\" d=\"m1 3 2-2 5 5 5-5 2 2-5 5 5 5-2 2-5-5-5 5-2-2 5-5z\"/></svg>
 "
-base_scale = 2.0
 
 [resource]
 default_font = ExtResource("1_csmyg")
@@ -990,8 +966,6 @@ VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_gbvy5")
 VSeparator/styles/separator = SubResource("StyleBoxLine_ar6tj")
 Window/colors/title_color = Color(0, 0, 0, 1)
 Window/colors/title_outline_modulate = Color(0, 0, 0, 1)
-Window/constants/title_height = 40
-Window/constants/title_outline_size = 2
 Window/font_sizes/title_font_size = 40
 Window/icons/close = SubResource("DPITexture_1xjbn")
 Window/icons/close_pressed = SubResource("DPITexture_fhl5v")

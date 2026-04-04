@@ -2,6 +2,7 @@ extends Control
 var 游戏版本 = ProjectSettings.get_setting("application/config/version", "错误") # 第二个参数是默认值
 var 存档单例:梅存档格式
 var 存档字典: Dictionary = {}
+var 多语言:OptionButton
 var 语言映射表: Dictionary = {
 	"中文": "Keys",  # 空字符串=显示原始Key（中文）
 	"英文": "EN" # 对应翻译文件的EN locale
@@ -9,7 +10,6 @@ var 语言映射表: Dictionary = {
 @onready var 感谢名单: Button = %感谢名单
 @onready var 名单容器: Panel = $开始菜单/名单容器
 @onready var 游戏图标: TextureRect = %游戏图标
-@onready var 多语言: OptionButton = %语言下拉菜单
 func _ready() -> void:
 	名单容器.visible=false
 	感谢名单.pressed.connect(func():
@@ -34,10 +34,11 @@ func _ready() -> void:
 		序号+=1
 	%"存档选择".current_tab=有效序号
 	%"版本号".text=游戏版本
+	多语言=$"开始菜单/多语言功能区/语言下拉菜单"
 	多语言.clear()
 	for 功能名称 in 语言映射表:
 		多语言.add_item(功能名称)
-	%"可用性警告".visible=false
+	$"开始菜单/多语言功能区/可用性警告".visible=false
 	多语言.selected = 0
 	多语言.item_selected.connect(_当语言切换时)
 # 自定义函数：语言切换触发的逻辑（中文函数名）
@@ -45,7 +46,7 @@ func _当语言切换时(选中索引: int):
 	var 选中的语言名称 = 多语言.get_item_text(选中索引)
 	var 目标语言标识 = 语言映射表[选中的语言名称]
 	TranslationServer.set_locale(目标语言标识)
-	%"可用性警告".visible=true
+	$"开始菜单/多语言功能区/可用性警告".visible=true
 ## 返回格式化后的相对时间文本（如：5分钟前 / 2 hours ago）
 ## 时间戳: float 【必须传入】存档时保存的Unix时间戳（秒）
 ## 返回值语言: String 【可选】默认中文，支持扩展其他语言

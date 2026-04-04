@@ -200,7 +200,7 @@ script = ExtResource("6_btlti")
 "名单字典" = Dictionary[String, String]({
 "引领者": "QQ群",
 "狼葵": "QQ群",
-"蛙石": "QQ群_美术"
+"蛙石": "QQ群_美工"
 })
 
 [node name="名称" type="Label" parent="开始菜单/名单容器/名单滚动区/名单排列/名单" unique_id=1965034433]
@@ -323,7 +323,6 @@ offset_bottom = 904.0
 theme_override_styles/panel = SubResource("StyleBox_ubnl7")
 
 [node name="语言下拉菜单" type="OptionButton" parent="开始菜单/多语言功能区" unique_id=1322386284]
-unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -346,7 +345,6 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_l8v50")
 
 [node name="可用性警告" type="Label" parent="开始菜单/多语言功能区" unique_id=124537175]
-unique_name_in_owner = true
 layout_mode = 0
 offset_left = 2.0
 offset_top = 65.0
@@ -386,32 +384,30 @@ mouse_behavior_recursive = 1
 unique_name_in_owner = true
 disable_3d = true
 oversampling_override = 1.0
-title = "创建存档"
+title = ""
 initial_position = 1
 size = Vector2i(840, 400)
 unresizable = true
-borderless = true
 min_size = Vector2i(800, 400)
 max_size = Vector2i(800, 200)
 theme = ExtResource("1_6r68l")
 ok_button_text = "确认"
-dialog_autowrap = true
 cancel_button_text = "取消"
 
 [node name="节点" type="Control" parent="确认弹窗" unique_id=1461040001]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 835.0
-offset_bottom = 320.0
+offset_left = 10.0
+offset_top = 28.0
+offset_right = 830.0
+offset_bottom = 293.0
 
 [node name="弹窗标题" type="Label" parent="确认弹窗/节点" unique_id=969183942]
 unique_name_in_owner = true
-layout_mode = 1
-offset_left = 11.0
-offset_right = 247.0
-offset_bottom = 85.0
+layout_mode = 0
+offset_top = -28.0
+offset_right = 236.0
+offset_bottom = 57.0
 theme = ExtResource("1_6r68l")
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 60
@@ -419,18 +415,13 @@ text = "二次确认"
 
 [node name="弹窗文本" type="Label" parent="确认弹窗/节点" unique_id=1689929033]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 80.0
-offset_right = -10.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_top = 56.0
+offset_right = 640.0
+offset_bottom = 359.0
 theme = ExtResource("1_6r68l")
 theme_override_constants/line_spacing = -5
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 40
 text = "存档创建后
 文件名需要关闭游戏手动修改
 用户名修改后进入游戏存档后生效
@@ -438,14 +429,10 @@ text = "存档创建后
 
 [node name="启用测试" type="CheckButton" parent="确认弹窗/节点" unique_id=1959848480]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -257.0
-offset_top = 14.0
-offset_bottom = 78.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+layout_mode = 0
+offset_left = 527.0
+offset_top = -15.0
+offset_right = 816.0
+offset_bottom = 49.0
 theme_override_font_sizes/font_size = 40
 text = "启用沙盒"

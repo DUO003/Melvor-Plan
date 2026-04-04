@@ -204,7 +204,6 @@ var 窗口数据: Dictionary = {
 		"图钉": [],
 		"系统":"游历"
 	},
-	
 	}
 func 获取默认解锁窗口()->Array:
 	var 窗口数组:Array=[]
