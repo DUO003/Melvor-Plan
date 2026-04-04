@@ -176,11 +176,11 @@ func _get_grids_by_shape(start: Vector2i, shape: Vector2i) -> Array[Vector2i]:
 ## 功能：创建物品视图实例，设置其位置并添加到容器中，返回创建的物品视图
 func _draw_item(item_data: ItemData, first_grid: Vector2i) -> ItemView:
 	# 根据物品数据及基础样式参数（尺寸、堆叠数量字体等）创建物品视图实例	
-	var item = ItemView.new(item_data, base_size, stack_num_font, stack_num_font_size, stack_num_margin, stack_num_color,可拿取类型)
+	var item = ItemView.new(item_data, base_size - 2 * grid_border_size, stack_num_font, stack_num_font_size, stack_num_margin, stack_num_color,可拿取类型)
 	# 将物品视图添加到物品容器中，使其在界面上显示
 	_item_container.add_child(item)
 	# 设置物品视图的全局位置为第一个格子的全局位置（实现物品在格子上的定位）
-	item.global_position = _grid_map[first_grid].global_position
+	item.global_position = _grid_map[first_grid].global_position + Vector2(grid_border_size,grid_border_size)
 	# 返回创建的物品视图
 	return item
 

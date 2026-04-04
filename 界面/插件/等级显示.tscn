@@ -63,16 +63,14 @@ script = ExtResource("1_t1bs0")
 
 [node name="容器" type="HBoxContainer" parent="." unique_id=960736639]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -45.0
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="进度条" type="GridContainer" parent="容器" unique_id=855376273]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/v_separation = 0
 columns = 2
 
@@ -88,7 +86,7 @@ horizontal_alignment = 2
 
 [node name="熟练进度条" type="ProgressBar" parent="容器/进度条" unique_id=2038560541]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -129,7 +127,7 @@ horizontal_alignment = 2
 
 [node name="精通进度条" type="ProgressBar" parent="容器/进度条" unique_id=497548190]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -151,8 +149,7 @@ offset_top = -11.0
 offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_brtdv")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_7v3hg")
+theme_override_constants/paragraph_separation = 0
 bbcode_enabled = true
 text = "精通:"
 fit_content = true

@@ -1,87 +1,133 @@
-[gd_scene load_steps=5 format=3 uid="uid://djk25cxay1cfd"]
+[gd_scene format=3 uid="uid://djk25cxay1cfd"]
 
 [ext_resource type="Script" uid="uid://cq4a6aa1tvt8" path="res://界面/挂机系统/背包/随身商店.gd" id="1_vp3kg"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_x8up3"]
 [ext_resource type="PackedScene" uid="uid://dx5oki37mgsju" path="res://界面/插件/体力状态.tscn" id="2_x8up3"]
 [ext_resource type="Script" uid="uid://gqt6pq4lt0gw" path="res://addons/grid_base_inventory_system/core/view/container/shop/shop_view.gd" id="3_le1y4"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="4_rseta"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_ykh16"]
+[ext_resource type="FontFile" uid="uid://ba8mauhrxpxeg" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-85-Bold/AlibabaPuHuiTi-3-85-Bold.otf" id="7_ykh16"]
 
-[node name="随身商店" type="VBoxContainer"]
-custom_minimum_size = Vector2(600, 828)
-offset_right = 600.0
-offset_bottom = 828.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqfis"]
+bg_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.9529412, 0.8627451, 0.8039216, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("5_ykh16")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xjbn"]
+bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+expand_margin_bottom = -5.0
+script = ExtResource("5_ykh16")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+margin_bottom = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_w4vb3"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+script = ExtResource("4_rseta")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_rqfis"), SubResource("StyleBoxFlat_1xjbn")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[node name="随身商店" type="VBoxContainer" unique_id=1145719514]
+custom_minimum_size = Vector2(600, 0)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 480.0
+grow_vertical = 2
 theme = ExtResource("1_x8up3")
 script = ExtResource("1_vp3kg")
 metadata/_tab_index = 2
 
-[node name="刷新计时" type="Label" parent="."]
+[node name="刷新计时" type="Label" parent="." unique_id=1266831544]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
-theme_override_constants/line_spacing = -15
-theme_override_font_sizes/font_size = 35
 text = "商店刷新10:00
 手动刷新20体力"
 
-[node name="体力容器" type="HBoxContainer" parent="."]
+[node name="体力容器" type="HBoxContainer" parent="." unique_id=1897430542]
 layout_mode = 2
 
-[node name="体力状态" parent="体力容器" instance=ExtResource("2_x8up3")]
+[node name="体力状态" parent="体力容器" unique_id=1028300599 instance=ExtResource("2_x8up3")]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
 
-[node name="体力刷新" type="Button" parent="体力容器"]
+[node name="体力刷新" type="Button" parent="体力容器" unique_id=1907441926]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "手动刷新"
 
-[node name="商店容器" type="ScrollContainer" parent="."]
+[node name="商店容器" type="ScrollContainer" parent="." unique_id=854835693]
+custom_minimum_size = Vector2(0, 270)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-vertical_scroll_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_w4vb3")
+horizontal_scroll_mode = 0
 
-[node name="商店滚动区" type="VBoxContainer" parent="商店容器"]
+[node name="商店" type="Control" parent="商店容器" unique_id=508989491]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(612, 204)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="商店" type="Control" parent="商店容器/商店滚动区"]
-custom_minimum_size = Vector2(585, 234)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 6
+size_flags_vertical = 4
 script = ExtResource("3_le1y4")
 container_name = "随身商店"
-container_columns = 5
-base_size = 117
-grid_border_size = 2
+container_columns = 6
+base_size = 102
+grid_border_size = 4
 grid_border_color = Color(0.75, 0.75, 0.75, 0)
-gird_background_color_empty = Color(0.91, 0.862225, 0.7735, 0.54901963)
-gird_background_color_taken = Color(0.468, 0.53400004, 0.6, 0.88235295)
-gird_background_color_conflict = Color(0.8, 0.35999998, 0.35999998, 0.93333334)
-grid_background_color_avilable = Color(0.2769, 0.51510507, 0.71, 0.9411765)
+gird_background_color_empty = Color(0.9411765, 0.8039216, 0.6784314, 1)
+gird_background_color_taken = Color(0.9411765, 0.8039216, 0.6784314, 1)
+gird_background_color_conflict = Color(0.8156863, 0.3529412, 0.28627452, 1)
+grid_background_color_avilable = Color(0.9411765, 0.8039216, 0.6784314, 1)
+stack_num_font = ExtResource("7_ykh16")
 stack_num_font_size = 32
-stack_num_margin = 0
-stack_num_color = Color(0, 0, 0, 1)
+stack_num_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
 metadata/_custom_type_script = "uid://gqt6pq4lt0gw"
 
-[node name="背包按钮区" type="HBoxContainer" parent="商店容器/商店滚动区"]
+[node name="背包按钮区" type="HBoxContainer" parent="." unique_id=783235182]
 layout_mode = 2
+size_flags_vertical = 0
 
-[node name="扩容费用" type="Label" parent="商店容器/商店滚动区/背包按钮区"]
+[node name="扩容费用" type="Label" parent="背包按钮区" unique_id=905209922]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/line_spacing = -15
-theme_override_font_sizes/font_size = 35
 text = "扩容需要"
 
-[node name="扩容" type="Button" parent="商店容器/商店滚动区/背包按钮区"]
+[node name="扩容" type="Button" parent="背包按钮区" unique_id=899951393]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 70)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 40
 text = "扩容"

@@ -127,80 +127,7 @@ _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\">
 "
 base_scale = 3.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lif0j"]
-content_margin_left = 15.0
-content_margin_right = 15.0
-bg_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-expand_margin_left = -3.0
-expand_margin_right = -3.0
-script = ExtResource("2_csmyg")
-margin_left = -3
-margin_right = -3
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvlpa"]
-bg_color = Color(0, 0, 0, 1)
-script = ExtResource("2_csmyg")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj2bx"]
-bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
-expand_margin_left = -5.0
-expand_margin_top = -5.0
-expand_margin_right = -5.0
-script = ExtResource("2_csmyg")
-margin_left = -5
-margin_top = -5
-margin_right = -5
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBox" id="StyleBox_ff5e4"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = -1.0
-content_margin_top = -1.0
-content_margin_right = -1.0
-content_margin_bottom = -1.0
-script = ExtResource("1_kb01l")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_gvlpa"), SubResource("StyleBoxFlat_qj2bx")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
-
-[sub_resource type="StyleBox" id="StyleBox_ntsn1"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = -1.0
-content_margin_top = -1.0
-content_margin_right = -1.0
-content_margin_bottom = -1.0
-script = ExtResource("1_kb01l")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_gvlpa"), SubResource("StyleBoxFlat_qj2bx")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
-
-[sub_resource type="StyleBox" id="StyleBox_gklb8"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = -1.0
-content_margin_top = -1.0
-content_margin_right = -1.0
-content_margin_bottom = -1.0
-script = ExtResource("1_kb01l")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_gvlpa"), SubResource("StyleBoxFlat_qj2bx")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
-
-[sub_resource type="StyleBox" id="StyleBox_c3c1y"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = -1.0
-content_margin_top = -1.0
-content_margin_right = -1.0
-content_margin_bottom = -1.0
-script = ExtResource("1_kb01l")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_gvlpa"), SubResource("StyleBoxFlat_qj2bx")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e681f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k24dl"]
 content_margin_left = 4.0
@@ -271,6 +198,9 @@ expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_1bn4b"]
+color = Color(1, 1, 1, 0.3529412)
 
 [sub_resource type="DPITexture" id="DPITexture_c3c1y"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\" fill-opacity=\".75\"/></svg>
@@ -875,6 +805,10 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ar6tj"]
+color = Color(1, 1, 1, 0.3529412)
+vertical = true
+
 [sub_resource type="DPITexture" id="DPITexture_1xjbn"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#fff\" d=\"m1 3 2-2 5 5 5-5 2 2-5 5 5 5-2 2-5-5-5 5-2-2 5-5z\"/></svg>
 "
@@ -885,35 +819,16 @@ _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\">
 "
 base_scale = 2.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gowdn"]
-content_margin_left = 10.0
-content_margin_top = 28.0
-content_margin_right = 10.0
-content_margin_bottom = 8.0
-bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 8.0
-expand_margin_top = 32.0
-expand_margin_right = 8.0
-expand_margin_bottom = 6.0
-
 [resource]
-AcceptDialog/constants/buttons_separation = 10
-AcceptDialog/constants/close_h_offset = 40
-AcceptDialog/constants/title_height = 50
-AcceptDialog/constants/title_outline_size = 2
-AcceptDialog/font_sizes/title_font_size = 40
-AcceptDialog/fonts/title_font = ExtResource("1_csmyg")
-AcceptDialog/styles/panel = SubResource("StyleBoxFlat_ff5e4")
+default_font = ExtResource("1_csmyg")
+default_font_size = 32
+AcceptDialog/constants/close_h_offset = 30
+AcceptDialog/constants/title_height = 30
+AcceptDialog/styles/panel = ExtResource("8_ar6tj")
 Button/colors/font_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
 Button/colors/font_hover_pressed_color = Color(0.6313726, 0.5764706, 0.015686275, 1)
 Button/colors/font_outline_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
 Button/colors/font_pressed_color = Color(0.6313726, 0.5764706, 0.015686275, 1)
-Button/font_sizes/font_size = 32
 Button/styles/disabled = ExtResource("3_lif0j")
 Button/styles/focus = SubResource("StyleBoxEmpty_ykmuj")
 Button/styles/hover = ExtResource("4_fv7pg")
@@ -926,7 +841,6 @@ CheckBox/colors/font_hover_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
 CheckBox/colors/font_hover_pressed_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
 CheckBox/colors/font_outline_color = Color(0.9529412, 0.8627451, 0.8039216, 1)
 CheckBox/colors/font_pressed_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
-CheckBox/font_sizes/font_size = 32
 CheckBox/fonts/font = ExtResource("1_csmyg")
 CheckBox/icons/checked = SubResource("DPITexture_1bn4b")
 CheckBox/icons/checked_disabled = SubResource("DPITexture_ar6tj")
@@ -946,7 +860,6 @@ CheckButton/colors/font_hover_color = Color(0.3647059, 0.24313726, 0.16470589, 1
 CheckButton/colors/font_hover_pressed_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
 CheckButton/colors/font_outline_color = Color(0.9529412, 0.8627451, 0.8039216, 1)
 CheckButton/colors/font_pressed_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
-CheckButton/font_sizes/font_size = 32
 CheckButton/fonts/font = ExtResource("1_csmyg")
 CheckButton/icons/checked = SubResource("DPITexture_lif0j")
 CheckButton/icons/checked_disabled = SubResource("DPITexture_lif0j")
@@ -962,42 +875,33 @@ CheckButton/styles/hover = SubResource("StyleBoxEmpty_ntsn1")
 CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_gklb8")
 CheckButton/styles/normal = SubResource("StyleBoxEmpty_c3c1y")
 CheckButton/styles/pressed = SubResource("StyleBoxEmpty_i0aoi")
-ColorPickerButton/fonts/font = ExtResource("1_csmyg")
-FoldableContainer/colors/collapsed_font_color = Color(0.20201966, 0.13315809, 0.016901305, 1)
-FoldableContainer/colors/font_color = Color(0, 0, 0, 1)
-FoldableContainer/colors/font_outline_color = Color(0, 0, 0, 1)
-FoldableContainer/colors/hover_font_color = Color(0.008202022, 0.008202025, 0.008202025, 1)
-FoldableContainer/constants/h_separation = 10
-FoldableContainer/constants/outline_size = 1
-FoldableContainer/font_sizes/font_size = 40
-FoldableContainer/fonts/font = ExtResource("1_csmyg")
+FoldableContainer/colors/collapsed_font_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+FoldableContainer/colors/font_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
 FoldableContainer/icons/expanded_arrow = SubResource("DPITexture_cgrsc")
 FoldableContainer/icons/expanded_arrow_mirrored = SubResource("DPITexture_ly6fy")
 FoldableContainer/icons/folded_arrow = SubResource("DPITexture_o32f2")
 FoldableContainer/icons/folded_arrow_mirrored = SubResource("DPITexture_h4m5x")
-FoldableContainer/styles/panel = SubResource("StyleBoxFlat_lif0j")
-FoldableContainer/styles/title_collapsed_hover_panel = SubResource("StyleBox_ff5e4")
-FoldableContainer/styles/title_collapsed_panel = SubResource("StyleBox_ntsn1")
-FoldableContainer/styles/title_hover_panel = SubResource("StyleBox_gklb8")
-FoldableContainer/styles/title_panel = SubResource("StyleBox_c3c1y")
+FoldableContainer/styles/focus = SubResource("StyleBoxEmpty_e681f")
+FoldableContainer/styles/panel = ExtResource("8_ar6tj")
+FoldableContainer/styles/title_collapsed_hover_panel = ExtResource("4_fv7pg")
+FoldableContainer/styles/title_collapsed_panel = ExtResource("4_fv7pg")
+FoldableContainer/styles/title_hover_panel = ExtResource("5_1bn4b")
+FoldableContainer/styles/title_panel = ExtResource("5_1bn4b")
 HScrollBar/styles/grabber = SubResource("StyleBoxFlat_k24dl")
 HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_dit28")
 HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_1q3lg")
 HScrollBar/styles/scroll = SubResource("StyleBoxFlat_vlu34")
 HScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_giepi")
+HSeparator/styles/separator = SubResource("StyleBoxLine_1bn4b")
 HSlider/icons/grabber = SubResource("DPITexture_c3c1y")
 HSlider/icons/grabber_highlight = SubResource("DPITexture_i0aoi")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_i0aoi")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ykmuj")
 HSlider/styles/slider = SubResource("StyleBoxFlat_e681f")
 Label/colors/font_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
-Label/font_sizes/font_size = 32
-Label/fonts/font = ExtResource("1_csmyg")
 LineEdit/colors/font_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
 LineEdit/colors/font_placeholder_color = Color(0.5294118, 0.48235294, 0.39607844, 1)
 LineEdit/colors/selection_color = Color(0.8156863, 0.3529412, 0.28627452, 1)
-LineEdit/font_sizes/font_size = 32
-LineEdit/fonts/font = ExtResource("1_csmyg")
 LineEdit/styles/focus = SubResource("StyleBoxEmpty_cgrsc")
 LineEdit/styles/normal = ExtResource("8_fv7pg")
 LineEdit/styles/read_only = ExtResource("9_1bn4b")
@@ -1005,14 +909,11 @@ LinkButton/colors/font_color = Color(8.1822276e-07, 0.30459693, 0.4643883, 1)
 LinkButton/colors/font_focus_color = Color(0, 0.30588236, 0.4627451, 1)
 LinkButton/colors/font_hover_color = Color(0, 0.30588236, 0.4627451, 1)
 LinkButton/colors/font_pressed_color = Color(0, 0.30588236, 0.4627451, 1)
-LinkButton/font_sizes/font_size = 32
-LinkButton/fonts/font = ExtResource("1_csmyg")
 LinkButton/styles/focus = SubResource("StyleBoxFlat_bjkiy")
 MarginContainer/constants/margin_bottom = 20
 MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 20
 MarginContainer/constants/margin_top = 20
-MenuButton/fonts/font = ExtResource("1_csmyg")
 OptionButton/colors/font_color = Color(0, 0, 0, 1)
 OptionButton/colors/font_focus_color = Color(0, 0, 0, 1)
 OptionButton/colors/font_hover_color = Color(0.08078333, 0.08078336, 0.08078327, 1)
@@ -1020,8 +921,6 @@ OptionButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 OptionButton/colors/font_pressed_color = Color(0, 0, 0, 1)
 OptionButton/constants/arrow_margin = 10
 OptionButton/constants/outline_size = 1
-OptionButton/font_sizes/font_size = 32
-OptionButton/fonts/font = ExtResource("1_csmyg")
 OptionButton/icons/arrow = SubResource("DPITexture_gklb8")
 OptionButton/styles/focus = SubResource("StyleBoxEmpty_ly6fy")
 OptionButton/styles/hover = SubResource("StyleBox_ykmuj")
@@ -1030,30 +929,14 @@ OptionButton/styles/normal = SubResource("StyleBox_ykmuj")
 OptionButton/styles/pressed = SubResource("StyleBox_ykmuj")
 Panel/styles/panel = ExtResource("8_ar6tj")
 PanelContainer/styles/panel = ExtResource("8_ar6tj")
-PopupMenu/font_sizes/font_size = 32
-PopupMenu/fonts/font = ExtResource("1_csmyg")
-PopupMenu/fonts/font_separator = ExtResource("1_csmyg")
-PopupMenu/fonts/title_font = ExtResource("1_csmyg")
 PopupMenu/styles/hover = SubResource("StyleBox_1bn4b")
 PopupMenu/styles/panel = SubResource("StyleBox_qj2bx")
 ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
 ProgressBar/constants/outline_size = 1
-ProgressBar/font_sizes/font_size = 32
-ProgressBar/fonts/font = ExtResource("1_csmyg")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_3rko8")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_pbgl2")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
 RichTextLabel/constants/paragraph_separation = 12
-RichTextLabel/font_sizes/bold_font_size = 32
-RichTextLabel/font_sizes/bold_italics_font_size = 32
-RichTextLabel/font_sizes/italics_font_size = 32
-RichTextLabel/font_sizes/mono_font_size = 32
-RichTextLabel/font_sizes/normal_font_size = 32
-RichTextLabel/fonts/bold_font = ExtResource("1_csmyg")
-RichTextLabel/fonts/bold_italics_font = ExtResource("1_csmyg")
-RichTextLabel/fonts/italics_font = ExtResource("1_csmyg")
-RichTextLabel/fonts/mono_font = ExtResource("1_csmyg")
-RichTextLabel/fonts/normal_font = ExtResource("1_csmyg")
 ScrollContainer/styles/focus = SubResource("StyleBoxFlat_xlieo")
 SpinBox/colors/down_pressed_icon_modulate = Color(0.8156863, 0.3529412, 0.28627452, 1)
 SpinBox/colors/up_pressed_icon_modulate = Color(0.8156863, 0.3529412, 0.28627452, 1)
@@ -1068,7 +951,6 @@ SpinBox/icons/up_pressed = SubResource("DPITexture_prhvx")
 SpinBox/styles/down_background_pressed = SubResource("StyleBoxEmpty_012bm")
 SpinBox/styles/up_background_pressed = SubResource("StyleBoxEmpty_mh2qh")
 TabBar/constants/h_separation = 0
-TabBar/fonts/font = ExtResource("1_csmyg")
 TabBar/icons/close = SubResource("DPITexture_csmyg")
 TabBar/icons/decrement = SubResource("DPITexture_gbvy5")
 TabBar/icons/decrement_highlight = SubResource("DPITexture_k24dl")
@@ -1078,8 +960,6 @@ TabBar/icons/increment_highlight = SubResource("DPITexture_vlu34")
 TabContainer/constants/icon_separation = 0
 TabContainer/constants/side_margin = 10
 TabContainer/constants/tab_separation = 0
-TabContainer/font_sizes/font_size = 32
-TabContainer/fonts/font = ExtResource("1_csmyg")
 TabContainer/icons/decrement = SubResource("DPITexture_giepi")
 TabContainer/icons/decrement_highlight = SubResource("DPITexture_bjkiy")
 TabContainer/icons/drop_mark = SubResource("DPITexture_i0fpt")
@@ -1098,25 +978,22 @@ TextEdit/colors/caret_background_color = Color(1, 1, 1, 0)
 TextEdit/colors/font_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
 TextEdit/colors/search_result_color = Color(1, 0.7058824, 0.050980393, 1)
 TextEdit/colors/selection_color = Color(0.8156863, 0.3529412, 0.28627452, 1)
-TextEdit/font_sizes/font_size = 30
 TextEdit/fonts/font = ExtResource("1_csmyg")
 TextEdit/styles/focus = SubResource("StyleBoxEmpty_cgrsc")
 TextEdit/styles/normal = SubResource("StyleBox_iu5b2")
 TextEdit/styles/read_only = SubResource("StyleBoxFlat_gl82m")
-Tree/fonts/font = ExtResource("1_csmyg")
-Tree/fonts/title_button_font = ExtResource("1_csmyg")
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_r7qdb")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_ysomb")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_prhvx")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_fhl5v")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_gbvy5")
+VSeparator/styles/separator = SubResource("StyleBoxLine_ar6tj")
 Window/colors/title_color = Color(0, 0, 0, 1)
 Window/colors/title_outline_modulate = Color(0, 0, 0, 1)
 Window/constants/title_height = 40
 Window/constants/title_outline_size = 2
 Window/font_sizes/title_font_size = 40
-Window/fonts/title_font = ExtResource("1_csmyg")
 Window/icons/close = SubResource("DPITexture_1xjbn")
 Window/icons/close_pressed = SubResource("DPITexture_fhl5v")
-Window/styles/embedded_border = SubResource("StyleBoxFlat_gowdn")
-Window/styles/embedded_unfocused_border = SubResource("StyleBoxFlat_gowdn")
+Window/styles/embedded_border = ExtResource("8_ar6tj")
+Window/styles/embedded_unfocused_border = ExtResource("8_ar6tj")

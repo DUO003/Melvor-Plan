@@ -3,7 +3,7 @@ extends VBoxContainer
 @onready var 体力刷新: Button = %体力刷新
 @onready var 扩容费用: Label = %扩容费用
 @onready var 扩容: Button = %扩容
-@onready var 商店_容器: ShopView = $商店容器/商店滚动区/商店
+@onready var 商店_容器: ShopView = %商店
 func _ready() -> void:
 	计划.过去一秒.connect(更新计时器)
 	体力刷新.pressed.connect(商店刷新)
