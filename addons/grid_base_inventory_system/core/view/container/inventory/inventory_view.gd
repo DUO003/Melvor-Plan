@@ -162,9 +162,9 @@ func _on_inv_item_updated(inv_name: String, grid_id: Vector2i) -> void:
 	print("更新")
 ## 绘制物品
 func _draw_item(item_data: ItemData, first_grid: Vector2i) -> ItemView:
-	var item = ItemView.new(item_data, base_size, stack_num_font, stack_num_font_size, stack_num_margin, stack_num_color)
+	var item = ItemView.new(item_data, base_size - 2 * grid_border_size, stack_num_font, stack_num_font_size, stack_num_margin, stack_num_color)
 	_item_container.add_child(item)
-	item.global_position = _grid_map[first_grid].global_position
+	item.global_position = _grid_map[first_grid].global_position + Vector2(grid_border_size,grid_border_size)
 	return item
 
 ## 初始化格子View

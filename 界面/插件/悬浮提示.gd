@@ -289,8 +289,8 @@ func 数据包样式调整(标题高度:float=60):
 	var 当前样式:嵌套数组样式=数据包样式.duplicate(true)
 	当前样式.样式数组[0].margin_top=-标题高度
 	当前样式.样式数组[0].bg_color=背景色
-	当前样式.样式数组[1].margin_bottom=标题高度-size.y
-	当前样式.样式数组[1].bg_color=标题色
+	#当前样式.样式数组[1].margin_bottom=标题高度-size.y
+	#当前样式.样式数组[1].bg_color=标题色
 	add_theme_stylebox_override("panel",当前样式)
 func 默认样式启用():
 	计划.清除子节点(样式,富文本)

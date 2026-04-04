@@ -82,6 +82,7 @@ anchor_right = 1.0
 offset_left = -305.0
 offset_bottom = 89.0
 grow_horizontal = 0
+alignment = 2
 
 [node name="存档" type="Button" parent="功能/上边栏/右侧按钮" unique_id=201742822]
 unique_name_in_owner = true
@@ -132,17 +133,17 @@ expand_icon = true
 
 [node name="任务栏分割" type="VSplitContainer" parent="功能" unique_id=110886393]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(220, 0)
-anchors_preset = 11
+custom_minimum_size = Vector2(240, 0)
+anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 120.0
+offset_right = -20.0
 offset_bottom = -80.0
 grow_horizontal = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("4_kiae7")
 theme_override_constants/separation = 5
 theme_override_constants/minimum_grab_thickness = 2
 split_offsets = PackedInt32Array(200)

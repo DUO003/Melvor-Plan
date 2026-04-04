@@ -11,7 +11,7 @@ var stack_num_margin: int = 4
 ## 堆叠数字的颜色
 var stack_num_color: Color = Color.WHITE
 ## 堆叠数字的描边
-var 数字描边: Color = Color(0.64, 0.579, 0.499, 0.882)
+var 数字描边: Color = Color(1.0, 1.0, 1.0, 1.0)
 
 ## 物品数据
 var data: ItemData

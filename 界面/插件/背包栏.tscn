@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnjv1qqq3txe4"]
+[gd_scene format=3 uid="uid://bnjv1qqq3txe4"]
 
 [ext_resource type="Script" uid="uid://cwi4da5b644i0" path="res://界面/插件/背包栏.gd" id="1_e26fh"]
 [ext_resource type="Script" uid="uid://bublnb2wstici" path="res://代码/专属代码/炼金界面/背包.gd" id="1_ygqan"]
@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_jyq5j"]
 [ext_resource type="Script" uid="uid://b3x4mwtjmm4tp" path="res://addons/grid_base_inventory_system/core/view/container/inventory/inventory_view.gd" id="5_vo5ye"]
 
-[node name="背包栏" type="FoldableContainer"]
+[node name="背包栏" type="FoldableContainer" unique_id=924188254]
 offset_right = 180.0
 offset_bottom = 60.0
 theme = ExtResource("2_jyq5j")
@@ -14,13 +14,13 @@ folded = true
 title = "背包"
 script = ExtResource("1_e26fh")
 
-[node name="选项卡" type="TabContainer" parent="."]
+[node name="选项卡" type="TabContainer" parent="." unique_id=275038361]
 visible = false
 custom_minimum_size = Vector2(990, 900)
 layout_mode = 2
 current_tab = 1
 
-[node name="物品栏" type="ScrollContainer" parent="选项卡"]
+[node name="物品栏" type="ScrollContainer" parent="选项卡" unique_id=1277020064]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(990, 850)
@@ -29,7 +29,7 @@ horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 metadata/_tab_index = 0
 
-[node name="背包" type="Control" parent="选项卡/物品栏"]
+[node name="背包" type="Control" parent="选项卡/物品栏" unique_id=1140897672]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(990, 1100)
 layout_mode = 2
@@ -51,7 +51,7 @@ stack_num_margin = 0
 stack_num_color = Color(0, 0, 0, 1)
 metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
 
-[node name="装备栏" type="ScrollContainer" parent="选项卡"]
+[node name="装备栏" type="ScrollContainer" parent="选项卡" unique_id=464245280]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(990, 850)
 layout_mode = 2
@@ -59,14 +59,14 @@ horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 metadata/_tab_index = 1
 
-[node name="装备排列容器" type="VBoxContainer" parent="选项卡/装备栏"]
+[node name="装备排列容器" type="VBoxContainer" parent="选项卡/装备栏" unique_id=1627774953]
 layout_mode = 2
 
-[node name="文本" type="Label" parent="选项卡/装备栏/装备排列容器"]
+[node name="文本" type="Label" parent="选项卡/装备栏/装备排列容器" unique_id=2119347216]
 layout_mode = 2
 text = "已鉴定装备"
 
-[node name="装备" type="Control" parent="选项卡/装备栏/装备排列容器"]
+[node name="装备" type="Control" parent="选项卡/装备栏/装备排列容器" unique_id=628529359]
 custom_minimum_size = Vector2(1080, 540)
 layout_mode = 2
 script = ExtResource("5_vo5ye")
@@ -86,11 +86,11 @@ stack_num_margin = 0
 stack_num_color = Color(0, 0, 0, 1)
 metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
 
-[node name="文本2" type="Label" parent="选项卡/装备栏/装备排列容器"]
+[node name="文本2" type="Label" parent="选项卡/装备栏/装备排列容器" unique_id=1055476424]
 layout_mode = 2
 text = "已鉴定宝石"
 
-[node name="宝石" type="Control" parent="选项卡/装备栏/装备排列容器"]
+[node name="宝石" type="Control" parent="选项卡/装备栏/装备排列容器" unique_id=1972501306]
 custom_minimum_size = Vector2(1080, 180)
 layout_mode = 2
 script = ExtResource("5_vo5ye")

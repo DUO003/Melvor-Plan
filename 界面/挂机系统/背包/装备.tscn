@@ -9,12 +9,12 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gdyh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wo6i4"]
-bg_color = Color(0.81960785, 0.7294118, 0.4862745, 1)
+bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -48,12 +48,12 @@ corner_radius_bottom_left = 10
 script = ExtResource("5_j8cvi")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gdyh"]
-bg_color = Color(0.81960785, 0.7294118, 0.4862745, 1)
+bg_color = Color(0.50980395, 0.3529412, 0.23921569, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -218,12 +218,12 @@ corner_radius_bottom_left = 10
 script = ExtResource("5_j8cvi")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gemx3"]
-bg_color = Color(0, 1, 0, 0.502)
+bg_color = Color(0.6313726, 0.5764706, 0.015686275, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -231,12 +231,12 @@ corner_radius_bottom_left = 10
 script = ExtResource("5_j8cvi")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvbm6"]
-bg_color = Color(1, 0, 0, 0.5)
+bg_color = Color(0.8156863, 0.3529412, 0.28627452, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -379,26 +379,39 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1cgl7"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uh1bl"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j8cvi"]
 content_margin_right = 10.0
 
-[node name="装备槽" type="ScrollContainer" unique_id=858360469]
+[node name="装备槽" type="Control" unique_id=641973843]
 custom_minimum_size = Vector2(600, 0)
+layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 618.0
+offset_right = 638.0
 grow_vertical = 2
-horizontal_scroll_mode = 0
 script = ExtResource("1_cktd2")
 
 [node name="装备" type="VBoxContainer" parent="." unique_id=1399434938]
-custom_minimum_size = Vector2(600, 828)
-layout_mode = 2
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 0
+offset_right = 638.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_e64v6")
 metadata/_tab_index = 1
-metadata/_edit_lock_ = true
 
 [node name="系统装备槽" type="TabContainer" parent="装备" unique_id=1314458744]
 unique_name_in_owner = true
@@ -699,11 +712,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/line_separation = -5
 theme_override_constants/paragraph_separation = 0
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/mono_font_size = 32
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/italics_font_size = 28
+theme_override_font_sizes/mono_font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_e64v6")
 fit_content = true
 scroll_active = false
@@ -719,14 +732,13 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/line_separation = -5
-theme_override_constants/paragraph_separation = 0
-theme_override_font_sizes/normal_font_size = 35
-theme_override_font_sizes/bold_font_size = 35
-theme_override_font_sizes/bold_italics_font_size = 35
-theme_override_font_sizes/italics_font_size = 35
-theme_override_font_sizes/mono_font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxEmpty_e64v6")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/italics_font_size = 28
+theme_override_font_sizes/mono_font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1cgl7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1cgl7")
 text = "游历 LV:0"
 
 [node name="属性右" type="RichTextLabel" parent="装备/玩家属性" unique_id=410152381]
@@ -734,13 +746,13 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/line_separation = -5
-theme_override_constants/paragraph_separation = 0
-theme_override_font_sizes/normal_font_size = 35
-theme_override_font_sizes/bold_font_size = 35
-theme_override_font_sizes/bold_italics_font_size = 35
-theme_override_font_sizes/italics_font_size = 35
-theme_override_font_sizes/mono_font_size = 35
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/italics_font_size = 28
+theme_override_font_sizes/mono_font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uh1bl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uh1bl")
 text = "游历 LV:0"
 
 [node name="属性详情" type="CheckButton" parent="装备" unique_id=1252390099]
