@@ -39,10 +39,7 @@ metadata/_custom_type_script = "uid://dyet4yfov8by1"
 [node name="冒险界面" unique_id=166508811 instance=ExtResource("1_ja4i7")]
 "基类窗口名称" = "冒险界面"
 
-[node name="等级显示" parent="标题" parent_id_path=PackedInt32Array(2049886415) index="0" unique_id=2041357675]
-"玩法" = "冒险"
-
-[node name="内容节点" parent="." index="2" unique_id=1614734378]
+[node name="内容节点" parent="." index="0" unique_id=1614734378]
 unique_name_in_owner = true
 
 [node name="分栏" type="VBoxContainer" parent="内容节点" index="0" unique_id=1528641567]

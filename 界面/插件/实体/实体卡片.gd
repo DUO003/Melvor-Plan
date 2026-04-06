@@ -23,9 +23,11 @@ func _ready() -> void:
 	背景.add_theme_stylebox_override("panel",样式)
 	图片.pivot_offset_ratio = Vector2(0.5, 0.5)
 	面向调整(true)
-func 传入数据(新名称,新贴图,新类型):
-	实体名称=新名称
-	实体贴图=新贴图
+func 传入数据(新名称:String="",新贴图:Texture2D=null,新类型:String="玩家"):
+	if not 新名称=="":
+		实体名称=新名称
+	if 新贴图:
+		实体贴图=新贴图
 	实体类型=新类型
 func 面向调整(向左看: bool):
 	# 方向：向左=1，向右=-1

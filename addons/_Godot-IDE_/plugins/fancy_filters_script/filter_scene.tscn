@@ -1,0 +1,203 @@
+[gd_scene format=3 uid="uid://dhlxe0qj82e8y"]
+
+[ext_resource type="Script" uid="uid://bwtq1pkujrb1d" path="res://addons/_Godot-IDE_/plugins/fancy_filters_script/script_info.gd" id="1_5gq01"]
+[ext_resource type="Script" uid="uid://gct2x12uf8jj" path="res://addons/_Godot-IDE_/plugins/fancy_filters_script/button_filter.gd" id="2_djmkv"]
+[ext_resource type="Script" uid="uid://dpkvcqsih4i8w" path="res://addons/_Godot-IDE_/plugins/fancy_filters_script/filters_container.gd" id="2_u1yuj"]
+[ext_resource type="Texture2D" uid="uid://7cc0l2qrud4e" path="res://addons/_Godot-IDE_/shared_resources/MethodOverride.svg" id="3_7xcf1"]
+[ext_resource type="Texture2D" uid="uid://crkr474l7xbxq" path="res://addons/_Godot-IDE_/shared_resources/ScriptExtend.svg" id="3_nynvq"]
+[ext_resource type="Texture2D" uid="uid://b20quvulo68j1" path="res://addons/_Godot-IDE_/shared_resources/MemberConstant.svg" id="4_7xcf1"]
+[ext_resource type="Texture2D" uid="uid://7kiocx0vfnh7" path="res://addons/_Godot-IDE_/shared_resources/MemberSignal.svg" id="5_2xgjc"]
+[ext_resource type="Texture2D" uid="uid://d07plrb5ssgey" path="res://addons/_Godot-IDE_/shared_resources/MemberProperty.svg" id="5_nynvq"]
+[ext_resource type="Texture2D" uid="uid://cvlk0lgo67bew" path="res://addons/_Godot-IDE_/shared_resources/MemberMethod.svg" id="6_ndpn6"]
+[ext_resource type="Texture2D" uid="uid://e0vxr1d0t1ug" path="res://addons/_Godot-IDE_/shared_resources/InterfaceScript.svg" id="8_goajo"]
+[ext_resource type="Texture2D" uid="uid://dg5o2young4vw" path="res://addons/_Godot-IDE_/shared_resources/search.svg" id="10_2xgjc"]
+[ext_resource type="Script" uid="uid://bbbdyhh8lhw4a" path="res://addons/_Godot-IDE_/plugins/fancy_filters_script/line_edit.gd" id="11_1yamo"]
+[ext_resource type="Script" uid="uid://7i8lllh1es27" path="res://addons/_Godot-IDE_/plugins/fancy_filters_script/components/tag_tab.gd" id="13_arqvp"]
+[ext_resource type="Script" uid="uid://t1rd1si18jww" path="res://addons/_Godot-IDE_/plugins/fancy_filters_script/components/settings_tab.gd" id="14_arqvp"]
+
+[node name="Container" type="TabContainer" unique_id=753472176 node_paths=PackedStringArray("button_container", "tree_container")]
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 0
+script = ExtResource("1_5gq01")
+button_container = NodePath("Script Info/VContainer/SContainer/SHContainer")
+tree_container = NodePath("Script Info/SContainer/Tree")
+
+[node name="Script Info" type="VBoxContainer" parent="." unique_id=1276996574]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VContainer" type="VBoxContainer" parent="Script Info" unique_id=2000504316]
+layout_mode = 2
+
+[node name="SContainer" type="ScrollContainer" parent="Script Info/VContainer" unique_id=1153367555]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("2_u1yuj")
+
+[node name="SHContainer" type="HBoxContainer" parent="Script Info/VContainer/SContainer" unique_id=2035975793]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="show_all" type="Button" parent="Script Info/VContainer/SContainer/SHContainer" unique_id=976633952]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "All"
+icon_alignment = 1
+script = ExtResource("2_djmkv")
+
+[node name="show_inheritance" type="Button" parent="Script Info/VContainer/SContainer/SHContainer" unique_id=1598662066]
+modulate = Color(0.6627451, 0.6627451, 0.6627451, 0.7)
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "Show inheritance"
+toggle_mode = true
+icon = ExtResource("3_7xcf1")
+icon_alignment = 1
+script = ExtResource("2_djmkv")
+
+[node name="show_functions" type="Button" parent="Script Info/VContainer/SContainer/SHContainer" unique_id=167883967]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "Show Properties"
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("6_ndpn6")
+icon_alignment = 1
+script = ExtResource("2_djmkv")
+
+[node name="show_properties" type="Button" parent="Script Info/VContainer/SContainer/SHContainer" unique_id=1724933341]
+modulate = Color(1, 0.64705884, 0, 1)
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "Show Properties"
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("5_nynvq")
+icon_alignment = 1
+script = ExtResource("2_djmkv")
+
+[node name="show_signals" type="Button" parent="Script Info/VContainer/SContainer/SHContainer" unique_id=954657973]
+modulate = Color(0, 1, 0, 1)
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "Show Signals"
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("5_2xgjc")
+icon_alignment = 1
+script = ExtResource("2_djmkv")
+
+[node name="show_constants" type="Button" parent="Script Info/VContainer/SContainer/SHContainer" unique_id=12961752]
+modulate = Color(0, 1, 1, 1)
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "Show Constants"
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("4_7xcf1")
+icon_alignment = 1
+script = ExtResource("2_djmkv")
+
+[node name="show_parent_class" type="Button" parent="Script Info/VContainer/SContainer/SHContainer" unique_id=589023410]
+modulate = Color(0.4627451, 0.8117647, 0.70980394, 1)
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "Show parent classes"
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("3_nynvq")
+icon_alignment = 1
+script = ExtResource("2_djmkv")
+
+[node name="show_native_class" type="Button" parent="Script Info/VContainer/SContainer/SHContainer" unique_id=1375223746]
+modulate = Color(0.6627451, 0.6627451, 0.6627451, 0.7)
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "Show native classes"
+toggle_mode = true
+icon = ExtResource("8_goajo")
+icon_alignment = 1
+script = ExtResource("2_djmkv")
+
+[node name="LineEdit" type="LineEdit" parent="Script Info/VContainer" unique_id=1695542776 node_paths=PackedStringArray("tree")]
+layout_mode = 2
+placeholder_text = "Search Bar"
+clear_button_enabled = true
+right_icon = ExtResource("10_2xgjc")
+script = ExtResource("11_1yamo")
+tree = NodePath("../../SContainer/Tree")
+
+[node name="SContainer" type="ScrollContainer" parent="Script Info" unique_id=123413656]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tree" type="Tree" parent="Script Info/SContainer" unique_id=131916422]
+auto_translate_mode = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/item_margin = 6
+columns = 2
+allow_rmb_select = true
+
+[node name="Tags" type="VBoxContainer" parent="." unique_id=327952145 node_paths=PackedStringArray("container")]
+visible = false
+layout_mode = 2
+script = ExtResource("13_arqvp")
+container = NodePath("VBoxContainer/MarginContainer")
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tags" unique_id=1511305740]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Tags/VBoxContainer" unique_id=1278718996]
+layout_mode = 2
+text = "Tags Preview"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Tags/VBoxContainer" unique_id=1497992399]
+layout_mode = 2
+
+[node name="MarginContainer" type="ScrollContainer" parent="Tags/VBoxContainer" unique_id=563738914]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Settings" type="VBoxContainer" parent="." unique_id=689811362 node_paths=PackedStringArray("container")]
+visible = false
+layout_mode = 2
+script = ExtResource("14_arqvp")
+container = NodePath("VBoxContainer/MarginContainer")
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings" unique_id=1728652305]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer" unique_id=384898544]
+layout_mode = 2
+text = "Filter Settings"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Settings/VBoxContainer" unique_id=1129956075]
+layout_mode = 2
+
+[node name="MarginContainer" type="ScrollContainer" parent="Settings/VBoxContainer" unique_id=1688123469]
+layout_mode = 2
+size_flags_vertical = 3

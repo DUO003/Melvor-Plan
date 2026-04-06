@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://c64xayrsf6jhw"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_6kgjp"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_7hkbt"]
 [ext_resource type="Script" uid="uid://dl4d3306j5yd2" path="res://addons/tab_saver/快捷跳转.gd" id="2_u6nr5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lj0yt"]
+bg_color = Color(0.51489, 0.54, 0.37260002, 1)
+script = ExtResource("2_7hkbt")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="DPITexture" id="DPITexture_6kgjp"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"12\"><path fill=\"none\" stroke=\"#b2b2b2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-opacity=\".85\" stroke-width=\"2\" d=\"m2 4 4 4 4-4\"/></svg>
@@ -17,6 +23,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_6kgjp")
+theme_override_styles/panel = SubResource("StyleBoxFlat_lj0yt")
 script = ExtResource("2_u6nr5")
 
 [node name="水平分割" type="HSplitContainer" parent="." unique_id=1462586680]

@@ -35,7 +35,7 @@ var 实体注册字典:Dictionary[游历实体,float]={}
 ##怪物不能小于这个X位置
 var 关卡战线:float=0
 var 关卡边界:Vector2=Vector2(0,0)
-var 控制队友:游历实体=null
+var 控制队友:游历实体_玩家=null
 ##游历地图切换
 var 接触传送点:bool=false
 var 传送点有效:bool=false
@@ -70,6 +70,13 @@ func 搜索图块(地图图块: TileMapLayer, 目标源ID: int, 目标图集坐�
 	
 	# 返回最终匹配的坐标数组
 	return 符合条件的坐标数组
+func 更新传送带状态(更新状态:bool):
+	if 传送点有效:
+		if 接触传送点 != 更新状态:
+			接触传送点=更新状态
+			传送门更新.emit()
+	else :#找不到传送门,设置为默认接触
+		接触传送点=true
 func _ready() -> void:
 	更新_交互.connect(交互保存)
 	获取背包消息()

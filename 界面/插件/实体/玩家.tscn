@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cjsi35bpmr7oo"]
 
 [ext_resource type="PackedScene" uid="uid://ufm678ahcmcd" path="res://界面/插件/实体/实体卡片.tscn" id="1_1eny7"]
-[ext_resource type="Script" uid="uid://87l6457hgm5e" path="res://界面/插件/实体/玩家.gd" id="2_2gbtp"]
 [ext_resource type="Shader" uid="uid://bg0qomh31e1iv" path="res://界面/插件/实体/实体着色器.gdshader" id="3_6trlm"]
 [ext_resource type="Texture2D" uid="uid://r1hn1hh16sok" path="res://素材/元宝/玩家模板/玩家_右手.svg" id="3_u38l8"]
 [ext_resource type="Texture2D" uid="uid://bx0ton86wll5l" path="res://素材/元宝/玩家模板/玩家_脚.svg" id="4_nrmjh"]
@@ -18,7 +17,6 @@ shader_parameter/percent = 0.0
 shader_parameter/hit_color = Color(1, 0, 0, 1)
 
 [node name="玩家" unique_id=1504805159 instance=ExtResource("1_1eny7")]
-script = ExtResource("2_2gbtp")
 
 [node name="图片" parent="背景" parent_id_path=PackedInt32Array(1702784861) index="1" unique_id=353747191]
 material = SubResource("ShaderMaterial_3e056")

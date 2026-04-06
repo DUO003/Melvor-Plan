@@ -14,10 +14,13 @@ func _enter() -> void:
 	状态持续时间=0
 	var 动画节点:实体卡片=(agent as 游历实体).动画节点
 	动画=动画节点.动画
-	动画.speed_scale=动画速度
+	if not 动画名称=="":
+		播放动画(动画名称,动画速度)
+func 播放动画(名称:String,速度:float):
+	动画.speed_scale=速度
 	动画.play("RESET")
 	动画.seek(0, true)
-	动画.play(动画名称)
+	动画.play(名称)
 func 获取实体缓存():
 	if not agent:return
 	if agent is 游历实体_玩家:玩家=agent
@@ -26,8 +29,7 @@ func _update(间隔: float) -> void:
 	状态持续时间+=间隔
 func _exit() -> void:
 	if 动画:动画.stop()
-func 玩家移动(移速倍率:float=1.0,加速值:int=50)->float:
-	var 移动:float=Input.get_axis("移动_左","移动_右")
+func 玩家移动(移速倍率:float=1.0,加速值:int=50,移动:float=0)->float:
 	if 移动==0:减速(玩家,加速值*2)
 	else :玩家.velocity.x=move_toward(玩家.velocity.x,玩家.速度*移动*移速倍率,加速值)
 	玩家限制()

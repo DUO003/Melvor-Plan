@@ -5,18 +5,30 @@ var 玩家跳跃高度:float=-870
 var 摄像机: Camera2D
 @onready var 拾取检查: Area2D = %拾取检查
 @onready var 拾取范围: CollisionShape2D = %拾取范围
-@onready var 指令状态机: LimboHSM = %指令状态机
+##内部状态机
+@onready var 自动化: 游历状态机_基类 = %自动状态
+##跟着的实体偏移
+var 跟随实体:Array[游历实体]=[]
+
+#状态
+##用于保存切换人物时的传送门状态
+var 位于传送门内:bool=false
 func _ready():
 	super._ready()
 	if Engine.is_editor_hint():
 		return
 var AI启用状态:bool=false
 func _physics_process(间隔: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	super(间隔)
 	if AI启用状态 and 控制检查():
-		指令状态机.set_active(false)
+		AI启用状态=false
+		计划.地图.更新传送带状态(位于传送门内)
+		状态机.dispatch("状态切换待机")
 	elif not AI启用状态 and not 控制检查():
-		指令状态机.set_active(true)
+		AI启用状态=true
+		状态机.dispatch("状态切换自动化")
 	#计划.地图.玩家导航.connect(设置导航)
 #var 二段跳:bool
 #var 松开跳跃:bool
@@ -64,6 +76,9 @@ func 切换摄像机():
 func 状态跳转条件():
 	状态机.add_transition(移动状态,待机状态,移动状态.EVENT_FINISHED,死亡检查.bind(false))
 	状态机.add_transition(攻击状态,待机状态,攻击状态.EVENT_FINISHED,死亡检查.bind(false))
+	状态机.add_transition(自动化,待机状态,自动化.EVENT_FINISHED,死亡检查.bind(false))
+	状态机.add_transition(状态机.ANYSTATE,自动化,"状态切换自动化",死亡检查.bind(false))
+	状态机.add_transition(状态机.ANYSTATE,待机状态,"状态切换待机",死亡检查.bind(false))
 	状态机.add_transition(状态机.ANYSTATE,移动状态,"状态切换移动",死亡检查.bind(false))
 	状态机.add_transition(状态机.ANYSTATE,受击状态,"状态切换受击",死亡检查.bind(false))
 	状态机.add_transition(状态机.ANYSTATE,攻击状态,"状态切换攻击",死亡检查.bind(false))

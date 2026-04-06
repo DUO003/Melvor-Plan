@@ -4,7 +4,7 @@ var 重力加速度:float=ProjectSettings.get("physics/2d/default_gravity") as f
 var 玩家速度:float=500.0
 var 玩家跳跃高度:float=-870
 @onready var 按钮: Button = $按钮
-@onready var 玩家图片: 玩家卡片 = $玩家卡片
+@onready var 玩家图片: 实体卡片 = $玩家卡片
 var 动画: AnimationPlayer
 var 出生点:Vector2
 var 地图外判断:int=1100#Y大于这个值视为掉出地图

@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://cddiai7iiut3l"]
+
+[ext_resource type="Script" uid="uid://dvsbvurbdecex" path="res://addons/_Godot-IDE_/plugins/fancy_search_files/gui/main.gd" id="1_0f0lw"]
+[ext_resource type="Texture2D" uid="uid://dg5o2young4vw" path="res://addons/_Godot-IDE_/shared_resources/search.svg" id="2_fowvl"]
+[ext_resource type="Script" uid="uid://cpdqmdfvgpxmv" path="res://addons/_Godot-IDE_/plugins/fancy_search_files/gui/button.gd" id="2_ydlx0"]
+[ext_resource type="Script" uid="uid://bx6ivdaldbcf8" path="res://addons/_Godot-IDE_/plugins/fancy_search_files/gui/line_edit.gd" id="3_5ntm4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hf3pi"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.07888999, 0.07888999, 0.07888999, 1)
+corner_detail = 3
+
+[node name="Window" type="Popup" unique_id=400916071 node_paths=PackedStringArray("_container", "_tree", "_tree_recents")]
+oversampling_override = 1.0
+title = "Fancy Search Files"
+initial_position = 4
+size = Vector2i(819, 500)
+visible = true
+script = ExtResource("1_0f0lw")
+_container = NodePath("Main/MainContainer/HBoxContainer/BoxContainer/Container")
+_tree = NodePath("Main/MainContainer/HBoxContainer/BoxContainer/Resource/Tree")
+_tree_recents = NodePath("Main/MainContainer/HBoxContainer/RecentsContainer/SCroll/Recents")
+
+[node name="Main" type="PanelContainer" parent="." unique_id=390681415]
+custom_minimum_size = Vector2(200, 500)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hf3pi")
+
+[node name="MainContainer" type="MarginContainer" parent="Main" unique_id=1581251749]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/MainContainer" unique_id=789235157]
+layout_mode = 2
+
+[node name="BoxContainer" type="VBoxContainer" parent="Main/MainContainer/HBoxContainer" unique_id=797930582]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Tittle" type="Label" parent="Main/MainContainer/HBoxContainer/BoxContainer" unique_id=1513298551]
+layout_mode = 2
+text = "Search Files By Type"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator" type="HSeparator" parent="Main/MainContainer/HBoxContainer/BoxContainer" unique_id=1081458357]
+layout_mode = 2
+
+[node name="Container" type="TabContainer" parent="Main/MainContainer/HBoxContainer/BoxContainer" unique_id=70413806]
+layout_mode = 2
+current_tab = 0
+
+[node name="All" type="Control" parent="Main/MainContainer/HBoxContainer/BoxContainer/Container" unique_id=1783510421]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="LineEdit" type="LineEdit" parent="Main/MainContainer/HBoxContainer/BoxContainer" unique_id=1937965299 node_paths=PackedStringArray("tree")]
+layout_mode = 2
+placeholder_text = "File Search"
+alignment = 1
+clear_button_enabled = true
+right_icon = ExtResource("2_fowvl")
+script = ExtResource("3_5ntm4")
+tree = NodePath("../Resource/Tree")
+
+[node name="Resource" type="ScrollContainer" parent="Main/MainContainer/HBoxContainer/BoxContainer" unique_id=1780597047]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Tree" type="Tree" parent="Main/MainContainer/HBoxContainer/BoxContainer/Resource" unique_id=902276398]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Bottom" type="HSeparator" parent="Main/MainContainer/HBoxContainer/BoxContainer" unique_id=174530935]
+layout_mode = 2
+
+[node name="close" type="Button" parent="Main/MainContainer/HBoxContainer/BoxContainer" unique_id=1673370682]
+layout_mode = 2
+text = "Close"
+script = ExtResource("2_ydlx0")
+
+[node name="RecentsContainer" type="VBoxContainer" parent="Main/MainContainer/HBoxContainer" unique_id=1496124895]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Tittle" type="Label" parent="Main/MainContainer/HBoxContainer/RecentsContainer" unique_id=1116390140]
+layout_mode = 2
+text = "Recents"
+horizontal_alignment = 1
+
+[node name="Sep" type="HSeparator" parent="Main/MainContainer/HBoxContainer/RecentsContainer" unique_id=2012323545]
+layout_mode = 2
+
+[node name="LineEdit2" type="LineEdit" parent="Main/MainContainer/HBoxContainer/RecentsContainer" unique_id=1722538999 node_paths=PackedStringArray("tree")]
+layout_mode = 2
+placeholder_text = "Recent Search"
+alignment = 1
+clear_button_enabled = true
+right_icon = ExtResource("2_fowvl")
+script = ExtResource("3_5ntm4")
+tree = NodePath("../SCroll/Recents")
+
+[node name="SCroll" type="ScrollContainer" parent="Main/MainContainer/HBoxContainer/RecentsContainer" unique_id=77511162]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Recents" type="Tree" parent="Main/MainContainer/HBoxContainer/RecentsContainer/SCroll" unique_id=96603828]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="clear" type="Button" parent="Main/MainContainer/HBoxContainer/RecentsContainer" unique_id=1853001982]
+layout_mode = 2
+text = "Clear"
+script = ExtResource("2_ydlx0")

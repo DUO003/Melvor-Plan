@@ -123,13 +123,19 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="梅计划"
 
+[editor]
+
+script/search_in_file_extensions=PackedStringArray("gd", "gdshader", "tscn")
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/fastnode/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/tab_saver/plugin.cfg")
+enabled=PackedStringArray("res://addons/_Godot-IDE_/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/fastnode/plugin.cfg", "res://addons/tab_saver/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
+"res://addons/_Godot-IDE_/plugins/": "blue",
+"res://addons/_Godot-IDE_/shared_resources/": "teal",
 "res://界面/": "green",
 "res://界面/主题/": "gray",
 "res://界面/多003/": "orange",

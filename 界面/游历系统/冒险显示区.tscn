@@ -77,6 +77,15 @@ limit_smoothed = true
 
 [node name="玩家2" parent="实体" unique_id=1546609535 instance=ExtResource("6_psavm")]
 position = Vector2(360, 297)
+"实体名称" = "玩家2"
+
+[node name="玩家3" parent="实体" unique_id=464845606 instance=ExtResource("6_psavm")]
+position = Vector2(360, 297)
+"实体名称" = "玩家3"
+
+[node name="玩家4" parent="实体" unique_id=870866237 instance=ExtResource("6_psavm")]
+position = Vector2(360, 297)
+"实体名称" = "玩家4"
 
 [node name="老奶奶" parent="实体" unique_id=1446836722 instance=ExtResource("6_i1nod")]
 position = Vector2(1009, 646)

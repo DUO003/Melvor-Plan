@@ -27,6 +27,139 @@ unicode = 96
 [sub_resource type="Shortcut" id="Shortcut_gf7k4"]
 events = [SubResource("InputEventKey_yd0tu")]
 
+[sub_resource type="Animation" id="Animation_c2fnl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%存档功能区:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%存档功能区/存档时间:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(200, 80)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%存档按钮:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["手动存档"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%存档时间文本:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%存档按钮:custom_minimum_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(156, 80)]
+}
+
+[sub_resource type="Animation" id="Animation_q6ht0"]
+resource_name = "开关动画"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%存档功能区:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.001, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%存档功能区/存档时间:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 80), Vector2(200, 80)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%存档按钮:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.045358118, 0.066198334, 0.08458676, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "手", "手动", "手动存", "手动存档"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%存档时间文本:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%存档按钮:custom_minimum_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 80), Vector2(156, 80)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gf7k4"]
+_data = {
+&"RESET": SubResource("Animation_c2fnl"),
+&"开关动画": SubResource("Animation_q6ht0")
+}
+
 [node name="等级显示" type="HBoxContainer" unique_id=1982567067]
 custom_minimum_size = Vector2(0, 100)
 anchors_preset = 10
@@ -41,12 +174,14 @@ script = ExtResource("1_t1bs0")
 [node name="进度条" type="GridContainer" parent="." unique_id=814295205]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/v_separation = 0
 columns = 2
 
 [node name="系统文本" type="Label" parent="进度条" unique_id=770788327]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(280, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_vertical = 8
 theme = ExtResource("2_brtdv")
 theme_override_colors/font_outline_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
 theme_override_constants/outline_size = 10
@@ -58,7 +193,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_vertical = 8
 theme = ExtResource("2_brtdv")
 theme_override_styles/background = SubResource("StyleBoxEmpty_in4vb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_in4vb")
@@ -85,8 +220,8 @@ vertical_alignment = 1
 
 [node name="玩法文本" type="Label" parent="进度条" unique_id=1860998728]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_vertical = 8
 theme = ExtResource("2_brtdv")
 theme_override_colors/font_outline_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
 theme_override_constants/outline_size = 10
@@ -99,7 +234,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_vertical = 8
 theme = ExtResource("2_brtdv")
 theme_override_styles/background = SubResource("StyleBoxEmpty_c2fnl")
 step = 1.0
@@ -125,6 +260,8 @@ vertical_alignment = 1
 
 [node name="右侧按钮" type="HBoxContainer" parent="." unique_id=994029477]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
 alignment = 2
 script = ExtResource("3_c2fnl")
 
@@ -146,14 +283,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "10秒前"
+text = "1000秒前"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="存档按钮" type="Button" parent="右侧按钮/存档功能区" unique_id=672522221]
 unique_name_in_owner = true
 z_index = 1
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(156, 80)
 layout_mode = 2
 size_flags_vertical = 4
 text = "手动存档"
@@ -176,3 +313,7 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 40
 icon = ExtResource("4_q6ht0")
 expand_icon = true
+
+[node name="展开动画" type="AnimationPlayer" parent="右侧按钮" unique_id=186997294]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_gf7k4")

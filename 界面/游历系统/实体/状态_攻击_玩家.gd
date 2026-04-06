@@ -29,7 +29,7 @@ func _enter() -> void:
 	状态机.dispatch(EVENT_FINISHED)
 func _update(间隔: float) -> void:
 	super(间隔)
-	玩家移动(0.75,100)
+	玩家移动(0.75,100,Input.get_axis("移动_左","移动_右"))
 #func _exit() -> void:
 	#var 当前进度 = 动画.current_animation_position
 	#var 总时长 = 动画.current_animation_length
