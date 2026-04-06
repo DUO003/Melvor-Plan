@@ -1,62 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://unn8tlhgiegn"]
+[gd_scene format=3 uid="uid://unn8tlhgiegn"]
 
-[ext_resource type="Texture2D" uid="uid://cbt75iqrmydyl" path="res://素材/豆包AI素材/炼金台.png" id="1_40qvo"]
+[ext_resource type="Texture2D" uid="uid://dvn2ayoa5fvdm" path="res://素材/豆包AI素材/炼金台.png" id="1_40qvo"]
 [ext_resource type="Script" uid="uid://bb2mf7tund7hy" path="res://代码/专属代码/炼金界面/配方格子.gd" id="1_p2uem"]
 [ext_resource type="PackedScene" uid="uid://uh5t35s1wsr5" path="res://界面/插件/配方容器.tscn" id="2_p2uem"]
-[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="3_fsm1n"]
-[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="4_ncaf7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgk5h"]
-bg_color = Color(0.55, 0.46750003, 0.3025, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.6176407, 0.3536455, 0.09672653, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-script = ExtResource("4_ncaf7")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBox" id="StyleBox_06t5k"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = -1.0
-content_margin_top = -1.0
-content_margin_right = -1.0
-content_margin_bottom = -1.0
-script = ExtResource("3_fsm1n")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kgk5h")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ik2p"]
-bg_color = Color(0.54901963, 0.46666667, 0.3019608, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.70021564, 0.5527891, 0.25613704, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-script = ExtResource("4_ncaf7")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBox" id="StyleBox_n2weh"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = -1.0
-content_margin_top = -1.0
-content_margin_right = -1.0
-content_margin_bottom = -1.0
-script = ExtResource("3_fsm1n")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_7ik2p")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
-
-[node name="配方格子" type="Control"]
+[node name="配方格子" type="Control" unique_id=136498281]
 custom_minimum_size = Vector2(385, 251)
 layout_mode = 3
 anchor_right = 0.201
@@ -65,7 +13,7 @@ offset_right = -0.9200134
 offset_bottom = 0.43998718
 script = ExtResource("1_p2uem")
 
-[node name="图片" type="TextureRect" parent="."]
+[node name="图片" type="TextureRect" parent="." unique_id=1257539026]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 0
 offset_left = 10.0
@@ -76,7 +24,7 @@ texture = ExtResource("1_40qvo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="催化剂" parent="." instance=ExtResource("2_p2uem")]
+[node name="催化剂" parent="." unique_id=1257297819 instance=ExtResource("2_p2uem")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 10.0
@@ -84,14 +32,13 @@ offset_top = 128.0
 offset_right = 160.0
 offset_bottom = 278.0
 scale = Vector2(0.765, 0.765)
-theme_override_styles/panel = SubResource("StyleBox_06t5k")
 "物品数量限制" = Vector2i(1, 1)
 "编号" = 0
 "限制类型" = ["催化", "特殊催化"]
 "空置标签" = "催化剂"
 "标签警告" = "该物品不是催化剂"
 
-[node name="配方容器1" parent="." instance=ExtResource("2_p2uem")]
+[node name="配方容器1" parent="." unique_id=420072430 instance=ExtResource("2_p2uem")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 134.0
@@ -99,13 +46,12 @@ offset_top = 1.0
 offset_right = 284.0
 offset_bottom = 151.0
 scale = Vector2(0.765, 0.765)
-theme_override_styles/panel = SubResource("StyleBox_n2weh")
 "限制类型" = ["炼金"]
 "空置标签" = "1号格子"
 "标签警告" = "需要炼金材料"
 "默认值" = 10
 
-[node name="配方容器2" parent="." instance=ExtResource("2_p2uem")]
+[node name="配方容器2" parent="." unique_id=1683631119 instance=ExtResource("2_p2uem")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 258.0
@@ -113,14 +59,13 @@ offset_top = 1.0
 offset_right = 408.0
 offset_bottom = 151.0
 scale = Vector2(0.765, 0.765)
-theme_override_styles/panel = SubResource("StyleBox_n2weh")
 "编号" = 2
 "限制类型" = ["炼金"]
 "空置标签" = "2号格子"
 "标签警告" = "需要炼金材料"
 "默认值" = 10
 
-[node name="配方容器3" parent="." instance=ExtResource("2_p2uem")]
+[node name="配方容器3" parent="." unique_id=696668013 instance=ExtResource("2_p2uem")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 134.0
@@ -128,14 +73,13 @@ offset_top = 128.0
 offset_right = 284.0
 offset_bottom = 278.0
 scale = Vector2(0.765, 0.765)
-theme_override_styles/panel = SubResource("StyleBox_n2weh")
 "编号" = 3
 "限制类型" = ["炼金"]
 "空置标签" = "3号格子"
 "标签警告" = "需要炼金材料"
 "默认值" = 10
 
-[node name="配方容器4" parent="." instance=ExtResource("2_p2uem")]
+[node name="配方容器4" parent="." unique_id=133024557 instance=ExtResource("2_p2uem")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 258.0
@@ -143,7 +87,6 @@ offset_top = 128.0
 offset_right = 408.0
 offset_bottom = 278.0
 scale = Vector2(0.765, 0.765)
-theme_override_styles/panel = SubResource("StyleBox_n2weh")
 "编号" = 4
 "限制类型" = ["炼金"]
 "空置标签" = "4号格子"

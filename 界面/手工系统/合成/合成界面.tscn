@@ -4,23 +4,17 @@
 [ext_resource type="Script" uid="uid://v0yytth2tqx2" path="res://代码/专属代码/合成主界面/合成界面.gd" id="2_2y0d5"]
 [ext_resource type="PackedScene" uid="uid://fhiod2yd4lhv" path="res://界面/资源条.tscn" id="3_x1q8i"]
 [ext_resource type="PackedScene" uid="uid://ooiwqu3875ea" path="res://界面/插件/动作进度条.tscn" id="4_rm5mq"]
-[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_wuv0d"]
 [ext_resource type="PackedScene" uid="uid://dusyum2t63uiv" path="res://界面/插件/帮助文本.tscn" id="5_x1q8i"]
 [ext_resource type="Script" uid="uid://dxqqna74h0y6o" path="res://代码/专属代码/合成主界面/配方选择器代码.gd" id="6_jkk5k"]
 [ext_resource type="PackedScene" uid="uid://cxedxm5rt7rt2" path="res://界面/手工系统/配方.tscn" id="7_mdowl"]
 [ext_resource type="PackedScene" uid="uid://d225buqtym477" path="res://界面/挂机系统/任务窗口/任务容器.tscn" id="7_qg4nq"]
-[ext_resource type="Texture2D" uid="uid://k6v4ilcwafef" path="res://素材/豆包AI素材/图标/放大镜.png" id="8_mkxb5"]
+[ext_resource type="StyleBox" uid="uid://sdbk6om71jii" path="res://界面/主题/样式/面板样式_窄边.tres" id="8_2y0d5"]
+[ext_resource type="Texture2D" uid="uid://cxhcr4v3c80ri" path="res://素材/豆包AI素材/图标/放大镜.png" id="8_mkxb5"]
 [ext_resource type="PackedScene" uid="uid://byxndkdhqwumw" path="res://界面/插件/圆形进度条.tscn" id="9_30npi"]
 [ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="10_h4fwj"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="11_kfy0o"]
+[ext_resource type="StyleBox" uid="uid://cyckcabhg7b0q" path="res://界面/主题/样式/面板样式_深色.tres" id="12_2y0d5"]
 [ext_resource type="PackedScene" uid="uid://c0xnyoxa6kefu" path="res://界面/手工系统/资源加点.tscn" id="14_swdfc"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vc24"]
-bg_color = Color(0.5294118, 0.37254903, 0.101960786, 0.39215687)
-script = ExtResource("5_wuv0d")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x1gr2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2y0d5"]
 bg_color = Color(0.51, 0.35852996, 0.09689999, 0.15686275)
@@ -28,59 +22,51 @@ bg_color = Color(0.51, 0.35852996, 0.09689999, 0.15686275)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1q8i"]
 bg_color = Color(0.51, 0.35852996, 0.09689999, 0.28235295)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_75yv1"]
-content_margin_left = 10.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xldx"]
-bg_color = Color(0.53, 0.37258995, 0.10069999, 0.3137255)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-script = ExtResource("5_wuv0d")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
 [node name="合成界面" unique_id=707097301 node_paths=PackedStringArray("选项卡同步", "滚动区同步") instance=ExtResource("1_qg4nq")]
 script = ExtResource("2_2y0d5")
 "基类窗口名称" = "合成界面"
 "提示文本" = Array[String](["温馨提示:左键蓝图加入合成队列", "温馨提示:长按资源加快回复", "温馨提示:物品在背包窗口查看", "温馨提示:自动制作速度与资源回复速度和图纸需求有关", "温馨提示:作者正在努力开发新功能"])
 "选项卡同步" = {
-"物质": NodePath("内容节点/内容区/第一内容区/选项卡")
+"物质": NodePath("内容节点/MarginContainer/内容区/第一内容区/选项卡")
 }
 "滚动区同步" = {
-"配方滚动区": NodePath("内容节点/内容区/第一内容区/配方区/配方滚动区")
+"配方滚动区": NodePath("内容节点/MarginContainer/内容区/第一内容区/配方区/PanelContainer/配方滚动区")
 }
 metadata/_edit_lock_ = true
 
-[node name="等级显示" parent="标题" parent_id_path=PackedInt32Array(2049886415) index="0" unique_id=2041357675]
-"系统" = "手工"
-"玩法" = "合成"
+[node name="MarginContainer" type="MarginContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="1" unique_id=1400555158]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="内容区" type="VBoxContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=1076456070]
-custom_minimum_size = Vector2(1700, 0)
-layout_mode = 0
-offset_right = 1700.0
-offset_bottom = 902.0
+[node name="内容区" type="VBoxContainer" parent="内容节点/MarginContainer" index="0" unique_id=1076456070]
+layout_mode = 2
 
-[node name="第一内容区" type="HBoxContainer" parent="内容节点/内容区" index="0" unique_id=778120685]
+[node name="第一内容区" type="HBoxContainer" parent="内容节点/MarginContainer/内容区" index="0" unique_id=778120685]
+custom_minimum_size = Vector2(0, 560)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 5
+theme_override_constants/separation = 10
 
-[node name="选项卡" type="TabContainer" parent="内容节点/内容区/第一内容区" index="0" unique_id=26525890]
-custom_minimum_size = Vector2(580, 0)
+[node name="选项卡" type="TabContainer" parent="内容节点/MarginContainer/内容区/第一内容区" index="0" unique_id=26525890]
+custom_minimum_size = Vector2(540, 600)
 layout_mode = 2
-current_tab = 0
+current_tab = 2
 
-[node name="物质" type="VBoxContainer" parent="内容节点/内容区/第一内容区/选项卡" index="1" unique_id=458950717]
+[node name="物质" type="VBoxContainer" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡" index="1" unique_id=458950717]
+visible = false
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="资源条" type="ScrollContainer" parent="内容节点/内容区/第一内容区/选项卡/物质" index="0" unique_id=2120726923]
-custom_minimum_size = Vector2(570, 390)
+[node name="资源条" type="ScrollContainer" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质" index="0" unique_id=2120726923]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="资源管理器" type="VBoxContainer" parent="内容节点/内容区/第一内容区/选项卡/物质/资源条" index="0" unique_id=120082394]
+[node name="资源管理器" type="VBoxContainer" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质/资源条" index="0" unique_id=120082394]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -88,35 +74,35 @@ theme_override_constants/separation = 0
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="木材" parent="内容节点/内容区/第一内容区/选项卡/物质/资源条/资源管理器" index="0" unique_id=409040931 instance=ExtResource("3_x1q8i")]
+[node name="木材" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质/资源条/资源管理器" index="0" unique_id=409040931 instance=ExtResource("3_x1q8i")]
 layout_mode = 2
 
-[node name="矿石" parent="内容节点/内容区/第一内容区/选项卡/物质/资源条/资源管理器" index="1" unique_id=983392694 instance=ExtResource("3_x1q8i")]
+[node name="矿石" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质/资源条/资源管理器" index="1" unique_id=983392694 instance=ExtResource("3_x1q8i")]
 layout_mode = 2
 "资源名称" = "矿石"
 
-[node name="皮革" parent="内容节点/内容区/第一内容区/选项卡/物质/资源条/资源管理器" index="2" unique_id=713464390 instance=ExtResource("3_x1q8i")]
+[node name="皮革" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质/资源条/资源管理器" index="2" unique_id=713464390 instance=ExtResource("3_x1q8i")]
 layout_mode = 2
 "资源名称" = "皮革"
 
-[node name="药草" parent="内容节点/内容区/第一内容区/选项卡/物质/资源条/资源管理器" index="3" unique_id=972100419 instance=ExtResource("3_x1q8i")]
+[node name="药草" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质/资源条/资源管理器" index="3" unique_id=972100419 instance=ExtResource("3_x1q8i")]
 layout_mode = 2
 "资源名称" = "药草"
 
-[node name="零件" parent="内容节点/内容区/第一内容区/选项卡/物质/资源条/资源管理器" index="4" unique_id=1815340253 instance=ExtResource("3_x1q8i")]
+[node name="零件" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质/资源条/资源管理器" index="4" unique_id=1815340253 instance=ExtResource("3_x1q8i")]
 layout_mode = 2
 "资源名称" = "零件"
 
-[node name="精华" parent="内容节点/内容区/第一内容区/选项卡/物质/资源条/资源管理器" index="5" unique_id=666040459 instance=ExtResource("3_x1q8i")]
+[node name="精华" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质/资源条/资源管理器" index="5" unique_id=666040459 instance=ExtResource("3_x1q8i")]
 layout_mode = 2
 "资源名称" = "精华"
 
-[node name="进度条" type="Control" parent="内容节点/内容区/第一内容区/选项卡/物质" index="1" unique_id=642609015]
+[node name="进度条" type="Control" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质" index="1" unique_id=642609015]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-size_flags_vertical = 10
+size_flags_vertical = 8
 
-[node name="动作进度条" parent="内容节点/内容区/第一内容区/选项卡/物质/进度条" index="0" unique_id=280147648 instance=ExtResource("4_rm5mq")]
+[node name="动作进度条" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质/进度条" index="0" unique_id=280147648 instance=ExtResource("4_rm5mq")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -128,7 +114,7 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="帮助文本" parent="内容节点/内容区/第一内容区/选项卡/物质/进度条" index="1" unique_id=1882497651 instance=ExtResource("5_x1q8i")]
+[node name="帮助文本" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质/进度条" index="1" unique_id=1882497651 instance=ExtResource("5_x1q8i")]
 layout_mode = 0
 offset_left = 10.0
 offset_right = 70.0
@@ -137,173 +123,156 @@ offset_bottom = 60.0
 1.消耗物质点击蓝图制作物品
 2.点击物质可以加速物质回复"
 
-[node name="物质加点" type="ScrollContainer" parent="内容节点/内容区/第一内容区/选项卡" index="2" unique_id=2069153881]
+[node name="物质加点" type="ScrollContainer" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡" index="2" unique_id=2069153881]
 unique_name_in_owner = true
 visible = false
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_vertical = 3
 metadata/_tab_index = 1
 
-[node name="加点容器" type="VBoxContainer" parent="内容节点/内容区/第一内容区/选项卡/物质加点" index="0" unique_id=1786367521]
+[node name="加点容器" type="VBoxContainer" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质加点" index="0" unique_id=1786367521]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="资源加点" parent="内容节点/内容区/第一内容区/选项卡/物质加点/加点容器" index="0" unique_id=1862336201 instance=ExtResource("14_swdfc")]
+[node name="资源加点" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质加点/加点容器" index="0" unique_id=1862336201 instance=ExtResource("14_swdfc")]
 layout_mode = 2
 
-[node name="资源加点2" parent="内容节点/内容区/第一内容区/选项卡/物质加点/加点容器" index="1" unique_id=425932756 instance=ExtResource("14_swdfc")]
+[node name="资源加点2" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质加点/加点容器" index="1" unique_id=425932756 instance=ExtResource("14_swdfc")]
 layout_mode = 2
 "资源名称" = "矿石"
 
-[node name="资源加点3" parent="内容节点/内容区/第一内容区/选项卡/物质加点/加点容器" index="2" unique_id=719280413 instance=ExtResource("14_swdfc")]
+[node name="资源加点3" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质加点/加点容器" index="2" unique_id=719280413 instance=ExtResource("14_swdfc")]
 layout_mode = 2
 "资源名称" = "皮革"
 
-[node name="资源加点4" parent="内容节点/内容区/第一内容区/选项卡/物质加点/加点容器" index="3" unique_id=1755895142 instance=ExtResource("14_swdfc")]
+[node name="资源加点4" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质加点/加点容器" index="3" unique_id=1755895142 instance=ExtResource("14_swdfc")]
 layout_mode = 2
 "资源名称" = "药草"
 
-[node name="资源加点5" parent="内容节点/内容区/第一内容区/选项卡/物质加点/加点容器" index="4" unique_id=1955389100 instance=ExtResource("14_swdfc")]
+[node name="资源加点5" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡/物质加点/加点容器" index="4" unique_id=1955389100 instance=ExtResource("14_swdfc")]
 layout_mode = 2
 "资源名称" = "精华"
 
-[node name="循环任务" parent="内容节点/内容区/第一内容区/选项卡" index="3" unique_id=901319443 instance=ExtResource("7_qg4nq")]
-visible = false
+[node name="循环任务" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡" index="3" unique_id=901319443 instance=ExtResource("7_qg4nq")]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 "循环筛选" = Array[String](["合成"])
 "显示体力" = true
 
-[node name="配方区" type="VBoxContainer" parent="内容节点/内容区/第一内容区" index="1" unique_id=667484725]
+[node name="配方区" type="VBoxContainer" parent="内容节点/MarginContainer/内容区/第一内容区" index="1" unique_id=667484725]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="配方滚动区" type="ScrollContainer" parent="内容节点/内容区/第一内容区/配方区" index="0" unique_id=607050618]
+[node name="PanelContainer" type="PanelContainer" parent="内容节点/MarginContainer/内容区/第一内容区/配方区" index="0" unique_id=602523748]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("8_2y0d5")
+
+[node name="配方滚动区" type="ScrollContainer" parent="内容节点/MarginContainer/内容区/第一内容区/配方区/PanelContainer" index="0" unique_id=607050618]
 custom_minimum_size = Vector2(915, 400)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_4vc24")
 
-[node name="配方表格" type="VBoxContainer" parent="内容节点/内容区/第一内容区/配方区/配方滚动区" index="0" unique_id=363597032]
+[node name="配方表格" type="VBoxContainer" parent="内容节点/MarginContainer/内容区/第一内容区/配方区/PanelContainer/配方滚动区" index="0" unique_id=363597032]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("6_jkk5k")
 
-[node name="测试标题" type="Label" parent="内容节点/内容区/第一内容区/配方区/配方滚动区/配方表格" index="0" unique_id=340304417]
+[node name="测试标题" type="Label" parent="内容节点/MarginContainer/内容区/第一内容区/配方区/PanelContainer/配方滚动区/配方表格" index="0" unique_id=340304417]
 layout_mode = 2
 text = "描述文本"
 
-[node name="格子" type="GridContainer" parent="内容节点/内容区/第一内容区/配方区/配方滚动区/配方表格" index="1" unique_id=2028966106]
+[node name="格子" type="GridContainer" parent="内容节点/MarginContainer/内容区/第一内容区/配方区/PanelContainer/配方滚动区/配方表格" index="1" unique_id=2028966106]
 layout_mode = 2
 
-[node name="配方" parent="内容节点/内容区/第一内容区/配方区/配方滚动区/配方表格/格子" index="0" unique_id=1362694623 instance=ExtResource("7_mdowl")]
+[node name="配方" parent="内容节点/MarginContainer/内容区/第一内容区/配方区/PanelContainer/配方滚动区/配方表格/格子" index="0" unique_id=1362694623 instance=ExtResource("7_mdowl")]
 layout_mode = 2
 
-[node name="更多筛选" type="HBoxContainer" parent="内容节点/内容区/第一内容区/配方区" index="1" unique_id=1649304420]
+[node name="更多筛选" type="HBoxContainer" parent="内容节点/MarginContainer/内容区/第一内容区/配方区" index="1" unique_id=1649304420]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="标签" type="Label" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="0" unique_id=364648997]
+[node name="标签" type="Label" parent="内容节点/MarginContainer/内容区/第一内容区/配方区/更多筛选" index="0" unique_id=364648997]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
 text = "类型"
 
-[node name="研究方向" type="OptionButton" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="1" unique_id=1008295700]
+[node name="研究方向" type="OptionButton" parent="内容节点/MarginContainer/内容区/第一内容区/配方区/更多筛选" index="1" unique_id=1008295700]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 35
 selected = 0
 fit_to_longest_item = false
 item_count = 1
 popup/item_0/text = "所有类型"
 popup/item_0/id = 0
 
-[node name="标签3" type="Label" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="2" unique_id=188610384]
+[node name="标签3" type="Label" parent="内容节点/MarginContainer/内容区/第一内容区/配方区/更多筛选" index="2" unique_id=188610384]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
 text = "等阶"
 
-[node name="等阶" type="OptionButton" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="3" unique_id=2017852204]
+[node name="等阶" type="OptionButton" parent="内容节点/MarginContainer/内容区/第一内容区/配方区/更多筛选" index="3" unique_id=2017852204]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 35
 selected = 0
 item_count = 1
 popup/item_0/text = "不限制"
 popup/item_0/id = 0
 
-[node name="已解锁" type="CheckButton" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="4" unique_id=842982248]
+[node name="已解锁" type="CheckButton" parent="内容节点/MarginContainer/内容区/第一内容区/配方区/更多筛选" index="4" unique_id=842982248]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 0
-theme_override_constants/h_separation = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_x1gr2")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_x1gr2")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_x1gr2")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_x1gr2")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_x1gr2")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_x1gr2")
 text = "解锁"
 
-[node name="检索" type="LineEdit" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="5" unique_id=912468593]
+[node name="检索" type="LineEdit" parent="内容节点/MarginContainer/内容区/第一内容区/配方区/更多筛选" index="5" unique_id=912468593]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 35
 placeholder_text = "搜索"
 
-[node name="更新" type="TextureButton" parent="内容节点/内容区/第一内容区/配方区/更多筛选" index="6" unique_id=465636052]
+[node name="更新" type="TextureButton" parent="内容节点/MarginContainer/内容区/第一内容区/配方区/更多筛选" index="6" unique_id=465636052]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(58, 58)
 layout_mode = 2
 texture_normal = ExtResource("8_mkxb5")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="第二内容区" type="HBoxContainer" parent="内容节点/内容区" index="1" unique_id=1600027705]
+[node name="第二内容区" type="VBoxContainer" parent="内容节点/MarginContainer/内容区" index="1" unique_id=212858795]
 layout_mode = 2
 
-[node name="切割分区" type="VBoxContainer" parent="内容节点/内容区/第二内容区" index="0" unique_id=1461959451]
+[node name="切割分区" type="HBoxContainer" parent="内容节点/MarginContainer/内容区/第二内容区" index="0" unique_id=480610629]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="制作滚动队列" type="ScrollContainer" parent="内容节点/内容区/第二内容区/切割分区" index="0" unique_id=144467115]
-custom_minimum_size = Vector2(0, 200)
+[node name="制作滚动队列" type="ScrollContainer" parent="内容节点/MarginContainer/内容区/第二内容区/切割分区" index="0" unique_id=144467115]
+custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("12_2y0d5")
+vertical_scroll_mode = 0
 
-[node name="制作队列" type="HBoxContainer" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列" index="0" unique_id=1209532325]
+[node name="制作队列" type="HBoxContainer" parent="内容节点/MarginContainer/内容区/第二内容区/切割分区/制作滚动队列" index="0" unique_id=1209532325]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="圆形进度条" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列" index="0" unique_id=279848220 instance=ExtResource("9_30npi")]
+[node name="圆形进度条" parent="内容节点/MarginContainer/内容区/第二内容区/切割分区/制作滚动队列/制作队列" index="0" unique_id=279848220 instance=ExtResource("9_30npi")]
 unique_name_in_owner = true
 z_index = 1
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(136, 136)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-"半径" = 84.0
+"半径" = 52.0
 "线条宽度" = 22.0
 
-[node name="配方" type="Button" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条" index="0" unique_id=102660632]
+[node name="配方" type="Button" parent="内容节点/MarginContainer/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条" index="0" unique_id=102660632]
 z_as_relative = false
 layout_mode = 1
 anchors_preset = 15
@@ -317,7 +286,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_x1q8i")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_2y0d5")
 theme_override_styles/focus = SubResource("StyleBoxFlat_2y0d5")
 
-[node name="配方名" type="Label" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方" index="0" unique_id=1125338350]
+[node name="配方名" type="Label" parent="内容节点/MarginContainer/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方" index="0" unique_id=1125338350]
 z_index = 1
 layout_mode = 1
 anchors_preset = 7
@@ -337,7 +306,7 @@ text = "道具名称"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="配方贴图" type="TextureRect" parent="内容节点/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方" index="1" unique_id=1460463568]
+[node name="配方贴图" type="TextureRect" parent="内容节点/MarginContainer/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方" index="1" unique_id=1460463568]
 custom_minimum_size = Vector2(55, 60)
 layout_mode = 1
 anchors_preset = 15
@@ -349,59 +318,63 @@ texture = ExtResource("11_kfy0o")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="按钮区" type="HBoxContainer" parent="内容节点/内容区/第二内容区/切割分区" index="1" unique_id=1561492679]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="温馨提示" type="Label" parent="内容节点/内容区/第二内容区/切割分区/按钮区" index="0" unique_id=397493928]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(788, 90)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/line_spacing = -18
-theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxEmpty_75yv1")
-text = "温馨提示:左键加入合成队列
-测试多排的文本"
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="强化" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区" index="1" unique_id=1308279776]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(178, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 50
-text = "强化器"
-alignment = 0
-
-[node name="抽奖机" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区" index="2" unique_id=1543547215]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 50
-text = "抽奖机"
-
-[node name="蓝图库" type="Button" parent="内容节点/内容区/第二内容区/切割分区/按钮区" index="3" unique_id=920955997]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 50
-text = "蓝图库"
-
-[node name="提示文本" type="Label" parent="内容节点/内容区/第二内容区" index="1" unique_id=1216419486]
+[node name="提示文本" type="Label" parent="内容节点/MarginContainer/内容区/第二内容区/切割分区" index="1" unique_id=1216419486]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_styles/normal = SubResource("StyleBoxFlat_1xldx")
 text = "累计精通
 +0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="悬浮面板" parent="." index="3" unique_id=1473741879]
+[node name="温馨提示" type="Label" parent="内容节点/MarginContainer/内容区/第二内容区" index="1" unique_id=397493928]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_constants/line_spacing = -4
+text = "温馨提示:左键加入合成队列
+测试多排的文本"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="按钮区" type="HBoxContainer" parent="内容节点/MarginContainer/内容区/第二内容区/温馨提示" index="0" unique_id=1561492679]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -32.5
+offset_bottom = 32.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 0
+alignment = 2
+
+[node name="强化" type="Button" parent="内容节点/MarginContainer/内容区/第二内容区/温馨提示/按钮区" index="0" unique_id=1308279776]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "强化器"
+
+[node name="抽奖机" type="Button" parent="内容节点/MarginContainer/内容区/第二内容区/温馨提示/按钮区" index="1" unique_id=1543547215]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "抽奖机"
+
+[node name="蓝图库" type="Button" parent="内容节点/MarginContainer/内容区/第二内容区/温馨提示/按钮区" index="2" unique_id=920955997]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "蓝图库"
+
+[node name="悬浮面板" parent="." index="1" unique_id=1473741879]
 unique_name_in_owner = true

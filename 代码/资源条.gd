@@ -16,10 +16,10 @@ var 当前数量:float=0
 var 上限值:float=0
 var 背包内数量:int=0
 var 类型:String="基础"
-@onready var 回复: Label = $回复
+@onready var 回复: Label = %回复
 var 需要关闭提示:bool=false
 var 需要更新提示:bool=false
-@onready var 资源粒子: GPUParticles2D = $资源粒子
+@onready var 资源粒子: GPUParticles2D = %资源粒子
 func _ready():
 	更新贴图()# 节点就绪时初始化
 	if not Engine.is_editor_hint():
@@ -27,11 +27,11 @@ func _ready():
 		更新点击回复量()
 		更新UI()
 		计划.BUFF.BUFF_资源回复.connect(更新点击回复量)
-		$"点击范围".mouse_entered.connect(func():
+		%"点击范围".mouse_entered.connect(func():
 			鼠标=true
 			需要更新提示=true
 			检查更新提示())
-		$"点击范围".mouse_exited.connect(func():
+		%"点击范围".mouse_exited.connect(func():
 			鼠标=false
 			关闭提示())
 		计划.更新_UI.connect(检查更新提示)
@@ -41,7 +41,7 @@ func _ready():
 		长按计时器.one_shot = false   # 循环触发
 		长按计时器.timeout.connect(长按超时处理)
 	add_child(长按计时器)
-	$"点击范围".gui_input.connect(点击逻辑)
+	%"点击范围".gui_input.connect(点击逻辑)
 func 关闭提示():
 	if 需要关闭提示:
 		需要关闭提示=false
@@ -66,22 +66,22 @@ func 更新UI():
 	上限值 = 计划.手工.资源上限字典.get(资源名称,0)
 	背包内数量=计划.检查背包物品数量(资源名称)
 	var 回复速度=资源回复速度.get(资源名称,0)
-	$"进度".show_percentage=false
+	%"进度".show_percentage=false
 	if 类型=="特殊":
 		%"刻度".强制量级=10
 		%"刻度".更新进度条参数(回复速度,400)
 		背包条.value=0
 		背包条.max_value=1
-		var 大小=$"进度".size
+		var 大小=%"进度".size
 		大小.x=400
-		$"进度".set_size(大小)
+		%"进度".set_size(大小)
 		var 自动制作=计划.手工.精华数量()
 		if 自动制作>=1:
-			$"进度".max_value = 自动制作
-			$"进度".value = 回复速度
+			%"进度".max_value = 自动制作
+			%"进度".value = 回复速度
 		else :
-			$"进度".max_value = 1
-			$"进度".value = 1
+			%"进度".max_value = 1
+			%"进度".value = 1
 		var 当前值=int(背包内数量+当前数量)
 		if 当前值>=1:
 			%"显示数量".text="拥有:"+str(当前值)
@@ -91,26 +91,26 @@ func 更新UI():
 	else :
 		背包条.value=背包内数量
 		背包条.max_value=上限值
-		$"进度".max_value = 上限值
-		$"进度".value = 当前数量
+		%"进度".max_value = 上限值
+		%"进度".value = 当前数量
 		if 背包内数量>=1:
 			%"显示数量".text="存:"+str(背包内数量)
 			%"显示数量".visible=true
 		else :
 			%"显示数量".visible=false
 		if 回复速度<=0.01:
-			var 大小=$"进度".size
+			var 大小=%"进度".size
 			大小.x=400
-			$"进度".set_size(大小)
+			%"进度".set_size(大小)
 			%"刻度".更新进度条参数(上限值,大小.x)
 			回复.text= ""
 		else :
 			回复.text= "+%.1f" % 回复速度
 			var 宽度=回复.get_theme_font("font").get_string_size(回复.text,
 				HORIZONTAL_ALIGNMENT_LEFT, -1, 回复.get_theme_font_size("font_size")).x-15
-			var 大小=$"进度".size
+			var 大小=%"进度".size
 			大小.x=400-宽度
-			$"进度".set_size(大小)
+			%"进度".set_size(大小)
 			%"刻度".更新进度条参数(上限值,大小.x)
 func 点击逻辑(event: InputEvent):
 	if is_inside_tree():
@@ -126,11 +126,11 @@ func 更新贴图():
 	if not is_inside_tree():# 编辑器内安全检查：确保节点已加入场景树，避免空引用错误
 		print("节点未加入节点树")
 		return
-	var 贴图节点 = $贴图
+	var 贴图节点 = %贴图
 	if Engine.is_editor_hint():
-		$"文本".text=str(资源名称[0])+"物质"
+		%"文本".text=str(资源名称[0])+"物质"
 	else :
-		$"文本".text=计划.手工.返回资源信息(资源名称,"显示名")
+		%"文本".text=计划.手工.返回资源信息(资源名称,"显示名")
 	if not 贴图节点:# 确保TextureRect节点存在
 		print("警告：未找到「贴图」节点，请检查节点路径")
 		return

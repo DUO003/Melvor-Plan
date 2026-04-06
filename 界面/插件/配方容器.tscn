@@ -2,21 +2,26 @@
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_102at"]
 [ext_resource type="Script" uid="uid://bla2j74opcab0" path="res://代码/专属代码/炼金界面/配方容器.gd" id="2_jx0ap"]
-[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_0ylib"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jx0ap"]
-bg_color = Color(0.69556814, 0.5488749, 0.25356284, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_102at"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+border_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-script = ExtResource("3_0ylib")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yctv"]
 content_margin_left = 4.0
@@ -42,7 +47,7 @@ custom_minimum_size = Vector2(150, 150)
 offset_right = 150.0
 offset_bottom = 150.0
 theme = ExtResource("1_102at")
-theme_override_styles/panel = SubResource("StyleBoxFlat_jx0ap")
+theme_override_styles/panel = SubResource("StyleBoxFlat_102at")
 script = ExtResource("2_jx0ap")
 
 [node name="输入" type="HSlider" parent="." unique_id=1743984719]
@@ -58,9 +63,12 @@ max_value = 32.0
 value = 16.0
 
 [node name="图片" type="TextureRect" parent="." unique_id=1723625657]
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 110.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
