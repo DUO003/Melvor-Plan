@@ -2,6 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="1_csmyg"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="1_kb01l"]
+[ext_resource type="FontFile" uid="uid://ba8mauhrxpxeg" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-85-Bold/AlibabaPuHuiTi-3-85-Bold.otf" id="2_ar6tj"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_csmyg"]
 [ext_resource type="StyleBox" uid="uid://s38gw2mw66rl" path="res://界面/主题/样式/按钮样式_默认_禁用.tres" id="3_lif0j"]
 [ext_resource type="Texture2D" uid="uid://sr43xiin4qp0" path="res://素材/godot内置/关.tres" id="4_cgrsc"]
@@ -237,20 +238,6 @@ base_scale = 4.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ly6fy"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv7pg"]
-bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-script = ExtResource("2_csmyg")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntsn1"]
 bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
 border_width_left = 5
@@ -281,7 +268,7 @@ content_margin_top = 5.0
 content_margin_right = 15.0
 content_margin_bottom = 5.0
 script = ExtResource("1_kb01l")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_fv7pg"), SubResource("StyleBoxFlat_ntsn1")])
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_ntsn1")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4m5x"]
@@ -805,6 +792,7 @@ Button/colors/font_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
 Button/colors/font_hover_pressed_color = Color(0.6313726, 0.5764706, 0.015686275, 1)
 Button/colors/font_outline_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
 Button/colors/font_pressed_color = Color(0.6313726, 0.5764706, 0.015686275, 1)
+Button/fonts/font = ExtResource("2_ar6tj")
 Button/styles/disabled = ExtResource("3_lif0j")
 Button/styles/focus = SubResource("StyleBoxEmpty_ykmuj")
 Button/styles/hover = ExtResource("4_fv7pg")
@@ -890,11 +878,11 @@ MarginContainer/constants/margin_bottom = 20
 MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 20
 MarginContainer/constants/margin_top = 20
-OptionButton/colors/font_color = Color(0, 0, 0, 1)
-OptionButton/colors/font_focus_color = Color(0, 0, 0, 1)
-OptionButton/colors/font_hover_color = Color(0.08078333, 0.08078336, 0.08078327, 1)
-OptionButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-OptionButton/colors/font_pressed_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+OptionButton/colors/font_focus_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+OptionButton/colors/font_hover_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+OptionButton/colors/font_hover_pressed_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+OptionButton/colors/font_pressed_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
 OptionButton/constants/arrow_margin = 10
 OptionButton/constants/outline_size = 1
 OptionButton/icons/arrow = SubResource("DPITexture_gklb8")
@@ -911,7 +899,8 @@ ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
 ProgressBar/constants/outline_size = 1
 ProgressBar/styles/background = SubResource("StyleBoxFlat_3rko8")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_pbgl2")
-RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/default_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+RichTextLabel/colors/font_outline_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
 RichTextLabel/constants/paragraph_separation = 12
 ScrollContainer/styles/focus = SubResource("StyleBoxFlat_xlieo")
 SpinBox/colors/down_pressed_icon_modulate = Color(0.8156863, 0.3529412, 0.28627452, 1)

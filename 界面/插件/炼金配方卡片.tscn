@@ -1,10 +1,11 @@
-[gd_scene load_steps=46 format=3 uid="uid://dxwbm08wtn1df"]
+[gd_scene format=3 uid="uid://dxwbm08wtn1df"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_t4q2w"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_pltcs"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_gsyse"]
 [ext_resource type="Script" uid="uid://bv43rur7rji2w" path="res://代码/专属代码/炼金界面/炼金配方.gd" id="4_ee4g3"]
 [ext_resource type="PackedScene" uid="uid://unn8tlhgiegn" path="res://界面/插件/配方格子.tscn" id="5_irp1r"]
+[ext_resource type="Theme" uid="uid://bd8wir2bqyhux" path="res://界面/主题/空主题.tres" id="6_pltcs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1sfb"]
 bg_color = Color(0, 0, 0, 1)
@@ -328,7 +329,7 @@ script = ExtResource("2_pltcs")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_q5aig"), SubResource("StyleBoxFlat_kucxn"), SubResource("StyleBoxFlat_drq84")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
-[node name="炼金配方卡片" type="FoldableContainer"]
+[node name="炼金配方卡片" type="FoldableContainer" unique_id=2027170940]
 custom_minimum_size = Vector2(385, 0)
 theme = ExtResource("1_t4q2w")
 theme_override_styles/title_panel = SubResource("StyleBox_n2weh")
@@ -339,12 +340,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_n2weh")
 title = "配方1"
 script = ExtResource("4_ee4g3")
 
-[node name="炼金配方" type="Panel" parent="."]
+[node name="炼金配方" type="Panel" parent="." unique_id=1593398290]
 custom_minimum_size = Vector2(385, 350)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBox_t1sfb")
 
-[node name="信息" type="TabContainer" parent="炼金配方"]
+[node name="信息" type="TabContainer" parent="炼金配方" unique_id=442549255]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -357,11 +358,11 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/tab_unselected = SubResource("StyleBox_07wse")
 current_tab = 0
 
-[node name="配方" type="Control" parent="炼金配方/信息"]
+[node name="配方" type="Control" parent="炼金配方/信息" unique_id=946348374]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="配方格子" parent="炼金配方/信息/配方" instance=ExtResource("5_irp1r")]
+[node name="配方格子" parent="炼金配方/信息/配方" unique_id=755953877 instance=ExtResource("5_irp1r")]
 unique_name_in_owner = true
 layout_mode = 0
 anchors_preset = 0
@@ -370,7 +371,7 @@ anchor_bottom = 0.0
 offset_right = 385.0
 offset_bottom = 251.0
 
-[node name="还不够了解" type="Label" parent="炼金配方/信息/配方"]
+[node name="还不够了解" type="Label" parent="炼金配方/信息/配方" unique_id=1933691841]
 layout_mode = 0
 offset_left = 112.0
 offset_top = -39.0
@@ -379,7 +380,7 @@ offset_bottom = 6.0
 theme_override_font_sizes/font_size = 28
 text = "还不够了解:100/200"
 
-[node name="查看" type="Button" parent="炼金配方/信息/配方"]
+[node name="查看" type="Button" parent="炼金配方/信息/配方" unique_id=1827616652]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -394,13 +395,14 @@ offset_bottom = 0.125
 theme_override_font_sizes/font_size = 35
 text = "查看"
 
-[node name="制作数量" type="SpinBox" parent="炼金配方"]
+[node name="制作数量" type="SpinBox" parent="炼金配方" unique_id=879661188]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 68.0
 offset_top = 292.0
 offset_right = 206.0
 offset_bottom = 344.0
+theme = ExtResource("6_pltcs")
 theme_override_constants/field_and_buttons_separation = 0
 theme_override_constants/buttons_width = 0
 theme_override_icons/updown = SubResource("ImageTexture_gujam")
@@ -429,7 +431,7 @@ update_on_text_changed = true
 suffix = "次"
 select_all_on_focus = true
 
-[node name="提示" type="Label" parent="炼金配方/制作数量"]
+[node name="提示" type="Label" parent="炼金配方/制作数量" unique_id=600641942]
 layout_mode = 0
 offset_left = -61.0
 offset_top = 5.0
@@ -438,7 +440,7 @@ offset_bottom = 50.0
 theme_override_font_sizes/font_size = 28
 text = "炼制:"
 
-[node name="使用" type="Button" parent="炼金配方"]
+[node name="使用" type="Button" parent="炼金配方" unique_id=2132020861]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 7
@@ -454,7 +456,7 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 40
 text = "开始制作"
 
-[node name="删除" type="Button" parent="炼金配方"]
+[node name="删除" type="Button" parent="炼金配方" unique_id=988991092]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 7

@@ -1,0 +1,29 @@
+[gd_resource type="StyleBox" script_class="嵌套数组样式" format=3 uid="uid://cyckcabhg7b0q"]
+
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="1_wt10h"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_mlv5y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqfis"]
+bg_color = Color(0.50980395, 0.3529412, 0.23921569, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("2_mlv5y")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+script = ExtResource("1_wt10h")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_rqfis")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"

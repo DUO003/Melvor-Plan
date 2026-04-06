@@ -4,12 +4,12 @@
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="1_dfwyy"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_73tot"]
 [ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="3_gepfs"]
-[ext_resource type="Texture2D" uid="uid://be8qf0rdj4ytv" path="res://素材/豆包AI素材/蓝色图纸.png" id="5_fkaik"]
+[ext_resource type="Texture2D" uid="uid://deynrhkj0wuep" path="res://素材/豆包AI素材/蓝色图纸.png" id="5_fkaik"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="5_gepfs"]
 [ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="5_ka82c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqimc"]
-bg_color = Color(0.68235296, 0.54901963, 0.29803923, 1)
+bg_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -47,7 +47,7 @@ border_width_left = 7
 border_width_top = 7
 border_width_right = 7
 border_width_bottom = 7
-border_color = Color(0.41, 0.28822997, 0.0779, 1)
+border_color = Color(0.9529412, 0.8627451, 0.8039216, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -61,7 +61,7 @@ border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
+border_color = Color(1, 1, 1, 0)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -85,6 +85,11 @@ custom_minimum_size = Vector2(142, 140)
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("1_73tot")
+theme_override_colors/font_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+theme_override_colors/font_pressed_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBox_wjp5r")
 text = "测试文本

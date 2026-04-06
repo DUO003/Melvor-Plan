@@ -22,35 +22,35 @@ const DEFAULT_AVILABLE_COLOR: Color = Color.STEEL_BLUE
 		格子覆盖 = 值
 		queue_redraw()
 		#空、占用、冲突、可用
-@export var 覆盖样式_空: StyleBoxFlat:
+@export var 覆盖样式_空: StyleBox:
 	set(值):# 断开旧资源的信号连接
 		_样式信号绑定(覆盖样式_空,false)
 		_样式信号绑定(值,true)
 		覆盖样式_空 = 值
 		if Engine.is_editor_hint():
 			queue_redraw()
-@export var 覆盖样式_占用: StyleBoxFlat:
+@export var 覆盖样式_占用: StyleBox:
 	set(值):# 断开旧资源的信号连接
 		_样式信号绑定(覆盖样式_占用,false)
 		_样式信号绑定(值,true)
 		覆盖样式_占用 = 值
 		if Engine.is_editor_hint():
 			queue_redraw()
-@export var 覆盖样式_冲突: StyleBoxFlat:
+@export var 覆盖样式_冲突: StyleBox:
 	set(值):# 断开旧资源的信号连接
 		_样式信号绑定(覆盖样式_冲突,false)
 		_样式信号绑定(值,true)
 		覆盖样式_冲突 = 值
 		if Engine.is_editor_hint():
 			queue_redraw()
-@export var 覆盖样式_可用: StyleBoxFlat:
+@export var 覆盖样式_可用: StyleBox:
 	set(值):# 断开旧资源的信号连接
 		_样式信号绑定(覆盖样式_可用,false)
 		_样式信号绑定(值,true)
 		覆盖样式_可用 = 值
 		if Engine.is_editor_hint():
 			queue_redraw()
-func _样式信号绑定(样式:StyleBoxFlat,状态:bool,监听方法:=queue_redraw):
+func _样式信号绑定(样式:StyleBox,状态:bool,监听方法:=queue_redraw):
 	if not Engine.is_editor_hint():
 		return
 	if 状态:

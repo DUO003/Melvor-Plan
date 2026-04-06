@@ -4,17 +4,9 @@
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_sk5i8"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_sk5i8"]
 [ext_resource type="Script" uid="uid://7cmlmma10s5y" path="res://界面/插件/物品辅助/商品卡.gd" id="3_hn262"]
+[ext_resource type="StyleBox" uid="uid://sdbk6om71jii" path="res://界面/主题/样式/面板样式_窄边.tres" id="3_j8t25"]
 [ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="4_hn262"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="4_j8t25"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdor2"]
-bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-script = ExtResource("2_sk5i8")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j8t25"]
 texture = ExtResource("4_j8t25")
@@ -35,7 +27,7 @@ border_width_left = 10
 border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
-border_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+border_color = Color(0.50980395, 0.3529412, 0.23921569, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -51,15 +43,15 @@ content_margin_top = -1.0
 content_margin_right = -1.0
 content_margin_bottom = -1.0
 script = ExtResource("1_6fjmu")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_wdor2"), SubResource("StyleBoxTexture_j8t25"), SubResource("StyleBoxFlat_81yjg")])
+"样式数组" = Array[StyleBox]([ExtResource("3_j8t25"), SubResource("StyleBoxTexture_j8t25"), SubResource("StyleBoxFlat_81yjg")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sk5i8"]
-bg_color = Color(0.55, 0.42716667, 0.18149999, 0.5882353)
-expand_margin_top = -10.0
-script = ExtResource("2_sk5i8")
-margin_top = -10
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dw1l"]
+bg_color = Color(1, 1, 1, 0.3529412)
+border_width_top = 20
+border_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hn262"]
 content_margin_left = 10.0
@@ -122,7 +114,7 @@ theme_override_font_sizes/bold_font_size = 28
 theme_override_font_sizes/bold_italics_font_size = 28
 theme_override_font_sizes/italics_font_size = 28
 theme_override_font_sizes/mono_font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxFlat_sk5i8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0dw1l")
 bbcode_enabled = true
 text = "催化剂
 价格"

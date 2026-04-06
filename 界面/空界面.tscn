@@ -146,7 +146,7 @@ grow_vertical = 2
 
 [node name="任务栏分割" type="VSplitContainer" parent="功能" unique_id=110886393]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(240, 0)
+custom_minimum_size = Vector2(220, 0)
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
