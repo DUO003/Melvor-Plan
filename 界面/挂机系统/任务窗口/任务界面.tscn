@@ -26,10 +26,11 @@ grow_vertical = 2
 [node name="任务" type="TabContainer" parent="内容节点/边缘容器" index="0" unique_id=68321431]
 unique_name_in_owner = true
 layout_mode = 2
-current_tab = 0
+current_tab = 2
 
 [node name="主线任务" parent="内容节点/边缘容器/任务" index="1" unique_id=901319443 node_paths=PackedStringArray("场景") instance=ExtResource("3_yje00")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -48,7 +49,6 @@ layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="任务统计" type="VBoxContainer" parent="内容节点/边缘容器/任务" index="3" unique_id=1327568261]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -62,17 +62,19 @@ vertical_scroll_mode = 3
 [node name="边界容器" type="MarginContainer" parent="内容节点/边缘容器/任务/任务统计/文本容器" index="0" unique_id=56562089]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_right = 100
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
 
 [node name="任务文本" type="GridContainer" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器" index="0" unique_id=1762942851]
 custom_minimum_size = Vector2(1300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/h_separation = 100
-theme_override_constants/v_separation = 20
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 10
 columns = 2
 
 [node name="主线任务板" type="MarginContainer" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本" index="0" unique_id=1459226616]
@@ -81,13 +83,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="背景板" type="Panel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/主线任务板" index="0" unique_id=1739405875]
-custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("4_hlpnr")
 
 [node name="主线任务文本" type="RichTextLabel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/主线任务板" index="1" unique_id=70923421]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -103,18 +103,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="背景板" type="Panel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/循环任务板" index="0" unique_id=302204195]
-custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("4_hlpnr")
 
 [node name="循环任务文本" type="RichTextLabel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/循环任务板" index="1" unique_id=2116347273]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/line_separation = 0
-theme_override_constants/paragraph_separation = -15
 bbcode_enabled = true
 text = "当前完成数量:"
 fit_content = true
@@ -127,19 +123,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="背景板" type="Panel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/订单任务板" index="0" unique_id=1670135322]
-custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
-size_flags_horizontal = 8
 theme_override_styles/panel = ExtResource("4_hlpnr")
 
 [node name="订单任务文本" type="RichTextLabel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/订单任务板" index="1" unique_id=1990385023]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/line_separation = 0
-theme_override_constants/paragraph_separation = -15
 bbcode_enabled = true
 text = "当前完成数量:"
 fit_content = true
@@ -165,19 +156,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="背景板" type="Panel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/成就任务板" index="0" unique_id=541096267]
-custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
-size_flags_horizontal = 8
 theme_override_styles/panel = ExtResource("4_hlpnr")
 
 [node name="成就任务文本" type="RichTextLabel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/成就任务板" index="1" unique_id=175289211]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/line_separation = 0
-theme_override_constants/paragraph_separation = -15
 bbcode_enabled = true
 text = "当前完成数量:"
 fit_content = true

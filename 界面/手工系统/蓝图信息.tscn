@@ -1,140 +1,35 @@
-[gd_scene load_steps=19 format=3 uid="uid://cbce6ney4ilyo"]
+[gd_scene format=3 uid="uid://cbce6ney4ilyo"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_b1agn"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_iwm3t"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_xbj00"]
 [ext_resource type="Script" uid="uid://m48ei7gqp6lc" path="res://界面/手工系统/蓝图信息.gd" id="4_gmgml"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="5_b1agn"]
+[ext_resource type="StyleBox" uid="uid://sdbk6om71jii" path="res://界面/主题/样式/面板样式_窄边.tres" id="6_iwm3t"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5jsc"]
-bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwm3t"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.70021564, 0.5527891, 0.25613704, 1)
+border_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-script = ExtResource("3_xbj00")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBox" id="StyleBox_mdm2x"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = -1.0
-content_margin_top = -1.0
-content_margin_right = -1.0
-content_margin_bottom = -1.0
-script = ExtResource("2_iwm3t")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_y5jsc")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jx5cv"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0s5mh"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ly6fy"]
-bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-script = ExtResource("3_xbj00")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o32f2"]
-bg_color = Color(0.53, 0.41339996, 0.21199998, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_color = Color(0.40784314, 0.2901961, 0.078431375, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-expand_margin_left = -5.0
-expand_margin_top = -5.0
-expand_margin_right = -5.0
-script = ExtResource("3_xbj00")
-margin_left = -5
-margin_top = -5
-margin_right = -5
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBox" id="StyleBox_y5jsc"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = 10.0
-content_margin_top = 2.0
-content_margin_right = 10.0
-content_margin_bottom = 0.0
-script = ExtResource("2_iwm3t")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_ly6fy"), SubResource("StyleBoxFlat_o32f2")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
-
-[sub_resource type="StyleBox" id="StyleBox_0dedd"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = 10.0
-content_margin_top = 2.0
-content_margin_right = 10.0
-content_margin_bottom = 0.0
-script = ExtResource("2_iwm3t")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_ly6fy"), SubResource("StyleBoxFlat_o32f2")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv7pg"]
-bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-script = ExtResource("3_xbj00")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bn4b"]
-bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_color = Color(0.40784314, 0.2901961, 0.078431375, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-expand_margin_left = -5.0
-expand_margin_top = -5.0
-expand_margin_right = -5.0
-script = ExtResource("3_xbj00")
-margin_left = -5
-margin_top = -5
-margin_right = -5
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBox" id="StyleBox_26tgt"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = 20.0
-content_margin_top = 2.0
-content_margin_right = 20.0
-content_margin_bottom = 0.0
-script = ExtResource("2_iwm3t")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_fv7pg"), SubResource("StyleBoxFlat_1bn4b")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jx5cv"]
-bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
+bg_color = Color(0.50980395, 0.3529412, 0.23921569, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -153,56 +48,55 @@ script = ExtResource("2_iwm3t")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_jx5cv")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
-[node name="蓝图信息" type="Panel"]
-custom_minimum_size = Vector2(350, 400)
-offset_right = 350.0
+[node name="蓝图信息" type="Panel" unique_id=1750311729]
+custom_minimum_size = Vector2(400, 400)
+offset_right = 340.0
 offset_bottom = 400.0
 theme = ExtResource("1_b1agn")
-theme_override_styles/panel = SubResource("StyleBox_mdm2x")
+theme_override_styles/panel = ExtResource("6_iwm3t")
 script = ExtResource("4_gmgml")
 
-[node name="图片" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(95, 95)
+[node name="图片" type="TextureRect" parent="." unique_id=600500858]
+custom_minimum_size = Vector2(90, 90)
 layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 105.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 100.0
 offset_bottom = 100.0
 texture = ExtResource("5_b1agn")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="蓝图名称" type="Label" parent="."]
+[node name="蓝图名称" type="Label" parent="." unique_id=2094740649]
 custom_minimum_size = Vector2(230, 60)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 105.0
+offset_left = 108.0
 offset_right = -15.0
-offset_bottom = 71.0
+offset_bottom = 73.0
 grow_horizontal = 2
 size_flags_horizontal = 0
 size_flags_vertical = 1
-theme_override_constants/line_spacing = 0
-theme_override_constants/paragraph_spacing = -15
-theme_override_font_sizes/font_size = 30
+theme_override_constants/paragraph_spacing = -10
+theme_override_font_sizes/font_size = 28
 text = "比方说五字
 精通等级LV:100"
 
-[node name="精通条" type="ProgressBar" parent="."]
+[node name="精通条" type="ProgressBar" parent="." unique_id=1923267457]
 custom_minimum_size = Vector2(200, 30)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 100.0
-offset_top = 70.0
-offset_right = -50.0
-offset_bottom = 100.0
+offset_left = 111.0
+offset_top = 72.0
+offset_right = -55.0
+offset_bottom = 102.0
 grow_horizontal = 2
 step = 1.0
 show_percentage = false
 
-[node name="精通" type="Label" parent="精通条"]
+[node name="精通" type="Label" parent="精通条" unique_id=2039464307]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -217,27 +111,23 @@ text = "1000/10000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="标签" type="TabContainer" parent="."]
+[node name="标签" type="TabContainer" parent="." unique_id=869929362]
 custom_minimum_size = Vector2(340, 290)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
-offset_top = 100.0
+offset_top = 105.0
 offset_right = -5.0
-offset_bottom = -10.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-theme_override_styles/panel = SubResource("StyleBoxEmpty_jx5cv")
-theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_0s5mh")
-theme_override_styles/tab_unselected = SubResource("StyleBox_y5jsc")
-theme_override_styles/tab_hovered = SubResource("StyleBox_0dedd")
-theme_override_styles/tab_selected = SubResource("StyleBox_26tgt")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/panel = SubResource("StyleBoxFlat_iwm3t")
 current_tab = 2
 
-[node name="简介" type="RichTextLabel" parent="标签"]
+[node name="简介" type="RichTextLabel" parent="标签" unique_id=109714322]
 visible = false
 custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
@@ -248,7 +138,7 @@ bbcode_enabled = true
 text = "简介:赤红火纹缠绕符身，触之有跃动光粒，随气息明灭闪烁。"
 metadata/_tab_index = 0
 
-[node name="材料" type="RichTextLabel" parent="标签"]
+[node name="材料" type="RichTextLabel" parent="标签" unique_id=2127107314]
 visible = false
 custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
@@ -261,35 +151,39 @@ text = "耗时:100秒
 [img=33x33]res://素材/游戏素材/货币/36.png[/img]:100"
 metadata/_tab_index = 1
 
-[node name="升星" type="RichTextLabel" parent="标签"]
-custom_minimum_size = Vector2(340, 0)
+[node name="升星" type="RichTextLabel" parent="标签" unique_id=2032277163]
 layout_mode = 2
-theme_override_constants/line_separation = -7
-theme_override_font_sizes/normal_font_size = 28
+theme_override_constants/line_separation = -5
+theme_override_constants/paragraph_separation = 0
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "升星效果:"
 scroll_active = false
 metadata/_tab_index = 2
 
-[node name="升星按钮" type="Button" parent="标签/升星"]
+[node name="升星按钮" type="Button" parent="标签/升星" unique_id=1404269521]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -84.0
-offset_top = 5.0
-offset_right = -5.0
-offset_bottom = 41.0
+offset_left = -79.0
+offset_bottom = 36.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBox_0s5mh")
 theme_override_styles/pressed = SubResource("StyleBox_0s5mh")
 theme_override_styles/hover = SubResource("StyleBox_0s5mh")
+theme_override_styles/hover_pressed = SubResource("StyleBox_0s5mh")
+theme_override_styles/disabled = SubResource("StyleBox_0s5mh")
 theme_override_styles/focus = SubResource("StyleBox_0s5mh")
 text = "升星"
 clip_text = true
 
-[node name="精通按钮" type="Button" parent="."]
+[node name="精通按钮" type="Button" parent="." unique_id=18549613]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -303,6 +197,7 @@ theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBox_0s5mh")
 theme_override_styles/pressed = SubResource("StyleBox_0s5mh")
 theme_override_styles/hover = SubResource("StyleBox_0s5mh")
+theme_override_styles/hover_pressed = SubResource("StyleBox_0s5mh")
 theme_override_styles/focus = SubResource("StyleBox_0s5mh")
 text = "+"
 clip_text = true

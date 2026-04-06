@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="4_r7331"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvqnr"]
-bg_color = Color(0.6117647, 0.5137255, 0.30588236, 1)
+bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -17,7 +17,7 @@ script = ExtResource("1_6851i")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yni8h"]
-content_margin_left = 60.0
+content_margin_left = 70.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqimc"]
 bg_color = Color(0.5254902, 0.6509804, 0.52156866, 1)
@@ -79,22 +79,22 @@ script = ExtResource("3_hvqnr")
 
 [node name="回复速度" type="Label" parent="." unique_id=1309244495]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 74.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/line_spacing = -12
-theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yni8h")
-text = "回复+%.2f
-上限:%d,费用:1"
+text = "木材回复+0.00"
 vertical_alignment = 1
 
 [node name="贴图" type="TextureRect" parent="." unique_id=1665336503]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
+offset_left = 6.0
 offset_top = 9.0
-offset_right = 60.0
+offset_right = 66.0
 offset_bottom = 69.0
 texture = ExtResource("4_r7331")
 expand_mode = 1
@@ -106,29 +106,22 @@ anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -51.0
-offset_top = 20.0
+offset_top = 14.0
 offset_right = 11.0
-offset_bottom = 77.0
+offset_bottom = 79.0
 scale = Vector2(0.75, 0.75)
-theme_override_styles/normal = SubResource("StyleBox_vgh6y")
-theme_override_styles/pressed = SubResource("StyleBox_vgh6y")
-theme_override_styles/hover = SubResource("StyleBox_vgh6y")
-theme_override_styles/focus = SubResource("StyleBox_vgh6y")
 text = "+"
 
 [node name="-" type="Button" parent="." unique_id=2140569160]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 304.0
-offset_top = 21.0
+offset_top = 14.0
 offset_right = 366.0
-offset_bottom = 78.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.75, 0.75)
-theme_override_styles/normal = SubResource("StyleBox_vgh6y")
-theme_override_styles/pressed = SubResource("StyleBox_vgh6y")
-theme_override_styles/hover = SubResource("StyleBox_vgh6y")
 theme_override_styles/focus = SubResource("StyleBox_vgh6y")
 text = "-"
 
@@ -137,9 +130,9 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 356.0
-offset_top = 11.0
+offset_top = 16.0
 offset_right = -53.0
-offset_bottom = 68.0
+offset_bottom = 73.0
 grow_horizontal = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_5lflo")
 text = "100"

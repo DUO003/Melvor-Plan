@@ -3,13 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_22rry"]
 [ext_resource type="Script" uid="uid://ckjj46h1awyqm" path="res://界面/挂机系统/订单/订单界面.gd" id="2_qbq65"]
 [ext_resource type="PackedScene" uid="uid://xxyqjkn8fefo" path="res://界面/插件/滑块.tscn" id="2_ur6pg"]
+[ext_resource type="StyleBox" uid="uid://dtqhnwn5me1i8" path="res://界面/主题/样式/面板样式_浅色.tres" id="3_j2egr"]
 [ext_resource type="PackedScene" uid="uid://d225buqtym477" path="res://界面/挂机系统/任务窗口/任务容器.tscn" id="3_qbq65"]
 
 [node name="订单界面" unique_id=1165010489 instance=ExtResource("1_22rry")]
 script = ExtResource("2_qbq65")
 "基类窗口名称" = "订单界面"
 
-[node name="分组容器" type="HBoxContainer" parent="内容节点" index="0" unique_id=1693107556]
+[node name="MarginContainer" type="MarginContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="1" unique_id=156222737]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,11 +18,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="订单显示区" type="ScrollContainer" parent="内容节点/分组容器" index="0" unique_id=784525821]
+[node name="分组容器" type="HBoxContainer" parent="内容节点/MarginContainer" index="0" unique_id=1693107556]
+layout_mode = 2
+
+[node name="左栏" type="PanelContainer" parent="内容节点/MarginContainer/分组容器" index="0" unique_id=1710696444]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("3_j2egr")
+
+[node name="订单显示区" type="ScrollContainer" parent="内容节点/MarginContainer/分组容器/左栏" index="0" unique_id=784525821]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="网格容器" type="GridContainer" parent="内容节点/分组容器/订单显示区" index="0" unique_id=1183937971]
+[node name="网格容器" type="GridContainer" parent="内容节点/MarginContainer/分组容器/左栏/订单显示区" index="0" unique_id=1183937971]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -31,11 +40,11 @@ theme_override_constants/h_separation = -1
 theme_override_constants/v_separation = -2
 columns = 3
 
-[node name="信息排列容器" type="VBoxContainer" parent="内容节点/分组容器" index="1" unique_id=1539848306]
+[node name="信息排列容器" type="VBoxContainer" parent="内容节点/MarginContainer/分组容器" index="1" unique_id=1539848306]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="显示订单" type="OptionButton" parent="内容节点/分组容器/信息排列容器" index="0" unique_id=729907092]
+[node name="显示订单" type="OptionButton" parent="内容节点/MarginContainer/分组容器/信息排列容器" index="0" unique_id=729907092]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 60)
 layout_mode = 2
@@ -49,19 +58,20 @@ popup/item_1/id = 0
 popup/item_2/text = "课题订单"
 popup/item_2/id = 0
 
-[node name="订单筛选器" type="Label" parent="内容节点/分组容器/信息排列容器/显示订单" index="1" unique_id=1647536774]
+[node name="订单筛选器" type="Label" parent="内容节点/MarginContainer/分组容器/信息排列容器/显示订单" index="1" unique_id=1647536774]
 layout_mode = 0
 offset_left = -250.0
 offset_bottom = 57.0
 text = "订单筛选器"
+vertical_alignment = 1
 
-[node name="提交模式" parent="内容节点/分组容器/信息排列容器" index="1" unique_id=587444993 instance=ExtResource("2_ur6pg")]
+[node name="提交模式" parent="内容节点/MarginContainer/分组容器/信息排列容器" index="1" unique_id=587444993 instance=ExtResource("2_ur6pg")]
 unique_name_in_owner = true
 layout_mode = 2
 "信号选项" = "更新玩法"
 "文本偏移" = Vector2(-250, 1)
 
-[node name="循环任务" parent="内容节点/分组容器/信息排列容器" index="2" unique_id=901319443 instance=ExtResource("3_qbq65")]
+[node name="循环任务" parent="内容节点/MarginContainer/分组容器/信息排列容器" index="2" unique_id=901319443 instance=ExtResource("3_qbq65")]
 layout_mode = 2
 size_flags_vertical = 3
 "循环筛选" = Array[String](["订单"])

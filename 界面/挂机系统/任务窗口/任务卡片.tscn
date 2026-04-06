@@ -1,42 +1,22 @@
 [gd_scene format=3 uid="uid://ctj6nfk62fcsg"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ca8jx"]
-[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_7pife"]
+[ext_resource type="StyleBox" uid="uid://sdbk6om71jii" path="res://界面/主题/样式/面板样式_窄边.tres" id="2_7tdtd"]
 [ext_resource type="Script" uid="uid://e031poj6o6r1" path="res://界面/挂机系统/任务窗口/任务卡片.gd" id="2_k6e0v"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_gxfu4"]
 [ext_resource type="PackedScene" uid="uid://c51gx8des8nv1" path="res://界面/插件/红点提示.tscn" id="3_wwkkq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tdtd"]
-bg_color = Color(0.55, 0.42716667, 0.18149999, 0.7058824)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-script = ExtResource("3_gxfu4")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBox" id="StyleBox_0r0a7"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = 10.0
-content_margin_top = -1.0
-content_margin_right = 10.0
-content_margin_bottom = -1.0
-script = ExtResource("2_7pife")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_7tdtd")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+[ext_resource type="FontFile" uid="uid://ba8mauhrxpxeg" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-85-Bold/AlibabaPuHuiTi-3-85-Bold.otf" id="4_g60r2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pife"]
-bg_color = Color(0.6, 0.6, 0.6, 0.3529412)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
+bg_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
 expand_margin_left = 10.0
 expand_margin_right = 10.0
-script = ExtResource("3_gxfu4")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxfu4"]
-bg_color = Color(0, 0, 0, 0.078431375)
 script = ExtResource("3_gxfu4")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
@@ -62,7 +42,7 @@ custom_minimum_size = Vector2(350, 500)
 offset_right = 305.0
 offset_bottom = 500.0
 theme = ExtResource("1_ca8jx")
-theme_override_styles/panel = SubResource("StyleBox_0r0a7")
+theme_override_styles/panel = ExtResource("2_7tdtd")
 script = ExtResource("2_k6e0v")
 
 [node name="任务名称" type="Label" parent="." unique_id=1601016198]
@@ -73,6 +53,7 @@ offset_left = 10.0
 offset_right = -10.0
 offset_bottom = 57.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_g60r2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7pife")
 text = "任务名称"
 
@@ -87,7 +68,6 @@ offset_top = 57.0
 offset_right = -5.0
 offset_bottom = -80.0
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_gxfu4")
 vertical_scroll_mode = 3
 metadata/_edit_use_anchors_ = true
 
@@ -104,7 +84,11 @@ layout_mode = 2
 theme_override_colors/selection_color = Color(0.05750011, 0, 0.69, 0.6039216)
 theme_override_constants/line_separation = -10
 theme_override_constants/paragraph_separation = 0
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/italics_font_size = 28
+theme_override_font_sizes/mono_font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_k6e0v")
 theme_override_styles/focus = SubResource("StyleBoxFlat_0r0a7")
 bbcode_enabled = true

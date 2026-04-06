@@ -10,7 +10,7 @@ extends 基类梅窗口
 @onready var 分解: Button = %分解
 @onready var 鉴定价格: Label = %鉴定价格
 @onready var 物品背包: VBoxContainer = %物品背包
-@onready var 选项卡: TabContainer = $内容节点/内容/选项卡
+@onready var 选项卡: TabContainer = %选项卡
 @onready var 装备信息: Label = %装备信息
 @onready var 材料信息: RichTextLabel = %材料信息
 func  _ready() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c51gx8des8nv1"]
+[gd_scene format=3 uid="uid://c51gx8des8nv1"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_vnjqi"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_7pjvl"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_bdvs8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pjvl"]
-bg_color = Color(0, 0, 0, 0.49803922)
+bg_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -15,7 +15,7 @@ script = ExtResource("3_bdvs8")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdvs8"]
-bg_color = Color(1, 0.23137255, 0.1882353, 1)
+bg_color = Color(0.8156863, 0.3529412, 0.28627452, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -80,7 +80,7 @@ _data = {
 &"红点": SubResource("Animation_gq4nm")
 }
 
-[node name="红点提示" type="Control"]
+[node name="红点提示" type="Control" unique_id=300026223]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -93,7 +93,7 @@ mouse_filter = 2
 theme = ExtResource("1_vnjqi")
 script = ExtResource("2_bdvs8")
 
-[node name="定位点" type="Control" parent="."]
+[node name="定位点" type="Control" parent="." unique_id=1926473872]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 1
 anchors_preset = 1
@@ -102,7 +102,7 @@ anchor_right = 1.0
 offset_top = 10.0
 grow_horizontal = 0
 
-[node name="红点" type="Panel" parent="定位点"]
+[node name="红点" type="Panel" parent="定位点" unique_id=1164280986]
 z_index = 1
 layout_mode = 0
 offset_right = 30.0
@@ -111,7 +111,7 @@ rotation = 0.7853982
 pivot_offset = Vector2(20, 20)
 theme_override_styles/panel = SubResource("StyleBox_w4fr0")
 
-[node name="感叹号" type="Label" parent="定位点/红点"]
+[node name="感叹号" type="Label" parent="定位点/红点" unique_id=2051614203]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,7 +129,7 @@ text = "!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="数量" type="Label" parent="定位点/红点"]
+[node name="数量" type="Label" parent="定位点/红点" unique_id=334261928]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -149,13 +149,11 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="动画" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_055p1")
-}
-autoplay = "红点"
+[node name="动画" type="AnimationPlayer" parent="." unique_id=1111572194]
+libraries/ = SubResource("AnimationLibrary_055p1")
+autoplay = &"红点"
 
-[node name="按钮" type="Button" parent="."]
+[node name="按钮" type="Button" parent="." unique_id=618844823]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
