@@ -12,12 +12,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+mouse_behavior_recursive = 1
 theme = ExtResource("1_6378n")
 script = ExtResource("2_pcrch")
 
 [node name="内容节点" type="Control" parent="." unique_id=1614734378]
+unique_name_in_owner = true
 clip_contents = true
 layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
@@ -26,6 +29,7 @@ offset_right = -240.0
 offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_behavior_recursive = 2
 
 [node name="背景" type="Panel" parent="内容节点" unique_id=1682944788]
 unique_name_in_owner = true
@@ -39,6 +43,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="悬浮面板" type="Control" parent="." unique_id=1473741879]
+unique_name_in_owner = true
 anchors_preset = 0
 
 [node name="悬浮提示" parent="悬浮面板" unique_id=1548291677 instance=ExtResource("4_nl0m2")]

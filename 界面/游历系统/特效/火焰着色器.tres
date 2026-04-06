@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://d1pdm3lsqumw1"]
 
 [ext_resource type="Shader" uid="uid://f40ynold7cb1" path="res://界面/游历系统/特效/火焰.tres" id="1_y7g7o"]
-[ext_resource type="Texture2D" uid="uid://b8hjxjt8p3f2q" path="res://素材/自制/噪声与纹理/火球.png" id="2_1g6lk"]
+[ext_resource type="Texture2D" uid="uid://bnq2fmxvo1nh4" path="res://素材/自制/噪声与纹理/火球.png" id="2_1g6lk"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_lw2rh"]
 noise_type = 0

@@ -54,24 +54,15 @@ theme_override_constants/separation = 0
 [node name="选项卡" type="TabContainer" parent="内容节点/分栏" index="0" unique_id=512163837]
 layout_mode = 2
 size_flags_vertical = 0
-current_tab = 2
+current_tab = 0
 script = ExtResource("2_sr4hh")
 
-[node name="地图" type="Control" parent="内容节点/分栏/选项卡" index="1" unique_id=7501989]
-visible = false
-custom_minimum_size = Vector2(0, 450)
+[node name="地图" type="HBoxContainer" parent="内容节点/分栏/选项卡" index="1" unique_id=261707933]
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="地图分栏" type="HBoxContainer" parent="内容节点/分栏/选项卡/地图" index="0" unique_id=261707933]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="地图底" type="Control" parent="内容节点/分栏/选项卡/地图/地图分栏" index="0" unique_id=977636405]
+[node name="地图底" type="Control" parent="内容节点/分栏/选项卡/地图" index="0" unique_id=977636405]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -80,13 +71,13 @@ script = ExtResource("2_jh5gh")
 "绘制范围" = Rect2i(0, 0, 5, 5)
 "绘制偏移" = Vector2(128, 80)
 
-[node name="地图显示" type="TileMapLayer" parent="内容节点/分栏/选项卡/地图/地图分栏/地图底" index="0" unique_id=1693505411]
+[node name="地图显示" type="TileMapLayer" parent="内容节点/分栏/选项卡/地图/地图底" index="0" unique_id=1693505411]
 unique_name_in_owner = true
 position = Vector2(64, 16)
 scale = Vector2(0.5, 0.5)
 tile_set = ExtResource("3_6uq2s")
 
-[node name="地图提示" type="Panel" parent="内容节点/分栏/选项卡/地图/地图分栏/地图底" index="1" unique_id=1582019085]
+[node name="地图提示" type="Panel" parent="内容节点/分栏/选项卡/地图/地图底" index="1" unique_id=1582019085]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,18 +90,18 @@ script = ExtResource("5_6uq2s")
 "字体" = ExtResource("3_lnyx0")
 metadata/_edit_lock_ = true
 
-[node name="分栏" type="VBoxContainer" parent="内容节点/分栏/选项卡/地图/地图分栏" index="1" unique_id=292137975]
+[node name="分栏" type="VBoxContainer" parent="内容节点/分栏/选项卡/地图" index="1" unique_id=292137975]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="地图数据容器" type="ScrollContainer" parent="内容节点/分栏/选项卡/地图/地图分栏/分栏" index="0" unique_id=286223789]
+[node name="地图数据容器" type="ScrollContainer" parent="内容节点/分栏/选项卡/地图/分栏" index="0" unique_id=286223789]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_cueu5")
 
-[node name="地图数据" parent="内容节点/分栏/选项卡/地图/地图分栏/分栏/地图数据容器" index="0" unique_id=800503351 instance=ExtResource("7_cueu5")]
+[node name="地图数据" parent="内容节点/分栏/选项卡/地图/分栏/地图数据容器" index="0" unique_id=800503351 instance=ExtResource("7_cueu5")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -118,24 +109,20 @@ size_flags_vertical = 3
 "禁用" = true
 "禁用后删除" = false
 
-[node name="按钮区" type="HBoxContainer" parent="内容节点/分栏/选项卡/地图/地图分栏/分栏" index="1" unique_id=537768816]
+[node name="按钮区" type="HBoxContainer" parent="内容节点/分栏/选项卡/地图/分栏" index="1" unique_id=537768816]
 layout_mode = 2
 
-[node name="前往" type="Button" parent="内容节点/分栏/选项卡/地图/地图分栏/分栏/按钮区" index="0" unique_id=2144472197]
+[node name="前往" type="Button" parent="内容节点/分栏/选项卡/地图/分栏/按钮区" index="0" unique_id=2144472197]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 text = "前往"
 
-[node name="冒险" type="Control" parent="内容节点/分栏/选项卡" index="2" unique_id=25289229]
+[node name="队伍" type="ScrollContainer" parent="内容节点/分栏/选项卡" index="2" unique_id=34650283]
 visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="队伍" type="ScrollContainer" parent="内容节点/分栏/选项卡" index="3" unique_id=34650283]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 1
 
 [node name="队伍容器" type="HBoxContainer" parent="内容节点/分栏/选项卡/队伍" index="0" unique_id=757296253]
 unique_name_in_owner = true
@@ -160,7 +147,7 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(1700, 387)
+size = Vector2i(1660, 387)
 render_target_update_mode = 4
 
 [node name="冒险管理器" parent="内容节点/分栏/冒险窗口区/冒险窗口" index="0" unique_id=99110732 instance=ExtResource("8_pau8c")]

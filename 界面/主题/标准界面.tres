@@ -238,7 +238,9 @@ base_scale = 4.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ly6fy"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntsn1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvlpa"]
+content_margin_left = 15.0
+content_margin_right = 15.0
 bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
 border_width_left = 5
 border_width_top = 5
@@ -260,16 +262,77 @@ margin_right = -5
 margin_bottom = -5
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
-[sub_resource type="StyleBox" id="StyleBox_ykmuj"]
-resource_local_to_scene = false
-resource_name = ""
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj2bx"]
 content_margin_left = 15.0
-content_margin_top = 5.0
 content_margin_right = 15.0
-content_margin_bottom = 5.0
-script = ExtResource("1_kb01l")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_ntsn1")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.50980395, 0.3529412, 0.23921569, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+expand_margin_bottom = -5.0
+script = ExtResource("2_csmyg")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+margin_bottom = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ff5e4"]
+content_margin_left = 15.0
+content_margin_right = 15.0
+bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.50980395, 0.3529412, 0.23921569, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+expand_margin_bottom = -5.0
+script = ExtResource("2_csmyg")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+margin_bottom = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntsn1"]
+content_margin_left = 15.0
+content_margin_right = 15.0
+bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.50980395, 0.3529412, 0.23921569, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+expand_margin_bottom = -5.0
+script = ExtResource("2_csmyg")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+margin_bottom = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4m5x"]
 bg_color = Color(0.8156863, 0.3529412, 0.28627452, 1)
@@ -291,12 +354,35 @@ script = ExtResource("1_kb01l")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_h4m5x")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_gvlpa"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+thickness = 3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_qj2bx"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+thickness = 3
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ar6tj"]
-bg_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
+bg_color = Color(0.36, 0.24120001, 0.162, 0.9411765)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.36, 0.24450001, 0.162, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 script = ExtResource("2_csmyg")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
-[sub_resource type="StyleBox" id="StyleBox_qj2bx"]
+[sub_resource type="StyleBox" id="StyleBox_gvlpa"]
 resource_local_to_scene = false
 resource_name = ""
 content_margin_left = -1.0
@@ -306,6 +392,13 @@ content_margin_bottom = -1.0
 script = ExtResource("1_kb01l")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_ar6tj")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ff5e4"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+thickness = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rko8"]
 bg_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
@@ -679,9 +772,9 @@ content_margin_right = 10.0
 resource_local_to_scene = false
 resource_name = ""
 content_margin_left = 15.0
-content_margin_top = 5.0
+content_margin_top = 2.0
 content_margin_right = 15.0
-content_margin_bottom = 5.0
+content_margin_bottom = 2.0
 script = ExtResource("1_kb01l")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_rqfis"), SubResource("StyleBoxFlat_1xjbn")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
@@ -887,14 +980,17 @@ OptionButton/constants/arrow_margin = 10
 OptionButton/constants/outline_size = 1
 OptionButton/icons/arrow = SubResource("DPITexture_gklb8")
 OptionButton/styles/focus = SubResource("StyleBoxEmpty_ly6fy")
-OptionButton/styles/hover = SubResource("StyleBox_ykmuj")
-OptionButton/styles/hover_pressed = SubResource("StyleBox_ykmuj")
-OptionButton/styles/normal = SubResource("StyleBox_ykmuj")
-OptionButton/styles/pressed = SubResource("StyleBox_ykmuj")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_gvlpa")
+OptionButton/styles/hover_pressed = SubResource("StyleBoxFlat_qj2bx")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_ff5e4")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_ntsn1")
 Panel/styles/panel = ExtResource("8_ar6tj")
 PanelContainer/styles/panel = ExtResource("8_ar6tj")
 PopupMenu/styles/hover = SubResource("StyleBox_1bn4b")
-PopupMenu/styles/panel = SubResource("StyleBox_qj2bx")
+PopupMenu/styles/labeled_separator_left = SubResource("StyleBoxLine_gvlpa")
+PopupMenu/styles/labeled_separator_right = SubResource("StyleBoxLine_qj2bx")
+PopupMenu/styles/panel = SubResource("StyleBox_gvlpa")
+PopupMenu/styles/separator = SubResource("StyleBoxLine_ff5e4")
 ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
 ProgressBar/constants/outline_size = 1
 ProgressBar/styles/background = SubResource("StyleBoxFlat_3rko8")

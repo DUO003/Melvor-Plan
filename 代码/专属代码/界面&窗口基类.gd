@@ -5,19 +5,18 @@ class_name 基类梅窗口#逐渐改使用基类 当前大部分窗口未使用
 @export var 选项卡同步: Dictionary[String,TabContainer] = {}
 @export var 滚动区同步: Dictionary[String,ScrollContainer] = {}
 @export var 生命周期计时器: Array[Timer]
-
+@onready var 根场景_内容节点: Control = %内容节点
+@onready var 根场景_悬浮面板: Control = %悬浮面板
 func _ready() -> void:
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint() or 基类窗口名称=="演示示例":
 		return
 	assert(基类窗口名称 != "", "基类窗口名称不能为空，所有继承者必须重写这个属性")
 	计划.节点[基类窗口名称]=self#注册
 	call_deferred("自动加载")
-	if not 基类窗口名称=="空节点":
-		计划.场景全局样式.connect(设置样式)
-		call_deferred("设置样式")
+	计划.场景全局样式.connect(设置样式)
+	call_deferred("设置样式")
 func 设置样式():
-	if 基类窗口名称=="空节点":
-		return
+	pass
 	#var 标题: ColorRect = %标题
 	#var 背景: ColorRect = %背景
 	#if 背景 and 标题:
@@ -93,44 +92,10 @@ func 定期更新提示文本(目标文本节点):
 		目标文本节点.text = 提示文本[0]
 func 节点有效性检查(节点名称:String)->bool:
 	return 节点名称 in 计划.节点 and 计划.节点[节点名称] != null
-var 屏幕震动锁定:bool=false
-var 初始位置:Vector2
-@onready var 场景容器: CanvasLayer
-func 屏幕震动(摄像机节点: Node2D, 震动频率: int, 震动幅度: int, 震动持续时间: float) -> void:
-	if 场景容器:
-		场景容器.follow_viewport_enabled=true
-	print("屏幕震动")
-	# 参数合法性校验与修正
-	震动频率 = max(震动频率, 1)  # 确保频率至少为1帧
-	震动幅度 = max(震动幅度, 1)  # 确保幅度至少为1像素
-	震动持续时间 = max(震动持续时间, 0.1)  # 确保最少0.1秒
-	
-	# 记录摄像机初始位置(用于最终复位)
-	if not 屏幕震动锁定:
-		初始位置 = 摄像机节点.position
-		屏幕震动锁定=true
-	# 计算总震动帧数(基于当前帧率)
-	var 帧率 = int(Engine.get_frames_per_second())  # 返回float，表示当前实际FPS
-	var 总震动帧数 = int(震动持续时间 * 帧率)
-	总震动帧数 = max(总震动帧数, 1)  # 确保至少有1帧震动
-	
-	var 当前帧计数 = 0
-	var 当前偏移量 = Vector2.ZERO  # 初始偏移为0
-	
-	# 循环执行震动效果
-	for _X in range(总震动帧数):
-		当前帧计数 += 1
-		
-		# 每隔指定频率帧更新一次偏移量
-		if 当前帧计数 % 震动频率 == 0:
-			当前偏移量 = Vector2(
-				randf_range(-震动幅度, 震动幅度),  # X轴随机偏移
-				randf_range(-震动幅度, 震动幅度))   # Y轴随机偏移
-		# 应用偏移到摄像机位置
-		摄像机节点.position = 初始位置 + 当前偏移量
-		await get_tree().process_frame
-	# 震动结束后强制复位到初始位置
-	摄像机节点.position = 初始位置
-	屏幕震动锁定=false
-	if 场景容器:
-		场景容器.follow_viewport_enabled=false
+func 窗口最大化(状态:bool):
+	if 状态:
+		根场景_内容节点.set_size(Vector2(1900,970))
+		根场景_内容节点.set_position(Vector2(10,110))
+	else :
+		根场景_内容节点.set_size(Vector2(1660,880))
+		根场景_内容节点.set_position(Vector2(20,120))

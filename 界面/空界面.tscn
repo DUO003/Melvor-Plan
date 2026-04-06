@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bk4u705i4hop" path="res://界面/插件/等级显示.tscn" id="4_yd0tu"]
 [ext_resource type="PackedScene" uid="uid://c51gx8des8nv1" path="res://界面/插件/红点提示.tscn" id="5_5a7ci"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="6_rxn41"]
+[ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="7_q2fph"]
 [ext_resource type="PackedScene" uid="uid://bs3xyimmlbfxm" path="res://界面/根界面/测试功能.tscn" id="9_rhqkc"]
 [ext_resource type="PackedScene" uid="uid://cq8y0f7wmpt01" path="res://界面/插件/奖励悬浮面板.tscn" id="10_0p14m"]
 [ext_resource type="StyleBox" uid="uid://b4e1kywxmpkxv" path="res://界面/主题/样式/按钮样式_默认_正常.tres" id="10_s3egw"]
@@ -103,7 +104,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_kiae7")
 script = ExtResource("1_1xcs4")
-"基类窗口名称" = "空节点"
 metadata/_edit_lock_ = true
 
 [node name="功能" type="CanvasLayer" parent="." unique_id=488944872]
@@ -123,7 +123,7 @@ unique_name_in_owner = true
 offset = Vector2(960, 540)
 limit_enabled = false
 
-[node name="Panel" type="Panel" parent="功能" unique_id=2132107341]
+[node name="等级显示背景" type="Panel" parent="功能" unique_id=2132107341]
 custom_minimum_size = Vector2(0, 110)
 anchors_preset = 10
 anchor_right = 1.0
@@ -133,7 +133,7 @@ size_flags_horizontal = 3
 theme = ExtResource("4_kiae7")
 theme_override_styles/panel = SubResource("StyleBoxFlat_0p14m")
 
-[node name="等级显示" parent="功能/Panel" unique_id=1257429001 instance=ExtResource("4_yd0tu")]
+[node name="等级显示" parent="功能/等级显示背景" unique_id=1257429001 instance=ExtResource("4_yd0tu")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1700, 100)
 layout_mode = 1
@@ -239,6 +239,10 @@ theme_override_constants/separation = 0
 unique_name_in_owner = true
 follow_viewport_enabled = true
 
+[node name="基类界面" parent="场景容器" unique_id=166508811 instance=ExtResource("7_q2fph")]
+"基类窗口名称" = "演示示例"
+metadata/_edit_lock_ = true
+
 [node name="悬浮面板" type="CanvasLayer" parent="." unique_id=1789299298]
 layer = 3
 
@@ -263,10 +267,15 @@ anchors_preset = 0
 theme = ExtResource("4_kiae7")
 
 [node name="隐藏奖励" type="Button" parent="悬浮面板" unique_id=590372978]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
-offset_top = 100.0
-offset_right = 1700.0
-offset_bottom = 1000.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("4_rhqkc")
 
 [node name="奖励悬浮面板" parent="悬浮面板" unique_id=947308483 instance=ExtResource("10_0p14m")]
@@ -371,3 +380,5 @@ offset_bottom = 93.0
 [node name="动画_暂停界面" type="AnimationPlayer" parent="暂停界面" unique_id=623932522]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_rhqkc")
+
+[editable path="场景容器/基类界面"]

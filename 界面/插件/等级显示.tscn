@@ -5,7 +5,12 @@
 [ext_resource type="Script" uid="uid://cpcxenbyca8ed" path="res://界面/插件/右侧按钮.gd" id="3_c2fnl"]
 [ext_resource type="Texture2D" uid="uid://vkpx0uhvnpn" path="res://素材/自制/图标/暂停.png" id="4_q6ht0"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_in4vb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2fnl"]
+bg_color = Color(0.7, 0.5987333, 0.504, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_in4vb"]
 bg_color = Color(1, 0.7058824, 0.050980393, 1)
@@ -17,7 +22,12 @@ corner_radius_bottom_left = 10
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_brtdv"]
 content_margin_left = 10.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c2fnl"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6ht0"]
+bg_color = Color(0.7, 0.5987333, 0.504, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="InputEventKey" id="InputEventKey_yd0tu"]
 device = -1
@@ -32,7 +42,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%存档功能区:visible")
+tracks/0/path = NodePath("展开功能区:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -44,7 +54,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%存档功能区/存档时间:custom_minimum_size")
+tracks/1/path = NodePath("展开功能区/存档时间:custom_minimum_size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -56,7 +66,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%存档按钮:text")
+tracks/2/path = NodePath("展开功能区/存档按钮:text")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -68,7 +78,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("%存档时间文本:visible_ratio")
+tracks/3/path = NodePath("展开功能区/存档时间/存档时间文本:visible_ratio")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -80,7 +90,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("%存档按钮:custom_minimum_size")
+tracks/4/path = NodePath("展开功能区/存档按钮:custom_minimum_size")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -89,6 +99,30 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(156, 80)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%最大:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["最大"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%最大:custom_minimum_size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(100, 80)]
+}
 
 [sub_resource type="Animation" id="Animation_q6ht0"]
 resource_name = "开关动画"
@@ -96,7 +130,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%存档功能区:visible")
+tracks/0/path = NodePath("展开功能区:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -108,7 +142,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%存档功能区/存档时间:custom_minimum_size")
+tracks/1/path = NodePath("展开功能区/存档时间:custom_minimum_size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -120,7 +154,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%存档按钮:text")
+tracks/2/path = NodePath("展开功能区/存档按钮:text")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -132,7 +166,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("%存档时间文本:visible_ratio")
+tracks/3/path = NodePath("展开功能区/存档时间/存档时间文本:visible_ratio")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -144,7 +178,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("%存档按钮:custom_minimum_size")
+tracks/4/path = NodePath("展开功能区/存档按钮:custom_minimum_size")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -152,6 +186,30 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 80), Vector2(156, 80)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%最大:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.056729417, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["", "大", "最大"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%最大:custom_minimum_size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 80), Vector2(100, 80)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gf7k4"]
@@ -195,7 +253,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
 theme = ExtResource("2_brtdv")
-theme_override_styles/background = SubResource("StyleBoxEmpty_in4vb")
+theme_override_styles/background = SubResource("StyleBoxFlat_c2fnl")
 theme_override_styles/fill = SubResource("StyleBoxFlat_in4vb")
 step = 1.0
 value = 66.0
@@ -236,7 +294,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
 theme = ExtResource("2_brtdv")
-theme_override_styles/background = SubResource("StyleBoxEmpty_c2fnl")
+theme_override_styles/background = SubResource("StyleBoxFlat_q6ht0")
 step = 1.0
 value = 33.0
 allow_greater = true
@@ -265,17 +323,17 @@ size_flags_vertical = 4
 alignment = 2
 script = ExtResource("3_c2fnl")
 
-[node name="存档功能区" type="HBoxContainer" parent="右侧按钮" unique_id=220463263]
+[node name="展开功能区" type="HBoxContainer" parent="右侧按钮" unique_id=220463263]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="存档时间" type="Panel" parent="右侧按钮/存档功能区" unique_id=599093444]
+[node name="存档时间" type="Panel" parent="右侧按钮/展开功能区" unique_id=599093444]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="存档时间文本" type="Label" parent="右侧按钮/存档功能区/存档时间" unique_id=912527534]
+[node name="存档时间文本" type="Label" parent="右侧按钮/展开功能区/存档时间" unique_id=912527534]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -287,13 +345,21 @@ text = "1000秒前"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="存档按钮" type="Button" parent="右侧按钮/存档功能区" unique_id=672522221]
+[node name="存档按钮" type="Button" parent="右侧按钮/展开功能区" unique_id=672522221]
 unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(156, 80)
 layout_mode = 2
 size_flags_vertical = 4
 text = "手动存档"
+
+[node name="最大" type="Button" parent="右侧按钮/展开功能区" unique_id=2016208484]
+unique_name_in_owner = true
+z_index = 1
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_vertical = 4
+text = "最大"
 
 [node name="展开按钮" type="Button" parent="右侧按钮" unique_id=548789944]
 unique_name_in_owner = true

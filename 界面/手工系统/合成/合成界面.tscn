@@ -9,18 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cxedxm5rt7rt2" path="res://界面/手工系统/配方.tscn" id="7_mdowl"]
 [ext_resource type="PackedScene" uid="uid://d225buqtym477" path="res://界面/挂机系统/任务窗口/任务容器.tscn" id="7_qg4nq"]
 [ext_resource type="StyleBox" uid="uid://sdbk6om71jii" path="res://界面/主题/样式/面板样式_窄边.tres" id="8_2y0d5"]
-[ext_resource type="Texture2D" uid="uid://cxhcr4v3c80ri" path="res://素材/豆包AI素材/图标/放大镜.png" id="8_mkxb5"]
-[ext_resource type="PackedScene" uid="uid://byxndkdhqwumw" path="res://界面/插件/圆形进度条.tscn" id="9_30npi"]
-[ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="10_h4fwj"]
-[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="11_kfy0o"]
+[ext_resource type="Texture2D" uid="uid://k6v4ilcwafef" path="res://素材/豆包AI素材/图标/放大镜.png" id="8_mkxb5"]
 [ext_resource type="StyleBox" uid="uid://cyckcabhg7b0q" path="res://界面/主题/样式/面板样式_深色.tres" id="12_2y0d5"]
+[ext_resource type="PackedScene" uid="uid://cs1enrah2b8qt" path="res://界面/手工系统/合成/自动化进度.tscn" id="13_12jx2"]
 [ext_resource type="PackedScene" uid="uid://c0xnyoxa6kefu" path="res://界面/手工系统/资源加点.tscn" id="14_swdfc"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2y0d5"]
-bg_color = Color(0.51, 0.35852996, 0.09689999, 0.15686275)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1q8i"]
-bg_color = Color(0.51, 0.35852996, 0.09689999, 0.28235295)
 
 [node name="合成界面" unique_id=707097301 node_paths=PackedStringArray("选项卡同步", "滚动区同步") instance=ExtResource("1_qg4nq")]
 script = ExtResource("2_2y0d5")
@@ -54,10 +46,9 @@ theme_override_constants/separation = 10
 [node name="选项卡" type="TabContainer" parent="内容节点/MarginContainer/内容区/第一内容区" index="0" unique_id=26525890]
 custom_minimum_size = Vector2(540, 600)
 layout_mode = 2
-current_tab = 2
+current_tab = 0
 
 [node name="物质" type="VBoxContainer" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡" index="1" unique_id=458950717]
-visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 metadata/_tab_index = 0
@@ -155,6 +146,7 @@ layout_mode = 2
 "资源名称" = "精华"
 
 [node name="循环任务" parent="内容节点/MarginContainer/内容区/第一内容区/选项卡" index="3" unique_id=901319443 instance=ExtResource("7_qg4nq")]
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 "循环筛选" = Array[String](["合成"])
@@ -223,10 +215,11 @@ popup/item_0/id = 0
 [node name="已解锁" type="CheckButton" parent="内容节点/MarginContainer/内容区/第一内容区/配方区/更多筛选" index="4" unique_id=842982248]
 unique_name_in_owner = true
 layout_mode = 2
-text = "解锁"
+text = "已解锁"
 
 [node name="检索" type="LineEdit" parent="内容节点/MarginContainer/内容区/第一内容区/配方区/更多筛选" index="5" unique_id=912468593]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 62)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "搜索"
@@ -238,6 +231,10 @@ layout_mode = 2
 texture_normal = ExtResource("8_mkxb5")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="占位符号" type="Control" parent="内容节点/MarginContainer/内容区/第一内容区/配方区/更多筛选" index="7" unique_id=1342822502]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
 
 [node name="第二内容区" type="VBoxContainer" parent="内容节点/MarginContainer/内容区" index="1" unique_id=212858795]
 layout_mode = 2
@@ -262,61 +259,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="圆形进度条" parent="内容节点/MarginContainer/内容区/第二内容区/切割分区/制作滚动队列/制作队列" index="0" unique_id=279848220 instance=ExtResource("9_30npi")]
+[node name="自动化进度" parent="内容节点/MarginContainer/内容区/第二内容区/切割分区/制作滚动队列/制作队列" index="0" unique_id=2133473682 instance=ExtResource("13_12jx2")]
 unique_name_in_owner = true
-z_index = 1
-custom_minimum_size = Vector2(136, 136)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-"半径" = 52.0
-"线条宽度" = 22.0
-
-[node name="配方" type="Button" parent="内容节点/MarginContainer/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条" index="0" unique_id=102660632]
-z_as_relative = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_2y0d5")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2y0d5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_x1q8i")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_2y0d5")
-theme_override_styles/focus = SubResource("StyleBoxFlat_2y0d5")
-
-[node name="配方名" type="Label" parent="内容节点/MarginContainer/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方" index="0" unique_id=1125338350]
-z_index = 1
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -105.0
-offset_top = -61.0
-offset_right = 105.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("10_h4fwj")
-theme_override_colors/font_shadow_color = Color(0.5, 0.5, 0.5, 1)
-text = "道具名称"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="配方贴图" type="TextureRect" parent="内容节点/MarginContainer/内容区/第二内容区/切割分区/制作滚动队列/制作队列/圆形进度条/配方" index="1" unique_id=1460463568]
-custom_minimum_size = Vector2(55, 60)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_kfy0o")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="提示文本" type="Label" parent="内容节点/MarginContainer/内容区/第二内容区/切割分区" index="1" unique_id=1216419486]
 unique_name_in_owner = true
@@ -375,6 +320,3 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "蓝图库"
-
-[node name="悬浮面板" parent="." index="1" unique_id=1473741879]
-unique_name_in_owner = true

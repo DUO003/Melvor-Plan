@@ -7,6 +7,20 @@
 [ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="4_b5354"]
 [ext_resource type="Script" uid="uid://bru7ehuqamvdq" path="res://界面/插件/资源进度条/刻度.gd" id="4_unkxt"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43vdm"]
+bg_color = Color(0.7, 0.5987333, 0.504, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wsje"]
+bg_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3ykc"]
 bg_color = Color(0.5243333, 0.65, 0.52, 0)
 corner_radius_top_left = 10
@@ -43,11 +57,12 @@ custom_minimum_size = Vector2(0, 65)
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 65.0
 grow_horizontal = 2
 theme = ExtResource("2_5i305")
 script = ExtResource("1_5i305")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1855292504]
+[node name="排列资源" type="HBoxContainer" parent="." unique_id=1855292504]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,7 +70,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="贴图" type="TextureRect" parent="HBoxContainer" unique_id=1996000880]
+[node name="贴图" type="TextureRect" parent="排列资源" unique_id=1996000880]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
@@ -63,7 +78,7 @@ texture = ExtResource("3_43vdm")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="文本" type="Label" parent="HBoxContainer" unique_id=574306005]
+[node name="文本" type="Label" parent="排列资源" unique_id=574306005]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
@@ -71,30 +86,20 @@ text = "木物质"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="进度" type="ProgressBar" parent="HBoxContainer" unique_id=171008741]
+[node name="进度" type="ProgressBar" parent="排列资源" unique_id=171008741]
 unique_name_in_owner = true
 clip_contents = true
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme = ExtResource("2_5i305")
+theme_override_styles/background = SubResource("StyleBoxFlat_43vdm")
 value = 20.0
 allow_greater = true
-
-[node name="背包" type="ProgressBar" parent="HBoxContainer/进度" unique_id=1397719948]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_u3ykc")
-theme_override_styles/fill = SubResource("StyleBoxTexture_o12l5")
-value = 20.0
 show_percentage = false
 
-[node name="刻度" type="Control" parent="HBoxContainer/进度" unique_id=2099994570]
+[node name="刻度" type="Control" parent="排列资源/进度" unique_id=2099994570]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -103,15 +108,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_unkxt")
-"刻度高度" = 5.0
+"刻度高度" = 8.0
 "大刻度颜色" = Color(0.43197232, 0.19236407, 0.0024436945, 1)
 "小刻度颜色" = Color(0, 0, 0, 0.78431374)
 "强制量级" = 100.0
 "启用刻度" = true
-"刻度偏移" = Vector2(-10, -2)
+"刻度偏移" = Vector2(-10, 0)
 "测试上限" = 100.0
+"重新绘制" = true
 
-[node name="刻度单位" type="Label" parent="HBoxContainer/进度/刻度" unique_id=1225333974]
+[node name="刻度单位" type="Label" parent="排列资源/进度/刻度" unique_id=1225333974]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -125,7 +131,30 @@ theme_override_colors/font_color = Color(0.12778333, 0.41, 0.123, 1)
 theme_override_font_sizes/font_size = 25
 text = "刻度10"
 
-[node name="显示数量" type="Label" parent="HBoxContainer/进度" unique_id=1075723280]
+[node name="蒙版" type="Panel" parent="排列资源/进度" unique_id=1830296315]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0wsje")
+
+[node name="背包" type="ProgressBar" parent="排列资源/进度/蒙版" unique_id=1397719948]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_u3ykc")
+theme_override_styles/fill = SubResource("StyleBoxTexture_o12l5")
+value = 20.0
+show_percentage = false
+
+[node name="显示数量" type="Label" parent="排列资源/进度" unique_id=1075723280]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 4
@@ -137,19 +166,9 @@ offset_bottom = 28.5
 grow_vertical = 2
 text = "100"
 
-[node name="回复" type="Label" parent="." unique_id=1167373922]
+[node name="回复" type="Label" parent="排列资源" unique_id=1167373922]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 0.194
-anchor_right = 1.0
-anchor_bottom = 0.80600005
-offset_left = -1.0
-offset_top = -0.020000458
-offset_bottom = 0.019996643
-grow_horizontal = 0
-grow_vertical = 2
+layout_mode = 2
 theme_override_font_sizes/font_size = 35
 horizontal_alignment = 2
 vertical_alignment = 1

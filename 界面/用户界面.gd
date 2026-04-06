@@ -1,4 +1,4 @@
-extends 基类梅窗口
+extends Control
 ##关于显示层级
 #0层功能区
 #1层游戏主场景
@@ -18,19 +18,22 @@ var 图钉区光标=false
 @onready var 任务按钮本体: Button = %"任务"  # 明确为Button节点
 @onready var 其他容器: Control = %其他容器
 @onready var 等级显示: 梅精通熟练条 = %等级显示
+@onready var 场景容器: CanvasLayer = %场景容器
+@onready var 任务栏分割: VSplitContainer = %任务栏分割
+@onready var 图钉区域: ScrollContainer = %图钉
+var 基类窗口名称:String="空窗口"
 signal 场景更新(当前场景)# 场景变化时会发出信号,首次加载也会发出
 func _ready():
-	场景容器= %场景容器
-	super._ready()
+	计划.节点[基类窗口名称]=self#注册
 	场景更新.connect(func(场景名称):计划.emit_signal("场景更新",场景名称))
-	%"图钉".mouse_entered.connect(func(): 图钉区光标=true)
-	%"图钉".mouse_exited.connect(func(): 图钉区光标=false)
+	图钉区域.mouse_entered.connect(func(): 图钉区光标=true)
+	图钉区域.mouse_exited.connect(func(): 图钉区光标=false)
 	滚动计时器=计划.创建计时器(2,func():
 		if not 图钉区光标 and %"图钉容器".size.x>1920 :
 			移动节点到最后(%"图钉容器"))
 	var 分割长度:int=int(计划.窗口状态管理("根节点","分割长度",200))
-	%"任务栏分割".split_offset=分割长度
-	%"任务栏分割".drag_ended.connect(func():计划.窗口状态管理("根节点","分割长度",null,%"任务栏分割".split_offset))
+	任务栏分割.split_offset=分割长度
+	任务栏分割.drag_ended.connect(func():计划.窗口状态管理("根节点","分割长度",null,任务栏分割.split_offset))
 	计划.提示容器=%"提示容器"#仅空窗口注册
 	计划.其他容器=其他容器
 	生成任务栏按钮()# 在节点加载完成后生成任务栏按钮
@@ -39,9 +42,7 @@ func _ready():
 	if 初始界面=="初始":
 		var 打开场景=计划.窗口状态管理("根场景","初始",任务栏数组[0])
 		重载场景(打开场景)
-func _exit_tree():#理论上不会执行
-	生命周期计时器+=[滚动计时器]
-	super._exit_tree()
+	计划.切换窗口状态.connect(更新窗口状态)
 var BUFF提示模板 = preload("res://界面/根界面/buff状态.tscn")
 func 更新BUFF():
 	var 新BUFF列表:Array[梅BUFF数据] = 计划.BUFF.所有BUFF
@@ -139,6 +140,7 @@ func 生成任务栏节点(界面名称:String,隐藏文本:bool=false)->Button:
 	var 红点提示 = 任务按钮.get_node("红点提示")
 	红点提示.红点条目=界面名称
 	return 任务按钮
+var 场景实例: 基类梅窗口
 ## 参数: 场景名称(例如 "背包界面")
 func 重载场景(场景名称: String,强制重载=false) -> void:
 	if not 窗口.窗口数据.has(场景名称):
@@ -158,11 +160,15 @@ func 重载场景(场景名称: String,强制重载=false) -> void:
 		子节点.queue_free()  # 释放节点资源
 	var 场景路径: String = 场景配置.场景路径
 	var 场景加载器: PackedScene = load(场景路径)
-	if 场景加载器 == null:
+	if not 场景加载器:
 		print("无法加载场景: ", 场景路径)
 		return
+	var 缓存场景=场景加载器.instantiate()
+	if not 缓存场景 is 基类梅窗口:
+		print("场景类型错误: ", 场景路径)
+		return
 	# 实例化场景并添加到容器
-	var 场景实例: Node = 场景加载器.instantiate()
+	场景实例 = 缓存场景
 	场景容器.add_child(场景实例)
 	初始界面=场景名称
 	计划.窗口状态管理("根场景","初始",null,场景名称)
@@ -172,6 +178,14 @@ func 重载场景(场景名称: String,强制重载=false) -> void:
 	var 系统名称:String=场景配置.系统
 	var 玩法名称:String=场景配置.显示名
 	等级显示.页面修改(系统名称,玩法名称)
+	call_deferred("更新窗口状态",false)
+var 窗口最大化状态:bool=false
+func 更新窗口状态(状态:bool=not 窗口最大化状态):
+	窗口最大化状态=状态
+	if 场景实例:
+		场景实例.窗口最大化(状态)
+	任务栏分割.visible=not 状态
+	图钉区域.visible=not 状态
 # 传入容器节点，检查是否有2个以上子节点，如果是则将第一个节点移到最后
 func 移动节点到最后(容器节点: Node) -> void:
 	if 容器节点 == null:
@@ -183,8 +197,8 @@ func 移动节点到最后(容器节点: Node) -> void:
 		容器节点.move_child(节点, 子节点数量 - 1)
 	else:
 		print("子节点数量不足，不执行移动")
-func 便利摄像机效果(效果参数=""):
-	if 效果参数=="":
+func 便利摄像机效果(效果参数:Dictionary={}):
+	if 效果参数.is_empty():
 		屏幕震动(摄像机,3,10,0.5)
 #快捷方法
 	#计划.节点["空节点"].重载场景("合成界面",null)
@@ -194,3 +208,43 @@ func 打印戈多引擎开发者():
 	print("Godot引擎贡献者信息:")
 	for category in author_info:
 		print(category + ": " + str(author_info[category]))
+var 屏幕震动锁定:bool=false
+var 初始位置:Vector2
+func 屏幕震动(摄像机节点: Node2D, 震动频率: int, 震动幅度: int, 震动持续时间: float) -> void:
+	if 场景容器:
+		场景容器.follow_viewport_enabled=true
+	print("屏幕震动")
+	# 参数合法性校验与修正
+	震动频率 = max(震动频率, 1)  # 确保频率至少为1帧
+	震动幅度 = max(震动幅度, 1)  # 确保幅度至少为1像素
+	震动持续时间 = max(震动持续时间, 0.1)  # 确保最少0.1秒
+	
+	# 记录摄像机初始位置(用于最终复位)
+	if not 屏幕震动锁定:
+		初始位置 = 摄像机节点.position
+		屏幕震动锁定=true
+	# 计算总震动帧数(基于当前帧率)
+	var 帧率 = int(Engine.get_frames_per_second())  # 返回float，表示当前实际FPS
+	var 总震动帧数 = int(震动持续时间 * 帧率)
+	总震动帧数 = max(总震动帧数, 1)  # 确保至少有1帧震动
+	
+	var 当前帧计数 = 0
+	var 当前偏移量 = Vector2.ZERO  # 初始偏移为0
+	
+	# 循环执行震动效果
+	for _X in range(总震动帧数):
+		当前帧计数 += 1
+		
+		# 每隔指定频率帧更新一次偏移量
+		if 当前帧计数 % 震动频率 == 0:
+			当前偏移量 = Vector2(
+				randf_range(-震动幅度, 震动幅度),  # X轴随机偏移
+				randf_range(-震动幅度, 震动幅度))   # Y轴随机偏移
+		# 应用偏移到摄像机位置
+		摄像机节点.position = 初始位置 + 当前偏移量
+		await get_tree().process_frame
+	# 震动结束后强制复位到初始位置
+	摄像机节点.position = 初始位置
+	屏幕震动锁定=false
+	if 场景容器:
+		场景容器.follow_viewport_enabled=false

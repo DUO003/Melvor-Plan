@@ -1,5 +1,6 @@
 @tool
 extends Control
+class_name 梅资源刻度条
 @export var 进度条上限: float = 100.0:#必须为正数,但不限制大小
 	set(值):
 		进度条上限 = 值
@@ -20,7 +21,6 @@ extends Control
 	set(值):
 		进制数= 值
 		if Engine.is_editor_hint():
-			queue_redraw()
 			更新文本()
 var 小刻度淡出阈值倍率: float = 0.4   # 小刻度淡出阈值 = 当前量级 * 此倍率（如1000量级→500淡出）
 var 小刻度隐藏阈值倍率: float = 0.9   # 小刻度隐藏阈值 = 当前量级 * 此倍率（如1000量级→600隐藏）
@@ -32,7 +32,11 @@ var 小刻度隐藏阈值倍率: float = 0.9   # 小刻度隐藏阈值 = 当前�
 	set(值):
 		启用刻度 = 值
 		更新文本()
-@export var 刻度偏移:Vector2=Vector2(0,0)
+@export var 刻度偏移:Vector2=Vector2(0,0):
+	set(值):
+		if Engine.is_editor_hint():
+			刻度偏移=值
+			queue_redraw()
 #@export_range(1, 1.7976931348623157e308) var 测试上限=进度条上限:#用于测试时预览查看
 @export_range(100, 10000) var 测试上限=进度条上限:#用于测试时预览查看
 	set(值):
@@ -47,20 +51,15 @@ var 小刻度隐藏阈值倍率: float = 0.9   # 小刻度隐藏阈值 = 当前�
 	set(值):
 		重新绘制 = 值
 		更新文本()
-		queue_redraw()
 func _ready():#编辑器预览效果
 	if Engine.is_editor_hint():
 		queue_redraw()
 		return
 	更新文本()
+	resized.connect(queue_redraw)
 ##禁止外部修改必须使用方法传入
-func 更新进度条参数(新上限: float=进度条上限, 新长度: float=size.x, 新刻度高度: float=刻度高度) -> void:
-	var 大小=size
-	大小.x=新长度
-	set_size(大小)
+func 更新进度条参数(新上限: float=进度条上限, 新刻度高度: float=刻度高度) -> void:
 	刻度高度 = 新刻度高度
-	if 新上限==进度条上限:#如果上限没变但其他值变化需要手动刷新
-		queue_redraw()
 	进度条上限 = 新上限# 自动触发_draw()重新绘制
 	更新文本()#同时更新文本
 func 更新文本():
@@ -78,8 +77,7 @@ func 更新文本():
 	else:
 		刻度.show()
 		刻度.text = 单位文本
-		刻度.set_size(刻度.get_combined_minimum_size())
-		刻度.position=Vector2(size.x-刻度.size.x+刻度偏移.x,刻度偏移.y)
+	queue_redraw()
 
 ## 支持：1→隐藏，10→10，100→百，1000→千，1万→万...1亿→亿，亿以上→E+幂次
 ## 1. 单位基准值 = 当前量级 / (进制数 * 进制数)
@@ -150,7 +148,8 @@ func _draw() -> void:
 			当前小刻度颜色.a = clamp(当前小刻度颜色.a*透明度, 0.0, 1.0)  # 限制透明度0-1
 		for 刻度索引 in range(小刻度总数):
 			var 刻度x: float = (刻度索引+1) * 刻度间距
-			draw_rect(Rect2(刻度x, size.y - 刻度高度, 小刻度宽度, 刻度高度),当前小刻度颜色,true)# 绘制小刻度矩形
+			var 绘制位置:=Rect2(刻度x+刻度偏移.x, size.y - 刻度高度+刻度偏移.y, 小刻度宽度, 刻度高度)
+			draw_rect(绘制位置,当前小刻度颜色,true)# 绘制小刻度矩形
 	if 进度条上限 > 当前量级*0.1:#第二步：绘制大刻度,例如1000量级,至少有101
 		var 大刻度总数: int = int((进度条上限-小刻度步长*0.1) / 大刻度步长)# 大刻度总数 = 实际上限 / 大刻度步长（取整）.减少0.1范围防止多画一个
 		var 大刻度宽度: float =  刻度间距 / (-1.5*淡出到隐藏+2.0)
@@ -161,4 +160,5 @@ func _draw() -> void:
 			当前大刻度颜色.b = 大刻度颜色.b + (小刻度颜色.b - 大刻度颜色.b) * 淡出到隐藏
 		for 刻度索引 in range(大刻度总数):# 刻度水平位置（原点向右偏移）
 			var 刻度x: float = (刻度索引+1) * 刻度间距*进制数
-			draw_rect(Rect2(刻度x, size.y - 刻度高度, 大刻度宽度, 刻度高度),当前大刻度颜色,true)# 绘制填充矩形
+			var 绘制位置:=Rect2(刻度x+刻度偏移.x, size.y - 刻度高度+刻度偏移.y, 大刻度宽度, 刻度高度)
+			draw_rect(绘制位置,当前大刻度颜色,true)# 绘制填充矩形

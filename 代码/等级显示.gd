@@ -33,7 +33,6 @@ func 页面修改(新系统:String,新玩法:String):
 	_更新_UI()
 func _更新_UI():
 	if not has_node("%玩法文本") or not is_instance_valid(玩法文本):
-		print("错误找不到节点")
 		return
 	if Engine.is_editor_hint():
 		玩法文本.text= "%s"%[玩法]
@@ -42,9 +41,6 @@ func _更新_UI():
 		精通进度条.value=33
 		熟练进度条.max_value=100
 		熟练进度条.value=66
-
-
-
 	else :
 		等级=计划.数据系统(系统,"等级")
 		if 玩法==系统:

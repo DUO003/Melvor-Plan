@@ -1,6 +1,6 @@
 extends 基类梅窗口
 var 资源每秒 = {"木材":1, "矿石":1, "皮革":1, "药草":1}
-var 制作队列节点=[]
+var 制作队列节点:Array[梅自动化进度条]=[]
 # 存储最近一分钟内的帧间隔数据
 var 帧率数据: Array[float] = []
 # 累计最近一分钟的总时间（用于快速判断是否超过60秒）
@@ -38,6 +38,7 @@ func _ready() -> void:
 	计划.更新_UI.connect(_更新_UI)
 	计划.更新玩法.connect(生成筛选器)
 	%动作进度条.开始动作("资源回复",5.0,self)
+	清空制作队列()
 	注册按钮()
 	_更新_UI()
 func _process(delta: float) -> void:
@@ -113,50 +114,38 @@ func 更新信息():
 	熟练值*=(1+0.1*计划.梅存档["挂机"].get("等级",0))
 	%提示文本.text="暂存熟练\r%.0f\rfps:%.0f" % [熟练值, 平均帧率]
 	pass
+var 自动化进度:梅自动化进度条 = preload("res://界面/手工系统/合成/自动化进度.tscn").instantiate()
+@onready var 制作队列: HBoxContainer = %制作队列
+func 清空制作队列():
+	计划.清除子节点(制作队列)
+	制作队列节点=[]
 func 注册进度条():
-	var 制造队列 = %圆形进度条
-	制造队列.visible = false
 	var 队列上限=计划.手工.队列合成("制作队列上限")
 	if 制作队列节点.size()>队列上限:
-		清除子节点(%制作队列,制造队列)
-		制作队列节点=[]
-	if 制造队列:
+		清空制作队列()
+	if 自动化进度:
+		var 制作队列数组:Array = 计划.手工.队列合成()
 		for i in range(队列上限):
-			var 克隆节点
-			var 制作队列配方按钮节点
+			var 克隆节点:梅自动化进度条
 			if i < 制作队列节点.size():
 				克隆节点 = 制作队列节点[i]
-				制作队列配方按钮节点 = 克隆节点.get_node("配方")
 			else:
-				克隆节点 = 制造队列.duplicate()
-				制作队列配方按钮节点 = 克隆节点.get_node("配方")
+				克隆节点 = 自动化进度.duplicate()
 				%制作队列.add_child(克隆节点)
 				制作队列节点.append(克隆节点)
-				#克隆节点.name = "制作队列" + str(i + 1)  # 命名为配方1、配方2...
-				克隆节点.visible = true  # 克隆节点设为可见
 				克隆节点.更新进度(0.0)
-				制作队列配方按钮节点.mouse_entered.connect(func():
-					计划.数据包提示.emit(加载队列文本(i,制作队列配方按钮节点)))
-				制作队列配方按钮节点.mouse_exited.connect(func():
-					计划.全局悬浮提示.emit("",制作队列配方按钮节点,30))
-				制作队列配方按钮节点.gui_input.connect(func(按键信号):
+				克隆节点.配方贴图.mouse_entered.connect(func():
+					计划.数据包提示.emit(加载队列文本(i,克隆节点)))
+				克隆节点.配方贴图.mouse_exited.connect(func():
+					计划.全局悬浮提示.emit("",克隆节点,30))
+				克隆节点.取消.gui_input.connect(func(按键信号):
 					if 按键信号 is InputEventMouseButton and 按键信号.pressed:
 						制作队列更新(按键信号,i))
-			var 纹理 = null
-			var 制作队列配方名节点 = 制作队列配方按钮节点.get_node("配方名")
-			var 制作队列 = 计划.手工.队列合成()
-			if i < 制作队列.size():
-				var 配方的名称=制作队列[i]
-				纹理 = 计划.表格.道具贴图(配方的名称)
-				克隆节点.配方序号 = 计划.表格.获取表格信息(计划.表格.创世蓝图,配方的名称,"名称")
-				#print("配方名:", 配方的名称)
-				#print("配方序号: ", str(克隆节点.配方序号))
-				制作队列配方名节点.text=配方的名称
+			if i < 制作队列数组.size():
+				var 配方的名称:String=制作队列数组[i] as String
+				克隆节点.传入配方参数(配方的名称)
 			else :
-				克隆节点.配方序号 = null
-				制作队列配方名节点.text=""
-			var 制作队列贴图节点 = 制作队列配方按钮节点.get_node("配方贴图")
-			制作队列贴图节点.texture = 纹理
+				克隆节点.传入配方参数()
 func 加载队列文本(队列序号:int,节点:Node)->梅提示数据:
 	var 提示数据:梅提示数据=梅提示数据.new()
 	提示数据.节点=节点
@@ -175,23 +164,23 @@ func 处理动作(_动作名称):
 
 func 更新制作队列进度条():#仅处理显示效果
 	计划.手工.更新制作队列进度条()
-	var 制作参数=计划.手工.队列合成("制作参数")
+	var 制作队列数组=计划.手工.队列合成("制作参数")
 	var 序号=0
 	for 节点 in 制作队列节点:
 		if 节点:
-			if 序号+1>制作参数.size():节点.更新进度(-1)
+			if 序号+1>制作队列数组.size():节点.更新进度(-1)
 			else :
-				var 制作时长=制作参数[序号]["制作时长"]
-				var 时间差=Time.get_unix_time_from_system()-制作参数[序号]["时间戳"]
+				var 制作时长=制作队列数组[序号]["制作时长"]
+				var 时间差=Time.get_unix_time_from_system()-制作队列数组[序号]["时间戳"]
 				节点.更新进度(1.0*时间差/制作时长)
 			序号+=1
-func 制作队列更新(按键信号,i):
+func 制作队列更新(按键信号:InputEventMouseButton,i:int):
 	if 按键信号.button_index == MOUSE_BUTTON_LEFT:
 		计划.语法糖通知( "合成队列可以右键移除","手工提示")
 	elif 按键信号.button_index == MOUSE_BUTTON_RIGHT:
-		var 制作队列 = 计划.手工.队列合成()# 获取当前制作队列
-		if i >= 0 and i < 制作队列.size():# 检查索引是否有效（在数组范围内）
-			var 装备名称 = 制作队列[i]
+		var 制作队列数组 = 计划.手工.队列合成()# 获取当前制作队列
+		if i >= 0 and i < 制作队列数组.size():# 检查索引是否有效（在数组范围内）
+			var 装备名称 = 制作队列数组[i]
 			计划.手工.队列合成("制作队列",装备名称)
 			if 制作队列节点.size()>i:
 				var 配方节点 = 制作队列节点[i].get_node("配方")

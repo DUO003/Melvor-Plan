@@ -134,6 +134,8 @@ signal 数据包提示(数据:梅提示数据)
 signal 全局保存()
 @warning_ignore("unused_signal")
 signal 显示暂停界面(状态:bool)
+@warning_ignore("unused_signal")
+signal 切换窗口状态()
 enum 修改枚举{无,添加,删除}
 #endregion
 #region 节点就绪
@@ -925,7 +927,7 @@ func 字典结构(目标字典: Dictionary, 字典键数组: Array=[], 数组键
 		if 目标字典.has(键):
 			print("移除%s键"%键,目标字典[键])
 			目标字典.erase(键)
-func 清除子节点(节点容器,保留节点=null):
+func 清除子节点(节点容器:Node,保留节点:Node=null):
 	for 节点名 in 节点容器.get_children():
 		if 保留节点==null or 节点名!=保留节点:
 			节点容器.remove_child(节点名)
