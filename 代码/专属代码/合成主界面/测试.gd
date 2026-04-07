@@ -213,6 +213,7 @@ func 更新功能(场景名称=null):
 	下拉菜单.clear()
 	for 功能名称 in 功能列表:
 		下拉菜单.add_item(功能名称)
+		下拉菜单.add_separator()
 	下拉菜单.selected=计划.窗口状态_限制("测试",当前场景名称+"功能",0,下拉菜单.get_item_count())
 	参数加载()
 var 缓存参数:Array=[]
@@ -234,9 +235,11 @@ func 参数加载():
 			if 缓存参数 is Array:
 				for 参数 in 缓存参数:
 					参数菜单.add_item(str(参数))
+					参数菜单.add_separator()
 			if 缓存数量 is Array:
 				for 参数 in 缓存数量:
 					数量菜单.add_item(str(参数))
+					数量菜单.add_separator()
 	var 选项数量 = 参数菜单.get_item_count()
 	var 数量数量 = 数量菜单.get_item_count()
 	if 选项数量 == 0 and 数量数量 == 0:

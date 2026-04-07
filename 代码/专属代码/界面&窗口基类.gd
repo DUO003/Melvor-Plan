@@ -92,10 +92,12 @@ func 定期更新提示文本(目标文本节点):
 		目标文本节点.text = 提示文本[0]
 func 节点有效性检查(节点名称:String)->bool:
 	return 节点名称 in 计划.节点 and 计划.节点[节点名称] != null
-func 窗口最大化(状态:bool):
+func 窗口最大化(状态:bool)->bool:
 	if 状态:
 		根场景_内容节点.set_size(Vector2(1900,970))
 		根场景_内容节点.set_position(Vector2(10,110))
 	else :
 		根场景_内容节点.set_size(Vector2(1660,880))
 		根场景_内容节点.set_position(Vector2(20,120))
+	return true
+	

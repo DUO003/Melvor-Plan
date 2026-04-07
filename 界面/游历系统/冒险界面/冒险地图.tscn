@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://4nj4yixkq18e"]
+
+[ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_xoues"]
+[ext_resource type="Script" uid="uid://dtmtlfr4dft2w" path="res://界面/游历系统/地图.gd" id="2_8clfy"]
+[ext_resource type="TileSet" uid="uid://dpbfj8gebcyck" path="res://代码/地图集/地块.tres" id="3_n12mg"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="4_ukud7"]
+[ext_resource type="Script" uid="uid://0vh233e3f1j1" path="res://界面/游历系统/地图提示.gd" id="5_8h36f"]
+[ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="6_eu7tk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87nh3"]
+bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("4_ukud7")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[node name="冒险界面" unique_id=166508811 instance=ExtResource("1_xoues")]
+"基类窗口名称" = "冒险界面"
+
+[node name="地图底" type="Control" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=977636405]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_behavior_recursive = 2
+script = ExtResource("2_8clfy")
+"绘制范围" = Rect2i(0, 0, 5, 5)
+"绘制偏移" = Vector2(128, 80)
+
+[node name="地图显示" type="TileMapLayer" parent="内容节点/地图底" index="0" unique_id=1693505411]
+unique_name_in_owner = true
+position = Vector2(64, 16)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("3_n12mg")
+
+[node name="地图提示" type="Panel" parent="内容节点/地图底" index="1" unique_id=1582019085]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_behavior_recursive = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_87nh3")
+script = ExtResource("5_8h36f")
+"字体" = ExtResource("6_eu7tk")
+metadata/_edit_lock_ = true

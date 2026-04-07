@@ -369,7 +369,7 @@ content_margin_bottom = 0.0
 thickness = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ar6tj"]
-bg_color = Color(0.36, 0.24120001, 0.162, 0.9411765)
+bg_color = Color(0.46, 0.31241667, 0.207, 0.8627451)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -398,7 +398,8 @@ content_margin_left = 4.0
 content_margin_top = 0.0
 content_margin_right = 4.0
 content_margin_bottom = 0.0
-thickness = 3
+color = Color(0.36078432, 0.24313726, 0.16078432, 1)
+thickness = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rko8"]
 bg_color = Color(0.9411765, 0.8039216, 0.6784314, 1)

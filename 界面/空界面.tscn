@@ -368,7 +368,6 @@ alignment = 1
 [node name="测试功能" type="CanvasLayer" parent="暂停界面" unique_id=1072495816]
 unique_name_in_owner = true
 layer = 5
-visible = false
 
 [node name="测试" parent="暂停界面/测试功能" unique_id=416459043 node_paths=PackedStringArray("空节点") instance=ExtResource("9_rhqkc")]
 offset_left = 974.0

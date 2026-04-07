@@ -21,6 +21,15 @@ theme_override_font_sizes/font_size = 50
 text = "测试"
 script = ExtResource("2_ps03r")
 
+[node name="参数筛选器" type="LineEdit" parent="." unique_id=980416086]
+layout_mode = 1
+offset_left = -312.0
+offset_top = 90.0
+offset_right = -118.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 25
+placeholder_text = "参数筛选器"
+
 [node name="测试功能" type="OptionButton" parent="." unique_id=2099431875]
 clip_contents = true
 layout_mode = 0
@@ -36,9 +45,9 @@ popup/item_0/id = 0
 clip_contents = true
 layout_mode = 0
 offset_left = -320.0
-offset_top = 42.0
-offset_right = -120.0
-offset_bottom = 82.0
+offset_top = 43.0
+offset_right = -109.0
+offset_bottom = 101.0
 theme = ExtResource("1_bddln")
 theme_override_font_sizes/font_size = 24
 selected = 0
@@ -50,9 +59,9 @@ popup/item_0/id = 0
 [node name="测试数量" type="OptionButton" parent="." unique_id=1604313324]
 clip_contents = true
 layout_mode = 0
-offset_left = -120.0
+offset_left = -123.0
 offset_top = 42.0
-offset_bottom = 82.0
+offset_bottom = 100.0
 theme = ExtResource("1_bddln")
 theme_override_font_sizes/font_size = 24
 theme_override_icons/arrow = SubResource("DPITexture_eusfs")
@@ -98,12 +107,3 @@ offset_right = 211.0
 offset_bottom = 89.0
 theme_override_styles/panel = ExtResource("4_ps03r")
 script = ExtResource("5_ps03r")
-
-[node name="参数筛选器" type="LineEdit" parent="." unique_id=980416086]
-layout_mode = 1
-offset_left = -320.0
-offset_top = 80.0
-offset_right = -120.0
-offset_bottom = 120.0
-theme_override_font_sizes/font_size = 25
-placeholder_text = "参数筛选器"
