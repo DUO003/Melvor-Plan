@@ -186,8 +186,12 @@ func 更新窗口状态(状态:bool=not 窗口最大化状态):
 	if 场景实例:
 		返回结果=场景实例.窗口最大化(状态)
 		计划.窗口状态管理(基类窗口名称,"最大化_"+初始界面,null,返回结果)
-	任务栏分割.visible=返回结果
-	图钉区域.visible=返回结果
+	if 返回结果:
+		任务栏分割.visible=not 状态
+		图钉区域.visible=not 状态
+	else :
+		任务栏分割.visible=true
+		图钉区域.visible=true
 # 传入容器节点，检查是否有2个以上子节点，如果是则将第一个节点移到最后
 func 移动节点到最后(容器节点: Node) -> void:
 	if 容器节点 == null:
