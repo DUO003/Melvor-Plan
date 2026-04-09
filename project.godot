@@ -36,6 +36,7 @@ config/icon="uid://bttn4tgkwj4p0"
 "计划"="*res://代码/梅计划.gd"
 GBIS="*res://addons/grid_base_inventory_system/core/grid_base_inventory_system.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+"横版单例"="*uid://d36bwamvahkkm"
 
 [debug]
 

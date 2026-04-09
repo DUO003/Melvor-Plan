@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://qb047g3a7a37" path="res://界面/插件/实体/实体卡片.gd" id="3_glkit"]
 [ext_resource type="Material" uid="uid://hf7h7i8nwaxt" path="res://界面/游历系统/特效/颜色着色器.tres" id="4_a53qn"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="4_i80no"]
+[ext_resource type="Texture2D" uid="uid://b0bivlfv6bkp8" path="res://素材/豆包AI素材/NPC/杂货铺老板.png" id="5_a53qn"]
 [ext_resource type="Texture2D" uid="uid://cjiduhobn8hf3" path="res://素材/综合/瓦片集.png" id="5_glkit"]
 [ext_resource type="Script" uid="uid://dciygcljm8xmx" path="res://界面/插件/实体/图片裁剪器.gd" id="6_i80no"]
 
@@ -21,6 +22,67 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 script = ExtResource("2_xq4x1")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="Animation" id="Animation_i80no"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("背景/图片/贴图:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("背景/图片/贴图:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a53qn"]
+resource_name = "拉伸动画"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("背景/图片/贴图:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.21666667, 0.43333334, 0.6666667, 0.9166667, 1),
+"transitions": PackedFloat32Array(0.3, 0.3, 0.3, 0.3, 0.3, 0.3),
+"update": 0,
+"values": [0.0, 0.0, 0.04363323129985824, 0.0, 0.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("背景/图片/贴图:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.21666667, 0.43333334, 0.6666667, 0.9166667, 1),
+"transitions": PackedFloat32Array(0.3, 0.3, 0.3, 0.3, 0.3, 0.3),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.96), Vector2(1, 0.99), Vector2(1, 0.96), Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m6jab"]
+_data = {
+&"RESET": SubResource("Animation_i80no"),
+&"拉伸动画": SubResource("Animation_a53qn")
+}
 
 [sub_resource type="Animation" id="Animation_467m1"]
 length = 0.001
@@ -322,16 +384,15 @@ _data = {
 bg_color = Color(0.6, 0.6, 0.6, 0.47058824)
 
 [node name="实体" type="Control" unique_id=1011232936]
-custom_minimum_size = Vector2(260, 360)
+custom_minimum_size = Vector2(160, 360)
 layout_mode = 3
-anchor_right = 0.13541667
-anchor_bottom = 0.33333334
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 260.0
+offset_bottom = 360.0
 pivot_offset = Vector2(130, 360)
 theme = ExtResource("1_ss1xo")
 script = ExtResource("3_glkit")
-metadata/_edit_use_anchors_ = true
+"基准位置" = null
 
 [node name="背景" type="Panel" parent="." unique_id=1702784861]
 custom_minimum_size = Vector2(260, 360)
@@ -377,21 +438,15 @@ grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_behavior_recursive = 1
 
-[node name="贴图" type="TextureRect" parent="背景/图片" unique_id=2061192371]
+[node name="拉伸动画" type="AnimationPlayer" parent="背景/图片" unique_id=341919073]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_m6jab")
+
+[node name="贴图" type="Sprite2D" parent="背景/图片" unique_id=1813194668]
 unique_name_in_owner = true
-use_parent_material = true
-custom_minimum_size = Vector2(55, 60)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -150.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("4_i80no")
-expand_mode = 5
-stretch_mode = 5
+position = Vector2(71.999985, 282.00006)
+texture = ExtResource("5_a53qn")
+offset = Vector2(0, -120)
 
 [node name="卡背面" type="TextureRect" parent="背景" unique_id=2082419258]
 unique_name_in_owner = true
@@ -429,11 +484,11 @@ autoplay = &"RESET"
 
 [node name="攻击效果" type="Panel" parent="." unique_id=1598845774]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 mouse_behavior_recursive = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_xq4x1")

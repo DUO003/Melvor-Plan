@@ -403,4 +403,5 @@ func 方块读取(图块源:int,图块坐标:Vector2i)->String:
 		return 方块检索字典[访问坐标]
 	else:
 		print("警告：未找到图块源", 图块源, " 坐标", 图块坐标, "对应的方块")
+		breakpoint#断点
 		return "空"

@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bx5b5myhqux5f"]
+
+[ext_resource type="PackedScene" uid="uid://dvvf528q7xjke" path="res://界面/游历系统/冒险根场景/冒险显示区.tscn" id="1_a17tx"]
+[ext_resource type="Script" uid="uid://b2bku21d12v4y" path="res://界面/游历系统/冒险根场景/冒险编辑器.gd" id="2_v7x6k"]
+[ext_resource type="PackedScene" uid="uid://j753afqyfj4r" path="res://界面/游历系统/实体/游历实体.tscn" id="3_pagdj"]
+[ext_resource type="Script" uid="uid://bmdnkg02lei5t" path="res://界面/游历系统/实体/游历实体.gd" id="4_of1c1"]
+[ext_resource type="PackedScene" uid="uid://cmimgxg35bc7b" path="res://界面/游历系统/实体/实体_玩家.tscn" id="5_qyeql"]
+[ext_resource type="Script" uid="uid://bokvbtsew5gwt" path="res://界面/游历系统/实体/实体_玩家.gd" id="6_nk6js"]
+
+[node name="冒险管理器" unique_id=99110732 instance=ExtResource("1_a17tx")]
+script = ExtResource("2_v7x6k")
+"启用保存" = false
+"启用另存" = false
+"启用读取" = false
+
+[node name="杂货铺老板" type="CharacterBody2D" parent="实体" parent_id_path=PackedInt32Array(1935659463) index="0" unique_id=1150286531 instance=ExtResource("3_pagdj")]
+position = Vector2(1376, 650)
+velocity = Vector2(0, 1666.6664)
+script = ExtResource("4_of1c1")
+"实体名称" = "杂货铺老板"
+"实体类型" = "村民"
+
+[node name="猎人" type="CharacterBody2D" parent="实体" parent_id_path=PackedInt32Array(1935659463) index="1" unique_id=670801377 instance=ExtResource("3_pagdj")]
+position = Vector2(2884, 655)
+velocity = Vector2(0, 1666.6664)
+script = ExtResource("4_of1c1")
+"实体名称" = "猎人"
+"实体类型" = "村民"
+
+[node name="玩家" type="CharacterBody2D" parent="实体" parent_id_path=PackedInt32Array(1935659463) index="2" unique_id=188051886 instance=ExtResource("5_qyeql")]
+position = Vector2(139, 336.6473)
+velocity = Vector2(0, 1666.6664)
+script = ExtResource("6_nk6js")
+
+[node name="玩家2" type="CharacterBody2D" parent="实体" parent_id_path=PackedInt32Array(1935659463) index="3" unique_id=943930446 instance=ExtResource("5_qyeql")]
+position = Vector2(360, 297)
+velocity = Vector2(0, 1666.6664)
+script = ExtResource("6_nk6js")
+"实体名称" = "玩家2"
+
+[node name="玩家3" type="CharacterBody2D" parent="实体" parent_id_path=PackedInt32Array(1935659463) index="4" unique_id=2025566630 instance=ExtResource("5_qyeql")]
+position = Vector2(360, 297)
+velocity = Vector2(0, 1666.6664)
+script = ExtResource("6_nk6js")
+"实体名称" = "玩家3"
+
+[node name="玩家4" type="CharacterBody2D" parent="实体" parent_id_path=PackedInt32Array(1935659463) index="5" unique_id=1949671293 instance=ExtResource("5_qyeql")]
+position = Vector2(360, 297)
+velocity = Vector2(0, 1666.6664)
+script = ExtResource("6_nk6js")
+"实体名称" = "玩家4"
+
+[node name="摄像机" type="Camera2D" parent="实体/玩家4" index="9" unique_id=1698748952]
+limit_left = 0
+limit_right = 3456
+limit_bottom = 768
+limit_smoothed = true
+
+[node name="老奶奶" type="CharacterBody2D" parent="实体" parent_id_path=PackedInt32Array(1935659463) index="6" unique_id=1760969290 instance=ExtResource("3_pagdj")]
+position = Vector2(1009, 646)
+velocity = Vector2(0, 1666.6664)
+script = ExtResource("4_of1c1")
+"实体名称" = "老奶奶"
+"实体类型" = "村民"
+
+[node name="铁匠" type="CharacterBody2D" parent="实体" parent_id_path=PackedInt32Array(1935659463) index="7" unique_id=2091746705 instance=ExtResource("3_pagdj")]
+position = Vector2(2336, 643)
+velocity = Vector2(0, 1666.6664)
+script = ExtResource("4_of1c1")
+"实体名称" = "铁匠"
+"实体类型" = "村民"

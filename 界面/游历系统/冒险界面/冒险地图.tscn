@@ -1,61 +1,159 @@
-[gd_scene format=3 uid="uid://4nj4yixkq18e"]
+[gd_scene format=4 uid="uid://4nj4yixkq18e"]
 
-[ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_xoues"]
-[ext_resource type="Script" uid="uid://dtmtlfr4dft2w" path="res://界面/游历系统/地图.gd" id="2_8clfy"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_xoues"]
 [ext_resource type="Script" uid="uid://di0epe28jxysj" path="res://界面/游历系统/冒险界面/冒险地图.gd" id="2_n12mg"]
+[ext_resource type="Texture2D" uid="uid://bk4mwq4brq1nu" path="res://素材/开放游戏网/颜色块.png" id="3_7m2st"]
 [ext_resource type="TileSet" uid="uid://dpbfj8gebcyck" path="res://代码/地图集/地块.tres" id="3_n12mg"]
-[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="4_ukud7"]
-[ext_resource type="Script" uid="uid://0vh233e3f1j1" path="res://界面/游历系统/地图提示.gd" id="5_8h36f"]
-[ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="6_eu7tk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87nh3"]
-bg_color = Color(0.5529412, 0.43137255, 0.18431373, 1)
-draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xo1e5"]
+texture = ExtResource("3_7m2st")
+texture_region_size = Vector2i(65, 89)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -10)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -10)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -10)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -10)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, -10)
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, -10)
+2:1/0 = 0
+2:1/0/texture_origin = Vector2i(0, -10)
+3:1/0 = 0
+3:1/0/texture_origin = Vector2i(0, -10)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, -10)
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, -10)
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(0, -10)
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(0, -10)
+0:3/0 = 0
+0:3/0/texture_origin = Vector2i(0, -10)
+1:3/0 = 0
+1:3/0/texture_origin = Vector2i(0, -10)
+2:3/0 = 0
+2:3/0/texture_origin = Vector2i(0, -10)
+3:3/0 = 0
+3:3/0/texture_origin = Vector2i(0, -10)
+0:4/0 = 0
+0:4/0/texture_origin = Vector2i(0, -10)
+1:4/0 = 0
+1:4/0/texture_origin = Vector2i(0, -10)
+2:4/0 = 0
+2:4/0/texture_origin = Vector2i(0, -10)
+3:4/0 = 0
+3:4/0/texture_origin = Vector2i(0, -10)
+
+[sub_resource type="TileSet" id="TileSet_xoues"]
+tile_shape = 3
+tile_layout = 5
+tile_size = Vector2i(64, 64)
+sources/2 = SubResource("TileSetAtlasSource_xo1e5")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8clfy"]
+bg_color = Color(0.7, 0.5987333, 0.504, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-script = ExtResource("4_ukud7")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
-[node name="冒险界面" unique_id=166508811 instance=ExtResource("1_xoues")]
-script = ExtResource("2_n12mg")
-"基类窗口名称" = "冒险界面"
-
-[node name="地图底" type="Control" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=977636405]
-clip_contents = true
-layout_mode = 1
+[node name="冒险界面" type="Control" unique_id=166508811]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-mouse_behavior_recursive = 2
-script = ExtResource("2_8clfy")
-"绘制范围" = Rect2i(0, 0, 5, 5)
-"绘制偏移" = Vector2(128, 80)
+theme = ExtResource("1_xoues")
+script = ExtResource("2_n12mg")
 
-[node name="地图显示" type="TileMapLayer" parent="内容节点/地图底" index="0" unique_id=1693505411]
+[node name="色块显示" type="TileMapLayer" parent="." unique_id=1255568315]
 unique_name_in_owner = true
-position = Vector2(64, 16)
-scale = Vector2(0.5, 0.5)
+position = Vector2(923, 449)
+tile_map_data = PackedByteArray("AAD3/wUAAgACAAIAAAD3/wYAAgACAAIAAAD3/wgAAgACAAIAAAD3/wkAAgACAAIAAAD4/wMAAgACAAIAAAD4/wQAAgACAAIAAAD4/wUAAgACAAIAAAD4/wYAAgACAAIAAAD4/wcAAgACAAIAAAD4/wgAAgACAAIAAAD4/wkAAgACAAIAAAD5/wAAAgACAAIAAAD5/wEAAgACAAIAAAD5/wIAAgACAAIAAAD5/wMAAgACAAIAAAD5/wQAAgABAAQAAAD5/wUAAgABAAQAAAD5/wYAAgABAAQAAAD5/wcAAgABAAQAAAD5/wgAAgACAAIAAAD5/wkAAgACAAIAAAD5/woAAgACAAIAAAD5/wsAAgACAAIAAAD5/wwAAgACAAIAAAD6////AgACAAIAAAD6/wAAAgACAAIAAAD6/wEAAgACAAIAAAD6/wIAAgABAAQAAAD6/wMAAgABAAQAAAD6/wQAAgABAAQAAAD6/wUAAgABAAQAAAD6/wYAAgABAAQAAAD6/wcAAgABAAQAAAD6/wgAAgACAAIAAAD6/wkAAgACAAIAAAD6/woAAgACAAIAAAD6/wsAAgACAAIAAAD6/wwAAgACAAIAAAD7//7/AgACAAIAAAD7////AgACAAIAAAD7/wAAAgABAAQAAAD7/wEAAgABAAQAAAD7/wIAAgABAAQAAAD7/wMAAgABAAQAAAD7/wQAAgABAAQAAAD7/wUAAgABAAQAAAD7/wYAAgABAAQAAAD7/wcAAgABAAQAAAD7/wgAAgACAAIAAAD7/wkAAgAAAAMAAAD7/woAAgAAAAMAAAD7/wsAAgACAAIAAAD7/wwAAgACAAIAAAD8//3/AgACAAIAAAD8//7/AgACAAIAAAD8////AgABAAQAAAD8/wAAAgABAAQAAAD8/wEAAgABAAQAAAD8/wIAAgABAAQAAAD8/wMAAgABAAQAAAD8/wQAAgABAAQAAAD8/wUAAgABAAQAAAD8/wYAAgABAAQAAAD8/wcAAgAAAAMAAAD8/wgAAgAAAAMAAAD8/wkAAgAAAAMAAAD8/woAAgACAAIAAAD8/wsAAgACAAIAAAD9//z/AgACAAIAAAD9//3/AgACAAIAAAD9//7/AgABAAQAAAD9////AgABAAQAAAD9/wAAAgABAAQAAAD9/wEAAgADAAMAAAD9/wIAAgADAAMAAAD9/wMAAgADAAMAAAD9/wQAAgADAAMAAAD9/wUAAgADAAMAAAD9/wYAAgADAAMAAAD9/wcAAgAAAAMAAAD9/wgAAgAAAAMAAAD9/wkAAgAAAAMAAAD9/woAAgACAAIAAAD9/wsAAgACAAIAAAD+//v/AgACAAIAAAD+//z/AgACAAIAAAD+//3/AgABAAQAAAD+//7/AgABAAQAAAD+////AgABAAQAAAD+/wAAAgADAAMAAAD+/wEAAgADAAMAAAD+/wIAAgADAAMAAAD+/wMAAgADAAMAAAD+/wQAAgADAAMAAAD+/wUAAgADAAMAAAD+/wYAAgAAAAMAAAD+/wcAAgAAAAMAAAD+/wgAAgAAAAMAAAD+/wkAAgAAAAMAAAD+/woAAgACAAIAAAD+/wsAAgACAAIAAAD///v/AgACAAIAAAD///z/AgACAAIAAAD///3/AgABAAQAAAD///7/AgABAAQAAAD/////AgADAAMAAAD//wAAAgADAAMAAAD//wEAAgADAAMAAAD//wIAAgADAAMAAAD//wMAAgADAAMAAAD//wQAAgADAAMAAAD//wUAAgAAAAMAAAD//wYAAgAAAAMAAAD//wcAAgAAAAMAAAD//wgAAgAAAAMAAAD//wkAAgACAAIAAAD//woAAgACAAIAAAAAAPv/AgACAAIAAAAAAPz/AgACAAIAAAAAAP3/AgADAAMAAAAAAP7/AgADAAMAAAAAAP//AgADAAMAAAAAAAAAAgADAAMAAAAAAAEAAgADAAMAAAAAAAIAAgADAAMAAAAAAAMAAgADAAMAAAAAAAQAAgAAAAMAAAAAAAUAAgAAAAMAAAAAAAYAAgAAAAMAAAAAAAcAAgACAAIAAAAAAAgAAgACAAIAAAAAAAkAAgACAAIAAAABAPv/AgACAAIAAAABAPz/AgACAAIAAAABAP3/AgADAAMAAAABAP7/AgADAAMAAAABAP//AgADAAMAAAABAAAAAgADAAMAAAABAAEAAgADAAMAAAABAAIAAgADAAMAAAABAAMAAgADAAMAAAABAAQAAgAAAAMAAAABAAUAAgAAAAMAAAABAAYAAgACAAIAAAABAAcAAgACAAIAAAABAAgAAgACAAIAAAACAPr/AgACAAIAAAACAPv/AgACAAIAAAACAPz/AgADAAMAAAACAP3/AgADAAMAAAACAP7/AgADAAMAAAACAP//AgADAAMAAAACAAAAAgADAAMAAAACAAEAAgADAAMAAAACAAIAAgADAAMAAAACAAMAAgADAAMAAAACAAQAAgADAAMAAAACAAUAAgACAAIAAAACAAYAAgACAAIAAAADAPr/AgACAAIAAAADAPv/AgACAAIAAAADAPz/AgADAAMAAAADAP3/AgADAAMAAAADAP7/AgADAAMAAAADAP//AgADAAMAAAADAAAAAgADAAMAAAADAAEAAgADAAMAAAADAAIAAgADAAMAAAADAAMAAgADAAMAAAADAAQAAgADAAMAAAADAAUAAgACAAIAAAAEAPn/AgACAAIAAAAEAPr/AgACAAIAAAAEAPv/AgADAAMAAAAEAPz/AgADAAMAAAAEAP3/AgADAAMAAAAEAP7/AgADAAMAAAAEAP//AgADAAMAAAAEAAAAAgADAAMAAAAEAAEAAgADAAMAAAAEAAIAAgADAAMAAAAEAAMAAgADAAMAAAAEAAQAAgACAAIAAAAFAPj/AgACAAIAAAAFAPn/AgACAAIAAAAFAPr/AgADAAMAAAAFAPv/AgADAAMAAAAFAPz/AgADAAMAAAAFAP3/AgADAAMAAAAFAP7/AgADAAMAAAAFAP//AgADAAMAAAAFAAAAAgADAAMAAAAFAAEAAgACAAIAAAAFAAIAAgACAAIAAAAFAAMAAgACAAIAAAAFAAQAAgACAAIAAAAGAPj/AgACAAIAAAAGAPn/AgADAAMAAAAGAPr/AgADAAMAAAAGAPv/AgADAAMAAAAGAPz/AgADAAMAAAAGAP3/AgADAAMAAAAGAP7/AgADAAEAAAAGAP//AgADAAEAAAAGAAAAAgACAAIAAAAGAAEAAgACAAIAAAAGAAIAAgACAAIAAAAHAPf/AgACAAIAAAAHAPj/AgACAAIAAAAHAPn/AgACAAIAAAAHAPr/AgADAAMAAAAHAPv/AgADAAEAAAAHAPz/AgADAAEAAAAHAP3/AgADAAEAAAAHAP7/AgACAAIAAAAHAP//AgACAAIAAAAHAAAAAgACAAIAAAAIAPf/AgACAAIAAAAIAPj/AgACAAIAAAAIAPn/AgACAAIAAAAIAPr/AgACAAIAAAAIAPv/AgADAAEAAAAIAPz/AgADAAEAAAAIAP3/AgACAAIAAAAIAP7/AgACAAIAAAAIAP//AgACAAIAAAAJAPj/AgACAAIAAAAJAPn/AgACAAIAAAAJAPr/AgADAAEAAAAJAPv/AgADAAEAAAAJAPz/AgACAAIAAAAJAP3/AgACAAIAAAAKAPj/AgACAAIAAAAKAPn/AgACAAIAAAAKAPr/AgACAAIAAAAKAPv/AgACAAIAAAAKAPz/AgACAAIAAAALAPj/AgACAAIAAAALAPn/AgACAAIAAAALAPr/AgACAAIAAAALAPv/AgACAAIAAAA=")
+tile_set = SubResource("TileSet_xoues")
+
+[node name="地图显示" type="TileMapLayer" parent="." unique_id=1693505411]
+unique_name_in_owner = true
+position = Vector2(923, 449)
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AAAAAP//AwACAAEAAAAJAPr/AwABAAIAAAACAP3/AwABAAEAAAAFAPv/AwABAAEAAAAEAP7/AwACAAEAAAD6/wYAAwAAAAEAAAD7/wMAAwAAAAEAAAD8/wAAAwADAAAAAAD+//7/AwADAAAAAAD//wQAAwAAAAAAAAABAAEAAwAAAAAAAAD9/wQAAwACAAEAAAD9/wEAAwACAAEAAAAAAP3/AwACAAEAAAAHAP3/AwADAAEAAAD9/wgAAwAAAAIAAAADAAIAAwAAAAAAAAAAAAUAAwAAAAIAAAAAAAAAAwACAAIAAAA=")
 tile_set = ExtResource("3_n12mg")
 
-[node name="地图提示" type="Panel" parent="内容节点/地图底" index="1" unique_id=1582019085]
+[node name="UI容器" type="PanelContainer" parent="." unique_id=241749604]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_behavior_recursive = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_87nh3")
-script = ExtResource("5_8h36f")
-"字体" = ExtResource("6_eu7tk")
-metadata/_edit_lock_ = true
+offset_left = -238.0
+offset_bottom = 88.0
+grow_horizontal = 0
+
+[node name="排列容器" type="GridContainer" parent="UI容器" unique_id=203875602]
+layout_mode = 2
+columns = 2
+
+[node name="地区" type="Label" parent="UI容器/排列容器" unique_id=1859015877]
+layout_mode = 2
+text = "当前地区:"
+
+[node name="地区下拉框" type="OptionButton" parent="UI容器/排列容器" unique_id=564075708]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "新手地区"
+popup/item_0/id = 0
+
+[node name="缩放" type="Label" parent="UI容器/排列容器" unique_id=97906173]
+layout_mode = 2
+text = "缩放倍率:"
+
+[node name="缩放下拉框" type="OptionButton" parent="UI容器/排列容器" unique_id=965600]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 5
+popup/item_0/text = "75%"
+popup/item_0/id = 0
+popup/item_1/text = "100%"
+popup/item_1/id = 1
+popup/item_2/text = "150%"
+popup/item_2/id = 2
+popup/item_3/text = "200%"
+popup/item_3/id = 3
+popup/item_4/text = "300%"
+popup/item_4/id = 4
+
+[node name="探索精通" type="Label" parent="UI容器/排列容器" unique_id=373972906]
+layout_mode = 2
+text = "精通统计:"
+
+[node name="地区精通等级" type="Label" parent="UI容器/排列容器" unique_id=282357977]
+unique_name_in_owner = true
+layout_mode = 2
+text = "LV10"
+
+[node name="探索度" type="Label" parent="UI容器/排列容器" unique_id=1717047970]
+layout_mode = 2
+text = "地区探索:"
+
+[node name="探索进度条" type="ProgressBar" parent="UI容器/排列容器" unique_id=1412841918]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme = ExtResource("1_xoues")
+theme_override_colors/font_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+theme_override_colors/font_outline_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_8clfy")
+step = 1.0
+value = 33.0
+allow_greater = true
+allow_lesser = true

@@ -176,8 +176,13 @@ func 正式加载() -> void:
 	游历=附加代码("梅游历")
 	if 系统解锁("游历"):游历.游历系统上线()
 	else :游历.初始化游历系统()
-	地图=附加代码("梅地图")
 	任务.任务创建()
+	if 地图:
+		var 冒险管理器:=地图.冒险管理器
+		if 冒险管理器:
+			冒险管理器.加载地图(冒险管理器.地图信息)
+	else :
+		print("错误,没有加载地图成功")
 	GBIS.sig_inv_refresh.emit()###GBIS三连_背包商店装备栏
 	GBIS.sig_slot_refresh.emit()
 	GBIS.sig_shop_refresh.emit()
@@ -212,8 +217,7 @@ func 附加代码(类型:String):
 		"梅游历" :	梅游历,
 		"梅BUFF" :	梅BUFF,
 		"梅steam":	梅steam,
-		"梅装备":		梅装备,
-		"梅地图":		梅地图}
+		"梅装备":		梅装备}
 	if not 资源映射.has(类型):
 		print("加载代码错误：类型不存在 -> ", 类型)
 		return null

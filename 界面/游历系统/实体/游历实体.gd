@@ -149,16 +149,7 @@ func _ready():
 	更新进度条()
 	更新位置状态()
 	if not Engine.is_editor_hint():
-		计划.地图.实体注册字典[self]=Time.get_unix_time_from_system()
-		计划.地图.注册实体.emit(self,true)
 		编辑器名.queue_free()
-func _exit_tree() -> void:
-	if not Engine.is_editor_hint():
-		计划.地图.注册实体.emit(self,false)
-		if 计划.地图.实体注册字典.has(self):
-			计划.地图.实体注册字典.erase(self)
-		else :
-			push_error("❌ 逻辑异常：实体尝试注销，但未在注册字典中！实体：", self)
 func 加载实体数据():
 	pass
 ##变量更新时自动调用,但保留手动
@@ -303,7 +294,7 @@ func 回到出生点() -> void:
 		position = 出生点#重置玩家位置到出生点
 		velocity = Vector2.ZERO#重置速度
 	else :
-		queue_free()
+		死亡方法()
 ##Control的gui_input
 func 点击检查(事件: InputEvent) -> void:
 	if 事件 is InputEventMouseButton:# 检查左键按下
@@ -320,7 +311,7 @@ func 受伤害(伤害值: float):
 	if 血条显示>=0:血条显示=3#显示3秒血条
 	# 扣血逻辑（省略）
 	生命值 -= 伤害值
-	计划.地图.伤害跳字.emit(-伤害值,血量.global_position+Vector2(0,-30),"生命")
+	横版单例.伤害跳字.emit(-伤害值,血量.global_position+Vector2(0,-30),"生命")
 	if 受伤粒子效果:
 		var 特效克隆:GPUParticles2D=受伤粒子效果.duplicate()
 		add_child(特效克隆)
@@ -331,6 +322,20 @@ func 受伤害(伤害值: float):
 		状态机.dispatch("状态切换死亡")
 	else :
 		状态机.受击检查()#如果不再受击保护器内则进入受击状态
+##发射信号,从注册中移除
+func 死亡方法():
+	if not Engine.is_editor_hint():
+		横版单例.注册实体.emit(self,false)
+		if 横版单例.实体注册字典.has(self):
+			横版单例.实体注册字典.erase(self)
+		else :
+			push_error("❌ 逻辑异常：实体尝试注销，但未在注册字典中！实体：", self)
+	queue_free()
+##创建时手动调用
+func 注册实体():
+	if not Engine.is_editor_hint():
+		横版单例.实体注册字典[self]=Time.get_unix_time_from_system()
+		横版单例.注册实体.emit(self,true)
 func 攻击力转粒子数量(受到攻击力: float) -> int:
 	# 最低粒子数
 	var 最小粒子 = 5
@@ -370,7 +375,7 @@ func 修改属性值(属性类型:String,调整量:float):
 				if 血条显示>=0:血条显示=1
 				护盾值+=调整量
 			else :return
-	计划.地图.伤害跳字.emit(调整量,血量.global_position+血量.size*Vector2(0.5,-1),属性类型)
+	横版单例.伤害跳字.emit(调整量,血量.global_position+血量.size*Vector2(0.5,-1),属性类型)
 func 返回释放技能()->梅技能配置:
 	for 技能 in 技能配置:
 		if 技能.技能可用检查(self):

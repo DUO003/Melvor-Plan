@@ -27,7 +27,8 @@ func _enter() -> void:
 
 	# 1秒后销毁（不影响掉落物生成时机）
 	await get_tree().create_timer(1.0).timeout
-	agent.queue_free()
+	if agent is 游历实体:
+		agent.死亡方法()
 
 
 # ✅ 核心：每一帧检查是否到达最高点、开始下落
@@ -56,7 +57,7 @@ func 生成掉落物(实体:游历实体_怪物):
 		# 生成正方形尺寸
 		var 尺寸 = Vector2(尺寸值, 尺寸值)
 
-		计划.地图.创建掉落物(
+		横版单例.创建掉落物(
 			物品数据["名称"],
 			物品数据["数量"],
 			实体.global_position+随机偏移,

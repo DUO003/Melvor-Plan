@@ -24,27 +24,13 @@ extends Control
 @export var 玩家坐标:Vector2i=Vector2i(0,1)
 var 选中坐标:Vector2i=Vector2i(0,1)
 @onready var 地图显示: TileMapLayer = %地图显示
-@onready var 地图数据: 梅悬浮提示 = %地图数据
-@onready var 冒险管理器: 冒险地图 = %冒险管理器
-@onready var 前往: Button = %前往
 var 载入当前地区:Dictionary
 func _ready():
 	if not Engine.is_editor_hint():
 		加载数据()
 		更新战争迷雾()
 		call_deferred("更新提示信息",玩家坐标)
-		前往.pressed.connect(前往按钮方法)
-		计划.地图.传送门更新.connect(传送门更新)
 	拖动函数()
-func 传送门更新():
-	print("传送门更新",计划.地图.接触传送点)
-	if not 计划.地图.接触传送点:
-		前往.text="无效"
-	elif 玩家坐标==选中坐标:
-		前往.text="当前"
-	else :
-		前往.text="前往"
-	
 func 加载数据():
 	var 游历:=计划.游历
 	var 地区数据:=游历.地区数据
@@ -75,7 +61,7 @@ func 加载数据():
 	else :
 		print("报错:找不到地区")
 func 延迟加载地图(地图信息:地图信息包):
-	冒险管理器.加载地图(地图信息)
+	横版单例.冒险管理器.加载地图(地图信息)
 # 状态变量
 var 是否按下鼠标左键 = false  # 标记鼠标左键是否按下
 var 按下开始时间 = 0.0        # 记录鼠标按下的时间戳
@@ -131,8 +117,7 @@ func 更新提示信息(当前坐标:Vector2i):
 	else :
 		提示数据.提示数组.append({"文本": "[center][font_size=%d]地块名称:%s[/font_size][/center]" % [40,方块名称]})
 		提示数据.提示数组.append({"文本": "类型:%s" % [当前地块.get("地块","未知")]})
-	地图数据.数据包更新(提示数据)
-	传送门更新()
+	计划.数据包提示.emit(提示数据)
 func 前往按钮方法():
 	玩家坐标=选中坐标
 	加载数据()

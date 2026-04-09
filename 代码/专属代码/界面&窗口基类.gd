@@ -5,8 +5,6 @@ class_name 基类梅窗口#逐渐改使用基类 当前大部分窗口未使用
 @export var 选项卡同步: Dictionary[String,TabContainer] = {}
 @export var 滚动区同步: Dictionary[String,ScrollContainer] = {}
 @export var 生命周期计时器: Array[Timer]
-@onready var 根场景_内容节点: Control = %内容节点
-@onready var 根场景_悬浮面板: Control = %悬浮面板
 func _ready() -> void:
 	if Engine.is_editor_hint() or 基类窗口名称=="演示示例":
 		return
@@ -94,10 +92,10 @@ func 节点有效性检查(节点名称:String)->bool:
 	return 节点名称 in 计划.节点 and 计划.节点[节点名称] != null
 func 窗口最大化(状态:bool)->bool:
 	if 状态:
-		根场景_内容节点.set_size(Vector2(1900,970))
-		根场景_内容节点.set_position(Vector2(10,110))
+		set_size(Vector2(1900,970))
+		set_position(Vector2(10,110))
 	else :
-		根场景_内容节点.set_size(Vector2(1660,880))
-		根场景_内容节点.set_position(Vector2(20,120))
+		set_size(Vector2(1660,880))
+		set_position(Vector2(20,120))
 	return true
 	

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://d36bwamvahkkm"]
+
+[ext_resource type="Script" uid="uid://wdnbn0qr0xdm" path="res://界面/游历系统/冒险根场景/横版单例.gd" id="1_axmgq"]
+[ext_resource type="PackedScene" uid="uid://dvvf528q7xjke" path="res://界面/游历系统/冒险根场景/冒险显示区.tscn" id="2_sn3f4"]
+
+[node name="横版单例" type="Node" unique_id=737605533]
+script = ExtResource("1_axmgq")
+
+[node name="冒险视口" type="SubViewportContainer" parent="." unique_id=1723902115]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+metadata/_edit_lock_ = true
+
+[node name="冒险窗口" type="SubViewport" parent="冒险视口" unique_id=460540800]
+unique_name_in_owner = true
+disable_3d = true
+handle_input_locally = false
+size = Vector2i(1660, 880)
+render_target_update_mode = 4
+
+[node name="冒险管理器" parent="冒险视口/冒险窗口" unique_id=99110732 instance=ExtResource("2_sn3f4")]
+unique_name_in_owner = true

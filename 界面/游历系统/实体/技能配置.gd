@@ -114,7 +114,7 @@ func 释放技能(实体:游历实体)->float:
 			实体.近战攻击容器.add_child(子弹场景)
 		elif 子弹类型=="远程攻击":
 			子弹场景.武器名称=技能名称
-			if not 计划.地图.子弹管理器:
+			if not 横版单例.子弹管理器:
 				return 0
 			if 子弹场景 is 游历子弹_远程攻击:
 				子弹场景.global_position=实体.近战攻击容器.global_position
@@ -122,7 +122,7 @@ func 释放技能(实体:游历实体)->float:
 				子弹场景.子弹速度=实体.速度*弹道速度倍率
 				子弹场景.子弹方向=Vector2(-实体.近战攻击容器.scale.x,0)
 				子弹场景.scale=-实体.近战攻击容器.scale
-				计划.地图.子弹管理器.add_child(子弹场景)
+				横版单例.子弹管理器.add_child(子弹场景)
 		已释放 = true
 		后摇时长=子弹场景.获取动画时长()
 		技能释放时间戳=Time.get_unix_time_from_system()

@@ -44,7 +44,7 @@ func 玩家限制():
 		var 玩家右边界: float = 摄像机.limit_right - 玩家半宽
 		# 3. 限制玩家X坐标在边界内
 		玩家.position.x = clamp(玩家.position.x, 玩家左边界, 玩家右边界)
-	if 计划.地图.关卡战线<玩家.position.x:
-		计划.地图.关卡战线=玩家.position.x
+	if 横版单例.关卡战线<玩家.position.x:
+		横版单例.关卡战线=玩家.position.x
 func 减速(实体:Node2D,减速值:int=100):
 	实体.velocity.x=move_toward(实体.velocity.x,0,减速值)

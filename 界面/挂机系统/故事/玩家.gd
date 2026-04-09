@@ -13,7 +13,7 @@ func _ready() -> void:
 	动画=玩家图片.动画
 	玩家图片.z_index=-1
 	按钮.visible=false
-	计划.地图.更新_交互.connect(交互逻辑)
+	横版单例.更新_交互.connect(交互逻辑)
 	按钮.pressed.connect(点击按钮)
 	
 var 二段跳:bool

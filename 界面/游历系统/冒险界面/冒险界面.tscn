@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://sitv55ydds0q"]
+
+[ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_b0xvu"]
+[ext_resource type="Script" uid="uid://d0k7kkwbnngv1" path="res://界面/游历系统/冒险界面/冒险界面.gd" id="2_gmyq8"]
+
+[node name="冒险界面" unique_id=166508811 instance=ExtResource("1_b0xvu")]
+script = ExtResource("2_gmyq8")
+"基类窗口名称" = "冒险界面"

@@ -142,7 +142,7 @@ var 替换字典: Dictionary = {
 	"Unknown": "未知键"}
 func _ready() -> void:
 	await get_tree().process_frame
-	背包检查器=计划.地图.背包检查器
+	背包检查器=横版单例.背包检查器
 	var 快捷键资源:Shortcut=Shortcut.new()
 	按钮.shortcut=快捷键资源
 	var 按键:=InputEventKey.new()
@@ -151,16 +151,16 @@ func _ready() -> void:
 	var 显示文本:String=OS.get_keycode_string(按键.keycode)
 	快捷文本.text=替换字典.get(显示文本,显示文本)
 	按钮.pressed.connect(切换物品栏)
-	计划.地图.更新_快捷键栏.connect(更新物品栏)
+	横版单例.更新_快捷键栏.connect(更新物品栏)
 	更新物品栏()
 func 切换物品栏():
 	if 快捷编号==-2:
 		背包检查器.切换()
 	else :
-		计划.地图.快捷栏编号=快捷编号
-		计划.地图.更新_快捷键栏.emit()
+		横版单例.快捷栏编号=快捷编号
+		横版单例.更新_快捷键栏.emit()
 func 更新物品栏():
-	var 快捷键字典:=计划.地图.快捷键字典
+	var 快捷键字典:=横版单例.快捷键字典
 	if 快捷键字典.has(快捷编号):
 		var 物品:物品方块=快捷键字典[快捷编号]
 		贴图.texture=物品.icon
@@ -171,7 +171,7 @@ func 更新物品栏():
 		elif 快捷编号==-1:贴图.texture=删除图标
 		elif 快捷编号==-2:贴图.texture=计划.表格.道具贴图("背包")
 		else :贴图.texture=null
-	if 快捷编号==计划.地图.快捷栏编号:
+	if 快捷编号==横版单例.快捷栏编号:
 		切换边框颜色(Color(0.451, 0.329, 0.086))
 	else :
 		切换边框颜色(Color(0.67, 0.543, 0.288, 1.0))

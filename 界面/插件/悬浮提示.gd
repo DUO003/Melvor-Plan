@@ -284,13 +284,13 @@ var 默认边距:扩展的扁平样式框=preload("res://界面/主题/提示/�
 func 数据包样式调整(标题高度:float=60):
 	#get_theme_stylebox("panel")
 	var 全局配置字典:Dictionary = ProjectSettings.get_setting("global/snake_case")
-	var _标题色:=Color(计划.配置文件.get("悬浮标题色", 全局配置字典.get("悬浮标题色","#b38c40dc"))as String)
+	var 标题色:=Color(计划.配置文件.get("悬浮标题色", 全局配置字典.get("悬浮标题色","#b38c40dc"))as String)
 	var 背景色:=Color(计划.配置文件.get("悬浮背景色", 全局配置字典.get("悬浮背景色","#8f6f2fe6"))as String)
 	var 当前样式:嵌套数组样式=数据包样式.duplicate(true)
 	当前样式.样式数组[0].margin_top=-标题高度
 	当前样式.样式数组[0].bg_color=背景色
-	#当前样式.样式数组[1].margin_bottom=标题高度-size.y
-	#当前样式.样式数组[1].bg_color=标题色
+	当前样式.样式数组[1].margin_bottom=标题高度-size.y+5
+	当前样式.样式数组[1].bg_color=标题色
 	add_theme_stylebox_override("panel",当前样式)
 func 默认样式启用():
 	计划.清除子节点(样式,富文本)

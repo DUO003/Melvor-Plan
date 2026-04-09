@@ -35,7 +35,7 @@ func _ready() -> void:
 	计划.更新_UI.connect(更新检查)
 func 加载方块(名称:String=方块名称,坐标:Vector2i=Vector2i(0,0)):
 	#print("检查器")
-	计划.地图.方块检查器=self
+	横版单例.方块检查器=self
 	visible=true
 	方块名称=名称
 	方块坐标=坐标

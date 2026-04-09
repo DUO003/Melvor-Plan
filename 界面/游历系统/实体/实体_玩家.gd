@@ -24,12 +24,12 @@ func _physics_process(间隔: float) -> void:
 	super(间隔)
 	if AI启用状态 and 控制检查():
 		AI启用状态=false
-		计划.地图.更新传送带状态(位于传送门内)
+		横版单例.更新传送带状态(位于传送门内)
 		状态机.dispatch("状态切换待机")
 	elif not AI启用状态 and not 控制检查():
 		AI启用状态=true
 		状态机.dispatch("状态切换自动化")
-	#计划.地图.玩家导航.connect(设置导航)
+	#横版单例.玩家导航.connect(设置导航)
 #var 二段跳:bool
 #var 松开跳跃:bool
 #var 启用自动前进:bool=false
@@ -56,8 +56,8 @@ func 加载实体数据():
 	攻击间隔=属性管理器.攻速
 	最大攻击距离=属性管理器.攻击距离*10
 	近战攻击距离=属性管理器.攻击距离
-	速度=计划.地图.地图默认速度*属性管理器.移速倍率
-	跳跃高度=计划.地图.地图默认弹跳*属性管理器.跳跃倍率
+	速度=横版单例.地图默认速度*属性管理器.移速倍率
+	跳跃高度=横版单例.地图默认弹跳*属性管理器.跳跃倍率
 	多段跳上限=属性管理器.跳跃上限
 	var 普通攻击:梅技能配置=梅技能配置.new("近战攻击",1)
 	技能配置.append(普通攻击)
@@ -94,7 +94,7 @@ var 键位攻击映射: Dictionary = {
 	"技能3": 3
 }
 func 控制检查()->bool:
-	if 计划.地图.控制队友 and 计划.地图.控制队友==self:
+	if 横版单例.控制队友 and 横版单例.控制队友==self:
 		return true
 	return false
 func _unhandled_input(按键: InputEvent) -> void:
@@ -115,7 +115,10 @@ func _unhandled_input(按键: InputEvent) -> void:
 	elif 按键.is_action_pressed("交互"):
 		执行拾取()
 	elif 按键.is_action_pressed("移动_上"):
-		执行拾取(false)
+		if 位于传送门内:
+			横版单例.打开地图=true
+		else :
+			执行拾取(false)
 	elif 按键.is_action_pressed("移动_左") or 按键.is_action_pressed("移动_右"):
 		状态机.dispatch("状态切换移动")
 func 多段条逻辑():
@@ -235,8 +238,8 @@ func 技能释放检查(缓存技能:梅技能配置,延迟检查:bool=false):
 		#var 玩家右边界: float = 摄像机.limit_right - 玩家半宽
 		## 3. 限制玩家X坐标在边界内
 		#position.x = clamp(position.x, 玩家左边界, 玩家右边界)
-	#if 计划.地图.关卡战线<position.x:
-		#计划.地图.关卡战线=position.x
+	#if 横版单例.关卡战线<position.x:
+		#横版单例.关卡战线=position.x
 	#攻击检查.force_raycast_update()
 	#if 攻击检查.is_colliding():
 		#攻击计时器+=间隔

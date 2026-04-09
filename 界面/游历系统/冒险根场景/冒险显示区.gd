@@ -5,21 +5,6 @@ class_name 冒险地图
 @onready var 建筑: TileMapLayer = $"建筑"
 @onready var 实体: Node2D = %实体
 @export var 地图名称:String=""
-@export var 启用保存:bool=false:
-	set(值):
-		if 值:
-			启用保存 = false
-			保存地图(true)
-@export var 启用另存:bool=false:
-	set(值):
-		if 值:
-			启用保存 = false
-			保存地图(false)
-@export var 启用读取:bool=false:
-	set(值):
-		if 值:
-			启用读取 = false
-			if 地图信息:加载地图(地图信息)
 #@export var 测试:bool=false:
 	#set(值):
 		#if 值:
@@ -33,30 +18,30 @@ var 玩家摄像机: Camera2D
 @onready var 提示管理器: Control = $伤害跳字
 func _ready() -> void:
 	if not Engine.is_editor_hint():
-		计划.地图.子弹管理器=子弹管理器
-		计划.地图.掉落物管理器=掉落物管理器
-		计划.地图.关卡战线=0
+		横版单例.子弹管理器=子弹管理器
+		横版单例.掉落物管理器=掉落物管理器
+		横版单例.关卡战线=0
 #func _draw():
 	#if Engine.is_editor_hint():
 		#return
-	#draw_rect(计划.地图.传送点位置,Color(0.285, 0.285, 0.285, 1.0), true)
-func _physics_process(_间隔: float) -> void:
-	if Engine.is_editor_hint():
-		return
-	var 鼠标全局:Vector2 = 地图.get_global_mouse_position()
-	var 鼠标局部 = 地图.to_local(鼠标全局)
-	var 方块坐标:Vector2i = 地图.local_to_map(鼠标局部)
-	var 点击屏幕:bool=Input.is_action_just_pressed("点击屏幕")
-	if 点击屏幕:
-		if 方块坐标.y>=5:
-			#print("鼠标全局位置",鼠标全局,"鼠标局部",鼠标局部)
-			#print("点击位置",方块坐标,"方块ID",地图.get_cell_source_id(方块坐标))
-			计划.地图.玩家导航.emit(地图.get_global_mouse_position().x)
-		else :
-			var 图块源:int=建筑.get_cell_source_id(方块坐标)
-			var 图块坐标:Vector2i=建筑.get_cell_atlas_coords(方块坐标)
-			var 方块名称:String=计划.表格.方块读取(图块源,图块坐标)
-			print(方块名称)
+	#draw_rect(横版单例.传送点位置,Color(0.285, 0.285, 0.285, 1.0), true)
+#func _physics_process(_间隔: float) -> void:
+	#if Engine.is_editor_hint():
+		#return
+	#var 鼠标全局:Vector2 = 地图.get_global_mouse_position()
+	#var 鼠标局部 = 地图.to_local(鼠标全局)
+	#var 方块坐标:Vector2i = 地图.local_to_map(鼠标局部)
+	#var 点击屏幕:bool=Input.is_action_just_pressed("点击屏幕")
+	#if 点击屏幕:
+		#if 方块坐标.y>=5:
+			##print("鼠标全局位置",鼠标全局,"鼠标局部",鼠标局部)
+			##print("点击位置",方块坐标,"方块ID",地图.get_cell_source_id(方块坐标))
+			#横版单例.玩家导航.emit(地图.get_global_mouse_position().x)
+		#else :
+			#var 图块源:int=建筑.get_cell_source_id(方块坐标)
+			#var 图块坐标:Vector2i=建筑.get_cell_atlas_coords(方块坐标)
+			#var 方块名称:String=计划.表格.方块读取(图块源,图块坐标)
+			#print(方块名称)
 func 保存地图(保存:bool):
 	if Engine.is_editor_hint():#只在编辑器工作
 		地图.保存地图()#先各自保存自身的图块数据
@@ -107,6 +92,7 @@ func 加载地图(传入的地图信息包: 地图信息包):
 		if not 实体:print("错误：无法获取实体根节点")
 		if 实体数据字典.is_empty():print("提示：地图信息包中无实体数据，无需生成实体")
 		return
+	var 首个玩家:bool=true
 	# 遍历实体字典，逐个生成新实体
 	for 节点唯一标识:String in 实体数据字典:
 		var 实体数据:Dictionary=实体数据字典[节点唯一标识]
@@ -117,21 +103,17 @@ func 加载地图(传入的地图信息包: 地图信息包):
 		print(实体类型,节点唯一标识)
 		var 新实体:游历实体 = 实体场景字典.get(实体类型,实体场景字典.基础).instantiate().duplicate()
 		新实体.实体名称 = 实体数据["实体名称"]
-		if 新实体.实体名称=="玩家":
+		if 新实体.实体名称=="玩家" and not Engine.is_editor_hint():
 			新实体.实体名称=计划.梅存档.get("挂机",{}).get("用户信息",{}).get("用户名","错误")
 		新实体.实体类型 = 实体类型
 		新实体.position = 实体数据["位置"]  # 设置位置
-		if 新实体.实体类型=="玩家":
-			var 摄像机: Camera2D=创建玩家摄像机()
-			if 摄像机.get_parent():
-				摄像机.get_parent().remove_child(摄像机)
-			新实体.add_child(摄像机)
-			if 新实体 is 游历实体_玩家:
-				新实体.摄像机=摄像机
-				计划.地图.控制队友=新实体
+		if 新实体.实体类型=="玩家" and 首个玩家:
+			首个玩家=false
+			加载控制玩家(新实体)
 		if Engine.is_editor_hint():
 			新实体.name=节点唯一标识
 		实体.add_child(新实体)
+		新实体.注册实体()
 		if Engine.is_editor_hint():
 			新实体.owner=self
 	if  玩家摄像机 and Engine.is_editor_hint():#解决摄像机报错
@@ -148,6 +130,15 @@ func 加载地图(传入的地图信息包: 地图信息包):
 		更新传送门()
 	if 传入的地图信息包:
 		生成怪物(传入的地图信息包)
+func 加载控制玩家(新实体:游历实体_玩家):
+	var 摄像机: Camera2D=创建玩家摄像机()
+	if 摄像机.get_parent():
+		摄像机.get_parent().remove_child(摄像机)
+	新实体.add_child(摄像机)
+	新实体.摄像机=摄像机
+	if not Engine.is_editor_hint():
+		横版单例.控制队友=新实体
+	
 # ========== 怪物生成核心函数 ==========
 func 生成怪物(传入的地图信息包: 地图信息包):
 	# 安全校验：根节点/刷怪数据为空则返回
@@ -165,7 +156,6 @@ func 生成怪物(传入的地图信息包: 地图信息包):
 	else:
 		随机数生成器.randomize() # 无指定种子则随机初始化
 		print("提示：使用随机种子生成怪物")
-
 	var 图块大小: Vector2 = 获取图块大小(建筑)
 	if 图块大小.x <= 0 or 图块大小.y <= 0:
 		print("警告：获取图块大小失败，使用默认值64")
@@ -198,7 +188,6 @@ func 生成怪物(传入的地图信息包: 地图信息包):
 			var 中心点:Vector2 = 刷新点坐标数组[随机数生成器.randi() % 刷新点坐标数组.size()]
 			var 最终坐标:Vector2 = Vector2(中心点.x + x偏移, 中心点.y)
 			var 随机强度:float = 随机数生成器.randf_range(强度范围.x, 强度范围.y)
-			
 			# 3.3 实例化怪物节点
 			if not 实体场景字典.has("怪物"):
 				print("错误：实体场景字典中未配置怪物场景，跳过生成")
@@ -221,13 +210,12 @@ func 搜索刷怪点(刷怪点名:String)->Array[Vector2]:
 		return []
 	var 目标源:int=方块字典[刷怪点名].瓦片集
 	var 目标坐标:Vector2i=Vector2i(方块字典[刷怪点名].瓦片列,方块字典[刷怪点名].瓦片排)
-	var 搜索结果:=计划.地图.搜索图块(建筑,目标源,目标坐标)
+	var 搜索结果:Array[Vector2i]=横版单例.搜索图块(建筑,目标源,目标坐标)
 	var 坐标数组:Array[Vector2]=[]
 	if 搜索结果.size()>=1:
 		var 图块大小: Vector2i = 获取图块大小(建筑)
 		for 坐标:Vector2i in 搜索结果:
 			坐标数组.append(Vector2(坐标.x * 图块大小.x,坐标.y * 图块大小.y))
-	##等下写
 	return 坐标数组
 func 更新传送门():
 	var 方块字典:Dictionary=计划.表格.方块字典
@@ -236,11 +224,11 @@ func 更新传送门():
 		return
 	var 目标源:int=方块字典.传送门.瓦片集
 	var 目标坐标:Vector2i=Vector2i(方块字典.传送门.瓦片列,方块字典.传送门.瓦片排)
-	var 搜索结果:=计划.地图.搜索图块(建筑,目标源,目标坐标)
+	var 搜索结果:Array[Vector2i]=横版单例.搜索图块(建筑,目标源,目标坐标)
 	if 搜索结果.is_empty():
-		计划.地图.传送点有效=false
+		横版单例.传送点有效=false
 	else :
-		计划.地图.传送点有效=true
+		横版单例.传送点有效=true
 		var 图块大小: Vector2 = 获取图块大小(建筑)
 		var 传送门坐标:Vector2i = 搜索结果[0]
 		var 传送门原点:Vector2 = Vector2((传送门坐标.x+0.505) * 图块大小.x,(传送门坐标.y-0.5) * 图块大小.y)
@@ -262,8 +250,8 @@ func 更新传送门():
 func 接收区域进出信号(碰撞实体:Node2D,进入:bool):
 	if 碰撞实体 and 碰撞实体 is 游历实体_玩家:
 		碰撞实体.位于传送门内=进入
-		if 计划.地图.控制队友 and 碰撞实体==计划.地图.控制队友:
-			计划.地图.更新传送带状态(进入)
+		if 横版单例.控制队友 and 碰撞实体==横版单例.控制队友:
+			横版单例.更新传送带状态(进入)
 func 获取图块大小(节点:TileMapLayer)->Vector2:
 	var 地图集: TileSet = 节点.tile_set
 	if not 地图集:

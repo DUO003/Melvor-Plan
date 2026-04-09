@@ -9,7 +9,7 @@ const 暴击描边宽度: int = 3
 const 随机偏移范围: Vector2 = Vector2(20, 5)  # 避免数字重叠的偏移
 func _ready() -> void:
 	# 2. 连接全局伤害跳字信号
-	计划.地图.伤害跳字.connect(伤害跳字)
+	横版单例.伤害跳字.connect(伤害跳字)
 
 func 伤害跳字(数值: float, 位置: Vector2, 类型: String) -> void:
 	# ========== 1. 异常处理：数值为0则忽略 ==========

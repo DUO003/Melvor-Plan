@@ -4,7 +4,7 @@ class_name 检查器背包
 @onready var 背包: InventoryView = %背包
 @onready var 方块背包: InventoryView = %方块背包
 func _ready() -> void:
-	计划.地图.背包检查器=self
+	横版单例.背包检查器=self
 	关闭.pressed.connect(切换)
 	visible=false
 	方块背包.背包内容更新.connect(刷新背包快捷栏)
@@ -20,5 +20,5 @@ func 刷新背包快捷栏():
 	if 更新背包状态:
 		更新背包状态=false
 		await get_tree().process_frame
-		计划.地图.获取背包消息()
+		横版单例.获取背包消息()
 		更新背包状态=true

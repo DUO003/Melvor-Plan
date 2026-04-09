@@ -7,7 +7,7 @@ func _update(间隔: float) -> void:
 		状态机.dispatch(EVENT_FINISHED)
 		return
 	super(间隔)
-	var 控制队友:游历实体_玩家=计划.地图.控制队友
+	var 控制队友:游历实体_玩家=横版单例.控制队友
 	if 控制队友:#随从逻辑
 		var 跟随实体:Array[游历实体]=控制队友.跟随实体
 		if not 跟随实体.has(玩家):

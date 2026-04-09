@@ -71,7 +71,7 @@ func _physics_process(间隔: float) -> void:
 				return
 			else :挖掘计时器=0
 		功能枚举.放置:
-			var 物品:物品方块=计划.地图.返回快捷键物品()
+			var 物品:物品方块=横版单例.返回快捷键物品()
 			if 物品:
 				var 玩家全局:Vector2 = 玩家.global_position
 				var 平方距离:float = 鼠标全局.distance_squared_to(玩家全局)
@@ -100,7 +100,7 @@ func _physics_process(间隔: float) -> void:
 				碰撞层.visible=false
 	鼠标层.set_cell(方块坐标,1,Vector2i(0, 0)if 无方块 else Vector2i(1, 0))
 func 状态机更新():
-	var 快捷栏状态:int=计划.地图.快捷栏编号
+	var 快捷栏状态:int=横版单例.快捷栏编号
 	match 快捷栏状态:
 		-1:当前功能=功能枚举.挖掘
 		0:当前功能=功能枚举.寻路
@@ -214,7 +214,7 @@ func 放置方块(方块坐标:Vector2i,物品:物品方块):
 			if 节点 is 提示框场景:
 				节点.切换提示状态(true)
 	保存地图数据()
-	计划.地图.放置快捷键物品()
+	横版单例.放置快捷键物品()
 func 加载方块功能(单元格坐标,列,排,方块名称,瓦片功能):
 	填充碰撞(单元格坐标,Vector2i(列,排))
 	if not 建筑数据.has(单元格坐标) or not 建筑数据[单元格坐标] is 建筑资源:
@@ -252,7 +252,7 @@ func 移除方块(方块坐标:Vector2i):
 		移除碰撞(方块坐标,Vector2i(物品.columns,物品.rows))
 	家具层.erase_cell(方块坐标)
 	保存地图数据()
-	计划.地图.获取背包消息()
+	横版单例.获取背包消息()
 func 填充碰撞(单元格坐标:Vector2i,填充范围:Vector2i=Vector2i(1,1),地图:TileMapLayer=碰撞层,
 	源ID:int=1,填充图块:Vector2i=Vector2i(0,1)):
 	for X in 填充范围.x:
