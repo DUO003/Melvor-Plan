@@ -1,5 +1,6 @@
 @tool  # 启用编辑器内预览
 extends TileMapLayer
+class_name 可保存瓦片地图
 @export var 地图资源: TileMapPattern
 @export var 图案起点坐标: Vector2i
 @export var 启用保存:bool=false:
@@ -9,7 +10,7 @@ extends TileMapLayer
 			保存地图()
 
 func 保存地图()-> void:
-	var 所有使用的单元格 = get_used_cells()#报错位置
+	var 所有使用的单元格 = get_used_cells()
 	if 所有使用的单元格.is_empty():
 		图案起点坐标 = Vector2i(0, 0)
 		地图资源 = null  # 用null标识空地图

@@ -4,6 +4,22 @@
 [ext_resource type="Script" uid="uid://chmns3gbeekn0" path="res://代码/专属代码/界面&窗口基类.gd" id="2_pcrch"]
 [ext_resource type="PackedScene" uid="uid://dlf0o8yt0hscg" path="res://界面/插件/悬浮提示.tscn" id="4_nl0m2"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i267d"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.84, 0.64344, 0.5124, 0.8627451)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="基类界面" type="Control" unique_id=166508811]
 layout_mode = 3
 anchors_preset = 15
@@ -29,6 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i267d")
 metadata/_edit_lock_ = true
 
 [node name="内容节点" type="Control" parent="." unique_id=1614734378]

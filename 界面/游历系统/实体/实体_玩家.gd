@@ -94,6 +94,9 @@ var 键位攻击映射: Dictionary = {
 	"技能3": 3
 }
 func 控制检查()->bool:
+	if 横版单例.打开地图:
+		get_viewport().set_input_as_handled()
+		return false
 	if 横版单例.控制队友 and 横版单例.控制队友==self:
 		return true
 	return false

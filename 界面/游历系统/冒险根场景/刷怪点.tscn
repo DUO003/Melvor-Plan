@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://d1a278e5diwpc"]
+
+[ext_resource type="Script" uid="uid://dr0rtoso0nbly" path="res://界面/游历系统/冒险根场景/刷怪点场景.gd" id="1_kt7fi"]
+[ext_resource type="Script" uid="uid://4yrbopya8vuj" path="res://界面/插件/实体/刷怪点.gd" id="2_8laij"]
+[ext_resource type="Script" uid="uid://ccj4ro82v40un" path="res://界面/游历系统/实体/怪物配置.gd" id="3_8732m"]
+
+[sub_resource type="Resource" id="Resource_g2pjx"]
+script = ExtResource("2_8laij")
+"刷怪波次" = null
+"多波次逻辑" = null
+"刷怪计时器" = null
+"刷怪数量" = Vector2i(1, 1)
+"基础强度" = null
+"触发偏移" = Vector2(0, 0)
+"触发范围" = Vector2(0, 0)
+"视角限制" = null
+"刷怪点偏移" = Array[float]([0.0])
+metadata/_custom_type_script = "uid://4yrbopya8vuj"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70amt"]
+size = Vector2(100, 600)
+
+[node name="刷怪点" type="Area2D" unique_id=326488181]
+script = ExtResource("1_kt7fi")
+"刷怪数据" = SubResource("Resource_g2pjx")
+
+[node name="触发范围" type="CollisionShape2D" parent="." unique_id=1297883417]
+unique_name_in_owner = true
+position = Vector2(0, -225)
+shape = SubResource("RectangleShape2D_70amt")
+
+[node name="视角限制" type="Marker2D" parent="." unique_id=1183906845]
+unique_name_in_owner = true
+position = Vector2(0, -100)
+gizmo_extents = 100.0
+
+[node name="刷怪偏移" type="Node2D" parent="." unique_id=1478199861]
+unique_name_in_owner = true
+
+[node name="偏移点" type="Marker2D" parent="刷怪偏移" unique_id=1536565640]
+position = Vector2(0, -50)
+gizmo_extents = 100.0

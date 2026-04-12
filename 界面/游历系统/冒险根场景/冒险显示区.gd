@@ -1,8 +1,9 @@
 @tool
 extends Node2D
 class_name 冒险地图
-@onready var 地图: TileMapLayer = $"地图"
-@onready var 建筑: TileMapLayer = $"建筑"
+@onready var 地图: 可保存瓦片地图 = $"地图"
+@onready var 建筑: 可保存瓦片地图 = $"建筑"
+@onready var 触发管理器: Node2D = %触发管理器
 @onready var 实体: Node2D = %实体
 @export var 地图名称:String=""
 #@export var 测试:bool=false:
@@ -42,21 +43,6 @@ func _ready() -> void:
 			#var 图块坐标:Vector2i=建筑.get_cell_atlas_coords(方块坐标)
 			#var 方块名称:String=计划.表格.方块读取(图块源,图块坐标)
 			#print(方块名称)
-func 保存地图(保存:bool):
-	if Engine.is_editor_hint():#只在编辑器工作
-		地图.保存地图()#先各自保存自身的图块数据
-		建筑.保存地图()
-		#初始化地图信息包
-		if not 地图信息 or not 保存:
-			地图信息 = 地图信息包.new()
-		# 3. 填充地图信息包的数据
-		地图信息.地图名称 = 地图名称
-		地图信息.缩放 = 地图.scale
-		地图信息.地图_地图 = 地图.地图资源
-		地图信息.起点_地图 = 地图.图案起点坐标
-		地图信息.地图_建筑 = 建筑.地图资源
-		地图信息.起点_建筑 = 建筑.图案起点坐标
-		地图信息.实体 = 保存游历实体数据()
 func 保存游历实体数据()->Dictionary:
 	# 1. 先判断实体节点是否存在，避免空引用
 	if not 实体:
@@ -81,12 +67,34 @@ var 实体场景字典:Dictionary[String,PackedScene] = {
 	"基础":preload("res://界面/游历系统/实体/游历实体.tscn"),
 	"玩家":preload("res://界面/游历系统/实体/实体_玩家.tscn"),
 	"怪物":preload("res://界面/游历系统/实体/实体_怪物.tscn"),}
+func 保存地图(保存:bool):
+	if Engine.is_editor_hint():#只在编辑器工作
+		地图.保存地图()#先各自保存自身的图块数据
+		建筑.保存地图()
+		for 节点 in 触发管理器.get_children():
+			if 节点 is 梅刷怪点场景:
+				节点.保存刷怪点()
+		#初始化地图信息包
+		if not 地图信息 or not 保存:
+			地图信息 = 地图信息包.new()
+		# 3. 填充地图信息包的数据
+		地图信息.地图名称 = 地图名称
+		地图信息.缩放 = 地图.scale
+		地图信息.地图_地图 = 地图.地图资源
+		地图信息.起点_地图 = 地图.图案起点坐标
+		地图信息.地图_建筑 = 建筑.地图资源
+		地图信息.起点_建筑 = 建筑.图案起点坐标
+		地图信息.实体 = 保存游历实体数据()
+func 加载队友实体(传入的地图信息包: 地图信息包)->Dictionary:
+	var 实体数据字典:Dictionary = 传入的地图信息包.实体 if 传入的地图信息包 else {}
+	return 实体数据字典
+	
 # 核心加载方法：传入地图信息包，加载实体数据
 func 加载地图(传入的地图信息包: 地图信息包):
 	清除子节点(实体)
 	清除子节点(子弹管理器)
 	清除子节点(掉落物管理器)
-	var 实体数据字典:Dictionary = 传入的地图信息包.实体 if 传入的地图信息包 else {}
+	var 实体数据字典:Dictionary = 加载队友实体(传入的地图信息包)
 	if  not 传入的地图信息包 or not 实体 or 实体数据字典.is_empty():# 安全校验
 		if not 传入的地图信息包:print("错误：传入的地图信息包为空！")
 		if not 实体:print("错误：无法获取实体根节点")
@@ -101,7 +109,8 @@ func 加载地图(传入的地图信息包: 地图信息包):
 			continue
 		var 实体类型:String=实体数据["实体类型"]#配置实体参数
 		print(实体类型,节点唯一标识)
-		var 新实体:游历实体 = 实体场景字典.get(实体类型,实体场景字典.基础).instantiate().duplicate()
+		var 实体场景=实体场景字典.get(实体类型,实体场景字典.基础).instantiate()
+		var 新实体:游历实体 = 实体场景.duplicate()
 		新实体.实体名称 = 实体数据["实体名称"]
 		if 新实体.实体名称=="玩家" and not Engine.is_editor_hint():
 			新实体.实体名称=计划.梅存档.get("挂机",{}).get("用户信息",{}).get("用户名","错误")
@@ -126,10 +135,10 @@ func 加载地图(传入的地图信息包: 地图信息包):
 	建筑.clear()
 	建筑.set_pattern(传入的地图信息包.起点_建筑, 传入的地图信息包.地图_建筑)
 	建筑.scale=传入的地图信息包.缩放
+	计划.清除子节点(触发管理器)
+	生成刷新点(传入的地图信息包)
 	if not Engine.is_editor_hint():
 		更新传送门()
-	if 传入的地图信息包:
-		生成怪物(传入的地图信息包)
 func 加载控制玩家(新实体:游历实体_玩家):
 	var 摄像机: Camera2D=创建玩家摄像机()
 	if 摄像机.get_parent():
@@ -138,71 +147,74 @@ func 加载控制玩家(新实体:游历实体_玩家):
 	新实体.摄像机=摄像机
 	if not Engine.is_editor_hint():
 		横版单例.控制队友=新实体
-	
+##刷怪点场景,拥有编辑刷怪点或检查玩家进入
+var 刷怪点场景 = preload("res://界面/游历系统/冒险根场景/刷怪点.tscn").instantiate()
 # ========== 怪物生成核心函数 ==========
-func 生成怪物(传入的地图信息包: 地图信息包):
+func 生成刷新点(信息包: 地图信息包):
 	# 安全校验：根节点/刷怪数据为空则返回
-	if not 实体:
-		print("错误：无法获取实体根节点，跳过怪物生成")
+	if not 触发管理器 or not 实体:
+		print("错误：无法获取管理器根节点，跳过刷怪点生成")
 		return
-	var 怪物数据字典:Dictionary = 传入的地图信息包.刷怪 if 传入的地图信息包 else {}
-	if 怪物数据字典.is_empty():
-		print("提示：地图信息包中无刷怪数据，无需生成怪物")
-		return
-	# 初始化随机数生成器（使用刷怪种子保证随机性可复现）
+	var 刷怪点数组:Array[刷怪点信息包]=信息包.刷怪点配置
 	var 随机数生成器: RandomNumberGenerator = RandomNumberGenerator.new()
-	if 传入的地图信息包.刷怪种子 > -1:
-		随机数生成器.seed = 传入的地图信息包.刷怪种子
-	else:
+	if 信息包.刷怪种子 == -1:
 		随机数生成器.randomize() # 无指定种子则随机初始化
 		print("提示：使用随机种子生成怪物")
-	var 图块大小: Vector2 = 获取图块大小(建筑)
-	if 图块大小.x <= 0 or 图块大小.y <= 0:
-		print("警告：获取图块大小失败，使用默认值64")
-		图块大小 = Vector2(64, 64) # 兜底默认值
-	# 遍历所有刷怪点生成怪物
-	for 刷新点标识:String in 怪物数据字典:
-		var 怪物数据:Dictionary = 怪物数据字典[刷新点标识]
-		# 校验怪物必备字段
-		if not 怪物数据.has_all(["怪物","强度","数量"]):
-			print("警告：刷怪点[",刷新点标识,"]数据缺失必要字段，跳过生成")
-			continue
-		# 1. 获取并校验刷新点坐标数组
-		var 刷新点坐标数组:Array[Vector2] = 搜索刷怪点(刷新点标识)
-		if 刷新点坐标数组.is_empty():
-			print("错误：刷怪点[",刷新点标识,"]未找到有效刷新坐标，跳过生成")
-			continue
-		# 2. 随机生成本次刷怪数量（Vector2i范围取整）
-		var 数量范围:Vector2i = 怪物数据["数量"]
-		# 3.2 随机生成怪物强度（Vector2范围取浮点）
-		var 强度范围:Vector2 = 怪物数据["强度"]
-		var 生成数量:int = 随机数生成器.randi_range(数量范围.x, 数量范围.y)
-		if 生成数量 <= 0:
-			print("提示：刷怪点[",刷新点标识,"]生成数量为0，跳过生成")
-			continue
-		# 3. 循环生成指定数量的怪物
-		for 生成索引 in 生成数量:
-			# 3.1 随机获取刷新中心点 + X轴偏移(-64~64)
-			var 偏移系数: int = 随机数生成器.randi_range(-5, 5)
-			var x偏移: float = 偏移系数 * 0.2 * 图块大小.x
-			var 中心点:Vector2 = 刷新点坐标数组[随机数生成器.randi() % 刷新点坐标数组.size()]
-			var 最终坐标:Vector2 = Vector2(中心点.x + x偏移, 中心点.y)
-			var 随机强度:float = 随机数生成器.randf_range(强度范围.x, 强度范围.y)
-			# 3.3 实例化怪物节点
-			if not 实体场景字典.has("怪物"):
-				print("错误：实体场景字典中未配置怪物场景，跳过生成")
-				break
-			var 新怪物: 游历实体_怪物 = 实体场景字典.怪物.instantiate().duplicate()
-			#设置怪物属性
-			新怪物.实体名称 = 怪物数据["怪物"]
-			新怪物.实体类型 = "怪物"
-			新怪物.强度 = 随机强度 # 赋值怪物强度属性
-			新怪物.position = 最终坐标 # 设置生成坐标
-			# 3.5 编辑器模式下的节点配置
-			if Engine.is_editor_hint():
-				新怪物.name = "怪物_" + 刷新点标识 + "_" + str(生成索引)
-				新怪物.owner = self
-			实体.add_child(新怪物)
+	else:
+		随机数生成器.seed = 信息包.刷怪种子
+	for 刷怪数据:刷怪点信息包 in 刷怪点数组:
+		var 刷怪点:梅刷怪点场景=刷怪点场景.duplicate()
+		刷怪点.刷怪数据=刷怪数据
+		刷怪点.实体=实体
+		触发管理器.add_child(刷怪点)
+		刷怪点.加载数据()
+	#var 图块大小: Vector2 = 获取图块大小(建筑)
+	#if 图块大小.x <= 0 or 图块大小.y <= 0:
+		#print("警告：获取图块大小失败，使用默认值64")
+		#图块大小 = Vector2(64, 64) # 兜底默认值
+	#var 刷新点坐标数组:Array[Vector2] = 搜索刷怪点("")
+	## 遍历所有刷怪点生成怪物
+	#for 刷新点标识:String in 怪物数据字典:
+		#var 怪物数据:Dictionary = 怪物数据字典[刷新点标识]
+		## 校验怪物必备字段
+		#if not 怪物数据.has_all(["怪物","强度","数量"]):
+			#print("警告：刷怪点[",刷新点标识,"]数据缺失必要字段，跳过生成")
+			#continue
+		## 1. 获取并校验刷新点坐标数组
+		#var 刷新点坐标数组:Array[Vector2] = 搜索刷怪点(刷新点标识)
+		#if 刷新点坐标数组.is_empty():
+			#print("错误：刷怪点[",刷新点标识,"]未找到有效刷新坐标，跳过生成")
+			#continue
+		## 2. 随机生成本次刷怪数量（Vector2i范围取整）
+		#var 数量范围:Vector2i = 怪物数据["数量"]
+		## 3.2 随机生成怪物强度（Vector2范围取浮点）
+		#var 强度范围:Vector2 = 怪物数据["强度"]
+		#var 生成数量:int = 随机数生成器.randi_range(数量范围.x, 数量范围.y)
+		#if 生成数量 <= 0:
+			#print("提示：刷怪点[",刷新点标识,"]生成数量为0，跳过生成")
+			#continue
+		## 3. 循环生成指定数量的怪物
+		#for 生成索引 in 生成数量:
+			## 3.1 随机获取刷新中心点 + X轴偏移(-64~64)
+			#var 偏移系数: int = 随机数生成器.randi_range(-5, 5)
+			#var x偏移: float = 偏移系数 * 0.2 * 图块大小.x
+			#var 中心点:Vector2 = 刷新点坐标数组[随机数生成器.randi() % 刷新点坐标数组.size()]
+			#var 最终坐标:Vector2 = Vector2(中心点.x + x偏移, 中心点.y)
+			#var 随机强度:float = 随机数生成器.randf_range(强度范围.x, 强度范围.y)
+			## 3.3 实例化怪物节点
+			#if not 实体场景字典.has("怪物"):
+				#print("错误：实体场景字典中未配置怪物场景，跳过生成")
+				#break
+			#var 新怪物: 游历实体_怪物 = 实体场景字典.怪物.instantiate().duplicate()
+			##设置怪物属性
+			#新怪物.实体名称 = 怪物数据["怪物"]
+			#新怪物.实体类型 = "怪物"
+			#新怪物.强度 = 随机强度 # 赋值怪物强度属性
+			#新怪物.position = 最终坐标 # 设置生成坐标
+			#实体.add_child(新怪物)
+func 单个生成怪物(_怪物: 游历实体_怪物):
+	pass
+	
 func 搜索刷怪点(刷怪点名:String)->Array[Vector2]:
 	var 方块字典:Dictionary=计划.表格.方块字典
 	if not 方块字典.has(刷怪点名) or not 方块字典.传送门.has_all(["瓦片集","瓦片列","瓦片排"]):
@@ -230,23 +242,23 @@ func 更新传送门():
 	else :
 		横版单例.传送点有效=true
 		var 图块大小: Vector2 = 获取图块大小(建筑)
-		var 传送门坐标:Vector2i = 搜索结果[0]
-		var 传送门原点:Vector2 = Vector2((传送门坐标.x+0.505) * 图块大小.x,(传送门坐标.y-0.5) * 图块大小.y)
-		var 传送门尺寸:Vector2 = Vector2(120, 200)*建筑.scale
-		var 区域:Area2D=Area2D.new()
-		var 传送碰撞箱:CollisionShape2D=CollisionShape2D.new()
-		var 碰撞体:=RectangleShape2D.new()
-		区域.collision_layer=0
-		区域.collision_mask=0
-		区域.set_collision_mask_value(3, true)  # 遮罩
-		实体.add_child(区域)
-		区域.add_child(传送碰撞箱)
-		区域.position=传送门原点
-		碰撞体.size=传送门尺寸
-		传送碰撞箱.shape=碰撞体
-		区域.body_entered.connect(接收区域进出信号.bind(true))
-		区域.body_exited.connect(接收区域进出信号.bind(false))
-	print("源%d(%d,%d)搜索结果:"%[目标源,目标坐标.x,目标坐标.y],搜索结果)
+		for 传送门坐标:Vector2i in 搜索结果:
+			var 传送门原点:Vector2 = Vector2((传送门坐标.x+0.505) * 图块大小.x,(传送门坐标.y-0.5) * 图块大小.y)
+			var 传送门尺寸:Vector2 = Vector2(120, 200)*建筑.scale
+			var 区域:Area2D=Area2D.new()
+			var 传送碰撞箱:CollisionShape2D=CollisionShape2D.new()
+			var 碰撞体:=RectangleShape2D.new()
+			区域.collision_layer=0
+			区域.collision_mask=0
+			区域.set_collision_mask_value(3, true)  # 遮罩
+			实体.add_child(区域)
+			区域.add_child(传送碰撞箱)
+			区域.position=传送门原点
+			碰撞体.size=传送门尺寸
+			传送碰撞箱.shape=碰撞体
+			区域.body_entered.connect(接收区域进出信号.bind(true))
+			区域.body_exited.connect(接收区域进出信号.bind(false))
+	print("[调试]传送门源%d(%d,%d)搜索结果:"%[目标源,目标坐标.x,目标坐标.y],搜索结果)
 func 接收区域进出信号(碰撞实体:Node2D,进入:bool):
 	if 碰撞实体 and 碰撞实体 is 游历实体_玩家:
 		碰撞实体.位于传送门内=进入

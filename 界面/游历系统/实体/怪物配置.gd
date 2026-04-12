@@ -1,5 +1,10 @@
 extends Resource
 class_name 梅怪物配置
+@export_group("怪物属性")
+##代码名称
+@export var 怪物名称:String=""
+##怪物头顶显示的名称,从数组中随机
+@export var 怪物显示名称:Array[String]=[""]
 @export_group("基础属性")
 @export var 血量:int=100
 @export var 魔法:int=0

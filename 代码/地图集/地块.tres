@@ -6,19 +6,32 @@
 texture = ExtResource("1_hp2pq")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
+0:0/0/custom_data_0 = "沼泽地块"
 1:0/0 = 0
+1:0/0/custom_data_0 = "遗迹地块"
 2:0/0 = 0
+2:0/0/custom_data_0 = "雪地地块"
 3:0/0 = 0
+3:0/0/custom_data_0 = "山地地块"
 3:1/0 = 0
+3:1/0/custom_data_0 = "火山地块"
 2:1/0 = 0
+2:1/0/custom_data_0 = "平原地块"
 0:1/0 = 0
+0:1/0/custom_data_0 = "沙漠地块"
 0:2/0 = 0
+0:2/0/custom_data_0 = "湖泊地块"
 1:2/0 = 0
+1:2/0/custom_data_0 = "洞穴地块"
 2:2/0 = 0
+2:2/0/custom_data_0 = "村子地块"
 1:1/0 = 0
+1:1/0/custom_data_0 = "森林地块"
 
 [resource]
 tile_shape = 3
 tile_layout = 5
 tile_size = Vector2i(256, 256)
+custom_data_layer_0/name = "地块类型"
+custom_data_layer_0/type = 4
 sources/3 = SubResource("TileSetAtlasSource_lnyx0")

@@ -18,7 +18,23 @@ signal 传送门更新()
 var 打开地图:bool=false:
 	set(值):
 		打开地图=值
+		更新输入禁用状态("打开地图", not 值)
 		重新加载地图.emit()
+var 禁用输入:bool=true
+var 禁用输入条件:Array[String]=["切换后台"]
+func 更新输入禁用状态(事件名称: String, 启用状态: bool):
+	if 启用状态:
+		# 启用事件：从条件数组中移除该事件
+		var 索引 = 禁用输入条件.find(事件名称)
+		if 索引 != -1:
+			禁用输入条件.remove_at(索引)
+	else:
+		# 禁用事件：添加到条件数组中（如果不存在）
+		if not 禁用输入条件.has(事件名称):
+			禁用输入条件.append(事件名称)
+	# 更新禁用输入变量
+	禁用输入 = not 禁用输入条件.is_empty()
+
 ##重载逻辑
 signal 重新加载地图()
 @warning_ignore("unused_signal")
@@ -144,3 +160,17 @@ func 创建掉落物(物品名称: String,物品数量: int,生成位置: Vector
 	# 传给掉落物，让它存起来，拾取时正确调用语法糖
 	克隆掉落物.初始化数据(物品名称, 物品数量, 目标像素尺寸, 生成位置, 物品贴图, 物品类型, 自定义参数)
 	掉落物管理器.add_child(克隆掉落物)
+func 加载横版视口(内容节点:Node,状态:bool):
+	if not 冒险视口:
+		print("错误,找不到冒险节点")
+		return
+	if 状态:
+		if is_ancestor_of(冒险视口):
+			remove_child(冒险视口)
+			内容节点.add_child(冒险视口)
+			更新输入禁用状态("切换后台",false)
+	else :
+		if 内容节点.is_ancestor_of(冒险视口):
+			内容节点.remove_child(冒险视口)
+			add_child(冒险视口)
+			更新输入禁用状态("切换后台",true)

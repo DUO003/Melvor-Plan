@@ -1,3 +1,4 @@
+@tool
 extends Node
 #class_name 梅计划
 func 初始化存档():
@@ -143,6 +144,10 @@ enum 修改枚举{无,添加,删除}
 @warning_ignore("unused_private_class_variable")
 var 测试=0
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		表格=附加代码("梅表格")
+		return
+	process_mode=Node.PROCESS_MODE_ALWAYS
 	声音=附加代码("梅声音")
 	表格=附加代码("梅表格")
 	技能树=附加代码("梅技能树")
@@ -177,10 +182,8 @@ func 正式加载() -> void:
 	if 系统解锁("游历"):游历.游历系统上线()
 	else :游历.初始化游历系统()
 	任务.任务创建()
-	if 地图:
-		var 冒险管理器:=地图.冒险管理器
-		if 冒险管理器:
-			冒险管理器.加载地图(冒险管理器.地图信息)
+	if 地图 and 地图.冒险管理器:
+		地图.冒险管理器.加载地图(地图.冒险管理器.地图信息)
 	else :
 		print("错误,没有加载地图成功")
 	GBIS.sig_inv_refresh.emit()###GBIS三连_背包商店装备栏

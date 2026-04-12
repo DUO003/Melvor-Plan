@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dvvf528q7xjke" path="res://界面/游历系统/冒险根场景/冒险显示区.tscn" id="2_sn3f4"]
 
 [node name="横版单例" type="Node" unique_id=737605533]
+process_mode = 3
 script = ExtResource("1_axmgq")
 
 [node name="冒险视口" type="SubViewportContainer" parent="." unique_id=1723902115]

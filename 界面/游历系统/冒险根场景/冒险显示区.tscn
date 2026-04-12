@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://cs13s2k16k57" path="res://界面/游历系统/冒险卷轴地图/新手村.tres" id="2_bg2xc"]
 [ext_resource type="Script" uid="uid://drm3ebawdtn51" path="res://界面/挂机系统/故事/地图编辑器/保存地图.gd" id="3_psavm"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="6_3wxtc"]
+[ext_resource type="PackedScene" uid="uid://d1a278e5diwpc" path="res://界面/游历系统/冒险根场景/刷怪点.tscn" id="6_eshhb"]
 [ext_resource type="Script" uid="uid://cgw68hx75xj3k" path="res://界面/游历系统/冒险根场景/伤害跳字.gd" id="6_rha17"]
 [ext_resource type="Script" uid="uid://duucyv834gnek" path="res://界面/游历系统/冒险界面/队伍.gd" id="10_ic0oc"]
 [ext_resource type="PackedScene" uid="uid://3pahwt7ke1a3" path="res://界面/游历系统/冒险界面/实体卡.tscn" id="11_qv81o"]
@@ -17,6 +18,7 @@ tile_data = PackedInt32Array(65562, 65536, 0, 65561, 65536, 0, 65560, 65536, 0, 
 tile_data = PackedInt32Array(0, 851970, 9, 5, 1114114, 9, 10, 1441794, 9, 15, 1769474, 9, 21, 524290, 13)
 
 [node name="冒险管理器" type="Node2D" unique_id=99110732]
+process_mode = 1
 script = ExtResource("1_2ecc8")
 "地图名称" = "新手村"
 "地图信息" = ExtResource("2_bg2xc")
@@ -52,6 +54,12 @@ navigation_visibility_mode = 2
 script = ExtResource("3_psavm")
 "地图资源" = SubResource("TileMapPattern_yml6h")
 "图案起点坐标" = Vector2i(4, 4)
+
+[node name="触发管理器" type="Node2D" parent="." unique_id=534239039]
+unique_name_in_owner = true
+
+[node name="刷怪点" parent="触发管理器" unique_id=326488181 instance=ExtResource("6_eshhb")]
+position = Vector2(1158, 579)
 
 [node name="实体" type="Node2D" parent="." unique_id=1935659463]
 unique_name_in_owner = true

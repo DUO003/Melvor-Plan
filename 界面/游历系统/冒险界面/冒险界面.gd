@@ -9,25 +9,15 @@ func _ready() -> void:
 	横版单例.重新加载地图.connect(冒险加载检查)
 	#横版单例
 func _exit_tree() -> void:
-	移除横版视口()
+	横版单例.加载横版视口(内容节点,false)
 func 冒险加载检查():
 	if 冒险视口:
 		计划.清除子节点(内容节点,冒险视口)
 		if 横版单例.打开地图:
-			移除横版视口()
+			横版单例.加载横版视口(内容节点,false)
 			内容节点.add_child(游历地图.instantiate())
 		else :
-			加载横版视口()
-func 加载横版视口():
-	if 冒险视口:
-		if 横版单例.is_ancestor_of(冒险视口):
-			横版单例.remove_child(冒险视口)
-		内容节点.add_child(冒险视口)
-func 移除横版视口():
-	if 冒险视口:
-		if 内容节点.is_ancestor_of(冒险视口):
-			内容节点.remove_child(冒险视口)
-		横版单例.add_child(冒险视口)
+			横版单例.加载横版视口(内容节点,true)
 	
 func 窗口最大化(状态:bool)->bool:
 	super(状态)
