@@ -43,13 +43,13 @@ func _ready() -> void:
 			#var 图块坐标:Vector2i=建筑.get_cell_atlas_coords(方块坐标)
 			#var 方块名称:String=计划.表格.方块读取(图块源,图块坐标)
 			#print(方块名称)
-func 保存游历实体数据()->Dictionary:
+func 保存游历实体数据()->Dictionary[String,Dictionary]:
 	# 1. 先判断实体节点是否存在，避免空引用
 	if not 实体:
 		print("错误：未找到'实体'根节点！")
 		return {}
 	# 2. 循环遍历根节点的所有子节点
-	var 字典:Dictionary={}
+	var 字典:Dictionary[String,Dictionary]={}
 	var 所有子节点 = 实体.get_children()
 	for 子节点 in 所有子节点:
 		if 子节点 is 游历实体:
@@ -69,14 +69,15 @@ var 实体场景字典:Dictionary[String,PackedScene] = {
 	"怪物":preload("res://界面/游历系统/实体/实体_怪物.tscn"),}
 func 保存地图(保存:bool):
 	if Engine.is_editor_hint():#只在编辑器工作
+		if not 地图信息 or not 保存:
+			地图信息 = 地图信息包.new()
 		地图.保存地图()#先各自保存自身的图块数据
 		建筑.保存地图()
+		#初始化地图信息包
 		for 节点 in 触发管理器.get_children():
 			if 节点 is 梅刷怪点场景:
 				节点.保存刷怪点()
-		#初始化地图信息包
-		if not 地图信息 or not 保存:
-			地图信息 = 地图信息包.new()
+				地图信息.刷怪点配置.append(节点.刷怪数据)
 		# 3. 填充地图信息包的数据
 		地图信息.地图名称 = 地图名称
 		地图信息.缩放 = 地图.scale
@@ -168,6 +169,8 @@ func 生成刷新点(信息包: 地图信息包):
 		刷怪点.实体=实体
 		触发管理器.add_child(刷怪点)
 		刷怪点.加载数据()
+		if Engine.is_editor_hint():
+			刷怪点.owner=self
 	#var 图块大小: Vector2 = 获取图块大小(建筑)
 	#if 图块大小.x <= 0 or 图块大小.y <= 0:
 		#print("警告：获取图块大小失败，使用默认值64")

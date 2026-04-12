@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d06vc4fxyob2v" path="res://界面/游历系统/冒险根场景/地区数据包.gd" id="1_fygqd"]
 [ext_resource type="Script" uid="uid://qtm5xbbd2it8" path="res://界面/插件/实体/冒险地图信息.gd" id="2_giysu"]
 [ext_resource type="Resource" uid="uid://cs13s2k16k57" path="res://界面/游历系统/冒险卷轴地图/新手村.tres" id="3_giysu"]
+[ext_resource type="Script" uid="uid://4yrbopya8vuj" path="res://界面/插件/实体/刷怪点.gd" id="3_n6hc6"]
 [ext_resource type="Resource" uid="uid://c65ojrldip70h" path="res://界面/游历系统/冒险卷轴地图/白骨森林.tres" id="3_yw834"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_sro2p"]
