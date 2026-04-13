@@ -26,6 +26,8 @@ var 任务描述:Array=[]
 var 循环任务:int=-1
 var 进度描述:String=""
 var 显示任务:String=""
+var 动态翻译:String=""
+var 目标值:int=-1
 var 消耗次数:bool=true
 var 任务本地:Dictionary
 var 奖励字典:Dictionary={}
@@ -52,6 +54,8 @@ func 初始化(打包:任务打包资源):
 	任务描述=当前任务数据.get("任务描述",[]) as Array
 	进度描述=当前任务数据.get("进度描述","") as String
 	显示任务=当前任务数据.get("显示任务","") as String
+	动态翻译=当前任务数据.get("动态翻译","") as String
+	目标值=当前任务数据.get("目标值",-1) as int
 	功能按钮=当前任务数据.get("功能按钮",[]) as Array
 	前置任务=当前任务数据.get("前置任务",[]) as Array
 	前置条件=当前任务数据.get("前置条件",[]) as Array
@@ -87,22 +91,22 @@ func 返回奖励文本() -> String:
 		return ""
 	# 存储每个奖励的文本片段
 	var 奖励文本数组: Array = []
+	var 表格:=计划.表格
 	# 遍历奖励字典，逐个构建文本片段
 	for 奖励名称 in 奖励字典:
 		var 奖励数量: int = 奖励字典[奖励名称]
 		var 图片路径: String = ""
 		if 奖励名称 in 经验类奖励列表:#处理图片路径：经验类奖励用"熟练"的贴图，其他用自身名称
-			图片路径 = 计划.表格.道具贴图("熟练").resource_path
+			图片路径 = 表格.道具贴图("熟练").resource_path
 		else:
-			图片路径 = 计划.表格.道具贴图(奖励名称).resource_path
+			图片路径 = 表格.道具贴图(奖励名称).resource_path
 		#构建BBC语法的文本片段（格式：[img]路径[/img]奖励名称*数量）
-		var 单个奖励文本: String = "[img=40x40]%s[/img]%s*%d" % [图片路径, 奖励名称, 奖励数量]
+		var 单个奖励文本: String = "[img=40x40]%s[/img]%s*%d" % [图片路径, 表格.翻译名称(奖励名称), 奖励数量]
 		奖励文本数组.append(单个奖励文本)
 	if 任务类型=="循环":
 		var 奖励数量: int = 打包数据.循环任务难度+1
-		var 奖励名称: String="任务点数"
-		var 图片路径: String = 计划.表格.道具贴图("任务").resource_path
-		var 单个奖励文本: String = "[img=40x40]%s[/img]%s*%d" % [图片路径, 奖励名称, 奖励数量]
+		var 图片路径: String = 表格.道具贴图("任务").resource_path
+		var 单个奖励文本: String = "[img=40x40]%s[/img]%s*%d" % [图片路径, 表格.翻译名称("任务点数"), 奖励数量]
 		奖励文本数组.append(单个奖励文本)
 	return " , ".join(奖励文本数组)
 func 任务完成逻辑(回传参数=[]):

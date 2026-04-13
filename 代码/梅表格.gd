@@ -1,3 +1,4 @@
+@tool
 extends Node
 class_name 梅表格
 ##嵌套字典[[物品名称,属性...]["物品","属性",1]]
@@ -21,6 +22,14 @@ var 缓存蓝图标签:Dictionary={}
 var 方块字典:Dictionary={}
 ##可以反向定位方块名称
 var 方块检索字典:Dictionary[Vector3i,String]
+##当翻译被更新时会发出有需要的位置可以监听更新
+signal 更新_翻译()
+##当前已经支持的语言枚举
+var 语言映射表: Dictionary = {
+	"中文": "zh-CN",  # 空字符串=显示原始Key（中文）
+	"英文": "EN"} # 对应翻译文件的EN locale
+var 当前使用语言:String="中文"
+var 当前使用后缀:String=""
 func _ready():
 	表格初始化()
 func 表格初始化():
@@ -37,17 +46,26 @@ func 字典加载():
 		缓存序号+=1
 	蓝图字典={}
 	缓存蓝图标签={}
-	var 图纸标签=创世蓝图[0].find("标签")
-	var 格式标准=创世蓝图[1]
+	var 图纸标签:int=创世蓝图[0].find("标签")
+	var 格式标准:Array=创世蓝图[1]
+	#var 标签数组:Array=[]
 	for 蓝图 in 创世蓝图:
 		if not 蓝图==创世蓝图[0] and not 蓝图==创世蓝图[1]:
 			缓存蓝图标签[蓝图[0]]=蓝图[图纸标签].split("/")
+			#标签数组+=Array(缓存蓝图标签[蓝图[0]])
 			蓝图字典[蓝图[0]]=蓝图
 			var 处理后的蓝图行 = []
 			for 序号 in range(蓝图.size()):
 				处理后的蓝图行.append(_转换格式(蓝图[序号],格式标准[序号]))
 			处理的蓝图字典[蓝图[0]] = 处理后的蓝图行
 	蓝图数组=蓝图字典.keys()
+	#var 标签去重:Array=[]
+	#for 标签 in 标签数组:
+		#if not 标签去重.has(标签):
+			#标签去重.append(标签)
+	#print(标签去重)
+	#var 最终文本 = "\n".join(标签去重)
+	#DisplayServer.clipboard_set(最终文本)
 func 方块字典加载():
 	方块字典={}
 	var 方块表格=所有表格字典.方块
@@ -405,3 +423,32 @@ func 方块读取(图块源:int,图块坐标:Vector2i)->String:
 		print("警告：未找到图块源", 图块源, " 坐标", 图块坐标, "对应的方块")
 		breakpoint#断点
 		return "空"
+func 翻译切换(目标语言:String):
+	if not 语言映射表.has(目标语言):
+		目标语言="中文"
+	var 目标语言标识 = 语言映射表[目标语言]
+	TranslationServer.set_locale(目标语言标识)
+	if not 当前使用后缀==目标语言:
+		call_deferred("延迟翻译信号")
+	当前使用语言=目标语言
+	if 当前使用语言=="中文":
+		当前使用后缀=""
+	else :
+		当前使用后缀="_"+目标语言标识
+func 延迟翻译信号():
+	更新_翻译.emit()
+func 翻译名称(物品名称: String)->String:
+	if not 处理的蓝图字典.has(物品名称):
+		return tr(物品名称)
+	if 当前使用语言=="中文":
+		return 物品名称
+	else :
+		return 蓝图数据(物品名称,"名称"+当前使用后缀)
+func 翻译简介(物品名称: String)->String:
+	if not 处理的蓝图字典.has(物品名称):
+		return tr(物品名称)
+	if 当前使用语言=="中文":
+		return 蓝图数据(物品名称,"简介")
+	else :
+		return 蓝图数据(物品名称,"简介"+当前使用后缀)
+	

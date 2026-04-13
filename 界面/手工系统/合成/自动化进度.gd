@@ -19,6 +19,8 @@ func 传入配方参数(名称:String=""):#,更新方法:Callable=Callable()
 	配方名.text=名称
 	if 名称=="":
 		配方贴图.texture=null
+		取消.visible=false
 	else :
 		配方贴图.texture=计划.表格.道具贴图(名称)
+		取消.visible=true
 #	自动更新方法=更新方法

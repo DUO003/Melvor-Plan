@@ -1,33 +1,234 @@
-﻿Keys,EN,,,,,,,,,,,,,,,,,,
-开始游戏,play,,,,,,,,,,,,,,,,,,
-打开设置,Settings,,,,,,,,,,,,,,,,,,
-新建,New Save,,,,,,,,,,,,,,,,,,
-删除,Delete Game Saves,,,,,,,,,,,,,,,,,,
-梅计划,MeiErWo Plan,,,,,,,,,,,,,,,,,,
-用户名:,Username:,,,,,,,,,,,,,,,,,,
-文件名:,Filename:,,,,,,,,,,,,,,,,,,
-存档数量:%d,Number of Saves: %d,,,,,,,,,,,,,,,,,,
-退出游戏,Quit Game,,,,,,,,,,,,,,,,,,
-用户名:%s\r%s保存时间:%s%s,Username:%s\r%sSave Time:%s%s,,,,,,,,,,,,,,,,,,
-\r启用测试,\rEnable Test Cheat Mode,,,,,,,,,,,,,,,,,,
-挂机:%d\r,Idle System: %d\r,,,,,,,,,,,,,,,,,,
-挂机系统,AFK System,,,,,,,,,,,,,,,,,,
-木料系统,Lumber System,,,,,,,,,,,,,,,,,,
-矿城系统,Mining City System,,,,,,,,,,,,,,,,,,
-手工系统,Crafting System,,,,,,,,,,,,,,,,,,
-游历系统,Wandering System,,,,,,,,,,,,,,,,,,
-职业系统,Profession System,,,,,,,,,,,,,,,,,,
-召唤系统,Summoning System,,,,,,,,,,,,,,,,,,
-挂机,AFK System,,,,,,,,,,,,,,,,,,
-木料,Lumber System,,,,,,,,,,,,,,,,,,
-矿城,Mining City System,,,,,,,,,,,,,,,,,,
-手工,Crafting System,,,,,,,,,,,,,,,,,,
-游历,Wandering System,,,,,,,,,,,,,,,,,,
-职业,Profession System,,,,,,,,,,,,,,,,,,
-召唤,Summoning System,,,,,,,,,,,,,,,,,,
-矿石,Ore,,,,,,,,,,,,,,,,,,
-木材,Wood,,,,,,,,,,,,,,,,,,
-皮革,Leather,,,,,,,,,,,,,,,,,,
-药草,Herb,,,,,,,,,,,,,,,,,,
-零件,Rune_Stone,,,,,,,,,,,,,,,,,,
-精华,Gem_Essence,,,,,,,,,,,,,,,,,,
+Keys,zh-CN,EN
+开始游戏,开始游戏,play
+打开设置,打开设置,Settings
+新建,新建,New Save
+删除,删除,Delete Game Saves
+梅计划,梅计划,MeiErWo Plan
+用户名:,用户名:,Username:
+文件名:,文件名:,Filename:
+存档数量:%d,存档数量:%d,Number of Saves: %d
+退出游戏,退出游戏,Quit Game
+用户名:%s\r%s保存时间:%s%s,用户名:%s\r%s保存时间:%s%s,Username:%s\r%sSave Time:%s%s
+\r启用测试,\r启用测试,\rEnable Test Cheat Mode
+挂机:%d\r,挂机:%d\r,Idle System: %d\r
+挂机系统,挂机系统,AFK System
+木料系统,木料系统,Lumber System
+矿城系统,矿城系统,Mining City System
+手工系统,手工系统,Crafting System
+游历系统,游历系统,Wandering System
+职业系统,职业系统,Profession System
+召唤系统,召唤系统,Summoning System
+挂机,挂机,AFK System
+木料,木料,Lumber System
+矿城,矿城,Mining City System
+手工,手工,Crafting System
+游历,游历,Wandering System
+职业,职业,Profession System
+召唤,召唤,Summoning System
+作者,作者,Author
+矿石,矿石,Ore
+木材,木材,Wood
+皮革,皮革,Leather
+药草,药草,Herb
+零件,零件,Rune_Stone
+精华,精华,Gem_Essence
+<任务未解锁>,前置任务未解锁%d/%d,Unlocked %d/%d Prerequisite Missions
+<前置任务>,下一个前置任务:%s,Next Prerequisite Mission: %s
+最大,最大,Max
+循环,循环,Loop
+刷新,刷新,Refresh
+接受任务,接受任务,Accept Mission
+精通,精通,Mastery
+熟练,熟练,Proficiency
+精通池,精通池,Mastery Pool
+手动存档,手动存档,Manual Save
+年,年,Year
+天,天,Day
+周,周,Week
+时,时,Hour
+分,分,Minute
+秒,秒,Second
+%s秒前,%s秒前,%ss ago
+已保存,已保存,Saved
+未保存,未保存,Unsaved
+<任务暂停>,任务暂停中->\r,Task Paused->\r
+<任务进行中>,进行中(正在记录任务目标)\r,Claimed (Recording objectives)\r
+<任务已领取奖励>,奖励已领取,Reward Claimed
+任务界面,任务界面,Quest Interface
+任务,任务,Quests
+任务点数,任务点数,Quest Points
+主线任务,主线任务,Main Quests
+循环任务,循环任务,Repeatable Quests
+任务统计,任务统计,Quest Stats
+已完成,已完成,Show Completed
+隐藏其他任务,隐藏其他任务,Hide Irrelevant
+隐藏数量:%d,隐藏数量:%d,Hidden: %d
+体力恢复速度%d点/%d分钟,体力恢复速度%d点/%d分钟,Stamina Regen: %d pts / %d min
+门票,门票,Entry Ticket
+显示%d个,显示%d个,Display %d
+<键_主线任务介绍>,"[font_size=40]主线任务[/font_size]\n消耗任务点数完成主线任务\n解锁新玩法,提升任务容量难度等\n%s",[font_size=40]Main Quests[/font_size]\nSpend Quest Points to complete main quests.\nUnlock new features and increase quest capacity/difficulty.\n%s
+<键_循环任务介绍>,"[font_size=40]循环任务[/font_size]\n完成任务获取[img=35x35]%s[/img]\n提高难度获得任务点数增加\n\t已完成循环任务数量:%d\n\t当前任务%d个,难度:%d\n\t任务点数:%d",[font_size=40]Repeatable[/font_size]\nComplete tasks to obtain [img=35x35]%s[/img].\nIncrease difficulty for more Quest Points.\n\tCompleted: %d\n\tCurrent Tasks: %d | Difficulty: %d\n\tQuest Points: %d
+<键_订单任务介绍>,[font_size=40]订单任务[/font_size]\n提交物品获得金币\n可消耗体力额外提交\n\t订单范围:%s\n\t当前订单容量%d个\n\t具体情况进入订单界面查看,[font_size=40]Order[/font_size]\nSubmit items for Gold.\nConsume Stamina for extra attempts.\n\tOrder Type: %s\n\tCapacity: %d\n\tCheck Order interface for details.
+<键_成就任务介绍>,[font_size=40]成就任务[/font_size]\n完成任务增加[img=35x35]%s[/img]傲慢上限\n完成成就有一次性的奖励\n\t当前成就数量:%d\n\t具体情况进入傲慢界面查看,[font_size=40]Achievement[/font_size]\nComplete tasks to raise [img=35x35]%s[/img] Pride cap.\nEarn one-time rewards for achievements.\n\tAchievements: %d\n\tCheck Pride interface for details.
+<任务完成数量>,\t%s完成数量:%d/%d,\t%s Completed: %d/%d
+"背包界面:查看物品,随身商店,装备","背包界面:查看物品,随身商店,装备","Inventory: View items, shop, equip"
+设置界面:调整游戏设置,设置界面:调整游戏设置,Settings: Adjust game configurations
+前往订单,前往订单,Go to Orders
+前往成就,前往成就,Go to Achievements
+前往背包,前往背包,Go to Inventory
+前往设置,前往设置,Go to Settings
+开始对话,开始对话,Start Dialogue
+解锁,解锁,Unlock
+领取,领取,Claim
+需要完成更多次循环任务,需要完成更多次循环任务,More loop tasks required
+"任务奖励已完成,无需重复","任务奖励已完成,无需重复","Reward claimed, no need to repeat"
+任务奖励已领取,任务奖励已领取,Reward already claimed
+,,
+新手任务,新手任务,Novice Quest
+订单解锁,订单解锁,Order Unlocked
+循环扩容#1,循环扩容#1,Cycle Capacity +1
+循环扩容#2,循环扩容#2,Cycle Capacity +2
+循环升级#1,循环升级#1,Cycle Upgrade +1
+循环升级#2,循环升级#2,Cycle Upgrade +2
+订单扩容#1,订单扩容#1,Order Capacity +1
+订单扩容#2,订单扩容#2,Order Capacity +2
+原罪解锁,原罪解锁,Original Sin Unlocked
+原罪暴食,原罪暴食,Original Sin: Gluttony
+原罪贪婪,原罪贪婪,Original Sin: Greed
+小游戏解锁,小游戏解锁,Minigame Unlocked
+故事解锁,故事解锁,Story Unlocked
+研究蓝图,研究蓝图,Research Blueprints
+研究炼金蓝图,研究炼金蓝图,Research Alchemy Blueprints
+研究炼金,研究炼金,Research Alchemy
+研究食材蓝图,研究食材蓝图,Research Ingredient Blueprints
+研究工具蓝图,研究工具蓝图,Research Tool Blueprints
+工具强化,工具强化,Tool Enhancement
+研究烹饪,研究烹饪,Research Cooking
+完成任务,完成任务,Complete Quest
+检查背包,检查背包,Check Inventory
+背包购物,背包购物,Inventory Shopping
+整理背包,整理背包,Organize Inventory
+什么都不做,什么都不做,Do Nothing
+什么都不做Ⅱ,什么都不做Ⅱ,Do Nothing Ⅱ
+合成自动化,合成自动化,Crafting Auto
+手工精通,手工精通,Crafting Mastery
+原罪突破,原罪突破,Original Sin Breakthrough
+暴食里程碑,暴食里程碑,Gluttony Milestone
+稀有的交易,稀有的交易,Rare Trade
+颜料排序,颜料排序,Pigment Sorting
+成功的研究,成功的研究,Successful Research
+合成自动化Ⅱ,合成自动化Ⅱ,Crafting Auto Ⅱ
+五阶蓝图,五阶蓝图,Tier 5 Blueprints
+烹饪食物,烹饪食物,Cook Food
+烹饪自动化,烹饪自动化,Cooking Auto
+催化剂兑换,催化剂兑换,Catalyst Exchange
+初试炼金,初试炼金,Initial Alchemy
+无尽贪婪,无尽贪婪,Endless Greed
+,,
+基础合成,基础合成,Basic Crafting
+随机合成,随机合成,Random Crafting
+加工合成,加工合成,Processing Crafting
+铭刻合成,铭刻合成,Inscription Crafting
+炼金创意,炼金创意,Alchemy Innovation
+食材创意,食材创意,Ingredient Innovation
+符文创意,符文创意,Rune Innovation
+骑士药水,骑士药水,Knight Potion
+法师药水,法师药水,Mage Potion
+射手药水,射手药水,Archer Potion
+食材清洗,食材清洗,Ingredient Washing
+食材切割,食材切割,Ingredient Cutting
+食材腌制,食材腌制,Ingredient Pickling
+基础订单,基础订单,Basic Order
+随身消费,随身消费,On-the-Go Consumption
+<基础合成描述_1>,学会合成技能后就可以亲手造各种材料了，先合成[color=#182518]基础素材[/color]类物品%d个，完成练习任务吧！,"Once you learn crafting skills, you can make various materials yourself. Craft %d items of [color=#182518]Basic Materials[/color] to complete the practice quest!"
+<炼金材料合成描述_1>,虽然药水不能被直接合成但可以通过炼金间接获取，来合成[color=#182518]炼金材料[/color]类物品%d个，完成练习任务吧！,"Although potions can't be crafted directly, they can be obtained indirectly via alchemy. Craft %d items of [color=#182518]Alchemy Materials[/color] to complete the practice quest!"
+<食材合成描述_1>,烹饪还会需要一些食材，快合成[color=#182518]食材[/color]类物品%d个，完成练习任务吧！,Cooking requires certain ingredients. Craft %d items of [color=#182518]Ingredients[/color] to complete the practice quest!
+<符文合成描述_1>,元素符文相当常用，先合成[color=#182518]符文[/color]类物品%d个，完成练习任务吧！,Elemental runes are very commonly used. Craft %d items of [color=#182518]Runes[/color] to complete the practice quest!
+<炼金研究描述_1>,"通过研究代码弄清制作方法,研究[color=#182518]炼金[/color]材料目标消耗%d张蓝图纸",Figure out crafting methods by researching codes. Consume %d Blueprint Sheets to research [color=#182518]Alchemy[/color] materials.
+<食材研究描述_1>,"通过研究代码弄清制作方法,研究[color=#182518]食材[/color]目标消耗%d张蓝图纸",Figure out crafting methods by researching codes. Consume %d Blueprint Sheets to research [color=#182518]Ingredients[/color].
+<符文研究描述_1>,"通过研究代码弄清制作方法,研究[color=#182518]符文[/color]目标消耗%d张蓝图纸",Figure out crafting methods by researching codes. Consume %d Blueprint Sheets to research [color=#182518]Runes[/color].
+<圣盾药水配方描述_1>,"使用[color=#182518]圣盾徽记[/color]催化剂概论获得[color=#182518]圣坚药水[/color]多试试总会找到合适配方的,收获%d次[color=#182518]圣盾徽记[/color]作为催化剂的配方",Use [color=#182518]Holy Shield Emblem[/color] catalyst theory to obtain [color=#182518]Holy Fortitude Potion[/color]. Keep trying to find the right recipe. Obtain %d recipes using [color=#182518]Holy Shield Emblem[/color] as catalyst.
+<星纹药水配方描述_1>,"使用[color=#182518]星纹结晶[/color]催化剂概论获得[color=#182518]星芒药水[/color]多试试总会找到合适配方的,收获%d次[color=#182518]星纹结晶[/color]作为催化剂的配方",Use [color=#182518]Starweave Crystal[/color] catalyst theory to obtain [color=#182518]Star Radiance Potion[/color]. Keep trying to find the right recipe. Obtain %d recipes using [color=#182518]Starweave Crystal[/color] as catalyst.
+<风翎药水配方描述_1>,"使用[color=#182518]风翎符片[/color]催化剂概论获得[color=#182518]风羽药水[/color]多试试总会找到合适配方的,收获%d次[color=#182518]风翎符片[/color]作为催化剂的配方",Use [color=#182518]Wind Plume Talisman[/color] catalyst theory to obtain [color=#182518]Wind Feather Potion[/color]. Keep trying to find the right recipe. Obtain %d recipes using [color=#182518]Wind Plume Talisman[/color] as catalyst.
+<食材清洗描述_1>,"经过处理的食材可以为料理提供更多的美味度,清洗%d个食材",Processed ingredients provide more deliciousness to dishes. Wash %d ingredients.
+<食材切割描述_1>,"经过处理的食材可以为料理提供更多的美味度,切割%d个食材",Processed ingredients provide more deliciousness to dishes. Cut %d ingredients.
+<食材腌制描述_1>,"经过处理的食材可以为料理提供更多的美味度,腌制%d个食材",Processed ingredients provide more deliciousness to dishes. Pickle %d ingredients.
+<基础订单描述_1>,你可以通过订单出售材料换取金币，先提交%d数量的订单吧！,You can sell materials via orders for gold. Submit %d orders first!
+<随身消费描述_1>,"金币可以在背包购买物品,在随身商店消费%d完成任务",Gold can be used to buy items in your inventory. Spend %d in the Portable Shop to complete the quest.
+,,
+[b]任务描述[/b]:,[b]任务描述[/b]:,[b]Quest Description[/b]:
+欢迎游玩本游戏,欢迎游玩本游戏,Welcome to the game
+与作者完成对话完成任务,与作者完成对话完成任务,Complete dialogue with the developer to finish the quest
+[b]重要[/b]:慎重选择解锁初始系统,[b]重要[/b]:慎重选择解锁初始系统,[b]Important[/b]:Choose carefully to unlock the initial system
+<奖励_解锁系统_1>,[b]奖励[/b]:[color=#004e00]解锁第一个系统[/color],[b]Reward[/b]:[color=#004e00]Unlock the first system[/color]
+[b]奖励[/b]:,[b]奖励[/b]:,[b]Reward[/b]:
+[b]奖励[/b]:{奖励字典},[b]奖励[/b]:{奖励字典},[b]Reward[/b]:{奖励字典}
+完成订单可以获得大量金币,完成订单可以获得大量金币,Completing orders grants massive Gold
+[b]完成条件[/b]:完成循环任务获得任务点数,[b]完成条件[/b]:完成循环任务获得任务点数,[b]Completion Condition[/b]:Complete cycle quests to earn quest points
+过期时间:{计时},过期时间:{计时},Expiration Time:{计时}
+当前进度: {任务},当前进度: {任务},Current Progress: {任务}
+当前进度: {当前进度},当前进度: {当前进度},Current Progress: {当前进度}
+奖励：解锁“订单”功能,奖励：解锁“订单”功能,"Reward: Unlock the ""Order"" feature"
+增加刷新任务的上限,增加刷新任务的上限,Increases max refreshable quests
+奖励：循环任务容量+1,奖励：循环任务容量+1,Reward: Cycle Quest Capacity +1
+奖励：增加循环任务难度和奖励,奖励：增加循环任务难度和奖励,Reward: Increases cycle quest difficulty and rewards
+增加刷新订单的上限,增加刷新订单的上限,Increases max refreshable orders
+奖励：订单任务容量+1,奖励：订单任务容量+1,Reward: Order Quest Capacity +1
+异界叙事残片被压缩为「原罪」。,异界叙事残片被压缩为「原罪」。,"Fragments of Otherworldly Narratives are condensed into ""Original Sin""."
+解锁后可积累原罪点数，提升你的经验获取效率。,解锁后可积累原罪点数，提升你的经验获取效率。,Unlock to accumulate Original Sin Points and boost EXP gain efficiency.
+这份外来智慧将成为你的成长助力。,这份外来智慧将成为你的成长助力。,This foreign wisdom will aid your growth.
+奖励：解锁“原罪”玩法。,奖励：解锁“原罪”玩法。,"Reward: Unlock ""Original Sin"" gameplay."
+"暴食可以吃掉食物,获得体力等","暴食可以吃掉食物,获得体力等",Gluttony lets you consume food for Stamina and more.
+"提高暴食里程碑,可以增加体力上限等","提高暴食里程碑,可以增加体力上限等",Raising Gluttony Milestones increases max Stamina and more.
+奖励：解锁“原罪暴食”玩法。,奖励：解锁“原罪暴食”玩法。,"Reward: Unlock ""Original Sin: Gluttony"" gameplay."
+提交你的收藏品获得对应贪婪积分,提交你的收藏品获得对应贪婪积分,Submit collectibles to earn corresponding Greed Points.
+奖励：解锁“原罪贪婪”玩法。,奖励：解锁“原罪贪婪”玩法。,"Reward: Unlock ""Original Sin: Greed"" gameplay."
+"小游戏,正在开发中的功能","小游戏,正在开发中的功能","Minigame, a feature in development."
+奖励：解锁“小游戏”玩法。,奖励：解锁“小游戏”玩法。,"Reward: Unlock ""Minigame"" gameplay."
+"故事,正在开发中的功能","故事,正在开发中的功能","Story, a feature in development."
+奖励：解锁“故事”玩法。,奖励：解锁“故事”玩法。,"Reward: Unlock ""Story"" gameplay."
+<简介_研究更多蓝图>,[b]简介[/b]：循环蓝图纸[color=#182518]研究更多蓝图[/color],[b]Introduction[/b]:Cycle Blueprint Sheets [color=#182518]Research more blueprints[/color]
+奖励：解锁“抽奖”玩法,奖励：解锁“抽奖”玩法,"Reward: Unlock ""Gacha"" gameplay"
+蓝图纸*50,蓝图纸*50,Blueprint Sheets ×50
+<奖励_炼金材料>,奖励：解锁“[color=#182518]炼金材料[/color]”研究方向,Reward: Unlock the [color=#182518]Alchemy Materials[/color] research branch.
+<奖励_食材>,奖励：解锁“[color=#182518]食材[/color]”研究方向,Reward: Unlock the [color=#182518]Ingredients[/color] research branch.
+<奖励_工具>,奖励：解锁“[color=#182518]工具[/color]”研究方向,Reward: Unlock the [color=#182518]Tools[/color] research branch.
+奖励：解锁“强化器”玩法,奖励：解锁“强化器”玩法,"Reward: Unlock ""Enhancer"" gameplay."
+[b]任务[/b]:,[b]任务[/b]:,[b]Quest[/b]:
+简介：学习烹饪前自己做点吃吧!,简介：学习烹饪前自己做点吃吧!,Introduction: Make food yourself before learning cooking!
+"但是需要准备食材,可以在抽奖机研究对应材料蓝图","但是需要准备食材,可以在抽奖机研究对应材料蓝图",Prepare ingredients by researching corresponding material blueprints at the Gacha Machine.
+奖励：解锁“烹饪”玩法。,奖励：解锁“烹饪”玩法。,"Reward: Unlock ""Cooking"" gameplay."
+简介：炼金玩法可以产出功能性药水,简介：炼金玩法可以产出功能性药水,Introduction: Alchemy produces functional potions.
+"但是需要准备炼金材料,可以在抽奖机研究对应材料","但是需要准备炼金材料,可以在抽奖机研究对应材料",Prepare alchemy materials by researching corresponding materials at the Gacha Machine.
+奖励：解锁“炼金”玩法。,奖励：解锁“炼金”玩法。,"Reward: Unlock ""Alchemy"" gameplay."
+消耗10体力刷新,消耗10体力刷新,Consume 10 Stamina to refresh
+,,
+装备,<装备>,<Equip>
+工具,<工具>,<Tool>
+礼盒,<礼盒>,<Gift>
+贵重,<贵重>,<Precious>
+物资,<物资>,<Supply>
+代币,<代币>,<Token>
+点数,<点数>,<Point>
+材料,<材料>,<Material>
+符文,<符文>,<Rune>
+收藏品,<收藏品>,<Collectible>
+宝石,<宝石>,<Gem>
+资源,<资源>,<Resource>
+炼金,<炼金>,<Alchemy>
+催化,<催化>,<Catalyst>
+特殊催化,<特殊催化>,<SpecialCatalyst>
+战利品,<战利品>,<Loot>
+装备药水,<装备药水>,<EnchantPotion>
+食物,<食物>,<Food>
+食材,<食材>,<Ingredient>
+调料,<调料>,<Seasoning>
+药水,<药水>,<Potion>
+料理,<料理>,<Dish>
+手工,<手工>,<Craft>
+灾厄,<灾厄>,<Bane>
+元素,<元素>,<Element>
+维度传送液,<维度传送液>,<DimensionalFluid>
+失败品,<失败品>,<Defective>
+颜料,<颜料>,<Dye>
+技能,<技能>,<Skill>

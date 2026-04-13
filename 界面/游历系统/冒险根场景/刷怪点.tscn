@@ -6,18 +6,12 @@
 
 [sub_resource type="Resource" id="Resource_g2pjx"]
 script = ExtResource("2_8laij")
-"刷怪波次" = null
-"多波次逻辑" = null
-"刷怪计时器" = null
 "刷怪数量" = Vector2i(1, 1)
-"基础强度" = null
 "触发偏移" = Vector2(0, 0)
 "触发范围" = Vector2(0, 0)
-"视角限制" = null
-"刷怪点偏移" = Array[float]([0.0])
 metadata/_custom_type_script = "uid://4yrbopya8vuj"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_70amt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8laij"]
 size = Vector2(100, 600)
 
 [node name="刷怪点" type="Area2D" unique_id=326488181]
@@ -27,7 +21,7 @@ script = ExtResource("1_kt7fi")
 [node name="触发范围" type="CollisionShape2D" parent="." unique_id=1297883417]
 unique_name_in_owner = true
 position = Vector2(0, -225)
-shape = SubResource("RectangleShape2D_70amt")
+shape = SubResource("RectangleShape2D_8laij")
 
 [node name="视角限制" type="Marker2D" parent="." unique_id=1183906845]
 unique_name_in_owner = true

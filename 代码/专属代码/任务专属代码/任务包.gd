@@ -26,6 +26,11 @@ func 可用标签()->Array:
 		if 元素 in 订单解锁标签 and 元素 not in 交集结果:
 			交集结果.append(元素)
 	return 交集结果
+func 返回翻译标签()->Array:
+	var 翻译标签:=[]
+	for 标签 in 订单解锁标签:
+		翻译标签.append(tr(标签))
+	return 翻译标签
 ##每次获得物品时尝试增加记录
 func 增加记录(物品名称:String,数量:int):
 	if 数量 <= 0:

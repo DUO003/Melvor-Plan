@@ -4,14 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://dxfklw2e15g0s" path="res://素材/游戏素材/背景/3.png" id="2_clqjb"]
 [ext_resource type="Script" uid="uid://blxbxdy28ud5v" path="res://界面/开始菜单/开始菜单.gd" id="2_l8v50"]
 [ext_resource type="Texture2D" uid="uid://bttn4tgkwj4p0" path="res://素材/全息图片AI素材/元素/火.png" id="3_l8v50"]
-[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="4_qbyf1"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_btlti"]
 [ext_resource type="Script" uid="uid://cmbasrv6fjwdo" path="res://界面/开始菜单/名单.gd" id="6_btlti"]
 [ext_resource type="StyleBox" uid="uid://bm5840l8u24jv" path="res://界面/主题/样式/按钮样式_默认_按下.tres" id="7_7r74b"]
-[ext_resource type="Texture2D" uid="uid://bkwyexu6ph0l" path="res://素材/豆包AI素材/图标/地球.png" id="7_l8v50"]
 [ext_resource type="StyleBox" uid="uid://cdxp83ndaxqbh" path="res://界面/主题/样式/按钮样式_红色_正常.tres" id="7_ubnl7"]
 [ext_resource type="StyleBox" uid="uid://cve1uj1iraqyj" path="res://界面/主题/样式/按钮样式_红色_按下.tres" id="8_7r74b"]
 [ext_resource type="Texture2D" uid="uid://cpttn2y0dmq0e" path="res://素材/自制/图标/关闭.png" id="8_qbyf1"]
+[ext_resource type="PackedScene" uid="uid://b2xyvod6i3q05" path="res://界面/开始菜单/多语言功能区.tscn" id="10_ubnl7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbyf1"]
 bg_color = Color(0.55, 0.42716667, 0.18149999, 0.23529412)
@@ -44,26 +43,6 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 script = ExtResource("5_btlti")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s0f7"]
-bg_color = Color(0.55, 0.42716667, 0.18149999, 0.78431374)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-script = ExtResource("5_btlti")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBox" id="StyleBox_ubnl7"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = -1.0
-content_margin_top = -1.0
-content_margin_right = -1.0
-content_margin_bottom = -1.0
-script = ExtResource("4_qbyf1")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_1s0f7")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [node name="开始界面" type="ScrollContainer" unique_id=87816416]
 anchors_preset = 15
@@ -142,6 +121,12 @@ offset_top = -80.0
 offset_right = 196.0
 offset_bottom = -13.0
 grow_vertical = 0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../退出游戏")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath("../主面板/边距容器/竖向容器/按钮区/开始游戏")
 text = "感谢名单"
 
 [node name="名单容器" type="Panel" parent="开始菜单" unique_id=910730895]
@@ -220,11 +205,15 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_btlti")
 text = "狼葵"
 
 [node name="主面板" type="Panel" parent="开始菜单" unique_id=386794546]
-layout_mode = 0
-offset_left = 716.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1204.0
 offset_top = 114.0
-offset_right = 1816.0
+offset_right = -104.0
 offset_bottom = 815.0
+grow_horizontal = 0
 
 [node name="边距容器" type="MarginContainer" parent="开始菜单/主面板" unique_id=663076966]
 layout_mode = 1
@@ -244,6 +233,7 @@ text = "存档数量:0"
 
 [node name="存档选择" type="TabContainer" parent="开始菜单/主面板/边距容器/竖向容器" unique_id=1625386353]
 unique_name_in_owner = true
+auto_translate_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("7_7r74b")
@@ -259,6 +249,11 @@ text = "用户名:"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath("../自定义存档名")
+focus_neighbor_bottom = NodePath("../../按钮区/开始游戏")
+focus_next = NodePath("../../按钮区/开始游戏")
+focus_previous = NodePath("../自定义存档名")
 text = "玩家"
 placeholder_text = "用户名"
 max_length = 7
@@ -273,6 +268,9 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../玩家名")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../按钮区/删除")
 placeholder_text = "自定义存档名称"
 max_length = 7
 emoji_menu_enabled = false
@@ -285,6 +283,12 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 6
+focus_neighbor_left = NodePath("../../../../../感谢名单")
+focus_neighbor_top = NodePath("../../自定义存档/玩家名")
+focus_neighbor_right = NodePath("../设置")
+focus_neighbor_bottom = NodePath("../../../../../退出游戏")
+focus_next = NodePath("../设置")
+focus_previous = NodePath("../../自定义存档/玩家名")
 theme_override_colors/font_pressed_color = Color(0.13333334, 0.68235296, 0.6745098, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.68235296, 0.6745098, 1)
 theme_override_styles/normal = ExtResource("7_ubnl7")
@@ -298,6 +302,12 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 6
+focus_neighbor_left = NodePath("../开始游戏")
+focus_neighbor_top = NodePath("../../自定义存档/玩家名")
+focus_neighbor_right = NodePath("../新建")
+focus_neighbor_bottom = NodePath("../../../../../退出游戏")
+focus_next = NodePath("../新建")
+focus_previous = NodePath("../开始游戏")
 text = "打开设置"
 
 [node name="新建" type="Button" parent="开始菜单/主面板/边距容器/竖向容器/按钮区" unique_id=1027729425]
@@ -305,6 +315,12 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 6
+focus_neighbor_left = NodePath("../设置")
+focus_neighbor_top = NodePath("../../自定义存档/自定义存档名")
+focus_neighbor_right = NodePath("../删除")
+focus_neighbor_bottom = NodePath("../../../../../多语言功能区/语言下拉菜单")
+focus_next = NodePath("../删除")
+focus_previous = NodePath("../设置")
 text = "新建"
 
 [node name="删除" type="Button" parent="开始菜单/主面板/边距容器/竖向容器/按钮区" unique_id=58043306]
@@ -312,59 +328,57 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 6
+focus_neighbor_left = NodePath("../新建")
+focus_neighbor_top = NodePath("../../自定义存档/自定义存档名")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../../../多语言功能区/语言下拉菜单")
+focus_next = NodePath("../../../../../退出游戏")
+focus_previous = NodePath("../新建")
 text = "删除"
 
-[node name="多语言功能区" type="Panel" parent="开始菜单" unique_id=1816004725]
-layout_mode = 0
-offset_left = 1444.0
-offset_top = 840.0
-offset_right = 1813.0
-offset_bottom = 904.0
-theme_override_styles/panel = SubResource("StyleBox_ubnl7")
-
-[node name="语言下拉菜单" type="OptionButton" parent="开始菜单/多语言功能区" unique_id=1322386284]
+[node name="多语言功能区" parent="开始菜单" unique_id=192408826 instance=ExtResource("10_ubnl7")]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 80.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-selected = 0
-fit_to_longest_item = false
-item_count = 2
-popup/item_0/text = "中文"
-popup/item_0/id = 0
-popup/item_1/text = "英文en"
-popup/item_1/id = 1
+offset_left = -475.0
+offset_top = -236.0
+offset_right = -106.0
+offset_bottom = -172.0
+grow_horizontal = 0
+grow_vertical = 0
 
-[node name="地球" type="Sprite2D" parent="开始菜单/多语言功能区" unique_id=73802959]
-position = Vector2(41.12495, 33)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("7_l8v50")
-
-[node name="可用性警告" type="Label" parent="开始菜单/多语言功能区" unique_id=124537175]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 65.0
-offset_right = 238.0
-offset_bottom = 122.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "多语言未适配不可用"
+[node name="语言下拉菜单" parent="开始菜单/多语言功能区" index="0" unique_id=1374607241]
+focus_neighbor_left = NodePath("../../退出游戏")
+focus_neighbor_top = NodePath("../../主面板/边距容器/竖向容器/按钮区/删除")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath("../../退出游戏")
 
 [node name="退出游戏" type="Button" parent="开始菜单" unique_id=136733970]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 724.0
-offset_top = 293.0
-offset_right = 979.0
-offset_bottom = 377.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1196.0
+offset_top = -247.0
+offset_right = -941.0
+offset_bottom = -163.0
 grow_vertical = 2
 size_flags_horizontal = 6
+focus_neighbor_left = NodePath("../感谢名单")
+focus_neighbor_top = NodePath("../主面板/边距容器/竖向容器/按钮区/开始游戏")
+focus_neighbor_right = NodePath("../多语言功能区/语言下拉菜单")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../多语言功能区/语言下拉菜单")
+focus_previous = NodePath("../主面板/边距容器/竖向容器/按钮区/删除")
 text = "退出游戏"
 icon = ExtResource("8_qbyf1")
 
@@ -384,10 +398,12 @@ mouse_behavior_recursive = 1
 unique_name_in_owner = true
 disable_3d = true
 oversampling_override = 1.0
-title = ""
+title = "删除存档"
 initial_position = 1
 size = Vector2i(840, 400)
+visible = true
 unresizable = true
+borderless = true
 min_size = Vector2i(800, 400)
 max_size = Vector2i(800, 200)
 theme = ExtResource("1_6r68l")
@@ -396,18 +412,20 @@ cancel_button_text = "取消"
 
 [node name="节点" type="Control" parent="确认弹窗" unique_id=1461040001]
 layout_mode = 3
-anchors_preset = 0
-offset_left = 10.0
-offset_top = 28.0
-offset_right = 830.0
-offset_bottom = 293.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="弹窗标题" type="Label" parent="确认弹窗/节点" unique_id=969183942]
 unique_name_in_owner = true
-layout_mode = 0
-offset_top = -28.0
+layout_mode = 1
 offset_right = 236.0
-offset_bottom = 57.0
+offset_bottom = 85.0
 theme = ExtResource("1_6r68l")
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 60
@@ -415,13 +433,16 @@ text = "二次确认"
 
 [node name="弹窗文本" type="Label" parent="确认弹窗/节点" unique_id=1689929033]
 unique_name_in_owner = true
-layout_mode = 0
-offset_top = 56.0
-offset_right = 640.0
-offset_bottom = 359.0
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -213.0
+grow_horizontal = 2
+grow_vertical = 0
 theme = ExtResource("1_6r68l")
 theme_override_constants/line_spacing = -5
-theme_override_font_sizes/font_size = 40
 text = "存档创建后
 文件名需要关闭游戏手动修改
 用户名修改后进入游戏存档后生效
@@ -429,10 +450,14 @@ text = "存档创建后
 
 [node name="启用测试" type="CheckButton" parent="确认弹窗/节点" unique_id=1959848480]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 527.0
-offset_top = -15.0
-offset_right = 816.0
-offset_bottom = 49.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -289.0
+offset_bottom = 64.0
+grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "启用沙盒"
+
+[editable path="开始菜单/多语言功能区"]

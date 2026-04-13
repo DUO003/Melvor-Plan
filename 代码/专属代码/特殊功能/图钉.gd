@@ -1,7 +1,7 @@
 extends HBoxContainer
 @export var 物品名称="测试文本"
 func _ready() -> void:
-	%"物品名称".text=物品名称
+	%"物品名称".text=计划.表格.翻译名称(物品名称)
 	%"物品名称".update_minimum_size()# 更新尺寸
 	%"物品名称".set_size(%"物品名称".get_combined_minimum_size())
 	更新UI()

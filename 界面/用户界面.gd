@@ -21,7 +21,7 @@ var 图钉区光标=false
 @onready var 场景容器: CanvasLayer = %场景容器
 @onready var 任务栏分割: VSplitContainer = %任务栏分割
 @onready var 图钉区域: ScrollContainer = %图钉
-var 基类窗口名称:String="空窗口"
+var 基类窗口名称:String="空节点"
 signal 场景更新(当前场景)# 场景变化时会发出信号,首次加载也会发出
 func _ready():
 	计划.节点[基类窗口名称]=self#注册
@@ -41,7 +41,7 @@ func _ready():
 	计划.BUFF.更新_BUFF.connect(更新BUFF)
 	窗口最大化状态=计划.窗口状态管理(基类窗口名称,"最大化",false)
 	if 初始界面=="初始":
-		var 打开场景=计划.窗口状态管理("根场景","初始",任务栏数组[0])
+		var 打开场景=计划.窗口状态管理(基类窗口名称,"初始",任务栏数组[0])
 		重载场景(打开场景)
 	计划.切换窗口状态.connect(更新窗口状态)
 var BUFF提示模板 = preload("res://界面/根界面/buff状态.tscn")

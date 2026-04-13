@@ -1,10 +1,6 @@
 @tool
 extends Node2D
 class_name 冒险地图
-@onready var 地图: 可保存瓦片地图 = $"地图"
-@onready var 建筑: 可保存瓦片地图 = $"建筑"
-@onready var 触发管理器: Node2D = %触发管理器
-@onready var 实体: Node2D = %实体
 @export var 地图名称:String=""
 #@export var 测试:bool=false:
 	#set(值):
@@ -17,6 +13,10 @@ var 玩家摄像机: Camera2D
 @onready var 子弹管理器: Node2D = %子弹管理器
 @onready var 掉落物管理器: Node2D = %掉落物管理器
 @onready var 提示管理器: Control = $伤害跳字
+@onready var 地图: 可保存瓦片地图 = $"地图"
+@onready var 建筑: 可保存瓦片地图 = $"建筑"
+@onready var 触发管理器: Node2D = %触发管理器
+@onready var 实体: Node2D = %实体
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		横版单例.子弹管理器=子弹管理器

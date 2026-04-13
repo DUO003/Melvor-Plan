@@ -1,5 +1,4 @@
-extends Button
-var 测试
+extends HBoxContainer
 var 功能列表 = []
 var 功能字典:Dictionary = {
 	"通用": {
@@ -8,7 +7,8 @@ var 功能字典:Dictionary = {
 		"获取点数":[func():return 计划.表格.蓝图数组,[1,5,10,100]],
 		"获取方块":[func():return 计划.表格.方块字典.keys(),[]],
 		"测试红点":[],
-		"拖动手柄":[],},
+		"拖动手柄":[],
+		"切换语言":[["中文","英文"],[]]},
 	"故事界面":{},
 	"合成界面": {
 		"手工熟练度":[["增加","减少"],["10%","25%","100%"]],
@@ -31,10 +31,13 @@ var 功能字典:Dictionary = {
 	"原罪界面": {"挂机熟练":[],"加速研究":[["倍率修改"],[1,5,10,50]]}}
 @export var 空节点: Control
 var 功能参数:Dictionary={}
-var 下拉菜单:OptionButton
-var 参数菜单:OptionButton
-var 数量菜单:OptionButton
-var 参数筛选器:LineEdit
+@onready var 参数筛选器: LineEdit = %参数筛选器
+@onready var 下拉菜单: OptionButton = %测试功能
+@onready var 参数菜单: OptionButton = %测试参数
+@onready var 数量菜单: OptionButton = %测试数量
+@onready var 测试: Button = %测试
+@onready var 拖动手柄: Panel = %拖动手柄
+@onready var 参数区: VBoxContainer = %参数区
 var 当前场景名称:String
 func _ready():
 	if 梅存档格式.单例.启用测试:
@@ -44,13 +47,7 @@ func _ready():
 		return
 	if OS.has_feature("editor_runtime"):
 		功能字典["任务窗口"]["直接解锁"]=[]
-	gui_input.connect(func(按键信号): # 确保节点可以接收鼠标事件
-		if 按键信号 is InputEventMouseButton and 按键信号.pressed:
-			测试按钮(按键信号))
-	下拉菜单 = $"测试功能"
-	参数菜单 = $"测试参数"
-	数量菜单 = $"测试数量"
-	参数筛选器 = $"参数筛选器"
+	测试.gui_input.connect(检查GUI)
 	参数筛选器.text_changed.connect(参数加载_筛选)
 	更新功能()
 	功能参数={}
@@ -63,10 +60,26 @@ func _ready():
 		print("测试功能选择:",下拉菜单.text))
 	空节点.场景更新.connect(更新功能)
 	参数加载()
+	更新显示(false)
+	读取位置()
+func 读取位置():
+	size=Vector2(0,0)
+	global_position=计划.窗口状态_限制("测试","测试的位置",global_position,计划.游戏分辨率-size)
+func 检查GUI(按键信号: InputEvent):
+	# 只处理鼠标按下事件
+	if 按键信号 is InputEventMouseButton and 按键信号.pressed:
+		# 左键 → 原来的功能：测试按钮
+		if 按键信号.button_index == MOUSE_BUTTON_RIGHT or not 参数区.visible:
+			更新显示(not 参数区.visible)
+			读取位置()
+		elif 按键信号.button_index == MOUSE_BUTTON_LEFT:
+			测试按钮(按键信号)
+func 更新显示(状态):
+	参数区.visible=状态
 func 测试按钮(按键信号):
-	var 功能=下拉菜单.text
-	var 参数=参数菜单.text
-	var 数量=数量菜单.text
+	var 功能:=下拉菜单.text
+	var 参数:=参数菜单.text
+	var 数量:=数量菜单.text
 	计划.声音.播放鼠标点击音效()
 	print("当前选中的测试功能：", 功能)
 	if 功能=="测试金币":
@@ -88,7 +101,7 @@ func 测试按钮(按键信号):
 		计划.解锁研究方向(参数)
 		计划.更新玩法.emit()
 	elif 功能=="拖动手柄":
-		$"拖动手柄".visible=计划.窗口状态管理("测试","拖动手柄",false,not $"拖动手柄".visible)
+		拖动手柄.visible=计划.窗口状态管理("测试","拖动手柄",false,not 拖动手柄.visible)
 	elif 功能=="获取装备":
 		#var 随机装备数组=["标准剑","标准盾","标准头盔","标准重甲","标准腿甲","标准鞋子","青铜剑","铁剑"]
 		var 随机装备数组=["墨羽笔杖","标准剑","标准盾","标准头盔","标准重甲","标准腿甲","标准鞋子","青铜剑","铁剑"]
@@ -201,6 +214,10 @@ func 测试按钮(按键信号):
 	elif 功能=="加速研究":
 		计划.技能树.技能研究倍数=int(数量)
 		return
+	elif 功能=="切换语言":
+		计划.表格.翻译切换(参数)
+		计划.更新_UI.emit()
+		return
 	else :
 		return
 	计划.保存存档("点击测试按钮")
@@ -222,7 +239,7 @@ func 参数加载():
 	参数菜单.clear()
 	数量菜单.clear()
 	var 功能=下拉菜单.text
-	$"拖动手柄".visible=计划.窗口状态管理("测试","拖动手柄",false)
+	拖动手柄.visible=计划.窗口状态管理("测试","拖动手柄",false)
 	if 功能参数.has(功能):
 		var 参数数据:Array=功能参数[功能]
 		if 参数数据.size()==2:
@@ -242,18 +259,12 @@ func 参数加载():
 					数量菜单.add_separator()
 	var 选项数量 = 参数菜单.get_item_count()
 	var 数量数量 = 数量菜单.get_item_count()
-	if 选项数量 == 0 and 数量数量 == 0:
-		参数菜单.hide()  # 隐藏节点
-		数量菜单.hide()  # 隐藏节点
-		下拉菜单.size.y=80
-	else:
-		下拉菜单.size.y=40
-		if not 选项数量 == 0:参数菜单.show()  # 有元素则显示
-		if not 数量数量 == 0:数量菜单.show()  # 隐藏节点
-	if 选项数量 >= 10:
-		参数筛选器.visible=true
-	else :
-		参数筛选器.visible=false
+	if 选项数量 == 0:参数菜单.hide()  # 隐藏节点
+	else :参数菜单.show()  # 显示节点
+	if 数量数量 == 0:数量菜单.hide()  # 隐藏节点
+	else:数量菜单.show()  # 显示节点
+	if 选项数量 >= 10:参数筛选器.show()  # 显示节点
+	else :参数筛选器.hide()  # 隐藏节点
 func 参数加载_筛选(文本: String):
 	参数菜单.clear()
 	var 筛选文本 = 文本.strip_edges()#去除首尾空格

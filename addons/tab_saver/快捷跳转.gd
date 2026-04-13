@@ -37,17 +37,22 @@ func _ready() -> void:
 		重新载入场景()
 		重新分配区域())
 	载入脚本.pressed.connect(func():打开代码文件("res://代码/梅计划.gd","#region 简短单例"))
-	导入表格.pressed.connect(func():
-		var 转移表格:快速转移表格=快速转移表格.new()
-		var 文件名:String=导入文件名.text
-		if 转移表格.剪切文件("梅尔沃计划重制数据 - %s.csv"%文件名,"res://表格/",文件路径.text):
-			if 文件名=="创世蓝图":
-				var 表格检查:json检查器=json检查器.new()
-				表格检查.表格初始化()
-				表格检查.批量检查JSON格式()
-			else :
-				print("导入文件",文件名))
+	导入表格.pressed.connect(导入表格方法)
 	重新载入场景()
+func 导入表格方法():
+	var 转移表格:快速转移表格=快速转移表格.new()
+	var 文件名:String=导入文件名.text
+	var 路径:String="res://表格/"
+	if 文件名=="多语言":
+		路径="res://表格/翻译/"
+	if 转移表格.剪切文件("梅尔沃计划重制数据 - %s.csv"%文件名,路径,文件路径.text):
+		if 文件名=="创世蓝图":
+			var 表格检查:json检查器=json检查器.new()
+			表格检查.表格初始化()
+			表格检查.批量检查JSON格式()
+		else :
+			print("导入文件",文件名)
+	
 func 重新分配区域():
 	if visible:
 		await get_tree().process_frame

@@ -5,49 +5,119 @@
 [ext_resource type="PackedScene" uid="uid://c51gx8des8nv1" path="res://界面/插件/红点提示.tscn" id="4_34pbr"]
 [ext_resource type="StyleBox" uid="uid://cvp0cy2htyjlx" path="res://界面/主题/样式/按钮样式_绿色_正常.tres" id="4_ps03r"]
 [ext_resource type="Script" uid="uid://4vkdmaj117c6" path="res://界面/根界面/拖动手柄.gd" id="5_ps03r"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="6_ir1tg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34pbr"]
+content_margin_left = 15.0
+content_margin_right = 15.0
+bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.50980395, 0.3529412, 0.23921569, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+expand_margin_bottom = -5.0
+script = ExtResource("6_ir1tg")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+margin_bottom = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scm1d"]
+content_margin_left = 15.0
+content_margin_right = 15.0
+bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.50980395, 0.3529412, 0.23921569, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = -5.0
+expand_margin_top = -5.0
+expand_margin_right = -5.0
+expand_margin_bottom = -5.0
+script = ExtResource("6_ir1tg")
+margin_left = -5
+margin_top = -5
+margin_right = -5
+margin_bottom = -5
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="DPITexture" id="DPITexture_eusfs"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"12\"><path fill=\"none\" stroke=\"#b2b2b2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-opacity=\".85\" stroke-width=\"2\" d=\"m2 4 4 4 4-4\"/></svg>
 "
 base_scale = 3.0
 
-[node name="测试" type="Button" unique_id=410456558]
+[node name="测试" type="HBoxContainer" unique_id=2037984355]
+offset_right = 570.0
+offset_bottom = 104.0
+theme = ExtResource("1_bddln")
+theme_override_constants/separation = -5
+script = ExtResource("2_ps03r")
+
+[node name="拖动手柄" type="Panel" parent="." unique_id=122074389]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = ExtResource("4_ps03r")
+script = ExtResource("5_ps03r")
+
+[node name="测试" type="Button" parent="." unique_id=1653186910]
+unique_name_in_owner = true
 z_index = 1
-offset_right = 128.0
-offset_bottom = 80.0
+layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 0
 theme = ExtResource("1_bddln")
 theme_override_font_sizes/font_size = 50
 text = "测试"
-script = ExtResource("2_ps03r")
 
-[node name="参数筛选器" type="LineEdit" parent="." unique_id=980416086]
+[node name="红点提示" parent="测试" unique_id=1565101298 instance=ExtResource("4_34pbr")]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
-offset_left = -312.0
-offset_top = 90.0
-offset_right = -118.0
-offset_bottom = 136.0
-theme_override_font_sizes/font_size = 25
-placeholder_text = "参数筛选器"
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -40.0
+offset_top = -1.0
+offset_right = 0.0
+offset_bottom = 89.0
+grow_horizontal = 0
+grow_vertical = 1
+"红点条目" = "测试红点"
 
-[node name="测试功能" type="OptionButton" parent="." unique_id=2099431875]
+[node name="参数区" type="VBoxContainer" parent="." unique_id=735431367]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = -12
+
+[node name="测试功能" type="OptionButton" parent="参数区" unique_id=2099431875]
+unique_name_in_owner = true
 clip_contents = true
-layout_mode = 0
-offset_left = -320.0
-offset_bottom = 40.0
+layout_mode = 2
 theme = ExtResource("1_bddln")
 selected = 0
 item_count = 1
 popup/item_0/text = "测试功能"
 popup/item_0/id = 0
 
-[node name="测试参数" type="OptionButton" parent="." unique_id=1633630564]
-clip_contents = true
-layout_mode = 0
-offset_left = -320.0
-offset_top = 43.0
-offset_right = -109.0
-offset_bottom = 101.0
+[node name="测试参数" type="OptionButton" parent="参数区" unique_id=1633630564]
+unique_name_in_owner = true
+layout_mode = 2
 theme = ExtResource("1_bddln")
 theme_override_font_sizes/font_size = 24
 selected = 0
@@ -56,12 +126,18 @@ item_count = 1
 popup/item_0/text = "测试参数"
 popup/item_0/id = 0
 
-[node name="测试数量" type="OptionButton" parent="." unique_id=1604313324]
+[node name="参数筛选器" type="LineEdit" parent="参数区" unique_id=980416086]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_34pbr")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_scm1d")
+placeholder_text = "参数筛选器"
+
+[node name="测试数量" type="OptionButton" parent="参数区" unique_id=1604313324]
+unique_name_in_owner = true
 clip_contents = true
-layout_mode = 0
-offset_left = -123.0
-offset_top = 42.0
-offset_bottom = 100.0
+layout_mode = 2
 theme = ExtResource("1_bddln")
 theme_override_font_sizes/font_size = 24
 theme_override_icons/arrow = SubResource("DPITexture_eusfs")
@@ -86,24 +162,3 @@ popup/item_7/text = "500"
 popup/item_7/id = 7
 popup/item_8/text = "1000"
 popup/item_8/id = 8
-
-[node name="红点提示" parent="." unique_id=1565101298 instance=ExtResource("4_34pbr")]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_bottom = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 0
-grow_vertical = 1
-"红点条目" = "测试红点"
-
-[node name="拖动手柄" type="Panel" parent="." unique_id=122074389]
-layout_mode = 0
-offset_left = 134.0
-offset_top = 4.0
-offset_right = 211.0
-offset_bottom = 89.0
-theme_override_styles/panel = ExtResource("4_ps03r")
-script = ExtResource("5_ps03r")

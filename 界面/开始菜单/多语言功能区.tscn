@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://b2xyvod6i3q05"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_7xyo5"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="1_kv2er"]
+[ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="2_hc0rj"]
+[ext_resource type="Texture2D" uid="uid://bkwyexu6ph0l" path="res://素材/豆包AI素材/图标/地球.png" id="3_7xyo5"]
+[ext_resource type="Script" uid="uid://dfrbq2q8tb00b" path="res://界面/开始菜单/多语言功能区.gd" id="3_hc0rj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s0f7"]
+bg_color = Color(0.55, 0.42716667, 0.18149999, 0.78431374)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("2_hc0rj")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBox" id="StyleBox_ubnl7"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("1_kv2er")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_1s0f7")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
+[node name="多语言功能区" type="Panel" unique_id=192408826]
+custom_minimum_size = Vector2(369, 64)
+offset_right = 369.0
+offset_bottom = 64.0
+theme = ExtResource("1_7xyo5")
+theme_override_styles/panel = SubResource("StyleBox_ubnl7")
+script = ExtResource("3_hc0rj")
+
+[node name="语言下拉菜单" type="OptionButton" parent="." unique_id=1374607241]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+selected = 0
+fit_to_longest_item = false
+item_count = 2
+popup/item_0/text = "中文"
+popup/item_0/id = 0
+popup/item_1/text = "英文en"
+popup/item_1/id = 1
+
+[node name="地球" type="Sprite2D" parent="." unique_id=1439303342]
+position = Vector2(41.12495, 33)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_7xyo5")
+
+[node name="可用性警告" type="Label" parent="." unique_id=166813114]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 65.0
+offset_right = 238.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "多语言未适配不可用"

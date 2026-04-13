@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_b8rbp"]
 [ext_resource type="Script" uid="uid://dtt0vuu67behi" path="res://界面/挂机系统/任务窗口/任务界面.gd" id="2_6nxmh"]
 [ext_resource type="PackedScene" uid="uid://d225buqtym477" path="res://界面/挂机系统/任务窗口/任务容器.tscn" id="3_yje00"]
-[ext_resource type="StyleBox" uid="uid://blfpbypnw4pph" path="res://界面/主题/样式/面板样式_窄边_扩展边界.tres" id="4_hlpnr"]
+[ext_resource type="PackedScene" uid="uid://ddhq81udrciuy" path="res://界面/挂机系统/任务窗口/任务板.tscn" id="4_hlpnr"]
 [ext_resource type="PackedScene" uid="uid://dusyum2t63uiv" path="res://界面/插件/帮助文本.tscn" id="4_yje00"]
 
 [node name="任务界面" unique_id=1197979266 node_paths=PackedStringArray("选项卡同步") instance=ExtResource("1_b8rbp")]
@@ -15,7 +15,7 @@ script = ExtResource("2_6nxmh")
 metadata/_edit_vertical_guides_ = [-140.0, -114.0, -70.0, -387.0, -387.0, -675.0]
 metadata/_edit_horizontal_guides_ = [-144.0]
 
-[node name="边缘容器" type="MarginContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="1" unique_id=1183944515]
+[node name="边缘容器" type="MarginContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=1183944515]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,6 +39,7 @@ size_flags_vertical = 3
 "显示任务数量" = 3
 "场景" = NodePath("../../../..")
 metadata/_tab_index = 0
+metadata/_edit_lock_ = true
 
 [node name="循环任务" parent="内容节点/边缘容器/任务" index="2" unique_id=2142129779 instance=ExtResource("3_yje00")]
 unique_name_in_owner = true
@@ -48,185 +49,109 @@ layout_mode = 2
 "显示跳转任务" = false
 metadata/_tab_index = 1
 
-[node name="任务统计" type="VBoxContainer" parent="内容节点/边缘容器/任务" index="3" unique_id=1327568261]
-layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="文本容器" type="ScrollContainer" parent="内容节点/边缘容器/任务/任务统计" index="0" unique_id=799054270]
+[node name="任务统计" type="ScrollContainer" parent="内容节点/边缘容器/任务" index="3" unique_id=799054270]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(1300, 0)
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
+metadata/_tab_index = 2
 
-[node name="边界容器" type="MarginContainer" parent="内容节点/边缘容器/任务/任务统计/文本容器" index="0" unique_id=56562089]
+[node name="任务板容器" type="GridContainer" parent="内容节点/边缘容器/任务/任务统计" index="0" unique_id=1762942851]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 10
-
-[node name="任务文本" type="GridContainer" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器" index="0" unique_id=1762942851]
-custom_minimum_size = Vector2(1300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/h_separation = 50
+theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="主线任务板" type="MarginContainer" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本" index="0" unique_id=1459226616]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="背景板" type="Panel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/主线任务板" index="0" unique_id=1739405875]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("4_hlpnr")
-
-[node name="主线任务文本" type="RichTextLabel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/主线任务板" index="1" unique_id=70923421]
+[node name="任务板主线" parent="内容节点/边缘容器/任务/任务统计/任务板容器" index="0" unique_id=1420373849 instance=ExtResource("4_hlpnr")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-bbcode_enabled = true
-text = "当前完成数量:"
-fit_content = true
-scroll_active = false
-metadata/_tab_index = 0
 
-[node name="循环任务板" type="MarginContainer" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本" index="1" unique_id=975836525]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="背景板" type="Panel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/循环任务板" index="0" unique_id=302204195]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("4_hlpnr")
-
-[node name="循环任务文本" type="RichTextLabel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/循环任务板" index="1" unique_id=2116347273]
+[node name="任务板循环" parent="内容节点/边缘容器/任务/任务统计/任务板容器" index="1" unique_id=2027622655 instance=ExtResource("4_hlpnr")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-bbcode_enabled = true
-text = "当前完成数量:"
-fit_content = true
-scroll_active = false
-metadata/_tab_index = 0
 
-[node name="订单任务板" type="MarginContainer" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本" index="2" unique_id=1072901549]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="背景板" type="Panel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/订单任务板" index="0" unique_id=1670135322]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("4_hlpnr")
-
-[node name="订单任务文本" type="RichTextLabel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/订单任务板" index="1" unique_id=1990385023]
+[node name="任务板订单" parent="内容节点/边缘容器/任务/任务统计/任务板容器" index="2" unique_id=1741733974 instance=ExtResource("4_hlpnr")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-bbcode_enabled = true
-text = "当前完成数量:"
-fit_content = true
-scroll_active = false
-metadata/_tab_index = 0
 
-[node name="订单按钮" type="Button" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/订单任务板/订单任务文本" index="2" unique_id=1894784963]
+[node name="订单按钮" type="Button" parent="内容节点/边缘容器/任务/任务统计/任务板容器/任务板订单" index="1" unique_id=1894784963]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -187.0
-offset_bottom = 67.0
+offset_left = -173.0
+offset_top = 10.0
+offset_right = -17.0
+offset_bottom = 75.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "前往订单"
 
-[node name="成就任务板" type="MarginContainer" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本" index="3" unique_id=1486397050]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="背景板" type="Panel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/成就任务板" index="0" unique_id=541096267]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("4_hlpnr")
-
-[node name="成就任务文本" type="RichTextLabel" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/成就任务板" index="1" unique_id=175289211]
+[node name="任务板成就" parent="内容节点/边缘容器/任务/任务统计/任务板容器" index="3" unique_id=436024918 instance=ExtResource("4_hlpnr")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-bbcode_enabled = true
-text = "当前完成数量:"
-fit_content = true
-scroll_active = false
-metadata/_tab_index = 0
 
-[node name="成就按钮" type="Button" parent="内容节点/边缘容器/任务/任务统计/文本容器/边界容器/任务文本/成就任务板/成就任务文本" index="2" unique_id=601994939]
+[node name="成就按钮" type="Button" parent="内容节点/边缘容器/任务/任务统计/任务板容器/任务板成就" index="1" unique_id=601994939]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -187.0
-offset_bottom = 67.0
+offset_left = -173.0
+offset_top = 10.0
+offset_right = -17.0
+offset_bottom = 75.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "前往成就"
 
-[node name="子界面跳转" type="HBoxContainer" parent="内容节点/边缘容器/任务/任务统计" index="1" unique_id=82878510]
-visible = false
-custom_minimum_size = Vector2(1300, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 100
-
-[node name="背包" type="Label" parent="内容节点/边缘容器/任务/任务统计/子界面跳转" index="0" unique_id=1778899568]
+[node name="背包" type="HBoxContainer" parent="内容节点/边缘容器/任务/任务统计/任务板容器" index="4" unique_id=1077013789]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "背包:查看,商店,装备等"
 
-[node name="背包按钮" type="Button" parent="内容节点/边缘容器/任务/任务统计/子界面跳转/背包" index="0" unique_id=1071766261]
+[node name="文本" type="Label" parent="内容节点/边缘容器/任务/任务统计/任务板容器/背包" index="0" unique_id=1778899568]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "背包界面:查看物品,随身商店,装备"
+vertical_alignment = 1
+clip_text = true
+
+[node name="背包按钮" type="Button" parent="内容节点/边缘容器/任务/任务统计/任务板容器/背包" index="1" unique_id=1071766261]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -187.0
-offset_bottom = 67.0
-grow_horizontal = 0
-size_flags_horizontal = 2
+layout_mode = 2
+size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "前往背包"
 
-[node name="设置" type="Label" parent="内容节点/边缘容器/任务/任务统计/子界面跳转" index="1" unique_id=2008943643]
+[node name="设置" type="HBoxContainer" parent="内容节点/边缘容器/任务/任务统计/任务板容器" index="5" unique_id=645453646]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "设置:任务栏,通知等"
 
-[node name="设置按钮" type="Button" parent="内容节点/边缘容器/任务/任务统计/子界面跳转/设置" index="0" unique_id=1947486639]
+[node name="文本" type="Label" parent="内容节点/边缘容器/任务/任务统计/任务板容器/设置" index="0" unique_id=1706080876]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "设置界面:调整游戏设置"
+vertical_alignment = 1
+clip_text = true
+
+[node name="设置按钮" type="Button" parent="内容节点/边缘容器/任务/任务统计/任务板容器/设置" index="1" unique_id=1947486639]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -187.0
-offset_bottom = 67.0
-grow_horizontal = 0
-size_flags_horizontal = 2
+layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "前往设置"
 
-[node name="任务功能" type="HBoxContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="2" unique_id=1826273315]
+[node name="任务功能" type="HBoxContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="1" unique_id=1826273315]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0

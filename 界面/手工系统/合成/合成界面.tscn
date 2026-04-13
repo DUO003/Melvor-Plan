@@ -26,7 +26,7 @@ script = ExtResource("2_2y0d5")
 }
 metadata/_edit_lock_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="1" unique_id=1400555158]
+[node name="MarginContainer" type="MarginContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=1400555158]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://ddhq81udrciuy"]
+
+[ext_resource type="Script" uid="uid://dg4q3h4wuhgam" path="res://界面/挂机系统/任务窗口/任务板.gd" id="1_0udmp"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_gspa4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ykcy"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="任务板" type="Panel" unique_id=548507912]
+custom_minimum_size = Vector2(755, 200)
+offset_right = 200.0
+offset_bottom = 200.0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = ExtResource("1_gspa4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ykcy")
+script = ExtResource("1_0udmp")
+
+[node name="成就任务文本" type="RichTextLabel" parent="." unique_id=1771664566]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 10.0
+offset_right = -25.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "测试文本"
+metadata/_tab_index = 0

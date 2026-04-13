@@ -26,10 +26,15 @@ func 设置样式():
 	#else :
 		#print("错误窗口找不到节点:",基类窗口名称)
 func 自动加载():
+	var 首个焦点:bool=false
 	for 选项名称:String in 选项卡同步:
-		var 当前选项卡=选项卡同步[选项名称]
+		var 当前选项卡:=选项卡同步[选项名称]
 		#当前选项卡.current_tab=计划.窗口状态_限制(基类窗口名称,选项名称,0,当前选项卡.get_tab_count(),0)
 		加载选项卡状态(当前选项卡,选项名称)
+		if not 首个焦点:
+			首个焦点=true
+			var 当前控件: TabBar = 当前选项卡.get_tab_bar()
+			当前控件.grab_focus()
 		当前选项卡.tab_selected.connect(func(序号):计划.窗口状态管理(基类窗口名称,选项名称,null,序号))
 	for 选项名称:String in 滚动区同步:
 		var 当前滚动区=滚动区同步[选项名称]
