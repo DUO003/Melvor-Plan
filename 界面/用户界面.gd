@@ -1,4 +1,5 @@
 extends Control
+class_name 梅主容器窗口
 ##关于显示层级
 #0层功能区
 #1层游戏主场景
@@ -13,15 +14,16 @@ var 任务栏数组: Array = []# 任务栏需要显示的界面名称数组,从�
 var 全局图钉=["金币"]
 var 滚动计时器:Timer
 var 图钉区光标=false
+@export var 任务按钮本体: PackedScene
 @onready var 摄像机: Camera2D = %摄像机
 @onready var 任务栏节点: VBoxContainer = %"任务栏"
-@onready var 任务按钮本体: Button = %"任务"  # 明确为Button节点
 @onready var 其他容器: Control = %其他容器
 @onready var 等级显示: 梅精通熟练条 = %等级显示
 @onready var 场景容器: CanvasLayer = %场景容器
 @onready var 任务栏分割: VSplitContainer = %任务栏分割
 @onready var 图钉区域: ScrollContainer = %图钉
-var 基类窗口名称:String="空节点"
+@onready var 图钉容器: HBoxContainer = %图钉容器
+var 基类窗口名称:String="主容器窗口"
 signal 场景更新(当前场景)# 场景变化时会发出信号,首次加载也会发出
 func _ready():
 	计划.节点[基类窗口名称]=self#注册
@@ -29,8 +31,8 @@ func _ready():
 	图钉区域.mouse_entered.connect(func(): 图钉区光标=true)
 	图钉区域.mouse_exited.connect(func(): 图钉区光标=false)
 	滚动计时器=计划.创建计时器(2,func():
-		if not 图钉区光标 and %"图钉容器".size.x>1920 :
-			移动节点到最后(%"图钉容器"))
+		if not 图钉区光标 and 图钉容器.size.x>1920 :
+			移动节点到最后(图钉容器))
 	var 分割长度:int=int(计划.窗口状态管理("根节点","分割长度",200))
 	任务栏分割.split_offset=分割长度
 	任务栏分割.drag_ended.connect(func():计划.窗口状态管理("根节点","分割长度",null,任务栏分割.split_offset))
@@ -67,9 +69,9 @@ func 更新BUFF():
 			%BUFF.remove_child(多余节点)
 			多余节点.queue_free()
 func 重载图钉():
-	计划.清除子节点(%"图钉容器")
+	计划.清除子节点(图钉容器)
 	var 背包按钮:=生成任务栏节点("背包界面",true)
-	%"图钉容器".add_child(背包按钮)
+	图钉容器.add_child(背包按钮)
 	计划.背包坐标=背包按钮.global_position+Vector2(背包按钮.size)*0.5
 	var 图钉场景 = preload("res://界面/插件/图钉.tscn").instantiate()
 	全局图钉=计划.梅存档["挂机"]["全局图钉"]
@@ -77,23 +79,21 @@ func 重载图钉():
 		for 图钉 in 全局图钉:
 			var 新图钉=图钉场景.duplicate()
 			新图钉.物品名称=图钉
-			%"图钉容器".add_child(新图钉)
+			图钉容器.add_child(新图钉)
 	var 当前界面图钉=窗口.窗口数据[初始界面].图钉
 	if 当前界面图钉.size()>=1:
 		for 图钉 in 当前界面图钉:
 			if 图钉 not in 全局图钉:
 				var 新图钉=图钉场景.duplicate()
 				新图钉.物品名称=图钉
-				%"图钉容器".add_child(新图钉)
+				图钉容器.add_child(新图钉)
 	if 当前界面图钉.size()==0 and 全局图钉.size()==0:
 		var 标签=Label.new()
 		标签.text="图钉可以在背包添加,固定显示物品数量"
 		标签.add_theme_color_override("font_color", Color(1,1,1))
-		%"图钉容器".add_child(标签)
+		图钉容器.add_child(标签)
 func 生成任务栏按钮() -> void:# 生成任务栏所有按钮
-	for 节点 in 任务栏节点.get_children():
-		if 节点!=任务按钮本体:
-			节点.queue_free()
+	计划.清除子节点(任务栏节点)
 	var 窗口解锁数组: Array = 计划.梅存档.挂机.窗口解锁
 	var 窗口禁用数组: Array = 计划.梅存档.挂机.窗口禁用
 	if not 窗口解锁数组.has("任务窗口"):
@@ -117,11 +117,10 @@ func 生成任务栏按钮() -> void:# 生成任务栏所有按钮
 			print("当前%s界面不存在从存档中移除"%界面名称)
 			窗口解锁数组.erase(界面名称)
 			窗口禁用数组.erase(界面名称)
-	任务按钮本体.hide()# 按钮本体初始隐藏
 func 生成任务栏节点(界面名称:String,隐藏文本:bool=false)->Button:
 	if not 窗口.窗口数据.has(界面名称):
 		return null
-	var 任务按钮: Button = 任务按钮本体.duplicate()
+	var 任务按钮: Button = 任务按钮本体.instantiate().duplicate()
 	任务按钮.show()#防止节点为隐藏
 	if 隐藏文本:
 		任务按钮.text = ""
@@ -171,6 +170,7 @@ func 重载场景(场景名称: String,强制重载=false) -> void:
 	# 实例化场景并添加到容器
 	场景实例 = 缓存场景
 	场景容器.add_child(场景实例)
+	场景实例.主容器窗口=self
 	初始界面=场景名称
 	计划.窗口状态管理(基类窗口名称,"初始",null,场景名称)
 	计划.红点.消除红点(场景名称,"",-1)
@@ -207,7 +207,7 @@ func 便利摄像机效果(效果参数:Dictionary={}):
 	if 效果参数.is_empty():
 		屏幕震动(摄像机,3,10,0.5)
 #快捷方法
-	#计划.节点["空节点"].重载场景("合成界面",null)
+	#计划.节点["主容器窗口"].重载场景("合成界面",null)
 # 简洁版本
 func 打印戈多引擎开发者():
 	var author_info = Engine.get_author_info()

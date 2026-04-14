@@ -4,13 +4,12 @@
 [ext_resource type="Script" uid="uid://bns6tdw6v66fp" path="res://界面/手工系统/合成/合成_抽奖机界面.gd" id="2_0lnvh"]
 [ext_resource type="PackedScene" uid="uid://xxyqjkn8fefo" path="res://界面/插件/滑块.tscn" id="2_6nf3n"]
 [ext_resource type="PackedScene" uid="uid://byxndkdhqwumw" path="res://界面/插件/圆形进度条.tscn" id="3_0lnvh"]
-[ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="4_k2qxs"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="5_ulomb"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="6_kl4kr"]
 [ext_resource type="PackedScene" uid="uid://blkkbdad7hti1" path="res://界面/插件/物品辅助/代币商店.tscn" id="7_urdgg"]
 [ext_resource type="Script" uid="uid://bivcgv6cvbvln" path="res://界面/插件/物品辅助/商品数据包.gd" id="8_tdurk"]
 [ext_resource type="PackedScene" uid="uid://d225buqtym477" path="res://界面/挂机系统/任务窗口/任务容器.tscn" id="9_jm6af"]
-[ext_resource type="Texture2D" uid="uid://b2la27rdiaufr" path="res://素材/豆包AI素材/特殊图纸.png" id="10_aj8fg"]
+[ext_resource type="Texture2D" uid="uid://3vfhgyg8wo6m" path="res://素材/豆包AI素材/特殊图纸.png" id="10_aj8fg"]
 [ext_resource type="Script" uid="uid://bbi5ojpwx5ouf" path="res://界面/蓝图图片.gd" id="11_12j2d"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="12_xbsbx"]
 [ext_resource type="PackedScene" uid="uid://dlf0o8yt0hscg" path="res://界面/插件/悬浮提示.tscn" id="14_6nf3n"]
@@ -231,11 +230,13 @@ script = ExtResource("2_0lnvh")
 "标签页": NodePath("内容节点/MarginContainer/HBoxContainer/界面布局/标签页")
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="1" unique_id=638278999]
+[node name="MarginContainer" type="MarginContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=638278999]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -305,7 +306,6 @@ offset_right = 105.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("4_k2qxs")
 theme_override_colors/font_shadow_color = Color(0.5, 0.5, 0.5, 1)
 theme_override_constants/shadow_outline_size = 10
 theme_override_font_sizes/font_size = 40

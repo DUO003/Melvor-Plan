@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://cnoic7mbi3ks1" path="res://界面/挂机系统/任务窗口/设置面板.gd" id="2_xx283"]
 [ext_resource type="Script" uid="uid://b7ri82yh6cfx1" path="res://界面/挂机系统/任务窗口/重置倒计时.gd" id="3_jepqw"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="4_jxn20"]
-[ext_resource type="Theme" uid="uid://bd8wir2bqyhux" path="res://界面/主题/空主题.tres" id="5_7ja3k"]
 [ext_resource type="PackedScene" uid="uid://b2xyvod6i3q05" path="res://界面/开始菜单/多语言功能区.tscn" id="5_22niw"]
 [ext_resource type="PackedScene" uid="uid://dusyum2t63uiv" path="res://界面/插件/帮助文本.tscn" id="5_leojc"]
 [ext_resource type="Script" uid="uid://bv2j3nk3k62sd" path="res://代码/挂件/取色器.gd" id="6_26hf3"]
@@ -36,8 +35,6 @@ content_margin_left = 25.0
 content_margin_left = 25.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_376va"]
-
-[sub_resource type="Theme" id="Theme_jxn20"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_22niw"]
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
@@ -101,7 +98,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_8yxkd")
-current_tab = 1
+current_tab = 2
 
 [node name="基础设置" type="ScrollContainer" parent="设置面板/设置标签" unique_id=1380958802]
 visible = false
@@ -322,6 +319,7 @@ theme_override_font_sizes/font_size = 40
 text = "垂直同步"
 
 [node name="语言" type="ScrollContainer" parent="设置面板/设置标签" unique_id=1585162122]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_tab_index = 1
@@ -343,7 +341,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="样式" type="ScrollContainer" parent="设置面板/设置标签" unique_id=151050320]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_tab_index = 2
@@ -352,7 +349,6 @@ metadata/_tab_index = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = SubResource("Theme_jxn20")
 theme_override_constants/separation = 0
 
 [node name="标题" type="Label" parent="设置面板/设置标签/样式/设置" unique_id=1079327688]
@@ -424,7 +420,6 @@ offset_bottom = 27.5
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 0
-theme = ExtResource("5_7ja3k")
 script = ExtResource("6_26hf3")
 
 [node name="功能说明3" type="Label" parent="设置面板/设置标签/样式/设置" unique_id=855335665]
@@ -449,7 +444,6 @@ offset_bottom = 27.5
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 0
-theme = ExtResource("5_7ja3k")
 script = ExtResource("6_26hf3")
 
 [node name="功能说明" type="Label" parent="设置面板/设置标签/样式/设置" unique_id=1719950599]
@@ -474,7 +468,6 @@ offset_bottom = 27.5
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 0
-theme = ExtResource("5_7ja3k")
 script = ExtResource("6_26hf3")
 
 [node name="标题2" type="Label" parent="设置面板/设置标签/样式/设置" unique_id=1263795946]
@@ -529,7 +522,6 @@ offset_bottom = 27.5
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 0
-theme = ExtResource("5_7ja3k")
 script = ExtResource("6_26hf3")
 
 [node name="标题颜色" type="Label" parent="设置面板/设置标签/样式/设置" unique_id=601105373]
@@ -554,7 +546,6 @@ offset_bottom = 27.5
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 0
-theme = ExtResource("5_7ja3k")
 script = ExtResource("6_26hf3")
 
 [node name="其他" type="ScrollContainer" parent="设置面板/设置标签" unique_id=496120454]

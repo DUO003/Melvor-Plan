@@ -7,6 +7,8 @@ var 存档字典: Dictionary = {}
 @onready var 游戏图标: TextureRect = %游戏图标
 @onready var 多语言功能区: Panel = %多语言功能区
 @onready var 开始游戏: Button = %开始游戏
+@onready var 存档选择: TabContainer = %存档选择
+@onready var 存档数量: Label = %存档数量
 func _ready() -> void:
 	名单容器.visible=false
 	感谢名单.pressed.connect(func():
@@ -29,11 +31,12 @@ func _ready() -> void:
 		if 名称==有效显示名称:
 			有效序号=序号
 		序号+=1
-	%"存档选择".current_tab=有效序号
+	存档选择.current_tab=有效序号
 	%"版本号".text=游戏版本
 	计划.表格.翻译切换("英文")
 	多语言功能区.外部更新选中(计划.表格.当前使用语言)
 	开始游戏.grab_focus()
+	计划.表格.更新_翻译.connect(重新加载存档)
 ## 返回格式化后的相对时间文本（如：5分钟前 / 2 hours ago）
 ## 时间戳: float 【必须传入】存档时保存的Unix时间戳（秒）
 ## 返回值语言: String 【可选】默认中文，支持扩展其他语言
@@ -86,49 +89,49 @@ func 时间文本(时间戳: float, 返回值语言: String = "中文") -> Strin
 	elif 时间差 < 一小时:
 		var 分钟数 = floor(时间差 / 一分钟)
 		# 使用文档中的格式化字符串语法：%s占位符
-		return "%s%s" % [分钟数, 当前语言["分钟前"]]
+		return "%d%s" % [分钟数, 当前语言["分钟前"]]
 	elif 时间差 < 一天:
 		var 小时数 = floor(时间差 / 一小时)
 		var 剩余分钟 = floor(fmod(时间差, 一小时) / 一分钟)
 		# 精细显示：如"1小时5分钟前" / "2 hours 10 minutes ago"
 		if 剩余分钟 > 0:
-			# 根据语言处理文本格式
-			if 返回值语言 == "中文":
-				return "%s小时%s%s" % [小时数, 剩余分钟, 当前语言["分钟前"]]
-			else:
-				return "%s %s %s %s" % [小时数, 当前语言["小时前"], 剩余分钟, 当前语言["分钟前"]]
+			return "%d%s %d%s" % [小时数, 当前语言["小时前"], 剩余分钟, 当前语言["分钟前"]]
 		else:
-			return "%s%s" % [小时数, 当前语言["小时前"]]
+			return "%d%s" % [小时数, 当前语言["小时前"]]
 	elif 时间差 < 一个月:
 		var 天数 = floor(时间差 / 一天)
-		return "%s%s" % [天数, 当前语言["天前"]]
+		return "%d%s" % [天数, 当前语言["天前"]]
 	elif 时间差 < 一年:
 		var 月数 = floor(时间差 / 一个月)
-		return "%s%s" % [月数, 当前语言["月前"]]
+		return "%d%s" % [月数, 当前语言["月前"]]
 	else:
 		var 年数 = floor(时间差 / 一年)
-		return "%s%s" % [年数, 当前语言["年前"]]
+		return "%d%s" % [年数, 当前语言["年前"]]
 func 重新加载存档():
-	for 节点 in %"存档选择".get_children():
-		%"存档选择".remove_child(节点)
-		节点.queue_free()
+	计划.清除子节点(存档选择)
 	存档字典=存档单例.加载所有存档()
 	var 存档样式=preload("res://界面/开始菜单/存档样式.tscn").instantiate()
 	for 存档名称 in 存档字典:
 		var 存档=存档样式.duplicate()
 		var 梅存档数据:梅存档格式=存档字典[存档名称]
 		if 梅存档数据.可用:
-			var 挂机等级=梅存档数据.梅存档.get("挂机",{}).get("等级",0)
+			#var 挂机等级=梅存档数据.梅存档.get("挂机",{}).get("等级",0)
 			var 用户名称=梅存档数据.梅存档.get("挂机",{}).get("用户信息",{}).get("用户名","新存档")
-			var 测试状态="\r启用测试"if 梅存档数据.启用测试 else ""
-			var 等级文本="挂机:%d\r"%挂机等级 if 挂机等级>0 else ""
 			var 保存时间=梅存档数据.保存时间
-			存档.文本信息="用户名:%s\r%s保存时间:%s%s\r版本号:%s"%[用户名称,等级文本,时间文本(保存时间),测试状态,梅存档数据.版本号]
+			var 文本数组:Array=[]
+			文本数组.append(tr("<文本_用户名>")%用户名称)
+			文本数组.append(tr("<文本_保存时间>")%时间文本(保存时间,计划.表格.当前使用语言))
+			if 梅存档数据.启用测试:
+				文本数组.append(tr("<文本_启用测试>"))
+			文本数组.append(tr("<文本_版本号>")%梅存档数据.版本号)
+			存档.文本信息="\r".join(文本数组)
+			#"用户名:%s\r%s保存时间:%s%s\r版本号:%s"%[,等级文本,时间文本(保存时间),测试状态,梅存档数据.版本号]
 		else :
 			存档.文本信息="版本号:%s\r<游戏版本低于存档版本,不能读取>"%梅存档数据.版本号
 		存档.name=存档名称
 		存档.visibility_changed.connect(func():设置用户名(存档名称, 存档))
-		%"存档选择".add_child(存档)
+		存档选择.add_child(存档)
+	存档数量.text=tr("<文本_存档数量>")%[存档字典.size()]
 func 设置用户名(存档名称,存档):
 	if 存档.visible:
 		var 梅存档数据=存档字典[存档名称]
@@ -142,8 +145,8 @@ func 开始():
 	#return
 	if %"玩家名".text=="":
 		%"玩家名".text = 存档单例.用户名
-	if %"存档选择".current_tab>=0:
-		var 存档名称=存档字典.keys()[%"存档选择".current_tab]
+	if 存档选择.current_tab>=0:
+		var 存档名称=存档字典.keys()[存档选择.current_tab]
 		存档单例.读档(存档名称,%"玩家名".text)
 	else :
 		计划.语法糖通知("需要先新建存档")
@@ -171,7 +174,7 @@ func 退出():
 	get_tree().quit()
 func 确认执行():
 	if %"弹窗标题".text=="二次确认删除":
-		var 存档名称=存档字典.keys()[%"存档选择".current_tab]
+		var 存档名称=存档字典.keys()[存档选择.current_tab]
 		存档单例.删除存档(存档名称)
 		重新加载存档()
 		计划.语法糖通知("删除存档成功")

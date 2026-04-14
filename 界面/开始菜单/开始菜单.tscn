@@ -228,6 +228,7 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="存档数量" type="Label" parent="开始菜单/主面板/边距容器/竖向容器" unique_id=1766790040]
+unique_name_in_owner = true
 layout_mode = 2
 text = "存档数量:0"
 
@@ -401,7 +402,6 @@ oversampling_override = 1.0
 title = "删除存档"
 initial_position = 1
 size = Vector2i(840, 400)
-visible = true
 unresizable = true
 borderless = true
 min_size = Vector2i(800, 400)

@@ -189,7 +189,10 @@ func 分栏节点(间距:int)->HBoxContainer:
 func _process(_delta: float) -> void:
 	if visible and not 禁用:
 		if 节点:
-			global_position = get_global_mouse_position() + Vector2(10, 10)
+			if 节点 is 梅帮助提示文本:
+				global_position = 节点.global_position + 节点.提示偏移
+			else :
+				global_position = get_global_mouse_position() + Vector2(10, 10)
 			限制屏幕范围()
 		else :
 			visible=false

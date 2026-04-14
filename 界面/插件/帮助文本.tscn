@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://whx18qwvds3q" path="res://界面/插件/帮助文本.gd" id="1_7jt8i"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_u2bie"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_u7w4q"]
 [ext_resource type="FontFile" uid="uid://ba8mauhrxpxeg" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-85-Bold/AlibabaPuHuiTi-3-85-Bold.otf" id="2_7jt8i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7w4q"]
@@ -24,7 +25,9 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+focus_mode = 2
 mouse_behavior_recursive = 2
+theme = ExtResource("1_u7w4q")
 script = ExtResource("1_7jt8i")
 
 [node name="背景" type="Panel" parent="." unique_id=1136773271]
@@ -43,18 +46,21 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_7jt8i")
+theme_override_font_sizes/font_size = 32
 text = "!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="碰撞范围" type="Control" parent="." unique_id=570681048]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

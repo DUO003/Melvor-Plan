@@ -142,5 +142,5 @@ func _背包物品信息(传入物品:ItemData,背包名称):
 		%"物品详情文本".text=物品.返回简介(背包)
 	%"物品详情名称".text=物品.item_name
 	%"物品详情贴图".texture=物品.icon
-	if 计划.节点.has("空节点"):
-		%"图钉".button_pressed=计划.节点["空节点"].全局图钉.has(str(物品.item_name))
+	if 计划.节点.has("主容器窗口"):
+		%"图钉".button_pressed=计划.节点["主容器窗口"].全局图钉.has(str(物品.item_name))

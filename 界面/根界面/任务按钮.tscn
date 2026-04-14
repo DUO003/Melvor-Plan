@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dgmmf4v0xa1p7"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ih0s0"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="2_vbbor"]
+[ext_resource type="PackedScene" uid="uid://c51gx8des8nv1" path="res://界面/插件/红点提示.tscn" id="3_3314w"]
+
+[node name="任务" type="Button" unique_id=1665763425]
+custom_minimum_size = Vector2(220, 70)
+size_flags_vertical = 0
+theme = ExtResource("1_ih0s0")
+text = "合成"
+icon = ExtResource("2_vbbor")
+expand_icon = true
+
+[node name="红点提示" parent="." unique_id=300026223 instance=ExtResource("3_3314w")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1

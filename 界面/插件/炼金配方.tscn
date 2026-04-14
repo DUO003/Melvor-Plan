@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="2_f8lap"]
 [ext_resource type="Script" uid="uid://bv43rur7rji2w" path="res://代码/专属代码/炼金界面/炼金配方.gd" id="2_t1sfb"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_6h5q0"]
-[ext_resource type="Theme" uid="uid://bd8wir2bqyhux" path="res://界面/主题/空主题.tres" id="4_7ik2p"]
 [ext_resource type="PackedScene" uid="uid://unn8tlhgiegn" path="res://界面/插件/配方格子.tscn" id="5_gujam"]
 [ext_resource type="Texture2D" uid="uid://caxwmgfreys4p" path="res://素材/自制/图标/移动.png" id="6_t1sfb"]
 
@@ -203,9 +202,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -377.0
-offset_top = -102.0
+offset_top = -100.0
 offset_right = -8.0
-offset_bottom = -57.0
+offset_bottom = -55.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 28
@@ -217,12 +216,11 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 89.0
-offset_top = -57.0
-offset_right = 210.0
-offset_bottom = -5.0
+offset_left = 83.0
+offset_top = -51.0
+offset_right = 230.0
+offset_bottom = 4.0
 grow_vertical = 0
-theme = ExtResource("4_7ik2p")
 theme_override_constants/field_and_buttons_separation = 0
 theme_override_constants/buttons_width = 0
 theme_override_icons/updown = SubResource("ImageTexture_gujam")
@@ -284,7 +282,7 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 16.5
+offset_left = 38.5
 offset_top = -61.0
 offset_right = 193.5
 grow_horizontal = 2

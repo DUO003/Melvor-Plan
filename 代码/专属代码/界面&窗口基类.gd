@@ -5,6 +5,7 @@ class_name 基类梅窗口#逐渐改使用基类 当前大部分窗口未使用
 @export var 选项卡同步: Dictionary[String,TabContainer] = {}
 @export var 滚动区同步: Dictionary[String,ScrollContainer] = {}
 @export var 生命周期计时器: Array[Timer]
+var 主容器窗口:梅主容器窗口
 func _ready() -> void:
 	if Engine.is_editor_hint() or 基类窗口名称=="演示示例":
 		return
@@ -45,6 +46,9 @@ func 自动加载():
 		水平.mouse_exited.connect(func():保存滚动区(当前滚动区,选项名称))
 		垂直.mouse_exited.connect(func():保存滚动区(当前滚动区,选项名称))
 func 加载选项卡状态(选项卡:TabContainer,名称:String):
+	选项卡.tab_focus_mode = Control.FOCUS_ALL
+	选项卡.focus_mode = Control.FOCUS_CLICK
+	选项卡.focus_entered.connect(_将焦点转移到当前标签.bind(选项卡))
 	var 标签=计划.窗口状态管理(基类窗口名称,名称,null)
 	if 标签 is int and 标签>=0 and 标签<选项卡.get_tab_count():#检查是合法标签,例如上个版本保存的值
 		选项卡.current_tab=标签
@@ -63,6 +67,12 @@ func 加载选项卡状态(选项卡:TabContainer,名称:String):
 	else :标签 = 0#标签超出合法范围
 	计划.窗口状态管理(基类窗口名称,名称,null,标签)
 	选项卡.current_tab=标签#非法值默认参数
+func _将焦点转移到当前标签(选项卡:TabContainer) -> void:
+	var 标签栏: = 选项卡.get_tab_bar()
+	if 标签栏 == null:
+		print("错误：无法获取标签栏")
+		return
+	标签栏.grab_focus()# 将焦点转移到标签栏
 func 保存滚动区(当前滚动区:ScrollContainer,选项名称:String):
 	计划.窗口状态管理(基类窗口名称,选项名称+"水平",null,当前滚动区.scroll_horizontal)
 	计划.窗口状态管理(基类窗口名称,选项名称+"垂直",null,当前滚动区.scroll_vertical)
@@ -103,4 +113,17 @@ func 窗口最大化(状态:bool)->bool:
 		set_size(Vector2(1660,880))
 		set_position(Vector2(20,120))
 	return true
-	
+func _input(按键: InputEvent) -> void:
+	if 按键.is_action_pressed("返回菜单"):
+		# 获取你的任务栏容器
+		var 当前焦点节点: Control = get_viewport().gui_get_focus_owner()
+		if not 当前焦点节点 or 当前焦点节点.is_in_group(基类窗口名称):
+			var 任务栏节点: VBoxContainer = 主容器窗口.任务栏节点
+			# 安全判断：容器存在 + 有子节点
+			if 任务栏节点 != null and 任务栏节点.get_child_count() > 0:
+				# 获取第一个子节点
+				var 第一个子控件 = 任务栏节点.get_child(0)
+				
+				# 再次安全判断：必须是 Control 才能获得焦点
+				if 第一个子控件 is Control:
+					第一个子控件.grab_focus()  # 把焦点给它

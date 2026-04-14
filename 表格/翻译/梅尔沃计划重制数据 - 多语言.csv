@@ -83,6 +83,13 @@ Keys,zh-CN,EN
 需要完成更多次循环任务,需要完成更多次循环任务,More loop tasks required
 "任务奖励已完成,无需重复","任务奖励已完成,无需重复","Reward claimed, no need to repeat"
 任务奖励已领取,任务奖励已领取,Reward already claimed
+感谢名单,感谢名单,Credits
+<文本_用户名>,用户名:%s,Username:%s
+<文本_保存时间>,保存时间:%s,Saved:%s
+<文本_启用测试>,启用测试,Test Enabled
+<文本_版本号>,版本号:%s,Version:%s
+<文本_存档数量>,存档数量:%d,Saves:%d
+<错误_版本过低>,"<游戏版本低于存档版本,不能读取>","<Game version too low, cannot load save>"
 ,,
 新手任务,新手任务,Novice Quest
 订单解锁,订单解锁,Order Unlocked

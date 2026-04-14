@@ -3,7 +3,6 @@
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_6bvsh"]
 [ext_resource type="Script" uid="uid://ygcqjlonidbm" path="res://界面/手工系统/合成/自动化进度.gd" id="1_124wq"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="2_6bvsh"]
-[ext_resource type="Theme" uid="uid://bfqtshwf4fnch" path="res://界面/主题/简体中文.tres" id="3_yvc5w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rm5mq"]
 bg_color = Color(0.84, 0.64344, 0.5124, 0.29411766)
@@ -70,7 +69,6 @@ anchor_right = 1.0
 offset_left = -126.0
 offset_bottom = 45.0
 grow_horizontal = 0
-theme = ExtResource("3_yvc5w")
 theme_override_colors/font_shadow_color = Color(0.5, 0.5, 0.5, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_rm5mq")
 text = "较长道具名称"
