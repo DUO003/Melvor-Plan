@@ -5,10 +5,11 @@ var 任务序号:int=0
 var 任务领取按钮:Button
 var 刷新按钮:Button
 var 任务文本:String
+var 任务容器:任务栏插件
 var 任务描述数组:Array=[]
 @onready var 任务描述: RichTextLabel = %任务描述
 @onready var 任务名称: Label = %任务名称
-@onready var 红点提示: 红点场景 = $红点提示
+@onready var 红点提示: 红点场景 = %红点提示
 @onready var 真实区: HBoxContainer = %真实区
 var 前置:bool=false
 func _ready() -> void:
@@ -107,7 +108,7 @@ func 解析功能按钮():
 	var 按钮数组=[]
 	for 功能数组:Array in 任务数据.功能按钮:
 		if not 任务数据.任务完成 or ["对话","刷新"].has(功能数组[0]):
-			var 按钮=Button.new()#目前仅存在按钮一种功能后续可能会追加其他选项
+			var 按钮:=Button.new()#目前仅存在按钮一种功能后续可能会追加其他选项
 			按钮.text=功能数组[1]
 			if 功能数组[0]=="对话":
 				按钮.pressed.connect(计划.任务.启动对话.bind(任务数据.任务名称))
@@ -131,6 +132,7 @@ func 解析功能按钮():
 						完成任务()
 					else :计划.语法糖通知(tr("需要完成更多次循环任务"),"任务提示"))
 			真实区.add_child.call_deferred(按钮)
+			按钮.focus_entered.connect(按键焦点事件)
 			if 功能数组[0]=="刷新":
 				刷新按钮=按钮
 			else :
@@ -155,6 +157,7 @@ func 解析功能按钮():
 			真实区.add_child(进度条)
 			var 按钮=Button.new()
 			真实区.add_child.call_deferred(按钮)
+			按钮.focus_entered.connect(按键焦点事件)
 			任务领取按钮=按钮
 			更新按钮文本()
 			任务领取按钮.pressed.connect(接受任务)
@@ -186,3 +189,8 @@ func 刷新任务(体力):
 		任务数据.跳转()
 	else :
 		任务数据.刷新任务(体力)
+func 按键焦点事件():
+	if 任务容器:# 等待follow_focus更新结束,不禁用是因为禁用后无法选中按钮
+		await get_tree().process_frame
+		await get_tree().process_frame 
+		任务容器.ensure_control_visible(self)

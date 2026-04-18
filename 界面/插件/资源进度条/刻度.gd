@@ -102,7 +102,7 @@ func _转换量级到单位文本() -> String:
 		else :
 			var 幂次: int = floor(log(单位基准值) / log(10.0))  # 10→1, 100→2...1万→4
 			var 单位列表: Array = ["10", "百", "千", "万", "十万", "百万", "千万", "亿"]
-			return "刻度"+(单位列表[幂次-1] if 幂次 >= 1 and 幂次 <= 单位列表.size() else str(单位基准值))
+			return tr("<刻度>")%[tr(单位列表[幂次-1] if 幂次 >= 1 and 幂次 <= 单位列表.size() else str(单位基准值))]
 	else:# 格数≠10 → 直接返回数值字符串
 		var 阈值: float = pow(10.0, 5)
 		if 单位基准值 > 阈值:

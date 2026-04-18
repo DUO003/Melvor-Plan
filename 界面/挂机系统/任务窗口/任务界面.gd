@@ -9,7 +9,6 @@ var 任务字典:Dictionary=计划.任务.任务字典
 @onready var 成就按钮: Button = %成就按钮
 @onready var 背包按钮: Button = %背包按钮
 @onready var 设置按钮: Button = %设置按钮
-var 任务的卡片:任务卡片=preload("res://界面/挂机系统/任务窗口/任务卡片.tscn").instantiate()
 func _ready() -> void:
 	super._ready()
 	下拉任务.clear()
@@ -31,8 +30,16 @@ func _ready() -> void:
 	设置按钮.pressed.connect(计划.切换场景.bind("设置界面"))
 	初始化所有任务容器()
 	计划.更新_UI.connect(加载任务完成统计)
+	额外焦点逻辑()
+func 额外焦点逻辑():
+	var 标签栏:TabBar = 任务选项卡.get_tab_bar()
+	if 标签栏 == null:
+		print("错误：无法获取标签栏")
+		return
+	var 切换以完成路径:NodePath = 切换以完成.get_path()
+	标签栏.focus_neighbor_right=切换以完成路径
 func _exit_tree() -> void:
-	super._exit_tree()
+	super()
 @onready var 任务板主线: 梅任务面板 = %任务板主线
 @onready var 任务板循环: 梅任务面板 = %任务板循环
 @onready var 任务板订单: 梅任务面板 = %任务板订单

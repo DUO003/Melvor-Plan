@@ -32,8 +32,10 @@ var 当前值=默认值
 var 道具名称=null
 var 特殊标签=""
 var 修改返回对象=null#通过代码传入
-@onready var 输入: HSlider = $输入
-@onready var 数量: Label = $数量
+@onready var 输入: HSlider = %输入
+@onready var 图片: TextureRect = %图片
+@onready var 数量: Label = %数量
+@onready var 标签: Label = %标签
 
 var 初始化=false
 func _ready() -> void:
@@ -89,10 +91,9 @@ func 初始更新():
 func 更新文本():
 	if 道具名称==null:
 		数量.text=空置标签
-		$"图片".texture=null
-		$"图片".size=size
+		图片.texture=null
 		数量.position.y=(size.y-数量.size.y)*0.5
-		$"标签".visible=false
+		标签.visible=false
 		输入.visible=false
 	else :
 		if 可修改数量 and 物品数量限制.x>=1:
@@ -100,22 +101,22 @@ func 更新文本():
 		else :输入.visible=false
 		if 当前值>1:
 			数量.text=str(当前值)
-			$"图片".size=Vector2(size.x,size.y-数量.size.y+10)
+			图片.size=Vector2(size.x,size.y-数量.size.y+10)
 		else :
 			数量.text=""
-			$"图片".size=size
+			图片.size=size
 		数量.position.y=size.y-数量.size.y
-		$"图片".texture=计划.表格.道具贴图(道具名称)
+		图片.texture=计划.表格.道具贴图(道具名称)
 		if 物品不足提示 and not 物品数量判断():
-			$"图片".self_modulate=Color(0.245, 0.245, 0.245, 1.0)
+			图片.self_modulate=Color(0.245, 0.245, 0.245, 1.0)
 		else :
-			$"图片".self_modulate=Color(1.0, 1.0, 1.0, 1.0)
+			图片.self_modulate=Color(1.0, 1.0, 1.0, 1.0)
 		if 特殊标签=="":
-			$"标签".visible=false
+			标签.visible=false
 		else :
-			$"标签".add_theme_font_size_override("font_size", (size.y/5))
-			$"标签".text=特殊标签
-			$"标签".visible=true
+			标签.add_theme_font_size_override("font_size", int(size.y/5))
+			标签.text=特殊标签
+			标签.visible=true
 ##判断当前数量是否小于等于背包中数量
 func 物品数量判断(倍数:int=1)->bool:
 	if 道具名称==null:return false
@@ -156,7 +157,7 @@ func 鼠标信号处理(鼠标信号):
 							if not 完成条件:
 								计划.语法糖通知(标签警告,"物品容器")
 				else :计划.语法糖通知("标签"+标签警告,"物品容器")
-			$"输入".value=当前值
+			输入.value=当前值
 			if 正在移动的物品 is 标准物品:
 				if 正在移动的物品.特殊标签=="":
 					GBIS.鼠标物品.emit(false)

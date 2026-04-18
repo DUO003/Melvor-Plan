@@ -3,9 +3,16 @@ extends EditorScript
 class_name 任务检查器  # 中文类名
 # 右键运行的入口方法（Godot会识别带参的_run方法）
 func _run():
-	var 任务类:=梅任务.new()
-	var 文本:=提取循环任务(任务类.任务模板)
-	print("执行结束:",文本)
+	#var 任务类:=梅任务.new()
+	#var 文本:=提取循环任务(任务类.任务模板)
+	#print("执行结束:",文本)
+	var 窗口:=梅窗口.new()
+	var 窗口名数组:Array=[]
+	for 窗口名 in 窗口.窗口数据:
+		if 窗口.窗口数据[窗口名].has("显示名"):
+			窗口名数组.append(窗口.窗口数据[窗口名]["显示名"])
+	var 最终文本:String="\r".join(窗口名数组)
+	DisplayServer.clipboard_set(最终文本)
 	return 0  # 表示运行成功
 func 提取循环任务(任务字典: Dictionary) -> String:
 	var 结果行列表:Array = []

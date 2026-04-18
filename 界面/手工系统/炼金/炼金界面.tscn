@@ -19,6 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://c55igxbo1cql1" path="res://素材/豆包AI素材/图标/背包图标.png" id="17_4efr6"]
 [ext_resource type="PackedScene" uid="uid://bnjv1qqq3txe4" path="res://界面/插件/背包栏.tscn" id="18_fib78"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r40sw"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5aig"]
 bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
 border_width_left = 10
@@ -142,6 +148,9 @@ script = ExtResource("4_vshoq")
 "样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_l2l3n")])
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m6wnm"]
+content_margin_left = 20.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ik2p"]
 bg_color = Color(0.54901963, 0.46666667, 0.3019608, 1)
 border_width_left = 5
@@ -261,8 +270,6 @@ script = ExtResource("4_vshoq")
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [node name="炼金界面" unique_id=108957428 node_paths=PackedStringArray("选项卡同步", "滚动区同步") instance=ExtResource("1_edbqu")]
-size_flags_horizontal = 1
-size_flags_vertical = 1
 script = ExtResource("2_r40sw")
 "基类窗口名称" = "炼金界面"
 "提示文本" = Array[String](["温馨提示:左上角打开背包放置物品", "温馨提示:没有更多提示"])
@@ -271,42 +278,43 @@ script = ExtResource("2_r40sw")
 }
 "滚动区同步" = {
 "帮助": NodePath("内容节点/选项卡/帮助区域"),
-"滚动区": NodePath("内容节点/选项卡/炼金台/配方/保存配方/滚动区"),
-"滚动区2": NodePath("内容节点/选项卡/炼金台/炼金台左侧/队列/炼金台队列区/滚动区2")
+"滚动区": NodePath("内容节点/选项卡/炼金台/炼金台/配方/保存配方/滚动区"),
+"滚动区2": NodePath("内容节点/选项卡/炼金台/炼金台/炼金台左侧/队列/炼金台队列区/滚动区2")
 }
 metadata/_edit_lock_ = true
 
-[node name="等级显示" parent="标题" parent_id_path=PackedInt32Array(2049886415) index="0" unique_id=2041357675]
-"玩法" = "炼金"
-
 [node name="选项卡" type="TabContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=1174841282]
-custom_minimum_size = Vector2(1290, 500)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_right = 3.0
-offset_bottom = -75.0
+offset_top = -2.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_r40sw")
+current_tab = 2
 
-[node name="炼金台" type="HBoxContainer" parent="内容节点/选项卡" index="1" unique_id=587833166]
+[node name="炼金台" type="VBoxContainer" parent="内容节点/选项卡" index="1" unique_id=1143509562]
+visible = false
 layout_mode = 2
-theme_override_constants/separation = -10
 metadata/_tab_index = 0
 
-[node name="炼金台左侧" type="VBoxContainer" parent="内容节点/选项卡/炼金台" index="0" unique_id=493798508]
+[node name="炼金台" type="HBoxContainer" parent="内容节点/选项卡/炼金台" index="0" unique_id=587833166]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = -10
+
+[node name="炼金台左侧" type="VBoxContainer" parent="内容节点/选项卡/炼金台/炼金台" index="0" unique_id=493798508]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="炼金台内容" type="Control" parent="内容节点/选项卡/炼金台/炼金台左侧" index="0" unique_id=834218143]
-custom_minimum_size = Vector2(385, 251)
+[node name="炼金台内容" type="Control" parent="内容节点/选项卡/炼金台/炼金台/炼金台左侧" index="0" unique_id=834218143]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="配方格子" parent="内容节点/选项卡/炼金台/炼金台左侧/炼金台内容" index="0" unique_id=1171485946 instance=ExtResource("3_m6wnm")]
+[node name="配方格子" parent="内容节点/选项卡/炼金台/炼金台/炼金台左侧/炼金台内容" index="0" unique_id=1171485946 instance=ExtResource("3_m6wnm")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 0
@@ -319,17 +327,17 @@ offset_bottom = 283.0
 scale = Vector2(1.5, 1.5)
 "可修改" = true
 
-[node name="扩容配方列表" type="Button" parent="内容节点/选项卡/炼金台/炼金台左侧/炼金台内容" index="1" unique_id=1296350064]
+[node name="扩容配方列表" type="Button" parent="内容节点/选项卡/炼金台/炼金台/炼金台左侧/炼金台内容" index="1" unique_id=1296350064]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 893.5
+offset_left = 981.0
 offset_top = 250.0
-offset_right = 1147.5
-offset_bottom = 317.0
+offset_right = 1235.0
+offset_bottom = 324.0
 theme_override_font_sizes/font_size = 38
 text = "扩容配方列表"
 
-[node name="扩容费用" type="Label" parent="内容节点/选项卡/炼金台/炼金台左侧/炼金台内容/扩容配方列表" index="0" unique_id=2137302462]
+[node name="扩容费用" type="Label" parent="内容节点/选项卡/炼金台/炼金台/炼金台左侧/炼金台内容/扩容配方列表" index="0" unique_id=2137302462]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -344,7 +352,7 @@ text = "扩容:(%d/%d)
 金币:%d"
 vertical_alignment = 1
 
-[node name="保存配方" type="Button" parent="内容节点/选项卡/炼金台/炼金台左侧/炼金台内容" index="2" unique_id=1603423807]
+[node name="保存配方" type="Button" parent="内容节点/选项卡/炼金台/炼金台/炼金台左侧/炼金台内容" index="2" unique_id=1603423807]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
@@ -352,16 +360,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -702.0
-offset_top = -129.0
-offset_right = -448.0
-offset_bottom = -62.0
+offset_left = -576.0
+offset_top = -110.0
+offset_right = -322.0
+offset_bottom = -36.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 38
 text = "保存配方"
 
-[node name="清空配方" type="Button" parent="内容节点/选项卡/炼金台/炼金台左侧/炼金台内容" index="3" unique_id=1891914801]
+[node name="清空配方" type="Button" parent="内容节点/选项卡/炼金台/炼金台/炼金台左侧/炼金台内容" index="3" unique_id=1891914801]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
@@ -369,10 +377,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -699.0
-offset_top = -215.0
-offset_right = -445.0
-offset_bottom = -148.0
+offset_left = -573.0
+offset_top = -189.0
+offset_right = -319.0
+offset_bottom = -122.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 38
@@ -382,7 +390,7 @@ theme_override_styles/hover = SubResource("StyleBox_iu5j7")
 theme_override_styles/focus = SubResource("StyleBox_a5cd1")
 text = "清空配方"
 
-[node name="配方详情" type="RichTextLabel" parent="内容节点/选项卡/炼金台/炼金台左侧/炼金台内容" index="4" unique_id=2101650079]
+[node name="配方详情" type="RichTextLabel" parent="内容节点/选项卡/炼金台/炼金台/炼金台左侧/炼金台内容" index="4" unique_id=2101650079]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 590.0
@@ -394,12 +402,12 @@ text = "催化剂:圣盾徽记
 材料:星核矿砂*10,星核矿砂*10,星核矿砂*10,星核矿砂*10"
 metadata/_edit_lock_ = true
 
-[node name="队列" type="Panel" parent="内容节点/选项卡/炼金台/炼金台左侧" index="1" unique_id=1498816954]
-custom_minimum_size = Vector2(1300, 300)
+[node name="队列" type="Panel" parent="内容节点/选项卡/炼金台/炼金台/炼金台左侧" index="1" unique_id=1498816954]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBox_pc2cm")
 
-[node name="炼金台队列区" type="HBoxContainer" parent="内容节点/选项卡/炼金台/炼金台左侧/队列" index="0" unique_id=1145368533]
+[node name="炼金台队列区" type="HBoxContainer" parent="内容节点/选项卡/炼金台/炼金台/炼金台左侧/队列" index="0" unique_id=1145368533]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1290, 280)
 layout_mode = 0
@@ -411,7 +419,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 3
 theme_override_constants/separation = -1
 
-[node name="标题2" type="Label" parent="内容节点/选项卡/炼金台/炼金台左侧/队列/炼金台队列区" index="0" unique_id=1995003888]
+[node name="标题2" type="Label" parent="内容节点/选项卡/炼金台/炼金台/炼金台左侧/队列/炼金台队列区" index="0" unique_id=1995003888]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_constants/paragraph_spacing = -20
@@ -422,11 +430,11 @@ text = "🛎
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="滚动区2" type="ScrollContainer" parent="内容节点/选项卡/炼金台/炼金台左侧/队列/炼金台队列区" index="1" unique_id=1535913956]
+[node name="滚动区2" type="ScrollContainer" parent="内容节点/选项卡/炼金台/炼金台/炼金台左侧/队列/炼金台队列区" index="1" unique_id=1535913956]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="炼金台队列" type="HBoxContainer" parent="内容节点/选项卡/炼金台/炼金台左侧/队列/炼金台队列区/滚动区2" index="0" unique_id=2113315588]
+[node name="炼金台队列" type="HBoxContainer" parent="内容节点/选项卡/炼金台/炼金台/炼金台左侧/队列/炼金台队列区/滚动区2" index="0" unique_id=2113315588]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 270)
 layout_mode = 2
@@ -434,19 +442,19 @@ size_flags_horizontal = 0
 size_flags_vertical = 3
 theme_override_constants/separation = -1
 
-[node name="配方" type="Panel" parent="内容节点/选项卡/炼金台" index="1" unique_id=1189377458]
-custom_minimum_size = Vector2(405, 762)
+[node name="配方" type="Panel" parent="内容节点/选项卡/炼金台/炼金台" index="1" unique_id=1189377458]
+custom_minimum_size = Vector2(405, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBox_pc2cm")
 
-[node name="保存配方" type="VBoxContainer" parent="内容节点/选项卡/炼金台/配方" index="0" unique_id=2021771258]
+[node name="保存配方" type="VBoxContainer" parent="内容节点/选项卡/炼金台/炼金台/配方" index="0" unique_id=2021771258]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 5.0
 offset_right = 400.0
 offset_bottom = 759.0
 
-[node name="配方标题" type="Label" parent="内容节点/选项卡/炼金台/配方/保存配方" index="0" unique_id=616404181]
+[node name="配方标题" type="Label" parent="内容节点/选项卡/炼金台/炼金台/配方/保存配方" index="0" unique_id=616404181]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
@@ -456,14 +464,24 @@ text = "🛎配方列表
 容量:1/1"
 vertical_alignment = 1
 
-[node name="滚动区" type="ScrollContainer" parent="内容节点/选项卡/炼金台/配方/保存配方" index="1" unique_id=51286144]
+[node name="滚动区" type="ScrollContainer" parent="内容节点/选项卡/炼金台/炼金台/配方/保存配方" index="1" unique_id=51286144]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="炼金配方容器" type="VBoxContainer" parent="内容节点/选项卡/炼金台/配方/保存配方/滚动区" index="0" unique_id=321587309]
+[node name="炼金配方容器" type="VBoxContainer" parent="内容节点/选项卡/炼金台/炼金台/配方/保存配方/滚动区" index="0" unique_id=321587309]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="温馨提示" type="Label" parent="内容节点/选项卡/炼金台" index="1" unique_id=1595101079]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_constants/paragraph_spacing = -20
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m6wnm")
+text = "温馨提示:左上角打开背包放置物品"
+vertical_alignment = 1
 
 [node name="预览配方" type="VBoxContainer" parent="内容节点/选项卡" index="2" unique_id=1425192719]
 unique_name_in_owner = true
@@ -493,16 +511,12 @@ text = "催化剂:
 材料:
 版本号"
 
-[node name="占位" type="Control" parent="内容节点/选项卡/预览配方/文本说明" index="1" unique_id=675529082]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-mouse_behavior_recursive = 1
-
-[node name="更新配方" type="Button" parent="内容节点/选项卡/预览配方/文本说明" index="2" unique_id=1333766412]
+[node name="更新配方" type="Button" parent="内容节点/选项卡/预览配方/文本说明" index="1" unique_id=1333766412]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 6
 size_flags_vertical = 8
+size_flags_stretch_ratio = 0.2
 text = "更新配方"
 
 [node name="描述容器" parent="内容节点/选项卡/预览配方/文本说明/更新配方" index="0" unique_id=1033077760 instance=ExtResource("6_58yuc")]
@@ -525,11 +539,6 @@ theme_override_styles/panel = SubResource("StyleBox_x5msp")
 "标签警告" = "需要炼金材料"
 "默认值" = 10
 
-[node name="占位2" type="Control" parent="内容节点/选项卡/预览配方/文本说明" index="3" unique_id=1843694954]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-mouse_behavior_recursive = 1
-
 [node name="卡片区" type="Container" parent="内容节点/选项卡/预览配方" index="2" unique_id=1653890488]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 400)
@@ -545,7 +554,6 @@ layout_mode = 2
 size_flags_vertical = 8
 
 [node name="点数兑换" type="VBoxContainer" parent="内容节点/选项卡" index="3" unique_id=203241150]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -792,42 +800,24 @@ grow_vertical = 2
 text = "材料4"
 metadata/_edit_lock_ = true
 
-[node name="温馨提示" type="Label" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="1" unique_id=1595101079]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -57.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/paragraph_spacing = -20
-theme_override_font_sizes/font_size = 40
-text = "温馨提示:左上角打开背包放置物品"
-vertical_alignment = 1
-
 [node name="背包栏" parent="." index="3" unique_id=1332478190 instance=ExtResource("18_fib78")]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -150.0
-offset_top = 100.0
 offset_right = 0.0
-offset_bottom = 160.0
+offset_bottom = 68.0
+grow_horizontal = 0
 "白名单" = ["催化", "特殊催化", "炼金"]
 "自动打开背包" = true
 
-[node name="弹窗提示" type="Control" parent="." index="5" unique_id=21903331]
+[node name="弹窗提示" type="Control" parent="." index="4" unique_id=21903331]
 unique_name_in_owner = true
 visible = false
+layout_mode = 1
 anchors_preset = 0
-offset_top = 100.0
-offset_right = 40.0
-offset_bottom = 140.0
 
 [node name="弹窗" type="Panel" parent="弹窗提示" index="0" unique_id=1850710567]
 layout_mode = 0

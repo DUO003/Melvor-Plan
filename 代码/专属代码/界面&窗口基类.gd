@@ -5,6 +5,7 @@ class_name 基类梅窗口#逐渐改使用基类 当前大部分窗口未使用
 @export var 选项卡同步: Dictionary[String,TabContainer] = {}
 @export var 滚动区同步: Dictionary[String,ScrollContainer] = {}
 @export var 生命周期计时器: Array[Timer]
+@export var 默认焦点:Control=null
 var 主容器窗口:梅主容器窗口
 func _ready() -> void:
 	if Engine.is_editor_hint() or 基类窗口名称=="演示示例":
@@ -13,7 +14,12 @@ func _ready() -> void:
 	计划.节点[基类窗口名称]=self#注册
 	call_deferred("自动加载")
 	计划.场景全局样式.connect(设置样式)
+	计划.表格.更新_翻译.connect(翻译更新检查)
 	call_deferred("设置样式")
+	分组_批量管理(self,基类窗口名称)
+##重新这个方法,在接收到翻译更新信号时需要更新的内容
+func 翻译更新检查():
+	pass
 func 设置样式():
 	pass
 	#var 标题: ColorRect = %标题
@@ -27,15 +33,10 @@ func 设置样式():
 	#else :
 		#print("错误窗口找不到节点:",基类窗口名称)
 func 自动加载():
-	var 首个焦点:bool=false
 	for 选项名称:String in 选项卡同步:
 		var 当前选项卡:=选项卡同步[选项名称]
 		#当前选项卡.current_tab=计划.窗口状态_限制(基类窗口名称,选项名称,0,当前选项卡.get_tab_count(),0)
 		加载选项卡状态(当前选项卡,选项名称)
-		if not 首个焦点:
-			首个焦点=true
-			var 当前控件: TabBar = 当前选项卡.get_tab_bar()
-			当前控件.grab_focus()
 		当前选项卡.tab_selected.connect(func(序号):计划.窗口状态管理(基类窗口名称,选项名称,null,序号))
 	for 选项名称:String in 滚动区同步:
 		var 当前滚动区=滚动区同步[选项名称]
@@ -45,6 +46,8 @@ func 自动加载():
 		var 垂直=当前滚动区.get_v_scroll_bar()
 		水平.mouse_exited.connect(func():保存滚动区(当前滚动区,选项名称))
 		垂直.mouse_exited.connect(func():保存滚动区(当前滚动区,选项名称))
+	if 默认焦点:
+		默认焦点.grab_focus()
 func 加载选项卡状态(选项卡:TabContainer,名称:String):
 	选项卡.tab_focus_mode = Control.FOCUS_ALL
 	选项卡.focus_mode = Control.FOCUS_CLICK
@@ -115,15 +118,44 @@ func 窗口最大化(状态:bool)->bool:
 	return true
 func _input(按键: InputEvent) -> void:
 	if 按键.is_action_pressed("返回菜单"):
-		# 获取你的任务栏容器
 		var 当前焦点节点: Control = get_viewport().gui_get_focus_owner()
 		if not 当前焦点节点 or 当前焦点节点.is_in_group(基类窗口名称):
 			var 任务栏节点: VBoxContainer = 主容器窗口.任务栏节点
-			# 安全判断：容器存在 + 有子节点
 			if 任务栏节点 != null and 任务栏节点.get_child_count() > 0:
-				# 获取第一个子节点
-				var 第一个子控件 = 任务栏节点.get_child(0)
-				
-				# 再次安全判断：必须是 Control 才能获得焦点
-				if 第一个子控件 is Control:
-					第一个子控件.grab_focus()  # 把焦点给它
+				var 第一个子控件 = 任务栏节点.get_child(0)# 获取第一个子节点
+				if 第一个子控件 is Control:第一个子控件.grab_focus()  # 把焦点给它
+		elif 默认焦点:
+			print("非当前分组节点%s"%[当前焦点节点.name])
+			默认焦点.grab_focus()
+		get_viewport().set_input_as_handled()
+# 递归批量管理节点分组 + 自动监听未来新增子节点
+func 分组_批量管理(节点: Node, 分组名称: StringName, 状态: bool = true, 状态传递: bool = false) -> void:
+	# 先处理当前节点
+	分组管理(节点, 分组名称, 状态, 状态传递)
+	# 递归处理所有现有子节点
+	for 子节点 in 节点.get_children(true):
+		分组_批量管理(子节点, 分组名称, 状态, 状态传递)
+
+# 管理单个节点分组 + 绑定/解绑自动添加分组的信号
+func 分组管理(节点: Node, 分组名称: StringName, 状态: bool = true, 状态传递: bool = false) -> void:
+	if 状态:
+		# 加入分组
+		if not 节点.is_in_group(分组名称):
+			节点.add_to_group(分组名称)
+		# 开启自动传递：未来新增子节点自动加分组
+		if 状态传递:
+			# 先断开避免重复绑定
+			if not 节点.child_entered_tree.is_connected(_子节点自动加入分组):
+				节点.child_entered_tree.connect(_子节点自动加入分组.bind(分组名称, 状态, 状态传递))
+	else:
+		# 移出分组
+		if 节点.is_in_group(分组名称):
+			节点.remove_from_group(分组名称)
+		
+		# 关闭自动传递
+		if 状态传递 and 节点.child_entered_tree.is_connected(_子节点自动加入分组):
+			节点.child_entered_tree.disconnect(_子节点自动加入分组)
+
+# 【专用信号处理函数】新子节点加入树时自动执行批量添加分组
+func _子节点自动加入分组(新节点: Node, 分组名称: StringName, 状态: bool, 状态传递: bool) -> void:
+	分组_批量管理(新节点, 分组名称, 状态, 状态传递)

@@ -264,17 +264,6 @@ script = ExtResource("8_xxfvs")
 
 [node name="奖励悬浮面板" parent="悬浮面板" unique_id=947308483 instance=ExtResource("9_0vsdw")]
 z_index = 10
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -63.5
-offset_right = 100.0
-offset_bottom = 63.5
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="暂停界面" type="CanvasLayer" parent="." unique_id=100003098]
 unique_name_in_owner = true

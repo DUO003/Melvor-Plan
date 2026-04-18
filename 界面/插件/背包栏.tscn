@@ -4,26 +4,26 @@
 [ext_resource type="Script" uid="uid://bublnb2wstici" path="res://代码/专属代码/炼金界面/背包.gd" id="1_ygqan"]
 [ext_resource type="FontFile" uid="uid://dars776qieyv7" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-Regular/阿里巴巴普惠55号.otf" id="2_e26fh"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="2_jyq5j"]
+[ext_resource type="StyleBox" uid="uid://cvv7fjv1chc07" path="res://界面/主题/样式/物品格样式_空.tres" id="4_5vjdo"]
+[ext_resource type="StyleBox" uid="uid://cnlelcq1jqba5" path="res://界面/主题/样式/物品格样式_占用.tres" id="5_mo55y"]
 [ext_resource type="Script" uid="uid://b3x4mwtjmm4tp" path="res://addons/grid_base_inventory_system/core/view/container/inventory/inventory_view.gd" id="5_vo5ye"]
+[ext_resource type="StyleBox" uid="uid://cvfs0vy03fwli" path="res://界面/主题/样式/物品格样式_冲突.tres" id="6_qh0ic"]
+[ext_resource type="StyleBox" uid="uid://d1rury6q4yglm" path="res://界面/主题/样式/物品格样式_可用.tres" id="7_yxini"]
 
 [node name="背包栏" type="FoldableContainer" unique_id=924188254]
-offset_right = 180.0
-offset_bottom = 60.0
+offset_right = 970.0
+offset_bottom = 648.0
 theme = ExtResource("2_jyq5j")
-folded = true
 title = "背包"
 script = ExtResource("1_e26fh")
 
 [node name="选项卡" type="TabContainer" parent="." unique_id=275038361]
-visible = false
-custom_minimum_size = Vector2(990, 900)
 layout_mode = 2
-current_tab = 1
+current_tab = 0
 
 [node name="物品栏" type="ScrollContainer" parent="选项卡" unique_id=1277020064]
 unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(990, 850)
+custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
@@ -31,20 +31,25 @@ metadata/_tab_index = 0
 
 [node name="背包" type="Control" parent="选项卡/物品栏" unique_id=1140897672]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(990, 1100)
+custom_minimum_size = Vector2(900, 1000)
 layout_mode = 2
 theme = ExtResource("2_jyq5j")
 script = ExtResource("1_ygqan")
 container_name = "背包"
 container_columns = 9
 container_rows = 10
-base_size = 110
+base_size = 100
 grid_border_size = 2
 grid_border_color = Color(0.75, 0.75, 0.75, 0)
 gird_background_color_empty = Color(0.49, 0.444267, 0.3185, 0.784314)
 gird_background_color_taken = Color(0.49, 0.444267, 0.3185, 0.862745)
 gird_background_color_conflict = Color(0.94, 0.68103, 0.6674, 0.784314)
 grid_background_color_avilable = Color(0.4, 0.362667, 0.26, 0.784314)
+"格子覆盖" = true
+"覆盖样式_空" = ExtResource("4_5vjdo")
+"覆盖样式_占用" = ExtResource("5_mo55y")
+"覆盖样式_冲突" = ExtResource("6_qh0ic")
+"覆盖样式_可用" = ExtResource("7_yxini")
 stack_num_font = ExtResource("2_e26fh")
 stack_num_font_size = 32
 stack_num_margin = 0
@@ -53,7 +58,8 @@ metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
 
 [node name="装备栏" type="ScrollContainer" parent="选项卡" unique_id=464245280]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(990, 850)
+visible = false
+custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3

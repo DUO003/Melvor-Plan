@@ -17,13 +17,11 @@ shader_parameter/percent = 0.0
 shader_parameter/hit_color = Color(1, 0, 0, 1)
 
 [node name="玩家" unique_id=1504805159 instance=ExtResource("1_1eny7")]
+"基准位置" = Vector2(72, 282)
 
 [node name="图片" parent="背景" parent_id_path=PackedInt32Array(1702784861) index="1" unique_id=353747191]
 material = SubResource("ShaderMaterial_3e056")
 scale = Vector2(-1, 1)
-
-[node name="贴图" parent="背景/图片" index="0" unique_id=2061192371]
-texture = null
 
 [node name="右手" type="TextureRect" parent="背景/图片" index="1" unique_id=385958921]
 use_parent_material = true
@@ -148,3 +146,9 @@ texture = ExtResource("10_nrmjh")
 expand_mode = 1
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
+
+[node name="贴图" parent="背景/图片" index="9" unique_id=1813194668]
+texture = null
+
+[node name="动画" parent="." index="1" unique_id=786618005]
+autoplay = &"待机"

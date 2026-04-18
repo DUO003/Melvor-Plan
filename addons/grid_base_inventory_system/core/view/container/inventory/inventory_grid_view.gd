@@ -16,8 +16,7 @@ func _gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed(GBIS.input_click):# 处理左键点击动作
 		if has_taken:
 			if not GBIS.moving_item_service.moving_item:
-				print("使用物品")
-				GBIS.inventory_service.use_item(_container_view.container_name, grid_id)
+				使用物品事件()
 			elif GBIS.moving_item_service.moving_item is StackableData:
 				GBIS.inventory_service.stack_moving_item(_container_view.container_name, grid_id)
 			_container_view.grid_hover(grid_id)  # 点击时手动调用高亮
@@ -44,3 +43,6 @@ func _gui_input(event: InputEvent) -> void:
 	elif event.is_action_pressed(GBIS.input_split) and not GBIS.moving_item_service.moving_item:
 		print("拆分物品参数 - 容器名: %s, 格子坐标: %s, 偏移量: %s, 尺寸: %s" % [_container_view.container_name, grid_id, offset, _size])
 		GBIS.inventory_service.split_item(_container_view.container_name, grid_id, offset, _size,_container_view)
+func 使用物品事件():
+	GBIS.inventory_service.use_item(_container_view.container_name, grid_id)
+	

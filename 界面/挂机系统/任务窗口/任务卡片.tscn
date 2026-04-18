@@ -1,30 +1,38 @@
 [gd_scene format=3 uid="uid://ctj6nfk62fcsg"]
 
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ca8jx"]
-[ext_resource type="StyleBox" uid="uid://sdbk6om71jii" path="res://界面/主题/样式/面板样式_窄边.tres" id="2_7tdtd"]
 [ext_resource type="Script" uid="uid://e031poj6o6r1" path="res://界面/挂机系统/任务窗口/任务卡片.gd" id="2_k6e0v"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="3_gxfu4"]
 [ext_resource type="PackedScene" uid="uid://c51gx8des8nv1" path="res://界面/插件/红点提示.tscn" id="3_wwkkq"]
 [ext_resource type="FontFile" uid="uid://ba8mauhrxpxeg" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-85-Bold/AlibabaPuHuiTi-3-85-Bold.otf" id="4_g60r2"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pife"]
-bg_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tdtd"]
+bg_color = Color(0.8352941, 0.6392157, 0.5058824, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
 border_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
-expand_margin_left = 10.0
-expand_margin_right = 10.0
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pife"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+bg_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
+border_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
 script = ExtResource("3_gxfu4")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k6e0v"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7tdtd"]
 content_margin_left = 10.0
-content_margin_top = 1.0
 content_margin_right = 10.0
-content_margin_bottom = 0.0
+content_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0r0a7"]
 content_margin_bottom = 4.0
@@ -37,51 +45,76 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
-[node name="任务卡片" type="Panel" unique_id=1829936911]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g60r2"]
+bg_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("3_gxfu4")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6xvh"]
+bg_color = Color(0.13333334, 0.68235296, 0.6745098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+script = ExtResource("3_gxfu4")
+metadata/_custom_type_script = "uid://dyet4yfov8by1"
+
+[node name="任务卡片" type="PanelContainer" unique_id=415023853]
 custom_minimum_size = Vector2(350, 500)
-offset_right = 305.0
+offset_right = 350.0
 offset_bottom = 500.0
 theme = ExtResource("1_ca8jx")
-theme_override_styles/panel = ExtResource("2_7tdtd")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7tdtd")
 script = ExtResource("2_k6e0v")
 
-[node name="任务名称" type="Label" parent="." unique_id=1601016198]
+[node name="排版" type="VBoxContainer" parent="." unique_id=168378874]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="任务名称" type="Label" parent="排版" unique_id=1601016198]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 10.0
-offset_right = -10.0
-offset_bottom = 57.0
-grow_horizontal = 2
+layout_mode = 2
 theme_override_fonts/font = ExtResource("4_g60r2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7pife")
 text = "任务名称"
+clip_text = true
 
-[node name="任务内容区" type="ScrollContainer" parent="." unique_id=711353377]
+[node name="红点提示" parent="排版/任务名称" unique_id=1406894713 instance=ExtResource("3_wwkkq")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 50)
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 57.0
-offset_right = -5.0
-offset_bottom = -80.0
-grow_horizontal = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = 260.0
+offset_top = 5.0
+offset_right = 300.0
+offset_bottom = 55.0
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="任务内容区" type="ScrollContainer" parent="排版" unique_id=711353377]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7tdtd")
 vertical_scroll_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="垂直排列" type="VBoxContainer" parent="任务内容区" unique_id=943066554]
+[node name="垂直排列" type="VBoxContainer" parent="排版/任务内容区" unique_id=943066554]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 metadata/_edit_lock_ = true
 
-[node name="任务描述" type="RichTextLabel" parent="任务内容区/垂直排列" unique_id=450365595]
+[node name="任务描述" type="RichTextLabel" parent="排版/任务内容区/垂直排列" unique_id=450365595]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_colors/selection_color = Color(0.05750011, 0, 0.69, 0.6039216)
 theme_override_constants/line_separation = -10
 theme_override_constants/paragraph_separation = 0
@@ -90,55 +123,35 @@ theme_override_font_sizes/bold_font_size = 28
 theme_override_font_sizes/bold_italics_font_size = 28
 theme_override_font_sizes/italics_font_size = 28
 theme_override_font_sizes/mono_font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxEmpty_k6e0v")
 theme_override_styles/focus = SubResource("StyleBoxFlat_0r0a7")
 bbcode_enabled = true
 text = "一段测试文本"
 fit_content = true
 scroll_active = false
 
-[node name="前置任务进度条" type="ProgressBar" parent="任务内容区/垂直排列" unique_id=1612605427]
+[node name="前置任务进度条" type="ProgressBar" parent="排版/任务内容区/垂直排列" unique_id=1612605427]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 10
+theme_override_styles/background = SubResource("StyleBoxFlat_g60r2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h6xvh")
 max_value = 0.0
 step = 1.0
 
-[node name="红点提示" parent="." unique_id=1406894713 instance=ExtResource("3_wwkkq")]
-custom_minimum_size = Vector2(40, 50)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_bottom = 0.0
-offset_left = -10.0
-offset_top = 5.0
-offset_right = -10.0
-offset_bottom = 5.0
-grow_horizontal = 0
-grow_vertical = 1
-
-[node name="按钮区" type="ScrollContainer" parent="." unique_id=1651999179]
+[node name="按钮区" type="ScrollContainer" parent="排版" unique_id=1651999179]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -78.0
-offset_right = -10.0
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 0
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7tdtd")
 
-[node name="真实区" type="HBoxContainer" parent="按钮区" unique_id=1937981695]
+[node name="真实区" type="HBoxContainer" parent="排版/按钮区" unique_id=1937981695]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 metadata/_edit_lock_ = true
 
-[node name="示例按钮" type="Button" parent="按钮区/真实区" unique_id=822251343]
+[node name="示例按钮" type="Button" parent="排版/按钮区/真实区" unique_id=822251343]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

@@ -15,14 +15,22 @@ func grid_lose_hover(grid_id: Vector2i) -> void:
  
 func _handle_grid_hover(grid_id: Vector2i, is_hover: bool) -> void:
 	if not GBIS.moving_item_service.moving_item:
-		var data: ItemData = GBIS.inventory_service.find_item_data_by_grid(container_name, grid_id)
-		if data:
+		var 物品实例: ItemData = GBIS.inventory_service.find_item_data_by_grid(container_name, grid_id)
+		if 物品实例:
 			if is_hover:
-				GBIS.item_focus_service.focus_item(data, container_name)
+				GBIS.item_focus_service.focus_item(物品实例, container_name)
+				var 数据:梅提示数据=梅提示数据.new()
+				数据.通用解析(物品实例,{"背包名":container_name})
+				数据.节点=_grid_map.get(grid_id)
+				计划.数据包提示.emit(数据)
+				return
 			else:
 				GBIS.item_focus_service.item_lose_focus()
+		var 数据:梅提示数据=梅提示数据.new()
+		if _grid_map.has(grid_id):
+			数据.节点=_grid_map[grid_id]
+		计划.数据包提示.emit(数据)
 		return
-	
 	# 下面是对正在移动的物体的处理
 	if is_hover:
 		var moving_item_view = GBIS.moving_item_service.moving_item_view
@@ -51,11 +59,13 @@ func _handle_grid_hover(grid_id: Vector2i, is_hover: bool) -> void:
 						has_conflict = false
 	
 	for grid in grids:
-		var grid_view = _grid_map[grid]
-		if is_hover:
-			grid_view.state = BaseGridView.State.CONFLICT if has_conflict else BaseGridView.State.AVILABLE
+		var 格子:BaseGridView = _grid_map[grid]
+		if grid==焦点_格子:
+			格子.state = BaseGridView.State.焦点
+		elif is_hover:
+			格子.state = BaseGridView.State.CONFLICT if has_conflict else BaseGridView.State.AVILABLE
 		else:
-			grid_view.state = BaseGridView.State.TAKEN if grid_view.has_taken else BaseGridView.State.EMPTY
+			格子.复原样式()
 
 func change_data_source(new_container_name: String) -> void:
 	for child in get_children():
@@ -126,12 +136,21 @@ func _on_item_added(inv_name:String, item_data: ItemData, grids: Array[Vector2i]
 	var item = _draw_item(item_data, grids[0])
 	_items.append(item)
 	_item_grids_map[item] = grids
+	var 第一个格子:BaseGridView=_grid_map[grids[0]]
+	延迟设置焦点(第一个格子)
 	for grid in grids:
 		_grid_map[grid].taken(grid - grids[0])
 		_grid_item_map[grid] = item
 	背包内容更新.emit()
 	print("监听")
-
+var 延迟焦点格子:BaseGridView
+func 延迟设置焦点(第一个格子:BaseGridView):##确保能获取图片
+	延迟焦点格子=第一个格子
+	await get_tree().process_frame
+	await get_tree().process_frame
+	if 延迟焦点格子 and 延迟焦点格子==第一个格子:
+		if not 第一个格子.get_focus_mode_with_override() == Control.FOCUS_NONE:
+			第一个格子.grab_focus()
 ## 监听移除物品
 func _on_item_removed(inv_name:String, item_data: ItemData) -> void:
 	if not inv_name == container_name:
@@ -139,7 +158,7 @@ func _on_item_removed(inv_name:String, item_data: ItemData) -> void:
 	if not is_visible_in_tree():
 		return
 	for i in range(_items.size() - 1, -1, -1):
-		var item = _items[i]
+		var item: = _items[i]
 		if item.data == item_data:
 			var grids = _item_grids_map[item]
 			for grid in grids:
@@ -148,7 +167,6 @@ func _on_item_removed(inv_name:String, item_data: ItemData) -> void:
 			item.queue_free()
 			_items.remove_at(i)
 			背包内容更新.emit()
-			print("移除")
 			break
 
 ## 监听更新物品
@@ -172,9 +190,13 @@ func _init_grids() -> void:
 	_grid_map.clear()
 	for row in container_rows:
 		for col in container_columns:
-			var grid_id = Vector2i(col, row)
+			var grid_id: = Vector2i(col, row)
 			var grid: = InventoryGridView.new(self, grid_id, base_size, grid_border_size, grid_border_color, 
 				gird_background_color_empty, gird_background_color_taken, gird_background_color_conflict, grid_background_color_avilable)
+			if 启用焦点:
+				grid.focus_mode=Control.FOCUS_ALL
+				grid.focus_entered.connect(格子焦点更新.bind(grid_id,true))
+				grid.focus_exited.connect(格子焦点更新.bind(grid_id,false))
 			if 格子覆盖:
 				grid.格子覆盖=true
 				grid.覆盖样式_空=覆盖样式_空
@@ -183,3 +205,23 @@ func _init_grids() -> void:
 				grid.覆盖样式_可用=覆盖样式_可用
 			_grid_container.add_child(grid)
 			_grid_map[grid_id] = grid
+func 格子焦点更新(坐标:Vector2i,状态:bool):
+	if 状态:
+		焦点_格子=坐标
+		var 格子:=_grid_map[坐标]
+		格子.state=格子.State.焦点
+		if 格子 is InventoryGridView:
+			格子.使用物品事件()
+		grid_hover(坐标)
+	else :
+		grid_lose_hover(焦点_格子)
+		if 焦点_格子==坐标:
+			焦点_格子=Vector2i(-1,-1)
+		var 格子:=_grid_map[坐标]
+		格子.复原样式()
+func _input(按键: InputEvent) -> void:
+	if 按键.is_action_pressed("ui_accept"):
+		if not 焦点_格子==Vector2i(-1,-1):
+			if 目标焦点:
+				目标焦点.grab_focus()
+			get_viewport().set_input_as_handled()

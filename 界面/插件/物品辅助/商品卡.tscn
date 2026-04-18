@@ -6,10 +6,8 @@
 [ext_resource type="Script" uid="uid://7cmlmma10s5y" path="res://界面/插件/物品辅助/商品卡.gd" id="3_hn262"]
 [ext_resource type="StyleBox" uid="uid://sdbk6om71jii" path="res://界面/主题/样式/面板样式_窄边.tres" id="3_j8t25"]
 [ext_resource type="Script" uid="uid://dr0317kuw34um" path="res://代码/专属代码/特殊功能/九宫格样式.gd" id="4_hn262"]
-[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="4_j8t25"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j8t25"]
-texture = ExtResource("4_j8t25")
 expand_margin_left = -10.0
 expand_margin_top = -5.0
 expand_margin_right = -10.0
@@ -28,10 +26,10 @@ border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0.50980395, 0.3529412, 0.23921569, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 script = ExtResource("2_sk5i8")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
@@ -52,6 +50,8 @@ border_width_top = 20
 border_color = Color(1, 1, 1, 0)
 corner_radius_top_left = 80
 corner_radius_top_right = 80
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hn262"]
 content_margin_left = 10.0
@@ -76,7 +76,6 @@ offset_top = 10.0
 offset_right = -9.0
 offset_bottom = -4.9500046
 grow_horizontal = 2
-texture = ExtResource("4_j8t25")
 expand_mode = 1
 stretch_mode = 5
 

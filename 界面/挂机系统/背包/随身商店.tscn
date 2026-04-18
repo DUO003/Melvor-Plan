@@ -6,7 +6,11 @@
 [ext_resource type="Script" uid="uid://gqt6pq4lt0gw" path="res://addons/grid_base_inventory_system/core/view/container/shop/shop_view.gd" id="3_le1y4"]
 [ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="4_rseta"]
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="5_ykh16"]
+[ext_resource type="StyleBox" uid="uid://cvv7fjv1chc07" path="res://界面/主题/样式/物品格样式_空.tres" id="7_incjw"]
 [ext_resource type="FontFile" uid="uid://ba8mauhrxpxeg" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-85-Bold/AlibabaPuHuiTi-3-85-Bold.otf" id="7_ykh16"]
+[ext_resource type="StyleBox" uid="uid://cnlelcq1jqba5" path="res://界面/主题/样式/物品格样式_占用.tres" id="8_emmm4"]
+[ext_resource type="StyleBox" uid="uid://cvfs0vy03fwli" path="res://界面/主题/样式/物品格样式_冲突.tres" id="9_dha84"]
+[ext_resource type="StyleBox" uid="uid://d1rury6q4yglm" path="res://界面/主题/样式/物品格样式_可用.tres" id="10_4cbdt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqfis"]
 bg_color = Color(0.3647059, 0.24313726, 0.16470589, 1)
@@ -110,9 +114,15 @@ gird_background_color_empty = Color(0.9411765, 0.8039216, 0.6784314, 1)
 gird_background_color_taken = Color(0.9411765, 0.8039216, 0.6784314, 1)
 gird_background_color_conflict = Color(0.8156863, 0.3529412, 0.28627452, 1)
 grid_background_color_avilable = Color(0.9411765, 0.8039216, 0.6784314, 1)
+"格子覆盖" = true
+"覆盖样式_空" = ExtResource("7_incjw")
+"覆盖样式_占用" = ExtResource("8_emmm4")
+"覆盖样式_冲突" = ExtResource("9_dha84")
+"覆盖样式_可用" = ExtResource("10_4cbdt")
 stack_num_font = ExtResource("7_ykh16")
 stack_num_font_size = 32
 stack_num_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+"启用焦点" = null
 metadata/_custom_type_script = "uid://gqt6pq4lt0gw"
 
 [node name="背包按钮区" type="HBoxContainer" parent="." unique_id=783235182]
@@ -122,12 +132,15 @@ size_flags_vertical = 0
 [node name="扩容费用" type="Label" parent="背包按钮区" unique_id=905209922]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
 text = "扩容需要"
+clip_text = true
 
 [node name="扩容" type="Button" parent="背包按钮区" unique_id=899951393]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 70)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "扩容"

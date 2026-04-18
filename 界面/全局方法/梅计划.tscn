@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dn6bqwjvicj5d"]
+
+[node name="梅计划" type="Node" unique_id=1174734890]
+
+[node name="Label" type="Label" parent="." unique_id=26528786]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "警告,当前场景施工中"
+horizontal_alignment = 1
+vertical_alignment = 1

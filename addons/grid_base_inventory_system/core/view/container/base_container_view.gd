@@ -128,6 +128,10 @@ func _样式信号绑定(样式:StyleBox,状态:bool,监听方法:=queue_redraw)
 	set(值):
 		可拿取类型 = 值
 		queue_redraw()
+@export var 目标焦点:Control=null
+##警告目前仅支持选中单格
+@export var 启用焦点:bool=true
+var 焦点_格子:Vector2i=Vector2i(-1,-1)
 ## 格子容器
 var _grid_container: GridContainer
 ## 物品容器

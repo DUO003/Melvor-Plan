@@ -5,12 +5,15 @@
 [ext_resource type="Script" uid="uid://b3x4mwtjmm4tp" path="res://addons/grid_base_inventory_system/core/view/container/inventory/inventory_view.gd" id="3_ghfyu"]
 [ext_resource type="StyleBox" uid="uid://cvv7fjv1chc07" path="res://界面/主题/样式/物品格样式_空.tres" id="4_ghfyu"]
 [ext_resource type="StyleBox" uid="uid://cvfs0vy03fwli" path="res://界面/主题/样式/物品格样式_冲突.tres" id="5_6h3xu"]
+[ext_resource type="StyleBox" uid="uid://cnlelcq1jqba5" path="res://界面/主题/样式/物品格样式_占用.tres" id="5_cj64r"]
 [ext_resource type="Texture2D" uid="uid://fgk6x0h3se4x" path="res://素材/游戏素材/货币/2.png" id="5_t0i27"]
 [ext_resource type="PackedScene" uid="uid://c2jq16mbnhyo8" path="res://界面/挂机系统/背包/装备.tscn" id="6_cj64r"]
 [ext_resource type="StyleBox" uid="uid://d1rury6q4yglm" path="res://界面/主题/样式/物品格样式_可用.tres" id="6_t0i27"]
 [ext_resource type="PackedScene" uid="uid://djk25cxay1cfd" path="res://界面/挂机系统/背包/随身商店.tscn" id="7_oth7v"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="8_ao42m"]
 [ext_resource type="FontFile" uid="uid://ba8mauhrxpxeg" path="res://字体/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-85-Bold/AlibabaPuHuiTi-3-85-Bold.otf" id="8_t0i27"]
+[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="9_oth7v"]
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="10_ao42m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf4j8"]
 content_margin_left = 5.0
@@ -29,6 +32,45 @@ content_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p0hla"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oth7v"]
+bg_color = Color(0.9411765, 0.8039216, 0.6784314, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ao42m"]
+bg_color = Color(1, 1, 1, 0.2509804)
+border_width_top = 150
+border_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 160
+corner_radius_top_right = 160
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tub0"]
+draw_center = false
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0.8156863, 0.3529412, 0.28627452, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBox" id="StyleBox_2tub0"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("9_oth7v")
+"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_oth7v"), SubResource("StyleBoxFlat_ao42m"), SubResource("StyleBoxFlat_2tub0")])
+metadata/_custom_type_script = "uid://c1qmsb0830ojs"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6h3xu"]
 content_margin_left = 30.0
 content_margin_top = 5.0
@@ -40,7 +82,7 @@ corner_radius_top_right = 80
 corner_radius_bottom_right = 80
 corner_radius_bottom_left = 80
 
-[node name="背包界面" unique_id=166508811 node_paths=PackedStringArray("选项卡同步", "滚动区同步") instance=ExtResource("1_jleaq")]
+[node name="背包界面" unique_id=166508811 node_paths=PackedStringArray("选项卡同步", "滚动区同步", "默认焦点") instance=ExtResource("1_jleaq")]
 script = ExtResource("2_yf4j8")
 "基类窗口名称" = "背包界面"
 "选项卡同步" = {
@@ -48,10 +90,11 @@ script = ExtResource("2_yf4j8")
 "状态区": NodePath("内容节点/边距容器/水平排列/状态区")
 }
 "滚动区同步" = {
-"方块背包": NodePath("内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/方块背包"),
+"方块背包": NodePath("内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/方块背包栏"),
 "物品栏": NodePath("内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/背包栏"),
 "装备栏": NodePath("内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/装备栏")
 }
+"默认焦点" = NodePath("内容节点/边距容器/水平排列/垂直排列/物品栏选项卡")
 metadata/_edit_lock_ = true
 
 [node name="边距容器" type="MarginContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=989787874]
@@ -75,29 +118,31 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 0
+current_tab = 1
 
 [node name="背包栏" type="ScrollContainer" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡" index="1" unique_id=1736124572]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_yf4j8")
+follow_focus = true
 metadata/_tab_index = 0
 
 [node name="背包滚动区" type="VBoxContainer" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/背包栏" index="0" unique_id=1427693]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="背包" type="Control" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/背包栏/背包滚动区" index="0" unique_id=1877784021]
+[node name="背包" type="Control" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/背包栏/背包滚动区" index="0" unique_id=1877784021 node_paths=PackedStringArray("目标焦点")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(864, 972)
+custom_minimum_size = Vector2(864, 960)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_ghfyu")
 container_name = "背包"
-container_columns = 8
-container_rows = 9
-base_size = 108
+container_columns = 9
+container_rows = 10
+base_size = 96
 grid_border_size = 4
 grid_border_color = Color(0.84, 0.64344, 0.5124, 0)
 gird_background_color_empty = Color(0.9411765, 0.8039216, 0.6784314, 1)
@@ -106,12 +151,13 @@ gird_background_color_conflict = Color(0.8156863, 0.3529412, 0.28627452, 1)
 grid_background_color_avilable = Color(0.9529412, 0.8627451, 0.8039216, 1)
 "格子覆盖" = true
 "覆盖样式_空" = ExtResource("4_ghfyu")
-"覆盖样式_占用" = ExtResource("4_ghfyu")
+"覆盖样式_占用" = ExtResource("5_cj64r")
 "覆盖样式_冲突" = ExtResource("5_6h3xu")
 "覆盖样式_可用" = ExtResource("6_t0i27")
 stack_num_font_size = 32
 stack_num_margin = 6
 stack_num_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
+"目标焦点" = NodePath("../../../../../状态区/物品简介/选中物品容器/功能容器/按钮区/使用")
 metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
 
 [node name="背包按钮区" type="HBoxContainer" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/背包栏/背包滚动区" index="1" unique_id=1044812167]
@@ -131,22 +177,21 @@ text = "扩容"
 
 [node name="装备栏" type="ScrollContainer" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡" index="2" unique_id=163861683]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yf4j8")
-scroll_vertical = 90
+follow_focus = true
 metadata/_tab_index = 1
 
 [node name="装备滚动区" type="VBoxContainer" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/装备栏" index="0" unique_id=94036353]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 
 [node name="文本" type="Label" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/装备栏/装备滚动区" index="0" unique_id=581988972]
 layout_mode = 2
 text = "已鉴定装备"
 
 [node name="装备" type="Control" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/装备栏/装备滚动区" index="1" unique_id=598234954]
-custom_minimum_size = Vector2(864, 540)
+custom_minimum_size = Vector2(848, 530)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_ghfyu")
@@ -154,7 +199,7 @@ avilable_types = Array[String](["装备"])
 container_name = "装备"
 container_columns = 8
 container_rows = 5
-base_size = 108
+base_size = 106
 grid_border_size = 4
 grid_border_color = Color(0.75, 0.75, 0.75, 0)
 gird_background_color_empty = Color(0.9411765, 0.8039216, 0.6784314, 1)
@@ -176,15 +221,15 @@ layout_mode = 2
 text = "已鉴定宝石"
 
 [node name="宝石" type="Control" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/装备栏/装备滚动区" index="3" unique_id=415572168]
-custom_minimum_size = Vector2(860, 172)
+custom_minimum_size = Vector2(864, 144)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 script = ExtResource("3_ghfyu")
 avilable_types = Array[String](["宝石"])
 container_name = "宝石"
-container_columns = 10
-base_size = 86
+container_columns = 12
+base_size = 72
 grid_border_size = 4
 grid_border_color = Color(0.75, 0.75, 0.75, 0)
 gird_background_color_empty = Color(0.9411765, 0.8039216, 0.6784314, 1)
@@ -201,25 +246,28 @@ stack_num_margin = 6
 stack_num_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
 metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
 
-[node name="方块背包" type="ScrollContainer" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡" index="3" unique_id=2022741407]
+[node name="方块背包栏" type="ScrollContainer" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡" index="3" unique_id=2022741407]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yf4j8")
+follow_focus = true
 metadata/_tab_index = 2
 
-[node name="方块滚动区" type="VBoxContainer" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/方块背包" index="0" unique_id=365427350]
+[node name="方块滚动区" type="VBoxContainer" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/方块背包栏" index="0" unique_id=365427350]
 layout_mode = 2
+size_flags_horizontal = 6
 
-[node name="方块背包" type="Control" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/方块背包/方块滚动区" index="0" unique_id=1539271120]
+[node name="方块背包" type="Control" parent="内容节点/边距容器/水平排列/垂直排列/物品栏选项卡/方块背包栏/方块滚动区" index="0" unique_id=1539271120]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(870, 696)
+custom_minimum_size = Vector2(882, 588)
 layout_mode = 2
 script = ExtResource("3_ghfyu")
 avilable_types = Array[String](["方块"])
 container_name = "方块背包"
-container_columns = 15
+container_columns = 18
 container_rows = 12
-base_size = 58
+base_size = 49
 grid_border_size = 2
 grid_border_color = Color(0, 0, 0, 0)
 gird_background_color_empty = Color(0.9411765, 0.8039216, 0.6784314, 1)
@@ -231,26 +279,20 @@ grid_background_color_avilable = Color(0.4, 0.362667, 0.26, 0.784314)
 "覆盖样式_占用" = ExtResource("4_ghfyu")
 "覆盖样式_冲突" = ExtResource("5_6h3xu")
 "覆盖样式_可用" = ExtResource("6_t0i27")
+stack_num_font_size = 32
 stack_num_margin = 2
 stack_num_color = Color(0.1882353, 0.11764706, 0.07058824, 1)
 metadata/_custom_type_script = "uid://b3x4mwtjmm4tp"
 metadata/_edit_lock_ = true
 
-[node name="金币节点" type="Control" parent="内容节点/边距容器/水平排列/垂直排列" index="1" unique_id=852682924]
+[node name="背包功能区" type="HBoxContainer" parent="内容节点/边距容器/水平排列/垂直排列" index="1" unique_id=323529977]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 8
+mouse_filter = 0
 
-[node name="背包按钮区" type="HBoxContainer" parent="内容节点/边距容器/水平排列/垂直排列/金币节点" index="0" unique_id=323529977]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="金币贴图" type="TextureRect" parent="内容节点/边距容器/水平排列/垂直排列/金币节点/背包按钮区" index="0" unique_id=1270278028]
+[node name="金币贴图" type="TextureRect" parent="内容节点/边距容器/水平排列/垂直排列/背包功能区" index="0" unique_id=1270278028]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
@@ -259,20 +301,15 @@ size_flags_vertical = 4
 texture = ExtResource("5_t0i27")
 expand_mode = 1
 
-[node name="金币文本" type="Label" parent="内容节点/边距容器/水平排列/垂直排列/金币节点/背包按钮区" index="1" unique_id=1491388932]
+[node name="金币文本" type="Label" parent="内容节点/边距容器/水平排列/垂直排列/背包功能区" index="1" unique_id=1491388932]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 2
 text = "金币:100"
 vertical_alignment = 1
 
-[node name="空白" type="Control" parent="内容节点/边距容器/水平排列/垂直排列/金币节点/背包按钮区" index="2" unique_id=2063053244]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="整理" type="Button" parent="内容节点/边距容器/水平排列/垂直排列/金币节点/背包按钮区" index="3" unique_id=1065583167]
+[node name="整理" type="Button" parent="内容节点/边距容器/水平排列/垂直排列/背包功能区" index="2" unique_id=1065583167]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 70)
 layout_mode = 2
@@ -289,73 +326,50 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_ig8do")
 theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_p0hla")
 current_tab = 0
 
-[node name="物品简介" type="Control" parent="内容节点/边距容器/水平排列/状态区" index="1" unique_id=1315748703]
+[node name="物品简介" type="MarginContainer" parent="内容节点/边距容器/水平排列/状态区" index="1" unique_id=1814322115]
 unique_name_in_owner = true
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="无选中" type="Control" parent="内容节点/边距容器/水平排列/状态区/物品简介" index="0" unique_id=2048481623]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="物品详情名称" type="Label" parent="内容节点/边距容器/水平排列/状态区/物品简介/无选中" index="0" unique_id=496082017]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -224.0
-offset_top = -181.0
-offset_right = 224.0
-offset_bottom = 181.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "左键:查看详情(装备)
-中键:分割物品
-右键:拿起物品
-
-金币图标可点击"
-horizontal_alignment = 1
-
-[node name="选中" type="MarginContainer" parent="内容节点/边距容器/水平排列/状态区/物品简介" index="1" unique_id=1814322115]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中" index="0" unique_id=649223529]
+[node name="选中物品容器" type="VBoxContainer" parent="内容节点/边距容器/水平排列/状态区/物品简介" index="0" unique_id=649223529]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中/VBoxContainer" index="0" unique_id=1199546062]
+[node name="功能容器" type="HBoxContainer" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中物品容器" index="0" unique_id=1199546062]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中/VBoxContainer/HBoxContainer" index="0" unique_id=496989477]
+[node name="贴图区" type="VBoxContainer" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中物品容器/功能容器" index="0" unique_id=496989477]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.4
 
-[node name="物品详情贴图" type="TextureRect" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中/VBoxContainer/HBoxContainer/VBoxContainer" index="0" unique_id=1380149134]
+[node name="贴图显示框" type="Panel" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中物品容器/功能容器/贴图区" index="0" unique_id=1269932991]
+texture_filter = 1
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBox_2tub0")
+
+[node name="物品详情贴图" type="TextureRect" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中物品容器/功能容器/贴图区/贴图显示框" index="0" unique_id=1380149134]
 unique_name_in_owner = true
 texture_filter = 1
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
+texture = ExtResource("10_ao42m")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="物品详情名称" type="Label" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中/VBoxContainer/HBoxContainer/VBoxContainer" index="1" unique_id=1989642363]
+[node name="物品详情名称" type="Label" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中物品容器/功能容器/贴图区" index="1" unique_id=1989642363]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
@@ -366,51 +380,52 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_6h3xu")
 text = "金币"
 horizontal_alignment = 1
 
-[node name="Space2" type="Control" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中/VBoxContainer/HBoxContainer" index="1" unique_id=1452204126]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中/VBoxContainer/HBoxContainer" index="2" unique_id=1578067705]
+[node name="按钮区" type="VBoxContainer" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中物品容器/功能容器" index="1" unique_id=1578067705]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+size_flags_horizontal = 6
 
-[node name="Space" type="Control" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中/VBoxContainer/HBoxContainer/VBoxContainer2" index="0" unique_id=1946378353]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="使用" type="Button" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中/VBoxContainer/HBoxContainer/VBoxContainer2" index="1" unique_id=1848085476]
+[node name="使用" type="Button" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中物品容器/功能容器/按钮区" index="0" unique_id=1848085476]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 70)
 layout_mode = 2
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../丢弃")
 theme_override_font_sizes/font_size = 40
 text = "使用"
 
-[node name="丢弃" type="Button" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中/VBoxContainer/HBoxContainer/VBoxContainer2" index="2" unique_id=3920634]
+[node name="丢弃" type="Button" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中物品容器/功能容器/按钮区" index="1" unique_id=3920634]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 70)
 layout_mode = 2
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../分享")
 theme_override_font_sizes/font_size = 40
 text = "丢弃"
 
-[node name="分享" type="Button" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中/VBoxContainer/HBoxContainer/VBoxContainer2" index="3" unique_id=1303884454]
+[node name="分享" type="Button" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中物品容器/功能容器/按钮区" index="2" unique_id=1303884454]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 70)
 layout_mode = 2
+focus_neighbor_top = NodePath("../丢弃")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../图钉")
 theme_override_font_sizes/font_size = 40
 text = "分享"
 
-[node name="图钉" type="CheckButton" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中/VBoxContainer/HBoxContainer/VBoxContainer2" index="4" unique_id=1996705321]
+[node name="图钉" type="CheckButton" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中物品容器/功能容器/按钮区" index="3" unique_id=1996705321]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 70)
 layout_mode = 2
+size_flags_vertical = 10
+focus_neighbor_top = NodePath("../分享")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../../../../垂直排列/背包功能区/整理")
 text = "图钉"
 alignment = 2
 
-[node name="Space" type="Control" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中/VBoxContainer/HBoxContainer" index="3" unique_id=1302536133]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="物品详情文本" type="RichTextLabel" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中/VBoxContainer" index="1" unique_id=381138481]
+[node name="物品详情文本" type="RichTextLabel" parent="内容节点/边距容器/水平排列/状态区/物品简介/选中物品容器" index="1" unique_id=381138481]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2

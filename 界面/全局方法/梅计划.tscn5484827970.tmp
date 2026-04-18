@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dn6bqwjvicj5d"]
+
+[ext_resource type="Script" uid="uid://s58ooam2e83" path="res://界面/全局方法/梅计划.gd" id="1_fbsth"]
+
+[node name="梅计划" type="Node" unique_id=1174734890]
+script = ExtResource("1_fbsth")

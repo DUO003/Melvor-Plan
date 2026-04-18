@@ -98,6 +98,7 @@ func cost(背包) -> void:
 	self.商店剩余数量-=1
 	if self.商店剩余数量<=0:
 		GBIS.inventory_service.remove_item_by_data(背包, self)
+		GBIS.emit_signal("sig_inv_refresh")
 		计划.语法糖通知("该商品当前库存已空谢谢惠顾","商店信息补货")
 		print("商店剩余数量<=0")
 	计划.更新_UI.emit()#刷新金币数量显示
@@ -144,7 +145,3 @@ func 返回简介(背包名:String,参数:Dictionary={})->String:
 	var 简介:String="名称:"+item_name
 	if GBIS.shop_names.has(背包名):简介+="(商品)"
 	return 简介
-func 物品点击(背包) -> bool:#物品被点击时调用,返回不销毁
-	print("背包",背包)
-	计划.更新_背包物品信息.emit(self,背包)
-	return false

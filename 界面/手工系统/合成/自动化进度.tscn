@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="2_6bvsh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rm5mq"]
+content_margin_right = 5.0
 bg_color = Color(0.84, 0.64344, 0.5124, 0.29411766)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -17,6 +18,7 @@ theme = ExtResource("1_6bvsh")
 script = ExtResource("1_124wq")
 
 [node name="内边框" type="Control" parent="." unique_id=1716351602]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +29,7 @@ offset_right = -10.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_behavior_recursive = 1
 
 [node name="进度条" type="ProgressBar" parent="内边框" unique_id=1844470887]
 unique_name_in_owner = true
@@ -39,6 +42,7 @@ anchor_bottom = 1.0
 offset_top = -1.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_behavior_recursive = 1
 max_value = 1.0
 value = 0.6
 show_percentage = false
@@ -55,6 +59,7 @@ offset_top = -54.5
 offset_right = 108.0
 offset_bottom = 45.5
 grow_vertical = 2
+mouse_behavior_recursive = 1
 texture = ExtResource("2_6bvsh")
 expand_mode = 1
 stretch_mode = 5
@@ -62,17 +67,20 @@ stretch_mode = 5
 [node name="配方名" type="Label" parent="内边框" unique_id=851131451]
 unique_name_in_owner = true
 z_index = 1
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 10
 anchor_right = 1.0
-offset_left = -126.0
-offset_bottom = 45.0
-grow_horizontal = 0
+offset_bottom = 43.0
+grow_horizontal = 2
+mouse_behavior_recursive = 1
 theme_override_colors/font_shadow_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_rm5mq")
-text = "较长道具名称"
+text = "栏位1"
 horizontal_alignment = 2
+vertical_alignment = 2
+clip_text = true
 
 [node name="取消" type="Button" parent="内边框" unique_id=57443127]
 unique_name_in_owner = true
@@ -88,5 +96,6 @@ offset_right = -4.0
 offset_bottom = -13.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_behavior_recursive = 2
 theme_override_font_sizes/font_size = 28
 text = "取消"

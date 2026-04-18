@@ -697,6 +697,7 @@ metadata/_custom_type_script = "uid://dg6xjko3rdcta"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 200)
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.3807566
 anchor_top = 0.005
 anchor_right = 0.6159539
@@ -704,6 +705,7 @@ anchor_bottom = 0.5
 offset_left = -58.5
 offset_top = -162.0
 offset_right = 58.5
+offset_bottom = 10.909058
 scale = Vector2(0.55, 0.55)
 
 [node name="属性" type="RichTextLabel" parent="装备" unique_id=988785958]

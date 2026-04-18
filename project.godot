@@ -33,10 +33,10 @@ config/icon="uid://bttn4tgkwj4p0"
 
 [autoload]
 
-"计划"="*res://代码/梅计划.gd"
+"计划"="*uid://s58ooam2e83"
+"横版单例"="*uid://d36bwamvahkkm"
 GBIS="*res://addons/grid_base_inventory_system/core/grid_base_inventory_system.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-"横版单例"="*uid://d36bwamvahkkm"
 
 [debug]
 
@@ -147,7 +147,7 @@ folder_colors={
 
 [global]
 
-steam_enabled=true
+steam_enabled=false
 snake_case={
 "主题标题色": "#86a684",
 "主题背景色": "#d1bb7db4",
@@ -155,6 +155,10 @@ snake_case={
 "悬浮标题色": "#8f6f2fe6",
 "悬浮背景色": "#b38c40dc"
 }
+
+[global_group]
+
+"任务界面"=""
 
 [input]
 

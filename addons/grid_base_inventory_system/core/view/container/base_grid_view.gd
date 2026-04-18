@@ -1,11 +1,10 @@
 extends Control
 ## 格子视图，用于绘制格子
 class_name BaseGridView
-
+var 导航目录:Array=[InventoryGridView]
 ## 格子的绘制状态：空、占用、冲突、可用
 enum State{
-	EMPTY, TAKEN, CONFLICT, AVILABLE
-}
+	EMPTY, TAKEN, CONFLICT, AVILABLE,焦点}
 
 ## 默认边框颜色
 const DEFAULT_BORDER_COLOR: Color = Color.GRAY
@@ -17,6 +16,7 @@ const DEFAULT_TAKEN_COLOR: Color = Color.LIGHT_SLATE_GRAY
 const DEFAULT_CONFLICT_COLOR: Color = Color.INDIAN_RED
 ## 默认可用颜色
 const DEFAULT_AVILABLE_COLOR: Color = Color.STEEL_BLUE
+var 提示偏移:=Vector2(10, 10)
 @export var 格子覆盖:bool=false:
 	set(值):
 		格子覆盖 = 值
@@ -94,13 +94,18 @@ var _container_view: BaseContainerView
 func taken(in_offset: Vector2i) -> void:
 	has_taken = true
 	offset = in_offset
-	state = State.TAKEN
+	if has_focus():
+		state = State.焦点
+	else :
+		state = State.TAKEN
 
 ## 释放格子
 func release() -> void:
 	has_taken = false
 	self.offset = Vector2i.ZERO
 	state = State.EMPTY
+	if has_focus():
+		release_focus()
 
 ## 构造函数
 func _init(inventoryView: BaseContainerView, in_grid_id: Vector2i,size: int, border_size: int, 
@@ -118,6 +123,7 @@ func _init(inventoryView: BaseContainerView, in_grid_id: Vector2i,size: int, bor
 
 ## 初始化
 func _ready() -> void:
+	提示偏移=custom_minimum_size
 	mouse_filter = Control.MOUSE_FILTER_PASS
 	mouse_entered.connect(_container_view.grid_hover.bind(grid_id))
 	mouse_exited.connect(_container_view.grid_lose_hover.bind(grid_id))
@@ -126,7 +132,7 @@ func _ready() -> void:
 func _draw() -> void:
 	draw_rect(Rect2(0, 0, _size, _size), _border_color, true)
 	var inner_size = _size - _border_size * 2
-	var background_color = null
+	var 格子颜色:Color = Color()
 	var 矩形新尺寸:=Rect2(_border_size, _border_size, inner_size, inner_size)
 	if 格子覆盖:
 		match state:
@@ -138,14 +144,22 @@ func _draw() -> void:
 				draw_style_box(覆盖样式_冲突, 矩形新尺寸)
 			State.AVILABLE:
 				draw_style_box(覆盖样式_可用, 矩形新尺寸)
+			State.焦点:
+				draw_style_box(覆盖样式_可用, 矩形新尺寸)
+			_:
+				draw_style_box(覆盖样式_空, 矩形新尺寸)
 	else :
 		match state:
 			State.EMPTY:
-				background_color = _empty_color
+				格子颜色 = _empty_color
 			State.TAKEN:
-				background_color = _taken_color
+				格子颜色 = _taken_color
 			State.CONFLICT:
-				background_color = _conflict_color
+				格子颜色 = _conflict_color
 			State.AVILABLE:
-				background_color = _avilable_color
-		draw_rect(矩形新尺寸, background_color, true)
+				格子颜色 = _avilable_color
+			_:
+				格子颜色 = _empty_color
+		draw_rect(矩形新尺寸, 格子颜色, true)
+func 复原样式():
+	state = State.TAKEN if has_taken else State.EMPTY

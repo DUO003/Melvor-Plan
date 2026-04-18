@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dyet4yfov8by1" path="res://代码/专属代码/特殊功能/扁平样式框.gd" id="1_6851i"]
 [ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_r7331"]
 [ext_resource type="Script" uid="uid://bqsxor1nv1pxc" path="res://界面/手工系统/资源加点.gd" id="3_hvqnr"]
-[ext_resource type="Script" uid="uid://c1qmsb0830ojs" path="res://代码/专属代码/特殊功能/嵌套样式数组.gd" id="3_r7331"]
 [ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="4_r7331"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvqnr"]
@@ -18,53 +17,6 @@ metadata/_custom_type_script = "uid://dyet4yfov8by1"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yni8h"]
 content_margin_left = 70.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqimc"]
-bg_color = Color(0.5254902, 0.6509804, 0.52156866, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-script = ExtResource("1_6851i")
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjp5r"]
-bg_color = Color(0.5294118, 0.37254903, 0.101960786, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.41, 0.28822997, 0.0779, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_left = -5.0
-expand_margin_top = -5.0
-expand_margin_right = -5.0
-expand_margin_bottom = -5.0
-script = ExtResource("1_6851i")
-margin_left = -5
-margin_top = -5
-margin_right = -5
-margin_bottom = -5
-metadata/_custom_type_script = "uid://dyet4yfov8by1"
-
-[sub_resource type="StyleBox" id="StyleBox_vgh6y"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = 20.0
-content_margin_top = 0.0
-content_margin_right = 20.0
-content_margin_bottom = 0.0
-script = ExtResource("3_r7331")
-"样式数组" = Array[StyleBox]([SubResource("StyleBoxFlat_kqimc"), SubResource("StyleBoxFlat_wjp5r")])
-metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5lflo"]
 content_margin_left = 10.0
@@ -86,7 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_spacing = -12
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yni8h")
-text = "木材回复+0.00"
+text = "回复+0.00"
 vertical_alignment = 1
 
 [node name="贴图" type="TextureRect" parent="." unique_id=1665336503]
@@ -122,7 +74,6 @@ offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.75, 0.75)
-theme_override_styles/focus = SubResource("StyleBox_vgh6y")
 text = "-"
 
 [node name="点数" type="Label" parent="." unique_id=1126823509]

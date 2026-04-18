@@ -26,9 +26,9 @@ func 背包折叠(折叠:=true):
 	await get_tree().process_frame
 	if 折叠:
 		title="<背包"
-		size=Vector2(180,60)
-		position=Vector2(1520,100)
+		#size=Vector2(180,60)
+		#position=Vector2(1520,100)
 	else :
 		title="背包 <%s>"%(">,<".join(白名单))
-		size=Vector2(1000,900)
-		position=Vector2(675,100)
+		#size=Vector2(1000,900)
+		#position=Vector2(675,100)

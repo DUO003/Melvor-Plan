@@ -1,18 +1,31 @@
 extends VBoxContainer
-var 配方 = preload("res://界面/手工系统/配方.tscn").instantiate()
+var 配方:Button = preload("res://界面/手工系统/配方.tscn").instantiate()
+@export var 分组名称:String="合成界面_按钮"
 @onready var 已解锁按钮: CheckButton = %已解锁
 @onready var 检索: LineEdit = %检索
 @onready var 配方表格: VBoxContainer = %配方表格
+func _ready() -> void:
+	focus_entered.connect(焦点延迟传递)
+func 焦点延迟传递():
+	await get_tree().process_frame
+	var 按钮列表 = get_tree().get_nodes_in_group(分组名称)
+	for 数组的按钮 in 按钮列表:
+		if 数组的按钮 and 数组的按钮.focus_mode != Control.FOCUS_NONE:
+			数组的按钮.grab_focus()
+			print("焦点转移->",数组的按钮.name)
+			return
 func 克隆配方节点(配方列表=["铁锭", "纤维", "鞣革"],节点位置:Control=self):# 根据配方列表数量克隆节点
 	var 编号数组= 计划.表格.获取表格信息数组(计划.表格.创世蓝图,配方列表,"名称")
 	for i in range(配方列表.size()):
-		var 配方名称=配方列表[i]
+		var 配方名称:String=配方列表[i]
 		if not 检索.text=="":
 			if not 检索.text in 配方名称:
 				continue
 		var 配方编号=int(编号数组[i])
 		var 克隆节点:Button = 配方.duplicate()
 		克隆节点.visible = true  # 克隆节点设为可见
+		if not 克隆节点.is_in_group(分组名称):
+			克隆节点.add_to_group(分组名称)
 		var 配方名标签 = 克隆节点.get_node("配方名")# 获取克隆节点下的"配方名"Label节点并设置文本
 		var 解锁=false
 		if 配方名标签 != null and 配方名标签 is Label:
@@ -33,11 +46,8 @@ func 克隆配方节点(配方列表=["铁锭", "纤维", "鞣革"],节点位置
 				处理样式(克隆节点,配方名称,解锁,true)
 		克隆节点.mouse_entered.connect(func(): 鼠标进入(配方编号))# 连接鼠标进入信号
 		克隆节点.mouse_exited.connect(func(): 鼠标离开(配方编号))# 连接鼠标离开信号
-		克隆节点.gui_input.connect(func(按键信号): # 确保节点可以接收鼠标事件
-			if 按键信号 is InputEventMouseButton and 按键信号.pressed:
-				鼠标点击(配方编号, 按键信号))
-		克隆节点.mouse_filter = Control.MOUSE_FILTER_STOP
-		克隆节点.focus_mode = Control.FOCUS_NONE
+		克隆节点.gui_input.connect(鼠标右键移除检查.bind(配方名称))
+		克隆节点.pressed.connect(制作检查.bind(配方名称))
 		if 已解锁按钮.button_pressed:
 			if 解锁:节点位置.add_child(克隆节点)
 		else :
@@ -60,7 +70,7 @@ func 处理样式(节点: Button, 配方名称: String, 解锁: bool,无蓝图:b
 			样式.样式数组[1].texture=null
 		else :
 			样式.样式数组[1].texture=preload("res://素材/豆包AI素材/残缺图纸.png")
-	for state in ["normal", "pressed", "hover", "focus"]:# 5. 批量将修改后的基础样式，赋值给所有需要同步的状态
+	for state in ["normal", "pressed", "hover"]:# 5. 批量将修改后的基础样式，赋值给所有需要同步的状态
 		节点.add_theme_stylebox_override(state, 样式)
 var 信号序号:int=-1
 # 鼠标进入事件处理方法
@@ -84,35 +94,30 @@ func 鼠标离开(配方序号:int):
 		计划.全局悬浮提示.emit("",self)
 		信号序号=-1
 # 鼠标事件处理方法
-func 鼠标点击(配方序号,按键信号):
-	var 装备名称 = 计划.表格.创世蓝图[配方序号][0]
-	if 按键信号.button_index == MOUSE_BUTTON_LEFT:
-		if 配方解锁(装备名称):
-			if 制作物品(配方序号)!=1:
-				计划.语法糖通知("材料不足，无法制作","手工提示")
-		else:
-			计划.语法糖通知( "配方未解锁，无法制作","手工提示")
-	elif 按键信号.button_index == MOUSE_BUTTON_RIGHT:
-		计划.手工.队列合成("制作队列",装备名称)
-	#else :
-		#计划.语法糖通知( "中键点击","手工提示")
-
-func 制作物品检查(表格字典):
-	if 表格字典 == {}:
-		return 0.0  # 配方不存在，返回0进度
+func 鼠标右键移除检查(按键信号:InputEvent,配方名称:String):
+	if 按键信号 is InputEventMouseButton and 按键信号.pressed:
+		if 按键信号.button_index == MOUSE_BUTTON_RIGHT:
+			计划.手工.队列合成("制作队列",配方名称)
+func 制作检查(配方名称:String):
+	if 配方解锁(配方名称):
+		if 制作物品(配方名称)!=1:
+			计划.语法糖通知("材料不足，无法制作","手工提示")
+	else:
+		计划.语法糖通知( "配方未解锁，无法制作","手工提示")
+	
+func 制作物品检查(配方名称:String):
 	var 材料权重 = {"零件": 3,"精华": 9}# 定义材料权重配置
-	var 物品名称 = 表格字典.get("名称", "")
-	if 物品名称 == "":
+	if not 计划.表格.蓝图字典.has(配方名称):
 		print("配方错误")
 		return 0.0  # 配方错误返回0进度
 	var 材料类型列表 = 计划.手工.资源字典.keys()# 定义需要消耗的材料类型
 	var 材料足够 = true
 	var 总需求权重 = 0.0
 	var 当前满足权重 = 0.0
-	var 配方升星=计划.手工.数据合成配方(物品名称,"升星")
+	var 配方升星=计划.手工.数据合成配方(配方名称,"升星")
 	# 检查材料并计算权重
 	for 材料类型 in 材料类型列表:
-		var 所需数量 = float(表格字典.get(材料类型, 0))
+		var 所需数量:float = 计划.表格.蓝图数据(配方名称,材料类型)
 		if 配方升星 >= 1:所需数量*=0.9
 		if 所需数量 > 0:
 			var 当前数量 = 计划.手工.查看资源(材料类型)+计划.检查背包物品数量(材料类型)
@@ -133,17 +138,14 @@ func 制作物品检查(表格字典):
 		return 进度
 
 
-func 制作物品(配方序号):
-	var 表格字典 = 计划.表格.获取表格字典(计划.表格.创世蓝图, 配方序号)# 获取配方对应的物品表格数据
-	var 进度 = 制作物品检查(表格字典)
-	#print("表格字典:",表格字典)
+func 制作物品(配方名称:String):
+	var 进度 = 制作物品检查(配方名称)
 	if 进度==1.0:
-		var 物品名称 = 表格字典.get("名称", "")
 		var 材料类型列表 = 计划.手工.资源字典.keys()# 定义需要消耗的材料类型
 		for 材料类型 in 材料类型列表:# 扣除所需材料
-			var 所需数量 = 表格字典.get(材料类型, 0)
+			var 所需数量:float = 计划.表格.蓝图数据(配方名称,材料类型)
 			计划.手工.获得资源(材料类型, -所需数量, true, false)
-		计划.手工.完成制作(物品名称,1,true,true)
+		计划.手工.完成制作(配方名称,1,true,true)
 		计划.emit_signal("更新_UI")
 		return 1.0  # 制作成功返回1
 	else:

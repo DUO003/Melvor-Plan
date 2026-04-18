@@ -36,7 +36,7 @@ func _ready() -> void:
 	重新载入.pressed.connect(func():
 		重新载入场景()
 		重新分配区域())
-	载入脚本.pressed.connect(func():打开代码文件("res://代码/梅计划.gd","#region 简短单例"))
+	载入脚本.pressed.connect(func():打开代码文件("res://界面/全局方法/梅计划.gd","#region 简短单例"))
 	导入表格.pressed.connect(导入表格方法)
 	重新载入场景()
 func 导入表格方法():

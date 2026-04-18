@@ -7,7 +7,9 @@ class_name 任务栏插件
 @export var 显示体力:bool=false
 @export var 显示跳转任务:bool=true
 @export var 显示任务数量:int=1
+##1.等待场景先_ready(),可以不填
 @export var 场景:基类梅窗口
+@export var 任务的卡片场景:PackedScene=preload("res://界面/挂机系统/任务窗口/任务卡片.tscn")
 @onready var 任务容器: VBoxContainer = %任务容器
 @onready var 任务栏: GridContainer = %任务栏
 @onready var 标签: Label = %标签
@@ -17,18 +19,19 @@ class_name 任务栏插件
 ##可能移除
 @onready var 体力状态: 体力插件 = %体力状态
 #var 体力状态场景 = preload("res://界面/插件/体力状态.tscn")
-var 任务的卡片:任务卡片=preload("res://界面/挂机系统/任务窗口/任务卡片.tscn").instantiate()
+var 任务的卡片:任务卡片
 var 筛选失效:int=0
-
 func _ready() -> void:
 	if not 循环筛选.is_empty():
 		隐藏.button_pressed=计划.窗口状态管理("任务插件","隐藏循环",false)
 	任务栏.columns=显示任务数量
+	任务的卡片=任务的卡片场景.instantiate()
 	初始化所有任务容器()
 	if 场景:
 		await 场景.ready
 	计划.显示后执行(刷新任务显示,self)
 	计划.任务.更新_任务UI.connect(更新_任务UI)
+
 func 更新_任务UI():
 	初始化所有任务容器()
 	计划.显示后执行(刷新任务显示,self)
@@ -62,10 +65,11 @@ func 加载检查(任务数据:任务资源)->bool:
 			return true
 	筛选失效+=1
 	return false
-func 生成任务卡片(任务数据:任务资源,序号):		
+func 生成任务卡片(任务数据:任务资源,序号):
 	var 任务卡=任务的卡片.duplicate()
 	任务卡.任务数据=任务数据
 	任务卡.任务序号=序号
+	任务卡.任务容器=self
 	任务栏.add_child(任务卡)
 func 刷新任务显示():
 	if 显示任务数量<1:显示任务数量=1

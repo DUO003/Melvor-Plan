@@ -89,7 +89,7 @@ func 重载图钉():
 				图钉容器.add_child(新图钉)
 	if 当前界面图钉.size()==0 and 全局图钉.size()==0:
 		var 标签=Label.new()
-		标签.text="图钉可以在背包添加,固定显示物品数量"
+		标签.text="图钉可以在背包中添加"
 		标签.add_theme_color_override("font_color", Color(1,1,1))
 		图钉容器.add_child(标签)
 func 生成任务栏按钮() -> void:# 生成任务栏所有按钮

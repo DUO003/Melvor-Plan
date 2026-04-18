@@ -61,6 +61,7 @@ offset_bottom = 65.0
 grow_horizontal = 2
 theme = ExtResource("2_5i305")
 script = ExtResource("1_5i305")
+"显示名称" = null
 
 [node name="排列资源" type="HBoxContainer" parent="." unique_id=1855292504]
 layout_mode = 1

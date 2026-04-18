@@ -51,6 +51,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_102at")
 script = ExtResource("2_jx0ap")
 
 [node name="输入" type="HSlider" parent="." unique_id=1743984719]
+unique_name_in_owner = true
 visible = false
 layout_mode = 0
 offset_left = 1.0
@@ -63,6 +64,7 @@ max_value = 32.0
 value = 16.0
 
 [node name="图片" type="TextureRect" parent="." unique_id=1723625657]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,6 +75,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="数量" type="Label" parent="." unique_id=1409906603]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -87,6 +90,7 @@ text = "32"
 horizontal_alignment = 1
 
 [node name="标签" type="Label" parent="." unique_id=1181033685]
+unique_name_in_owner = true
 layout_mode = 1
 offset_left = 5.0
 offset_right = 64.0

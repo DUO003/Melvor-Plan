@@ -18,30 +18,53 @@ Keys,zh-CN,EN
 游历系统,游历系统,Wandering System
 职业系统,职业系统,Profession System
 召唤系统,召唤系统,Summoning System
-挂机,挂机,AFK System
-木料,木料,Lumber System
-矿城,矿城,Mining City System
-手工,手工,Crafting System
-游历,游历,Wandering System
-职业,职业,Profession System
-召唤,召唤,Summoning System
+挂机,挂机,AFK
+木料,木料,Lumber
+矿城,矿城,Mining City
+手工,手工,Crafting
+游历,游历,Wandering
+职业,职业,Profession
+召唤,召唤,Summoning
 作者,作者,Author
+精通,精通,Mastery
+熟练,熟练,Proficiency
+精通池,精通池,Mastery Pool
 矿石,矿石,Ore
 木材,木材,Wood
 皮革,皮革,Leather
 药草,药草,Herb
 零件,零件,Rune_Stone
 精华,精华,Gem_Essence
+,##窗口名称,
+默认,默认,Default
+开始,开始,Start
+测试,测试,Test
+任务,任务,Quest
+设置,设置,Settings
+故事,故事,Story
+原罪,原罪,Sin
+暴食,暴食,Gluttony
+傲慢,傲慢,Pride
+贪婪,贪婪,Greed
+合成,合成,Craft
+抽奖,抽奖,Gacha
+强化,强化,Enhance
+烹饪,烹饪,Cook
+炼金,炼金,Alchemy
+背包,背包,Bag
+订单,订单,Order
+游戏,游戏,Game
+水序,水序,Flow
+冒险,冒险,Adventure
+,##任务卡片,
 <任务未解锁>,前置任务未解锁%d/%d,Unlocked %d/%d Prerequisite Missions
 <前置任务>,下一个前置任务:%s,Next Prerequisite Mission: %s
 最大,最大,Max
 循环,循环,Loop
 刷新,刷新,Refresh
 接受任务,接受任务,Accept Mission
-精通,精通,Mastery
-熟练,熟练,Proficiency
-精通池,精通池,Mastery Pool
 手动存档,手动存档,Manual Save
+,##时间单位,
 年,年,Year
 天,天,Day
 周,周,Week
@@ -55,10 +78,9 @@ Keys,zh-CN,EN
 <任务进行中>,进行中(正在记录任务目标)\r,Claimed (Recording objectives)\r
 <任务已领取奖励>,奖励已领取,Reward Claimed
 任务界面,任务界面,Quest Interface
-任务,任务,Quests
 任务点数,任务点数,Quest Points
 主线任务,主线任务,Main Quests
-循环任务,循环任务,Repeatable Quests
+循环任务,循环任务,Quests
 任务统计,任务统计,Quest Stats
 已完成,已完成,Show Completed
 隐藏其他任务,隐藏其他任务,Hide Irrelevant
@@ -210,32 +232,491 @@ Keys,zh-CN,EN
 奖励：解锁“炼金”玩法。,奖励：解锁“炼金”玩法。,"Reward: Unlock ""Alchemy"" gameplay."
 消耗10体力刷新,消耗10体力刷新,Consume 10 Stamina to refresh
 ,,
-装备,<装备>,<Equip>
-工具,<工具>,<Tool>
-礼盒,<礼盒>,<Gift>
-贵重,<贵重>,<Precious>
-物资,<物资>,<Supply>
-代币,<代币>,<Token>
-点数,<点数>,<Point>
-材料,<材料>,<Material>
-符文,<符文>,<Rune>
-收藏品,<收藏品>,<Collectible>
-宝石,<宝石>,<Gem>
-资源,<资源>,<Resource>
-炼金,<炼金>,<Alchemy>
-催化,<催化>,<Catalyst>
-特殊催化,<特殊催化>,<SpecialCatalyst>
-战利品,<战利品>,<Loot>
-装备药水,<装备药水>,<EnchantPotion>
-食物,<食物>,<Food>
-食材,<食材>,<Ingredient>
-调料,<调料>,<Seasoning>
-药水,<药水>,<Potion>
-料理,<料理>,<Dish>
-手工,<手工>,<Craft>
-灾厄,<灾厄>,<Bane>
-元素,<元素>,<Element>
-维度传送液,<维度传送液>,<DimensionalFluid>
-失败品,<失败品>,<Defective>
-颜料,<颜料>,<Dye>
-技能,<技能>,<Skill>
+<装备>,<装备>,<Equip>
+<工具>,<工具>,<Tool>
+<礼盒>,<礼盒>,<Gift>
+<贵重>,<贵重>,<Precious>
+<物资>,<物资>,<Supply>
+<代币>,<代币>,<Token>
+<点数>,<点数>,<Point>
+<材料>,<材料>,<Material>
+<符文>,<符文>,<Rune>
+<收藏品>,<收藏品>,<Collectible>
+<宝石>,<宝石>,<Gem>
+<资源>,<资源>,<Resource>
+<炼金>,<炼金>,<Alchemy>
+<催化>,<催化>,<Catalyst>
+<特殊催化>,<特殊催化>,<SpecialCatalyst>
+<战利品>,<战利品>,<Loot>
+<装备药水>,<装备药水>,<EnchantPotion>
+<食物>,<食物>,<Food>
+<食材>,<食材>,<Ingredient>
+<调料>,<调料>,<Seasoning>
+<药水>,<药水>,<Potion>
+<料理>,<料理>,<Dish>
+<手工>,<手工>,<Craft>
+<灾厄>,<灾厄>,<Bane>
+<元素>,<元素>,<Element>
+<维度传送液>,<维度传送液>,<DimensionalFluid>
+<失败品>,<失败品>,<Defective>
+<颜料>,<颜料>,<Dye>
+<技能>,<技能>,<Skill>
+,,
+中文,中文,中文
+英文,English,English
+,,
+图钉可以在背包中添加,图钉可以在背包中添加,Pin items in inventory
+,,
+背包栏,背包栏,Inventory
+装备栏,装备栏,Equipment
+方块背包栏,方块背包,Block Bag
+整理,整理,Sort
+物品简介,物品简介,Item Info
+装备槽,装备槽,Equip Slot
+随身商店,随身商店,Shop
+<数量>,数量:%s,Qty:%s
+<堆叠上限>,堆叠上限:%s,Stack:%s
+使用,使用,Use
+丢弃,丢弃,Discard
+分享,分享,Share
+图钉,图钉,Pin
+已鉴定装备,已鉴定装备,Identified Gear
+已鉴定宝石,已鉴定宝石,Identified Gems
+戒指A,戒指A,Ring A
+戒指B,戒指B,Ring B
+项链,项链,Necklace
+披挂,披挂,Cloak
+主手,主手,Main Hand
+副手,副手,Off Hand
+头盔,头盔,Helmet
+衣服,衣服,Chest
+裤子,裤子,Pants
+鞋子,鞋子,Boots
+手杖,手杖,Staff
+厨具,厨具,Cooking
+<刷新商店计时>,商店刷新%s,Shop Refresh %s
+<手动刷新商店>,手动刷新%d体力,Manual Refresh %d Stamina
+手动刷新,手动刷新,Refresh
+<扩容成功>,%s扩容成功,%s Expanded
+<商店扩容提示>,增加商品数量需要\r%d个%s,Increase stock requires\r%d %s
+扩容,扩容,Expand
+<扩容提示>,扩容需要%d个%s,Expand: %d %s required
+<扩容等级不足>,"提高等级增加扩容上限,需要%d%s等级","Level up to expand, requires Lv.%d %s"
+<版本最大值>,已达到当前版本最大值,Maxed in current version
+<扩容失败上限>,"扩容失败,已达到版本上限",Expand failed: Max level reached
+<扩容失败材料>,"%s扩容失败,%s不足",%s expand failed: Insufficient %s
+点击选择检查物品,点击选择检查物品,Click to inspect
+未选中,未选中,No Item
+,,
+<空的装备栏>,空的装备栏,Empty Slot
+<装备等级>,等级:[color=%s]%d[/color]/%d,Level:[color=%s]%d[/color]/%d
+<阶级>,阶级:%s,Tier:%s
+<阶级_颜色>,阶级:[color=%s]%s[/color],Tier:[color=%s]%s[/color]
+<攻击倍率>,攻击倍率x [color=%s]%.2f[/color],Atk. Multiplier x [color=%s]%.2f[/color]
+<攻击类型>,攻击类型: [color=%s]%s[/color],Atk. Type: [color=%s]%s[/color]
+<攻速>,攻速: [color=%s]%.1f[/color]%%,Atk. Speed: [color=%s]%.1f[/color]%%
+<攻击倍率百分比>,攻击倍率 [color=%s]%.1f[/color]%%,Atk. Bonus: [color=%s]%.1f[/color]%%
+<护甲减伤>,护甲减伤: [color=%s]%.1f[/color]%%,Armor Reduction: [color=%s]%.1f[/color]%%
+<生命倍率>,生命倍率:[color=%s]%.1f[/color]%%,HP Bonus: [color=%s]%.1f[/color]%%
+<魔法倍率>,魔法倍率:+[color=%s]%.1f[/color],MP Bonus: +[color=%s]%.1f[/color]
+<通用属性加成>,%s:+ [color=%s]%.1f[/color],%s: +[color=%s]%.1f[/color]
+<宝石倍率>,倍率:[color=%s]+%.1f%%[/color],Bonus: [color=%s]+%.1f%%[/color]
+<增强装备栏>,增强装备栏:[color=%s]%.1f%%[/color],Enhanced: [color=%s]%.1f%%[/color]
+<宝石词条开发中>,宝石词条开发中...,Gem Trait: WIP...
+<攻击力>,攻击力:%.0f,ATK: %.0f
+<暴击力>,暴击力:%.0f,CRIT: %.0f
+<手持武器>,武器:%s,Weapon: %s
+<每次购买数量>,每次购买数量:[color=%s]%d[/color],Buy Qty: [color=%s]%d[/color]
+<购买价格>,购买价格:[color=%s]%d[/color] 单价:[color=%s]%d[/color],Total:[color=%s]%d[/color]  Unit:[color=%s]%d[/color]
+<剩余购买次数>,剩余购买次数:[color=%s]%d[/color],Remaining:[color=%s]%d[/color]
+<背包数量>,背包数量:[color=%s]%d[/color],Inventory: [color=%s]%d[/color]
+<堆叠上限_格式>,堆叠上限:[color=%s]%d[/color],Stack: [color=%s]%d[/color]
+<方块尺寸>,尺寸:[color=%s]%d列 × %d排[/color],Size: [color=%s]%dx%d[/color]
+<物品标签>,标签:[color=%s]%s[/color],Tags: [color=%s]%s[/color]
+<自动最低时间>,自动最低:[color=%s]%.1f[/color]秒,Min Auto: [color=%s]%.1f[/color]s
+<残缺图纸次数>,残缺图纸:[color=%s]%d[/color]次,Torn Plans: [color=%s]%d[/color]
+<蓝图点数获得>,蓝图纸点数+[color=%s]%d[/color],BP Points +[color=%s]%d[/color]
+<点数来源说明>,点数来源(基础%d+研究力%d),From (Base %d + Research %d)
+<制作精华占用>,自动制作需要占用精华,Requires Essence
+<空的制作格子>,空的制作格子,Empty Craft Slot
+<制作时间>,需要[color=%s]%.1f[/color]秒制作(最低%.0f秒),Craft Time: [color=%s]%.1f[/color]s (min %.0fs)
+<提速说明>,增加物质回复速度可以减少制作时间,Faster yield = faster craft
+<制作中精华占用>,需要占用[color=%s]%d[/color]个制作精华,Using [color=%s]%d[/color] Essence
+<基础价值>,基础价值:[color=%s]%d[/color],Base Value:[color=%s]%d[/color]
+<物品简介>,简介:%s,Desc:%s
+<操作说明>,操作说明:,Controls:
+,,
+移动,移动,Move
+选中,选中,Select
+拆分,拆分,Split
+取消,取消,Cancel
+,,
+【随机词条】,【随机词条】,【Random Traits】
+【制作材料】,【制作材料】,【Materials】
+【装备属性】,【装备属性】,【Stats】
+,,
+<木物质>,木物质,Wood
+<矿物质>,矿物质,Mineral
+<生物质>,生物质,Bio
+<药物质>,药物质,Herb
+<物质>,物质,Matter
+<精华>,精华,Essence
+<刻度>,刻度%s,Per Tick:%s
+资源回复,资源回复,Regen
+百,百,H
+千,千,K
+万,万,W
+十万,十万,HW
+百万,百万,M
+千万,千万,KM
+亿,亿,Y
+<资源类型>,资源类型:%s,Type:%s
+<资源总数>,资源总数:[color=%s]%d[/color],Total:[color=%s]%d[/color]
+<资源条>,资源条[color=%s]%.0f/%s[/color],Bar:[color=%s]%.0f/%s[/color]
+<背包>,背包:[color=%s]%d[/color],Bag:[color=%s]%d[/color]
+<自动制作>,自动制作[color=%s]%s/%.0f[/color],Auto:[color=%s]%s/%.0f[/color]
+<资源购买标题>,【资源购买】,【Buy】
+<消耗购买>,消耗50金币点击购买[color=%s]1[/color]%s,Cost 50 Gold Buy [color=%s]1[/color]%s
+<资源回复标题>,【资源回复】,【Regen】
+<点击每次增加>,点击+[color=%s]%.1f[/color]/每次,Click +[color=%s]%.1f[/color]/tap
+<基准每分钟增加>,基准+[color=%s]%d[/color]/分钟,Base +[color=%s]%d[/color]/min
+<当前每分钟增加>,当前+[color=%s]%s[/color]/分钟,Now +[color=%s]%s[/color]/min
+<长按时每秒>,长按时每秒[color=%s]2[/color]次,Hold: [color=%s]2[/color]/s
+<点击回复>,点击回复,Click
+<基础>,基础,Basic
+<高级>,高级,High
+<特殊>,特殊,Special
+<矿石_简介>,随时间自动回复,Regen over time
+<木材_简介>,随时间自动回复,Regen over time
+<皮革_简介>,随时间自动回复,Regen over time
+<草药_简介>,随时间自动回复,Regen over time
+<零件_简介>,基础资源溢时转化,Convert from surplus
+<精华_简介>,"无法自动回复,通过加点获取""制作精华""\n普通精华仅手动合成可用","No auto regen. Get ""Craft Essence"" via points\nNormal Essence for manual craft only"
+制作,制作,Craft
+加入队列,加入队列,Queue
+所有类型,所有类型,All
+基础素材,基础素材,Basic
+特殊,特殊,Special
+长剑,长剑,Sword
+盾牌,盾牌,Shield
+重甲,重甲,Heavy Armor
+腿甲,腿甲,Legs
+符文,符文,Rune
+炼金材料,炼金材料,Alchemy
+食材,食材,Ingredient
+类型,类型,Type
+等阶,等阶,Tier
+已解锁,已解锁,Unlocked
+搜索,搜索,Search
+温馨提示:左键蓝图加入合成队列,温馨提示:左键蓝图加入合成队列,Tip: Left-click to queue blueprint
+温馨提示:长按资源加快回复,温馨提示:长按资源加快回复,Tip: Hold to speed up resource
+温馨提示:物品在背包窗口查看,温馨提示:物品在背包窗口查看,Tip: Check items in inventory
+温馨提示:自动制作速度与资源回复速度和图纸需求有关,温馨提示:自动制作速度与资源回复速度和图纸需求有关,Tip: Auto craft speed depends on resource & recipe
+温馨提示:作者正在努力开发新功能,温馨提示:作者正在努力开发新功能,Tip: More features coming soon
+<累计熟练>,累计熟练\r%d,Proficiency \r%d
+强化器,强化器,Enhancer
+蓝图库,蓝图库,Blueprint
+物质,物质,Material
+物质加点,物质加点,Level Up
+未解锁,未解锁,Locked
+不限制,不限制,Any
+<自动制作加点>,"自动制作+%.0f\r上限:%d,费用:2","Auto Craft +%.0f\rMax:%d, Cost:2"
+<资源回复加点>,"回复+%.2f\r上限:%d,费用:1","Regen +%.2f\rMax:%d, Cost:1"
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,##物品目录,
+标准盾,标准盾,Standard Shield
+标准头盔,标准头盔,Standard Helmet
+标准重甲,标准重甲,Standard Heavy Armor
+标准腿甲,标准腿甲,Standard Leg Armor
+标准鞋子,标准鞋子,Standard Boots
+标准剑,标准剑,Standard Sword
+青铜剑,青铜剑,Bronze Sword
+铁剑,铁剑,Iron Sword
+墨羽笔杖,墨羽笔杖,Ink Feather Staff
+绘世杖,绘世杖,World Painting Staff
+炼金台,炼金台,Alchemy Station
+熔金埚,熔金埚,Gold Melting Crucible
+聚灵埚,聚灵埚,Spirit Gathering Crucible
+铁锅,铁锅,Iron Wok
+素铁套,素铁套,Plain Iron Set
+巧厨套,巧厨套,Cooking Master Set
+随机礼盒,随机礼盒,Random Gift Box
+炼金礼盒,炼金礼盒,Alchemy Gift Box
+符文礼盒,符文礼盒,Rune Gift Box
+绿色电路板,绿色电路板,Green Circuit Board
+蓝图纸,蓝图纸,Blueprint Sheet
+黄图纸,黄图纸,Yellow Blueprint
+金币,金币,Gold
+体力,体力,Stamina
+挂机精通代币,挂机精通代币,AFK Mastery Token
+木料精通代币,木料精通代币,Lumber Mastery Token
+矿城精通代币,矿城精通代币,Mining City Mastery Token
+手工精通代币,手工精通代币,Crafting Mastery Token
+游历精通代币,游历精通代币,Wandering Mastery Token
+职业精通代币,职业精通代币,Profession Mastery Token
+召唤精通代币,召唤精通代币,Summoning Mastery Token
+催化剂代币,催化剂代币,Catalyst Token
+烹饪代币,烹饪代币,Cooking Token
+资源回复代币,资源回复代币,Resource Recovery Token
+贤者点数,贤者点数,Sage Points
+贤者之石,贤者之石,Philosopher's Stone
+铁锭,铁锭,Iron Ingot
+纤维,纤维,Fiber
+鞣革,鞣革,Tanned Leather
+麻布,麻布,Linen Cloth
+火符文,火符文,Fire Rune
+水符文,水符文,Water Rune
+冰符文,冰符文,Ice Rune
+草符文,草符文,Grass Rune
+雷符文,雷符文,Lightning Rune
+土符文,土符文,Earth Rune
+风符文,风符文,Wind Rune
+火宝石,火宝石,Fire Gem
+水宝石,水宝石,Water Gem
+冰宝石,冰宝石,Ice Gem
+草宝石,草宝石,Grass Gem
+雷宝石,雷宝石,Lightning Gem
+土宝石,土宝石,Earth Gem
+风宝石,风宝石,Wind Gem
+星核矿砂,星核矿砂,Star Core Ore Sand
+冥铁碎片,冥铁碎片,Nether Iron Shard
+魂晶粉尘,魂晶粉尘,Soul Crystal Dust
+血牙结晶,血牙结晶,Blood Fang Crystal
+辉光矿晶,辉光矿晶,Glow Ore Crystal
+幻雾凝露,幻雾凝露,Fantasy Mist Condensate
+月影花汁,月影花汁,Moon Shadow Flower Nectar
+灵菇伞盖,灵菇伞盖,Spirit Mushroom Cap
+炽心草茎,炽心草茎,Blazing Heart Grass Stem
+星叶花,星叶花,Star Leaf Flower
+发条虫蜕,发条虫蜕,Clockwork Bug Shed
+腐翼鳞粉,腐翼鳞粉,Rot Wing Scale Powder
+海灵珠,海灵珠,Sea Spirit Pearl
+骨角碎片,骨角碎片,Bone Horn Shard
+焰尾羽,焰尾羽,Flame Tail Feather
+圣盾徽记,圣盾徽记,Holy Shield Emblem
+星纹结晶,星纹结晶,Starweave Crystal
+风翎符片,风翎符片,Wind Plume Talisman
+颜料瓶,颜料瓶,Paint Bottle
+枯骨残片,枯骨残片,Withered Bone Shard
+腐僵碎肉,腐僵碎肉,Rotten Corpse Meat
+圣坚药水,圣坚药水,Holy Fortitude Potion
+星芒药水,星芒药水,Star Radiance Potion
+风羽药水,风羽药水,Wind Feather Potion
+白伞菇,白伞菇,White Umbrella Mushroom
+荧光菇,荧光菇,Glow Mushroom
+幽影腐菇,幽影腐菇,Shadow Rot Mushroom
+灵脉菌,灵脉菌,Spirit Vein Fungus
+炽焰绒菇,炽焰绒菇,Blazing Flame Mushroom
+春小麦粒,春小麦粒,Spring Wheat Grain
+沙螟谷,沙螟谷,Sand Borer Grain
+水漾晶稻,水漾晶稻,Water Ripple Crystal Rice
+岩心薯,岩心薯,Rock Heart Potato
+星璃麦,星璃麦,Star Glass Wheat
+野兔后腿肉,野兔后腿肉,Hare Hindquarter
+芦花鸡胸肉,芦花鸡胸肉,Reed Chicken Breast
+红烧肉罐头,红烧肉罐头,Braised Pork Can
+棘甲兽肉块,棘甲兽肉块,Spike Armor Beast Meat
+金枪鱼罐头,金枪鱼罐头,Tuna Can
+晶鳞鲫鱼,晶鳞鲫鱼,Crystal Scale Crucian
+雾影鲈鱼,雾影鲈鱼,Shadow Mist Bass
+星点马口鱼,星点马口鱼,Star Spot Horse Fish
+岩隙黄鳝,岩隙黄鳝,Rock Crevice Eel
+荧鳍鲤鱼,荧鳍鲤鱼,Glow Fin Carp
+嫩生菜叶,嫩生菜叶,Tender Lettuce Leaf
+蔬菜罐头,蔬菜罐头,Vegetable Can
+水菱角,水菱角,Water Chestnut
+晶脉白菜,晶脉白菜,Crystal Vein Cabbage
+荧芯胡萝卜,荧芯胡萝卜,Glow Core Carrot
+岩芯土豆,岩芯土豆,Rock Core Potato
+雾影黄瓜,雾影黄瓜,Shadow Mist Cucumber
+晶光苹果,晶光苹果,Crystal Light Apple
+晨露桃,晨露桃,Morning Dew Peach
+雾润芒果,雾润芒果,Mist Mango
+星纹番茄,星纹番茄,Starweave Tomato
+星粒蓝莓,星粒蓝莓,Star Grain Blueberry
+荧光莓苔,荧光莓苔,Glow Berry Moss
+晶流蜜水,晶流蜜水,Crystal Flow Honey Water
+月华银砂,月华银砂,Moonlight Silver Sand
+风蚀酪尘,风蚀酪尘,Wind Eroded Cheese Dust
+岩焦麦块,岩焦麦块,Rock Burnt Wheat Chunk
+岩脉橙,岩脉橙,Rock Vein Orange
+深海晶盐粉,深海晶盐粉,Deep Sea Crystal Salt Powder
+熔岩炽辣酱,熔岩炽辣酱,Lava Blazing Chili Sauce
+霜糖花蜜膏,霜糖花蜜膏,Frost Sugar Nectar Paste
+幽藤酸浆粉,幽藤酸浆粉,Shadow Vine Sour Pulp Powder
+星尘鲜贝粉,星尘鲜贝粉,Star Dust Scallop Powder
+幻紫麻酱膏,幻紫麻酱膏,Fantasy Purple Sesame Paste
+深渊苦露粉,深渊苦露粉,Abyss Bitter Dew Powder
+盖浇扣肉饭,盖浇扣肉饭,Braised Pork Rice Bowl
+辣炒乱炖,辣炒乱炖,Spicy Stir-Fry Stew
+泡椒酸萝卜粥,泡椒酸萝卜粥,Pickled Pepper Radish Porridge
+山药葡干甜粥,山药葡干甜粥,Chinese Yam Raisin Sweet Porridge
+鲜贝虾茸粥,鲜贝虾茸粥,Scallop Shrimp Paste Porridge
+香菇鳝丝粥,香菇鳝丝粥,Mushroom Eel Thread Porridge
+燕麦乱炖,燕麦乱炖,Oatmeal Stew
+玉米排骨乱炖,玉米排骨乱炖,Corn Rib Stew
+炽魂药剂,炽魂药剂,Blazing Soul Elixir
+庇护灵药,庇护灵药,Shelter Elixir
+熊之力酊剂,熊之力酊剂,Bear's Strength Tincture
+幽影药剂,幽影药剂,Shadow Elixir
+生命甘露,生命甘露,Life Nectar
+力量药水,力量药水,Strength Potion
+速度药水,速度药水,Speed Potion
+防御药水,防御药水,Defense Potion
+生命药水,生命药水,Health Potion
+持续生命药水,持续生命药水,Regeneration Potion
+法力药水,法力药水,Mana Potion
+持续法力药水,持续法力药水,Mana Regen Potion
+以太药水,以太药水,Aether Potion
+创生息壤药水,创生息壤药水,Creation Loam Potion
+维度稳固药水,维度稳固药水,Dimensional Stabilization Potion
+混沌调和药水,混沌调和药水,Chaos Tuning Potion
+蓝图药水,蓝图药水,Blueprint Potion
+锚定时间药水,锚定时间药水,Time Anchoring Potion
+悔恨之痂,悔恨之痂,Scab of Regret
+绝望之雾,绝望之雾,Mist of Despair
+背叛之刺,背叛之刺,Thorn of Betrayal
+孤独之茧,孤独之茧,Cocoon of Loneliness
+恐惧之瞳,恐惧之瞳,Eye of Fear
+迷茫之沼,迷茫之沼,Bog of Confusion
+思念之蚀,思念之蚀,Erosion of Yearning
+偏执之链,偏执之链,Chain of Paranoia
+酷刑之痕,酷刑之痕,Mark of Torture
+哀伤之泪,哀伤之泪,Tear of Sorrow
+狂乱之絮,狂乱之絮,Fluff of Frenzy
+失落之尘,失落之尘,Dust of Loss
+凝水静渊瓶,凝水静渊瓶,Still Water Abyss Vial
+翠芽恒生瓶,翠芽恒生瓶,Green Sprout Eternity Vial
+炽焰定燃瓶,炽焰定燃瓶,Blazing Flame Vial
+流风驻息瓶,流风驻息瓶,Wind Current Vial
+雷弧凝晶瓶,雷弧凝晶瓶,Lightning Arc Crystal Vial
+磐石稳态瓶,磐石稳态瓶,Rock Steady Vial
+玄冰永冻瓶,玄冰永冻瓶,Mystic Ice Freeze Vial
+炽焰维度传送液,炽焰维度传送液,Blazing Dimension Transference Fluid
+幽林维度传送液,幽林维度传送液,Shadow Forest Dimension Transference Fluid
+凛冬维度传送液,凛冬维度传送液,Winter Dimension Transference Fluid
+荒漠维度传送液,荒漠维度传送液,Desert Dimension Transference Fluid
+虚空维度传送液,虚空维度传送液,Void Dimension Transference Fluid
+机械维度传送液,机械维度传送液,Mechanical Dimension Transference Fluid
+深渊维度传送液,深渊维度传送液,Abyss Dimension Transference Fluid
+幻境维度传送液,幻境维度传送液,Fantasy Dimension Transference Fluid
+焦黑残渣浊液,焦黑残渣浊液,Charred Residue Turbid Fluid
+灰白絮乱膏体,灰白絮乱膏体,Gray White Chaotic Paste
+墨色泡沫废液,墨色泡沫废液,Ink Foam Waste Fluid
+铅灰粘稠浆液,铅灰粘稠浆液,Lead Gray Thick Slurry
+苍白浑浊雾液,苍白浑浊雾液,Pale Cloudy Mist Fluid
+炭黑结块粉末,炭黑结块粉末,Charred Caked Powder
+暗沉龟裂结晶,暗沉龟裂结晶,Dark Cracked Crystal
+灰黑分层废液,灰黑分层废液,Gray Black Layered Waste Fluid
+漏洞废弃液,漏洞废弃液,Glitch Waste Fluid
+橙色小瓶颜料,橙色小瓶颜料,Orange Small Paint Bottle
+橙色颜料,橙色颜料,Orange Paint
+橙色大瓶颜料,橙色大瓶颜料,Orange Large Paint Bottle
+橙色高级颜料,橙色高级颜料,Orange Premium Paint
+橙色颜料桶,橙色颜料桶,Orange Paint Bucket
+粉红小瓶颜料,粉红小瓶颜料,Pink Small Paint Bottle
+粉红颜料,粉红颜料,Pink Paint
+粉红大瓶颜料,粉红大瓶颜料,Pink Large Paint Bottle
+粉红高级颜料,粉红高级颜料,Pink Premium Paint
+粉红颜料桶,粉红颜料桶,Pink Paint Bucket
+黑色小瓶颜料,黑色小瓶颜料,Black Small Paint Bottle
+黑色颜料,黑色颜料,Black Paint
+黑色大瓶颜料,黑色大瓶颜料,Black Large Paint Bottle
+黑色高级颜料,黑色高级颜料,Black Premium Paint
+黑色颜料桶,黑色颜料桶,Black Paint Bucket
+红色小瓶颜料,红色小瓶颜料,Red Small Paint Bottle
+红色颜料,红色颜料,Red Paint
+红色大瓶颜料,红色大瓶颜料,Red Large Paint Bottle
+红色高级颜料,红色高级颜料,Red Premium Paint
+红色颜料桶,红色颜料桶,Red Paint Bucket
+黄色小瓶颜料,黄色小瓶颜料,Yellow Small Paint Bottle
+黄色颜料,黄色颜料,Yellow Paint
+黄色大瓶颜料,黄色大瓶颜料,Yellow Large Paint Bottle
+黄色高级颜料,黄色颜料,Yellow Premium Paint
+黄色颜料桶,黄色颜料桶,Yellow Paint Bucket
+灰色小瓶颜料,灰色小瓶颜料,Gray Small Paint Bottle
+灰色颜料,灰色颜料,Gray Paint
+灰色大瓶颜料,灰色大瓶颜料,Gray Large Paint Bottle
+灰色高级颜料,灰色高级颜料,Gray Premium Paint
+灰色颜料桶,灰色颜料桶,Gray Paint Bucket
+蓝色小瓶颜料,蓝色小瓶颜料,Blue Small Paint Bottle
+蓝色颜料,蓝色颜料,Blue Paint
+蓝色大瓶颜料,蓝色大瓶颜料,Blue Large Paint Bottle
+蓝色高级颜料,蓝色高级颜料,Blue Premium Paint
+蓝色颜料桶,蓝色颜料桶,Blue Paint Bucket
+绿色小瓶颜料,绿色小瓶颜料,Green Small Paint Bottle
+绿色颜料,绿色颜料,Green Paint
+绿色大瓶颜料,绿色大瓶颜料,Green Large Paint Bottle
+绿色高级颜料,绿色高级颜料,Green Premium Paint
+绿色颜料桶,绿色颜料桶,Green Paint Bucket
+青色小瓶颜料,青色小瓶颜料,Cyan Small Paint Bottle
+青色颜料,青色颜料,Cyan Paint
+青色大瓶颜料,青色大瓶颜料,Cyan Large Paint Bottle
+青色高级颜料,青色高级颜料,Cyan Premium Paint
+青色颜料桶,青色颜料桶,Cyan Paint Bucket
+紫色小瓶颜料,紫色小瓶颜料,Purple Small Paint Bottle
+紫色颜料,紫色颜料,Purple Paint
+紫色大瓶颜料,紫色大瓶颜料,Purple Large Paint Bottle
+紫色高级颜料,紫色高级颜料,Purple Premium Paint
+紫色颜料桶,紫色颜料桶,Purple Paint Bucket
+近战攻击,近战攻击,Melee Attack
+火球术,火球术,Fireball
+治愈术,治愈术,Heal
+冰锥术,冰锥术,Ice Lance
+岩甲术,岩甲术,Rock Armor
+召唤术,召唤术,Summon
+闪电术,闪电术,Lightning
+风刃术,风刃术,Wind Blade
+小游戏,小游戏,Minigame
+战斗,战斗,Battle
+订单提升,订单提升,Order Boost
+订单翻倍,订单翻倍,Order Double
+普通订单,普通订单,Normal Order
+残缺图纸,残缺图纸,Broken Blueprint
+抽奖机,抽奖机,Gacha Machine
+地球,地球,Earth
+懒惰,懒惰,Sloth
+暴怒,暴怒,Wrath
+色欲,色欲,Lust
+嫉妒,嫉妒,Envy
+铁匠,铁匠,Blacksmith
+猎人,猎人,Hunter
+杂货铺老板,杂货铺老板,General Store Owner
+老奶奶,老奶奶,Granny
+僵尸A,僵尸A,Zombie A
+僵尸B,僵尸B,Zombie B
+僵尸C,僵尸C,Zombie C
+骷髅A,骷髅A,Skeleton A
+骷髅B,骷髅B,Skeleton B
+骷髅C,骷髅C,Skeleton C
+骷髅D,骷髅D,Skeleton D
+骷髅鬼,骷髅鬼,Skeleton Ghost
+恶鬼人,恶鬼人,Evil Spirit Man
+幽灵人,幽灵人,Ghost Man

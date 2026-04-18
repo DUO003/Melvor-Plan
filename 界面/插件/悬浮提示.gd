@@ -116,7 +116,6 @@ func 数据包更新(数据:梅提示数据):
 				样式.add_child(边距容器)
 	if not 禁用:
 		size = Vector2(0, 0)
-	print(size)
 	数据包样式调整(数据.标题高度)
 	if not 禁用:
 		global_position = get_global_mouse_position() + Vector2(10, 10)
@@ -189,7 +188,8 @@ func 分栏节点(间距:int)->HBoxContainer:
 func _process(_delta: float) -> void:
 	if visible and not 禁用:
 		if 节点:
-			if 节点 is 梅帮助提示文本:
+			if 节点.get("提示偏移") is Vector2:
+				# 满足条件：使用节点的偏移位置
 				global_position = 节点.global_position + 节点.提示偏移
 			else :
 				global_position = get_global_mouse_position() + Vector2(10, 10)

@@ -41,6 +41,8 @@ func _ready() -> void:
 	清空制作队列()
 	注册按钮()
 	_更新_UI()
+func 翻译更新检查():
+	生成配方节点()
 func _process(delta: float) -> void:
 	更新制作队列进度条()
 	帧率数据.append(delta)# 1. 记录当前帧的间隔时间
@@ -90,13 +92,13 @@ func 生成配方节点(类型名称=类型):
 	else :克隆按钮(类型)
 func 克隆按钮(项):
 	var 标签=Label.new()
-	标签.text="%s类型"%项
+	标签.text=tr(项)+tr("类型")
 	配方表格.add_child(标签)
 	var 配方列表:Array=[]
 	var 表格=GridContainer.new()
-	表格.add_theme_constant_override("h_separation", -4)
-	表格.add_theme_constant_override("v_separation", 0)
-	表格.columns=8
+	表格.add_theme_constant_override("h_separation", 5)
+	表格.add_theme_constant_override("v_separation", 5)
+	表格.columns=7
 	配方表格.add_child(表格)
 	if 等阶.text=="不限制":
 		配方列表 = 计划.获取配方(项,ceili(计划.数据系统("手工","等级") / 5.0),1)
@@ -112,8 +114,7 @@ func 更新信息():
 	#print ("更新信息触发")
 	var 熟练值:float = 计划.精通收益(计划.处理时间戳(计划.梅存档["手工"]))
 	熟练值*=(1+0.1*计划.梅存档["挂机"].get("等级",0))
-	%提示文本.text="暂存熟练\r%.0f\rfps:%.0f" % [熟练值, 平均帧率]
-	pass
+	%提示文本.text=tr("<累计熟练>")%[熟练值]+"\rfps:%d" % [平均帧率]
 var 自动化进度:梅自动化进度条 = preload("res://界面/手工系统/合成/自动化进度.tscn").instantiate()
 @onready var 制作队列: HBoxContainer = %制作队列
 func 清空制作队列():
@@ -131,16 +132,15 @@ func 注册进度条():
 				克隆节点 = 制作队列节点[i]
 			else:
 				克隆节点 = 自动化进度.duplicate()
+				克隆节点.序号=i+1
 				%制作队列.add_child(克隆节点)
 				制作队列节点.append(克隆节点)
 				克隆节点.更新进度(0.0)
-				克隆节点.配方贴图.mouse_entered.connect(func():
+				克隆节点.mouse_entered.connect(func():
 					计划.数据包提示.emit(加载队列文本(i,克隆节点)))
-				克隆节点.配方贴图.mouse_exited.connect(func():
+				克隆节点.mouse_exited.connect(func():
 					计划.全局悬浮提示.emit("",克隆节点,30))
-				克隆节点.取消.gui_input.connect(func(按键信号):
-					if 按键信号 is InputEventMouseButton and 按键信号.pressed:
-						制作队列更新(按键信号,i))
+				克隆节点.取消.pressed.connect(移除制作队列.bind(i))
 			if i < 制作队列数组.size():
 				var 配方的名称:String=制作队列数组[i] as String
 				克隆节点.传入配方参数(配方的名称)
@@ -178,13 +178,15 @@ func 制作队列更新(按键信号:InputEventMouseButton,i:int):
 	if 按键信号.button_index == MOUSE_BUTTON_LEFT:
 		计划.语法糖通知( "合成队列可以右键移除","手工提示")
 	elif 按键信号.button_index == MOUSE_BUTTON_RIGHT:
-		var 制作队列数组 = 计划.手工.队列合成()# 获取当前制作队列
-		if i >= 0 and i < 制作队列数组.size():# 检查索引是否有效（在数组范围内）
-			var 装备名称 = 制作队列数组[i]
-			计划.手工.队列合成("制作队列",装备名称)
-			if 制作队列节点.size()>i:
-				var 配方节点 = 制作队列节点[i].get_node("配方")
-				计划.数据包提示.emit(加载队列文本(i,配方节点))
-		# 索引无效时什么也不做
+		移除制作队列(i)
 	else :
 		pass
+func 移除制作队列(i:int):
+	var 制作队列数组 = 计划.手工.队列合成()# 获取当前制作队列
+	if i >= 0 and i < 制作队列数组.size():# 检查索引是否有效（在数组范围内）
+		var 装备名称 = 制作队列数组[i]
+		计划.手工.队列合成("制作队列",装备名称)
+		if 制作队列节点.size()>i:
+			var 配方节点 = 制作队列节点[i]
+			计划.数据包提示.emit(加载队列文本(i,配方节点))
+	
