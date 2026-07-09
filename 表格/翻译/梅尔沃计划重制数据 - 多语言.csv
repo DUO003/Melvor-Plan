@@ -232,6 +232,25 @@ Keys,zh-CN,EN
 奖励：解锁“炼金”玩法。,奖励：解锁“炼金”玩法。,"Reward: Unlock ""Alchemy"" gameplay."
 消耗10体力刷新,消耗10体力刷新,Consume 10 Stamina to refresh
 ,,
+<蓝图抽取说明标题>,[b]蓝图抽取说明[/b],[b]Blueprint Draw Rules[/b]
+<抽取说明_残缺>,"%d%%获得残缺蓝图,消耗残缺图纸获得%s点数","%d%% for Torn Blueprint,consumes Torn Blueprint to gain %s points"
+<抽取说明_蓝图>,"%d%%获得UP类型的装备蓝图,重复返还精通","%d%% for UP Equipment Blueprint,duplicates refund Mastery EXP"
+<抽取说明_特殊>,"%d%%获得[b]未拥有[/b]的特殊蓝图,全收集补偿%s*10","%d%% for [b]Unowned[/b] Special Blueprint,full collection rewards %s*10"
+<抽取说明_图纸包>,特等奖 %d%%获得图纸包,Lucky Prize: %d%% for Plan Pack
+<抽取说明_研究费用>,研究费用随抽取结果增加,Research Cost rises per draw result
+<当前研究费用>,当前研究费用：%d,Current Research Cost:%d
+<当前预备费用>,多倍研究需要准备%d蓝图纸,Multiplied research requires %d blueprints first
+<当前蓝图阶级>,当获蓝图阶级:T%d,Obtained Blueprint Tier:T%d
+<当前灵感等级>,当前灵感等级：%d（%d/%d）,Current Inspiration Lv:%d（%d/%d）
+<当前定向选项>,当前定向选项 %s,Current Focus:%s
+<解锁提示>,"需要T%d阶解锁,蓝图重复获取灵感精通","Requires Tier T%d to unlock, duplicates grant Inspiration Mastery"
+<抽取说明_蓝图纸点数>,蓝图纸点数通过制作残缺图纸获得,Craft Torn Plans for BP Points to unlock blueprints
+<分界线>,---- ---- ---- ---- 分界线 ---- ---- ---- ----,---- ---- ---- ---- Divider ---- ---- ---- ----
+,,
+,,
+,,
+,,
+,,
 <装备>,<装备>,<Equip>
 <工具>,<工具>,<Tool>
 <礼盒>,<礼盒>,<Gift>
@@ -422,11 +441,11 @@ Keys,zh-CN,EN
 不限制,不限制,Any
 <自动制作加点>,"自动制作+%.0f\r上限:%d,费用:2","Auto Craft +%.0f\rMax:%d, Cost:2"
 <资源回复加点>,"回复+%.2f\r上限:%d,费用:1","Regen +%.2f\rMax:%d, Cost:1"
-,,
-,,
-,,
-,,
-,,
+<加点成功>,"加点成功,当前%s点数:%d","Point added, %s: %d"
+<代币退还>,"代币退还,点数:%d","Refunded, Points: %d"
+<操作失败>,操作失败,Action Failed
+前往,前往,Go
+挂起,挂起,Suspend
 ,,
 ,,
 ,,

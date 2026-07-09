@@ -1,13 +1,12 @@
 @tool
 extends HSlider
-var 标签:Label
+@onready var 标签: Label = %"标签"
 @export var 标签文本:String="提交%d次"
 @export var 零点标签:String="最大提交"
 @export_enum("更新玩法","更新_UI")var 信号选项:String="更新_UI"
 @export var 文本偏移:Vector2=Vector2(-250,0):
 	set(值):
 		文本偏移=值
-		标签=$"标签" as Label
 		if 标签:标签.position=文本偏移
 		else :print("标签未获取")
 var 信号字典:Dictionary[String,Signal]

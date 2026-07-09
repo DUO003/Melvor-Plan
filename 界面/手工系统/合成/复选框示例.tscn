@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://djl444n4mqcj0"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_15tbt"]
+[ext_resource type="Texture2D" uid="uid://b1ep2nj8rob3c" path="res://素材/自制/图标/嫉妒.svg" id="1_nhvuh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mdl74"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7xhl6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v813g"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[node name="复选框示例" type="CheckBox" unique_id=1033559991]
+offset_left = 43.0
+offset_top = 418.0
+offset_right = 667.0
+offset_bottom = 490.0
+theme = ExtResource("1_15tbt")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mdl74")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7xhl6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_v813g")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mdl74")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v813g")
+text = "铁锭"
+icon = ExtResource("1_nhvuh")
+expand_icon = true

@@ -11,13 +11,21 @@
 [ext_resource type="StyleBox" uid="uid://d1rury6q4yglm" path="res://界面/主题/样式/物品格样式_可用.tres" id="7_yxini"]
 
 [node name="背包栏" type="FoldableContainer" unique_id=924188254]
-offset_right = 970.0
-offset_bottom = 648.0
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -143.0
+grow_horizontal = 0
+grow_vertical = 2
 theme = ExtResource("2_jyq5j")
+folded = true
 title = "背包"
 script = ExtResource("1_e26fh")
+metadata/_edit_lock_ = true
 
 [node name="选项卡" type="TabContainer" parent="." unique_id=275038361]
+visible = false
 layout_mode = 2
 current_tab = 0
 

@@ -125,8 +125,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="文本" type="Label" parent="." unique_id=791693111]
 layout_mode = 1
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 69.0
+offset_bottom = 45.0
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hn262")
 text = "购买"

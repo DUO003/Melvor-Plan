@@ -144,6 +144,11 @@ func _当范围节点接收GUI输入时(事件: InputEvent) -> void:
 			是否正在拖动 = false
 			计划.窗口状态管理(基类窗口名称,"拖动位置",null,范围节点.position)
 	elif 事件 is InputEventMouseMotion and 是否正在拖动:  # 鼠标移动且处于拖动状态
+		var 游戏区域: Rect2 = Rect2(0,0,计划.游戏分辨率.x + 1,计划.游戏分辨率.y + 1)
+		if not 游戏区域.has_point(事件.global_position):# 2. 检查鼠标是否 不在 游戏矩形内
+			是否正在拖动 = false
+			计划.窗口状态管理(基类窗口名称,"拖动位置",null,范围节点.position)
+			return  # 停止后续拖动，防止UI跳变
 		# 核心修改：只计算X轴位置，固定Y轴为范围节点原本的Y坐标
 		var 目标X位置: float = 事件.global_position.x - 拖动偏移量.x
 		# 保持Y轴位置不变，仅更新X轴

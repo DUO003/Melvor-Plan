@@ -57,8 +57,8 @@ vertical_scroll_mode = 3
 [node name="范围" type="GridContainer" parent="奖励面板范围/滚动区域" unique_id=426351702]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 6
+size_flags_vertical = 6
 
 [node name="确认" type="Button" parent="奖励面板范围" unique_id=1523072396]
 unique_name_in_owner = true

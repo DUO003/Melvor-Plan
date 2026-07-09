@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://hropdpl5f686" path="res://界面/挂机系统/原罪/技能树.tscn" id="12_nhtbf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nhtbf"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yuie1"]
 content_margin_left = 10.0
@@ -25,8 +28,6 @@ content_margin_left = 10.0
 content_margin_right = 10.0
 
 [node name="原罪界面" unique_id=166508811 node_paths=PackedStringArray("选项卡同步") instance=ExtResource("1_2eyov")]
-size_flags_horizontal = 1
-size_flags_vertical = 1
 script = ExtResource("2_riyk3")
 "基类窗口名称" = "原罪界面"
 "选项卡同步" = {
@@ -43,10 +44,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_nhtbf")
-current_tab = 0
+current_tab = 1
 
 [node name="原罪突破" type="Control" parent="内容节点/选项卡" index="1" unique_id=221357507]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -127,14 +129,12 @@ text = "突破"
 
 [node name="原罪标签" type="HBoxContainer" parent="内容节点/选项卡/原罪突破" index="3" unique_id=363759089]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -850.0
-offset_top = -362.0
-offset_right = 850.0
+offset_top = -343.0
+offset_bottom = -118.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -318,14 +318,14 @@ horizontal_alignment = 1
 
 [node name="系统管理" type="TabContainer" parent="内容节点/选项卡" index="2" unique_id=1268753508]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_6nm3x")
-current_tab = 0
+current_tab = 4
 metadata/_tab_index = 1
 
 [node name="0_挂机" parent="内容节点/选项卡/系统管理" index="1" unique_id=387609715 instance=ExtResource("4_riyk3")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 "系统" = "挂机"
 
@@ -351,7 +351,6 @@ metadata/_tab_index = 3
 
 [node name="4_游历" parent="内容节点/选项卡/系统管理" index="5" unique_id=844256267 instance=ExtResource("4_riyk3")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 "系统" = "游历"
 metadata/_tab_index = 4
@@ -370,7 +369,12 @@ layout_mode = 2
 "系统" = "召唤"
 metadata/_tab_index = 6
 
-[node name="介绍" type="RichTextLabel" parent="内容节点/选项卡" index="3" unique_id=629627853]
+[node name="技能树" parent="内容节点/选项卡" index="3" unique_id=769633772 instance=ExtResource("12_nhtbf")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="介绍" type="RichTextLabel" parent="内容节点/选项卡" index="4" unique_id=629627853]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(600, 0)
@@ -394,10 +398,6 @@ text = "挂机系统升级
 2.共存在 7 种原罪值，其综合属性将影响突破成功率
 3.突破需满足成功率≥20% 方可发起尝试，为提升成功率，建议在达到 50% 以上时操作。
 4.累计成功突破 2、4、6、8、10 次后，将解锁新玩法系统。"
-metadata/_tab_index = 2
-
-[node name="技能树" parent="内容节点/选项卡" index="4" unique_id=769633772 instance=ExtResource("12_nhtbf")]
-visible = false
-layout_mode = 2
+metadata/_tab_index = 3
 
 [editable path="内容节点/选项卡/技能树"]

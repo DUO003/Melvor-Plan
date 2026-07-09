@@ -124,7 +124,7 @@ script = ExtResource("4_vshoq")
 metadata/_custom_type_script = "uid://c1qmsb0830ojs"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2l3n"]
-bg_color = Color(0.6901961, 0.5568628, 0.27058825, 1)
+bg_color = Color(0.69, 0.556715, 0.26909998, 0.8627451)
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10
@@ -293,10 +293,9 @@ offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_r40sw")
-current_tab = 2
+current_tab = 0
 
 [node name="炼金台" type="VBoxContainer" parent="内容节点/选项卡" index="1" unique_id=1143509562]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -329,11 +328,18 @@ scale = Vector2(1.5, 1.5)
 
 [node name="扩容配方列表" type="Button" parent="内容节点/选项卡/炼金台/炼金台/炼金台左侧/炼金台内容" index="1" unique_id=1296350064]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 981.0
-offset_top = 250.0
-offset_right = 1235.0
-offset_bottom = 324.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -328.0
+offset_top = -191.0
+offset_right = -74.0
+offset_bottom = -117.0
+focus_neighbor_left = NodePath("../清空配方")
+focus_neighbor_right = NodePath("../../../../../../背包栏")
 theme_override_font_sizes/font_size = 38
 text = "扩容配方列表"
 
@@ -343,9 +349,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -4.0
-offset_right = 389.0
-offset_bottom = 86.0
+offset_left = -50.0
+offset_right = 310.0
+offset_bottom = 90.0
 theme_override_constants/line_spacing = -10
 theme_override_font_sizes/font_size = 35
 text = "扩容:(%d/%d)
@@ -360,12 +366,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -576.0
-offset_top = -110.0
-offset_right = -322.0
-offset_bottom = -36.0
+offset_left = -635.0
+offset_top = -111.0
+offset_right = -381.0
+offset_bottom = -37.0
 grow_horizontal = 0
 grow_vertical = 0
+focus_neighbor_top = NodePath("../清空配方")
+focus_neighbor_right = NodePath("../扩容配方列表")
 theme_override_font_sizes/font_size = 38
 text = "保存配方"
 
@@ -377,12 +385,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -573.0
-offset_top = -189.0
-offset_right = -319.0
-offset_bottom = -122.0
+offset_left = -632.0
+offset_top = -190.0
+offset_right = -378.0
+offset_bottom = -123.0
 grow_horizontal = 0
 grow_vertical = 0
+focus_neighbor_right = NodePath("../扩容配方列表")
+focus_neighbor_bottom = NodePath("../保存配方")
 theme_override_font_sizes/font_size = 38
 theme_override_styles/normal = SubResource("StyleBox_pgdr5")
 theme_override_styles/pressed = SubResource("StyleBox_iprr7")
@@ -392,15 +402,18 @@ text = "清空配方"
 
 [node name="配方详情" type="RichTextLabel" parent="内容节点/选项卡/炼金台/炼金台/炼金台左侧/炼金台内容" index="4" unique_id=2101650079]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 590.0
-offset_top = 8.0
-offset_right = 1279.0
-offset_bottom = 251.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -638.0
+offset_top = 10.0
+offset_right = -31.0
+offset_bottom = 225.0
+grow_horizontal = 0
 bbcode_enabled = true
 text = "催化剂:圣盾徽记
 材料:星核矿砂*10,星核矿砂*10,星核矿砂*10,星核矿砂*10"
-metadata/_edit_lock_ = true
 
 [node name="队列" type="Panel" parent="内容节点/选项卡/炼金台/炼金台/炼金台左侧" index="1" unique_id=1498816954]
 custom_minimum_size = Vector2(0, 300)
@@ -554,6 +567,7 @@ layout_mode = 2
 size_flags_vertical = 8
 
 [node name="点数兑换" type="VBoxContainer" parent="内容节点/选项卡" index="3" unique_id=203241150]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -800,20 +814,19 @@ grow_vertical = 2
 text = "材料4"
 metadata/_edit_lock_ = true
 
-[node name="背包栏" parent="." index="3" unique_id=1332478190 instance=ExtResource("18_fib78")]
+[node name="背包栏" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="1" unique_id=1332478190 instance=ExtResource("18_fib78")]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -150.0
+offset_left = -143.0
 offset_right = 0.0
-offset_bottom = 68.0
 grow_horizontal = 0
 "白名单" = ["催化", "特殊催化", "炼金"]
 "自动打开背包" = true
 
-[node name="弹窗提示" type="Control" parent="." index="4" unique_id=21903331]
+[node name="弹窗提示" type="Control" parent="." index="3" unique_id=21903331]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1

@@ -16,6 +16,7 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6kji"]
 content_margin_left = 10.0
+content_margin_bottom = 10.0
 bg_color = Color(0.5529412, 0.43137255, 0.18431373, 0.25490198)
 script = ExtResource("6_kl4kr")
 metadata/_custom_type_script = "uid://dyet4yfov8by1"
@@ -227,10 +228,10 @@ _data = {
 script = ExtResource("2_0lnvh")
 "基类窗口名称" = "合成_抽奖机界面"
 "选项卡同步" = {
-"标签页": NodePath("内容节点/MarginContainer/HBoxContainer/界面布局/标签页")
+"标签页": NodePath("内容节点/内容边距/分隔容器/界面布局/标签页")
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=638278999]
+[node name="内容边距" type="MarginContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=638278999]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -240,58 +241,58 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="内容节点/MarginContainer" index="0" unique_id=746490171]
+[node name="分隔容器" type="HBoxContainer" parent="内容节点/内容边距" index="0" unique_id=746490171]
 layout_mode = 2
 
-[node name="Space" type="Control" parent="内容节点/MarginContainer/HBoxContainer" index="0" unique_id=486149096]
-custom_minimum_size = Vector2(50, 0)
+[node name="抽卡区" type="VBoxContainer" parent="内容节点/内容边距/分隔容器" index="0" unique_id=534151295]
 layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="内容节点/MarginContainer/HBoxContainer" index="1" unique_id=534151295]
-layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
+size_flags_vertical = 4
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="研究方向" type="OptionButton" parent="内容节点/MarginContainer/HBoxContainer/VBoxContainer" index="0" unique_id=1769902389]
+[node name="研究方向" type="OptionButton" parent="内容节点/内容边距/分隔容器/抽卡区" index="0" unique_id=1769902389]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.2
 fit_to_longest_item = false
 item_count = 1
 popup/item_0/text = "符文"
 popup/item_0/id = 0
 
-[node name="文本" type="Label" parent="内容节点/MarginContainer/HBoxContainer/VBoxContainer/研究方向" index="1" unique_id=1839904195]
+[node name="文本" type="Label" parent="内容节点/内容边距/分隔容器/抽卡区/研究方向" index="1" unique_id=1839904195]
 layout_mode = 0
-offset_top = -65.0
-offset_right = 400.0
+offset_top = -46.0
+offset_right = 138.0
 offset_bottom = -1.0
 text = "研究方向:"
 vertical_alignment = 2
 
-[node name="滑块" parent="内容节点/MarginContainer/HBoxContainer/VBoxContainer" index="1" unique_id=921848942 instance=ExtResource("2_6nf3n")]
+[node name="滑块" parent="内容节点/内容边距/分隔容器/抽卡区" index="1" unique_id=921848942 instance=ExtResource("2_6nf3n")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.2
 min_value = 1.0
 "标签文本" = "抽取%d次"
 "零点标签" = "锁定"
-"文本偏移" = Vector2(0, -60)
+"文本偏移" = Vector2(-120, 0)
 
-[node name="标签" parent="内容节点/MarginContainer/HBoxContainer/VBoxContainer/滑块" index="0" unique_id=793789444]
-offset_left = -134.0
-offset_top = 8.0
-offset_right = 38.49048
-offset_bottom = 65.0
+[node name="标签" parent="内容节点/内容边距/分隔容器/抽卡区/滑块" index="0" unique_id=793789444]
+offset_left = -120.0
+offset_right = 52.49048
 
-[node name="研究进度条" parent="内容节点/MarginContainer/HBoxContainer/VBoxContainer" index="2" unique_id=1795264555 instance=ExtResource("3_0lnvh")]
+[node name="研究进度条" parent="内容节点/内容边距/分隔容器/抽卡区" index="2" unique_id=1795264555 instance=ExtResource("3_0lnvh")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(335, 335)
+custom_minimum_size = Vector2(335, 370)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 "半径" = 150.0
 "线条宽度" = 25.0
 
-[node name="研究配方名" type="Label" parent="内容节点/MarginContainer/HBoxContainer/VBoxContainer/研究进度条" index="0" unique_id=1846937128]
+[node name="研究配方名" type="Label" parent="内容节点/内容边距/分隔容器/抽卡区/研究进度条" index="0" unique_id=1846937128]
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 1
@@ -301,9 +302,8 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -105.0
-offset_top = -33.0
+offset_top = -57.0
 offset_right = 105.0
-offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0.5, 0.5, 0.5, 1)
@@ -313,45 +313,50 @@ text = "道具名称"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="研究配方贴图" type="TextureRect" parent="内容节点/MarginContainer/HBoxContainer/VBoxContainer/研究进度条" index="1" unique_id=92316656]
+[node name="研究配方贴图" type="TextureRect" parent="内容节点/内容边距/分隔容器/抽卡区/研究进度条" index="1" unique_id=92316656]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 14.0
-offset_top = 16.0
-offset_right = 254.0
-offset_bottom = 236.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49
+anchor_right = 0.49
+offset_left = -146.15001
+offset_top = 25.0
+offset_right = 93.84999
+offset_bottom = 245.0
 scale = Vector2(1.25075, 1.25075)
 texture = ExtResource("5_ulomb")
 expand_mode = 1
 
-[node name="Space" type="Control" parent="内容节点/MarginContainer/HBoxContainer/VBoxContainer" index="3" unique_id=234387681]
-custom_minimum_size = Vector2(50, 10)
-layout_mode = 2
-
-[node name="研究" type="Button" parent="内容节点/MarginContainer/HBoxContainer/VBoxContainer" index="4" unique_id=1647928484]
+[node name="研究" type="Button" parent="内容节点/内容边距/分隔容器/抽卡区" index="3" unique_id=1647928484]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 8
 text = "研究"
 
-[node name="Space2" type="Control" parent="内容节点/MarginContainer/HBoxContainer" index="2" unique_id=1375784809]
-custom_minimum_size = Vector2(50, 0)
+[node name="界面布局" type="VBoxContainer" parent="内容节点/内容边距/分隔容器" index="1" unique_id=273123555]
 layout_mode = 2
 
-[node name="界面布局" type="VBoxContainer" parent="内容节点/MarginContainer/HBoxContainer" index="3" unique_id=273123555]
-layout_mode = 2
-
-[node name="标签页" type="TabContainer" parent="内容节点/MarginContainer/HBoxContainer/界面布局" index="0" unique_id=736239058]
+[node name="标签页" type="TabContainer" parent="内容节点/内容边距/分隔容器/界面布局" index="0" unique_id=736239058]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1150, 763)
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 2
+current_tab = 0
 
-[node name="抽取说明" type="RichTextLabel" parent="内容节点/MarginContainer/HBoxContainer/界面布局/标签页" index="1" unique_id=1741232635]
-unique_name_in_owner = true
-visible = false
+[node name="抽取容器" type="ScrollContainer" parent="内容节点/内容边距/分隔容器/界面布局/标签页" index="1" unique_id=1213122505]
 layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="说明容器" type="VBoxContainer" parent="内容节点/内容边距/分隔容器/界面布局/标签页/抽取容器" index="0" unique_id=644420480]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="抽取说明" type="RichTextLabel" parent="内容节点/内容边距/分隔容器/界面布局/标签页/抽取容器/说明容器" index="0" unique_id=1741232635]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_behavior_recursive = 1
 theme_override_constants/paragraph_separation = -10
 theme_override_font_sizes/bold_font_size = 50
@@ -361,16 +366,28 @@ text = "[b]蓝图抽取说明	[/b]示例文本,实际修改见游戏内
 75%获得残缺蓝图
 20%获得UP类型的装备蓝图 重复累积更多经验值
 5%获得未拥有的特殊蓝图 全收集给 黄图纸*160
-研究费用随抽到物品提升（0点重置最大160）
---------	分界线	--------
-当获蓝图等级T7（326/600）
+研究费用随抽到物品提升（0点重置最大160）."
+fit_content = true
+scroll_active = false
+drag_and_drop_selection_enabled = false
+
+[node name="当前状态" type="RichTextLabel" parent="内容节点/内容边距/分隔容器/界面布局/标签页/抽取容器/说明容器" index="1" unique_id=1319328839]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_behavior_recursive = 1
+theme_override_constants/paragraph_separation = -10
+theme_override_font_sizes/bold_font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_m6kji")
+bbcode_enabled = true
+text = "当获蓝图等级T7（326/600）
 当前UP选项 斧头
 当前研究费用：0"
 fit_content = true
+scroll_active = false
 drag_and_drop_selection_enabled = false
-metadata/_tab_index = 0
 
-[node name="抽取记录" type="RichTextLabel" parent="内容节点/MarginContainer/HBoxContainer/界面布局/标签页" index="2" unique_id=197457263]
+[node name="抽取记录" type="RichTextLabel" parent="内容节点/内容边距/分隔容器/界面布局/标签页" index="2" unique_id=197457263]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -381,17 +398,18 @@ bbcode_enabled = true
 drag_and_drop_selection_enabled = false
 metadata/_tab_index = 1
 
-[node name="兑换图纸" type="ScrollContainer" parent="内容节点/MarginContainer/HBoxContainer/界面布局/标签页" index="3" unique_id=2130760202]
+[node name="兑换图纸" type="ScrollContainer" parent="内容节点/内容边距/分隔容器/界面布局/标签页" index="3" unique_id=2130760202]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="代币商店" parent="内容节点/MarginContainer/HBoxContainer/界面布局/标签页/兑换图纸" index="0" unique_id=403135558 instance=ExtResource("7_urdgg")]
+[node name="代币商店" parent="内容节点/内容边距/分隔容器/界面布局/标签页/兑换图纸" index="0" unique_id=403135558 instance=ExtResource("7_urdgg")]
 layout_mode = 2
 size_flags_vertical = 3
 "商品数组数据" = Array[ExtResource("8_tdurk")]([SubResource("Resource_y7u36"), SubResource("Resource_1enq4"), SubResource("Resource_wqaqf"), SubResource("Resource_0lnvh"), SubResource("Resource_k2qxs"), SubResource("Resource_6nf3n")])
 "启用图纸出售" = true
 
-[node name="循环任务" parent="内容节点/MarginContainer/HBoxContainer/界面布局/标签页" index="4" unique_id=901319443 instance=ExtResource("9_jm6af")]
+[node name="循环任务" parent="内容节点/内容边距/分隔容器/界面布局/标签页" index="4" unique_id=901319443 instance=ExtResource("9_jm6af")]
 visible = false
 layout_mode = 2
 "循环筛选" = Array[String](["研究"])
@@ -399,7 +417,7 @@ layout_mode = 2
 "显示任务数量" = 2
 metadata/_tab_index = 3
 
-[node name="主菜单" type="Button" parent="内容节点/MarginContainer/HBoxContainer/界面布局" index="1" unique_id=1705940604]
+[node name="主菜单" type="Button" parent="内容节点/内容边距/分隔容器/界面布局" index="1" unique_id=1705940604]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
@@ -494,4 +512,4 @@ text = "上一页"
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_f4fr3")
 
-[editable path="内容节点/MarginContainer/HBoxContainer/VBoxContainer/滑块"]
+[editable path="内容节点/内容边距/分隔容器/抽卡区/滑块"]

@@ -30,7 +30,6 @@ offset_right = -34.0
 offset_bottom = 143.0
 grow_horizontal = 0
 size_flags_horizontal = 8
-theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 40
 text = "原罪窗口"
 
@@ -38,10 +37,10 @@ text = "原罪窗口"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 0
-offset_left = 84.0
-offset_top = 9.0
-offset_right = 309.0
-offset_bottom = 234.0
+offset_left = 63.0
+offset_top = 28.0
+offset_right = 288.0
+offset_bottom = 253.0
 size_flags_horizontal = 6
 size_flags_vertical = 0
 texture = ExtResource("3_x2j7v")
@@ -67,10 +66,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 0
-offset_left = 590.0
-offset_top = 54.0
-offset_right = 1408.0
-offset_bottom = 141.0
+offset_left = 569.0
+offset_top = 73.0
+offset_right = 1387.0
+offset_bottom = 160.0
 theme = ExtResource("1_iwukf")
 theme_override_styles/fill = SubResource("StyleBoxFlat_iwukf")
 step = 1.0
@@ -114,19 +113,41 @@ anchors_preset = -1
 anchor_top = 0.27100003
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 0.099975586
-offset_right = -10.0
-offset_bottom = -10.0
+offset_left = 14.0
+offset_top = 17.519958
+offset_right = -19.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="成就容器" type="GridContainer" parent="内容节点/成就区" index="0" unique_id=1532470267]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 8
-columns = 7
+columns = 6
 
 [node name="成就卡片" parent="内容节点/成就区/成就容器" index="0" unique_id=302301076 instance=ExtResource("4_q5scx")]
 layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="成就卡片2" parent="内容节点/成就区/成就容器" index="1" unique_id=2025851408 instance=ExtResource("4_q5scx")]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="成就卡片3" parent="内容节点/成就区/成就容器" index="2" unique_id=135785712 instance=ExtResource("4_q5scx")]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="成就卡片4" parent="内容节点/成就区/成就容器" index="3" unique_id=1113416421 instance=ExtResource("4_q5scx")]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="成就卡片5" parent="内容节点/成就区/成就容器" index="4" unique_id=1140727377 instance=ExtResource("4_q5scx")]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="成就卡片6" parent="内容节点/成就区/成就容器" index="5" unique_id=904845745 instance=ExtResource("4_q5scx")]
+layout_mode = 2
+size_flags_horizontal = 6

@@ -34,7 +34,7 @@ script = ExtResource("1_0iigp")
 [node name="文本" type="RichTextLabel" parent="." unique_id=1640017311]
 layout_mode = 1
 offset_right = 69.0
-offset_bottom = 55.0
+offset_bottom = 43.0
 size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 30

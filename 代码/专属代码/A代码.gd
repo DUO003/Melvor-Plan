@@ -111,6 +111,7 @@ func 常用功能():
 	#load()#?.instantiate()#动态加载
 	#self#当前节点
 	#super#继承上级节点
+	#owner#节点的所有者
 	#call_deferred("延迟方法")#空闲时执行,可能是本帧结束前执行
 	#for i in range(整数):#执行 整数 次
 		#continue#跳过一次本次循环

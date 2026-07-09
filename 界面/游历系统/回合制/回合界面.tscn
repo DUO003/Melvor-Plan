@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bx3lrqy5sdajo"]
+
+[ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_qt44n"]
+
+[node name="回合界面" unique_id=166508811 instance=ExtResource("1_qt44n")]
+"基类窗口名称" = "回合界面"
+
+[node name="内容边距" type="MarginContainer" parent="内容节点" parent_id_path=PackedInt32Array(1614734378) index="0" unique_id=11622771]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2

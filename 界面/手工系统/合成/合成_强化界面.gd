@@ -12,6 +12,7 @@ extends 基类梅窗口
 @onready var 物品背包: VBoxContainer = %物品背包
 @onready var 选项卡: TabContainer = %选项卡
 @onready var 装备信息: Label = %装备信息
+@onready var 装备名称: Label = %装备名称
 @onready var 材料信息: RichTextLabel = %材料信息
 func  _ready() -> void:
 	super._ready()#注册
@@ -72,26 +73,35 @@ func 分解判断():
 func 更新装备信息():
 	if 装备栏.上次放入的物品 is 物品装备:
 		var 装备:物品装备=装备栏.上次放入的物品
+		装备名称.text=装备.显示名称
+		装备信息.visible=true
 		装备信息.text=装备.返回简介("强化栏")
 		材料文本(装备)
+		装备分解.visible=false
 	else :
-		装备信息.text="需要放入装备"
-		%"材料滚动区".visible=false
-@onready var 复选框示例: CheckBox = %复选框示例
+		装备名称.text="需要放入装备"
+		装备信息.visible=false
+		材料滚动区.visible=false
+		装备分解.visible=true
+@onready var 材料滚动区: ScrollContainer = %材料滚动区
 @onready var 材料选择: VBoxContainer = %材料选择
 @onready var 升级: Button = %升级
 var 材料节点字典:Dictionary[CheckBox,Dictionary]
 var 选项状态:Dictionary[String,bool]
+var 复选框场景: CheckBox
+@export var 复选框场景地址:PackedScene = preload("res://界面/手工系统/合成/复选框示例.tscn")
 func 材料文本(装备:物品装备):
 	var 材料字典=材料需求(装备)
-	%"材料滚动区".visible=true
+	材料滚动区.visible=true
 	计划.清除子节点(材料选择,材料信息)
 	材料节点字典={}
 	if not 材料字典:
 		return
+	if not 复选框场景:
+		复选框场景=复选框场景地址.instantiate()
 	for 材料名称 in 材料字典:
 		var 图片=计划.表格.道具贴图(材料名称)
-		var 克隆节点:CheckBox=复选框示例.duplicate()
+		var 克隆节点:CheckBox=复选框场景.duplicate()
 		var 字典=材料字典[材料名称]
 		克隆节点.icon=图片
 		克隆节点.visible=true

@@ -51,6 +51,7 @@ ticks_on_borders = true
 script = ExtResource("1_5dwu4")
 
 [node name="标签" type="Label" parent="." unique_id=793789444]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = -250.0
 offset_right = -77.50952

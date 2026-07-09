@@ -16,7 +16,7 @@ func _ready() -> void:
 	文本节点.text=文本
 	await get_tree().process_frame
 	文本节点.set_size(文本节点.get_combined_minimum_size())
-	custom_minimum_size=文本节点.size+Vector2(10,-10)
+	custom_minimum_size=文本节点.size+Vector2(10,0)
 	#print(custom_minimum_size,计划.文本节点宽度(文本节点))
 	通知位置 = 计划.配置文件.get("通知位置", "右")# 从配置文件读取对齐方式，默认靠右
 	if 通知位置=="悬浮":

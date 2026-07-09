@@ -35,7 +35,7 @@ var 物品使用映射:Dictionary = {
 	"药水": 使用方法_药水,
 	"精通代币": 使用方法_精通代币,}
 
-func 更新属性():
+func 更新属性()->bool:
 	if super.更新属性():
 		标签=计划.表格.缓存蓝图标签[item_name]
 		阶级=int(表格数据[蓝图表头["阶级"]])
@@ -43,6 +43,8 @@ func 更新属性():
 		显示名称=计划.表格.翻译名称(item_name)
 		简介=计划.表格.翻译简介(item_name)
 		更新堆叠()
+		return true
+	return false
 func 拷贝方法():#所有继承方法如果希望被正确拷贝都需要重写
 	return 标准物品.new(1,item_name)
 func 物品类型可用性检查()->bool:

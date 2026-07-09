@@ -199,6 +199,17 @@ var 类型: String = "长剑":# 默认值为"长剑"，值直接是字符串
 @export var 基础属性:Dictionary={}
 @export var 耐久:int=0
 @export var 种子:int
+##内部状态缓存翻译更新
+var 当前语言:String="未赋值"
+var 显示名称:String:
+	get:
+		翻译更新检查()
+		return 显示名称
+func 翻译更新检查():
+	if not 当前语言==计划.表格.当前使用语言:
+		当前语言=计划.表格.当前使用语言
+		显示名称=计划.表格.翻译名称(item_name)
+	return
 #@export var 强化最大:float=10
 #@export var 强化:float=10
 

@@ -42,9 +42,12 @@ func _draw():
 	# 根据半径自动计算point_count
 	# 公式：基础值(32) + 半径/缩放因子(10)，确保在32-256之间
 	var 弧段 = clamp(32 + int(半径 / 10), 32, 256)
-	var 尺寸 = 半径 * 2 + 线条宽度+10
+	var 尺寸:float = 半径 * 2 + 线条宽度+10
 	var 圆心 = Vector2(尺寸/2, 尺寸/2)
-	custom_minimum_size = Vector2(尺寸, 尺寸)
+	if custom_minimum_size.x<尺寸:
+		custom_minimum_size.x = 尺寸
+	if custom_minimum_size.y<尺寸:
+		custom_minimum_size.y = 尺寸
 	# 绘制背景圆弧
 	draw_arc(圆心, 半径, 开始角度, 结束角度, 弧段, 背景颜色, 线条宽度 - 1, true)
 	# 绘制进度圆弧

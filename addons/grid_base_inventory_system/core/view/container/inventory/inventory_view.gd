@@ -4,15 +4,53 @@ extends BaseContainerView
 ## 背包视图，控制背包的绘制
 class_name InventoryView
 
+var 上个提示数据:梅提示数据
 ## 允许存放的物品类型，如果背包名字重复，可存放的物品类型需要一样
 @export var avilable_types: Array[String] = ["ANY"]
 signal 背包内容更新()
+## 初始化
+func _ready() -> void:
+	if Engine.is_editor_hint():
+		custom_minimum_size=Vector2(container_columns,container_rows)*Vector2(base_size,base_size)
+		call_deferred("_recalculate_size")
+		return
+	if not container_name:
+		push_error("Inventory must have a name.")
+		return
+	加载背包数据()
+	if visible:
+		GBIS.opened_containers.append(container_name)
+	if not GBIS.inventory_names.has(container_name):
+		GBIS.inventory_names.append(container_name)
+	mouse_filter = Control.MOUSE_FILTER_PASS
+	_init_grid_container()
+	_init_item_container()
+	_init_grids()
+	GBIS.sig_inv_item_added.connect(_on_item_added)
+	GBIS.sig_inv_item_removed.connect(_on_item_removed)
+	GBIS.sig_inv_item_updated.connect(_on_inv_item_updated)
+	GBIS.sig_inv_refresh.connect(refresh)
+	
+	visibility_changed.connect(_on_visible_changed)
+	
+	if not stack_num_font:
+		stack_num_font = get_theme_font("font")
+	await get_tree().process_frame
+	计划.显示后执行(refresh,self)
+	#call_deferred("refresh")
 func grid_hover(grid_id: Vector2i) -> void:
 	_handle_grid_hover(grid_id, true)
  
 func grid_lose_hover(grid_id: Vector2i) -> void:
 	_handle_grid_hover(grid_id, false)
- 
+	
+func _on_visible_changed() -> void:
+	super()
+	if not is_visible_in_tree():
+		if 上个提示数据:
+			var 数据:梅提示数据=梅提示数据.new()
+			数据.节点=上个提示数据.节点
+			计划.数据包提示.emit(数据)
 func _handle_grid_hover(grid_id: Vector2i, is_hover: bool) -> void:
 	if not GBIS.moving_item_service.moving_item:
 		var 物品实例: ItemData = GBIS.inventory_service.find_item_data_by_grid(container_name, grid_id)
@@ -23,12 +61,15 @@ func _handle_grid_hover(grid_id: Vector2i, is_hover: bool) -> void:
 				数据.通用解析(物品实例,{"背包名":container_name})
 				数据.节点=_grid_map.get(grid_id)
 				计划.数据包提示.emit(数据)
+				上个提示数据=数据
 				return
 			else:
 				GBIS.item_focus_service.item_lose_focus()
 		var 数据:梅提示数据=梅提示数据.new()
 		if _grid_map.has(grid_id):
 			数据.节点=_grid_map[grid_id]
+			if 上个提示数据 and 上个提示数据.节点 and 数据.节点==上个提示数据.节点:
+				上个提示数据=null
 		计划.数据包提示.emit(数据)
 		return
 	# 下面是对正在移动的物体的处理
@@ -80,36 +121,6 @@ func change_data_source(new_container_name: String) -> void:
 	_init_grids()
 	call_deferred("refresh")
 
-## 初始化
-func _ready() -> void:
-	if Engine.is_editor_hint():
-		custom_minimum_size=Vector2(container_columns,container_rows)*Vector2(base_size,base_size)
-		call_deferred("_recalculate_size")
-		return
-	if not container_name:
-		push_error("Inventory must have a name.")
-		return
-	加载背包数据()
-	if visible:
-		GBIS.opened_containers.append(container_name)
-	if not GBIS.inventory_names.has(container_name):
-		GBIS.inventory_names.append(container_name)
-	mouse_filter = Control.MOUSE_FILTER_PASS
-	_init_grid_container()
-	_init_item_container()
-	_init_grids()
-	GBIS.sig_inv_item_added.connect(_on_item_added)
-	GBIS.sig_inv_item_removed.connect(_on_item_removed)
-	GBIS.sig_inv_item_updated.connect(_on_inv_item_updated)
-	GBIS.sig_inv_refresh.connect(refresh)
-	
-	visibility_changed.connect(_on_visible_changed)
-	
-	if not stack_num_font:
-		stack_num_font = get_theme_font("font")
-	await get_tree().process_frame
-	计划.显示后执行(refresh,self)
-	#call_deferred("refresh")
 func refresh():
 	super.refresh()
 	背包内容更新.emit()
