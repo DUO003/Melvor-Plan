@@ -1,6 +1,41 @@
 [gd_scene format=3 uid="uid://bx3lrqy5sdajo"]
 
 [ext_resource type="PackedScene" uid="uid://dplr7fkbn7tcp" path="res://界面/根界面/界面基类.tscn" id="1_qt44n"]
+[ext_resource type="PackedScene" uid="uid://dmp4cn2v542nq" path="res://界面/回合制战斗/回合制战斗.tscn" id="2_hwi5s"]
+[ext_resource type="Script" uid="uid://d234ope0kwqso" path="res://数据包/实体/实体数据_回合制.gd" id="3_tilhx"]
+[ext_resource type="Script" uid="uid://mkywml0v1sde" path="res://数据包/实体/技能数据_回合制.gd" id="4_pe3j7"]
+[ext_resource type="Resource" uid="uid://bq5b4cxmlga8e" path="res://数据包/实体/技能/火球术.tres" id="5_88jnk"]
+[ext_resource type="Texture2D" uid="uid://bttn4tgkwj4p0" path="res://素材/全息图片AI素材/元素/火.png" id="6_usisb"]
+[ext_resource type="Texture2D" uid="uid://c8ctkhrcr8y73" path="res://素材/全息图片AI素材/元素/冰.png" id="7_e1ljw"]
+[ext_resource type="Texture2D" uid="uid://b7yrq6uemduvb" path="res://素材/全息图片AI素材/元素/草.png" id="8_h5ofp"]
+
+[sub_resource type="Resource" id="Resource_ts0je"]
+script = ExtResource("3_tilhx")
+"分组名称" = &"友方"
+"名称" = "玩家"
+"贴图" = ExtResource("6_usisb")
+"血量" = 500
+"技能列表" = Array[ExtResource("4_pe3j7")]([ExtResource("5_88jnk")])
+metadata/_custom_type_script = "uid://d234ope0kwqso"
+
+[sub_resource type="Resource" id="Resource_usisb"]
+script = ExtResource("3_tilhx")
+"分组名称" = &"友方"
+"名称" = "玩家"
+"贴图" = ExtResource("7_e1ljw")
+"血量" = 500
+"技能列表" = Array[ExtResource("4_pe3j7")]([ExtResource("5_88jnk")])
+metadata/_custom_type_script = "uid://d234ope0kwqso"
+
+[sub_resource type="Resource" id="Resource_e1ljw"]
+script = ExtResource("3_tilhx")
+"分组名称" = &"友方"
+"名称" = "玩家"
+"贴图" = ExtResource("8_h5ofp")
+"血量" = 500
+"技能列表" = Array[ExtResource("4_pe3j7")]([ExtResource("5_88jnk")])
+"排号" = 1
+metadata/_custom_type_script = "uid://d234ope0kwqso"
 
 [node name="回合界面" unique_id=166508811 instance=ExtResource("1_qt44n")]
 "基类窗口名称" = "回合界面"
@@ -14,3 +49,20 @@ offset_top = -2.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="回合制战斗" parent="内容节点/内容边距" index="0" unique_id=614393135 instance=ExtResource("2_hwi5s")]
+layout_mode = 2
+"友方数据组" = Array[ExtResource("3_tilhx")]([SubResource("Resource_ts0je"), SubResource("Resource_usisb"), SubResource("Resource_e1ljw")])
+
+[node name="友方位置" parent="内容节点/内容边距/回合制战斗/动画区域" parent_id_path=PackedInt32Array(614393135, 1705878719) index="0" unique_id=32075991]
+position = Vector2(620, 360)
+"单排排布总高度" = 450.0
+"阵容总长度" = 600.0
+"阵容朝向" = -1
+
+[node name="敌方位置" parent="内容节点/内容边距/回合制战斗/动画区域" parent_id_path=PackedInt32Array(614393135, 1705878719) index="1" unique_id=572829057]
+position = Vector2(1000, 360)
+"单排排布总高度" = 450.0
+"阵容总长度" = 600.0
+
+[editable path="内容节点/内容边距/回合制战斗"]

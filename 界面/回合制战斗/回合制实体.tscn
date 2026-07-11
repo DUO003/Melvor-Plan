@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://4252trdreaix"]
+
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="1_a3hxm"]
+[ext_resource type="Script" uid="uid://dajta3x6y40m6" path="res://界面/回合制战斗/回合制实体.gd" id="2_h8tpc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8tpc"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0.33057356, 1, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[node name="回合制实体" type="Node2D" unique_id=387439922]
+script = ExtResource("2_h8tpc")
+
+[node name="血条" type="ProgressBar" parent="." unique_id=1985801747]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -116.0
+offset_right = 50.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 1.0
+value = 50.0
+rounded = true
+show_percentage = false
+
+[node name="血条血量" type="Label" parent="血条" unique_id=1730026339]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="蓝条" type="ProgressBar" parent="." unique_id=1782623925]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -87.0
+offset_right = 50.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_h8tpc")
+step = 1.0
+value = 50.0
+rounded = true
+show_percentage = false
+
+[node name="蓝条蓝量" type="Label" parent="蓝条" unique_id=409145430]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+
+[node name="图片" type="Sprite2D" parent="." unique_id=1156410243]
+unique_name_in_owner = true
+texture = ExtResource("1_a3hxm")
+
+[node name="测试" type="Button" parent="." unique_id=1145501661]
+unique_name_in_owner = true
+visible = false
+offset_left = -17.0
+offset_top = 71.0
+offset_right = 23.0
+offset_bottom = 102.0
+offset_transform_enabled = true
+text = "测试"

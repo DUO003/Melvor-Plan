@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://vh0si0gftrmw"]
+
+[ext_resource type="Script" uid="uid://d2x5wre21634g" path="res://界面/回合制战斗/位置定位器.gd" id="1_fv48d"]
+
+[node name="位置定位器" type="Marker2D" unique_id=32075991]
+script = ExtResource("1_fv48d")

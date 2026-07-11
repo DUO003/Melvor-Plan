@@ -102,7 +102,9 @@ func get_root_container() -> SplitterContainer.SplitterRoot:
 func get_editor_root_container(node : Node) -> SplitterContainer.BaseContainerItem:
 	if node is SplitterContainer.SplitterRoot:
 		node = node.get_parent()
-		return node
+		return node as SplitterContainer.BaseContainerItem#尝试修复报错问题
+		#  ERROR: res://addons/_Godot-IDE_/plugins/script_splitter/core/base/container.gd:105 - Trying to return a value of type "Control (split_container_item.gd)" from a function whose return type is "splitter_item.gd".
+
 	return null
 	
 func get_editors() -> Array[Node]:

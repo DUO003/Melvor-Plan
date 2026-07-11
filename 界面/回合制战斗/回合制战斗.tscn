@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://dmp4cn2v542nq"]
+
+[ext_resource type="Script" uid="uid://b5ejewyvg5hd1" path="res://界面/回合制战斗/回合制战斗.gd" id="1_hjodb"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_ns0o1"]
+[ext_resource type="Script" uid="uid://6ntsfsqyac4p" path="res://界面/回合制战斗/行动条显示区.gd" id="2_c5iel"]
+[ext_resource type="PackedScene" uid="uid://637csicwop6q" path="res://界面/回合制战斗/头像.tscn" id="2_hjodb"]
+[ext_resource type="Script" uid="uid://d234ope0kwqso" path="res://数据包/实体/实体数据_回合制.gd" id="2_nvslx"]
+[ext_resource type="PackedScene" uid="uid://vh0si0gftrmw" path="res://界面/回合制战斗/位置定位器.tscn" id="3_7xg1p"]
+[ext_resource type="Script" uid="uid://mkywml0v1sde" path="res://数据包/实体/技能数据_回合制.gd" id="3_lpa4d"]
+[ext_resource type="Resource" uid="uid://bq5b4cxmlga8e" path="res://数据包/实体/技能/火球术.tres" id="4_s57uk"]
+[ext_resource type="PackedScene" uid="uid://d1y5yt23606ii" path="res://界面/回合制战斗/控制ui区.tscn" id="7_d3qcw"]
+
+[sub_resource type="Resource" id="Resource_ts0je"]
+script = ExtResource("2_nvslx")
+"分组名称" = &"友方"
+"名称" = "玩家"
+"血量" = 500
+"技能列表" = Array[ExtResource("3_lpa4d")]([ExtResource("4_s57uk")])
+metadata/_custom_type_script = "uid://d234ope0kwqso"
+
+[sub_resource type="Resource" id="Resource_2kroc"]
+script = ExtResource("2_nvslx")
+"名称" = "木偶人"
+"血量" = 500
+"攻击成长" = 0
+"速度" = 8
+metadata/_custom_type_script = "uid://d234ope0kwqso"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5iel"]
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="回合制战斗" type="Control" unique_id=614393135 node_paths=PackedStringArray("友方位置", "敌方位置")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ns0o1")
+script = ExtResource("1_hjodb")
+"友方位置" = NodePath("动画区域/友方位置")
+"敌方位置" = NodePath("动画区域/敌方位置")
+"友方数据组" = Array[ExtResource("2_nvslx")]([SubResource("Resource_ts0je")])
+"敌方数据组" = Array[ExtResource("2_nvslx")]([SubResource("Resource_2kroc")])
+
+[node name="动画区域" type="Node2D" parent="." unique_id=1705878719]
+unique_name_in_owner = true
+
+[node name="友方位置" parent="动画区域" unique_id=32075991 instance=ExtResource("3_7xg1p")]
+unique_name_in_owner = true
+position = Vector2(352, 486)
+
+[node name="敌方位置" parent="动画区域" unique_id=572829057 instance=ExtResource("3_7xg1p")]
+unique_name_in_owner = true
+position = Vector2(1438, 499)
+
+[node name="动画特效" type="Node2D" parent="动画区域" unique_id=2002662104]
+unique_name_in_owner = true
+
+[node name="控制UI区" parent="." unique_id=1166753627 node_paths=PackedStringArray("回合管理器") instance=ExtResource("7_d3qcw")]
+layout_mode = 1
+offset_top = -10.0
+"回合管理器" = NodePath("..")
+
+[node name="行动条显示区" type="Control" parent="." unique_id=1024733965 node_paths=PackedStringArray("回合管理器")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("2_c5iel")
+"回合管理器" = NodePath("..")
+
+[node name="行动条" type="Panel" parent="行动条显示区" unique_id=1422767497]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = -20.0
+offset_right = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_c5iel")
+
+[node name="头像" parent="行动条显示区" unique_id=289247294 instance=ExtResource("2_hjodb")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 12.0
+offset_top = 40.0
+offset_right = 112.0
+offset_bottom = 140.0
+grow_horizontal = 1
+grow_vertical = 1

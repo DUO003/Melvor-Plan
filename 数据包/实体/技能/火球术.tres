@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="梅技能数据_回合制" format=3 uid="uid://bq5b4cxmlga8e"]
+
+[ext_resource type="Script" uid="uid://mkywml0v1sde" path="res://数据包/实体/技能数据_回合制.gd" id="1_gra77"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sk5c6"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[resource]
+script = ExtResource("1_gra77")
+"技能名称" = "火球术"
+"技能图标" = SubResource("CompressedTexture2D_sk5c6")
+"基础威力" = 1.5
+"基础成长" = 0.1
+"增幅威力" = 15.0
+"增幅成长" = 5.0
+"攻击动画枚举" = 1
+"间隔回合" = 3
+"魔法消耗" = 15
+metadata/_custom_type_script = "uid://mkywml0v1sde"

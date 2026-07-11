@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://d1y5yt23606ii"]
+
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_lp1gv"]
+[ext_resource type="Script" uid="uid://bkeerereaav3n" path="res://界面/回合制战斗/控制ui区.gd" id="1_vxl2p"]
+[ext_resource type="PackedScene" uid="uid://cld6jg7xlg3cn" path="res://界面/回合制战斗/技能按钮.tscn" id="2_du628"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mltbl"]
+bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+
+[node name="控制UI区" type="ScrollContainer" unique_id=1166753627]
+custom_minimum_size = Vector2(0, 250)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_lp1gv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_mltbl")
+script = ExtResource("1_vxl2p")
+
+[node name="功能排列容器" type="HBoxContainer" parent="." unique_id=522901891]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="设置容器" type="MarginContainer" parent="功能排列容器" unique_id=754262443]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="设置滚动区" type="ScrollContainer" parent="功能排列容器/设置容器" unique_id=91338478]
+layout_mode = 2
+
+[node name="设置列表" type="GridContainer" parent="功能排列容器/设置容器/设置滚动区" unique_id=1061197632]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="自动战斗" type="Label" parent="功能排列容器/设置容器/设置滚动区/设置列表" unique_id=432815519]
+layout_mode = 2
+text = "自动战斗"
+
+[node name="启用自动" type="CheckBox" parent="功能排列容器/设置容器/设置滚动区/设置列表" unique_id=1529588017]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="索敌方式" type="Label" parent="功能排列容器/设置容器/设置滚动区/设置列表" unique_id=1756114004]
+layout_mode = 2
+text = "索敌方式"
+
+[node name="索敌菜单" type="OptionButton" parent="功能排列容器/设置容器/设置滚动区/设置列表" unique_id=727498976]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 1
+popup/item_0/text = "测试数据"
+popup/item_0/id = 0
+
+[node name="技能容器" type="MarginContainer" parent="功能排列容器" unique_id=338234601]
+custom_minimum_size = Vector2(800, 240)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="技能滚动区" type="ScrollContainer" parent="功能排列容器/技能容器" unique_id=961358258]
+custom_minimum_size = Vector2(613, 230)
+layout_mode = 2
+
+[node name="技能区" type="GridContainer" parent="功能排列容器/技能容器/技能滚动区" unique_id=2078768819]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 2
+
+[node name="技能" parent="功能排列容器/技能容器/技能滚动区/技能区" unique_id=212076920 instance=ExtResource("2_du628")]
+layout_mode = 2
+
+[node name="技能2" parent="功能排列容器/技能容器/技能滚动区/技能区" unique_id=2070699011 instance=ExtResource("2_du628")]
+layout_mode = 2
+
+[node name="技能3" parent="功能排列容器/技能容器/技能滚动区/技能区" unique_id=1341161714 instance=ExtResource("2_du628")]
+layout_mode = 2
+
+[node name="技能4" parent="功能排列容器/技能容器/技能滚动区/技能区" unique_id=2085123427 instance=ExtResource("2_du628")]
+layout_mode = 2

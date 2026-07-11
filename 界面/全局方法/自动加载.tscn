@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cwttq7v3b35e"]
+
+[ext_resource type="Script" uid="uid://bxn2avh6q5hf" path="res://界面/全局方法/自动加载.gd" id="1_n8gvp"]
+[ext_resource type="Script" uid="uid://mkywml0v1sde" path="res://数据包/实体/技能数据_回合制.gd" id="2_y7lct"]
+[ext_resource type="Resource" uid="uid://bq5b4cxmlga8e" path="res://数据包/实体/技能/火球术.tres" id="3_1hxw3"]
+[ext_resource type="Script" uid="uid://c78fa4x3cf8ck" path="res://界面/全局方法/工具方法.gd" id="4_1hxw3"]
+
+[node name="自动加载" type="Node" unique_id=1943534607 node_paths=PackedStringArray("工具")]
+script = ExtResource("1_n8gvp")
+"技能字典" = Dictionary[String, ExtResource("2_y7lct")]({
+"火球术": ExtResource("3_1hxw3")
+})
+"工具" = NodePath("工具方法")
+
+[node name="工具方法" type="Node" parent="." unique_id=295648572]
+script = ExtResource("4_1hxw3")

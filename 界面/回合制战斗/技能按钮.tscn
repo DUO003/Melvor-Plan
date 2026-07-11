@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://cld6jg7xlg3cn"]
+
+[ext_resource type="Texture2D" uid="uid://f4spgvyvs7fn" path="res://icon.svg" id="1_1xsfx"]
+[ext_resource type="Theme" uid="uid://cigh0v88yomed" path="res://界面/主题/标准界面.tres" id="1_6godu"]
+[ext_resource type="Script" uid="uid://bsl38m7lup65a" path="res://界面/回合制战斗/技能按钮.gd" id="1_skdg1"]
+
+[sub_resource type="Shader" id="Shader_wkm3t"]
+code = "shader_type canvas_item;
+
+// 冷却进度参数，取值范围 0 ~ 1
+uniform float cool_down_progress : hint_range(0.0, 1.0);
+
+void fragment() {
+    // 将UV原点挪到图片中心，坐标范围 [-0.5, 0.5]
+    vec2 center_uv = UV - vec2(0.5);
+    
+    // 计算当前像素相对于中心点的弧度 atan(y, x) 范围 [-PI, PI]
+    float radian = atan(center_uv.y, center_uv.x);
+    
+    // 旋转角度基准：把起始点改为12点钟竖直向上
+    radian += PI / 2.0;
+    
+    // 将负弧度转正，统一映射到 0 ~ TAU（0~360度）
+    if (radian < 0.0) {
+        radian += TAU;
+    }
+    
+    // 根据进度算出扇形最大可视弧度
+    float max_radian = cool_down_progress * TAU;
+    
+    // 判断当前像素是否在露出的扇形区域内
+    bool inside_show_area = radian <= max_radian;
+    
+    // 读取上层遮罩贴图本身颜色
+    vec4 tex = texture(TEXTURE, UV);
+    
+    if (inside_show_area) {
+        // 扇形内部完全透明，透出下方技能图标
+        COLOR.a = 0.0;
+    } else {
+        // 扇形外部保留遮罩原图，遮挡底层图标
+        COLOR = tex;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8n2i7"]
+shader = SubResource("Shader_wkm3t")
+shader_parameter/cool_down_progress = 0.0
+
+[sub_resource type="Gradient" id="Gradient_k04cl"]
+colors = PackedColorArray(0.5, 0.5, 0.5, 0.49019608, 0.5, 0.5, 0.5, 0.49019608)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a5myd"]
+gradient = SubResource("Gradient_k04cl")
+
+[node name="技能按钮" type="MarginContainer" unique_id=212076920]
+custom_minimum_size = Vector2(390, 100)
+offset_right = 390.0
+offset_bottom = 100.0
+theme = ExtResource("1_6godu")
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_skdg1")
+
+[node name="技能按钮容器" type="HBoxContainer" parent="." unique_id=112394569]
+layout_mode = 2
+
+[node name="技能图标" type="TextureRect" parent="技能按钮容器" unique_id=647950629]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("1_1xsfx")
+expand_mode = 3
+
+[node name="技能冷却" type="TextureRect" parent="技能按钮容器/技能图标" unique_id=160823937]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_8n2i7")
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_a5myd")
+expand_mode = 3
+
+[node name="技能按钮" type="Button" parent="技能按钮容器" unique_id=1393568310]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+expand_icon = true
+
+[node name="蓝耗" type="Label" parent="技能按钮容器/技能按钮" unique_id=726709440]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 115.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 30
+text = "魔法:15"
+
+[node name="冷却" type="Label" parent="技能按钮容器/技能按钮" unique_id=28994342]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_top = 5.0
+offset_right = -11.0
+offset_bottom = 48.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "冷却1"
+
+[node name="技能名称" type="Label" parent="技能按钮容器/技能按钮" unique_id=993684459]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "一个技能名称"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[connection signal="gui_input" from="技能按钮容器/技能图标" to="技能按钮容器" method="_技能图标_gui"]

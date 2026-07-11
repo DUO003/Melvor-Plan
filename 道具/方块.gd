@@ -14,7 +14,7 @@ var 瓦片集对应字典:Dictionary[int,Texture2D]={
 	3:preload("res://素材/综合/地块集合.png"),
 	4:preload("res://素材/游戏素材/瓦片集/村子家具.png"),
 	}
-func 更新属性():
+func 更新属性()->bool:
 	var 方块数据:Dictionary=查询方块数据(item_name)
 	if 方块数据.成功:
 		堆叠上限=5
@@ -33,8 +33,10 @@ func 更新属性():
 			var 瓦片位置Y = (瓦片排) * 瓦片尺寸.y
 			var 瓦片区域 = Rect2(瓦片位置X, 瓦片位置Y, 瓦片尺寸.x*columns, 瓦片尺寸.y*rows)
 			icon = 截取图片(源纹理,瓦片区域)
+		return true
 	else :
 		print("错误,未获取成功方块数据")
+		return false
 #封装方块数据查询逻辑的函数
 func 查询方块数据(方块名称: String) -> Dictionary:
 	var 结果 = {

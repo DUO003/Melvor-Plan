@@ -37,6 +37,7 @@ config/icon="uid://bttn4tgkwj4p0"
 "横版单例"="*uid://d36bwamvahkkm"
 GBIS="*res://addons/grid_base_inventory_system/core/grid_base_inventory_system.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+"梅加载"="*uid://cwttq7v3b35e"
 
 [debug]
 

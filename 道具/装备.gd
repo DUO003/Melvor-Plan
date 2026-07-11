@@ -220,6 +220,7 @@ func 更新属性(设定种子:int=randi()):
 		super.更新属性()
 		装备初始化(设定种子)
 		创建数据=true
+	return true
 func 拷贝方法():#所有继承方法如果希望被正确拷贝都需要重写
 	return 物品装备.new(1,item_name)
 func 装备初始化(设定种子:int=randi()):

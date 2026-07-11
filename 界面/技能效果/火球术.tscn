@@ -1,0 +1,339 @@
+[gd_scene format=3 uid="uid://7fd46u5g3msa"]
+
+[ext_resource type="Script" uid="uid://cdxb23lalb0ik" path="res://界面/技能效果/火球术.gd" id="1_ktuvb"]
+[ext_resource type="Texture2D" uid="uid://bnq2fmxvo1nh4" path="res://素材/自制/噪声与纹理/火球.png" id="1_pksff"]
+
+[sub_resource type="Gradient" id="Gradient_a0ol4"]
+offsets = PackedFloat32Array(0, 0.48181817, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.4627451, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1fhh2"]
+gradient = SubResource("Gradient_a0ol4")
+
+[sub_resource type="Curve" id="Curve_kvbxs"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8h4o5"]
+curve = SubResource("Curve_kvbxs")
+
+[sub_resource type="Curve" id="Curve_15qtr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.23983738, 1), 1.1952623, 1.1952623, 0, 0, Vector2(1, 0.29213488), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0q03v"]
+curve = SubResource("Curve_15qtr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pl33d"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 32.0
+angle_min = 1.0728835e-05
+angle_max = 180.00002
+inherit_velocity_ratio = 0.5
+spread = 180.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, -1000, 0)
+scale_min = 40.0
+scale_max = 50.0
+scale_curve = SubResource("CurveTexture_0q03v")
+color_ramp = SubResource("GradientTexture1D_1fhh2")
+hue_variation_curve = SubResource("CurveTexture_8h4o5")
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_abkoj"]
+linked_parent_graph_frame = 5
+parameter_name = "DX"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_hpejb"]
+linked_parent_graph_frame = 5
+function = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_5cbai"]
+expanded_output_ports = [0]
+linked_parent_graph_frame = 5
+source = 5
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_ctiax"]
+linked_parent_graph_frame = 5
+parameter_name = "T2"
+texture_type = 1
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_e2yf5"]
+linked_parent_graph_frame = 5
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_h8vp7"]
+expanded_output_ports = [0]
+linked_parent_graph_frame = 5
+source = 5
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_5kq6g"]
+linked_parent_graph_frame = 5
+parameter_name = "T3"
+texture_type = 1
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ukqm2"]
+expanded_output_ports = [0]
+linked_parent_graph_frame = 5
+source = 5
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_2t3gu"]
+linked_parent_graph_frame = 5
+parameter_name = "T4"
+texture_type = 1
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_1f0w3"]
+expanded_output_ports = [0]
+linked_parent_graph_frame = 5
+source = 5
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_orfpu"]
+linked_parent_graph_frame = 5
+parameter_name = "T1"
+texture_type = 1
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_ivf3p"]
+linked_parent_graph_frame = 5
+parameter_name = "T5"
+texture_type = 1
+color_default = 1
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_u1uad"]
+linked_parent_graph_frame = 5
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_6k2qy"]
+linked_parent_graph_frame = 5
+operator = 1
+
+[sub_resource type="VisualShaderNodeClamp" id="VisualShaderNodeClamp_c7jx8"]
+default_input_values = [0, 0.0, 1, 0.0, 2, 0.95]
+linked_parent_graph_frame = 5
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_nuotm"]
+expanded_output_ports = [0]
+linked_parent_graph_frame = 5
+source = 5
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_8glx4"]
+size = Vector2(1993, 1691)
+attached_nodes = PackedInt32Array(3, 2, 6, 11, 9, 7, 8, 10, 12, 13, 15, 16, 17, 18, 19, 20, 0, 14, 21, 22, 24)
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_rv000"]
+linked_parent_graph_frame = 5
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_j6x8p"]
+linked_parent_graph_frame = 5
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_an04p"]
+linked_parent_graph_frame = 5
+parameter_name = "SD"
+default_value_enabled = true
+default_value = Vector2(0, 1)
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_be0iy"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+linked_parent_graph_frame = 5
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_xigk4"]
+size = Vector2(430, 591)
+attached_nodes = PackedInt32Array(6, 7)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_1fymb"]
+linked_parent_graph_frame = 5
+source = 5
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_e2rr3"]
+linked_parent_graph_frame = 5
+parameter_name = "Texture2DParameter2"
+texture_type = 1
+
+[sub_resource type="VisualShader" id="VisualShader_qoltj"]
+mode = 1
+flags/unshaded = true
+flags/light_only = false
+nodes/vertex/0/position = Vector2(460, 40)
+nodes/vertex/5/node = SubResource("VisualShaderNodeFrame_xigk4")
+nodes/vertex/5/position = Vector2(780, 240)
+nodes/vertex/6/node = SubResource("VisualShaderNodeTexture_1fymb")
+nodes/vertex/6/position = Vector2(820, 280)
+nodes/vertex/7/node = SubResource("VisualShaderNodeTexture2DParameter_e2rr3")
+nodes/vertex/7/position = Vector2(820, 480)
+nodes/vertex/connections = PackedInt32Array(7, 0, 6, 2)
+nodes/fragment/0/position = Vector2(1180, 940)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_orfpu")
+nodes/fragment/2/position = Vector2(-320, 300)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_nuotm")
+nodes/fragment/3/position = Vector2(0, 80)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFrame_8glx4")
+nodes/fragment/5/position = Vector2(-220, 100)
+nodes/fragment/6/node = SubResource("VisualShaderNodeUVFunc_rv000")
+nodes/fragment/6/position = Vector2(-240, 80)
+nodes/fragment/7/node = SubResource("VisualShaderNodeInput_j6x8p")
+nodes/fragment/7/position = Vector2(-800, 280)
+nodes/fragment/8/node = SubResource("VisualShaderNodeVec2Parameter_an04p")
+nodes/fragment/8/position = Vector2(-780, 400)
+nodes/fragment/9/node = SubResource("VisualShaderNodeVectorOp_be0iy")
+nodes/fragment/9/position = Vector2(-480, 280)
+nodes/fragment/10/node = SubResource("VisualShaderNodeVec2Parameter_abkoj")
+nodes/fragment/10/position = Vector2(-780, 20)
+nodes/fragment/11/node = SubResource("VisualShaderNodeUVFunc_hpejb")
+nodes/fragment/11/position = Vector2(-480, 80)
+nodes/fragment/12/node = SubResource("VisualShaderNodeTexture_5cbai")
+nodes/fragment/12/position = Vector2(0, 620)
+nodes/fragment/13/node = SubResource("VisualShaderNodeTexture2DParameter_ctiax")
+nodes/fragment/13/position = Vector2(-320, 620)
+nodes/fragment/14/node = SubResource("VisualShaderNodeFloatOp_e2yf5")
+nodes/fragment/14/position = Vector2(240, 140)
+nodes/fragment/15/node = SubResource("VisualShaderNodeTexture_h8vp7")
+nodes/fragment/15/position = Vector2(20, 980)
+nodes/fragment/16/node = SubResource("VisualShaderNodeTexture2DParameter_5kq6g")
+nodes/fragment/16/position = Vector2(-300, 980)
+nodes/fragment/17/node = SubResource("VisualShaderNodeTexture_ukqm2")
+nodes/fragment/17/position = Vector2(40, 1340)
+nodes/fragment/18/node = SubResource("VisualShaderNodeTexture2DParameter_2t3gu")
+nodes/fragment/18/position = Vector2(-300, 1320)
+nodes/fragment/19/node = SubResource("VisualShaderNodeTexture_1f0w3")
+nodes/fragment/19/position = Vector2(920, 900)
+nodes/fragment/20/node = SubResource("VisualShaderNodeTexture2DParameter_ivf3p")
+nodes/fragment/20/position = Vector2(480, 900)
+nodes/fragment/21/node = SubResource("VisualShaderNodeFloatOp_u1uad")
+nodes/fragment/21/position = Vector2(420, 380)
+nodes/fragment/22/node = SubResource("VisualShaderNodeFloatOp_6k2qy")
+nodes/fragment/22/position = Vector2(620, 620)
+nodes/fragment/24/node = SubResource("VisualShaderNodeClamp_c7jx8")
+nodes/fragment/24/position = Vector2(820, 660)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 6, 0, 3, 0, 8, 0, 9, 1, 9, 0, 6, 2, 11, 0, 6, 0, 10, 0, 11, 1, 13, 0, 12, 2, 16, 0, 15, 2, 18, 0, 17, 2, 20, 0, 19, 2, 22, 0, 24, 0, 24, 0, 19, 0, 21, 0, 22, 0, 14, 0, 21, 0, 15, 1, 21, 1, 3, 1, 14, 0, 12, 1, 14, 1, 17, 1, 22, 1, 19, 0, 0, 0, 7, 0, 9, 0, 19, 4, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lw2rh"]
+noise_type = 0
+seed = 2560
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kir8t"]
+noise = SubResource("FastNoiseLite_lw2rh")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_g6aiu"]
+offsets = PackedFloat32Array(0, 0.76760566, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.51, 0.51, 0.51, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_alnkd"]
+gradient = SubResource("Gradient_g6aiu")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_6l837"]
+offsets = PackedFloat32Array(0, 0.18309858, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n8snl"]
+gradient = SubResource("Gradient_6l837")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_b3r5t"]
+offsets = PackedFloat32Array(0, 0.17605634, 0.23239437, 0.3, 0.5294118, 0.70253164, 0.98101264, 1)
+colors = PackedColorArray(0.72, 0.72, 0.72, 0, 0.72, 0.3816, 0.3816, 0, 0, 0, 0, 0.52156866, 0.72156864, 0, 0, 1, 0.78, 0, 0, 1, 0.8759715, 0.5545455, 0, 1, 1, 0.98333335, 0, 1, 0.75, 0.65, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xjdop"]
+gradient = SubResource("Gradient_b3r5t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktuvb"]
+shader = SubResource("VisualShader_qoltj")
+shader_parameter/DX = Vector2(1, 1)
+shader_parameter/SD = Vector2(0, 0.5)
+shader_parameter/T1 = SubResource("NoiseTexture2D_kir8t")
+shader_parameter/T2 = SubResource("GradientTexture2D_alnkd")
+shader_parameter/T3 = ExtResource("1_pksff")
+shader_parameter/T4 = SubResource("GradientTexture2D_n8snl")
+shader_parameter/T5 = SubResource("GradientTexture1D_xjdop")
+
+[sub_resource type="Gradient" id="Gradient_jeae8"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ts0je"]
+gradient = SubResource("Gradient_jeae8")
+
+[sub_resource type="Gradient" id="Gradient_ktuvb"]
+offsets = PackedFloat32Array(0, 0.6956522, 0.9130435)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0.7882353, 0, 0, 0, 0.6392157)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ktuvb"]
+gradient = SubResource("Gradient_ktuvb")
+
+[sub_resource type="Curve" id="Curve_ktuvb"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 100), 143.2584, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2kroc"]
+curve = SubResource("Curve_ktuvb")
+
+[sub_resource type="Curve" id="Curve_yqr6r"]
+_data = [Vector2(0, 0.50561804), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ajcsb"]
+curve = SubResource("Curve_yqr6r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ktuvb"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 9.999997
+linear_accel_max = 49.999996
+linear_accel_curve = SubResource("CurveTexture_2kroc")
+scale_min = 40.0
+scale_max = 50.0
+scale_curve = SubResource("CurveTexture_ajcsb")
+color_ramp = SubResource("GradientTexture1D_ktuvb")
+
+[node name="火球术" type="Node2D" unique_id=171275278 node_paths=PackedStringArray("动画精灵", "拖尾粒子", "爆炸粒子")]
+script = ExtResource("1_ktuvb")
+"动画精灵" = NodePath("火球贴图")
+"拖尾粒子" = NodePath("火球拖尾")
+"爆炸粒子" = NodePath("火球爆炸")
+
+[node name="火球拖尾" type="GPUParticles2D" parent="." unique_id=1925890234]
+position = Vector2(-16, 3)
+scale = Vector2(0.5, 0.5)
+amount = 10
+lifetime = 0.5
+explosiveness = 0.2
+process_material = SubResource("ParticleProcessMaterial_pl33d")
+
+[node name="火球贴图" type="Sprite2D" parent="." unique_id=1917896110]
+material = SubResource("ShaderMaterial_ktuvb")
+position = Vector2(-16, -2)
+rotation = -1.5707964
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_ts0je")
+
+[node name="火球爆炸" type="GPUParticles2D" parent="." unique_id=1137493949]
+emitting = false
+amount = 30
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ktuvb")
